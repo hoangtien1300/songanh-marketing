@@ -159,7 +159,7 @@
             </nav>
             
             <div class="mt-auto pt-6 border-t border-gray-100">
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Phiên bản 2.5</p>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Phiên bản 2.6</p>
                 <p class="text-[9px] text-gray-400 mt-1">© 2026 Song Anh Marketing</p>
             </div>
         </aside>
@@ -1490,19 +1490,19 @@
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             }
-
-                item.addEventListener('click', (e) => {
-                    const target = item.getAttribute('data-target');
-                    if (target) {
-                        e.preventDefault();
-                        switchView(target);
-                        // Close sidebar on mobile after selection
-                        if (window.innerWidth < 1024) {
-                            toggleSidebar();
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        const target = item.getAttribute('data-target');
+                        if (target) {
+                            e.preventDefault();
+                            switchView(target);
+                            // Close sidebar on mobile after selection
+                            if (window.innerWidth < 1024) {
+                                toggleSidebar();
+                            }
                         }
-                    }
+                    });
                 });
-            });
 
             // --- SECTOR TABS (OVERVIEW) ---
             const sectorTabs = document.querySelectorAll('.sector-tab');
