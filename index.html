@@ -68,6 +68,25 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        /* Sidebar Styles */
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        @media (max-width: 1023px) {
+            #sidebar.closed {
+                transform: translateX(-100%);
+            }
+            #sidebar.open {
+                transform: translateX(0);
+            }
+            #sidebar-overlay.hidden {
+                display: none;
+            }
+            #sidebar-overlay.visible {
+                display: block;
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
@@ -75,51 +94,78 @@
 
     <!-- Header -->
     <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-2 flex flex-row justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="logo-songanh.png" alt="Logo" class="h-10 sm:h-12 w-auto object-contain bg-white p-1 rounded">
+                <!-- Mobile Menu Toggle -->
+                <button id="menu-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors mr-1">
+                    <svg class="w-6 h-6 text-sa-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <img src="logo-songanh.png" alt="Logo" class="h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded">
                 <div>
-                    <h1 class="text-lg sm:text-xl font-bold tracking-wider uppercase text-sa-gold">Song Anh <span class="text-white">Marketing</span></h1>
-                    <p class="text-[10px] sm:text-xs text-gray-400">Phòng Marketing - Phụ trách: <strong>Phạm Hoàng Tiến</strong></p>
+                    <h1 class="text-sm sm:text-base font-bold tracking-wider uppercase text-sa-gold">Song Anh <span class="text-white hidden sm:inline">Marketing</span></h1>
                 </div>
             </div>
-            <div class="text-xs sm:text-sm bg-gray-800 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-gray-700">
-                🗓️ Tuần: <span class="font-semibold text-sa-gold" id="global-time-filter">30/3 - 4/4</span>
+            <div class="flex items-center gap-2 sm:gap-4">
+                <div class="text-[10px] sm:text-xs bg-gray-800 px-3 py-1.5 rounded-full border border-gray-700 whitespace-nowrap">
+                    🗓️ <span class="hidden sm:inline">Tuần: </span><span class="font-semibold text-sa-gold" id="global-time-filter">30/3 - 4/4</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="flex flex-col lg:flex-row flex-1 w-full max-w-7xl mx-auto items-start">
+    <!-- Sidebar Overlay (Mobile only) -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[55] hidden transition-opacity duration-300"></div>
+
+    <div class="flex flex-col lg:flex-row flex-1 w-full max-w-7xl mx-auto items-start relative box-border">
         
         <!-- Sidebar Navigation -->
-        <aside class="w-full lg:w-64 flex-shrink-0 lg:sticky top-[100px] sm:top-[90px] pt-4 lg:pt-6 pb-2 lg:pb-4 px-4 sm:px-6 lg:px-0 lg:pr-6 z-40 bg-[#f9fafb] lg:border-none">
-            <nav class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible space-x-2 lg:space-x-0 lg:space-y-2 font-medium hide-scrollbar pb-2 lg:pb-0" id="sidebar-nav">
-                <a href="#" data-target="view-overview" class="nav-item nav-active flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">📊</span> Tổng quan
+        <aside id="sidebar" class="fixed lg:sticky top-0 lg:top-[70px] left-0 h-full lg:h-[calc(100vh-70px)] w-64 bg-white lg:bg-[#f9fafb] z-[60] lg:z-40 border-r border-gray-200 lg:border-none px-6 py-8 flex-shrink-0 flex flex-col closed lg:transform-none">
+            <div class="lg:hidden flex items-center justify-between mb-8">
+                <h2 class="text-lg font-bold text-sa-gold uppercase">Menu</h2>
+                <button id="close-sidebar" class="p-2 text-gray-500 hover:text-gray-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex flex-col space-y-2 font-medium hide-scrollbar flex-grow" id="sidebar-nav">
+                <a href="#" data-target="view-overview" class="nav-item nav-active flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">📊</span> Tổng quan
                 </a>
-                <a href="#" data-target="view-keyword" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">📈</span> Thứ hạng từ khóa
+                <a href="#" data-target="view-keyword" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">📈</span> Thứ hạng từ khóa
                 </a>
-                <a href="#" data-target="view-gsc" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">🔍</span> Google Search Console
+                <a href="#" data-target="view-gsc" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">🔍</span> Google Search Console
                 </a>
-                <a href="#" data-target="view-updating" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">🌐</span> Google Analytics
+                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">🌐</span> Google Analytics
                 </a>
-                <a href="#" data-target="view-updating" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">📱</span> Facebook
+                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">📍</span> Google Business Profile
                 </a>
-                <a href="#" data-target="view-updating" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">📍</span> Google Business Profile
+                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 text-center">📱</span> Facebook
                 </a>
-                <a href="#" data-target="view-archive" class="nav-item flex-shrink-0 flex items-center px-4 py-2 lg:py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-2 lg:mr-3 text-base lg:text-lg w-5 lg:w-6 text-center">📂</span> Văn thư lưu trữ
-                </a>
+                
+                <div class="pt-4 mt-4 border-t border-gray-100">
+                    <a href="#" data-target="view-archive" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200">
+                        <span class="mr-3 text-lg w-6 text-center">📂</span> Văn thư lưu trữ
+                    </a>
+                </div>
             </nav>
+            
+            <div class="mt-auto pt-6 border-t border-gray-100">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Phiên bản 2.5</p>
+                <p class="text-[9px] text-gray-400 mt-1">© 2026 Song Anh Marketing</p>
+            </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-grow px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full min-w-0">
+        <main class="flex-grow px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full min-w-0 transition-all duration-300 box-border">
             
             <!-- Dashboard View -->
             <div id="view-overview" class="space-y-8 sm:space-y-12 block">
@@ -1249,6 +1295,26 @@
                 'view-updating': document.getElementById('view-updating')
             };
 
+            // --- RESPONSIVE SIDEBAR TOGGLE ---
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const menuToggle = document.getElementById('menu-toggle');
+            const closeSidebar = document.getElementById('close-sidebar');
+
+            function toggleSidebar() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.toggle('closed');
+                    sidebar.classList.toggle('open');
+                    overlay.classList.toggle('hidden');
+                    overlay.classList.toggle('visible');
+                    document.body.classList.toggle('overflow-hidden');
+                }
+            }
+
+            if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+            if (closeSidebar) closeSidebar.addEventListener('click', toggleSidebar);
+            if (overlay) overlay.addEventListener('click', toggleSidebar);
+
             function switchView(targetId) {
                 // Hide all main views
                 Object.values(mainViews).forEach(view => {
@@ -1288,12 +1354,15 @@
                 }
             }
 
-            document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', (e) => {
                     const target = item.getAttribute('data-target');
                     if (target) {
                         e.preventDefault();
                         switchView(target);
+                        // Close sidebar on mobile after selection
+                        if (window.innerWidth < 1024) {
+                            toggleSidebar();
+                        }
                     }
                 });
             });
