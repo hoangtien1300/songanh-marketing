@@ -147,7 +147,7 @@
                 <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
                     <span class="mr-3 text-lg w-6 text-center">📍</span> Google Business Profile
                 </a>
-                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                <a href="#" data-target="view-facebook" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
                     <span class="mr-3 text-lg w-6 text-center">📱</span> Facebook
                 </a>
                 
@@ -918,6 +918,142 @@
                 </div>
             </div>
 
+            <div id="view-facebook" class="hidden space-y-8 pb-12">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-3 bg-sa-gold bg-opacity-10 rounded-xl">
+                            <span class="text-2xl">📱</span>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900 uppercase tracking-tight">Facebook Dashboard</h2>
+                            <p class="text-xs text-gray-500 mt-1">Báo cáo chỉ số Fanpage theo tuần.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Facebook Sector Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6" id="facebook-sector-tabs">
+                    <button data-fb-sector="mohinh" class="fb-sector-tab px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-sa-gold bg-sa-gold text-white shadow-md transition-all whitespace-nowrap">Mô hình</button>
+                    <button data-fb-sector="thuongmai" class="fb-sector-tab px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 bg-white shadow-sm transition-all whitespace-nowrap">Thương mại</button>
+                    <button data-fb-sector="golf" class="fb-sector-tab px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 bg-white shadow-sm transition-all whitespace-nowrap">Golf</button>
+                </div>
+
+                <!-- Facebook Sector Views -->
+                <div id="fb-sector-view-container">
+                    <!-- Template for each sector -->
+                    <div id="fb-view-mohinh" class="fb-sector-view space-y-8 block">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-sa-gold text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt xem</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">355</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 59.8%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-blue-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Người xem</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">118</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 38.5%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-green-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Tương tác</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">23</h3>
+                                <p class="text-[10px] text-green-500 font-semibold mt-1">↑ 9.5%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-purple-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt click</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">2</h3>
+                                <p class="text-[10px] text-gray-400 font-semibold mt-1">0%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-orange-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Truy cập</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">33</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 65.6%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-red-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Theo dõi</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">0</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 100%</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-gray-800 mb-4 flex items-center"><span class="mr-2">📝</span> Nội dung đã đăng trong tuần</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+                                    <div class="bg-gray-100 h-40 flex items-center justify-center text-gray-400 italic">Video sa bàn (Reels)</div>
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-sm text-gray-800 line-clamp-1">Dự án Mô hình quy hoạch KCN</h4>
+                                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">Video ngắn giới thiệu tiến độ hoàn thiện sa bàn quy hoạch khu công nghiệp.</p>
+                                        <div class="mt-3 pt-3 border-t border-gray-50 flex justify-between text-[10px] font-bold uppercase text-blue-500">
+                                            <span>212 Lượt xem</span>
+                                            <span>15 Tương tác</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border border-gray-100 rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+                                    <div class="bg-gray-100 h-40 flex items-center justify-center text-gray-400 italic">Ảnh dự án (Post)</div>
+                                    <div class="p-4">
+                                        <h4 class="font-bold text-sm text-gray-800 line-clamp-1">Mô hình nhà phố hiện đại</h4>
+                                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">Album ảnh chi tiết nội ngoại thất mô hình nhà phố tỷ lệ 1/50.</p>
+                                        <div class="mt-3 pt-3 border-t border-gray-50 flex justify-between text-[10px] font-bold uppercase text-blue-500">
+                                            <span>85 Lượt xem</span>
+                                            <span>5 Tương tác</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fb-view-thuongmai" class="fb-sector-view space-y-8 hidden">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-sa-gold text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt xem</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">184</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 50.4%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-blue-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Người xem</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">19</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 56.8%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-green-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Tương tác</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">9</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 47.1%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-purple-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt click</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">2</h3>
+                                <p class="text-[10px] text-green-500 font-semibold mt-1">↑ 100%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-orange-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Truy cập</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">33</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 15.4%</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-red-400 text-center">
+                                <p class="text-[10px] font-bold text-gray-400 uppercase">Theo dõi</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1">0</h3>
+                                <p class="text-[10px] text-red-500 font-semibold mt-1">↓ 100%</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                             <h3 class="font-bold text-gray-800 mb-4 flex items-center"><span class="mr-2">🛍️</span> Nội dung bán hàng</h3>
+                             <div class="text-center py-10 text-gray-400 italic">Đang cập nhật danh sách bài đăng từ kho Thương mại...</div>
+                        </div>
+                    </div>
+
+                    <div id="fb-view-golf" class="fb-sector-view space-y-8 hidden">
+                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+                            <div class="text-6xl mb-6">⛳</div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Lĩnh vực Golf</h3>
+                            <div class="w-16 h-1.5 bg-sa-gold mx-auto mb-6 rounded-full"></div>
+                            <p class="text-gray-500 max-w-sm mx-auto">Dữ liệu Fanpage Golf đang được tổng hợp và xử lý dữ liệu để hiển thị trong tuần sau.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="view-updating" class="hidden flex-col items-center justify-center min-h-[60vh] text-center bg-white rounded-3xl shadow-sm border border-gray-100 p-8 sm:p-12 mb-8">
                 <div class="text-7xl mb-6 bounce-animation">🚧</div>
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Giao diện đang được update</h2>
@@ -1291,6 +1427,7 @@
                 'view-overview': document.getElementById('view-overview'),
                 'view-keyword': document.getElementById('view-keyword'),
                 'view-gsc': document.getElementById('view-gsc'),
+                'view-facebook': document.getElementById('view-facebook'),
                 'view-archive': document.getElementById('view-archive'),
                 'view-updating': document.getElementById('view-updating')
             };
@@ -1539,6 +1676,41 @@
                         }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#f3f4f6' } }, x: { grid: { display: false } } } }
+                });
+            }
+
+            // --- FB SIDEBAR REDIRECT ---
+            if (activeNav && activeNav.getAttribute('data-target') === 'view-facebook') {
+                 // FB specific inits if any
+            }
+
+            // --- FB SECTOR TABS ---
+            const fbTabs = document.querySelectorAll('.fb-sector-tab');
+            const fbViews = {
+                'mohinh': document.getElementById('fb-view-mohinh'),
+                'thuongmai': document.getElementById('fb-view-thuongmai'),
+                'golf': document.getElementById('fb-view-golf')
+            };
+
+            if (fbTabs.length > 0) {
+                fbTabs.forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const target = e.target.getAttribute('data-fb-sector');
+                        
+                        // Style reset
+                        fbTabs.forEach(t => {
+                            t.className = 'fb-sector-tab px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 bg-white shadow-sm transition-all whitespace-nowrap';
+                        });
+                        e.target.className = 'fb-sector-tab px-6 sm:px-10 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-sa-gold bg-sa-gold text-white shadow-md transition-all whitespace-nowrap';
+
+                        // Show view
+                        Object.values(fbViews).forEach(v => {
+                            if (v) v.classList.add('hidden');
+                        });
+                        
+                        const activeView = fbViews[target];
+                        if (activeView) activeView.classList.remove('hidden');
+                    });
                 });
             }
 
