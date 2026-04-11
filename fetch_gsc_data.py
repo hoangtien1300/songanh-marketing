@@ -13,7 +13,8 @@ SITES = [
     'https://mohinhkientruc.org/',
     'https://architecturalmodel.org/',
     'https://mohinhsonganh.com/',
-    'https://lammohinh.vn/'
+    'https://lammohinh.vn/',
+    'https://mohinhkientruc.com.vn/'
 ]
 
 # Days back to fetch (7 days for report + 7 days for comparison = 14 total)
