@@ -1209,9 +1209,9 @@
             });
         }
 
-        // --- GSC DATA FETCHING ---
-        let gscSiteData = {};
-        let gscCharts = { 'w1': null, 'w2': null, 'w3': null };
+        // --- GSC DATA LOADING & INTEGRATION ---
+        let gscSiteData = null;
+        let gscCharts = { 'w1': null, 'w2': null, 'w3': null, 'w6': null };
         const gscMetricNames = {
             'clicks': 'Tổng số Nhấp',
             'impressions': 'Tổng Hiển thị',
@@ -1220,13 +1220,19 @@
         };
 
         async function initGscIntegration() {
+            if (gscSiteData) return;
             try {
                 const response = await fetch('gsc_dashboard_data.json');
                 gscSiteData = await response.json();
+                
+                // Also populate the global data for the detailed report to avoid double fetch
+                window.gscReportFullData = gscSiteData;
+                
+                // Initial render for overview cards
                 renderGscView('clicks'); 
                 setupGscEvents();
             } catch (err) {
-                console.warn('GSC data file not found.');
+                console.warn('GSC data file could not be loaded:', err);
             }
         }
 
@@ -1525,18 +1531,19 @@
             let gscReportChartInstance = null;
 
             async function initGscReport() {
-                if (gscReportDataLoaded) return;
-                try {
-                    const response = await fetch('gsc_dashboard_data.json');
-                    window.gscReportFullData = await response.json();
-                    gscReportDataLoaded = true;
+                if (window.gscReportFullData) {
                     setupGscReportEvents();
-                    
-                    // Default to first site
+                    // Default to first site if not rendered
                     const firstSite = 'https://mohinhkientruc.org/';
                     renderGscReport(firstSite);
-                } catch (err) {
-                    console.error('Failed to load GSC report data:', err);
+                    return;
+                }
+                
+                // Fallback to initGscIntegration if not already loaded
+                await initGscIntegration();
+                if (window.gscReportFullData) {
+                    const firstSite = 'https://mohinhkientruc.org/';
+                    renderGscReport(firstSite);
                 }
             }
 
@@ -1770,11 +1777,8 @@
             }
 
             initFacebookIntegration();
-            initGscIntegration();
-            loadKeywordData('kw1'); // Default to mohinhkientruc.org
-            
-            // Initial call for GSC to ensure placeholders are set if data is missing
-            renderGscView('clicks'); 
+            initGscIntegration(); // This now handles both Overview and prep for Detailed Report
+            loadKeywordData('kw1'); 
 
             const kwTbs = document.querySelectorAll('.kw-tab');
             kwTbs.forEach(t => {
