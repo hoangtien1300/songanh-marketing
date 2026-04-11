@@ -109,7 +109,7 @@
             </div>
             <div class="flex items-center gap-2 sm:gap-4">
                 <div class="text-[10px] sm:text-xs bg-gray-800 px-3 py-1.5 rounded-full border border-gray-700 whitespace-nowrap">
-                    🗓️ <span class="hidden sm:inline">Tuần: </span><span class="font-semibold text-sa-gold" id="global-time-filter">30/3 - 4/4</span>
+                    🗓️ <span class="hidden sm:inline">Tuần: </span><span class="font-semibold text-sa-gold" id="global-time-filter">6/4 - 11/4</span>
                 </div>
             </div>
         </div>
@@ -1249,14 +1249,19 @@
         }
 
         function renderGscView(metric) {
-            const sites = { 'w1': 'https://mohinhkientruc.org/', 'w2': 'https://architecturalmodel.org/', 'w3': 'https://mohinhsonganh.com/' };
+            const sites = { 
+                'w1': 'https://mohinhkientruc.org/', 
+                'w2': 'https://architecturalmodel.org/', 
+                'w3': 'https://mohinhsonganh.com/',
+                'w6': 'https://lammohinh.vn/'
+            };
 
             Object.entries(sites).forEach(([id, url]) => {
                 const siteData = gscSiteData[url];
                 if (!siteData) {
-                    if (id === 'w3') {
-                        document.getElementById(`total-${id}`).innerText = 'Đang lấy dữ liệu';
-                        document.getElementById(`total-${id}`).className = 'text-xl sm:text-2xl font-extrabold text-gray-400 gsc-total-val';
+                    if (id === 'w3' || id === 'w6') {
+                        document.getElementById(`total-${id}`).innerText = 'Chưa có quyền truy cập';
+                        document.getElementById(`total-${id}`).className = 'text-base sm:text-lg font-bold text-gray-400 gsc-total-val';
                         const trendEl = document.getElementById(`trend-${id}`);
                         if (trendEl) trendEl.classList.add('hidden');
                     }

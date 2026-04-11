@@ -12,7 +12,8 @@ KEY_FILE = 'gen-lang-client-0944295787-7c6a5ec1c046.json'
 SITES = [
     'https://mohinhkientruc.org/',
     'https://architecturalmodel.org/',
-    'https://mohinhsonganh.com/'
+    'https://mohinhsonganh.com/',
+    'https://lammohinh.vn/'
 ]
 
 # Days back to fetch (7 days for report + 7 days for comparison = 14 total)

@@ -6,8 +6,8 @@ import os
 # --- CONFIGURATION ---
 # 1. Get your Page Access Token from https://developers.facebook.com/tools/explorer/
 # 2. Find your Page ID (e.g., in Page Settings -> Page Info)
-PAGE_ID = 'YOUR_PAGE_ID_HERE'
-ACCESS_TOKEN = 'YOUR_PAGE_ACCESS_TOKEN_HERE'
+PAGE_ID = '1621988744780815'
+ACCESS_TOKEN = os.environ.get("FB_ACCESS_TOKEN", "YOUR_FACEBOOK_ACCESS_TOKEN_HERE")
 
 # Output file path
 OUTPUT_FILE = 'facebook_dashboard_data.json'
