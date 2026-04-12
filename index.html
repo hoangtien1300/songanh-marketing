@@ -1276,8 +1276,7 @@
                 'w1': 'https://mohinhkientruc.org/', 
                 'w2': 'https://architecturalmodel.org/', 
                 'w3': 'https://mohinhsonganh.com/',
-                'w6': 'https://lammohinh.vn/',
-                'w7': 'https://mohinhkientruc.com.vn/'
+                'w6': 'https://lammohinh.vn/'
             };
 
             Object.entries(sites).forEach(([id, url]) => {
@@ -1313,7 +1312,9 @@
         }
 
         function renderGscChart(id, metric, history) {
-            const ctx = document.getElementById(`chart-${id}`).getContext('2d');
+            const canvas = document.getElementById(`chart-${id}`);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
             if (gscCharts[id]) gscCharts[id].destroy();
 
             const labels = history.map(h => { const d = h.date.split('-'); return d[2] + '/' + d[1]; });
