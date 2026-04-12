@@ -222,8 +222,9 @@
                 <!-- Time Filter Dropdown -->
                 <div class="relative w-full md:w-auto">
                     <select id="gsc-timefilter" class="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2.5 pl-4 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
-                        <option value="7d">7 ngày gần nhất</option>
-                        <option value="30d">30 ngày qua</option>
+                        <option value="day">Theo Ngày (Mới nhất)</option>
+                        <option value="7d" selected>7 ngày qua (Tuần này)</option>
+                        <option value="30d">30 ngày qua (Tháng này)</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -496,8 +497,9 @@
                 <!-- Time Filter Dropdown -->
                 <div class="relative w-full md:w-auto">
                     <select id="gsc-timefilter-tm" class="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2.5 pl-4 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
-                        <option value="7d">7 ngày gần nhất</option>
-                        <option value="30d">30 ngày qua</option>
+                        <option value="day">Theo Ngày (Mới nhất)</option>
+                        <option value="7d" selected>7 ngày qua (Tuần này)</option>
+                        <option value="30d">30 ngày qua (Tháng này)</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -1212,7 +1214,7 @@
         }
 
         // --- GSC DATA FETCHING (Global Scope) ---
-        var gscSiteData = null;
+        var gscSiteData = null; // Raw data from Sheets
         var gscCharts = { 'w1': null, 'w2': null, 'w3': null, 'w6': null };
         const gscMetricNames = {
             'clicks': 'Tổng số Nhấp',
@@ -1221,16 +1223,43 @@
             'position': 'Vị trí Trung bình'
         };
 
+        const gscSiteMapping = {
+            'w1': 'GSC - mohinhkientruc.org',
+            'w2': 'GSC - architecturalmodel.org',
+            'w3': 'GSC - mohinhsonganh.com',
+            'w6': 'GSC - lammohinh.vn'
+        };
+
         async function initGscIntegration() {
             setupGscEvents(); 
             try {
-                const response = await fetch('gsc_dashboard_data.json');
+                // Fetch from the real-time Sheets API
+                const url = '/api/fetch_sheets';
+                const response = await fetch(url);
                 if (response.ok) {
                     gscSiteData = await response.json();
-                    console.log("GSC data loaded successfully");
-                    window.renderGscView('clicks'); 
+                    console.log("GSC real-time data loaded successfully from Sheets");
+                    window.renderGscView(getGscActiveMetric()); 
                 } else {
-                    console.warn("GSC fetch response not OK:", response.status);
+                    console.warn("GSC Sheets API response not OK:", response.status);
+                    // Fallback to static JSON
+                    const fbResponse = await fetch('gsc_dashboard_data.json');
+                    if (fbResponse.ok) {
+                        const staticData = await fbResponse.json();
+                        gscSiteData = {};
+                        Object.keys(staticData).forEach(domain => {
+                            const tabName = domain.includes('mohinhkientruc') ? 'GSC - mohinhkientruc.org' : 'GSC - architecturalmodel.org';
+                            gscSiteData[tabName] = staticData[domain].daily_stats.map(s => ({
+                                date: s.date.split('-').reverse().join('/'),
+                                domain: domain,
+                                clicks: s.clicks,
+                                impressions: s.impressions,
+                                ctr: (s.ctr * 100).toFixed(2) + '%',
+                                position: s.position
+                            }));
+                        });
+                        window.renderGscView(getGscActiveMetric());
+                    }
                 }
             } catch (err) {
                 console.error("GSC: Failed to init integration", err);
@@ -1241,7 +1270,13 @@
             const filters = ['gsc-timefilter', 'gsc-timefilter-tm'];
             filters.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) el.addEventListener('change', () => window.renderGscView(getGscActiveMetric()));
+                if (el) el.addEventListener('change', (e) => {
+                    filters.forEach(fid => {
+                        const otherEl = document.getElementById(fid);
+                        if (otherEl) otherEl.value = e.target.value;
+                    });
+                    window.renderGscView(getGscActiveMetric());
+                });
             });
         }
 
@@ -1250,85 +1285,112 @@
             return activeTab ? activeTab.getAttribute('data-metric') : 'clicks';
         }
 
+        function getGscActiveTimeframe() {
+            const filter = document.getElementById('gsc-timefilter');
+            return filter ? filter.value : '7d';
+        }
+
         window.renderGscView = function(metric) {
-            console.log("GSC: Switching to metric", metric);
+            const timeframe = getGscActiveTimeframe();
+            console.log(`GSC: Rendering ${metric} for ${timeframe}`);
+            
             if (!metric) return;
             if (!gscSiteData) { console.warn("GSC: Site data not loaded yet."); return; }
             
-            // Update all tabs UI
             document.querySelectorAll('.gsc-tab').forEach(t => {
-                if (t.getAttribute('data-metric') === metric) {
-                    t.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-blue-100 text-blue-800 cursor-pointer';
-                } else {
-                    t.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 cursor-pointer';
-                }
+                const isActive = t.getAttribute('data-metric') === metric;
+                t.className = `gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors ${isActive ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100'} cursor-pointer`;
             });
 
-            // Update all metric labels
             const labelText = gscMetricNames[metric] || 'Chỉ số';
-            document.querySelectorAll('.gsc-metric-label').forEach(el => {
-                el.innerText = labelText;
-            });
+            document.querySelectorAll('.gsc-metric-label').forEach(el => el.innerText = labelText);
 
-            const sites = { 
-                'w1': 'https://mohinhkientruc.org/', 
-                'w2': 'https://architecturalmodel.org/', 
-                'w3': 'https://mohinhsonganh.com/',
-                'w6': 'https://lammohinh.vn/'
-            };
-
-            Object.entries(sites).forEach(([id, url]) => {
-                const siteData = gscSiteData ? gscSiteData[url] : null;
+            Object.entries(gscSiteMapping).forEach(([id, tabName]) => {
+                const rawRows = gscSiteData[tabName];
                 const totalEl = document.getElementById(`total-${id}`);
                 const trendEl = document.getElementById(`trend-${id}`);
                 
-                if (!siteData) {
-                    if (totalEl && (id === 'w3' || id === 'w6' || id === 'w7')) {
-                        totalEl.innerText = 'Chưa có quyền truy cập';
-                        totalEl.className = 'text-base sm:text-lg font-bold text-gray-400 gsc-total-val';
+                if (!rawRows || rawRows.length === 0) {
+                    if (totalEl && (id === 'w3' || id === 'w6')) {
+                        totalEl.innerText = 'Chưa có quyền';
+                        totalEl.className = 'text-base font-bold text-gray-400';
                         if (trendEl) trendEl.classList.add('hidden');
                     }
                     return;
                 }
 
-                const metricData = siteData.metrics[metric];
-                if (totalEl) {
-                    totalEl.innerText = metricData.total;
-                    totalEl.className = 'text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val';
-                }
+                const parsedData = rawRows.map(r => ({
+                    date: r.date,
+                    clicks: parseInt(r.clicks) || 0,
+                    impressions: parseInt(r.impressions) || 0,
+                    ctr: parseFloat(String(r.ctr).replace('%', '')) || 0,
+                    position: parseFloat(r.position) || 0
+                }));
+
+                let currentData = [];
+                let previousData = [];
                 
-                if (trendEl) {
-                    trendEl.innerText = metricData.trend;
-                    trendEl.classList.remove('hidden');
-                    const isPositive = metricData.trend.includes('↑');
-                    const isGood = (metric === 'position') ? !isPositive : isPositive;
-                    trendEl.className = `text-xs font-semibold px-2 py-1 rounded ${isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                if (timeframe === 'day') {
+                    currentData = [parsedData[parsedData.length - 1]];
+                    previousData = [parsedData[parsedData.length - 2]];
+                } else if (timeframe === '7d') {
+                    currentData = parsedData.slice(-7);
+                    previousData = parsedData.slice(-14, -7);
+                } else if (timeframe === '30d') {
+                    currentData = parsedData.slice(-30);
+                    previousData = parsedData.slice(-60, -30);
                 }
 
-                renderGscChart(id, metric, siteData.daily_stats);
+                const sum = (arr, key) => arr.reduce((a, b) => a + b[key], 0);
+                const avg = (arr, key) => arr.length ? arr.reduce((a, b) => a + b[key], 0) / arr.length : 0;
+
+                const getMetricVal = (arr, m) => {
+                    if (m === 'clicks' || m === 'impressions') return sum(arr, m);
+                    return avg(arr, m);
+                };
+
+                const currVal = getMetricVal(currentData, metric);
+                const prevVal = getMetricVal(previousData, metric);
+
+                if (totalEl) {
+                    if (metric === 'ctr') totalEl.innerText = currVal.toFixed(1) + '%';
+                    else if (metric === 'position') totalEl.innerText = currVal.toFixed(1);
+                    else totalEl.innerText = currVal.toLocaleString();
+                    totalEl.className = 'text-2xl sm:text-3xl font-extrabold text-blue-700';
+                }
+
+                if (trendEl) {
+                    let trend = prevVal === 0 ? 0 : ((currVal - prevVal) / prevVal) * 100;
+                    const arrow = trend >= 0 ? '↑' : '↓';
+                    const isGood = (metric === 'position') ? trend <= 0 : trend >= 0;
+                    trendEl.innerText = `${arrow} ${Math.abs(trend).toFixed(1)}%`;
+                    trendEl.className = `text-xs font-semibold px-2 py-1 rounded ${isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                    trendEl.classList.remove('hidden');
+                }
+
+                renderGscChart(id, metric, currentData);
             });
         }
 
-        function renderGscChart(id, metric, history) {
+        function renderGscChart(id, metric, dataPoints) {
             const canvas = document.getElementById(`chart-${id}`);
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             if (gscCharts[id]) gscCharts[id].destroy();
 
-            const labels = history.map(h => { const d = h.date.split('-'); return d[2] + '/' + d[1]; });
-            const dataPoints = history.map(h => h[metric]);
-            const metricTitle = gscMetricNames[metric] || 'Chỉ số';
+            const labels = dataPoints.map(d => d.date.split('/').slice(0, 2).join('/'));
+            const values = dataPoints.map(d => d[metric]);
 
             gscCharts[id] = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: metricTitle,
-                        data: dataPoints,
+                        label: gscMetricNames[metric],
+                        data: values,
                         borderColor: '#2563eb',
                         backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                        fill: true, tension: 0.4, borderWidth: 2, pointRadius: 0
+                        fill: true, tension: 0.4, borderWidth: 2, pointRadius: 2
                     }]
                 },
                 options: {
@@ -1339,18 +1401,16 @@
                     },
                     scales: { 
                         y: { 
+                            reverse: metric === 'position', 
                             display: true, 
-                            reverse: metric === 'position',
-                            title: { display: true, text: metricTitle, font: { size: 10, weight: 'bold' }, color: '#94a3b8' },
                             ticks: { font: { size: 9 }, color: '#94a3b8' },
                             grid: { color: '#f3f4f6' }
-                        }, 
+                        },
                         x: { 
-                            display: true,
-                            title: { display: true, text: 'Ngày', font: { size: 10, weight: 'bold' }, color: '#94a3b8' },
-                            ticks: { font: { size: 9 }, color: '#94a3b8' },
+                            display: true, 
+                            ticks: { font: { size: 9 }, color: '#94a3b8', maxRotation: 0 },
                             grid: { display: false }
-                        } 
+                        }
                     }
                 }
             });
