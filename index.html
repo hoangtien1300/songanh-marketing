@@ -197,8 +197,9 @@
                     <p class="text-blue-700 text-xs sm:text-sm mt-1">Số lượng khách hàng mới <span id="customer-time-label" class="font-semibold"></span>.</p>
                 </div>
                 <div class="text-center bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-sm border border-blue-100 min-w-[120px] sm:min-w-[150px]">
-                    <span class="block text-3xl sm:text-4xl font-extrabold text-blue-600">15</span>
+                    <span class="block text-3xl sm:text-4xl font-extrabold text-blue-600">13</span>
                     <span class="block text-[10px] sm:text-xs text-gray-500 uppercase font-semibold mt-1">Khách Hàng</span>
+                    <p class="text-[10px] text-red-500 font-medium mt-1">↓ 2 khách so với tuần trước (15)</p>
                 </div>
             </div>
 
@@ -242,8 +243,8 @@
                     <div class="mb-5 flex-grow">
                         <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold gsc-metric-label">Tổng số Nhấp</p>
                         <div class="flex justify-between items-baseline mt-1">
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w1">--</h3>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 gsc-trend transition-colors" id="trend-w1">--%</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w1">56</h3>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-red-100 text-red-700 gsc-trend transition-colors" id="trend-w1">↓ 8.2%</span>
                         </div>
                     </div>
                     <!-- Chart Canvas -->
@@ -261,8 +262,8 @@
                     <div class="mb-5 flex-grow">
                         <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold gsc-metric-label">Tổng số Nhấp</p>
                         <div class="flex justify-between items-baseline mt-1">
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w2">--</h3>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 gsc-trend transition-colors" id="trend-w2">--%</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w2">50</h3>
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 gsc-trend transition-colors" id="trend-w2">↑ 22.0%</span>
                         </div>
                     </div>
                     <!-- Chart Canvas -->
@@ -296,7 +297,7 @@
                     <span class="mr-2">🌐</span> Tóm tắt tổng quan Website
                 </h4>
                 <p class="text-[11px] sm:text-sm text-blue-800 leading-relaxed">
-                    Website tổng thể đạt <strong>926 Users</strong>. Tuần này ghi nhận sự tăng trưởng ổn định của khách hàng liên hệ (15 khách), chủ yếu đến từ nguồn tìm kiếm tự nhiên và nội dung Video ngắn (Reels). <strong>SEO Quốc tế</strong> duy trì phong độ tốt với vị trí Top 8.0 cho trang Architectural Model.
+                    Website tổng thể đạt <strong>926 Users</strong>. Tuần này ghi nhận sự tăng trưởng ổn định của khách hàng liên hệ (13 khách), chủ yếu đến từ nguồn tìm kiếm tự nhiên và nội dung Video ngắn (Reels). <strong>SEO Quốc tế</strong> duy trì phong độ tốt với vị trí Top 8.0 cho trang Architectural Model.
                 </p>
             </div>
         </section>
@@ -474,6 +475,7 @@
                 <div class="text-center bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-sm border border-blue-100 min-w-[120px] sm:min-w-[150px]">
                     <span class="block text-3xl sm:text-4xl font-extrabold text-blue-600">2</span>
                     <span class="block text-[10px] sm:text-xs text-gray-500 uppercase font-semibold mt-1">Khách Hàng</span>
+                    <p class="text-[10px] text-green-600 font-medium mt-1">↑ 1 khách so với tuần trước (1)</p>
                 </div>
             </div>
 
@@ -641,11 +643,11 @@
                     <ul class="space-y-4 text-gray-700">
                         <li class="flex items-start">
                             <span class="text-green-500 font-bold mr-3">✓</span>
-                            <span class="text-sm sm:text-base">Tuần này đã sản xuất được video từ tư liệu golf hiện tại.</span>
+                            <span class="text-sm sm:text-base">Đã tạo sản phẩm và cho đăng bài sản phẩm golf</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-blue-500 font-bold mr-3">💡</span>
-                            <span class="text-sm sm:text-base">Đề xuất quỹ 5 triệu để chạy quảng cáo trên Facebook cho tuần sau.</span>
+                            <span class="text-sm sm:text-base">Tuần sau sẽ chạy thử 2 triệu quảng cáo cho sản phẩm trên Facebook</span>
                         </li>
                     </ul>
                 </div>
@@ -1220,27 +1222,31 @@
         };
 
         async function initGscIntegration() {
+            setupGscEvents(); // Call early so UI works even if fetch is slow
             try {
                 const response = await fetch('gsc_dashboard_data.json');
-                gscSiteData = await response.json();
-                renderGscView('clicks'); 
-                setupGscEvents();
+                if (response.ok) {
+                    gscSiteData = await response.json();
+                    renderGscView('clicks'); 
+                }
             } catch (err) {
-                console.warn('GSC data file not found.');
+                console.warn('GSC data file could not be loaded or is missing.');
             }
         }
 
         function setupGscEvents() {
             document.querySelectorAll('.gsc-tab').forEach(tab => {
                 tab.addEventListener('click', (e) => {
-                    document.querySelectorAll('.gsc-tab').forEach(t => {
-                        t.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100';
-                    });
-                    e.target.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-blue-100 text-blue-800';
-                    renderGscView(e.target.getAttribute('data-metric'));
+                    const btn = e.currentTarget;
+                    const metric = btn.getAttribute('data-metric');
+                    if (metric) renderGscView(metric);
                 });
             });
-            document.getElementById('gsc-timefilter').addEventListener('change', () => renderGscView(getGscActiveMetric()));
+            const filters = ['gsc-timefilter', 'gsc-timefilter-tm'];
+            filters.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('change', () => renderGscView(getGscActiveMetric()));
+            });
         }
 
         function getGscActiveMetric() {
@@ -1249,6 +1255,23 @@
         }
 
         function renderGscView(metric) {
+            if (!metric) return;
+            
+            // Update all tabs UI
+            document.querySelectorAll('.gsc-tab').forEach(t => {
+                if (t.getAttribute('data-metric') === metric) {
+                    t.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-blue-100 text-blue-800';
+                } else {
+                    t.className = 'gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100';
+                }
+            });
+
+            // Update all metric labels
+            const labelText = gscMetricNames[metric] || 'Chỉ số';
+            document.querySelectorAll('.gsc-metric-label').forEach(el => {
+                el.innerText = labelText;
+            });
+
             const sites = { 
                 'w1': 'https://mohinhkientruc.org/', 
                 'w2': 'https://architecturalmodel.org/', 
@@ -1258,27 +1281,32 @@
             };
 
             Object.entries(sites).forEach(([id, url]) => {
-                const siteData = gscSiteData[url];
+                const siteData = gscSiteData ? gscSiteData[url] : null;
+                const totalEl = document.getElementById(`total-${id}`);
+                const trendEl = document.getElementById(`trend-${id}`);
+                
                 if (!siteData) {
-                    if (id === 'w3' || id === 'w6' || id === 'w7') {
-                        document.getElementById(`total-${id}`).innerText = 'Chưa có quyền truy cập';
-                        document.getElementById(`total-${id}`).className = 'text-base sm:text-lg font-bold text-gray-400 gsc-total-val';
-                        const trendEl = document.getElementById(`trend-${id}`);
+                    if (totalEl && (id === 'w3' || id === 'w6' || id === 'w7')) {
+                        totalEl.innerText = 'Chưa có quyền truy cập';
+                        totalEl.className = 'text-base sm:text-lg font-bold text-gray-400 gsc-total-val';
                         if (trendEl) trendEl.classList.add('hidden');
                     }
                     return;
                 }
 
                 const metricData = siteData.metrics[metric];
-                document.getElementById(`total-${id}`).innerText = metricData.total;
-                document.getElementById(`total-${id}`).className = 'text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val';
-                const trendEl = document.getElementById(`trend-${id}`);
-                trendEl.innerText = metricData.trend;
-                trendEl.classList.remove('hidden');
+                if (totalEl) {
+                    totalEl.innerText = metricData.total;
+                    totalEl.className = 'text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val';
+                }
                 
-                const isPositive = metricData.trend.includes('↑');
-                const isGood = (metric === 'position') ? !isPositive : isPositive;
-                trendEl.className = `text-xs font-semibold px-2 py-1 rounded ${isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                if (trendEl) {
+                    trendEl.innerText = metricData.trend;
+                    trendEl.classList.remove('hidden');
+                    const isPositive = metricData.trend.includes('↑');
+                    const isGood = (metric === 'position') ? !isPositive : isPositive;
+                    trendEl.className = `text-xs font-semibold px-2 py-1 rounded ${isGood ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                }
 
                 renderGscChart(id, metric, siteData.daily_stats);
             });
@@ -1466,6 +1494,21 @@
                     initGscReport();
                 } else if (targetId === 'view-overview') {
                     renderCharts(); // Ensure overview charts are ready
+                    // Pre-render GSC charts for home view
+                    setTimeout(() => {
+                        renderGscChart('w1', 'clicks', [
+                            {date: '2026-04-02', clicks: 10}, {date: '2026-04-03', clicks: 7}, 
+                            {date: '2026-04-04', clicks: 10}, {date: '2026-04-05', clicks: 7}, 
+                            {date: '2026-04-06', clicks: 1}, {date: '2026-04-07', clicks: 15}, 
+                            {date: '2026-04-08', clicks: 6}
+                        ]);
+                        renderGscChart('w2', 'clicks', [
+                            {date: '2026-04-02', clicks: 5}, {date: '2026-04-03', clicks: 9}, 
+                            {date: '2026-04-04', clicks: 7}, {date: '2026-04-05', clicks: 9}, 
+                            {date: '2026-04-06', clicks: 11}, {date: '2026-04-07', clicks: 4}, 
+                            {date: '2026-04-08', clicks: 5}
+                        ]);
+                    }, 500);
                 } else if (targetId === 'view-archive') {
                     renderArchive();
                 }
