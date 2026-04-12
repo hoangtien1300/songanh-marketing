@@ -219,22 +219,23 @@
                     <button class="gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 cursor-pointer" data-metric="position" onclick="window.renderGscView('position')">Vị trí TB</button>
                 </div>
 
-                <!-- Time Filter & Date Picker -->
-                <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                    <!-- Dropdown -->
-                    <div class="relative flex-grow">
-                        <select id="gsc-timefilter" class="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2.5 pl-4 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
-                            <option value="day">Theo Ngày</option>
-                            <option value="7d" selected>Theo Tuần</option>
-                            <option value="30d">Theo Tháng</option>
+                <!-- Time Filter V5: Quick Toggle + Custom Range -->
+                <div class="flex flex-wrap items-center gap-3 bg-white p-2 rounded-xl border border-gray-200 shadow-sm w-full md:w-auto">
+                    <!-- Quick Toggle -->
+                    <div class="relative">
+                        <select id="gsc-quick-toggle" class="appearance-none bg-blue-50 border border-blue-200 text-blue-700 py-2 pl-3 pr-8 rounded-lg text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
+                            <option value="7d" selected>7 ngày qua</option>
+                            <option value="custom">Tùy chỉnh</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-blue-500">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                     </div>
-                    <!-- Date Picker -->
-                    <div class="relative flex-grow">
-                        <input type="date" id="gsc-datepicker" class="w-full bg-white border border-gray-300 text-gray-700 py-2 pl-4 pr-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
+                    <!-- Date Range Inputs (Hidden if 7d) -->
+                    <div id="gsc-custom-range" class="hidden flex items-center gap-2">
+                        <input type="date" id="gsc-start-date" class="bg-white border border-gray-300 text-gray-700 py-1.5 px-2 rounded-lg text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none">
+                        <span class="text-gray-400 text-xs shadow-none">→</span>
+                        <input type="date" id="gsc-end-date" class="bg-white border border-gray-300 text-gray-700 py-1.5 px-2 rounded-lg text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                 </div>
 
@@ -501,20 +502,21 @@
                     <button class="gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 cursor-pointer" data-metric="position" onclick="window.renderGscView('position')">Vị trí TB</button>
                 </div>
 
-                <!-- Time Filter & Date Picker TM -->
-                <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                    <div class="relative flex-grow">
-                        <select id="gsc-timefilter-tm" class="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2.5 pl-4 pr-10 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
-                            <option value="day">Theo Ngày</option>
-                            <option value="7d" selected>Theo Tuần</option>
-                            <option value="30d">Theo Tháng</option>
+                <!-- Time Filter V5: Quick Toggle + Custom Range TM -->
+                <div class="flex flex-wrap items-center gap-3 bg-white p-2 rounded-xl border border-gray-200 shadow-sm w-full md:w-auto">
+                    <div class="relative">
+                        <select id="gsc-quick-toggle-tm" class="appearance-none bg-blue-50 border border-blue-200 text-blue-700 py-2 pl-3 pr-8 rounded-lg text-xs sm:text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
+                            <option value="7d" selected>7 ngày qua</option>
+                            <option value="custom">Tùy chỉnh</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-blue-500">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                         </div>
                     </div>
-                    <div class="relative flex-grow">
-                        <input type="date" id="gsc-datepicker-tm" class="w-full bg-white border border-gray-300 text-gray-700 py-2 pl-4 pr-4 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm font-medium cursor-pointer">
+                    <div id="gsc-custom-range-tm" class="hidden flex items-center gap-2">
+                        <input type="date" id="gsc-start-date-tm" class="bg-white border border-gray-300 text-gray-700 py-1.5 px-2 rounded-lg text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none">
+                        <span class="text-gray-400 text-xs shadow-none">→</span>
+                        <input type="date" id="gsc-end-date-tm" class="bg-white border border-gray-300 text-gray-700 py-1.5 px-2 rounded-lg text-xs font-medium focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                 </div>
 
@@ -1225,19 +1227,11 @@
             });
         }
 
-        // --- GSC DATA FETCHING & AGGREGATION ---
+        // --- GSC DATA FETCHING & AGGREGATION V5 ---
         var gscSiteData = null; 
         var gscCharts = { 'w1': null, 'w2': null, 'w3': null, 'w6': null };
         const gscMetricNames = { 'clicks': 'Nhấp chuột', 'impressions': 'Hiển thị', 'ctr': 'CTR (%)', 'position': 'Vị trí TB' };
         const gscSiteMapping = { 'w1': 'GSC - mohinhkientruc.org', 'w2': 'GSC - architecturalmodel.org', 'w3': 'GSC - mohinhsonganh.com', 'w6': 'GSC - lammohinh.vn' };
-
-        // State Helper
-        function getGscParams() {
-            const timeframe = document.getElementById('gsc-timefilter').value;
-            const dateInput = document.getElementById('gsc-datepicker').value;
-            const metric = document.querySelector('.gsc-tab.bg-blue-100')?.getAttribute('data-metric') || 'clicks';
-            return { timeframe, dateInput, metric };
-        }
 
         function parseSheetDate(str) {
             if (!str) return null;
@@ -1245,101 +1239,105 @@
             return new Date(y, m - 1, d);
         }
 
-        function formatDateToSheet(date) {
-            const d = String(date.getDate()).padStart(2, '0');
-            const m = String(date.getMonth() + 1).padStart(2, '0');
-            const y = date.getFullYear();
-            return `${d}/${m}/${y}`;
+        function getGscRange() {
+            const toggle = document.getElementById('gsc-quick-toggle').value;
+            let start, end;
+            
+            if (toggle === '7d') {
+                end = new Date();
+                end.setHours(23, 59, 59, 999);
+                start = new Date();
+                start.setDate(end.getDate() - 7);
+                start.setHours(0, 0, 0, 0);
+            } else {
+                start = new Date(document.getElementById('gsc-start-date').value);
+                end = new Date(document.getElementById('gsc-end-date').value);
+                if (isNaN(start.getTime()) || isNaN(end.getTime())) return null;
+            }
+            return { start, end };
         }
 
         async function initGscIntegration() {
             setupGscEvents();
             
-            // Set default date to yesterday
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            const dateStr = yesterday.toISOString().split('T')[0];
-            document.getElementById('gsc-datepicker').value = dateStr;
-            document.getElementById('gsc-datepicker-tm').value = dateStr;
+            // Set default range: last 7 days
+            const end = new Date();
+            const start = new Date(); 
+            start.setDate(end.getDate() - 7);
+            
+            const inputs = ['gsc-start-date', 'gsc-end-date', 'gsc-start-date-tm', 'gsc-end-date-tm'];
+            inputs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = (id.includes('start') ? start : end).toISOString().split('T')[0];
+            });
 
             try {
                 const response = await fetch('/api/fetch_sheets');
                 if (response.ok) {
                     gscSiteData = await response.json();
-                    console.log("GSC Overview: Data loaded from Sheets");
+                    console.log("GSC V5: Data loaded from Sheets");
                     window.renderGscView(); 
                 }
-            } catch (err) { console.error("GSC Init Error:", err); }
+            } catch (err) { console.error("GSC V5 Init Error:", err); }
         }
 
         function setupGscEvents() {
-            const triggers = ['gsc-timefilter', 'gsc-timefilter-tm', 'gsc-datepicker', 'gsc-datepicker-tm'];
-            triggers.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.addEventListener('change', (e) => {
-                    // Sync values between Sector Mohinh and Sector Thuongmai
-                    const suffix = id.endsWith('-tm') ? '' : '-tm';
-                    const baseId = id.replace('-tm', '');
-                    const targetId = baseId + suffix;
-                    const targetEl = document.getElementById(targetId);
+            const syncIds = ['quick-toggle', 'start-date', 'end-date'];
+            syncIds.forEach(base => {
+                const el = document.getElementById('gsc-' + base);
+                const tmEl = document.getElementById('gsc-' + base + '-tm');
+                
+                const handler = (e) => {
+                    const targetEl = (e.target.id.endsWith('-tm')) ? document.getElementById(e.target.id.replace('-tm', '')) : document.getElementById(e.target.id + '-tm');
                     if (targetEl) targetEl.value = e.target.value;
                     
+                    // Show/Hide custom range
+                    const isCustom = e.target.value === 'custom' || document.getElementById('gsc-quick-toggle').value === 'custom';
+                    document.getElementById('gsc-custom-range').className = isCustom ? 'flex items-center gap-2' : 'hidden';
+                    if (document.getElementById('gsc-custom-range-tm')) document.getElementById('gsc-custom-range-tm').className = isCustom ? 'flex items-center gap-2' : 'hidden';
+                    
                     window.renderGscView();
-                });
+                };
+                
+                if (el) el.addEventListener('change', handler);
+                if (tmEl) tmEl.addEventListener('change', handler);
             });
         }
 
         window.renderGscView = function(requestedMetric) {
-            const { timeframe, dateInput, metric: activeMetric } = getGscParams();
-            const metric = requestedMetric || activeMetric;
+            const range = getGscRange();
+            if (!range || !gscSiteData) return;
             
-            if (!gscSiteData) return;
+            const metric = requestedMetric || document.querySelector('.gsc-tab.bg-blue-100')?.getAttribute('data-metric') || 'clicks';
 
-            // Updated UI Tabs
+            // UI Tabs
             document.querySelectorAll('.gsc-tab').forEach(t => {
                 const isActive = t.getAttribute('data-metric') === metric;
                 t.className = `gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors ${isActive ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100'} cursor-pointer`;
             });
-
-            const selDate = new Date(dateInput);
-            const selDateSheet = formatDateToSheet(selDate);
 
             Object.entries(gscSiteMapping).forEach(([id, tabName]) => {
                 try {
                     const rows = gscSiteData[tabName] || [];
                     const totalEl = document.getElementById(`total-${id}`);
                     const trendEl = document.getElementById(`trend-${id}`);
-                    
                     if (!rows.length) return;
 
                     const parsedRows = rows.map(r => ({
                         dateObj: parseSheetDate(r.date),
-                        dateStr: r.date,
                         clicks: parseInt(r.clicks) || 0,
                         impressions: parseInt(r.impressions) || 0,
                         ctr: parseFloat(String(r.ctr).replace('%', '')) || 0,
                         position: parseFloat(r.position) || 0
                     })).sort((a,b) => a.dateObj - b.dateObj);
 
-                    let currentPeriod = [];
-                    let previousPeriod = [];
-
-                    if (timeframe === 'day') {
-                        currentPeriod = parsedRows.filter(r => r.dateStr === selDateSheet);
-                        const prevDate = new Date(selDate); prevDate.setDate(prevDate.getDate() - 1);
-                        const prevDateSheet = formatDateToSheet(prevDate);
-                        previousPeriod = parsedRows.filter(r => r.dateStr === prevDateSheet);
-                    } else if (timeframe === '7d') {
-                        const startDate = new Date(selDate); startDate.setDate(startDate.getDate() - 6);
-                        currentPeriod = parsedRows.filter(r => r.dateObj >= startDate && r.dateObj <= selDate);
-                        const prevEnd = new Date(startDate); prevEnd.setDate(prevEnd.getDate() - 1);
-                        const prevStart = new Date(prevEnd); prevStart.setDate(prevStart.getDate() - 6);
-                        previousPeriod = parsedRows.filter(r => r.dateObj >= prevStart && r.dateObj <= prevEnd);
-                    } else if (timeframe === '30d') {
-                        currentPeriod = parsedRows.filter(r => r.dateObj.getMonth() === selDate.getMonth() && r.dateObj.getFullYear() === selDate.getFullYear());
-                        const prevMonth = new Date(selDate.getFullYear(), selDate.getMonth() - 1, 1);
-                        previousPeriod = parsedRows.filter(r => r.dateObj.getMonth() === prevMonth.getMonth() && r.dateObj.getFullYear() === prevMonth.getFullYear());
-                    }
+                    const currentPeriod = parsedRows.filter(r => r.dateObj >= range.start && r.dateObj <= range.end);
+                    
+                    // Previous period of same length for trends
+                    const diff = range.end - range.start;
+                    const prevEnd = new Date(range.start); prevEnd.setSeconds(prevEnd.getSeconds() - 1);
+                    const prevStart = new Date(prevEnd - diff);
+                    const previousPeriod = parsedRows.filter(r => r.dateObj >= prevStart && r.dateObj <= prevEnd);
 
                     const calculate = (arr, m) => {
                         if (!arr.length) return 0;
@@ -1368,7 +1366,7 @@
                     }
 
                     renderGscChart(id, metric, currentPeriod.length ? currentPeriod : parsedRows.slice(-30));
-                } catch (e) { console.error(`Render error ${id}:`, e); }
+                } catch (e) { console.error(`V5 Render error ${id}:`, e); }
             });
         }
 
@@ -1380,7 +1378,10 @@
             gscCharts[id] = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data.map(d => d.dateStr.split('/').slice(0, 2).join('/')),
+                    labels: data.map(d => {
+                        const date = d.dateObj;
+                        return `${date.getDate()}/${date.getMonth()+1}`;
+                    }),
                     datasets: [{
                         data: data.map(d => d[metric]),
                         borderColor: '#2563eb',
