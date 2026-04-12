@@ -6,7 +6,12 @@ from http.server import BaseHTTPRequestHandler
 
 # --- CONFIG ---
 SPREADSHEET_ID = '1H4qEawa_At2v4UEILP8nxjkYoC4itB9QQlI5yckdkLQ'
-TABS = ['GSC - mohinhkientruc.org', 'GSC - architecturalmodel.org']
+TABS = [
+    'GSC - mohinhkientruc.org', 
+    'GSC - architecturalmodel.org',
+    'GSC - mohinhsonganh.com',
+    'GSC - lammohinh.vn'
+]
 
 def get_creds():
     # Priority 1: Environment Variable (Vercel)

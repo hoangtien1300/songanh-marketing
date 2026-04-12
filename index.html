@@ -252,8 +252,8 @@
                     <div class="mb-5 flex-grow">
                         <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold gsc-metric-label">Tổng số Nhấp</p>
                         <div class="flex justify-between items-baseline mt-1">
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w1">56</h3>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-red-100 text-red-700 gsc-trend transition-colors" id="trend-w1">↓ 8.2%</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w1">...</h3>
+                            <span class="hidden text-xs font-semibold px-2 py-1 rounded bg-red-100 text-red-700 gsc-trend transition-colors" id="trend-w1">↓ 0%</span>
                         </div>
                     </div>
                     <!-- Chart Canvas -->
@@ -271,8 +271,8 @@
                     <div class="mb-5 flex-grow">
                         <p class="text-[10px] sm:text-xs text-gray-500 uppercase font-semibold gsc-metric-label">Tổng số Nhấp</p>
                         <div class="flex justify-between items-baseline mt-1">
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w2">50</h3>
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 gsc-trend transition-colors" id="trend-w2">↑ 22.0%</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-blue-700 gsc-total-val" id="total-w2">...</h3>
+                            <span class="hidden text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 gsc-trend transition-colors" id="trend-w2">↑ 0%</span>
                         </div>
                     </div>
                     <!-- Chart Canvas -->
@@ -1246,7 +1246,11 @@
         }
 
         function getGscRange() {
-            const toggle = document.getElementById('gsc-quick-toggle').value;
+            // Priority: Overview filters. 
+            // If called from TM, it still uses the unified state.
+            const toggleEl = document.getElementById('gsc-quick-toggle');
+            if (!toggleEl) return null;
+            const toggle = toggleEl.value;
             let start, end;
             
             if (toggle === '7d') {
@@ -1268,11 +1272,12 @@
                 start.setDate(end.getDate() - 6);
                 start.setHours(0, 0, 0, 0);
                 
-                // Update DatePickers to show the determined range
-                const startEl = document.getElementById('gsc-start-date');
-                const endEl = document.getElementById('gsc-end-date');
-                if (startEl) startEl.value = start.toISOString().split('T')[0];
-                if (endEl) endEl.value = end.toISOString().split('T')[0];
+                // Update DatePickers (SYNC BOTH Overview and Commerce)
+                const inputs = ['gsc-start-date', 'gsc-end-date', 'gsc-start-date-tm', 'gsc-end-date-tm'];
+                inputs.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = (id.includes('start') ? start : end).toISOString().split('T')[0];
+                });
             } else {
                 const sEl = document.getElementById('gsc-start-date');
                 const eEl = document.getElementById('gsc-end-date');
@@ -1288,16 +1293,20 @@
         async function initGscIntegration() {
             setupGscEvents();
             try {
-                console.log("GSC V7: Fetching data...");
+                console.log("GSC V8: Fetching data...");
                 const response = await fetch('/api/fetch_sheets');
                 if (response.ok) {
                     gscSiteData = await response.json();
-                    console.log("GSC V7 RAW DATA (LOADED):", gscSiteData);
+                    console.log("GSC V8 RAW DATA (LOADED):", gscSiteData);
                     window.renderGscView(); 
                 } else {
-                    console.error("GSC V7 API Error:", response.status);
+                    console.error("GSC V8 API Error:", response.status);
+                    document.querySelectorAll('.gsc-total-val').forEach(el => el.innerText = 'Lỗi API');
                 }
-            } catch (err) { console.error("GSC V7 Init Error:", err); }
+            } catch (err) { 
+                console.error("GSC V8 Init Error:", err);
+                document.querySelectorAll('.gsc-total-val').forEach(el => el.innerText = 'Lỗi kết nối');
+            }
         }
 
         function setupGscEvents() {
@@ -1350,18 +1359,20 @@
 
             Object.entries(gscSiteMapping).forEach(([id, tabName]) => {
                 try {
-                    const rows = gscSiteData[tabName] || [];
+                    const rawRows = gscSiteData[tabName] || [];
                     const totalEl = document.getElementById(`total-${id}`);
                     const trendEl = document.getElementById(`trend-${id}`);
-                    if (!rows.length) {
-                        if (totalEl) totalEl.innerText = '0';
+                    
+                    if (!rawRows.length) {
+                        if (totalEl) totalEl.innerText = '--';
+                        if (trendEl) trendEl.classList.add('hidden');
                         return;
                     }
 
-                    const parsedRows = rows.map(r => ({
+                    const parsedRows = rawRows.map(r => ({
                         dateObj: parseSheetDate(r.date),
-                        clicks: parseInt(r.clicks) || 0,
-                        impressions: parseInt(r.impressions) || 0,
+                        clicks: parseInt(String(r.clicks).replace(/,/g, '')) || 0,
+                        impressions: parseInt(String(r.impressions).replace(/,/g, '')) || 0,
                         ctr: parseFloat(String(r.ctr).replace('%', '')) || 0,
                         position: parseFloat(r.position) || 0
                     })).filter(r => r.dateObj !== null).sort((a,b) => a.dateObj - b.dateObj);
@@ -1382,8 +1393,11 @@
                     const currVal = calculate(currentPeriod, metric);
                     const prevVal = calculate(previousPeriod, metric);
 
+                    console.log(`GSC V8 Calculate [${id}]:`, { metric, currVal, prevVal, rows: currentPeriod.length });
+
                     if (totalEl) {
-                        if (metric === 'ctr') totalEl.innerText = currVal.toFixed(1) + '%';
+                        if (currentPeriod.length === 0) totalEl.innerText = '0';
+                        else if (metric === 'ctr') totalEl.innerText = currVal.toFixed(1) + '%';
                         else if (metric === 'position') totalEl.innerText = currVal.toFixed(1);
                         else totalEl.innerText = currVal.toLocaleString();
                     }
@@ -1400,7 +1414,7 @@
                     }
 
                     renderGscChart(id, metric, currentPeriod.length ? currentPeriod : parsedRows.slice(-30));
-                } catch (e) { console.error(`V6 Render error ${id}:`, e); }
+                } catch (e) { console.error(`V8 Render error ${id}:`, e); }
             });
         }
 
