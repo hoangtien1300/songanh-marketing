@@ -43,24 +43,28 @@ class handler(BaseHTTPRequestHandler):
 
             all_data = {}
             for tab in TABS:
-                # Read columns A to F (Date, Domain, Clicks, Impressions, CTR, Position)
-                result = service.spreadsheets().values().get(
-                    spreadsheetId=SPREADSHEET_ID, range=f"'{tab}'!A2:F").execute()
-                values = result.get('values', [])
-                
-                # Transform to object list
-                rows = []
-                for v in values:
-                    if len(v) >= 6:
-                        rows.append({
-                            'date': v[0],
-                            'domain': v[1],
-                            'clicks': v[2],
-                            'impressions': v[3],
-                            'ctr': v[4],
-                            'position': v[5]
-                        })
-                all_data[tab] = rows
+                try:
+                    # Read columns A to F (Date, Domain, Clicks, Impressions, CTR, Position)
+                    result = service.spreadsheets().values().get(
+                        spreadsheetId=SPREADSHEET_ID, range=f"'{tab}'!A2:F").execute()
+                    values = result.get('values', [])
+                    
+                    # Transform to object list
+                    rows = []
+                    for v in values:
+                        if len(v) >= 6:
+                            rows.append({
+                                'date': v[0],
+                                'domain': v[1],
+                                'clicks': v[2],
+                                'impressions': v[3],
+                                'ctr': v[4],
+                                'position': v[5]
+                            })
+                    all_data[tab] = rows
+                except Exception as tab_err:
+                    print(f"Error fetching tab {tab}: {tab_err}")
+                    all_data[tab] = [] # Return empty list for missing tabs
 
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
