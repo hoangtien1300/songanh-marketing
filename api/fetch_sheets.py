@@ -10,7 +10,8 @@ TABS = [
     'GSC - mohinhkientruc.org', 
     'GSC - architecturalmodel.org',
     'GSC - mohinhsonganh.com',
-    'GSC - lammohinh.vn'
+    'GSC - lammohinh.vn',
+    'Report'
 ]
 
 def get_creds():
