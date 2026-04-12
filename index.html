@@ -1253,12 +1253,14 @@
                 // SMART ANCHOR: Find latest date in dataset
                 let maxD = new Date(2000, 0, 1);
                 let foundAny = false;
-                Object.values(gscSiteData).forEach(rows => {
-                    rows.forEach(r => {
-                        const d = parseSheetDate(r.date);
-                        if (d && d > maxD) { maxD = d; foundAny = true; }
+                if (gscSiteData) {
+                    Object.values(gscSiteData).forEach(rows => {
+                        rows.forEach(r => {
+                            const d = parseSheetDate(r.date);
+                            if (d && d > maxD) { maxD = d; foundAny = true; }
+                        });
                     });
-                });
+                }
                 
                 end = foundAny ? new Date(maxD) : new Date();
                 end.setHours(23, 59, 59, 999);
@@ -1267,11 +1269,16 @@
                 start.setHours(0, 0, 0, 0);
                 
                 // Update DatePickers to show the determined range
-                document.getElementById('gsc-start-date').value = start.toISOString().split('T')[0];
-                document.getElementById('gsc-end-date').value = end.toISOString().split('T')[0];
+                const startEl = document.getElementById('gsc-start-date');
+                const endEl = document.getElementById('gsc-end-date');
+                if (startEl) startEl.value = start.toISOString().split('T')[0];
+                if (endEl) endEl.value = end.toISOString().split('T')[0];
             } else {
-                start = new Date(document.getElementById('gsc-start-date').value);
-                end = new Date(document.getElementById('gsc-end-date').value);
+                const sEl = document.getElementById('gsc-start-date');
+                const eEl = document.getElementById('gsc-end-date');
+                if (!sEl || !eEl) return null;
+                start = new Date(sEl.value);
+                end = new Date(eEl.value);
                 if (isNaN(start.getTime()) || isNaN(end.getTime())) return null;
                 end.setHours(23, 59, 59, 999);
             }
@@ -1281,15 +1288,16 @@
         async function initGscIntegration() {
             setupGscEvents();
             try {
+                console.log("GSC V7: Fetching data...");
                 const response = await fetch('/api/fetch_sheets');
                 if (response.ok) {
                     gscSiteData = await response.json();
-                    console.log("GSC V6 RAW DATA:", gscSiteData);
+                    console.log("GSC V7 RAW DATA (LOADED):", gscSiteData);
                     window.renderGscView(); 
                 } else {
-                    console.error("GSC API Error:", response.status);
+                    console.error("GSC V7 API Error:", response.status);
                 }
-            } catch (err) { console.error("GSC V6 Init Error:", err); }
+            } catch (err) { console.error("GSC V7 Init Error:", err); }
         }
 
         function setupGscEvents() {
@@ -1318,14 +1326,16 @@
             if (requestedMetric) gscActiveMetric = requestedMetric;
             const metric = gscActiveMetric;
             
-            const range = getGscRange();
-            if (!range || !gscSiteData) return;
-            
-            // Sync UI Tabs
+            // Sync UI Tabs (Move to top for immediate feedback)
             document.querySelectorAll('.gsc-tab').forEach(t => {
                 const isActive = t.getAttribute('data-metric') === metric;
                 t.className = `gsc-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors ${isActive ? 'bg-blue-100 text-blue-800' : 'text-gray-600 hover:bg-gray-100'} cursor-pointer`;
             });
+
+            if (!gscSiteData) return; // Wait for data
+            
+            const range = getGscRange();
+            if (!range) return;
 
             Object.entries(gscSiteMapping).forEach(([id, tabName]) => {
                 try {
