@@ -1397,7 +1397,7 @@
                     const currWeekIdx = reportData.findIndex(r => r.date === selectedWeek);
                     let prevWeekData = currWeekIdx > 0 ? reportData[currWeekIdx - 1] : null;
 
-                    // V13: Manual Override / Fallback for 06/04 - 12/04
+                    // V13 & V15: Manual Override - ALWAYS use for reporting week
                     const MANUAL_GSC_DATA = {
                         "06/04 - 12/04": {
                             "mohinhkientruc.org": { clicks: 33, impressions: 1569, ctr: "2.09%", position: "9.9" },
@@ -1406,7 +1406,7 @@
                         }
                     };
 
-                    if (!currWeekData && MANUAL_GSC_DATA[selectedWeek] && MANUAL_GSC_DATA[selectedWeek][domainKey]) {
+                    if (selectedWeek === "06/04 - 12/04" && MANUAL_GSC_DATA[selectedWeek] && MANUAL_GSC_DATA[selectedWeek][domainKey]) {
                         currWeekData = MANUAL_GSC_DATA[selectedWeek][domainKey];
                     }
 
