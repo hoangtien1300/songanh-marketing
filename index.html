@@ -1289,9 +1289,11 @@
                     
                     // Populate Week Filter
                     const reportRows = gscSiteData['Report'] || [];
+                    console.log("DEBUG V11: Raw Report Data:", reportRows);
+
                     const weekFilter = document.getElementById('gsc-week-filter');
                     if (weekFilter && reportRows.length > 0) {
-                        const uniqueWeeks = [...new Set(reportRows.map(r => r.week))].reverse();
+                        const uniqueWeeks = [...new Set(reportRows.map(r => r.date))].reverse(); // FIXED: r.date instead of r.week
                         weekFilter.innerHTML = uniqueWeeks.map((w, i) => 
                             `<option value="${w}" ${i===0 ? 'selected' : ''}>${w}</option>`
                         ).join('');
@@ -1300,6 +1302,17 @@
                     
                     window.renderGscView(); 
                 }
+
+                // V11: Emergency Timeout to clear loading state
+                setTimeout(() => {
+                    document.querySelectorAll('.gsc-total-val').forEach(el => {
+                        if (el.innerText === '...' || el.innerText === 'Đang lấy dữ liệu') {
+                            el.innerText = '0';
+                            el.classList.add('text-gray-400');
+                        }
+                    });
+                }, 5000);
+
             } catch (err) { console.error("GSC Init Error:", err); }
         }
 
@@ -1379,8 +1392,15 @@
                     const prevWeekData = currWeekIdx > 0 ? reportData[currWeekIdx - 1] : null;
 
                     // V10: Default to 0 if no data
-                    const currVal = currWeekData ? (metric === 'ctr' ? parseFloat(currWeekData.ctr.replace(/,/g,'.').replace('%','')) : (metric === 'position' ? parseFloat(currWeekData.position.replace(',','.')) : parseInt(currWeekData[metric === 'clicks' ? 'clicks' : 'impressions']))) : 0;
-                    const prevVal = prevWeekData ? (metric === 'ctr' ? parseFloat(prevWeekData.ctr.replace(/,/g,'.').replace('%','')) : (metric === 'position' ? parseFloat(prevWeekData.position.replace(',','.')) : parseInt(prevWeekData[metric === 'clicks' ? 'clicks' : 'impressions']))) : 0;
+                    // V11: Robust parsing with safety checks
+                    const safeParse = (val, type) => {
+                        const str = String(val || '').replace(/,/g, '.').replace('%', '').trim();
+                        if (type === 'int') return parseInt(str.replace(/\./g, '')) || 0;
+                        return parseFloat(str) || 0;
+                    };
+
+                    const currVal = currWeekData ? (metric === 'ctr' ? safeParse(currWeekData.ctr) : (metric === 'position' ? safeParse(currWeekData.position) : safeParse(currWeekData[metric === 'clicks' ? 'clicks' : 'impressions'], 'int'))) : 0;
+                    const prevVal = prevWeekData ? (metric === 'ctr' ? safeParse(prevWeekData.ctr) : (metric === 'position' ? safeParse(prevWeekData.position) : safeParse(prevWeekData[metric === 'clicks' ? 'clicks' : 'impressions'], 'int'))) : 0;
 
                     if (totalEl) {
                         totalEl.classList.remove('text-gray-400');
