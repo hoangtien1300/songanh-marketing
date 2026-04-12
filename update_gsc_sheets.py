@@ -141,5 +141,110 @@ def run_update():
         except Exception as e:
             print(f"Error appending data to Google Sheets for {domain}: {e}")
 
+def update_weekly_report(sheets_service):
+    """Aggregates all daily GSC data in the spreadsheet into weekly summaries in a 'Report' tab."""
+    print("\n--- Generating Weekly Aggregate Report ---")
+    
+    # 1. Ensure 'Report' tab exists
+    try:
+        ss = sheets_service.spreadsheets().get(spreadsheetId=SPREADSHEET_ID).execute()
+        sheets = [s['properties']['title'] for s in ss.get('sheets', [])]
+        if 'Report' not in sheets:
+            sheets_service.spreadsheets().batchUpdate(spreadsheetId=SPREADSHEET_ID, body={
+                'requests': [{'addSheet': {'properties': {'title': 'Report'}}}]
+            }).execute()
+            # Add Headers
+            headers = [['Week', 'Website', 'Tổng Nhấp chuột', 'Tổng Hiển thị', 'CTR Trung bình', 'Vị trí TB']]
+            sheets_service.spreadsheets().values().update(
+                spreadsheetId=SPREADSHEET_ID, range="'Report'!A1", 
+                valueInputOption='USER_ENTERED', body={'values': headers}
+            ).execute()
+            print("Created new 'Report' tab.")
+    except Exception as e:
+        print(f"Error initializing Report tab: {e}")
+        return
+
+    # 2. Extract and Aggregate Data
+    # Keys will be (Year, WeekNumber, Domain) -> {clicks, impressions, ctr_sum, pos_sum, count}
+    weekly_data = {}
+    
+    for _, info in CONFIG.items():
+        tab = info['tab']
+        domain = info['domain']
+        try:
+            result = sheets_service.spreadsheets().values().get(
+                spreadsheetId=SPREADSHEET_ID, range=f"'{tab}'!A2:F").execute()
+            values = result.get('values', [])
+            
+            for v in values:
+                if len(v) < 6: continue
+                try:
+                    date_obj = datetime.datetime.strptime(v[0], "%d/%m/%Y").date()
+                    # ISO Week: returns (year, week_num, weekday)
+                    iso_cal = date_obj.isocalendar()
+                    key = (iso_cal[0], iso_cal[1], domain)
+                    
+                    if key not in weekly_data:
+                        weekly_data[key] = {'clicks': 0, 'impressions': 0, 'ctr_sum': 0.0, 'pos_sum': 0.0, 'count': 0}
+                    
+                    # Clean numeric data
+                    clicks = int(v[2])
+                    impressions = int(v[3])
+                    ctr = float(v[4].replace('%', ''))
+                    pos = float(str(v[5]).replace(',', '.'))
+                    
+                    weekly_data[key]['clicks'] += clicks
+                    weekly_data[key]['impressions'] += impressions
+                    weekly_data[key]['ctr_sum'] += ctr
+                    weekly_data[key]['pos_sum'] += pos
+                    weekly_data[key]['count'] += 1
+                except: continue
+        except: continue
+
+    if not weekly_data:
+        print("No data found to aggregate.")
+        return
+
+    # 3. Prepare Report Rows
+    report_rows = []
+    # Sort by year desc, week desc to keep latest at top if we were overriding, but requested format usually appends
+    sorted_keys = sorted(weekly_data.keys(), key=lambda x: (x[0], x[1]))
+    for key in sorted_keys:
+        year, week, domain = key
+        stats = weekly_data[key]
+        
+        # V12: Generate date range label (e.g., 06/04 - 12/04)
+        monday = datetime.date.fromisocalendar(year, week, 1)
+        sunday = monday + datetime.timedelta(days=6)
+        week_label = f"{monday.strftime('%d/%m')} - {sunday.strftime('%d/%m')}"
+        
+        row = [
+            week_label,
+            domain,
+            stats['clicks'],
+            stats['impressions'],
+            f"{(stats['ctr_sum'] / stats['count']):.2f}%",
+            round(stats['pos_sum'] / stats['count'], 1)
+        ]
+        report_rows.append(row)
+
+    # 4. Overwrite/Update logic for Report tab (Simplest is to overwrite A2:F to maintain order)
+    try:
+        # Clear existing data first? Or just update? Let's overwrite A2:F with our full sync
+        sheets_service.spreadsheets().values().clear(
+            spreadsheetId=SPREADSHEET_ID, range="'Report'!A2:F"
+        ).execute()
+        
+        sheets_service.spreadsheets().values().update(
+            spreadsheetId=SPREADSHEET_ID, range="'Report'!A2",
+            valueInputOption='USER_ENTERED', body={'values': report_rows}
+        ).execute()
+        print(f"Successfully updated Weekly Report for {len(report_rows)} week-site entries.")
+    except Exception as e:
+        print(f"Error updating Report tab: {e}")
+
 if __name__ == '__main__':
     run_update()
+    # Initialize services again for reporting or pass them through
+    _, sheets_service = get_services()
+    update_weekly_report(sheets_service)

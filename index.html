@@ -1391,8 +1391,7 @@
                     const currWeekIdx = reportData.findIndex(r => r.date === selectedWeek);
                     const prevWeekData = currWeekIdx > 0 ? reportData[currWeekIdx - 1] : null;
 
-                    // V10: Default to 0 if no data
-                    // V11: Robust parsing with safety checks
+                    // V12: Direct Binding to Warehouse (Report Tab)
                     const safeParse = (val, type) => {
                         const str = String(val || '').replace(/,/g, '.').replace('%', '').trim();
                         if (type === 'int') return parseInt(str.replace(/\./g, '')) || 0;
@@ -1405,7 +1404,6 @@
                     if (totalEl) {
                         totalEl.classList.remove('text-gray-400');
                         if (!currWeekData) {
-                            // Site not found in Report or data empty
                             totalEl.innerText = (metric === 'ctr') ? '0.0%' : (metric === 'position' ? '0.0' : '0');
                         } else {
                             if (metric === 'ctr') totalEl.innerText = currVal.toFixed(1) + '%';
@@ -1426,28 +1424,32 @@
                         }
                     }
 
-                    // Prepare Chart Data
+                    // Prepare Chart Data (V12 Fix: Uses date strings from label)
                     const getWeekDays = (weekLabel, rows) => {
-                        if(!weekLabel) return Array(7).fill(0);
-                        const match = weekLabel.match(/Tuần (\d+)\/(\d+)/);
-                        if(!match) return Array(7).fill(0);
-                        const [_, w, y] = match.map(Number);
-                        
-                        const weekRows = rows.filter(r => {
-                            const d = r.dateObj;
-                            const jan1 = new Date(y, 0, 1);
-                            const days = Math.floor((d - jan1) / (24 * 60 * 60 * 1000));
-                            const weekNum = Math.ceil((days + jan1.getDay() + 1) / 7);
-                            return weekNum === w && d.getFullYear() === y;
-                        });
+                        if(!weekLabel || !rows.length) return Array(7).fill(0);
+                        try {
+                            const [startStr] = weekLabel.split(' - ');
+                            const [d, m] = startStr.split('/').map(Number);
+                            
+                            // Find the first occurrence of this Day/Month in rows to anchor the year
+                            const startRow = rows.find(r => r.dateObj.getDate() === d && (r.dateObj.getMonth() + 1) === m);
+                            if(!startRow) return Array(7).fill(0);
+                            
+                            const startDate = new Date(startRow.dateObj);
+                            startDate.setHours(0,0,0,0);
+                            const endDate = new Date(startDate);
+                            endDate.setDate(startDate.getDate() + 6);
+                            endDate.setHours(23,59,59,999);
 
-                        const days = Array(7).fill(0);
-                        weekRows.forEach(r => {
-                            let dayIdx = r.dateObj.getDay() - 1; // Mon=0, Sun=6
-                            if(dayIdx === -1) dayIdx = 6; 
-                            days[dayIdx] = r[metric];
-                        });
-                        return days;
+                            const weekRows = rows.filter(r => r.dateObj >= startDate && r.dateObj <= endDate);
+                            const days = Array(7).fill(0);
+                            weekRows.forEach(r => {
+                                let dayIdx = r.dateObj.getDay() - 1; 
+                                if(dayIdx === -1) dayIdx = 6; 
+                                days[dayIdx] = r[metric];
+                            });
+                            return days;
+                        } catch(e) { return Array(7).fill(0); }
                     };
 
                     const currChartData = getWeekDays(selectedWeek, parsedRows);
