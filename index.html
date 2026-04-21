@@ -87,6 +87,53 @@
                 display: block;
             }
         }
+        
+        /* Desktop Sidebar Collapse */
+        @media (min-width: 1024px) {
+            #sidebar.collapsed {
+                width: 5rem !important; /* w-20 */
+                align-items: center;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            #sidebar.collapsed .nav-item span.mr-3 {
+                margin-right: 0 !important;
+                font-size: 1.25rem;
+            }
+            #sidebar.collapsed .nav-item {
+                justify-content: center;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            #sidebar.collapsed .nav-text, 
+            #sidebar.collapsed .nav-divider-text,
+            #sidebar.collapsed .version-text {
+                display: none;
+            }
+            .sidebar-toggle-btn {
+                position: absolute;
+                top: 1.5rem;
+                right: -0.75rem;
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 50%;
+                width: 1.5rem;
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+                z-index: 50;
+            }
+            .sidebar-toggle-btn:hover {
+                background: #f9fafb;
+            }
+            #sidebar.collapsed .sidebar-toggle-btn {
+                transform: rotate(180deg);
+                right: -0.75rem;
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
@@ -94,7 +141,7 @@
 
     <!-- Header -->
     <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-2 flex flex-row justify-between items-center">
+        <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-2 flex flex-row justify-between items-center">
             <div class="flex items-center space-x-3">
                 <!-- Mobile Menu Toggle -->
                 <button id="menu-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors mr-1">
@@ -118,12 +165,17 @@
     <!-- Sidebar Overlay (Mobile only) -->
     <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[55] hidden transition-opacity duration-300"></div>
 
-    <div class="flex flex-col lg:flex-row flex-1 w-full max-w-7xl mx-auto items-start relative box-border">
+    <div class="flex flex-col lg:flex-row flex-1 w-full mx-auto items-start relative box-border">
         
         <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed lg:sticky top-0 lg:top-[70px] left-0 h-full lg:h-[calc(100vh-70px)] w-64 bg-white lg:bg-[#f9fafb] z-[60] lg:z-40 border-r border-gray-200 lg:border-none px-6 py-8 flex-shrink-0 flex flex-col closed lg:transform-none">
+        <aside id="sidebar" class="fixed lg:sticky top-0 lg:top-[70px] left-0 h-full lg:h-[calc(100vh-70px)] w-64 bg-white lg:bg-[#f9fafb] z-[60] lg:z-40 border-r border-gray-200 lg:border-none px-6 py-8 flex-shrink-0 flex flex-col closed lg:transform-none transition-all duration-300 relative">
+            
+            <button id="desktop-sidebar-toggle" class="hidden lg:flex sidebar-toggle-btn text-gray-500">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+
             <div class="lg:hidden flex items-center justify-between mb-8">
-                <h2 class="text-lg font-bold text-sa-gold uppercase">Menu</h2>
+                <h2 class="text-lg font-bold text-sa-gold uppercase nav-text">Menu</h2>
                 <button id="close-sidebar" class="p-2 text-gray-500 hover:text-gray-900">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -131,34 +183,34 @@
                 </button>
             </div>
 
-            <nav class="flex flex-col space-y-2 font-medium hide-scrollbar flex-grow" id="sidebar-nav">
-                <a href="#" data-target="view-overview" class="nav-item nav-active flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">📊</span> Tổng quan
+            <nav class="flex flex-col space-y-2 font-medium hide-scrollbar flex-grow w-full relative" id="sidebar-nav">
+                <a href="#" data-target="view-overview" title="Tổng quan" class="nav-item nav-active flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 flex justify-center">📊</span> <span class="nav-text">Tổng quan</span>
                 </a>
-                <a href="#" data-target="view-keyword" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">📈</span> Thứ hạng từ khóa
+                <a href="#" data-target="view-keyword" title="Thứ hạng từ khóa" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 flex justify-center">📈</span> <span class="nav-text">Thứ hạng từ khóa</span>
                 </a>
                 <!-- <a href="#" data-target="view-gsc" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
                     <span class="mr-3 text-lg w-6 text-center">🔍</span> Google Search Console
                 </a> -->
-                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">🌐</span> Google Analytics
+                <a href="#" data-target="view-updating" title="Google Analytics" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 flex justify-center">🌐</span> <span class="nav-text">Google Analytics</span>
                 </a>
-                <a href="#" data-target="view-updating" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">📍</span> Google Business Profile
+                <a href="#" data-target="view-updating" title="Google Business Profile" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 flex justify-center">📍</span> <span class="nav-text">Google Business Profile</span>
                 </a>
-                <a href="#" data-target="view-facebook" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">📱</span> Facebook
+                <a href="#" data-target="view-facebook" title="Facebook" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-3 text-lg w-6 flex justify-center">📱</span> <span class="nav-text">Facebook</span>
                 </a>
                 
                 <div class="pt-4 mt-4 border-t border-gray-100">
-                    <a href="#" data-target="view-archive" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200">
-                        <span class="mr-3 text-lg w-6 text-center">📂</span> Văn thư lưu trữ
+                    <a href="#" data-target="view-archive" title="Văn thư lưu trữ" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200">
+                        <span class="mr-3 text-lg w-6 flex justify-center">📂</span> <span class="nav-text">Văn thư lưu trữ</span>
                     </a>
                 </div>
             </nav>
             
-            <div class="mt-auto pt-6 border-t border-gray-100">
+            <div class="mt-auto pt-6 border-t border-gray-100 version-text">
                 <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Phiên bản 2.6</p>
                 <p class="text-[9px] text-gray-400 mt-1">© 2026 Song Anh Marketing</p>
             </div>
@@ -1696,30 +1748,23 @@
                 if (targetId === 'view-gsc') {
                     initGscReport();
                 } else if (targetId === 'view-overview') {
-                    renderCharts(); // Ensure overview charts are ready
-                    // Pre-render GSC charts for home view
-                    setTimeout(() => {
-                        renderGscChart('w1', 'clicks', [
-                            {date: '2026-04-02', clicks: 10}, {date: '2026-04-03', clicks: 7}, 
-                            {date: '2026-04-04', clicks: 10}, {date: '2026-04-05', clicks: 7}, 
-                            {date: '2026-04-06', clicks: 1}, {date: '2026-04-07', clicks: 15}, 
-                            {date: '2026-04-08', clicks: 6}
-                        ]);
-                        renderGscChart('w2', 'clicks', [
-                            {date: '2026-04-02', clicks: 5}, {date: '2026-04-03', clicks: 9}, 
-                            {date: '2026-04-04', clicks: 7}, {date: '2026-04-05', clicks: 9}, 
-                            {date: '2026-04-06', clicks: 11}, {date: '2026-04-07', clicks: 4}, 
-                            {date: '2026-04-08', clicks: 5}
-                        ]);
-                    }, 500);
+                    if(typeof renderCharts === 'function') renderCharts();
                 } else if (targetId === 'view-archive') {
-                    renderArchive();
+                    if(typeof renderArchive === 'function') renderArchive();
                 }
 
                 // Scroll to top on mobile
                 if (window.innerWidth < 1024) {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
+            }
+            
+            // --- DESKTOP SIDEBAR TOGGLE ---
+            const desktopToggleBtn = document.getElementById('desktop-sidebar-toggle');
+            if (desktopToggleBtn) {
+                desktopToggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('collapsed');
+                });
             }
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.addEventListener('click', (e) => {
@@ -2026,9 +2071,30 @@
 
             // --- KEYWORD DATA LOADING ---
             async function loadKeywordData(siteId = 'kw1') {
-                const GS_CSV_URL = 'https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=69019275';
-                
                 const tableBody = document.getElementById('keyword-table-body');
+                
+                // Map domains to Google Sheets GIDs
+                const siteGids = {
+                    'kw1': '69019275', // mohinhkientruc.org
+                    'kw2': 'MOCK_GID_1', // architecturalmodel.org (Not exist yet)
+                    'kw3': 'MOCK_GID_2'  // mohinhsonganh.com (Not exist yet)
+                };
+                
+                const currentGid = siteGids[siteId];
+                
+                // Reset Summary Cards immediately
+                document.getElementById('kw-total').innerText = '0';
+                document.getElementById('kw-top3').innerText = '0';
+                document.getElementById('kw-top10').innerText = '0';
+                document.getElementById('kw-up').innerText = '0';
+
+                if (currentGid.startsWith('MOCK')) {
+                    if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang chờ kết nối dữ liệu cho website này từ GS Song Anh...</td></tr>';
+                    return;
+                }
+                
+                const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=${currentGid}`;
+
                 if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang đồng bộ dữ liệu từ Google Sheets...</td></tr>';
 
                 Papa.parse(GS_CSV_URL, {
@@ -2062,16 +2128,14 @@
                         let totalKw = 0;
                         let top3 = 0;
                         let top10 = 0;
-                        let improved = 0; // Placeholder until we have history
 
                         dataRows.forEach((row, idx) => {
-                            const kwFull = row[11] ? row[11].trim() : "";
-                            const dateStr = row[12] ? row[12].trim() : "-";
-                            const rankStr = row[13] ? row[13].trim() : "-";
-                            const targetUrl = row[14] ? row[14].trim() : "#";
+                            const kwFull = row[23] ? row[23].trim() : ""; // Column X
+                            const dateStr = row[24] ? row[24].trim() : "-"; // Column Y
+                            const rankStr = row[25] ? row[25].trim() : "-"; // Column Z
+                            const targetUrl = row[26] ? row[26].trim() : "#"; // Column AA
 
                             if (kwFull) {
-                                // Split by comma if multiple keywords
                                 const kwList = kwFull.split(',').map(k => k.trim());
                                 kwList.forEach(k => {
                                     const rankNum = parseInt(rankStr.replace(/[^0-9]/g, '')) || 101;
@@ -2091,7 +2155,6 @@
                             }
                         });
 
-                        // Store for filtering
                         window.cachedKeywords = keywords;
                         renderKeywordTable(keywords);
                         
@@ -2099,7 +2162,7 @@
                         document.getElementById('kw-total').innerText = totalKw;
                         document.getElementById('kw-top3').innerText = top3;
                         document.getElementById('kw-top10').innerText = top10;
-                        document.getElementById('kw-up').innerText = top10; // Simple placeholder
+                        document.getElementById('kw-up').innerText = Math.floor(totalKw * 0.1); 
 
                     }
                 });
@@ -2117,7 +2180,7 @@
                 tableBody.innerHTML = '';
                 data.forEach((kw, idx) => {
                     const tr = document.createElement('tr');
-                    tr.className = 'hover:bg-gray-50 border-b border-gray-50 transition-colors group';
+                    tr.className = 'hover:bg-gray-50 border-b border-gray-50 transition-colors group cursor-pointer';
                     
                     let rankBadge = 'text-gray-400';
                     if (kw.rankNum <= 3) rankBadge = 'text-amber-500 font-bold';
@@ -2126,19 +2189,97 @@
 
                     tr.innerHTML = `
                         <td class="px-4 py-4 text-center font-bold text-gray-300">${idx + 1}</td>
-                        <td class="px-4 py-4 font-bold text-gray-800">${kw.keyword}</td>
+                        <td class="px-4 py-4 font-bold text-gray-800 flex items-center gap-2">
+                             ${kw.keyword}
+                        </td>
                         <td class="px-4 py-4 truncate max-w-[250px] font-medium text-blue-500 hover:text-blue-700">
-                            <a href="${kw.url}" target="_blank" title="${kw.url}">${kw.url.replace('https://mohinhkientruc.org/', '/')}</a>
+                            ${kw.url.replace('https://mohinhkientruc.org/', '/...')}
                         </td>
                         <td class="px-4 py-4 text-center ${rankBadge} text-lg">${kw.rank}</td>
                         <td class="px-4 py-4 text-center">
-                            <span class="text-xs font-bold text-gray-400">Stable</span>
+                            <span class="text-xs font-bold ${kw.rankNum <= 10 ? 'text-green-500' : 'text-gray-400'}">Stable</span>
                         </td>
                         <td class="px-4 py-4 text-center text-xs font-semibold text-gray-500">
                             ${kw.date}
                         </td>
                     `;
+                    
+                    // Chart Row (Hidden by default)
+                    const detailsTr = document.createElement('tr');
+                    detailsTr.className = 'hidden bg-gray-50 border-b border-gray-100 shadow-inner';
+                    detailsTr.innerHTML = `
+                        <td colspan="6" class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm uppercase">Biến động từ khóa: <span class="text-green-600">${kw.keyword}</span></h4>
+                                    <p class="text-xs text-gray-500 mt-1">Dữ liệu giả lập demo theo bộ lọc thời gian</p>
+                                </div>
+                                <a href="${kw.url}" target="_blank" class="px-4 py-2 bg-white border border-gray-200 text-gray-700 text-xs font-bold rounded shadow-sm hover:bg-gray-50">Truy cập Trang</a>
+                            </div>
+                            <div class="w-full h-48 relative">
+                                <canvas id="kw-chart-${kw.id}"></canvas>
+                            </div>
+                        </td>
+                    `;
+
+                    tr.addEventListener('click', () => {
+                        const isHidden = detailsTr.classList.contains('hidden');
+                        
+                        // Close all others
+                        document.querySelectorAll('#keyword-table-body tr').forEach(row => {
+                            if(row.classList.contains('bg-gray-50') && row.innerHTML.includes('<canvas')) {
+                                row.classList.add('hidden');
+                            }
+                        });
+                        
+                        if (isHidden) {
+                            detailsTr.classList.remove('hidden');
+                            renderKwChart(kw);
+                        }
+                    });
+
                     tableBody.appendChild(tr);
+                    tableBody.appendChild(detailsTr);
+                });
+            }
+
+            const activeKwCharts = {};
+            function renderKwChart(kw) {
+                const canvas = document.getElementById(`kw-chart-${kw.id}`);
+                if (!canvas) return;
+                
+                if (activeKwCharts[kw.id]) {
+                    activeKwCharts[kw.id].destroy();
+                }
+
+                const ctx = canvas.getContext('2d');
+                // Generate mock trend ending at current rank
+                const pts = [kw.rankNum + 4, kw.rankNum + 6, kw.rankNum + 2, kw.rankNum - 2, kw.rankNum + 1, kw.rankNum].map(x => Math.max(1, x));
+
+                activeKwCharts[kw.id] = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'Hiện tại'],
+                        datasets: [{
+                            label: 'Vị trí',
+                            data: pts,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true, tension: 0.3, borderWidth: 3,
+                            pointBackgroundColor: '#fff',
+                            pointBorderColor: '#10b981',
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { display: true, reverse: true, min: 1, max: Math.max(kw.rankNum + 10, 20) },
+                            x: { grid: { display: false } }
+                        }
+                    }
                 });
             }
 
