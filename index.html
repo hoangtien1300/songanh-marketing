@@ -1649,6 +1649,16 @@
                 const activeNav = document.querySelector(`.nav-item[data-target="${targetId}"]`);
                 if (activeNav) activeNav.classList.add('nav-active');
 
+                // Active State Styling Update
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('bg-gray-100', 'text-gray-900', 'font-semibold');
+                    nav.classList.add('text-gray-600');
+                });
+                if (activeNav) {
+                    activeNav.classList.remove('text-gray-600');
+                    activeNav.classList.add('bg-gray-100', 'text-gray-900', 'font-semibold');
+                }
+
                 // Special Initializations
                 if (targetId === 'view-gsc') {
                     initGscReport();
@@ -1664,30 +1674,15 @@
                 }
             }
             
-                // Active State Styling Update
-                document.querySelectorAll('.nav-item').forEach(nav => {
-                    nav.classList.remove('bg-gray-100', 'text-gray-900');
-                    nav.classList.add('text-gray-600');
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    const target = item.getAttribute('data-target');
+                    if (target) {
+                        e.preventDefault();
+                        switchView(target);
+                    }
                 });
-                if (activeNav) {
-                    activeNav.classList.remove('text-gray-600');
-                    activeNav.classList.add('bg-gray-100', 'text-gray-900', 'font-semibold');
-                }
-            }
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.addEventListener('click', (e) => {
-                        const target = item.getAttribute('data-target');
-                        if (target) {
-                            e.preventDefault();
-                            switchView(target);
-                            // Close sidebar on mobile after selection
-                            if (window.innerWidth < 1024) {
-                                toggleSidebar();
-                            }
-                        }
-                    });
-                });
-
+            });
             // --- SECTOR TABS (OVERVIEW) ---
             const sectorTabs = document.querySelectorAll('.sector-tab');
             const sectorViews = {
