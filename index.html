@@ -87,52 +87,13 @@
                 display: block;
             }
         }
-        
-        /* Desktop Sidebar Collapse */
-        @media (min-width: 1024px) {
-            #sidebar.collapsed {
-                width: 5rem !important; /* w-20 */
-                align-items: center;
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-            }
-            #sidebar.collapsed .nav-item span.mr-3 {
-                margin-right: 0 !important;
-                font-size: 1.25rem;
-            }
-            #sidebar.collapsed .nav-item {
-                justify-content: center;
-                padding-left: 0;
-                padding-right: 0;
-            }
-            #sidebar.collapsed .nav-text, 
-            #sidebar.collapsed .nav-divider-text,
-            #sidebar.collapsed .version-text {
-                display: none;
-            }
-            .sidebar-toggle-btn {
-                position: absolute;
-                top: 1.5rem;
-                right: -0.75rem;
-                background: white;
-                border: 1px solid #e5e7eb;
-                border-radius: 50%;
-                width: 1.5rem;
-                height: 1.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-                z-index: 50;
-            }
-            .sidebar-toggle-btn:hover {
-                background: #f9fafb;
-            }
-            #sidebar.collapsed .sidebar-toggle-btn {
-                transform: rotate(180deg);
-                right: -0.75rem;
-            }
+        /* Hide horizontal scrollbar for top nav but allow scrolling */
+        #top-nav::-webkit-scrollbar {
+            display: none;
+        }
+        #top-nav {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -143,12 +104,6 @@
     <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-2 flex flex-row justify-between items-center">
             <div class="flex items-center space-x-3">
-                <!-- Mobile Menu Toggle -->
-                <button id="menu-toggle" class="lg:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors mr-1">
-                    <svg class="w-6 h-6 text-sa-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
                 <img src="logo-songanh.png" alt="Logo" class="h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded">
                 <div>
                     <h1 class="text-sm sm:text-base font-bold tracking-wider uppercase text-sa-gold">Song Anh <span class="text-white hidden sm:inline">Marketing</span></h1>
@@ -162,58 +117,31 @@
         </div>
     </header>
 
-    <!-- Sidebar Overlay (Mobile only) -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[55] hidden transition-opacity duration-300"></div>
-
-    <div class="flex flex-col lg:flex-row flex-1 w-full mx-auto items-start relative box-border">
+    <div class="flex flex-col flex-1 w-full mx-auto items-start relative box-border">
         
-        <!-- Sidebar Navigation -->
-        <aside id="sidebar" class="fixed lg:sticky top-0 lg:top-[70px] left-0 h-full lg:h-[calc(100vh-70px)] w-64 bg-white lg:bg-[#f9fafb] z-[60] lg:z-40 border-r border-gray-200 lg:border-none px-6 py-8 flex-shrink-0 flex flex-col closed lg:transform-none transition-all duration-300 relative">
-            
-            <button id="desktop-sidebar-toggle" class="hidden lg:flex sidebar-toggle-btn text-gray-500">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            </button>
-
-            <div class="lg:hidden flex items-center justify-between mb-8">
-                <h2 class="text-lg font-bold text-sa-gold uppercase nav-text">Menu</h2>
-                <button id="close-sidebar" class="p-2 text-gray-500 hover:text-gray-900">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <nav class="flex flex-col space-y-2 font-medium hide-scrollbar flex-grow w-full relative" id="sidebar-nav">
-                <a href="#" data-target="view-overview" title="Tổng quan" class="nav-item nav-active flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 flex justify-center">📊</span> <span class="nav-text">Tổng quan</span>
+        <!-- Top Navigation -->
+        <aside id="top-nav-container" class="sticky top-[58px] sm:top-[60px] w-full bg-white z-[40] border-b border-gray-200 px-4 py-2 sm:py-3 shadow-sm">
+            <nav class="flex flex-row space-x-2 sm:space-x-4 font-medium overflow-x-auto items-center whitespace-nowrap hide-scrollbar" id="top-nav">
+                <a href="#" data-target="view-overview" title="Tổng quan" class="nav-item nav-active flex items-center px-4 py-2 text-sm rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">📊</span> <span class="nav-text">Tổng quan</span>
                 </a>
-                <a href="#" data-target="view-keyword" title="Thứ hạng từ khóa" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 flex justify-center">📈</span> <span class="nav-text">Thứ hạng từ khóa</span>
+                <a href="#" data-target="view-keyword" title="Thứ hạng từ khóa" class="nav-item flex items-center px-4 py-2 text-sm rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">📈</span> <span class="nav-text">Thứ hạng từ khóa</span>
                 </a>
-                <!-- <a href="#" data-target="view-gsc" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 text-center">🔍</span> Google Search Console
-                </a> -->
-                <a href="#" data-target="view-updating" title="Google Analytics" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 flex justify-center">🌐</span> <span class="nav-text">Google Analytics</span>
+                <a href="#" data-target="view-updating" title="Google Analytics" class="nav-item flex items-center px-4 py-2 text-sm rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">🌐</span> <span class="nav-text">Analytics</span>
                 </a>
-                <a href="#" data-target="view-updating" title="Google Business Profile" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 flex justify-center">📍</span> <span class="nav-text">Google Business Profile</span>
+                <a href="#" data-target="view-updating" title="Google Business Profile" class="nav-item flex items-center px-4 py-2 text-sm rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">📍</span> <span class="nav-text">Google Bus.</span>
                 </a>
-                <a href="#" data-target="view-facebook" title="Facebook" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
-                    <span class="mr-3 text-lg w-6 flex justify-center">📱</span> <span class="nav-text">Facebook</span>
+                <a href="#" data-target="view-facebook" title="Facebook" class="nav-item flex items-center px-4 py-2 text-sm rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">📱</span> <span class="nav-text">Facebook</span>
                 </a>
-                
-                <div class="pt-4 mt-4 border-t border-gray-100">
-                    <a href="#" data-target="view-archive" title="Văn thư lưu trữ" class="nav-item flex items-center px-4 py-3 text-sm rounded-xl text-gray-500 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200">
-                        <span class="mr-3 text-lg w-6 flex justify-center">📂</span> <span class="nav-text">Văn thư lưu trữ</span>
-                    </a>
-                </div>
+                <div class="h-6 w-px bg-gray-200 mx-1"></div>
+                <a href="#" data-target="view-archive" title="Văn thư lưu trữ" class="nav-item flex items-center px-4 py-2 text-sm rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-900 transition-all duration-200">
+                    <span class="mr-2 text-base text-center">📂</span> <span class="nav-text">Lưu trữ</span>
+                </a>
             </nav>
-            
-            <div class="mt-auto pt-6 border-t border-gray-100 version-text">
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Phiên bản 2.6</p>
-                <p class="text-[9px] text-gray-400 mt-1">© 2026 Song Anh Marketing</p>
-            </div>
         </aside>
 
         <!-- Main Content -->
@@ -228,13 +156,7 @@
                 <h2 class="inline-block text-xl sm:text-2xl lg:text-3xl font-extrabold text-gray-900 uppercase tracking-wide">TỔNG QUAN SỐ LIỆU MARKETING</h2>
                 <p class="text-gray-600 text-sm sm:text-base mt-2 font-medium">Bảng tóm tắt số liệu tổng hợp các kênh</p>
             </div>
-            
-            <!-- Sector Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6 mb-2" id="sector-tabs">
-                <button data-sector="mohinh" class="sector-tab px-5 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-sa-gold bg-sa-gold text-white shadow-md transition-all whitespace-nowrap">Mô hình</button>
-                <button data-sector="thuongmai" class="sector-tab px-5 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 bg-white shadow-sm transition-all whitespace-nowrap">Thương mại</button>
-                <button data-sector="golf" class="sector-tab px-5 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base border-2 border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700 bg-white shadow-sm transition-all whitespace-nowrap">Golf</button>
-            </div>
+        </section>
 </section>
 
           <div id="sector-view-mohinh" class="space-y-8 sm:space-y-12 block">
@@ -1700,25 +1622,8 @@
                 'view-updating': document.getElementById('view-updating')
             };
 
-            // --- RESPONSIVE SIDEBAR TOGGLE ---
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            const menuToggle = document.getElementById('menu-toggle');
-            const closeSidebar = document.getElementById('close-sidebar');
+            // No sidebar overlay needed, nav is top
 
-            function toggleSidebar() {
-                if (window.innerWidth < 1024) {
-                    sidebar.classList.toggle('closed');
-                    sidebar.classList.toggle('open');
-                    overlay.classList.toggle('hidden');
-                    overlay.classList.toggle('visible');
-                    document.body.classList.toggle('overflow-hidden');
-                }
-            }
-
-            if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
-            if (closeSidebar) closeSidebar.addEventListener('click', toggleSidebar);
-            if (overlay) overlay.addEventListener('click', toggleSidebar);
 
             function switchView(targetId) {
                 // Hide all main views
@@ -1759,12 +1664,15 @@
                 }
             }
             
-            // --- DESKTOP SIDEBAR TOGGLE ---
-            const desktopToggleBtn = document.getElementById('desktop-sidebar-toggle');
-            if (desktopToggleBtn) {
-                desktopToggleBtn.addEventListener('click', () => {
-                    sidebar.classList.toggle('collapsed');
+                // Active State Styling Update
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('bg-gray-100', 'text-gray-900');
+                    nav.classList.add('text-gray-600');
                 });
+                if (activeNav) {
+                    activeNav.classList.remove('text-gray-600');
+                    activeNav.classList.add('bg-gray-100', 'text-gray-900', 'font-semibold');
+                }
             }
                 document.querySelectorAll('.nav-item').forEach(item => {
                     item.addEventListener('click', (e) => {
