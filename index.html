@@ -166,29 +166,28 @@
             
             <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm w-full overflow-x-auto hide-scrollbar mb-6">
                 <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800" data-site="kw1">mohinhkientruc.org</button>
-                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100" data-site="kw2">architecturalmodel.org</button>
-                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100" data-site="kw3">mohinhsonganh.com</button>
+                <span class="whitespace-nowrap px-3 py-1.5 text-[10px] sm:text-[11px] text-amber-600 italic flex items-center bg-amber-50/50 rounded-md border border-amber-100 cursor-not-allowed">⚠️ Đang cập nhật architecturalmodel.org và mohinhsonganh.com do ưu tiên hoàn chỉnh website mohinhkientruc.org trước</span>
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-slate-700 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Tổng Từ Khóa</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-slate-900 kw-val" id="kw-total">0</h3></div>
+                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-slate-900 kw-val kw-total">0</h3></div>
                 </div>
                 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-amber-500 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-amber-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 3</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val" id="kw-top3">0</h3></div>
+                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3></div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-blue-500 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 10</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val" id="kw-top10">0</h3></div>
+                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3></div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-emerald-500 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-1">Vị Trí Cải Thiện</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-emerald-500 kw-val" id="kw-up">0</h3></div>
+                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-emerald-500 kw-val kw-up">0</h3></div>
                 </div>
             </div>
         </section>
@@ -662,7 +661,28 @@
                     </div>
                 </div>
 
-                <div class="p-6 overflow-x-auto hide-scrollbar">
+                <div class="px-6 sm:px-8 py-6 pb-2">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-gray-50 rounded-xl border border-gray-200 p-4 border-t-4 border-slate-700">
+                            <p class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Tổng Từ Khóa</p>
+                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-slate-900 kw-val kw-total">0</h3></div>
+                        </div>
+                        <div class="bg-amber-50 rounded-xl border border-amber-100 p-4 border-t-4 border-amber-500">
+                            <p class="text-[10px] sm:text-xs text-amber-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 3</p>
+                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3></div>
+                        </div>
+                        <div class="bg-blue-50 rounded-xl border border-blue-100 p-4 border-t-4 border-blue-500">
+                            <p class="text-[10px] sm:text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 10</p>
+                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3></div>
+                        </div>
+                        <div class="bg-emerald-50 rounded-xl border border-emerald-100 p-4 border-t-4 border-emerald-500">
+                            <p class="text-[10px] sm:text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-1">Vị Trí Cải Thiện</p>
+                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-emerald-500 kw-val kw-up">0</h3></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 pt-2 overflow-x-auto hide-scrollbar">
                     <table class="w-full text-left border-collapse min-w-[800px]">
                         <thead>
                             <tr class="text-[10px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">
@@ -1165,18 +1185,18 @@
 
         function renderKeywordData(dataArray, siteId) {
             if (siteId === 'kw2' || siteId === 'kw3') {
-                document.getElementById('kw-total').innerText = 'Đang build';
-                document.getElementById('kw-top3').innerText = 'Đang build';
-                document.getElementById('kw-top10').innerText = 'Đang build';
-                document.getElementById('kw-up').innerText = 'Đang build';
+                document.querySelectorAll('.kw-total').forEach(el => el.innerText = 'Đang build');
+                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = 'Đang build');
+                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = 'Đang build');
+                document.querySelectorAll('.kw-up').forEach(el => el.innerText = 'Đang build');
                 return;
             }
 
             if (!dataArray || dataArray.length === 0) {
-                document.getElementById('kw-total').innerText = '0';
-                document.getElementById('kw-top3').innerText = '0';
-                document.getElementById('kw-top10').innerText = '0';
-                document.getElementById('kw-up').innerText = '0%';
+                document.querySelectorAll('.kw-total').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-up').forEach(el => el.innerText = '0%');
                 return;
             }
 
@@ -1207,12 +1227,12 @@
                 if (r_t0 < r_t1) keywordsUp++;
             });
 
-            document.getElementById('kw-total').innerText = m_total;
-            document.getElementById('kw-top3').innerText = m_top3_t0;
-            document.getElementById('kw-top10').innerText = m_top10_t0;
+            document.querySelectorAll('.kw-total').forEach(el => el.innerText = m_total);
+            document.querySelectorAll('.kw-top3').forEach(el => el.innerText = m_top3_t0);
+            document.querySelectorAll('.kw-top10').forEach(el => el.innerText = m_top10_t0);
             
             let rateUp = m_total > 0 ? ((keywordsUp / m_total)*100).toFixed(1) : 0;
-            document.getElementById('kw-up').innerText = rateUp + '%';
+            document.querySelectorAll('.kw-up').forEach(el => el.innerText = rateUp + '%');
         }
 
         const reportData = {
@@ -2128,10 +2148,10 @@
                 const currentGid = siteGids[siteId];
                 
                 // Reset Summary Cards immediately
-                document.getElementById('kw-total').innerText = '0';
-                document.getElementById('kw-top3').innerText = '0';
-                document.getElementById('kw-top10').innerText = '0';
-                document.getElementById('kw-up').innerText = '0';
+                document.querySelectorAll('.kw-total').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-up').forEach(el => el.innerText = '0');
 
                 if (currentGid.startsWith('MOCK')) {
                     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang chờ kết nối dữ liệu cho website này từ GS Song Anh...</td></tr>';
@@ -2208,10 +2228,10 @@
                         renderKeywordTable(keywords);
                         
                         // Update Summary Cards
-                        document.getElementById('kw-total').innerText = totalKw;
-                        document.getElementById('kw-top3').innerText = top3;
-                        document.getElementById('kw-top10').innerText = top10;
-                        document.getElementById('kw-up').innerText = Math.floor(totalKw * 0.1); 
+                        document.querySelectorAll('.kw-total').forEach(el => el.innerText = totalKw);
+                        document.querySelectorAll('.kw-top3').forEach(el => el.innerText = top3);
+                        document.querySelectorAll('.kw-top10').forEach(el => el.innerText = top10);
+                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = Math.floor(totalKw * 0.1)); 
 
                     }
                 });
