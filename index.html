@@ -164,12 +164,17 @@
         <section id="keyword-summary">
             <h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-4 border-l-4 border-green-500 pl-3 uppercase">THỨ HẠNG TỪ KHÓA SEO</h2>
             
-            <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm w-full overflow-x-auto hide-scrollbar mb-6">
-                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800" data-site="kw1">mohinhkientruc.org</button>
-                <span class="whitespace-nowrap px-3 py-1.5 text-[10px] sm:text-[11px] text-amber-600 italic flex items-center bg-amber-50/50 rounded-md border border-amber-100 cursor-not-allowed">⚠️ Đang cập nhật architecturalmodel.org và mohinhsonganh.com do ưu tiên hoàn chỉnh website mohinhkientruc.org trước</span>
+            <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm w-full overflow-x-auto hide-scrollbar mb-4">
+                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800 focus:outline-none" data-site="kw1">mohinhkientruc.org</button>
+                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw2">architecturalmodel.org</button>
+                <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw3">mohinhsonganh.com</button>
+            </div>
+            
+            <div class="kw-warning-msg hidden mb-6 p-4 bg-amber-50 rounded-xl border border-amber-200 text-amber-700 italic text-sm font-medium text-center shadow-sm">
+                ⚠️ Đang cập nhật do đang hoàn chỉnh giao diện và kế hoạch website mohinhkientruc.org trước
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="kw-data-container grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-slate-700 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Tổng Từ Khóa</p>
                     <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-slate-900 kw-val kw-total">0</h3></div>
@@ -661,7 +666,18 @@
                     </div>
                 </div>
 
-                <div class="px-6 sm:px-8 py-6 pb-2">
+                                <div class="px-6 sm:px-8 pt-6 pb-2">
+                    <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm w-full overflow-x-auto hide-scrollbar mb-2">
+                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800 focus:outline-none" data-site="kw1">mohinhkientruc.org</button>
+                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw2">architecturalmodel.org</button>
+                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw3">mohinhsonganh.com</button>
+                    </div>
+                    <div class="kw-warning-msg hidden mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200 text-amber-700 italic text-sm font-medium text-center shadow-sm">
+                        ⚠️ Đang cập nhật do đang hoàn chỉnh giao diện và kế hoạch website mohinhkientruc.org trước
+                    </div>
+                </div>
+
+                <div class="kw-data-container px-6 sm:px-8 py-2 pb-2">
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="bg-gray-50 rounded-xl border border-gray-200 p-4 border-t-4 border-slate-700">
                             <p class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider mb-1">Tổng Từ Khóa</p>
@@ -682,7 +698,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 pt-2 overflow-x-auto hide-scrollbar">
+                <div class="kw-data-container p-6 pt-2 overflow-x-auto hide-scrollbar">
                     <table class="w-full text-left border-collapse min-w-[800px]">
                         <thead>
                             <tr class="text-[10px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100">
@@ -1184,12 +1200,19 @@
         }
 
         function renderKeywordData(dataArray, siteId) {
+            // Hiển thị/Ẩn thông báo hoặc Dữ liệu
             if (siteId === 'kw2' || siteId === 'kw3') {
+                document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.remove('hidden'));
+                document.querySelectorAll('.kw-data-container').forEach(el => el.classList.add('hidden'));
+                
                 document.querySelectorAll('.kw-total').forEach(el => el.innerText = 'Đang build');
                 document.querySelectorAll('.kw-top3').forEach(el => el.innerText = 'Đang build');
                 document.querySelectorAll('.kw-top10').forEach(el => el.innerText = 'Đang build');
                 document.querySelectorAll('.kw-up').forEach(el => el.innerText = 'Đang build');
                 return;
+            } else {
+                document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.kw-data-container').forEach(el => el.classList.remove('hidden'));
             }
 
             if (!dataArray || dataArray.length === 0) {
