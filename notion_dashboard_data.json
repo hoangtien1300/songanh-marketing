@@ -1,5 +1,6 @@
 [
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -16,6 +17,7 @@
         "Bắt đầu": "2025-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Định kỳ lọc hình ảnh",
@@ -24,6 +26,7 @@
         "id": "19a4b5e7-3d90-8032-bd40-eadd794fabc1"
     },
     {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -32,8 +35,10 @@
         "Ghi chú": "Duy trì ít nhất 1 bài/ tuần",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-21T19:00:00.000+07:00",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-23",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -42,16 +47,18 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 1,
         "Tên công việc": "[Post Fanpage] Architectural Model Org",
         "Lặp lại": [
-            "Thứ 3"
+            "Thứ 5"
         ],
         "Kênh": [],
         "id": "19a4b5e7-3d90-8092-afbd-de039a4779ec"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -75,6 +82,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Mô hình",
@@ -90,13 +98,16 @@
         "id": "19a4b5e7-3d90-80b7-b91a-e9141f6ce7df"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
         "Ghi chú": "Post duy trì vào 11:30.",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [],
@@ -106,6 +117,7 @@
         "Bắt đầu": "2025-02-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Fanpage Thiết kế sân golf Song Anh | Post link thietkegolf.com",
@@ -116,6 +128,7 @@
         "id": "19a4b5e7-3d90-80d6-943c-cec33e272666"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -130,6 +143,7 @@
         "Bắt đầu": "2025-02-14",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm hồ sơ thanh toán Sơn Kim Land",
@@ -138,6 +152,7 @@
         "id": "19a4b5e7-3d90-80f9-b2ee-e9f9b1ef00b3"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -154,6 +169,7 @@
         "Bắt đầu": "2025-02-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Chạy quảng cáo Golf",
@@ -162,6 +178,7 @@
         "id": "19b4b5e7-3d90-809a-8a73-f2a680401d8f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -185,6 +202,7 @@
         "Bắt đầu": "2025-02-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tuyển dụng nhân sự",
@@ -193,6 +211,7 @@
         "id": "19c4b5e7-3d90-8054-9097-ee4060ff83a1"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [
@@ -209,6 +228,7 @@
         "Bắt đầu": "2025-02-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Giải chi công ty",
@@ -219,6 +239,7 @@
         "id": "19d4b5e7-3d90-803e-a69e-c02c35f46d68"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -235,6 +256,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm ISO kỹ thuật mô hình",
@@ -243,6 +265,7 @@
         "id": "19d4b5e7-3d90-8061-89a2-de32d0d7df29"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -261,6 +284,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Golf",
@@ -272,6 +296,7 @@
         "id": "1a04b5e7-3d90-8033-b0c0-ddc1162f8d3c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -290,6 +315,7 @@
         "Bắt đầu": "2025-02-20",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Flex | Golf",
@@ -302,6 +328,7 @@
         "id": "1a04b5e7-3d90-803d-bb86-d50367f62690"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -316,6 +343,7 @@
         "Bắt đầu": "2025-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật bảng khai các tên miền",
@@ -324,6 +352,7 @@
         "id": "1a24b5e7-3d90-8029-804c-cfc70a2bc93a"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -337,6 +366,7 @@
         "Lĩnh vực": [],
         "mục con": [
             "3114b5e7-3d90-80d7-a183-d2691f39b0b9",
+            "3494b5e7-3d90-80c4-a920-d03f3494b61e",
             "1a74b5e7-3d90-8010-8bdc-ff4ec4ae0106",
             "2644b5e7-3d90-8074-83fa-cd3d23de302c",
             "25e4b5e7-3d90-80a7-9cde-d463ca809955"
@@ -347,6 +377,7 @@
         "Bắt đầu": "2025-02-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website mohinhkientruc.org",
@@ -355,6 +386,7 @@
         "id": "1a44b5e7-3d90-8027-b3c0-e987cbb91fb0"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Chưa lên lịch",
         "Vai trò": [],
         "Người theo": [],
@@ -371,6 +403,7 @@
         "Bắt đầu": "2026-02-26",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Update profile thiết kế mô hình cho Sale",
@@ -379,6 +412,7 @@
         "id": "1a44b5e7-3d90-80a0-95ff-d8591cab5bd4"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [
@@ -397,6 +431,7 @@
         "Bắt đầu": "2025-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật kho trong ngày",
@@ -411,6 +446,7 @@
         "id": "1a44b5e7-3d90-80d4-b099-ddae90bf3b18"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -429,6 +465,7 @@
         "Bắt đầu": "2025-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website thietkegolf.com",
@@ -440,6 +477,7 @@
         "id": "1a44b5e7-3d90-80dc-b8a0-efee2db5bbc0"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -454,6 +492,7 @@
         "Bắt đầu": "2025-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Mua vít tu lê mới cho phòng sơn",
@@ -462,6 +501,7 @@
         "id": "1a44b5e7-3d90-80df-b0cd-ef70b7970306"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -476,6 +516,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật từ khóa theo link website mohinhkientruc",
@@ -484,6 +525,7 @@
         "id": "1a54b5e7-3d90-801c-b566-c93f4c06e55f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -502,6 +544,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đăng bài | Dự án mới | mohinhkientruc",
@@ -512,6 +555,7 @@
         "id": "1a74b5e7-3d90-8010-8bdc-ff4ec4ae0106"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -528,6 +572,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Watermark | mohinhkientruc | Hình ảnh dự án",
@@ -542,6 +587,7 @@
         "id": "1a74b5e7-3d90-801d-8f69-f5b07841764d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -563,6 +609,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Chấm công",
@@ -573,6 +620,7 @@
         "id": "1a74b5e7-3d90-80b0-b615-fd5e4e4c96f9"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -589,6 +637,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Trình giá thầu kỹ thuật",
@@ -599,6 +648,7 @@
         "id": "1a84b5e7-3d90-8010-a60d-ca0792849852"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -615,6 +665,7 @@
         "Bắt đầu": "2025-03-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Update file chấm công tự động",
@@ -623,6 +674,7 @@
         "id": "1a94b5e7-3d90-8081-b5a7-c439fcd0fac1"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -632,7 +684,7 @@
         "Link": "",
         "Kết thúc": null,
         "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-13",
+        "Nhắc hẹn": "2026-04-22",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -641,9 +693,10 @@
         "Bắt đầu": "2026-03-09",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
-        "Tên công việc": "CHECK THỨ HẠNG TỪ KHÓA",
+        "Tên công việc": "CHECK THỨ HẠNG TỪ KHÓA SEO",
         "Lặp lại": [
             "Thứ 2",
             "Thứ 3",
@@ -656,6 +709,7 @@
         "id": "1a94b5e7-3d90-80f2-8224-f616eb9fffab"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -670,6 +724,7 @@
         "Bắt đầu": "2025-03-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tổng hợp công nợ phải Thu cho chị Hoa",
@@ -678,6 +733,7 @@
         "id": "1ab4b5e7-3d90-800a-bba1-dabff5c9d4a2"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -692,6 +748,7 @@
         "Bắt đầu": "2025-03-07",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Check lại hồ sơ thanh toán bên KH Land - Anh Nhã",
@@ -700,6 +757,7 @@
         "id": "1ab4b5e7-3d90-800f-bc1e-f7ac92744d3a"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -714,6 +772,7 @@
         "Bắt đầu": "2025-03-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nhập kho sơn số lượng lớn đầu tháng",
@@ -722,6 +781,7 @@
         "id": "1ab4b5e7-3d90-8028-b1c3-db8ce90ac35e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -736,6 +796,7 @@
         "Bắt đầu": "2025-03-11",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nhập vít tu lê riêng cho mỗi nhóm",
@@ -744,6 +805,7 @@
         "id": "1ab4b5e7-3d90-8034-bea7-d3ffbf6d4f5f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -758,6 +820,7 @@
         "Bắt đầu": "2025-03-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm website mohinhsonganh.com",
@@ -773,6 +836,7 @@
         "id": "1ab4b5e7-3d90-809d-b6d3-ecf987fa21cf"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -789,6 +853,7 @@
         "Bắt đầu": "2025-03-03",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm ISO kỹ thuật - Mô hình",
@@ -797,6 +862,7 @@
         "id": "1ab4b5e7-3d90-80cc-a032-db8f41edb221"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -811,6 +877,7 @@
         "Bắt đầu": "2025-03-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nội quy công ty",
@@ -819,6 +886,7 @@
         "id": "1ac4b5e7-3d90-808e-8091-d0882c4f1f4e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -833,6 +901,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tăng giá thầu Vũng Áng thêm 2 triệu",
@@ -841,6 +910,7 @@
         "id": "1b24b5e7-3d90-80e7-ba0c-f2dbcd6e55af"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [
@@ -859,6 +929,7 @@
         "Bắt đầu": "2025-03-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Chấm công nhân viên Parttime",
@@ -869,6 +940,7 @@
         "id": "1ba4b5e7-3d90-800f-84bc-e24f6cf78ac8"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Theo dõi",
         "Vai trò": [],
         "Người theo": [
@@ -885,6 +957,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đăng kiểm xe Đen ",
@@ -893,6 +966,7 @@
         "id": "1ba4b5e7-3d90-801e-82f0-f46d6bb41c54"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [],
@@ -912,6 +986,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Quản lý kho",
@@ -922,6 +997,7 @@
         "id": "1bc4b5e7-3d90-808d-ba3b-e618b8759269"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -938,6 +1014,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "QUẢN LÝ DỤNG CỤ - THIẾT BỊ",
@@ -948,6 +1025,7 @@
         "id": "1bc4b5e7-3d90-80a8-a122-f9fae17da21b"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -962,6 +1040,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật link website lammohinh.vn vào sản phẩm",
@@ -970,6 +1049,7 @@
         "id": "1c14b5e7-3d90-8061-a536-dfc7d0ddac1f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -988,6 +1068,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Website] Dự án mới | architecturalmodel",
@@ -998,6 +1079,7 @@
         "id": "1c34b5e7-3d90-80ae-befc-ddadb633e53d"
     },
     {
+        "% công việc": 1,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -1006,8 +1088,10 @@
         "Ghi chú": "Duy trì ít nhất 3 bài/ tuần\n",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-20",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-27",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -1016,6 +1100,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 1,
         "Người theo (chưa có Acc)": [],
         "KPI": 1,
         "Tên công việc": "[Post FB Fanpage] Mô hình kiến trúc Song Anh",
@@ -1026,6 +1111,7 @@
         "id": "1c34b5e7-3d90-80b8-9bd5-f34d0dc1538e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -1042,6 +1128,7 @@
         "Bắt đầu": "2025-03-31",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "CẬP NHẬT LINK WEBSITE VATLIEUMOHINH.COM",
@@ -1056,6 +1143,7 @@
         "id": "1c74b5e7-3d90-80b9-a761-f975f371b426"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -1072,6 +1160,7 @@
         "Bắt đầu": "2025-03-31",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Test đèn mô hình",
@@ -1080,6 +1169,7 @@
         "id": "1cf4b5e7-3d90-804f-a57c-e0b9e32cd36e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -1096,6 +1186,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Liên hệ đơn vị in quy hiệu logo công ty",
@@ -1104,6 +1195,7 @@
         "id": "1d64b5e7-3d90-80be-ab30-c56f78f6414f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1120,6 +1212,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Mua 2 cuốn sách Lão Tử - Mưu lược tung hoành",
@@ -1128,6 +1221,7 @@
         "id": "1d84b5e7-3d90-804e-a77c-f77a5fa0f952"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -1142,6 +1236,7 @@
         "Bắt đầu": "2025-04-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật hình ảnh sản phẩm trên hệ thống",
@@ -1150,6 +1245,7 @@
         "id": "1e04b5e7-3d90-808e-a207-ccf9bc5e9d88"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1166,6 +1262,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nhập cây nhựa mô hình",
@@ -1174,6 +1271,7 @@
         "id": "1ed4b5e7-3d90-80d3-b47d-c48b2cc3a247"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [],
@@ -1190,6 +1288,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Hoàn thành bộ Salekit mô hình",
@@ -1198,6 +1297,7 @@
         "id": "1f14b5e7-3d90-80a1-8fa4-d7ccbef48cea"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1214,6 +1314,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Lấy sao kê ngân hàng Eximbank và Seabank",
@@ -1222,6 +1323,7 @@
         "id": "1f24b5e7-3d90-801c-9ed7-db87352fd4c8"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1238,6 +1340,7 @@
         "Bắt đầu": "2025-05-13",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm con dấu mộc đỏ cho chị Thủy",
@@ -1246,6 +1349,7 @@
         "id": "1f24b5e7-3d90-8053-8bb0-fc8408c217dc"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -1254,7 +1358,9 @@
         "Ghi chú": "Nghiên cứu còn chậm quá",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [],
@@ -1262,6 +1368,7 @@
         "Bắt đầu": "2025-05-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nghiên cứu Tool Automation - Make.com",
@@ -1270,6 +1377,7 @@
         "id": "1fd4b5e7-3d90-8078-aece-c0603de0071c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [],
@@ -1286,6 +1394,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Hỗ trợ làm dự án mô hình",
@@ -1294,6 +1403,7 @@
         "id": "2054b5e7-3d90-8014-909b-cdf6577c813d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1308,6 +1418,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Theo dõi Làm xưởng chồi gỗ",
@@ -1316,6 +1427,7 @@
         "id": "2064b5e7-3d90-80d9-9b66-c5f2ef638594"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -1334,6 +1446,7 @@
         "Bắt đầu": "2025-06-09",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Song Anh Marketing | Mô hình",
@@ -1345,6 +1458,7 @@
         "id": "20e4b5e7-3d90-801f-aebe-ce2b5eb4636c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -1361,6 +1475,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Thiết kế Profile cho trường học và bệnh viện",
@@ -1369,6 +1484,7 @@
         "id": "20f4b5e7-3d90-80d4-a645-c378765adb93"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [
@@ -1394,6 +1510,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 4,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh",
@@ -1406,6 +1523,7 @@
         "id": "20f4b5e7-3d90-80ed-86d5-e537e2d4d645"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -1414,7 +1532,9 @@
         "Ghi chú": "Chưa duy trì được, tạm hoãn để sắp xếp",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -1428,6 +1548,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Facebook Profile Mô hình Song Anh",
@@ -1436,6 +1557,7 @@
         "id": "2104b5e7-3d90-809f-a7e0-e1518a8c8213"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -1456,6 +1578,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "✍️ [Create Post] Cập nhật tin tức | Mô hình",
@@ -1466,6 +1589,7 @@
         "id": "2104b5e7-3d90-80f9-8819-d3feb93bd64d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -1482,6 +1606,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tuyển 5 bạn sinh viên chuyên làm cây",
@@ -1490,6 +1615,7 @@
         "id": "2114b5e7-3d90-8094-8711-f231e4f7dc41"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -1506,6 +1632,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Watermark | architecturalmodel | Hình ảnh dự án",
@@ -1514,6 +1641,7 @@
         "id": "2164b5e7-3d90-807a-a1eb-ef84330be1b7"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1530,6 +1658,7 @@
         "Bắt đầu": "2025-06-19",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật link website thietkegolf.com",
@@ -1544,6 +1673,7 @@
         "id": "2174b5e7-3d90-80d3-a197-c8747aadbd66"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -1560,6 +1690,7 @@
         "Bắt đầu": "2025-06-26",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật danh sách dự án",
@@ -1572,6 +1703,7 @@
         "id": "21e4b5e7-3d90-8044-8556-e4825777d3d2"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -1590,6 +1722,7 @@
         "Bắt đầu": "2025-06-26",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Ads Google | Website mohinhsonganh.com",
@@ -1598,6 +1731,7 @@
         "id": "21e4b5e7-3d90-80b4-afab-f5ddfc355073"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -1619,6 +1753,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website architecturalmodel.org",
@@ -1629,6 +1764,7 @@
         "id": "21f4b5e7-3d90-806e-afe6-f4c4c1d08033"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1645,6 +1781,7 @@
         "Bắt đầu": "2025-07-07",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đề xuất máy 3d làm cây",
@@ -1653,6 +1790,7 @@
         "id": "2224b5e7-3d90-80a4-89a1-e94ea848207d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -1669,6 +1807,7 @@
         "Bắt đầu": "2025-06-30",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Sơn người mô hình",
@@ -1677,6 +1816,7 @@
         "id": "2224b5e7-3d90-80f7-9291-ef6cf7bda0e0"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -1695,6 +1835,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm người mô hình tồn kho",
@@ -1703,6 +1844,7 @@
         "id": "2274b5e7-3d90-8062-99b2-f74ef78a69b5"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -1719,6 +1861,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "BÁO CÁO CÔNG VIỆC TUẦN",
@@ -1729,6 +1872,7 @@
         "id": "22e4b5e7-3d90-805b-82df-d221bc077348"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -1750,6 +1894,7 @@
         "Bắt đầu": "2025-07-17",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website mohinhsonganh.com",
@@ -1760,6 +1905,7 @@
         "id": "2334b5e7-3d90-809c-a653-c3c445965096"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1774,6 +1920,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Hỗ trợ làm nhà gỗ",
@@ -1782,6 +1929,7 @@
         "id": "2384b5e7-3d90-80aa-a715-f45435b7f6f7"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -1798,6 +1946,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Hàn đèn LED",
@@ -1806,6 +1955,7 @@
         "id": "23e4b5e7-3d90-8091-be3f-f22dab1b42b7"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [
@@ -1824,6 +1974,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nhắc nhở thời gian đúng giờ",
@@ -1832,6 +1983,7 @@
         "id": "2454b5e7-3d90-8036-860f-cb684a2b559f"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -1850,6 +2002,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đặt thêm đồng phục",
@@ -1858,6 +2011,7 @@
         "id": "2454b5e7-3d90-8043-8145-dcc25e99c7e8"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Giao việc",
         "Vai trò": [],
         "Người theo": [],
@@ -1874,6 +2028,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm file điều lệnh sản xuất cho mỗi dự án.",
@@ -1882,6 +2037,7 @@
         "id": "2454b5e7-3d90-8069-a1f7-e1d8fe5c68e8"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Giao việc",
         "Vai trò": [],
         "Người theo": [],
@@ -1898,6 +2054,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Mua màn hình Led view công việc",
@@ -1906,6 +2063,7 @@
         "id": "2454b5e7-3d90-80b5-a9ac-d995e24d2dce"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -1926,6 +2084,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tạo video tin tức | Mô hình",
@@ -1934,6 +2093,7 @@
         "id": "2494b5e7-3d90-805d-ac0f-dd2d7e3140f9"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -1950,6 +2110,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đo số đo vòng để đặt áo",
@@ -1958,6 +2119,7 @@
         "id": "2534b5e7-3d90-8094-8842-e9da7e9e67dd"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [
@@ -1976,6 +2138,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Check lại các website đối thủ còn hoạt động",
@@ -1984,6 +2147,7 @@
         "id": "25c4b5e7-3d90-80a7-a427-cbfd40c7db45"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -2004,6 +2168,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Google Business Profile Marketing",
@@ -2012,6 +2177,7 @@
         "id": "25e4b5e7-3d90-800d-b2dd-dc09fe71cb3d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2036,6 +2202,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website",
@@ -2044,6 +2211,7 @@
         "id": "25e4b5e7-3d90-8053-b28c-c9e74a9038c6"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2052,7 +2220,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -2068,6 +2238,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Facebook Marketing",
@@ -2076,6 +2247,7 @@
         "id": "25e4b5e7-3d90-8054-ac71-f9a6ef89e045"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2096,6 +2268,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Adsword",
@@ -2104,6 +2277,7 @@
         "id": "25e4b5e7-3d90-8088-802e-c175dd093054"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [
@@ -2122,6 +2296,7 @@
         "Bắt đầu": "2025-08-28",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đồng bộ bảng danh sách bài viết và bảng từ khóa mohinhkientruc.org",
@@ -2130,6 +2305,7 @@
         "id": "25e4b5e7-3d90-80a7-9cde-d463ca809955"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2151,6 +2327,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Content Creator",
@@ -2159,6 +2336,7 @@
         "id": "25e4b5e7-3d90-80d4-9d81-ee5af098ecd7"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -2180,6 +2358,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Zalo Marketing",
@@ -2188,6 +2367,7 @@
         "id": "25e4b5e7-3d90-80d5-abbc-d602b8a6645b"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2207,6 +2387,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Pinterest",
@@ -2215,6 +2396,7 @@
         "id": "25e4b5e7-3d90-80db-8c14-fca226d3d71e"
     },
     {
+        "% công việc": 0.666666666667,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -2223,8 +2405,10 @@
         "Ghi chú": "Duy trì đều mỗi ngày. Ít nhất 3 bài/ ngày\n",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-21",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-23",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -2233,6 +2417,7 @@
         "Bắt đầu": "2025-08-29",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 4,
         "Người theo (chưa có Acc)": [],
         "KPI": 6,
         "Tên công việc": "[Re-Cmt Fanpage] Mô hình kiến trúc Song Anh",
@@ -2244,6 +2429,7 @@
         "id": "25e4b5e7-3d90-80e4-aa00-de02bd93c241"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -2258,6 +2444,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Dự án chị Trang - Dubai",
@@ -2266,6 +2453,7 @@
         "id": "25e4b5e7-3d90-80f1-8e61-e82d19959a7a"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -2286,6 +2474,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Google Business | Mô hình kiến trúc Song Anh",
@@ -2294,6 +2483,7 @@
         "id": "25f4b5e7-3d90-8029-beba-c8789fe1c184"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2302,7 +2492,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -2316,6 +2508,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Fanpage Mô hình kiến trúc Song Anh",
@@ -2324,6 +2517,7 @@
         "id": "25f4b5e7-3d90-8041-8f1b-eac6ec53a682"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2342,6 +2536,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Ads Facebook | Fanpage Mô hình kiến trúc Song Anh",
@@ -2350,6 +2545,7 @@
         "id": "25f4b5e7-3d90-8044-8925-f720028c2653"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -2368,6 +2564,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Fanpage Thiết kế sân golf Song Anh",
@@ -2376,6 +2573,7 @@
         "id": "25f4b5e7-3d90-808c-a6ab-f417210c7fa0"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2394,6 +2592,7 @@
         "Bắt đầu": "2025-09-01",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Mô hình | Hình ảnh dự án",
@@ -2404,6 +2603,7 @@
         "id": "25f4b5e7-3d90-808d-8d07-f91e13fa6881"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2426,6 +2626,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Trợ lý",
@@ -2434,6 +2635,7 @@
         "id": "2604b5e7-3d90-8017-b912-ef89a96d95e5"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [],
@@ -2455,6 +2657,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Thiết kế",
@@ -2463,6 +2666,7 @@
         "id": "2604b5e7-3d90-8027-9406-f7a47b01447e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2482,6 +2686,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Sale",
@@ -2490,6 +2695,7 @@
         "id": "2604b5e7-3d90-8044-bca1-e57f2f27eae7"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -2508,6 +2714,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Công việc kỹ thuật",
@@ -2516,6 +2723,7 @@
         "id": "2604b5e7-3d90-8074-827c-d90dd25bf748"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -2535,6 +2743,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Công việc Parttime",
@@ -2543,6 +2752,7 @@
         "id": "2604b5e7-3d90-80bb-966f-c4fe576d4910"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -2566,6 +2776,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Kho - Vật tư",
@@ -2574,6 +2785,7 @@
         "id": "2604b5e7-3d90-80c2-85f9-f486439fda13"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2595,6 +2807,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nhân sự",
@@ -2603,6 +2816,7 @@
         "id": "2604b5e7-3d90-80e5-9cf5-d4273a552276"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2621,6 +2835,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Quản lý sim cty",
@@ -2629,6 +2844,7 @@
         "id": "2634b5e7-3d90-8005-b4e3-d375b4fa6d96"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2649,6 +2865,7 @@
         "Bắt đầu": "2025-09-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tuyển dụng gói dịch vụ",
@@ -2657,6 +2874,7 @@
         "id": "2634b5e7-3d90-8048-b6f5-d28add53057c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2675,6 +2893,7 @@
         "Bắt đầu": "2025-09-03",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Re-comment post tuyển dụng đã đăng trên group",
@@ -2683,6 +2902,7 @@
         "id": "2634b5e7-3d90-80f1-8382-f48893fd6af2"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -2697,6 +2917,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Bán hàng xuất VAT là bao gồm vận chuyển hay không bao gồm?",
@@ -2705,6 +2926,7 @@
         "id": "2644b5e7-3d90-8053-bf35-e0a9fa7556f0"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2723,6 +2945,7 @@
         "Bắt đầu": "2025-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật | Post Website | Chưa tối ưu",
@@ -2731,6 +2954,7 @@
         "id": "2644b5e7-3d90-8074-83fa-cd3d23de302c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2749,6 +2973,7 @@
         "Bắt đầu": "2025-09-04",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "TỐI ƯU LẠI BOARDS PINTEREST SONG ANH",
@@ -2757,6 +2982,7 @@
         "id": "2644b5e7-3d90-80cb-9f66-c8a0c3cc24b4"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2775,6 +3001,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Lọc hồ sơ ứng viên",
@@ -2783,6 +3010,7 @@
         "id": "2654b5e7-3d90-8070-95b4-c2ada60c90bc"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [
@@ -2801,6 +3029,7 @@
         "Bắt đầu": "2025-09-05",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cài đặt máy chấm công bằng khuôn mặt",
@@ -2809,6 +3038,7 @@
         "id": "2664b5e7-3d90-8034-a11b-e49b03e91432"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2827,6 +3057,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Mô hình | Tin tức, chia sẽ",
@@ -2837,6 +3068,7 @@
         "id": "2664b5e7-3d90-803b-b6d4-c9abf6d36d7c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [
@@ -2855,6 +3087,7 @@
         "Bắt đầu": "2025-09-08",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Làm form Hợp đồng lao động mẫu",
@@ -2863,6 +3096,7 @@
         "id": "2684b5e7-3d90-804f-995e-f4d8118bc94d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [],
@@ -2879,6 +3113,7 @@
         "Bắt đầu": "2025-09-08",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Lọc và xuất danh sách nhà cung cấp và vật tư",
@@ -2887,6 +3122,7 @@
         "id": "2684b5e7-3d90-80a4-83b7-e9c1b0e07d9c"
     },
     {
+        "% công việc": 1,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2895,8 +3131,10 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": null,
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-27",
         "Lĩnh vực": [],
         "mục con": [
             "3424b5e7-3d90-806f-8b68-e1b35c0a75f3"
@@ -2907,14 +3145,18 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 1,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 1,
         "Tên công việc": "[Post Profile] Song Anh",
-        "Lặp lại": [],
+        "Lặp lại": [
+            "Thứ 2"
+        ],
         "Kênh": [],
         "id": "2694b5e7-3d90-801c-819d-de98869f4d9d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -2936,6 +3178,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Facebook Profile Song Anh",
@@ -2944,6 +3187,7 @@
         "id": "2694b5e7-3d90-80a2-a6fb-f913c9596559"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2962,6 +3206,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Mô hình | link mohinhkientruc",
@@ -2972,6 +3217,7 @@
         "id": "2694b5e7-3d90-80f3-a0a2-cf7a911a7b12"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -2990,6 +3236,7 @@
         "Bắt đầu": "2025-09-10",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh | Link mohinhkientruc.org",
@@ -3004,6 +3251,7 @@
         "id": "26a4b5e7-3d90-8002-bd13-c4f7167ad043"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -3020,6 +3268,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh | Theo dõi hiệu suất pin",
@@ -3030,6 +3279,7 @@
         "id": "26a4b5e7-3d90-804a-b705-c19b1aa022af"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [
@@ -3048,6 +3298,7 @@
         "Bắt đầu": "2025-09-10",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Kiểm tra số lượng tồn kho định kỳ",
@@ -3063,6 +3314,7 @@
         "id": "26a4b5e7-3d90-8071-b540-f2d9c8073953"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -3079,6 +3331,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh | Đăng pin buổi tối",
@@ -3095,6 +3348,7 @@
         "id": "26a4b5e7-3d90-80a6-9afd-fc7ff8431480"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -3111,6 +3365,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh | Video",
@@ -3119,6 +3374,7 @@
         "id": "26a4b5e7-3d90-80dc-9870-d1df11d630bf"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [],
@@ -3135,6 +3391,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Lên lịch nội dung tuần cho Pinterest",
@@ -3145,6 +3402,7 @@
         "id": "26a4b5e7-3d90-80e7-8504-f6d412ad8a3e"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -3163,6 +3421,7 @@
         "Bắt đầu": "2025-09-01",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Zalo] Profile Steven | Mô hình | Video",
@@ -3173,6 +3432,7 @@
         "id": "2704b5e7-3d90-80b3-bde9-f4fccb317b2a"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [
@@ -3189,6 +3449,7 @@
         "Bắt đầu": "2025-09-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Lấy giấy xác nhận không nợ thuế",
@@ -3197,6 +3458,7 @@
         "id": "2794b5e7-3d90-80d5-8089-cb13cf9dd972"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hủy",
         "Vai trò": [],
         "Người theo": [],
@@ -3211,6 +3473,7 @@
         "Bắt đầu": "2025-10-06",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Đặt hàng ống đồng làm đèn",
@@ -3219,6 +3482,7 @@
         "id": "2844b5e7-3d90-8078-8168-cfb4e5af207c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3235,6 +3499,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tiktok Marketing",
@@ -3246,6 +3511,7 @@
         "id": "2954b5e7-3d90-80ed-b652-e0cc975a41e8"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3266,6 +3532,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "SEO Website lammohinh.vn",
@@ -3276,6 +3543,7 @@
         "id": "2994b5e7-3d90-8026-8d12-c7934138a9bc"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3296,6 +3564,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "X.com (Twitter)",
@@ -3304,6 +3573,7 @@
         "id": "2bf4b5e7-3d90-8030-889f-cef4aeaefef2"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [
@@ -3322,6 +3592,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "X.com | Lammohinh.vn",
@@ -3333,6 +3604,7 @@
         "id": "2c34b5e7-3d90-8027-ac18-e7b89d5b836d"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [
@@ -3351,6 +3623,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post Pinterest] Song Anh Shop",
@@ -3363,6 +3636,7 @@
         "id": "2c34b5e7-3d90-8036-93e3-ca7e306e5995"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -3381,6 +3655,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Google Business | Sa bàn kiến trúc Song Anh",
@@ -3389,6 +3664,7 @@
         "id": "2c34b5e7-3d90-8045-9279-e4e4c1b638e3"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -3407,6 +3683,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Google Business | Dịch vụ làm mô hình kiến trúc Song Anh",
@@ -3415,6 +3692,7 @@
         "id": "2c34b5e7-3d90-80b9-9a2d-e1b824aaf0a6"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -3431,6 +3709,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "X.com | Mô hình Song Anh",
@@ -3442,6 +3721,7 @@
         "id": "2c34b5e7-3d90-80c9-bfbe-d8d4fb39b0c9"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3450,7 +3730,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -3463,6 +3745,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Fanpage Architectural Model Org",
@@ -3471,6 +3754,7 @@
         "id": "2c34b5e7-3d90-80f4-86fb-f32b10696235"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Cần họp",
         "Vai trò": [],
         "Người theo": [],
@@ -3487,6 +3771,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "X.com | Song Anh Model",
@@ -3498,6 +3783,7 @@
         "id": "2c34b5e7-3d90-80f9-9da8-d98414394775"
     },
     {
+        "% công việc": 0.5,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3506,8 +3792,10 @@
         "Ghi chú": "Duy trì đều mỗi ngày. Ít nhất 3 bài/ ngày",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-20T13:30:00.000+07:00",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-23",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -3516,8 +3804,9 @@
         "Bắt đầu": "2025-08-29",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 6,
         "Tên công việc": "[Re-Cmt Fanpage] Architectural Model Org",
         "Lặp lại": [
             "Thứ 2",
@@ -3527,6 +3816,7 @@
         "id": "2d24b5e7-3d90-800b-8817-e1e53cea2d77"
     },
     {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3535,8 +3825,10 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-17",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-22",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -3545,6 +3837,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": 6,
         "Tên công việc": "[Re-Cmt Group] | Mô hình kiến trúc Song Anh",
@@ -3556,6 +3849,7 @@
         "id": "2d94b5e7-3d90-8011-87ac-dc794fe4c579"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3564,7 +3858,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -3578,6 +3874,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 3,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Fanpage Làm mô hình Song Anh",
@@ -3586,6 +3883,7 @@
         "id": "2e04b5e7-3d90-8006-a880-f0337fcbeb54"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Tạm hoãn",
         "Vai trò": [],
         "Người theo": [
@@ -3604,6 +3902,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post website] Viết bài mới cho website mohinhsonganh.com",
@@ -3614,6 +3913,7 @@
         "id": "2e14b5e7-3d90-80ca-931a-e651e1401e23"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3632,6 +3932,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Cập nhật | Post Website | Chưa tối ưu",
@@ -3642,6 +3943,7 @@
         "id": "2ea4b5e7-3d90-80fa-bd77-e2baeb2faacf"
     },
     {
+        "% công việc": 0.222222222222,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3650,7 +3952,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-18",
         "Lĩnh vực": [],
         "mục con": [],
@@ -3660,6 +3964,7 @@
         "Bắt đầu": "2026-03-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": 9,
         "Tên công việc": "[Re-Cmt Fanpage] Làm mô hình Song Anh",
@@ -3672,6 +3977,7 @@
         "id": "2f74b5e7-3d90-8034-899d-f8048e98f174"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3690,6 +3996,7 @@
         "Bắt đầu": "2026-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Tuyển nhân viên kỹ thuật",
@@ -3698,6 +4005,7 @@
         "id": "3114b5e7-3d90-80bb-8294-c64176510e62"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3716,6 +4024,7 @@
         "Bắt đầu": "2026-02-24",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Audit & Setup | Website mohinhkientruc.org",
@@ -3724,6 +4033,7 @@
         "id": "3114b5e7-3d90-80d7-a183-d2691f39b0b9"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3742,6 +4052,7 @@
         "Bắt đầu": "2026-02-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Audit & Setup | Website mohinhsonganh.com",
@@ -3750,6 +4061,7 @@
         "id": "3124b5e7-3d90-8068-be22-d7beef986a70"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Hoàn thành",
         "Vai trò": [],
         "Người theo": [
@@ -3766,6 +4078,7 @@
         "Bắt đầu": "2026-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Nghiên cứu đơn vị cung cấp Xốp cho Golf",
@@ -3774,6 +4087,7 @@
         "id": "3144b5e7-3d90-8001-8779-f51d910b9c3c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3792,6 +4106,7 @@
         "Bắt đầu": "2026-02-27",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "Audit & Setup | Website architecturalmodel.org",
@@ -3800,6 +4115,7 @@
         "id": "3144b5e7-3d90-80b1-be68-c9bd0cdbacb2"
     },
     {
+        "% công việc": 1,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3808,32 +4124,33 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-19",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-24",
         "Lĩnh vực": [],
-        "mục con": [],
+        "mục con": [
+            "3494b5e7-3d90-807d-ad1f-c420b44e7d30"
+        ],
         "mục gốc": [
             "2e04b5e7-3d90-8006-a880-f0337fcbeb54"
         ],
         "Bắt đầu": "2026-03-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
         "KPI": 2,
         "Tên công việc": "[Post Fanpage] Làm mô hình Song Anh",
         "Lặp lại": [
-            "Thứ 2",
             "Thứ 3",
-            "Thứ 4",
-            "Thứ 5",
-            "Thứ 6",
-            "Thứ 7",
-            "Chủ nhật"
+            "Thứ 6"
         ],
         "Kênh": [],
         "id": "32e4b5e7-3d90-80c3-95f3-ed6aa82e6179"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3842,7 +4159,9 @@
         "Ghi chú": "Hiện tại chưa có lưu bài viết đã đăng trên group ⇒ Post trước",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-22",
         "Lĩnh vực": [],
         "mục con": [],
@@ -3852,6 +4171,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Re-Cmt Group] | Fanpage Làm mô hình Song Anh",
@@ -3863,6 +4183,7 @@
         "id": "32e4b5e7-3d90-80df-9847-dc263dfe13df"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Đang làm",
         "Vai trò": [],
         "Người theo": [
@@ -3871,7 +4192,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [
@@ -3884,14 +4207,16 @@
         "Bắt đầu": "2026-03-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
-        "KPI": 2,
+        "KPI": null,
         "Tên công việc": "Facebook Profile Tien RS",
         "Lặp lại": [],
         "Kênh": [],
         "id": "3424b5e7-3d90-8014-91a5-f5591acaa621"
     },
     {
+        "% công việc": 2,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3900,8 +4225,10 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-17",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": "2026-04-28",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -3910,17 +4237,18 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 1,
         "Tên công việc": "[Post FB] Profile Tien RS",
         "Lặp lại": [
-            "Thứ 2",
-            "Thứ 6"
+            "Thứ 3"
         ],
         "Kênh": [],
         "id": "3424b5e7-3d90-8049-8ad7-ed50c55e37b4"
     },
     {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3929,7 +4257,9 @@
         "Ghi chú": "Chưa duy trì được, tạm hoãn để sắp xếp",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-23",
         "Lĩnh vực": [],
         "mục con": [],
@@ -3939,8 +4269,9 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 1,
         "Tên công việc": "[Post FB Profile] Mô hình Song Anh",
         "Lặp lại": [
             "Thứ 5"
@@ -3949,6 +4280,7 @@
         "id": "3424b5e7-3d90-8054-9ada-f9de037ca91c"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3957,8 +4289,10 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-14",
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": null,
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -3967,17 +4301,16 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post FB Profile] Song Anh | Tin tức",
-        "Lặp lại": [
-            "Thứ 3",
-            "Thứ 5"
-        ],
+        "Lặp lại": [],
         "Kênh": [],
         "id": "3424b5e7-3d90-806f-8b68-e1b35c0a75f3"
     },
     {
+        "% công việc": 0.333333333333,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -3986,7 +4319,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-18",
         "Lĩnh vực": [],
         "mục con": [],
@@ -3996,8 +4331,9 @@
         "Bắt đầu": "2026-03-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
-        "KPI": 9,
+        "KPI": 6,
         "Tên công việc": "[Re-cmt FB] Profile Mô hình Song Anh",
         "Lặp lại": [
             "Thứ 4",
@@ -4007,6 +4343,7 @@
         "id": "3424b5e7-3d90-80bd-af88-d7cb4ccaa4da"
     },
     {
+        "% công việc": 0.333333333333,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -4015,7 +4352,9 @@
         "Ghi chú": "",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-18",
         "Lĩnh vực": [],
         "mục con": [],
@@ -4025,8 +4364,9 @@
         "Bắt đầu": "2026-03-25",
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 2,
         "Người theo (chưa có Acc)": [],
-        "KPI": 9,
+        "KPI": 6,
         "Tên công việc": "[Re-cmt FB] Profile Tiến RS",
         "Lặp lại": [
             "Thứ 4",
@@ -4036,6 +4376,7 @@
         "id": "3424b5e7-3d90-80ff-9f36-c628cc70072d"
     },
     {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -4044,7 +4385,9 @@
         "Ghi chú": "Chưa duy trì được, tạm hoãn để sắp xếp",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-23",
         "Lĩnh vực": [],
         "mục con": [],
@@ -4054,6 +4397,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": 3,
         "Tên công việc": "[Post FB Group] Profile Mô hình Song Anh",
@@ -4064,6 +4408,7 @@
         "id": "3434b5e7-3d90-8067-b486-ec30bb194007"
     },
     {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -4072,7 +4417,9 @@
         "Ghi chú": "Chưa duy trì được, tạm hoãn để sắp xếp",
         "Link": "",
         "Kết thúc": null,
-        "Hạng mục": [],
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
         "Nhắc hẹn": "2026-04-22",
         "Lĩnh vực": [],
         "mục con": [],
@@ -4082,6 +4429,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": 3,
         "Tên công việc": "[Post FB Group] Profile Song Anh",
@@ -4092,6 +4440,787 @@
         "id": "3434b5e7-3d90-8075-9b4b-c40371fe3040"
     },
     {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Trang Báo giá/Quy trình\n\nBảng báo giá thi công sa bàn, Quy trình làm việc và nghiệm thu.",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Bảng báo giá làm sa bàn kiến trúc chi tiết 2026",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8108-a8a0-f7929c3efa79"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Làm sa bàn giao thông / hạ tầng kỹ thuật",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8111-8e23-ed2d2e5e1c3c"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Sa bàn phân khu shophouse dự án H",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8119-af21-c33ed92dc372"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Trang Báo giá/Quy trình\n\nBảng báo giá thi công sa bàn, Quy trình làm việc và nghiệm thu.",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Báo giá làm sa bàn quy hoạch khu đô thị",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-811d-9eac-ee2be2fe13fc"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn nội thất căn hộ / chung cư",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8123-8ac7-d84b74e21017"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Thi công sa bàn giao thông nút giao F",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8124-83f1-da8bf2acc576"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Trang Báo giá/Quy trình\n\nBảng báo giá thi công sa bàn, Quy trình làm việc và nghiệm thu.",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Quy trình thi công sa bàn kiến trúc chuẩn quốc tế",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8126-88b1-f8bb40124b5f"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Dịch vụ Local\n\nĐánh vào tâm lý khách hàng muốn tìm đơn vị thi công ở gần để tiện giám sát và vận chuyển",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Nhận làm sa bàn dự án tại Đà Nẵng / Miền Trung",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-813b-ac07-c4840fb9e571"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Mô hình kiến trúc tháp văn phòng hạng A E",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8141-88f0-ffbaac911f7f"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Trang Báo giá/Quy trình\n\nBảng báo giá thi công sa bàn, Quy trình làm việc và nghiệm thu.",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Tiêu chuẩn nghiệm thu và bàn giao sa bàn kiến trúc",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8141-bf7f-fd12833be42d"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn kiến trúc (Trang dịch vụ tổng thể)",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-814d-899a-eccb07ecff79"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Làm sa bàn sa bàn trưng bày triển lãm / bảo tàng",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-814f-ae90-f42d3a504416"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Dịch vụ Local\n\nĐánh vào tâm lý khách hàng muốn tìm đơn vị thi công ở gần để tiện giám sát và vận chuyển",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn bất động sản tại Phú Quốc / Nha Trang",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-815f-8483-c0c8a0f71011"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn quân sự / chiến thuật",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-815f-8eab-d0f2b9700e61"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Thi công sa bàn nhà máy / khu công nghiệp",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8167-9d49-ca3d840a3a22"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Case study: Sa bàn nhà máy sản xuất C tại khu công nghiệp X",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8167-a5fa-d02d7555ff95"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dự án sa bàn quy hoạch khu đô thị A",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8169-a3e7-e9663c141bbd"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Dịch vụ Local\n\nĐánh vào tâm lý khách hàng muốn tìm đơn vị thi công ở gần để tiện giám sát và vận chuyển",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Công ty thi công mô hình kiến trúc tại Hà Nội",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8178-b5ad-efc544123bfe"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ phục hồi, sửa chữa và bảo trì sa bàn cũ",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8191-938e-ebb243a862d9"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Công ty thi công mô hình kiến trúc chuyên nghiệp",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-8191-adf4-fcab65f851f1"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Dịch vụ Local\n\nĐánh vào tâm lý khách hàng muốn tìm đơn vị thi công ở gần để tiện giám sát và vận chuyển",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn kiến trúc tại TP.HCM",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81b4-9ee9-ffe3d8bce510"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Dịch vụ Local\n\nĐánh vào tâm lý khách hàng muốn tìm đơn vị thi công ở gần để tiện giám sát và vận chuyển",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Thi công sa bàn nhà máy tại Bình Dương / Đồng Nai",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81b7-af0f-d8c69987ab1c"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Trang Báo giá/Quy trình\n\nBảng báo giá thi công sa bàn, Quy trình làm việc và nghiệm thu.",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Chi phí thi công mô hình kiến trúc phụ thuộc vào yếu tố nào?",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81b8-bce0-dd37d051b54b"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Làm mô hình kiến trúc cao tầng (Tòa nhà, tháp thương mại)",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81cb-8675-d4deb13d340b"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dự án mô hình nội thất biệt thự mẫu G",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81d5-abb1-c203292a0e77"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dịch vụ làm sa bàn quy hoạch dự án bất động sản",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81dd-8502-d23db3f557c6"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Nhận gia công chi tiết mô hình kiến trúc (cây cối, xe cộ, người thu nhỏ)",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81e7-9aa5-ef62801a98b8"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Thi công mô hình kiến trúc chung cư cao cấp B",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81f4-b4da-e4a66d238abd"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Hồ sơ năng lực (Case Study/Dự án)\n\nĐây là thuộc tính Rominion (sự nổi bật) cực kỳ quan trọng đối với ngành dịch vụ thi công\n. Bạn bắt buộc phải có các trang bài viết sâu về các dự án sa bàn bạn đã thực hiện (Kích thước bao nhiêu? Độ khó ra sao? Giải quyết bài toán gì cho chủ đầu tư?).",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Dự án sa bàn khu nghỉ dưỡng / Resort D",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81f8-9c71-e0e195973d38"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Giao việc",
+        "Vai trò": [],
+        "Người theo": [],
+        "Ghi chú": "SEO Category: Vùng lõi (Core Section) - Ưu tiên làm trước 100%\n\nĐây là những trang trực tiếp giúp bạn chốt hợp đồng và chứng minh bạn là một đơn vị thi công",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [],
+        "Bắt đầu": null,
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "Thi công sa bàn trường học / bệnh viện",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3484b5e7-3d90-81fe-a9f9-e41553356a96"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Duy trì",
+        "Vai trò": [],
+        "Người theo": [
+            "Tiến Phạm Hoàng"
+        ],
+        "Ghi chú": "",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [
+            "19d4b5e7-3d90-8032-8803-d348e22f7d08"
+        ],
+        "Nhắc hẹn": null,
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [
+            "32e4b5e7-3d90-80c3-95f3-ed6aa82e6179"
+        ],
+        "Bắt đầu": "2026-03-25",
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "[Post Fanpage] Làm mô hình Song Anh | Share link",
+        "Lặp lại": [],
+        "Kênh": [],
+        "id": "3494b5e7-3d90-807d-ad1f-c420b44e7d30"
+    },
+    {
+        "% công việc": null,
+        "Trạng thái": "Đang làm",
+        "Vai trò": [],
+        "Người theo": [
+            "Tiến Phạm Hoàng"
+        ],
+        "Ghi chú": "",
+        "Link": "",
+        "Kết thúc": null,
+        "Hạng mục": [],
+        "Nhắc hẹn": "2026-04-28",
+        "Lĩnh vực": [],
+        "mục con": [],
+        "mục gốc": [
+            "1a44b5e7-3d90-8027-b3c0-e987cbb91fb0"
+        ],
+        "Bắt đầu": "2026-02-24",
+        "Mức độ ưu tiên": [],
+        "Created time": null,
+        "Đã thực hiện": 0,
+        "Người theo (chưa có Acc)": [],
+        "KPI": null,
+        "Tên công việc": "SEO Website | mohinhkientruc.org | Viết bài mới",
+        "Lặp lại": [
+            "Thứ 3"
+        ],
+        "Kênh": [],
+        "id": "3494b5e7-3d90-80c4-a920-d03f3494b61e"
+    },
+    {
+        "% công việc": 0,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -4099,7 +5228,7 @@
         "Link": "",
         "Kết thúc": null,
         "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-14T15:00:00.000+07:00",
+        "Nhắc hẹn": "2026-04-24T15:00:00.000+07:00",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -4108,8 +5237,9 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
-        "KPI": null,
+        "KPI": 2,
         "Tên công việc": "[Post] GBP | Dịch vụ làm mô hình kiến trúc Song Anh | Mô hình",
         "Lặp lại": [
             "Thứ 3",
@@ -4119,6 +5249,7 @@
         "id": "65a4b5e7-3d90-835d-8298-010197ea1c93"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [
@@ -4128,7 +5259,7 @@
         "Link": "",
         "Kết thúc": null,
         "Hạng mục": [],
-        "Nhắc hẹn": "2026-04-20T09:00:00.000+07:00",
+        "Nhắc hẹn": "2026-04-23T09:00:00.000+07:00",
         "Lĩnh vực": [],
         "mục con": [],
         "mục gốc": [
@@ -4137,6 +5268,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post] GBP | Mô hình kiến trúc Song Anh",
@@ -4148,6 +5280,7 @@
         "id": "81c4b5e7-3d90-8267-ae7a-016dbef33130"
     },
     {
+        "% công việc": null,
         "Trạng thái": "Duy trì",
         "Vai trò": [],
         "Người theo": [],
@@ -4164,6 +5297,7 @@
         "Bắt đầu": null,
         "Mức độ ưu tiên": [],
         "Created time": null,
+        "Đã thực hiện": 0,
         "Người theo (chưa có Acc)": [],
         "KPI": null,
         "Tên công việc": "[Post] Google Business | Sa bàn kiến trúc Song Anh",
