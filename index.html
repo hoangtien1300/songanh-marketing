@@ -2181,7 +2181,7 @@
                     return;
                 }
                 
-                const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=${currentGid}`;
+                const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=${currentGid}&t=${Date.now()}`;
 
                 if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang đồng bộ dữ liệu từ Google Sheets...</td></tr>';
 
@@ -2220,12 +2220,14 @@
                         let totalKw = 0;
                         let top3 = 0;
                         let top10 = 0;
+                        let improvedCount = 0;
 
                         dataRows.forEach((row, idx) => {
                             const kwFull = row[kwColIdx] ? row[kwColIdx].trim() : "";
                             const dateStr = row[kwColIdx + 1] ? row[kwColIdx + 1].trim() : "-";
                             const rankStr = row[kwColIdx + 2] ? row[kwColIdx + 2].trim() : "-";
-                            const targetUrl = row[kwColIdx + 3] ? row[kwColIdx + 3].trim() : "#";
+                            const changeStr = row[kwColIdx + 3] ? row[kwColIdx + 3].trim() : "-";
+                            const targetUrl = row[kwColIdx + 4] ? row[kwColIdx + 4].trim() : "#";
 
                             if (kwFull) {
                                 const kwList = kwFull.split(',').map(k => k.trim());
@@ -2237,11 +2239,13 @@
                                         rank: rankStr,
                                         rankNum: rankNum,
                                         date: dateStr,
-                                        url: targetUrl
+                                        url: targetUrl,
+                                        change: changeStr
                                     });
 
                                     if (rankNum <= 3) top3++;
                                     if (rankNum <= 10) top10++;
+                                    if (changeStr.includes('▲')) improvedCount++;
                                     totalKw++;
                                 });
                             }
@@ -2254,7 +2258,7 @@
                         document.querySelectorAll('.kw-total').forEach(el => el.innerText = totalKw);
                         document.querySelectorAll('.kw-top3').forEach(el => el.innerText = top3);
                         document.querySelectorAll('.kw-top10').forEach(el => el.innerText = top10);
-                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = Math.floor(totalKw * 0.1)); 
+                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = improvedCount); 
 
                     }
                 });
@@ -2289,7 +2293,9 @@
                         </td>
                         <td class="px-4 py-4 text-center ${rankBadge} text-lg">${kw.rank}</td>
                         <td class="px-4 py-4 text-center">
-                            <span class="text-xs font-bold ${kw.rankNum <= 10 ? 'text-green-500' : 'text-gray-400'}">Stable</span>
+                            <span class="text-xs font-bold ${kw.change.includes('▲') ? 'text-green-500' : (kw.change.includes('▼') ? 'text-red-500' : 'text-yellow-500')}">
+                                ${kw.change}
+                            </span>
                         </td>
                         <td class="px-4 py-4 text-center text-xs font-semibold text-gray-500">
                             ${kw.date}
