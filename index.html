@@ -1200,114 +1200,7 @@
 
         let kwCachedData = {};
 
-        function loadKeywordData(siteId) {
-            document.querySelectorAll('.kw-val').forEach(el => el.innerText = '...');
-            document.querySelectorAll('.kw-pct').forEach(el => el.innerText = '(...)');
-            
-            if (kwCachedData[siteId]) {
-                renderKeywordData(kwCachedData[siteId], siteId);
-                return;
-            }
-
-            if(typeof Papa !== 'undefined') {
-                const url = KW_URLS[siteId] + "&cache=" + Date.now();
-                Papa.parse(url, {
-                    download: true,
-                    header: true,
-                    skipEmptyLines: true,
-                    complete: function(results) {
-                        if(results.errors.length > 0 && results.data.length === 0) {
-                            tryProxyFallbackKw(siteId);
-                            return;
-                        }
-                        kwCachedData[siteId] = results.data;
-                        renderKeywordData(results.data, siteId);
-                    },
-                    error: function() {
-                        tryProxyFallbackKw(siteId);
-                    }
-                });
-            }
-        }
-
-        function tryProxyFallbackKw(siteId) {
-            let proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(KW_URLS[siteId] + "&t=" + Date.now());
-            Papa.parse(proxyUrl, {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
-                complete: function(results) {
-                    kwCachedData[siteId] = results.data;
-                    renderKeywordData(results.data, siteId);
-                }
-            });
-        }
-
-        function renderKeywordData(dataArray, siteId) {
-            // Hiển thị/Ẩn thông báo hoặc Dữ liệu
-            if (siteId === 'kw2' || siteId === 'kw3') {
-                document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.remove('hidden'));
-                document.querySelectorAll('.kw-data-container').forEach(el => el.classList.add('hidden'));
-                
-                document.querySelectorAll('.kw-total').forEach(el => el.innerText = 'Đang build');
-                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = 'Đang build');
-                document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = '');
-                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = 'Đang build');
-                document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = '');
-                document.querySelectorAll('.kw-up').forEach(el => el.innerText = 'Đang build');
-                return;
-            } else {
-                document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.add('hidden'));
-                document.querySelectorAll('.kw-data-container').forEach(el => el.classList.remove('hidden'));
-            }
-
-            if (!dataArray || dataArray.length === 0) {
-                document.querySelectorAll('.kw-total').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-up').forEach(el => el.innerText = '0%');
-                return;
-            }
-
-            const allHeaders = Object.keys(dataArray[0]);
-            const baseHeaders = allHeaders.filter(h => ['từ khóa', 'keyword', 'url', 'link', 'volume', 'tìm kiếm/tháng', 'vol', 'trang'].includes(h.toLowerCase().trim()));
-            const dateHeaders = allHeaders.filter(h => !baseHeaders.includes(h) && h.trim() !== '');
-            const last7DaysHeaders = dateHeaders.slice(-7);
-
-            if (last7DaysHeaders.length === 0) return;
-
-            let m_total = 0, m_top3_t0 = 0, m_top10_t0 = 0;
-            let keywordsUp = 0;
-
-            const t0_key = last7DaysHeaders[last7DaysHeaders.length - 1]; 
-            const t1_key = last7DaysHeaders.length > 1 ? last7DaysHeaders[last7DaysHeaders.length - 2] : null;
-
-            const kwKey = allHeaders.find(h => ['từ khóa', 'keyword'].includes(h.toLowerCase().trim())) || allHeaders[0];
-            
-            dataArray.forEach(row => {
-                const kw = row[kwKey] || '';
-                if (!kw || kw.toLowerCase().includes('-org') || kw.toLowerCase().includes('.com') || kw.trim() === 'Từ khóa') return;
-                
-                m_total++;
-
-                const r_t0 = getRankVal(row[t0_key]);
-                const r_t1 = t1_key ? getRankVal(row[t1_key]) : r_t0;
-
-                if (r_t0 <= 3) m_top3_t0++;
-                if (r_t0 <= 10) m_top10_t0++;
-                if (r_t0 < r_t1) keywordsUp++;
-            });
-
-            document.querySelectorAll('.kw-total').forEach(el => el.innerText = m_total);
-            document.querySelectorAll('.kw-top3').forEach(el => el.innerText = m_top3_t0);
-            document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = m_total > 0 ? `(${(m_top3_t0 / m_total * 100).toFixed(1)}%)` : '(0%)');
-            
-            document.querySelectorAll('.kw-top10').forEach(el => el.innerText = m_top10_t0);
-            document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = m_total > 0 ? `(${(m_top10_t0 / m_total * 100).toFixed(1)}%)` : '(0%)');
-            
-            let rateUp = m_total > 0 ? ((keywordsUp / m_total)*100).toFixed(1) : 0;
-            document.querySelectorAll('.kw-up').forEach(el => el.innerText = rateUp + '%');
-        }
+        // Keyword data loading is handled by the consolidated loadKeywordData function at the end of the script.
 
         const reportData = {
             b2cGrowthTrend: {
@@ -2246,10 +2139,12 @@
                 const currentGid = siteGids[siteId];
                 
                 // Reset Summary Cards immediately
-                document.querySelectorAll('.kw-total').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '0');
-                document.querySelectorAll('.kw-up').forEach(el => el.innerText = '0');
+                document.querySelectorAll('.kw-total').forEach(el => el.innerText = '...');
+                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '...');
+                document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = '(...)');
+                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '...');
+                document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = '(...)');
+                document.querySelectorAll('.kw-up').forEach(el => el.innerText = '...');
 
                 if (currentGid.startsWith('MOCK')) {
                     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang chờ kết nối dữ liệu cho website này từ GS Song Anh...</td></tr>';
@@ -2329,11 +2224,16 @@
                         window.cachedKeywords = keywords;
                         renderKeywordTable(keywords);
                         
-                        // Update Summary Cards
+                        // Update Summary Cards with Percentages
                         document.querySelectorAll('.kw-total').forEach(el => el.innerText = totalKw);
                         document.querySelectorAll('.kw-top3').forEach(el => el.innerText = top3);
+                        document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = totalKw > 0 ? `(${(top3 / totalKw * 100).toFixed(1)}%)` : '(0%)');
+                        
                         document.querySelectorAll('.kw-top10').forEach(el => el.innerText = top10);
-                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = improvedCount); 
+                        document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = totalKw > 0 ? `(${(top10 / totalKw * 100).toFixed(1)}%)` : '(0%)');
+                        
+                        let improvedRate = totalKw > 0 ? ((improvedCount / totalKw) * 100).toFixed(1) : 0;
+                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = improvedRate + '%'); 
 
                     }
                 });
