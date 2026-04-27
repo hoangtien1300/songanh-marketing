@@ -182,12 +182,18 @@
                 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-amber-500 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-amber-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 3</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3></div>
+                    <div class="flex items-baseline gap-2">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3>
+                        <span class="text-xs font-semibold text-amber-600 kw-pct kw-pct-top3">(0%)</span>
+                    </div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-blue-500 hover:shadow-md transition-shadow">
                     <p class="text-[10px] sm:text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 10</p>
-                    <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3></div>
+                    <div class="flex items-baseline gap-2">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3>
+                        <span class="text-xs font-semibold text-blue-600 kw-pct kw-pct-top10">(0%)</span>
+                    </div>
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 border-t-4 border-emerald-500 hover:shadow-md transition-shadow">
@@ -1190,6 +1196,7 @@
 
         function loadKeywordData(siteId) {
             document.querySelectorAll('.kw-val').forEach(el => el.innerText = '...');
+            document.querySelectorAll('.kw-pct').forEach(el => el.innerText = '(...)');
             
             if (kwCachedData[siteId]) {
                 renderKeywordData(kwCachedData[siteId], siteId);
@@ -1237,7 +1244,9 @@
                 
                 document.querySelectorAll('.kw-total').forEach(el => el.innerText = 'Đang build');
                 document.querySelectorAll('.kw-top3').forEach(el => el.innerText = 'Đang build');
+                document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = '');
                 document.querySelectorAll('.kw-top10').forEach(el => el.innerText = 'Đang build');
+                document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = '');
                 document.querySelectorAll('.kw-up').forEach(el => el.innerText = 'Đang build');
                 return;
             } else {
@@ -1282,7 +1291,10 @@
 
             document.querySelectorAll('.kw-total').forEach(el => el.innerText = m_total);
             document.querySelectorAll('.kw-top3').forEach(el => el.innerText = m_top3_t0);
+            document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = m_total > 0 ? `(${(m_top3_t0 / m_total * 100).toFixed(1)}%)` : '(0%)');
+            
             document.querySelectorAll('.kw-top10').forEach(el => el.innerText = m_top10_t0);
+            document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = m_total > 0 ? `(${(m_top10_t0 / m_total * 100).toFixed(1)}%)` : '(0%)');
             
             let rateUp = m_total > 0 ? ((keywordsUp / m_total)*100).toFixed(1) : 0;
             document.querySelectorAll('.kw-up').forEach(el => el.innerText = rateUp + '%');
