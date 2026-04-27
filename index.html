@@ -721,11 +721,17 @@
                         </div>
                         <div class="bg-amber-50 rounded-xl border border-amber-100 p-4 border-t-4 border-amber-500">
                             <p class="text-[10px] sm:text-xs text-amber-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 3</p>
-                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3></div>
+                            <div class="flex items-baseline gap-2">
+                                <h3 class="text-2xl sm:text-3xl font-bold text-amber-500 kw-val kw-top3">0</h3>
+                                <span class="text-xs font-semibold text-amber-600 kw-pct kw-pct-top3">(0%)</span>
+                            </div>
                         </div>
                         <div class="bg-blue-50 rounded-xl border border-blue-100 p-4 border-t-4 border-blue-500">
                             <p class="text-[10px] sm:text-xs text-blue-600 font-semibold uppercase tracking-wider mb-1">Vị Trí TOP 10</p>
-                            <div class="flex items-baseline gap-2"><h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3></div>
+                            <div class="flex items-baseline gap-2">
+                                <h3 class="text-2xl sm:text-3xl font-bold text-blue-500 kw-val kw-top10">0</h3>
+                                <span class="text-xs font-semibold text-blue-600 kw-pct kw-pct-top10">(0%)</span>
+                            </div>
                         </div>
                         <div class="bg-emerald-50 rounded-xl border border-emerald-100 p-4 border-t-4 border-emerald-500">
                             <p class="text-[10px] sm:text-xs text-emerald-600 font-semibold uppercase tracking-wider mb-1">Vị Trí Cải Thiện</p>
@@ -1204,7 +1210,8 @@
             }
 
             if(typeof Papa !== 'undefined') {
-                Papa.parse(KW_URLS[siteId], {
+                const url = KW_URLS[siteId] + "&cache=" + Date.now();
+                Papa.parse(url, {
                     download: true,
                     header: true,
                     skipEmptyLines: true,
@@ -1224,7 +1231,7 @@
         }
 
         function tryProxyFallbackKw(siteId) {
-            let proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(KW_URLS[siteId]);
+            let proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(KW_URLS[siteId] + "&t=" + Date.now());
             Papa.parse(proxyUrl, {
                 download: true,
                 header: true,
@@ -1263,8 +1270,8 @@
             }
 
             const allHeaders = Object.keys(dataArray[0]);
-            const baseHeaders = allHeaders.filter(h => ['từ khóa', 'keyword', 'url', 'link', 'volume', 'tìm kiếm/tháng', 'vol'].includes(h.toLowerCase()));
-            const dateHeaders = allHeaders.filter(h => !baseHeaders.includes(h));
+            const baseHeaders = allHeaders.filter(h => ['từ khóa', 'keyword', 'url', 'link', 'volume', 'tìm kiếm/tháng', 'vol', 'trang'].includes(h.toLowerCase().trim()));
+            const dateHeaders = allHeaders.filter(h => !baseHeaders.includes(h) && h.trim() !== '');
             const last7DaysHeaders = dateHeaders.slice(-7);
 
             if (last7DaysHeaders.length === 0) return;
@@ -1275,9 +1282,11 @@
             const t0_key = last7DaysHeaders[last7DaysHeaders.length - 1]; 
             const t1_key = last7DaysHeaders.length > 1 ? last7DaysHeaders[last7DaysHeaders.length - 2] : null;
 
+            const kwKey = allHeaders.find(h => ['từ khóa', 'keyword'].includes(h.toLowerCase().trim())) || allHeaders[0];
+            
             dataArray.forEach(row => {
-                const kw = row['Từ khóa'] || row['Keyword'] || '';
-                if (!kw || kw.toLowerCase().includes('-org') || kw.toLowerCase().includes('.com') || kw === 'Từ khóa') return;
+                const kw = row[kwKey] || '';
+                if (!kw || kw.toLowerCase().includes('-org') || kw.toLowerCase().includes('.com') || kw.trim() === 'Từ khóa') return;
                 
                 m_total++;
 
