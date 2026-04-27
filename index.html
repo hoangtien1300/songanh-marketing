@@ -1329,7 +1329,7 @@
 
         async function initGscIntegration() {
             try {
-                const response = await fetch('/api/fetch_sheets');
+                const response = await fetch('gsc_dashboard_data.json?v=' + Date.now());
                 if (response.ok) {
                     gscSiteData = await response.json();
                     
@@ -2147,9 +2147,9 @@
                 const latestLabel = document.getElementById('kw-latest-date-label');
                 
                 const siteGids = {
-                    'kw1': '69019275', 
-                    'kw2': '837486607', 
-                    'kw3': 'MOCK_GID_2'  
+                    'kw1': '831977248', // mohinhkientruc.org in 1lrm94N...
+                    'kw2': '1050733309', // architecturalmodel.org in 1lrm94N...
+                    'kw3': '1263154050'  // mohinhsonganh.com in 1lrm94N...
                 };
                 
                 const currentGid = siteGids[siteId];
@@ -2160,17 +2160,7 @@
                 document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = '(...)');
                 document.querySelectorAll('.kw-up').forEach(el => el.innerText = '...');
 
-                if (currentGid.startsWith('MOCK')) {
-                    if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang chờ kết nối dữ liệu cho website này từ GS Song Anh...</td></tr>';
-                    document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.remove('hidden'));
-                    document.querySelectorAll('.kw-data-container').forEach(el => el.classList.add('hidden'));
-                    return;
-                } else {
-                    document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.add('hidden'));
-                    document.querySelectorAll('.kw-data-container').forEach(el => el.classList.remove('hidden'));
-                }
-                
-                const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=${currentGid}&t=${Date.now()}`;
+                const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1lrm94N_ej-qbfGmRWVmx6WcmQHHXubCcH84t2UZJ8w8/gviz/tq?tqx=out:csv&gid=${currentGid}&t=${Date.now()}`;
 
                 Papa.parse(GS_CSV_URL, {
                     download: true,
@@ -2244,11 +2234,12 @@
                             const prevRankStr = t1_idx !== null ? row[t1_idx] : rankStr;
                             const prevRankNum = getRankVal(prevRankStr);
 
-                            const url = row[1] || "#"; // Assuming URL is col 1
+                            const url = row[1] || "#"; 
                             
                             let change = "-";
-                            if (rankNum < prevRankNum) change = "▲ " + (prevRankNum - rankNum);
-                            else if (rankNum > prevRankNum) change = "▼ " + (rankNum - prevRankNum);
+                            if (rankNum < prevRankNum && rankNum !== 101) change = "▲ " + (prevRankNum - rankNum);
+                            else if (rankNum > prevRankNum && prevRankNum !== 101) change = "▼ " + (rankNum - prevRankNum);
+                            else if (rankNum < 101 && prevRankNum === 101) change = "▲ New";
 
                             keywords.push({
                                 id: idx,
