@@ -111,7 +111,7 @@
             </div>
             <div class="flex items-center gap-2 sm:gap-4">
                 <div class="text-[10px] sm:text-xs bg-gray-800 px-3 py-1.5 rounded-full border border-gray-700 whitespace-nowrap">
-                    🗓️ <span class="hidden sm:inline">Tuần: </span><span class="font-semibold text-sa-gold" id="global-time-filter">6/4 - 11/4</span>
+                    🗓️ <span class="hidden sm:inline">Tuần: </span><span class="font-semibold text-sa-gold" id="global-time-filter">20/04 - 26/04</span>
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@
             <div class="bg-blue-50 border border-blue-200 p-4 sm:p-6 rounded-xl mb-8 flex flex-col sm:flex-row items-center justify-between shadow-sm gap-4">
                 <div class="text-center sm:text-left">
                     <h3 class="text-lg sm:text-xl font-bold text-blue-900 flex items-center justify-center sm:justify-start"><span class="mr-2">🎯</span> Tổng lượt khách liên hệ</h3>
-                    <p class="text-blue-700 text-xs sm:text-sm mt-1">Số lượng khách hàng mới <span id="customer-time-label" class="font-semibold"></span>.</p>
+                    <p class="text-blue-700 text-xs sm:text-sm mt-1">Số lượng khách hàng mới <span id="customer-time-label" class="font-semibold">(20/04 - 26/04)</span>.</p>
                 </div>
                 <div class="text-center bg-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg shadow-sm border border-blue-100 min-w-[120px] sm:min-w-[150px]">
                     <span class="block text-3xl sm:text-4xl font-extrabold text-blue-600">13</span>
@@ -325,27 +325,27 @@
                     <ul class="space-y-3 text-xs sm:text-sm">
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt xem</span>
-                            <span class="font-semibold text-gray-900">355 <span class="text-red-500 font-normal ml-1">↓ 59.8%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-reach">846</span> <span class="text-green-600 font-normal ml-1" id="fb-mohinh-reach-trend">↑ 13%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Người xem d.biệt</span>
-                            <span class="font-semibold text-gray-900">118 <span class="text-red-500 font-normal ml-1">↓ 38.5%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-visitors">142</span> <span class="text-green-600 font-normal ml-1" id="fb-mohinh-visitors-trend">↑ 19.3%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt truy cập trang</span>
-                            <span class="font-semibold text-gray-900">33 <span class="text-red-500 font-normal ml-1">↓ 65.6%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-visits">108</span> <span class="text-green-600 font-normal ml-1" id="fb-mohinh-visits-trend">↑ 56.5%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt tương tác bài</span>
-                            <span class="font-semibold text-gray-900">23 <span class="text-green-600 font-normal ml-1">↑ 9.5%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-engagement">15</span> <span class="text-green-600 font-normal ml-1" id="fb-mohinh-engagement-trend">↑ 25%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Click vào liên kết</span>
-                            <span class="font-semibold text-gray-900">2 <span class="text-gray-400 font-normal ml-1">0%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-clicks">4</span> <span class="text-red-500 font-normal ml-1" id="fb-mohinh-clicks-trend">↓ 33.3%</span></span>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Lượt theo dõi mới</span>
-                            <span class="font-semibold text-gray-900">0 <span class="text-red-500 font-normal ml-1">↓ 100%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-mohinh-followers">1</span> <span class="text-green-600 font-normal ml-1" id="fb-mohinh-followers-trend">↑ 100%</span></span>
                         </li>
                     </ul>
                 </div>
@@ -359,32 +359,58 @@
                     <ul class="space-y-3 text-xs sm:text-sm">
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt xem</span>
-                            <span class="font-semibold text-gray-900">64 <span class="text-gray-400 font-normal ml-1">0%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-reach">62</span> <span class="text-red-500 font-normal ml-1" id="fb-arch-reach-trend">↓ 42.1%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Người xem d.biệt</span>
-                            <span class="font-semibold text-gray-900">26 <span class="text-green-600 font-normal ml-1">↑ 8.3%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-visitors">23</span> <span class="text-green-600 font-normal ml-1" id="fb-arch-visitors-trend">↑ 15%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt truy cập trang</span>
-                            <span class="font-semibold text-gray-900">5 <span class="text-red-500 font-normal ml-1">↓ 16.7%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-visits">16</span> <span class="text-red-500 font-normal ml-1" id="fb-arch-visits-trend">↓ 5.9%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Lượt tương tác bài</span>
-                            <span class="font-semibold text-gray-900">3 <span class="text-red-500 font-normal ml-1">↓ 25%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-engagement">5</span> <span class="text-red-500 font-normal ml-1" id="fb-arch-engagement-trend">↓ 28.6%</span></span>
                         </li>
                         <li class="flex justify-between border-b border-gray-50 pb-1">
                             <span class="text-gray-600">Click vào liên kết</span>
-                            <span class="font-semibold text-gray-900">0 <span class="text-gray-400 font-normal ml-1">0%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-clicks">1</span> <span class="text-red-500 font-normal ml-1" id="fb-arch-clicks-trend">↓ 50%</span></span>
                         </li>
                         <li class="flex justify-between">
                             <span class="text-gray-600">Lượt theo dõi mới</span>
-                            <span class="font-semibold text-gray-900">0 <span class="text-gray-400 font-normal ml-1">0%</span></span>
+                            <span class="font-semibold text-gray-900"><span id="fb-arch-followers">1</span> <span class="text-green-600 font-normal ml-1" id="fb-arch-followers-trend">↑ 100%</span></span>
                         </li>
                     </ul>
                 </div>
 
                 </div>
+
+                <!-- Facebook Evaluation Summary -->
+                <div class="mt-8 bg-blue-50 border border-blue-100 p-4 sm:p-6 rounded-xl shadow-sm">
+                    <h4 class="text-sm sm:text-base font-bold text-blue-900 mb-3 flex items-center">
+                        <span class="mr-2">📝</span> Đánh giá hiệu quả Facebook (20/04 - 26/04)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-[11px] sm:text-sm">
+                        <div class="space-y-2">
+                            <p class="text-blue-800 leading-relaxed">
+                                <strong class="text-blue-900">● Fanpage Song Anh:</strong> Lượt truy cập trang tăng đột biến <span class="font-bold text-green-600">(+56,5%)</span>. Khán giả có xu hướng tìm hiểu sâu về doanh nghiệp sau khi tiếp cận các nội dung tuyển dụng và hình ảnh xưởng thực tế.
+                            </p>
+                            <p class="text-blue-800 leading-relaxed">
+                                <strong class="text-blue-900">● Fanpage Global:</strong> Reels đang là "vũ khí" mạnh nhất với thời gian xem tăng <span class="font-bold text-green-600">124%</span> và lượt xem 3 giây tăng <span class="font-bold text-green-600">400%</span>.
+                            </p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-blue-800 leading-relaxed">
+                                <strong class="text-blue-900">● Đối tượng mới:</strong> Dù tổng lượt xem giảm trên trang Global, nhưng lượng người xem thực tế (Unique Viewers) lại tăng <span class="font-bold text-green-600">15%</span>, cho thấy nội dung đang lan tỏa tới tệp khách hàng mới hiệu quả.
+                            </p>
+                            <p class="text-blue-800 leading-relaxed italic">
+                                <strong class="text-blue-900">💡 Đề xuất:</strong> Tiếp tục đẩy mạnh video quay cận cảnh (Macro) cho trang Global để tận dụng đà tăng trưởng của Reels.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             
 
@@ -400,12 +426,16 @@
                 <h2 class="text-lg sm:text-xl font-bold text-gray-900 mb-4 border-b border-gray-300 pb-2 uppercase">ĐÁNH GIÁ CÔNG VIỆC</h2>
                 <div class="space-y-4 relative z-10 text-[11px] sm:text-sm">
                     <div class="flex items-start">
-                        <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-green-100 text-green-600 mr-3">✓</span>
-                        <p class="text-gray-800"><strong>AI Integration:</strong> Đã áp dụng được AI vào công việc, giúp giải quyết công việc nhanh hơn 60% và tạo các nội dung chất lượng hơn.</p>
+                        <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 text-blue-600 mr-3">i</span>
+                        <p class="text-gray-800"><strong>Facebook (Song Anh):</strong> Lượt truy cập trang tăng mạnh (+56,5%), người xem tìm vào tận trang chủ sau khi xem bài viết.</p>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-blue-100 text-blue-600 mr-3">i</span>
+                        <p class="text-gray-800"><strong>Facebook (Global):</strong> Reels trên trang Architectural Org giữ chân người dùng cực tốt (Watch Time +124%).</p>
                     </div>
                     <div class="flex items-start">
                         <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-green-100 text-green-600 mr-3">✓</span>
-                        <p class="text-gray-800"><strong>Social:</strong> Hoàn thành 100% lịch đăng bài. Tương tác tăng từ 66% - 200%.</p>
+                        <p class="text-gray-800"><strong>Nội dung:</strong> Tiếp cận được nhiều đối tượng mới (+15% unique viewers trên trang Global) dù tổng lượt xem giảm.</p>
                     </div>
                 </div>
             </div>
@@ -420,15 +450,15 @@
                     <div class="flex items-start p-3 bg-gray-800 rounded-lg border-l-4 border-sa-gold cursor-pointer" onclick="toggleTask(this)">
                         <div class="w-5 h-5 mt-0.5 rounded border border-gray-500 mr-3 flex-shrink-0 flex items-center justify-center task-checkbox text-xs"></div>
                         <div>
-                            <span class="font-bold text-gray-100 block mb-0.5">Áp dụng AI vào Facebook:</span>
-                            <span class="task-text text-gray-400">Tiếp tục nghiên cứu và áp dụng AI vào quy trình công việc lặp lại cho kênh facebook.</span>
+                            <span class="font-bold text-gray-100 block mb-0.5">Tối ưu Call-to-action:</span>
+                            <span class="task-text text-gray-400">Điều chỉnh cách đặt lời kêu gọi hành động hấp dẫn hơn để cải thiện lượt click dẫn về website.</span>
                         </div>
                     </div>
                     <div class="flex items-start p-3 bg-gray-800 rounded-lg border-l-4 border-blue-400 cursor-pointer" onclick="toggleTask(this)">
                         <div class="w-5 h-5 mt-0.5 rounded border border-gray-500 mr-3 flex-shrink-0 flex items-center justify-center task-checkbox text-xs"></div>
                         <div>
-                            <span class="font-bold text-gray-100 block mb-0.5">Mô hình kiến trúc:</span>
-                            <span class="task-text text-gray-400">Tối ưu hóa các bài viết dự án chất lượng cao.</span>
+                            <span class="font-bold text-gray-100 block mb-0.5">Ưu tiên Video Macro:</span>
+                            <span class="task-text text-gray-400">Quay cận cảnh chi tiết mô hình cho Reels trang Architectural Org để khai thác thuật toán Meta.</span>
                         </div>
                     </div>
                 </div>
@@ -995,33 +1025,33 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-sa-gold text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt xem</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-reach">355</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-reach-trend">↓ 59.8%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-reach">846</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-reach-trend">↑ 13%</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-blue-400 text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Người xem</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-visitors">118</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-visitors-trend">↓ 38.5%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-visitors">142</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-visitors-trend">↑ 19.3%</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-green-400 text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Tương tác</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-engagement">23</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-engagement-trend">↑ 9.5%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-engagement">15</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-engagement-trend">↑ 25%</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-purple-400 text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Lượt click</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-clicks">2</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-clicks-trend">0%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-clicks">4</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-clicks-trend">↓ 33.3%</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-orange-400 text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Truy cập</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-visits">33</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-visits-trend">↓ 65.6%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-visits">108</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-visits-trend">↑ 56.5%</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 border-t-2 border-red-400 text-center">
                                 <p class="text-[10px] font-bold text-gray-400 uppercase">Theo dõi</p>
-                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-followers">0</h3>
-                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-followers-trend">↓ 100%</p>
+                                <h3 class="text-2xl font-bold text-gray-900 mt-1" id="fb-mohinh-followers">1</h3>
+                                <p class="text-[10px] font-semibold mt-1" id="fb-mohinh-followers-trend">↑ 100%</p>
                             </div>
                         </div>
 
@@ -1991,7 +2021,7 @@
 
             async function initFacebookIntegration() {
                 try {
-                    const response = await fetch('facebook_dashboard_data.json');
+                    const response = await fetch('facebook_dashboard_data.json?v=' + Date.now());
                     const data = await response.json();
                     
                     const mohinh = data.sectors.mohinh;
@@ -2006,13 +2036,23 @@
 
                         // Update posts is now handled by Notion Data
                     }
+
+                    const arch = data.sectors.architectural;
+                    if (arch) {
+                        updateFbMetric('fb-arch-reach', arch.metrics.page_impressions);
+                        updateFbMetric('fb-arch-visitors', arch.metrics.page_engaged_users);
+                        updateFbMetric('fb-arch-engagement', arch.metrics.page_post_engagements);
+                        updateFbMetric('fb-arch-clicks', arch.metrics.page_post_clicks_by_type || {total: 0, trend: '0%'});
+                        updateFbMetric('fb-arch-visits', arch.metrics.page_views_total);
+                        updateFbMetric('fb-arch-followers', arch.metrics.page_fan_adds);
+                    }
                 } catch (err) {
                     console.warn('Facebook metric data file not found.');
                 }
                 
                 // Fetch Notion Data for Task List Table
                 try {
-                    const notionRes = await fetch('notion_dashboard_data.json');
+                    const notionRes = await fetch('notion_dashboard_data.json?v=' + Date.now());
                     const notionData = await notionRes.json();
                     
                     if (Array.isArray(notionData)) {
@@ -2141,15 +2181,29 @@
             }
 
             function updateFbMetric(id, data) {
-                const valEl = document.getElementById(id);
-                const trendEl = document.getElementById(id + '-trend');
-                if (!valEl || !trendEl || !data) return;
-
-                valEl.innerText = data.total;
-                trendEl.innerText = data.trend;
+                if (!data) return;
                 
-                const isPositive = data.trend.includes('↑');
-                trendEl.className = `text-[10px] font-semibold mt-1 ${isPositive ? 'text-green-500' : 'text-red-500'}`;
+                // Select all elements with the same ID prefix (to handle duplicates in different sections)
+                const valEls = document.querySelectorAll(`[id="${id}"]`);
+                const trendEls = document.querySelectorAll(`[id="${id}-trend"]`);
+
+                valEls.forEach(el => {
+                    el.innerText = data.total;
+                });
+
+                trendEls.forEach(el => {
+                    el.innerText = data.trend;
+                    const isPositive = data.trend.includes('↑');
+                    
+                    // Specific logic for color classes
+                    if (el.tagName.toLowerCase() === 'span') {
+                        // Inline style (card list)
+                        el.className = `font-normal ml-1 ${isPositive ? 'text-green-600' : 'text-red-500'}`;
+                    } else {
+                        // Paragraph style (grid metrics)
+                        el.className = `text-[10px] font-semibold mt-1 ${isPositive ? 'text-green-500' : 'text-red-500'}`;
+                    }
+                });
             }
 
             initFacebookIntegration();

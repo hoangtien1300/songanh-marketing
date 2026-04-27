@@ -1,31 +1,82 @@
 {
   "page_name": "Mô hình kiến trúc Song Anh",
-  "last_updated": "2026-04-11 09:39:03",
+  "last_updated": "2026-04-27 08:05:00",
   "sectors": {
     "mohinh": {
       "metrics": {
         "page_impressions": {
-          "total": 0,
-          "trend": "--%"
+          "total": 846,
+          "trend": "↑ 13%"
         },
         "page_engaged_users": {
-          "total": 0,
-          "trend": "--%"
+          "total": 142,
+          "trend": "↑ 19.3%"
         },
         "page_views_total": {
-          "total": 0,
-          "trend": "--%"
+          "total": 108,
+          "trend": "↑ 56.5%"
         },
         "page_fan_adds": {
-          "total": 0,
-          "trend": "--%"
+          "total": 1,
+          "trend": "↑ 100%"
         },
         "page_post_engagements": {
-          "total": 0,
-          "trend": "--%"
+          "total": 15,
+          "trend": "↑ 25%"
+        },
+        "page_post_clicks_by_type": {
+          "total": 4,
+          "trend": "↓ 33.3%"
         }
       },
-      "posts": []
+      "posts": [
+        {
+          "message": "Tuyển dụng nhân viên kỹ thuật (23/04)",
+          "created_time": "2026-04-23",
+          "reach": 121,
+          "engagement": 1
+        },
+        {
+          "message": "Thông báo nghỉ lễ Giỗ Tổ Hùng Vương (22/04)",
+          "created_time": "2026-04-22",
+          "reach": 80,
+          "engagement": 2
+        },
+        {
+          "message": "Bài viết chuyên môn 'Bản vẽ 2D khô khan...'",
+          "created_time": "2026-04-20",
+          "reach": 52,
+          "engagement": 1
+        }
+      ]
+    },
+    "architectural": {
+      "metrics": {
+        "page_impressions": {
+          "total": 62,
+          "trend": "↓ 42.1%"
+        },
+        "page_engaged_users": {
+          "total": 23,
+          "trend": "↑ 15%"
+        },
+        "page_views_total": {
+          "total": 16,
+          "trend": "↓ 5.9%"
+        },
+        "page_fan_adds": {
+          "total": 1,
+          "trend": "↑ 100%"
+        },
+        "page_post_engagements": {
+          "total": 5,
+          "trend": "↓ 28.6%"
+        },
+        "page_post_clicks_by_type": {
+          "total": 1,
+          "trend": "↓ 50%"
+        }
+      }
     }
   }
 }

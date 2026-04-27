@@ -1,207 +1,185 @@
 {
   "https://mohinhkientruc.org/": {
     "site_url": "https://mohinhkientruc.org/",
-    "period_label": "2026-04-02 to 2026-04-08",
+    "period_label": "2026-04-18 to 2026-04-24",
     "metrics": {
       "clicks": {
-        "total": 56,
-        "trend": "↓ 8.2%"
+        "total": 41,
+        "trend": "↓ 33.9%"
       },
       "impressions": {
-        "total": 2461,
-        "trend": "↓ 5.4%"
+        "total": 1864,
+        "trend": "↓ 25.2%"
       },
       "ctr": {
-        "total": "2.4%",
-        "trend": "↓ 3.9%"
+        "total": "2.2%",
+        "trend": "↓ 12.4%"
       },
       "position": {
-        "total": "10.2",
-        "trend": "↓ 0.0"
+        "total": "12.9",
+        "trend": "↓ 1.2"
       }
     },
     "daily_stats": [
       {
-        "date": "2026-04-02",
-        "clicks": 10,
-        "impressions": 438,
-        "ctr": 0.0228310502283105,
-        "position": 11.86986301369863
+        "date": "2026-04-18",
+        "clicks": 3,
+        "impressions": 410,
+        "ctr": 0.007317073170731708,
+        "position": 20.33170731707317
       },
       {
-        "date": "2026-04-03",
-        "clicks": 7,
-        "impressions": 542,
-        "ctr": 0.012915129151291513,
-        "position": 17.300738007380073
+        "date": "2026-04-19",
+        "clicks": 8,
+        "impressions": 302,
+        "ctr": 0.026490066225165563,
+        "position": 10.456953642384105
       },
       {
-        "date": "2026-04-04",
-        "clicks": 10,
-        "impressions": 260,
-        "ctr": 0.038461538461538464,
-        "position": 8.23076923076923
+        "date": "2026-04-20",
+        "clicks": 8,
+        "impressions": 407,
+        "ctr": 0.019656019656019656,
+        "position": 11.788697788697789
       },
       {
-        "date": "2026-04-05",
-        "clicks": 7,
-        "impressions": 336,
-        "ctr": 0.020833333333333332,
-        "position": 8.4375
+        "date": "2026-04-21",
+        "clicks": 8,
+        "impressions": 368,
+        "ctr": 0.021739130434782608,
+        "position": 10.766304347826088
       },
       {
-        "date": "2026-04-06",
-        "clicks": 1,
-        "impressions": 288,
-        "ctr": 0.003472222222222222,
-        "position": 8.60763888888889
-      },
-      {
-        "date": "2026-04-07",
-        "clicks": 15,
-        "impressions": 306,
-        "ctr": 0.049019607843137254,
-        "position": 7.549019607843137
-      },
-      {
-        "date": "2026-04-08",
-        "clicks": 6,
-        "impressions": 291,
-        "ctr": 0.020618556701030927,
-        "position": 9.061855670103093
+        "date": "2026-04-22",
+        "clicks": 14,
+        "impressions": 377,
+        "ctr": 0.03713527851458886,
+        "position": 11.403183023872678
       }
     ],
     "top_queries": [
       {
+        "query": "công ty mô hình kiến trúc",
+        "clicks": 2,
+        "impressions": 6
+      },
+      {
         "query": "casa bonita vsip nghệ an",
-        "clicks": 2,
-        "impressions": 30
-      },
-      {
-        "query": "mô hình nhà máy",
-        "clicks": 2,
-        "impressions": 23
-      },
-      {
-        "query": "công ty song anh",
-        "clicks": 1,
-        "impressions": 28
-      },
-      {
-        "query": "căn hộ saigon skyview",
         "clicks": 1,
         "impressions": 10
       },
       {
-        "query": "làm mô hình kiến trúc",
+        "query": "công ty làm mô hình kiến trúc",
         "clicks": 1,
-        "impressions": 5
+        "impressions": 4
       },
       {
-        "query": "mô hình sa bàn",
+        "query": "grand mark nha trang",
+        "clicks": 1,
+        "impressions": 4
+      },
+      {
+        "query": "mô hình chung cư",
         "clicks": 1,
         "impressions": 8
       },
       {
-        "query": "mô hình tòa nhà landmark 81",
+        "query": "mô hình kiến trúc",
         "clicks": 1,
+        "impressions": 37
+      },
+      {
+        "query": "vsip cần thơ",
+        "clicks": 1,
+        "impressions": 5
+      },
+      {
+        "query": "aloha beach village",
+        "clicks": 0,
         "impressions": 2
       },
       {
-        "query": "nhà ga hàng hóa số 1 sân bay long thành",
-        "clicks": 1,
-        "impressions": 3
+        "query": "anh model",
+        "clicks": 0,
+        "impressions": 1
       },
       {
-        "query": "resort nam ô",
-        "clicks": 1,
-        "impressions": 7
-      },
-      {
-        "query": "sa bàn kiến trúc",
-        "clicks": 1,
-        "impressions": 108
+        "query": "architecture",
+        "clicks": 0,
+        "impressions": 2
       }
     ],
     "top_pages": [
       {
         "page": "https://mohinhkientruc.org/",
-        "clicks": 18,
-        "impressions": 597
+        "clicks": 13,
+        "impressions": 358
+      },
+      {
+        "page": "https://mohinhkientruc.org/mo-hinh-chung-cu/",
+        "clicks": 5,
+        "impressions": 84
+      },
+      {
+        "page": "https://mohinhkientruc.org/lam-mo-hinh-tai-da-nang/",
+        "clicks": 4,
+        "impressions": 27
+      },
+      {
+        "page": "https://mohinhkientruc.org/du-an/khu-dan-cu-moi-xa-cam-van/",
+        "clicks": 3,
+        "impressions": 23
       },
       {
         "page": "https://mohinhkientruc.org/du-an/mo-hinh-nha-mau-casa-bonita-nghe-an/",
-        "clicks": 5,
-        "impressions": 76
+        "clicks": 3,
+        "impressions": 34
       },
       {
         "page": "https://mohinhkientruc.org/tuyen-dung-cong-ty-mo-hinh/",
-        "clicks": 5,
-        "impressions": 55
+        "clicks": 3,
+        "impressions": 51
       },
       {
-        "page": "https://mohinhkientruc.org/dich-vu-lam-mo-hinh-kien-truc/",
+        "page": "https://mohinhkientruc.org/du-an/saigon-tan-tec-tai-binh-duong/",
         "clicks": 2,
-        "impressions": 18
+        "impressions": 7
       },
       {
-        "page": "https://mohinhkientruc.org/du-an/can-ho-chung-cu-saigon-sky-view-quan-8/",
-        "clicks": 2,
-        "impressions": 48
+        "page": "https://mohinhkientruc.org/du-an/",
+        "clicks": 1,
+        "impressions": 14
       },
       {
-        "page": "https://mohinhkientruc.org/du-an/mega-city-khu-dan-cu-cau-do-ben-cat/",
-        "clicks": 2,
-        "impressions": 36
+        "page": "https://mohinhkientruc.org/du-an/chung-cu-grand-mark-nha-trang/",
+        "clicks": 1,
+        "impressions": 6
       },
       {
-        "page": "https://mohinhkientruc.org/du-an/mo-hinh-nha-ga-hang-hoa/",
-        "clicks": 2,
-        "impressions": 16
-      },
-      {
-        "page": "https://mohinhkientruc.org/du-an/mo-hinh-nha-may-lumens-vina/",
-        "clicks": 2,
-        "impressions": 16
-      },
-      {
-        "page": "https://mohinhkientruc.org/du-an/mo-hinh-nha-may-nedspice/",
-        "clicks": 2,
-        "impressions": 16
-      },
-      {
-        "page": "https://mohinhkientruc.org/mo-hinh-nha-may/",
-        "clicks": 2,
-        "impressions": 46
+        "page": "https://mohinhkientruc.org/du-an/mo-hinh-benh-vien-truyen-mau-huyet-hoc/",
+        "clicks": 1,
+        "impressions": 41
       }
     ],
     "top_countries": [
       {
         "country": "vnm",
-        "clicks": 53
+        "clicks": 39
       },
       {
-        "country": "aus",
+        "country": "kor",
         "clicks": 1
       },
       {
-        "country": "can",
+        "country": "sgp",
         "clicks": 1
-      },
-      {
-        "country": "jpn",
-        "clicks": 1
-      },
-      {
-        "country": "alb",
-        "clicks": 0
       },
       {
         "country": "arg",
         "clicks": 0
       },
       {
-        "country": "bel",
+        "country": "aus",
         "clicks": 0
       },
       {
@@ -209,7 +187,15 @@
         "clicks": 0
       },
       {
+        "country": "bgr",
+        "clicks": 0
+      },
+      {
         "country": "bra",
+        "clicks": 0
+      },
+      {
+        "country": "can",
         "clicks": 0
       },
       {
@@ -218,202 +204,184 @@
       }
     ],
     "search_types": {
-      "web": 56,
-      "image": 12,
+      "web": 41,
+      "image": 10,
       "video": 0
     }
   },
   "https://architecturalmodel.org/": {
     "site_url": "https://architecturalmodel.org/",
-    "period_label": "2026-04-02 to 2026-04-08",
+    "period_label": "2026-04-18 to 2026-04-24",
     "metrics": {
       "clicks": {
-        "total": 50,
-        "trend": "↑ 22.0%"
+        "total": 34,
+        "trend": "↓ 19.0%"
       },
       "impressions": {
-        "total": 2615,
-        "trend": "↑ 30.8%"
+        "total": 1722,
+        "trend": "↓ 12.8%"
       },
       "ctr": {
         "total": "1.9%",
-        "trend": "↓ 3.0%"
+        "trend": "↓ 5.0%"
       },
       "position": {
-        "total": "6.7",
-        "trend": "↑ 1.1"
+        "total": "9.0",
+        "trend": "↓ 1.8"
       }
     },
     "daily_stats": [
       {
-        "date": "2026-04-02",
+        "date": "2026-04-18",
+        "clicks": 2,
+        "impressions": 278,
+        "ctr": 0.007194244604316547,
+        "position": 9.348920863309353
+      },
+      {
+        "date": "2026-04-19",
         "clicks": 5,
-        "impressions": 406,
-        "ctr": 0.012315270935960592,
-        "position": 7.879310344827586
+        "impressions": 305,
+        "ctr": 0.01639344262295082,
+        "position": 7.475409836065574
       },
       {
-        "date": "2026-04-03",
-        "clicks": 9,
-        "impressions": 369,
-        "ctr": 0.024390243902439025,
-        "position": 7.829268292682927
+        "date": "2026-04-20",
+        "clicks": 8,
+        "impressions": 385,
+        "ctr": 0.02077922077922078,
+        "position": 10.825974025974025
       },
       {
-        "date": "2026-04-04",
-        "clicks": 7,
-        "impressions": 371,
-        "ctr": 0.018867924528301886,
-        "position": 6.873315363881401
+        "date": "2026-04-21",
+        "clicks": 8,
+        "impressions": 373,
+        "ctr": 0.021447721179624665,
+        "position": 8.726541554959786
       },
       {
-        "date": "2026-04-05",
-        "clicks": 9,
-        "impressions": 379,
-        "ctr": 0.023746701846965697,
-        "position": 6.41688654353562
-      },
-      {
-        "date": "2026-04-06",
+        "date": "2026-04-22",
         "clicks": 11,
-        "impressions": 353,
-        "ctr": 0.031161473087818695,
-        "position": 5.645892351274788
-      },
-      {
-        "date": "2026-04-07",
-        "clicks": 4,
-        "impressions": 354,
-        "ctr": 0.011299435028248588,
-        "position": 6.285310734463277
-      },
-      {
-        "date": "2026-04-08",
-        "clicks": 5,
-        "impressions": 383,
-        "ctr": 0.013054830287206266,
-        "position": 5.939947780678851
+        "impressions": 381,
+        "ctr": 0.028871391076115485,
+        "position": 8.674540682414698
       }
     ],
     "top_queries": [
       {
-        "query": "sa ban",
-        "clicks": 1,
-        "impressions": 16
+        "query": "làm sa bàn dự án",
+        "clicks": 2,
+        "impressions": 15
       },
       {
         "query": "sa bàn bất động sản",
-        "clicks": 1,
-        "impressions": 26
+        "clicks": 2,
+        "impressions": 29
+      },
+      {
+        "query": "sa bàn chung cư",
+        "clicks": 2,
+        "impressions": 4
       },
       {
         "query": "thi công sa bàn",
+        "clicks": 2,
+        "impressions": 9
+      },
+      {
+        "query": "mô hình dự án",
         "clicks": 1,
-        "impressions": 5
+        "impressions": 4
       },
       {
-        "query": "1/100",
+        "query": "\"vsip hai duong\" industrial park",
         "clicks": 0,
-        "impressions": 1
+        "impressions": 3
       },
       {
-        "query": "architect model supplies",
-        "clicks": 0,
-        "impressions": 1
-      },
-      {
-        "query": "architectural scale model supplier",
-        "clicks": 0,
-        "impressions": 1
-      },
-      {
-        "query": "architecture model kits for adults",
-        "clicks": 0,
-        "impressions": 1
-      },
-      {
-        "query": "ban sa",
-        "clicks": 0,
-        "impressions": 1
-      },
-      {
-        "query": "bài đánh giá về bệnh viện truyền máu huyết học cơ sở 2",
+        "query": "\"vsip hai duong\" industrial park area",
         "clicks": 0,
         "impressions": 2
       },
       {
-        "query": "bản đồ quy hoạch khu công nghiệp becamex bình phước",
+        "query": "\"vsip hai duong\" industrial park area hectares",
+        "clicks": 0,
+        "impressions": 2
+      },
+      {
+        "query": "3d kien truc",
+        "clicks": 0,
+        "impressions": 1
+      },
+      {
+        "query": "architectural model",
         "clicks": 0,
         "impressions": 1
       }
     ],
     "top_pages": [
       {
-        "page": "https://architecturalmodel.org/",
-        "clicks": 12,
-        "impressions": 367
-      },
-      {
         "page": "https://architecturalmodel.org/bao-gia-sa-ban-kien-truc/",
-        "clicks": 11,
-        "impressions": 673
+        "clicks": 8,
+        "impressions": 472
       },
       {
-        "page": "https://architecturalmodel.org/cong-ty-mo-hinh-kien-truc/",
-        "clicks": 4,
-        "impressions": 206
+        "page": "https://architecturalmodel.org/",
+        "clicks": 5,
+        "impressions": 134
       },
       {
         "page": "https://architecturalmodel.org/sa-ban-chung-cu/",
-        "clicks": 4,
-        "impressions": 224
+        "clicks": 5,
+        "impressions": 109
       },
       {
-        "page": "https://architecturalmodel.org/en/the-national-bank-of-cambodia-new-building/",
+        "page": "https://architecturalmodel.org/thu-mua-mo-hinh-cu/",
         "clicks": 3,
-        "impressions": 33
-      },
-      {
-        "page": "https://architecturalmodel.org/lam-mo-hinh-khu-cong-nghiep/",
-        "clicks": 2,
-        "impressions": 145
-      },
-      {
-        "page": "https://architecturalmodel.org/sa-ban-du-an-sun-symphony-residence/",
-        "clicks": 2,
-        "impressions": 24
-      },
-      {
-        "page": "https://architecturalmodel.org/sa-ban-khu-cong-nghiep-son-my-1/",
-        "clicks": 2,
-        "impressions": 3
-      },
-      {
-        "page": "https://architecturalmodel.org/sua-chua-sa-ban/",
-        "clicks": 2,
-        "impressions": 19
+        "impressions": 14
       },
       {
         "page": "https://architecturalmodel.org/en/",
+        "clicks": 2,
+        "impressions": 25
+      },
+      {
+        "page": "https://architecturalmodel.org/sa-ban-truong-hoc/",
+        "clicks": 2,
+        "impressions": 69
+      },
+      {
+        "page": "https://architecturalmodel.org/van-chuyen-sa-ban/",
+        "clicks": 2,
+        "impressions": 15
+      },
+      {
+        "page": "https://architecturalmodel.org/vat-lieu-mo-hinh/",
+        "clicks": 2,
+        "impressions": 44
+      },
+      {
+        "page": "https://architecturalmodel.org/cong-ty-mo-hinh-kien-truc/",
         "clicks": 1,
-        "impressions": 51
+        "impressions": 103
+      },
+      {
+        "page": "https://architecturalmodel.org/dich-vu-ve-sinh-sa-ban-mo-hinh-kien-truc/",
+        "clicks": 1,
+        "impressions": 5
       }
     ],
     "top_countries": [
       {
         "country": "vnm",
-        "clicks": 44
+        "clicks": 30
       },
       {
-        "country": "chn",
-        "clicks": 2
-      },
-      {
-        "country": "ind",
+        "country": "fra",
         "clicks": 1
       },
       {
-        "country": "khm",
+        "country": "jpn",
         "clicks": 1
       },
       {
@@ -421,15 +389,15 @@
         "clicks": 1
       },
       {
-        "country": "twn",
+        "country": "usa",
         "clicks": 1
       },
       {
-        "country": "ago",
+        "country": "are",
         "clicks": 0
       },
       {
-        "country": "are",
+        "country": "arg",
         "clicks": 0
       },
       {
@@ -437,13 +405,17 @@
         "clicks": 0
       },
       {
-        "country": "bgd",
+        "country": "aut",
+        "clicks": 0
+      },
+      {
+        "country": "aze",
         "clicks": 0
       }
     ],
     "search_types": {
-      "web": 50,
-      "image": 10,
+      "web": 34,
+      "image": 6,
       "video": 0
     }
   }
