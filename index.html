@@ -703,11 +703,26 @@
                 </div>
 
                                 <div class="px-6 sm:px-8 pt-6 pb-2">
-                    <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm w-full overflow-x-auto hide-scrollbar mb-2">
-                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800 focus:outline-none" data-site="kw1">mohinhkientruc.org</button>
-                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw2">architecturalmodel.org</button>
-                        <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw3">mohinhsonganh.com</button>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-2">
+                        <div class="flex flex-wrap gap-2 lg:gap-3 bg-white p-1.5 rounded-lg border border-gray-200 shadow-sm overflow-x-auto hide-scrollbar">
+                            <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors bg-green-100 text-green-800 focus:outline-none" data-site="kw1">mohinhkientruc.org</button>
+                            <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw2">architecturalmodel.org</button>
+                            <button class="kw-tab whitespace-nowrap px-4 py-2 text-xs sm:text-sm font-semibold rounded-md transition-colors text-gray-600 hover:bg-gray-100 focus:outline-none" data-site="kw3">mohinhsonganh.com</button>
+                        </div>
+                        
+                        <!-- Date Filter -->
+                        <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm">
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Ngày check:</span>
+                            <select id="kw-date-filter" class="text-xs sm:text-sm font-bold text-blue-600 bg-transparent focus:outline-none cursor-pointer">
+                                <option value="latest">Mới nhất</option>
+                            </select>
+                        </div>
                     </div>
+                    
+                    <div class="flex justify-between items-center mb-4 px-1">
+                        <p class="text-[10px] text-gray-400 italic">Cập nhật mới nhất: <span id="kw-latest-date-label" class="font-bold text-gray-500">--/--/----</span></p>
+                    </div>
+
                     <div class="kw-warning-msg hidden mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200 text-amber-700 italic text-sm font-medium text-center shadow-sm">
                         ⚠️ Đang cập nhật do đang hoàn chỉnh giao diện và kế hoạch website mohinhkientruc.org trước
                     </div>
@@ -2126,34 +2141,36 @@
             renderGscView('clicks');
 
             // --- KEYWORD DATA LOADING ---
-            async function loadKeywordData(siteId = 'kw1') {
+            async function loadKeywordData(siteId = 'kw1', selectedDate = 'latest') {
                 const tableBody = document.getElementById('keyword-table-body');
+                const dateFilter = document.getElementById('kw-date-filter');
+                const latestLabel = document.getElementById('kw-latest-date-label');
                 
-                // Map domains to Google Sheets GIDs
                 const siteGids = {
-                    'kw1': '69019275', // mohinhkientruc.org
-                    'kw2': 'MOCK_GID_1', // architecturalmodel.org (Not exist yet)
-                    'kw3': 'MOCK_GID_2'  // mohinhsonganh.com (Not exist yet)
+                    'kw1': '69019275', 
+                    'kw2': '837486607', 
+                    'kw3': 'MOCK_GID_2'  
                 };
                 
                 const currentGid = siteGids[siteId];
                 
-                // Reset Summary Cards immediately
+                // Reset Summary Cards
                 document.querySelectorAll('.kw-total').forEach(el => el.innerText = '...');
-                document.querySelectorAll('.kw-top3').forEach(el => el.innerText = '...');
                 document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = '(...)');
-                document.querySelectorAll('.kw-top10').forEach(el => el.innerText = '...');
                 document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = '(...)');
                 document.querySelectorAll('.kw-up').forEach(el => el.innerText = '...');
 
                 if (currentGid.startsWith('MOCK')) {
                     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang chờ kết nối dữ liệu cho website này từ GS Song Anh...</td></tr>';
+                    document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.remove('hidden'));
+                    document.querySelectorAll('.kw-data-container').forEach(el => el.classList.add('hidden'));
                     return;
+                } else {
+                    document.querySelectorAll('.kw-warning-msg').forEach(el => el.classList.add('hidden'));
+                    document.querySelectorAll('.kw-data-container').forEach(el => el.classList.remove('hidden'));
                 }
                 
                 const GS_CSV_URL = `https://docs.google.com/spreadsheets/d/1xXvpAlJkpxg7S6M49acRFSM7key8oXUSmOkRxg6nqlc/gviz/tq?tqx=out:csv&gid=${currentGid}&t=${Date.now()}`;
-
-                if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-gray-400 italic">Đang đồng bộ dữ liệu từ Google Sheets...</td></tr>';
 
                 Papa.parse(GS_CSV_URL, {
                     download: true,
@@ -2161,83 +2178,114 @@
                     skipEmptyLines: true,
                     complete: function(results) {
                         const rows = results.data;
-                        if (!rows || rows.length < 5) {
-                            if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-red-400">Không tìm thấy dữ liệu từ khóa. Hãy kiểm tra quyền chia sẻ của Google Sheet.</td></tr>';
-                            return;
-                        }
+                        if (!rows || rows.length < 2) return;
 
-                        // Find header row "Danh sách từ khóa SEO"
-                        let headerRowIdx = -1;
-                        let kwColIdx = -1;
-                        for (let i = 0; i < rows.length; i++) {
-                            // Find the column index
-                            const foundIdx = rows[i].findIndex(cell => cell && cell.includes("Danh sách từ khóa SEO"));
-                            if (foundIdx !== -1) {
-                                headerRowIdx = i;
-                                kwColIdx = foundIdx;
-                                break;
+                        // 1. Find Header Row and Date Columns
+                        let headerRowIdx = 0;
+                        let kwColIdx = rows[0].findIndex(c => c && c.toLowerCase().trim().includes('từ khóa'));
+                        if (kwColIdx === -1) {
+                            // Search other rows
+                            for(let i=0; i<5; i++){
+                                let idx = rows[i].findIndex(c => c && c.toLowerCase().trim().includes('từ khóa'));
+                                if(idx !== -1) { headerRowIdx = i; kwColIdx = idx; break; }
                             }
                         }
+                        
+                        if (kwColIdx === -1) kwColIdx = 0; // Fallback
 
-                        if (headerRowIdx === -1) {
-                            if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-red-300 italic">Không tìm thấy tiêu đề "Danh sách từ khóa SEO".</td></tr>';
+                        const headers = rows[headerRowIdx];
+                        const dateCols = []; // { index, label }
+                        headers.forEach((h, idx) => {
+                            if (h && /\d{1,2}\/\d{1,2}/.test(h)) {
+                                dateCols.push({ index: idx, label: h });
+                            }
+                        });
+
+                        if (dateCols.length === 0) {
+                            if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-red-400">Không tìm thấy cột ngày tháng trong dữ liệu.</td></tr>';
                             return;
                         }
 
+                        // 2. Populate Date Filter (if needed)
+                        const currentFilterVal = dateFilter.value;
+                        dateFilter.innerHTML = '';
+                        dateCols.slice().reverse().forEach(d => {
+                            const opt = document.createElement('option');
+                            opt.value = d.index;
+                            opt.innerText = d.label;
+                            dateFilter.appendChild(opt);
+                        });
+
+                        // Set selected or default to latest
+                        let t0_idx = dateCols[dateCols.length - 1].index;
+                        if (selectedDate !== 'latest' && headers[selectedDate]) {
+                            t0_idx = parseInt(selectedDate);
+                            dateFilter.value = t0_idx;
+                        } else {
+                            dateFilter.value = t0_idx;
+                        }
+
+                        // Update latest label
+                        if (latestLabel) latestLabel.innerText = headers[dateCols[dateCols.length - 1].index];
+
+                        const t1_idx = t0_idx > dateCols[0].index ? t0_idx - 1 : null; 
+
+                        // 3. Process Data
                         const dataRows = rows.slice(headerRowIdx + 1);
                         const keywords = [];
-                        
-                        let totalKw = 0;
-                        let top3 = 0;
-                        let top10 = 0;
-                        let improvedCount = 0;
+                        let totalKw = 0, top3 = 0, top10 = 0, improvedCount = 0;
 
                         dataRows.forEach((row, idx) => {
-                            const kwFull = row[kwColIdx] ? row[kwColIdx].trim() : "";
-                            const dateStr = row[kwColIdx + 1] ? row[kwColIdx + 1].trim() : "-";
-                            const rankStr = row[kwColIdx + 2] ? row[kwColIdx + 2].trim() : "-";
-                            const changeStr = row[kwColIdx + 3] ? row[kwColIdx + 3].trim() : "-";
-                            const targetUrl = row[kwColIdx + 4] ? row[kwColIdx + 4].trim() : "#";
+                            const kwName = row[kwColIdx] ? row[kwColIdx].trim() : "";
+                            if (!kwName || kwName.toLowerCase().includes('từ khóa') || kwName.toLowerCase().includes('.org')) return;
 
-                            if (kwFull) {
-                                const kwList = kwFull.split(',').map(k => k.trim());
-                                kwList.forEach(k => {
-                                    const rankNum = parseInt(rankStr.replace(/[^0-9]/g, '')) || 101;
-                                    keywords.push({
-                                        id: keywords.length + 1,
-                                        keyword: k,
-                                        rank: rankStr,
-                                        rankNum: rankNum,
-                                        date: dateStr,
-                                        url: targetUrl,
-                                        change: changeStr
-                                    });
+                            const rankStr = row[t0_idx] || "-";
+                            const rankNum = getRankVal(rankStr);
+                            const prevRankStr = t1_idx !== null ? row[t1_idx] : rankStr;
+                            const prevRankNum = getRankVal(prevRankStr);
 
-                                    if (rankNum <= 3) top3++;
-                                    if (rankNum <= 10) top10++;
-                                    if (changeStr.includes('▲')) improvedCount++;
-                                    totalKw++;
-                                });
-                            }
+                            const url = row[1] || "#"; // Assuming URL is col 1
+                            
+                            let change = "-";
+                            if (rankNum < prevRankNum) change = "▲ " + (prevRankNum - rankNum);
+                            else if (rankNum > prevRankNum) change = "▼ " + (rankNum - prevRankNum);
+
+                            keywords.push({
+                                id: idx,
+                                keyword: kwName,
+                                rank: rankStr,
+                                rankNum: rankNum,
+                                date: headers[t0_idx],
+                                url: url,
+                                change: change
+                            });
+
+                            totalKw++;
+                            if (rankNum <= 3) top3++;
+                            if (rankNum <= 10) top10++;
+                            if (rankNum < prevRankNum) improvedCount++;
                         });
 
                         window.cachedKeywords = keywords;
                         renderKeywordTable(keywords);
-                        
-                        // Update Summary Cards with Percentages
+
+                        // 4. Update Summary Cards
                         document.querySelectorAll('.kw-total').forEach(el => el.innerText = totalKw);
                         document.querySelectorAll('.kw-top3').forEach(el => el.innerText = top3);
                         document.querySelectorAll('.kw-pct-top3').forEach(el => el.innerText = totalKw > 0 ? `(${(top3 / totalKw * 100).toFixed(1)}%)` : '(0%)');
-                        
                         document.querySelectorAll('.kw-top10').forEach(el => el.innerText = top10);
                         document.querySelectorAll('.kw-pct-top10').forEach(el => el.innerText = totalKw > 0 ? `(${(top10 / totalKw * 100).toFixed(1)}%)` : '(0%)');
-                        
-                        let improvedRate = totalKw > 0 ? ((improvedCount / totalKw) * 100).toFixed(1) : 0;
-                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = improvedRate + '%'); 
-
+                        document.querySelectorAll('.kw-up').forEach(el => el.innerText = improvedCount);
                     }
                 });
             }
+
+            // Bind filter event
+            document.getElementById('kw-date-filter').addEventListener('change', function() {
+                const activeTab = document.querySelector('.kw-tab.bg-green-100');
+                const siteId = activeTab ? activeTab.getAttribute('data-site') : 'kw1';
+                loadKeywordData(siteId, this.value);
+            });
 
             function renderKeywordTable(data) {
                 const tableBody = document.getElementById('keyword-table-body');
