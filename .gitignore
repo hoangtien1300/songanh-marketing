@@ -1,0 +1,13 @@
+# Credentials and secrets
+service_account.json
+gen-lang-client*.json
+*.pem
+*.key
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
