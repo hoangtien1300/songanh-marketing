@@ -53,11 +53,50 @@
         #sidebar { transition: all 0.3s ease-in-out; }
         #sidebar.collapsed { width: 0; padding: 0; margin: 0; overflow: hidden; opacity: 0; border: none; }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: #F1F5F9; }
-        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #0B3C5D; }
+        /* Custom Tooltip Styling */
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+        }
+        .has-tooltip .tooltip-popup {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-4px);
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;
+            z-index: 9999;
+            pointer-events: none;
+            width: max-content;
+            max-width: 280px;
+            background-color: #0F172A;
+            color: #F8FAFC;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.45;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+            white-space: normal;
+        }
+        .has-tooltip .tooltip-popup::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #0F172A transparent transparent transparent;
+        }
+        .has-tooltip:hover .tooltip-popup {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-8px);
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-white">
@@ -255,7 +294,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 space-y-1">
+                    <div class="light-card p-4 rounded-2xl border border-slate-200 space-y-1 has-tooltip" title="Tổng số từ khóa SEO B2B cốt lõi đang được theo dõi real-time qua GSC & Search API nhằm đo lường diện rộng thứ hạng ngành sa bàn kiến trúc.">
+                        <div class="tooltip-popup">Tổng số từ khóa SEO B2B cốt lõi đang được theo dõi real-time qua GSC &amp; Google Search API.</div>
                         <span class="text-xs text-slate-500 font-medium">TỔNG TỪ KHÓA THEO DÕI</span>
                         <div class="flex items-baseline gap-2">
                             <span id="kpi-total-keywords" class="text-2xl font-heading font-extrabold text-slate-900">0</span>
@@ -264,7 +304,8 @@
                         <p class="text-[10px] text-slate-400" id="kpi-total-subtext">Tự Động Tính Theo Data SEO</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-emerald-200 bg-emerald-50/30 space-y-1">
+                    <div class="light-card p-4 rounded-2xl border border-emerald-200 bg-emerald-50/30 space-y-1 has-tooltip" title="Các từ khóa đạt vị trí Top 1 đến Top 3 (nhóm xuất sắc nhất), mang lại 80%+ lưu lượng truy cập và Lead Zalo/Call báo giá sa bàn.">
+                        <div class="tooltip-popup">Các từ khóa đạt vị trí Top 1 - 3, mang lại 80%+ traffic &amp; Lead Zalo/Call báo giá sa bàn.</div>
                         <span class="text-xs text-emerald-800 font-bold">TOP 1 - TOP 3 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
                             <span id="kpi-top1-3" class="text-2xl font-heading font-extrabold text-emerald-600">0</span>
@@ -273,7 +314,8 @@
                         <p class="text-[10px] text-emerald-700 font-medium" id="kpi-top1-3-subtext">Bao gồm từ khóa thứ hạng &le; 3.0</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-blue-200 bg-blue-50/30 space-y-1">
+                    <div class="light-card p-4 rounded-2xl border border-blue-200 bg-blue-50/30 space-y-1 has-tooltip" title="Các từ khóa nằm trong Trang 1 Google (vị trí 4-10), có tiềm năng cao để đẩy bứt phá lên Top 1-3 bằng On-page & Internal Link.">
+                        <div class="tooltip-popup">Từ khóa nằm Trang 1 Google (Top 4-10), tiềm năng cao cần đẩy bứt phá lên Top 1-3.</div>
                         <span class="text-xs text-blue-800 font-bold">TOP 4 - TOP 10 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
                             <span id="kpi-top4-10" class="text-2xl font-heading font-extrabold text-blue-700">0</span>
@@ -282,7 +324,8 @@
                         <p class="text-[10px] text-blue-700 font-medium" id="kpi-top4-10-subtext">Bao gồm từ khóa thứ hạng 3.1 - 10.0</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-amber-200 bg-amber-50/30 space-y-1">
+                    <div class="light-card p-4 rounded-2xl border border-amber-200 bg-amber-50/30 space-y-1 has-tooltip" title="Các từ khóa ở Trang 2 & Trang 3 Google, đang trong chiến dịch tối ưu nội dung và cấu trúc Silo để tiến vào Trang 1.">
+                        <div class="tooltip-popup">Từ khóa Trang 2 &amp; 3 Google (Top 11-30), đang trong chiến dịch tối ưu đẩy vào Trang 1.</div>
                         <span class="text-xs text-amber-800 font-bold">TOP 11 - TOP 30 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
                             <span id="kpi-top11-30" class="text-2xl font-heading font-extrabold text-amber-700">0</span>
@@ -305,12 +348,30 @@
                         <table class="w-full text-left text-xs border-collapse">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                                    <th class="p-3">Từ Khóa Trọng Tâm</th>
-                                    <th class="p-3">Vị Trí Thứ 2 (17/08/2026)</th>
-                                    <th class="p-3">Vị Trí GSC (TB)</th>
-                                    <th class="p-3">Thay Đổi Thứ Hạng</th>
-                                    <th class="p-3">Search Feature Rank Top</th>
-                                    <th class="p-3">URL Đích Xếp Hạng</th>
+                                    <th class="p-3 has-tooltip" title="Cụm từ tìm kiếm B2B mục tiêu của khách hàng/chủ đầu tư khi tìm kiếm nhà thầu sản xuất sa bàn kiến trúc.">
+                                        <div class="tooltip-popup">Từ khóa B2B mục tiêu được theo dõi thứ hạng &amp; lượng tìm kiếm tự nhiên.</div>
+                                        Từ Khóa Trọng Tâm <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Thứ hạng mốc baseline đo lường đầu tuần (Thứ Hai 17/08/2026) dùng làm căn cứ so sánh tốc độ tăng trưởng thứ hạng.">
+                                        <div class="tooltip-popup">Thứ hạng mốc baseline đầu tuần (17/08/2026) dùng so sánh tăng trưởng.</div>
+                                        Vị Trí Thứ 2 (17/08/2026) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Vị trí thứ hạng trung bình thực tế được đồng bộ trực tiếp từ dữ liệu Google Search Console API.">
+                                        <div class="tooltip-popup">Vị trí thứ hạng trung bình thực tế lấy trực tiếp từ Google Search Console API.</div>
+                                        Vị Trí GSC (TB) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Mức độ tăng/giảm thứ hạng so với mốc baseline đầu tuần (🟢 Tăng bậc / 🔴 Giảm bậc).">
+                                        <div class="tooltip-popup">Biến động thứ hạng so với mốc baseline (🟢 Tăng bậc / 🔴 Giảm bậc).</div>
+                                        Thay Đổi Thứ Hạng <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Dạng hiển thị đặc biệt trên Google SERP (⭐ Featured Snippet, 🖼️ Image Pack, ❓ PAA, 🔗 Sitelinks, 📍 Local Maps).">
+                                        <div class="tooltip-popup">Tính năng SERP nổi bật (Featured Snippet, Image Pack, PAA, Sitelinks, Maps).</div>
+                                        Search Feature Rank Top <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Đường dẫn Canonical 200 OK chính thức trên website mohinhkientruc.org chịu trách nhiệm xếp hạng từ khóa.">
+                                        <div class="tooltip-popup">Đường dẫn Canonical 200 OK chính thức xếp hạng trên mohinhkientruc.org.</div>
+                                        URL Đích Xếp Hạng <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody id="kw-table-body" class="divide-y divide-slate-200"></tbody>
@@ -334,11 +395,26 @@
                         <table class="w-full text-left text-xs border-collapse">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                                    <th class="p-3 w-1/3">1. Tiêu Đề (Show Đầy Đủ)</th>
-                                    <th class="p-3 w-1/3">2. URL Link Website (Show Đầy Đủ)</th>
-                                    <th class="p-3">3. Rank Math</th>
-                                    <th class="p-3">4. Từ Khóa Chính</th>
-                                    <th class="p-3">5. Thứ Hạng (Đồng Bộ Data Từ Khóa)</th>
+                                    <th class="p-3 w-1/3 has-tooltip" title="Tiêu đề Meta Title chính thức hiển thị trên thanh trình duyệt & Google SERP.">
+                                        <div class="tooltip-popup">Tiêu đề Meta Title chính thức tối ưu On-Page cho bài viết.</div>
+                                        1. Tiêu Đề (Show Đầy Đủ) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 w-1/3 has-tooltip" title="Đường dẫn tuyệt đối Canonical 200 OK trên website mohinhkientruc.org.">
+                                        <div class="tooltip-popup">URL đường dẫn tuyệt đối Canonical trên mohinhkientruc.org.</div>
+                                        2. URL Link Website (Show Đầy Đủ) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Điểm số tối ưu SEO On-Page được đo lường bởi Rank Math SEO Plugin (thang điểm 100).">
+                                        <div class="tooltip-popup">Điểm số On-Page SEO chuẩn đo lường bởi Rank Math Plugin (/100).</div>
+                                        3. Rank Math <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Từ khóa SEO mục tiêu số 1 mà trang bài viết tập trung tối ưu nội dung.">
+                                        <div class="tooltip-popup">Từ khóa SEO trọng tâm số 1 được bài viết tối ưu.</div>
+                                        4. Từ Khóa Chính <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3 has-tooltip" title="Thứ hạng trung bình hiện tại của từ khóa chính được đồng bộ real-time.">
+                                        <div class="tooltip-popup">Thứ hạng hiện tại của từ khóa chính đồng bộ real-time.</div>
+                                        5. Thứ Hạng (Đồng Bộ Data Từ Khóa) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody id="onpage-table-body" class="divide-y divide-slate-200"></tbody>
@@ -383,22 +459,26 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
-                        <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/40 space-y-1 has-tooltip" title="Tổng lượt hiển thị bài viết Fanpage & Reel B2B tiếp cận tới người dùng Facebook.">
+                            <div class="tooltip-popup">Tổng lượt hiển thị bài viết Fanpage &amp; Reel B2B trên Facebook.</div>
                             <div class="flex items-center justify-between text-sky-800 text-xs font-bold"><span>LƯỢT XEM (REACH)</span><i class="fa-solid fa-eye text-sky-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-sky-700" id="fb-stat-views">12,850</span><span class="text-xs font-bold text-emerald-600">+14.2%</span></div>
                             <p class="text-[10px] text-sky-700 font-medium">Lượt hiển thị bài đăng B2B</p>
                         </div>
-                        <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 space-y-1 has-tooltip" title="Tổng lượt Thích, Bình luận, Chia sẻ và Click tương tác trên nội dung Fanpage.">
+                            <div class="tooltip-popup">Tổng số lượt tương tác Like, Bình luận, Chia sẻ trên Fanpage.</div>
                             <div class="flex items-center justify-between text-blue-800 text-xs font-bold"><span>LƯỢT TƯƠNG TÁC</span><i class="fa-solid fa-thumbs-up text-blue-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-blue-700" id="fb-stat-engagements">1,420</span><span class="text-xs font-bold text-emerald-600">+8.5%</span></div>
                             <p class="text-[10px] text-blue-700 font-medium">Like, Comment, Share B2B</p>
                         </div>
-                        <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-1 has-tooltip" title="Số lượt tin nhắn Messenger mới phát sinh nhu cầu tư vấn và nhận báo giá sa bàn mô hình.">
+                            <div class="tooltip-popup">Số tin nhắn Messenger mới phát sinh hỏi báo giá sa bàn.</div>
                             <div class="flex items-center justify-between text-emerald-800 text-xs font-bold"><span>LƯỢT TRÒ CHUYỆN (LEAD)</span><i class="fa-solid fa-comments text-emerald-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-emerald-600" id="fb-stat-chats">86</span><span class="text-xs font-bold text-emerald-600">+22.0%</span></div>
                             <p class="text-[10px] text-emerald-700 font-medium">Hộp thư Báo Giá Sa Bàn</p>
                         </div>
-                        <div class="p-4 rounded-xl border border-purple-200 bg-purple-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-purple-200 bg-purple-50/40 space-y-1 has-tooltip" title="Tổng số người dùng bấm Theo dõi Fanpage Mô hình kiến trúc Song Anh, xây dựng cộng đồng B2B.">
+                            <div class="tooltip-popup">Tổng cộng đồng người dùng bấm Theo dõi Fanpage Song Anh.</div>
                             <div class="flex items-center justify-between text-purple-800 text-xs font-bold"><span>SỐ NGƯỜI THEO DÕI</span><i class="fa-solid fa-users text-purple-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-purple-700" id="fb-stat-followers">18,520</span><span class="text-xs font-bold text-purple-600">Followers</span></div>
                             <p class="text-[10px] text-purple-700 font-medium">Cộng đồng Kiến trúc &amp; BĐS</p>
@@ -481,19 +561,23 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
-                        <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-sky-200 bg-sky-50/40 space-y-1 has-tooltip" title="Tổng lượt hồ sơ doanh nghiệp hiển thị trên Google Maps & Google Search Local.">
+                            <div class="tooltip-popup">Tổng lượt hiển thị trên Google Maps &amp; Tìm kiếm Địa phương.</div>
                             <div class="flex items-center justify-between text-sky-800 text-xs font-bold"><span>LƯỢT TÌM KIẾM (MAPS VIEWS)</span><i class="fa-solid fa-magnifying-glass-location text-sky-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-sky-700" id="gbp-stat-views">8,450</span><span class="text-xs font-bold text-emerald-600">+18.5%</span></div>
                         </div>
-                        <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 space-y-1 has-tooltip" title="Số lượt khách hàng bấm nút 'Gọi Ngay' tới Hotline 0981169200 từ trang Google Maps.">
+                            <div class="tooltip-popup">Số lượt khách hàng bấm nút Gọi Ngay tới Hotline từ Google Maps.</div>
                             <div class="flex items-center justify-between text-emerald-800 text-xs font-bold"><span>CUỘC GỌI ĐIỆN (HOTLINE)</span><i class="fa-solid fa-phone text-emerald-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-emerald-600" id="gbp-stat-calls">42</span><span class="text-xs font-bold text-emerald-600">+12.0%</span></div>
                         </div>
-                        <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-blue-200 bg-blue-50/40 space-y-1 has-tooltip" title="Số lượt người dùng bấm tìm đường lái xe tới xưởng sa bàn Thủ Đức, TP.HCM.">
+                            <div class="tooltip-popup">Số lượt người dùng bấm tra cứu tuyến đường tới xưởng sa bàn.</div>
                             <div class="flex items-center justify-between text-blue-800 text-xs font-bold"><span>LƯỢT CHỈ ĐƯỜNG</span><i class="fa-solid fa-diamond-turn-right text-blue-600"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-blue-700" id="gbp-stat-directions">128</span><span class="text-xs font-bold text-blue-600">Khách tới xưởng</span></div>
                         </div>
-                        <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-1">
+                        <div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-1 has-tooltip" title="Điểm số uy tín trung bình (4.9/5⭐) từ 156+ nhận xét thực tế của Chủ đầu tư trên Google Maps.">
+                            <div class="tooltip-popup">Điểm đánh giá uy tín trung bình (4.9⭐) từ 156+ nhận xét thực tế.</div>
                             <div class="flex items-center justify-between text-amber-800 text-xs font-bold"><span>ĐÁNH GIÁ &amp; RATING</span><i class="fa-solid fa-star text-amber-500"></i></div>
                             <div class="flex items-baseline gap-2"><span class="text-2xl font-heading font-extrabold text-amber-600" id="gbp-stat-reviews">4.9 ⭐</span><span class="text-xs font-bold text-amber-700">(156 Đánh Giá)</span></div>
                         </div>
@@ -568,12 +652,30 @@
                         <table class="w-full text-left text-xs border-collapse">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                                    <th class="p-3.5 w-1/3">1. Tên Công Việc / Task Name</th>
-                                    <th class="p-3.5">2. Người Phụ Trách</th>
-                                    <th class="p-3.5">3. Duy Trì (Lặp Lại)</th>
-                                    <th class="p-3.5">4. KPI Tuần</th>
-                                    <th class="p-3.5">5. Đã Thực Hiện</th>
-                                    <th class="p-3.5 w-1/4">6. % Công Việc (Tuần)</th>
+                                    <th class="p-3.5 w-1/3 has-tooltip" title="Tên nhiệm vụ Zalo Marketing B2B được lập kế hoạch và phân công thực hiện.">
+                                        <div class="tooltip-popup">Tên nhiệm vụ Zalo Marketing B2B được phân công thực hiện.</div>
+                                        1. Tên Công Việc / Task Name <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3.5 has-tooltip" title="Nhân sự hoặc Subagent AI chịu trách nhiệm hoàn thành công việc.">
+                                        <div class="tooltip-popup">Nhân sự hoặc Subagent AI phụ trách thực thi nhiệm vụ.</div>
+                                        2. Người Phụ Trách <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3.5 has-tooltip" title="Chu kỳ lặp lại nhiệm vụ (Hàng ngày, Hàng tuần hoặc Đột xuất).">
+                                        <div class="tooltip-popup">Chu kỳ lặp lại nhiệm vụ (Hàng ngày, Hàng tuần, Lặp lại).</div>
+                                        3. Duy Trì (Lặp Lại) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3.5 has-tooltip" title="Chỉ số định lượng mục tiêu tối thiểu phải đạt trong 7 ngày.">
+                                        <div class="tooltip-popup">Chỉ số định lượng mục tiêu tối thiểu phải hoàn thành trong 7 ngày.</div>
+                                        4. KPI Tuần <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3.5 has-tooltip" title="Số lượng công việc thực tế đã hoàn thành và được ghi nhận.">
+                                        <div class="tooltip-popup">Số lượng tác vụ đã thực hiện thành công thực tế.</div>
+                                        5. Đã Thực Hiện <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
+                                    <th class="p-3.5 w-1/4 has-tooltip" title="Tiến độ phần trăm hoàn thành chỉ tiêu KPI tuần được giao.">
+                                        <div class="tooltip-popup">Tỷ lệ % tiến độ hoàn thành chỉ tiêu KPI tuần.</div>
+                                        6. % Công Việc (Tuần) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody id="zalo-table-body" class="divide-y divide-slate-200"></tbody>
@@ -4306,19 +4408,23 @@
 
                             <!-- 3. Real-time GSC Metrics Cards Theo Bộ Lọc -->
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Thứ hạng Google Search Console thực tế theo thời gian thực (7 ngày / 30 ngày).">
+                                    <div class="tooltip-popup">Thứ hạng GSC thực tế theo thời gian thực (7 ngày / 30 ngày).</div>
                                     <span class="text-[10px] text-slate-400 font-bold uppercase block">Vị Trí GSC Real-time</span>
                                     <span id="kw-gsc-pos-${kw.id}" class="text-base font-heading font-extrabold text-emerald-600">${gscPosStr}</span>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Tổng số lần website hiển thị trước mắt người dùng trên trang kết quả tìm kiếm Google.">
+                                    <div class="tooltip-popup">Tổng số lần website hiển thị trên trang kết quả Google SERP.</div>
                                     <span class="text-[10px] text-slate-400 font-bold uppercase block">GSC Impressions</span>
                                     <span id="kw-gsc-imp-${kw.id}" class="text-base font-heading font-extrabold text-sky-700">${impressions}</span>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Số lượt người dùng nhấp chuột trực tiếp vào kết quả tìm kiếm để truy cập mohinhkientruc.org.">
+                                    <div class="tooltip-popup">Số lượt nhấp chuột trực tiếp vào trang web từ kết quả Google Search.</div>
                                     <span class="text-[10px] text-slate-400 font-bold uppercase block">GSC Clicks</span>
                                     <span id="kw-gsc-clk-${kw.id}" class="text-base font-heading font-extrabold text-emerald-600">${clicks}</span>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Tỷ lệ nhấp chuột CTR % (Clicks / Impressions * 100%), đánh giá sức thu hút của Meta Title & Snippet.">
+                                    <div class="tooltip-popup">Tỷ lệ nhấp chuột CTR % (Clicks / Impressions * 100%).</div>
                                     <span class="text-[10px] text-slate-400 font-bold uppercase block">Tỷ Lệ CTR %</span>
                                     <span id="kw-gsc-ctr-${kw.id}" class="text-base font-heading font-extrabold text-purple-700">${ctrStr}</span>
                                 </div>
