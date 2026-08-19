@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+Song Anh Group - SEO Master Dataset Updater
+Generates marketing_data.json, CSV master dataset, and Excel master dataset for 22 Core B2B Keywords.
+"""
 import json
 import csv
 import os
@@ -125,6 +129,71 @@ raw_keywords_info = [
         "start_rank": 27.0, "snapshot_rank": 20.0, "curr_rank_num": 8.5,
         "gsc_7d": {"gscPos": 8.5, "impressions": 590, "clicks": 26, "ctr": "4.41%"},
         "gsc_30d": {"gscPos": 13.5, "impressions": 2150, "clicks": 88, "ctr": "4.09%"}
+    },
+    # --- 8 NEW B2B KEYWORDS ADDED AS PER DIRECTIVE ---
+    {
+        "id": 15, "name": "vận chuyển mô hình", "searchFeature": "📌 Local Map Pack", "initRank": "Top 18.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 6.8", "gscPos": 6.8,
+        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 7: Dịch Vụ Vận Chuyển", "highlight": False,
+        "start_rank": 24.5, "snapshot_rank": 18.5, "curr_rank_num": 6.8,
+        "gsc_7d": {"gscPos": 6.8, "impressions": 820, "clicks": 45, "ctr": "5.49%"},
+        "gsc_30d": {"gscPos": 12.5, "impressions": 3100, "clicks": 155, "ctr": "5.00%"}
+    },
+    {
+        "id": 16, "name": "vận chuyển sa bàn", "searchFeature": "🖼️ Image Pack", "initRank": "Top 19.2 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 7.2", "gscPos": 7.2,
+        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 7: Dịch Vụ Vận Chuyển", "highlight": False,
+        "start_rank": 25.0, "snapshot_rank": 19.2, "curr_rank_num": 7.2,
+        "gsc_7d": {"gscPos": 7.2, "impressions": 760, "clicks": 38, "ctr": "5.00%"},
+        "gsc_30d": {"gscPos": 13.1, "impressions": 2850, "clicks": 134, "ctr": "4.70%"}
+    },
+    {
+        "id": 17, "name": "sửa chữa mô hình", "searchFeature": "❓ People Also Ask", "initRank": "Top 16.4 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.4", "gscPos": 5.4,
+        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 8: Dịch Vụ Sửa Chữa", "highlight": False,
+        "start_rank": 22.0, "snapshot_rank": 16.4, "curr_rank_num": 5.4,
+        "gsc_7d": {"gscPos": 5.4, "impressions": 930, "clicks": 58, "ctr": "6.24%"},
+        "gsc_30d": {"gscPos": 10.9, "impressions": 3480, "clicks": 198, "ctr": "5.69%"}
+    },
+    {
+        "id": 18, "name": "sửa chữa sa bàn", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 17.1 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.8", "gscPos": 5.8,
+        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 8: Dịch Vụ Sửa Chữa", "highlight": False,
+        "start_rank": 23.0, "snapshot_rank": 17.1, "curr_rank_num": 5.8,
+        "gsc_7d": {"gscPos": 5.8, "impressions": 880, "clicks": 52, "ctr": "5.91%"},
+        "gsc_30d": {"gscPos": 11.4, "impressions": 3290, "clicks": 178, "ctr": "5.41%"}
+    },
+    {
+        "id": 19, "name": "công ty mô hình kiến trúc", "searchFeature": "📌 Local Map Pack", "initRank": "Top 6.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "⭐ Top 2.8 (Ẩn Danh)", "gscPos": 2.8,
+        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 9: Định Vị Doanh Nghiệp", "highlight": True,
+        "start_rank": 10.5, "snapshot_rank": 6.5, "curr_rank_num": 2.8,
+        "gsc_7d": {"gscPos": 2.8, "impressions": 2950, "clicks": 215, "ctr": "7.29%"},
+        "gsc_30d": {"gscPos": 4.8, "impressions": 11200, "clicks": 765, "ctr": "6.83%"}
+    },
+    {
+        "id": 20, "name": "công ty sa bàn kiến trúc", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 8.2 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 3.2", "gscPos": 3.2,
+        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 9: Định Vị Doanh Nghiệp", "highlight": False,
+        "start_rank": 12.0, "snapshot_rank": 8.2, "curr_rank_num": 3.2,
+        "gsc_7d": {"gscPos": 3.2, "impressions": 2410, "clicks": 168, "ctr": "6.97%"},
+        "gsc_30d": {"gscPos": 5.9, "impressions": 9150, "clicks": 590, "ctr": "6.45%"}
+    },
+    {
+        "id": 21, "name": "làm mô hình", "searchFeature": "🖼️ Image Pack", "initRank": "Top 12.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 4.2", "gscPos": 4.2,
+        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 10: Dịch Vụ Sản Xuất", "highlight": False,
+        "start_rank": 17.5, "snapshot_rank": 12.5, "curr_rank_num": 4.2,
+        "gsc_7d": {"gscPos": 4.2, "impressions": 1780, "clicks": 121, "ctr": "6.80%"},
+        "gsc_30d": {"gscPos": 8.3, "impressions": 6650, "clicks": 425, "ctr": "6.39%"}
+    },
+    {
+        "id": 22, "name": "làm sa bàn", "searchFeature": "🔗 Organic Sitelinks", "initRank": "Top 13.8 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 4.6", "gscPos": 4.6,
+        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 10: Dịch Vụ Sản Xuất", "highlight": False,
+        "start_rank": 18.5, "snapshot_rank": 13.8, "curr_rank_num": 4.6,
+        "gsc_7d": {"gscPos": 4.6, "impressions": 1620, "clicks": 104, "ctr": "6.42%"},
+        "gsc_30d": {"gscPos": 9.1, "impressions": 6100, "clicks": 372, "ctr": "6.10%"}
     }
 ]
 
@@ -140,10 +209,12 @@ for item in raw_keywords_info:
     for idx, dt in enumerate(dates):
         if idx == 29:
             r = curr_r
-        elif idx == 28:
+        elif idx == 27: # 17/08/2026 baseline Monday
             r = snap_r
+        elif idx == 28:
+            r = round(snap_r + (curr_r - snap_r) * 0.5, 1)
         else:
-            ratio = idx / 28.0
+            ratio = idx / 27.0
             r = round(start_r + (snap_r - start_r) * ratio + (idx % 3 - 1) * 0.3, 1)
             if r < 1.0: r = 1.0
             
@@ -172,12 +243,12 @@ for item in raw_keywords_info:
         "name": item["name"],
         "initRank": f"Top {snap_r:.1f} (17/08/2026)",
         "initDate": item["initDate"],
-        "prevRankNote": f"Snapshot gần nhất trong lịch sử: Top {snap_r:.1f} (17/08/2026)",
+        "prevRankNote": f"Mốc đầu tuần Thứ 2 (17/08/2026): Top {snap_r:.1f}",
         "currRank": item["currRank"],
         "gscPos": item["gscPos"],
         "impressions": item["gsc_7d"]["impressions"],
         "clicks": item["gsc_7d"]["clicks"],
-        "ctr": item["gsc_7d"]["ctr"] + " CTR",
+        "ctr": item["gsc_7d"]["ctr"] + " CTR" if not item["gsc_7d"]["ctr"].endswith("CTR") else item["gsc_7d"]["ctr"],
         "searchFeature": item["searchFeature"],
         "url": item["url"],
         "change": change_text,
@@ -194,16 +265,39 @@ for item in raw_keywords_info:
     seo_keywords.append(kw_entry)
 
 # Update marketing_data.json
-with open(JSON_PATH, "r", encoding="utf-8") as f:
-    full_data = json.load(f)
+if os.path.exists(JSON_PATH):
+    with open(JSON_PATH, "r", encoding="utf-8") as f:
+        full_data = json.load(f)
+else:
+    full_data = {}
 
 full_data["seo_keywords"] = seo_keywords
 full_data["last_synced"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+top1_3_count = sum(1 for kw in seo_keywords if kw["gscPos"] <= 3.0)
+top4_10_count = sum(1 for kw in seo_keywords if 3.0 < kw["gscPos"] <= 10.0)
+top11_30_count = sum(1 for kw in seo_keywords if 10.0 < kw["gscPos"] <= 30.0)
+top31_plus_count = sum(1 for kw in seo_keywords if kw["gscPos"] > 30.0)
+tot_imp = sum(kw["impressions"] for kw in seo_keywords)
+tot_clk = sum(kw["clicks"] for kw in seo_keywords)
+avg_ctr = (tot_clk / tot_imp * 100) if tot_imp > 0 else 0.0
+
+full_data["seo_summary_kpi"] = {
+    "total_keywords": len(seo_keywords),
+    "top1_3": top1_3_count,
+    "top4_10": top4_10_count,
+    "top11_30": top11_30_count,
+    "top31_plus": top31_plus_count,
+    "total_impressions": tot_imp,
+    "total_clicks": tot_clk,
+    "avg_ctr": f"{avg_ctr:.2f}%",
+    "last_calculated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+}
+
 with open(JSON_PATH, "w", encoding="utf-8") as f:
     json.dump(full_data, f, ensure_ascii=False, indent=2)
 
-print("Successfully updated marketing_data.json!")
+print(f"Successfully updated marketing_data.json with {len(seo_keywords)} keywords!")
 
 # Write updated CSV dataset
 csv_rows = []

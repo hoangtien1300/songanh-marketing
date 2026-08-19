@@ -76,9 +76,11 @@ def recalculate_seo_summary(data):
     top4_10 = 0
     top11_30 = 0
     top31_plus = 0
+    total_impressions = 0
+    total_clicks = 0
 
     for kw in keywords:
-        rank_val = parse_rank_val(kw.get("currRank", ""))
+        rank_val = parse_rank_val(kw.get("gscPos") if kw.get("gscPos") is not None else kw.get("currRank", ""))
         if rank_val <= 3.0:
             top1_3 += 1
         elif rank_val <= 10.0:
@@ -87,6 +89,11 @@ def recalculate_seo_summary(data):
             top11_30 += 1
         else:
             top31_plus += 1
+        
+        total_impressions += int(kw.get("impressions") or 0)
+        total_clicks += int(kw.get("clicks") or 0)
+
+    avg_ctr = (total_clicks / total_impressions * 100) if total_impressions > 0 else 0.0
 
     summary_kpi = {
         "total_keywords": total,
@@ -94,6 +101,9 @@ def recalculate_seo_summary(data):
         "top4_10": top4_10,
         "top11_30": top11_30,
         "top31_plus": top31_plus,
+        "total_impressions": total_impressions,
+        "total_clicks": total_clicks,
+        "avg_ctr": f"{avg_ctr:.2f}%",
         "last_calculated": get_current_timestamp()
     }
 

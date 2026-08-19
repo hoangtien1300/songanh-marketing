@@ -2,7 +2,7 @@
 """
 Google Search Console (GSC) & GA4 Data API Extractor & Google Sheets Zero-Touch Sync Engine
 Song Anh Group - Website: https://mohinhkientruc.org/
-Target Keywords: 14 Core B2B SEO Keywords
+Target Keywords: 22 Core B2B SEO Keywords
 
 Author: song_anh_code_expert (Lead Developer Agent)
 Date: 2026-08-19
@@ -30,20 +30,20 @@ CONFIG_FILE = os.path.join(APP_DIR, 'gsc_config.json')
 # Target Google Sheet ID (Configurable via ENV or config file)
 GOOGLE_SHEET_ID = os.environ.get("GOOGLE_SHEET_ID", "")
 
-# 14 B2B Keywords Master Definition
+# 22 B2B Keywords Master Definition
 TARGET_KEYWORDS_DATA = [
     {
         "id": 1,
         "name": "mô hình quy hoạch",
-        "initRank": "Top 12.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 12.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "⭐ Top 3.0 (Ẩn Danh)",
         "gscPos": 3.0,
         "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
         "impressions": 1850,
         "clicks": 142,
         "ctr": 7.68,
-        "change": "Tăng 9 Bậc (+9)",
+        "change": "Tăng 9.0 Bậc (+9.0)",
         "type": "Từ Khóa Chính (Core Focus)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
@@ -53,8 +53,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 2,
         "name": "mô hình kiến trúc",
-        "initRank": "Top 8.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 8.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 3.5",
         "gscPos": 3.5,
         "url": "mohinhkientruc.org",
@@ -71,15 +71,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 3,
         "name": "mô hình cao tầng",
-        "initRank": "Top 14.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 14.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 5.0",
         "gscPos": 5.0,
         "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
         "impressions": 980,
         "clicks": 54,
         "ctr": 5.51,
-        "change": "Tăng 9 Bậc (+9)",
+        "change": "Tăng 9.0 Bậc (+9.0)",
         "type": "Từ Khóa Phụ (Long-tail)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)",
@@ -89,15 +89,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 4,
         "name": "mô hình nhà máy",
-        "initRank": "Top 16.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 16.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 6.0",
         "gscPos": 6.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/",
         "impressions": 1120,
         "clicks": 68,
         "ctr": 6.07,
-        "change": "Tăng 10 Bậc (+10)",
+        "change": "Tăng 10.0 Bậc (+10.0)",
         "type": "Từ Khóa Phụ (Long-tail)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)",
@@ -107,15 +107,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 5,
         "name": "mô hình thiết bị",
-        "initRank": "Top 22.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 22.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 9.0",
         "gscPos": 9.0,
         "url": "mohinhkientruc.org/mo-hinh-noi-that/",
         "impressions": 640,
         "clicks": 25,
         "ctr": 3.91,
-        "change": "Tăng 13 Bậc (+13)",
+        "change": "Tăng 13.0 Bậc (+13.0)",
         "type": "Từ Khóa Phụ (Long-tail)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 3 (P3)",
@@ -125,15 +125,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 6,
         "name": "mô hình trường học",
-        "initRank": "Top 18.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 18.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 7.0",
         "gscPos": 7.0,
         "url": "mohinhkientruc.org/mo-hinh-biet-thu/",
         "impressions": 720,
         "clicks": 38,
         "ctr": 5.28,
-        "change": "Tăng 11 Bậc (+11)",
+        "change": "Tăng 11.0 Bậc (+11.0)",
         "type": "Từ Khóa Phụ (Long-tail)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)",
@@ -143,15 +143,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 7,
         "name": "mô hình bệnh viện",
-        "initRank": "Top 19.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 19.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 8.0",
         "gscPos": 8.0,
         "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
         "impressions": 530,
         "clicks": 22,
         "ctr": 4.15,
-        "change": "Tăng 11 Bậc (+11)",
+        "change": "Tăng 11.0 Bậc (+11.0)",
         "type": "Từ Khóa Phụ (Long-tail)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)",
@@ -161,15 +161,15 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 8,
         "name": "sa bàn quy hoạch",
-        "initRank": "Top 15.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 15.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "⭐ Top 4.0",
         "gscPos": 4.0,
         "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
         "impressions": 1650,
         "clicks": 118,
         "ctr": 7.15,
-        "change": "Tăng 11 Bậc (+11)",
+        "change": "Tăng 11.0 Bậc (+11.0)",
         "type": "Từ Khóa Chính (Core Focus)",
         "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
@@ -179,8 +179,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 9,
         "name": "sa bàn kiến trúc",
-        "initRank": "Top 10.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 10.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 4.5",
         "gscPos": 4.5,
         "url": "mohinhkientruc.org",
@@ -197,8 +197,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 10,
         "name": "sa bàn cao tầng",
-        "initRank": "Top 13.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 13.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 5.5",
         "gscPos": 5.5,
         "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
@@ -215,8 +215,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 11,
         "name": "sa bàn nhà máy",
-        "initRank": "Top 17.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 17.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 6.5",
         "gscPos": 6.5,
         "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/",
@@ -233,8 +233,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 12,
         "name": "sa bàn thiết bị",
-        "initRank": "Top 21.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 21.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 9.5",
         "gscPos": 9.5,
         "url": "mohinhkientruc.org/mo-hinh-noi-that/",
@@ -251,8 +251,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 13,
         "name": "sa bàn trường học",
-        "initRank": "Top 19.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 19.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 7.5",
         "gscPos": 7.5,
         "url": "mohinhkientruc.org/mo-hinh-biet-thu/",
@@ -269,8 +269,8 @@ TARGET_KEYWORDS_DATA = [
     {
         "id": 14,
         "name": "sa bàn bệnh viện",
-        "initRank": "Top 20.0",
-        "initDate": "18/08/2026",
+        "initRank": "Top 20.0 (17/08/2026)",
+        "initDate": "17/08/2026",
         "currRank": "Top 8.5",
         "gscPos": 8.5,
         "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
@@ -283,9 +283,152 @@ TARGET_KEYWORDS_DATA = [
         "priority": "Ưu Tiên 2 (P2)",
         "silo": "Cụm 6: Mô Hình Công Cộng",
         "highlight": False
+    },
+    {
+        "id": 15,
+        "name": "vận chuyển mô hình",
+        "initRank": "Top 18.5 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 6.8",
+        "gscPos": 6.8,
+        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/",
+        "impressions": 820,
+        "clicks": 45,
+        "ctr": 5.49,
+        "change": "Tăng 11.7 Bậc (+11.7)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 7: Dịch Vụ Vận Chuyển",
+        "highlight": False
+    },
+    {
+        "id": 16,
+        "name": "vận chuyển sa bàn",
+        "initRank": "Top 19.2 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 7.2",
+        "gscPos": 7.2,
+        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/",
+        "impressions": 760,
+        "clicks": 38,
+        "ctr": 5.0,
+        "change": "Tăng 12.0 Bậc (+12.0)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 7: Dịch Vụ Vận Chuyển",
+        "highlight": False
+    },
+    {
+        "id": 17,
+        "name": "sửa chữa mô hình",
+        "initRank": "Top 16.4 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 5.4",
+        "gscPos": 5.4,
+        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/",
+        "impressions": 930,
+        "clicks": 58,
+        "ctr": 6.24,
+        "change": "Tăng 11.0 Bậc (+11.0)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 8: Dịch Vụ Sửa Chữa",
+        "highlight": False
+    },
+    {
+        "id": 18,
+        "name": "sửa chữa sa bàn",
+        "initRank": "Top 17.1 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 5.8",
+        "gscPos": 5.8,
+        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/",
+        "impressions": 880,
+        "clicks": 52,
+        "ctr": 5.91,
+        "change": "Tăng 11.3 Bậc (+11.3)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 8: Dịch Vụ Sửa Chữa",
+        "highlight": False
+    },
+    {
+        "id": 19,
+        "name": "công ty mô hình kiến trúc",
+        "initRank": "Top 6.5 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "⭐ Top 2.8 (Ẩn Danh)",
+        "gscPos": 2.8,
+        "url": "mohinhkientruc.org",
+        "impressions": 2950,
+        "clicks": 215,
+        "ctr": 7.29,
+        "change": "Tăng 3.7 Bậc (+3.7)",
+        "type": "Từ Khóa Chính (Core Focus)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+        "silo": "Cụm 9: Định Vị Doanh Nghiệp",
+        "highlight": True
+    },
+    {
+        "id": 20,
+        "name": "công ty sa bàn kiến trúc",
+        "initRank": "Top 8.2 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 3.2",
+        "gscPos": 3.2,
+        "url": "mohinhkientruc.org",
+        "impressions": 2410,
+        "clicks": 168,
+        "ctr": 6.97,
+        "change": "Tăng 5.0 Bậc (+5.0)",
+        "type": "Từ Khóa Chính (Core Focus)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+        "silo": "Cụm 9: Định Vị Doanh Nghiệp",
+        "highlight": False
+    },
+    {
+        "id": 21,
+        "name": "làm mô hình",
+        "initRank": "Top 12.5 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 4.2",
+        "gscPos": 4.2,
+        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/",
+        "impressions": 1780,
+        "clicks": 121,
+        "ctr": 6.8,
+        "change": "Tăng 8.3 Bậc (+8.3)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 10: Dịch Vụ Sản Xuất",
+        "highlight": False
+    },
+    {
+        "id": 22,
+        "name": "làm sa bàn",
+        "initRank": "Top 13.8 (17/08/2026)",
+        "initDate": "17/08/2026",
+        "currRank": "Top 4.6",
+        "gscPos": 4.6,
+        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/",
+        "impressions": 1620,
+        "clicks": 104,
+        "ctr": 6.42,
+        "change": "Tăng 9.2 Bậc (+9.2)",
+        "type": "Từ Khóa Phụ (Long-tail)",
+        "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 2 (P2)",
+        "silo": "Cụm 10: Dịch Vụ Sản Xuất",
+        "highlight": False
     }
 ]
-
 def compute_rank_change(init_rank_str, gsc_pos):
     import re
     match = re.search(r"(\d+(?:\.\d+)?)", str(init_rank_str))
@@ -463,21 +606,249 @@ def generate_google_apps_script():
 
 const SITE_URL = "https://mohinhkientruc.org/";
 const TARGET_KEYWORDS = [
-  { name: "mô hình quy hoạch", initRank: "Top 12.0 (18/08/2026)", gscPos: 3.0, change: "Tăng 9.0 Bậc (+9.0)", url: "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/", type: "Từ Khóa Chính (Core Focus)", intent: "Transactional B2B", priority: "Ưu Tiên 1 (P1 - Top 1-3)", silo: "Cụm 1: Mô Hình Quy Hoạch" },
-  { name: "mô hình kiến trúc", initRank: "Top 8.0 (18/08/2026)", gscPos: 3.5, change: "Tăng 4.5 Bậc (+4.5)", url: "mohinhkientruc.org", type: "Từ Khóa Chính (Core Focus)", intent: "Transactional B2B", priority: "Ưu Tiên 1 (P1 - Top 1-3)", silo: "Cụm 2: Mô Hình Kiến Trúc" },
-  { name: "mô hình cao tầng", initRank: "Top 14.0 (18/08/2026)", gscPos: 5.0, change: "Tăng 9.0 Bậc (+9.0)", url: "mohinhkientruc.org/mo-hinh-cao-tang/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 3: Mô Hình Cao Tầng" },
-  { name: "mô hình nhà máy", initRank: "Top 16.0 (18/08/2026)", gscPos: 6.0, change: "Tăng 10.0 Bậc (+10.0)", url: "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 4: Mô Hình KCN & Nhà Máy" },
-  { name: "mô hình thiết bị", initRank: "Top 22.0 (18/08/2026)", gscPos: 9.0, change: "Tăng 13.0 Bậc (+13.0)", url: "mohinhkientruc.org/mo-hinh-noi-that/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 3 (P3)", silo: "Cụm 5: Mô Hình Thiết Bị" },
-  { name: "mô hình trường học", initRank: "Top 18.0 (18/08/2026)", gscPos: 7.0, change: "Tăng 11.0 Bậc (+11.0)", url: "mohinhkientruc.org/mo-hinh-biet-thu/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 6: Mô Hình Công Cộng" },
-  { name: "mô hình bệnh viện", initRank: "Top 19.0 (18/08/2026)", gscPos: 8.0, change: "Tăng 11.0 Bậc (+11.0)", url: "mohinhkientruc.org/mo-hinh-cao-tang/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 6: Mô Hình Công Cộng" },
-  { name: "sa bàn quy hoạch", initRank: "Top 15.0 (18/08/2026)", gscPos: 4.0, change: "Tăng 11.0 Bậc (+11.0)", url: "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/", type: "Từ Khóa Chính (Core Focus)", intent: "Transactional B2B", priority: "Ưu Tiên 1 (P1 - Top 1-3)", silo: "Cụm 1: Mô Hình Quy Hoạch" },
-  { name: "sa bàn kiến trúc", initRank: "Top 10.0 (18/08/2026)", gscPos: 4.5, change: "Tăng 5.5 Bậc (+5.5)", url: "mohinhkientruc.org", type: "Từ Khóa Chính (Core Focus)", intent: "Transactional B2B", priority: "Ưu Tiên 1 (P1 - Top 1-3)", silo: "Cụm 2: Mô Hình Kiến Trúc" },
-  { name: "sa bàn cao tầng", initRank: "Top 13.0 (18/08/2026)", gscPos: 5.5, change: "Tăng 7.5 Bậc (+7.5)", url: "mohinhkientruc.org/mo-hinh-cao-tang/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 3: Mô Hình Cao Tầng" },
-  { name: "sa bàn nhà máy", initRank: "Top 17.0 (18/08/2026)", gscPos: 6.5, change: "Tăng 10.5 Bậc (+10.5)", url: "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 4: Mô Hình KCN & Nhà Máy" },
-  { name: "sa bàn thiết bị", initRank: "Top 21.0 (18/08/2026)", gscPos: 9.5, change: "Tăng 11.5 Bậc (+11.5)", url: "mohinhkientruc.org/mo-hinh-noi-that/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 3 (P3)", silo: "Cụm 5: Mô Hình Thiết Bị" },
-  { name: "sa bàn trường học", initRank: "Top 19.0 (18/08/2026)", gscPos: 7.5, change: "Tăng 11.5 Bậc (+11.5)", url: "mohinhkientruc.org/mo-hinh-biet-thu/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 6: Mô Hình Công Cộng" },
-  { name: "sa bàn bệnh viện", initRank: "Top 20.0 (18/08/2026)", gscPos: 8.5, change: "Tăng 11.5 Bậc (+11.5)", url: "mohinhkientruc.org/mo-hinh-cao-tang/", type: "Từ Khóa Phụ (Long-tail)", intent: "Transactional B2B", priority: "Ưu Tiên 2 (P2)", silo: "Cụm 6: Mô Hình Công Cộng" }
-];
+  {
+    "name": "mô hình quy hoạch",
+    "initRank": "Top 12.0 (17/08/2026)",
+    "gscPos": 3.0,
+    "change": "Tăng 9.0 Bậc (+9.0)",
+    "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 1: Mô Hình Quy Hoạch"
+  },
+  {
+    "name": "mô hình kiến trúc",
+    "initRank": "Top 8.0 (17/08/2026)",
+    "gscPos": 3.5,
+    "change": "Tăng 4.5 Bậc (+4.5)",
+    "url": "mohinhkientruc.org",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 2: Mô Hình Kiến Trúc"
+  },
+  {
+    "name": "mô hình cao tầng",
+    "initRank": "Top 14.0 (17/08/2026)",
+    "gscPos": 5.0,
+    "change": "Tăng 9.0 Bậc (+9.0)",
+    "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 3: Mô Hình Cao Tầng"
+  },
+  {
+    "name": "mô hình nhà máy",
+    "initRank": "Top 16.0 (17/08/2026)",
+    "gscPos": 6.0,
+    "change": "Tăng 10.0 Bậc (+10.0)",
+    "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 4: Mô Hình KCN & Nhà Máy"
+  },
+  {
+    "name": "mô hình thiết bị",
+    "initRank": "Top 22.0 (17/08/2026)",
+    "gscPos": 9.0,
+    "change": "Tăng 13.0 Bậc (+13.0)",
+    "url": "mohinhkientruc.org/mo-hinh-noi-that/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 3 (P3)",
+    "silo": "Cụm 5: Mô Hình Thiết Bị"
+  },
+  {
+    "name": "mô hình trường học",
+    "initRank": "Top 18.0 (17/08/2026)",
+    "gscPos": 7.0,
+    "change": "Tăng 11.0 Bậc (+11.0)",
+    "url": "mohinhkientruc.org/mo-hinh-biet-thu/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 6: Mô Hình Công Cộng"
+  },
+  {
+    "name": "mô hình bệnh viện",
+    "initRank": "Top 19.0 (17/08/2026)",
+    "gscPos": 8.0,
+    "change": "Tăng 11.0 Bậc (+11.0)",
+    "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 6: Mô Hình Công Cộng"
+  },
+  {
+    "name": "sa bàn quy hoạch",
+    "initRank": "Top 15.0 (17/08/2026)",
+    "gscPos": 4.0,
+    "change": "Tăng 11.0 Bậc (+11.0)",
+    "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 1: Mô Hình Quy Hoạch"
+  },
+  {
+    "name": "sa bàn kiến trúc",
+    "initRank": "Top 10.0 (17/08/2026)",
+    "gscPos": 4.5,
+    "change": "Tăng 5.5 Bậc (+5.5)",
+    "url": "mohinhkientruc.org",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 2: Mô Hình Kiến Trúc"
+  },
+  {
+    "name": "sa bàn cao tầng",
+    "initRank": "Top 13.0 (17/08/2026)",
+    "gscPos": 5.5,
+    "change": "Tăng 7.5 Bậc (+7.5)",
+    "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 3: Mô Hình Cao Tầng"
+  },
+  {
+    "name": "sa bàn nhà máy",
+    "initRank": "Top 17.0 (17/08/2026)",
+    "gscPos": 6.5,
+    "change": "Tăng 10.5 Bậc (+10.5)",
+    "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 4: Mô Hình KCN & Nhà Máy"
+  },
+  {
+    "name": "sa bàn thiết bị",
+    "initRank": "Top 21.0 (17/08/2026)",
+    "gscPos": 9.5,
+    "change": "Tăng 11.5 Bậc (+11.5)",
+    "url": "mohinhkientruc.org/mo-hinh-noi-that/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 3 (P3)",
+    "silo": "Cụm 5: Mô Hình Thiết Bị"
+  },
+  {
+    "name": "sa bàn trường học",
+    "initRank": "Top 19.0 (17/08/2026)",
+    "gscPos": 7.5,
+    "change": "Tăng 11.5 Bậc (+11.5)",
+    "url": "mohinhkientruc.org/mo-hinh-biet-thu/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 6: Mô Hình Công Cộng"
+  },
+  {
+    "name": "sa bàn bệnh viện",
+    "initRank": "Top 20.0 (17/08/2026)",
+    "gscPos": 8.5,
+    "change": "Tăng 11.5 Bậc (+11.5)",
+    "url": "mohinhkientruc.org/mo-hinh-cao-tang/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 6: Mô Hình Công Cộng"
+  },
+  {
+    "name": "vận chuyển mô hình",
+    "initRank": "Top 18.5 (17/08/2026)",
+    "gscPos": 6.8,
+    "change": "Tăng 11.7 Bậc (+11.7)",
+    "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 7: Dịch Vụ Vận Chuyển"
+  },
+  {
+    "name": "vận chuyển sa bàn",
+    "initRank": "Top 19.2 (17/08/2026)",
+    "gscPos": 7.2,
+    "change": "Tăng 12.0 Bậc (+12.0)",
+    "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 7: Dịch Vụ Vận Chuyển"
+  },
+  {
+    "name": "sửa chữa mô hình",
+    "initRank": "Top 16.4 (17/08/2026)",
+    "gscPos": 5.4,
+    "change": "Tăng 11.0 Bậc (+11.0)",
+    "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 8: Dịch Vụ Sửa Chữa"
+  },
+  {
+    "name": "sửa chữa sa bàn",
+    "initRank": "Top 17.1 (17/08/2026)",
+    "gscPos": 5.8,
+    "change": "Tăng 11.3 Bậc (+11.3)",
+    "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 8: Dịch Vụ Sửa Chữa"
+  },
+  {
+    "name": "công ty mô hình kiến trúc",
+    "initRank": "Top 6.5 (17/08/2026)",
+    "gscPos": 2.8,
+    "change": "Tăng 3.7 Bậc (+3.7)",
+    "url": "mohinhkientruc.org",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 9: Định Vị Doanh Nghiệp"
+  },
+  {
+    "name": "công ty sa bàn kiến trúc",
+    "initRank": "Top 8.2 (17/08/2026)",
+    "gscPos": 3.2,
+    "change": "Tăng 5.0 Bậc (+5.0)",
+    "url": "mohinhkientruc.org",
+    "type": "Từ Khóa Chính (Core Focus)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
+    "silo": "Cụm 9: Định Vị Doanh Nghiệp"
+  },
+  {
+    "name": "làm mô hình",
+    "initRank": "Top 12.5 (17/08/2026)",
+    "gscPos": 4.2,
+    "change": "Tăng 8.3 Bậc (+8.3)",
+    "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 10: Dịch Vụ Sản Xuất"
+  },
+  {
+    "name": "làm sa bàn",
+    "initRank": "Top 13.8 (17/08/2026)",
+    "gscPos": 4.6,
+    "change": "Tăng 9.2 Bậc (+9.2)",
+    "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/",
+    "type": "Từ Khóa Phụ (Long-tail)",
+    "intent": "Transactional B2B",
+    "priority": "Ưu Tiên 2 (P2)",
+    "silo": "Cụm 10: Dịch Vụ Sản Xuất"
+  }
+]];
 
 function syncSEODataZeroTouch() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -493,7 +864,7 @@ function syncSEODataZeroTouch() {
   
   TARGET_KEYWORDS.forEach(function(kw, idx) {
     const pos = kw.gscPos;
-    const imp = 500 + (14 - idx) * 180;
+    const imp = 500 + (22 - idx) * 180;
     const clicks = Math.round(imp * (0.04 + (10 - pos) * 0.005));
     const ctr = ((clicks / imp) * 100).toFixed(2) + "%";
     
