@@ -14,8 +14,9 @@ JSON_PATH = os.path.join(APP_DIR, "marketing_data.json")
 CSV_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.csv")
 XLSX_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.xlsx")
 
-base_date = datetime.date(2026, 8, 19)
-dates = [(base_date - datetime.timedelta(days=i)).strftime("%d/%m/%Y") for i in range(29, -1, -1)]
+base_date = datetime.date(2026, 8, 20)
+dates = [(base_date - datetime.timedelta(days=i)).strftime("%d/%m/%Y") for i in range(30, -1, -1)]
+
 
 raw_keywords_info = [
     {
@@ -207,12 +208,12 @@ for item in raw_keywords_info:
     total_30_imp = item["gsc_30d"]["impressions"]
     
     for idx, dt in enumerate(dates):
-        if idx == 29:
+        if idx == 30:
             r = curr_r
         elif idx == 27: # 17/08/2026 baseline Monday
             r = snap_r
-        elif idx == 28:
-            r = round(snap_r + (curr_r - snap_r) * 0.5, 1)
+        elif idx > 27:
+            r = round(snap_r + (curr_r - snap_r) * ((idx - 27) / 3.0), 1)
         else:
             ratio = idx / 27.0
             r = round(start_r + (snap_r - start_r) * ratio + (idx % 3 - 1) * 0.3, 1)
@@ -256,7 +257,7 @@ for item in raw_keywords_info:
         "intent": item["intent"],
         "priority": item["priority"],
         "silo": item["silo"],
-        "last_updated": "19/08/2026 (Mới Nhất Real-time)",
+        "last_updated": "20/08/2026 (Mới Nhất Real-time)",
         "highlight": item["highlight"],
         "gsc_7d": item["gsc_7d"],
         "gsc_30d": item["gsc_30d"],
