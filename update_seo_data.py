@@ -29,7 +29,7 @@ raw_keywords_info = [
     },
     {
         "id": 2, "name": "mô hình kiến trúc", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 8.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 3.5", "gscPos": 3.5,
-        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/mo-hinh-kien-truc/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 2: Mô Hình Kiến Trúc", "highlight": False,
         "start_rank": 12.0, "snapshot_rank": 8.0, "curr_rank_num": 3.5,
         "gsc_7d": {"gscPos": 3.5, "impressions": 3200, "clicks": 210, "ctr": "6.56%"},
@@ -37,7 +37,7 @@ raw_keywords_info = [
     },
     {
         "id": 3, "name": "mô hình cao tầng", "searchFeature": "📌 Local Map Pack", "initRank": "Top 14.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.0", "gscPos": 5.0,
-        "url": "mohinhkientruc.org/mo-hinh-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sa-ban-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 3: Mô Hình Cao Tầng", "highlight": False,
         "start_rank": 22.0, "snapshot_rank": 14.0, "curr_rank_num": 5.0,
         "gsc_7d": {"gscPos": 5.0, "impressions": 980, "clicks": 54, "ctr": "5.51%"},
@@ -45,7 +45,7 @@ raw_keywords_info = [
     },
     {
         "id": 4, "name": "mô hình nhà máy", "searchFeature": "❓ People Also Ask", "initRank": "Top 16.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 6.0", "gscPos": 6.0,
-        "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/mo-hinh-nha-may/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 4: Mô Hình KCN & Nhà Máy", "highlight": False,
         "start_rank": 25.0, "snapshot_rank": 16.0, "curr_rank_num": 6.0,
         "gsc_7d": {"gscPos": 6.0, "impressions": 1120, "clicks": 68, "ctr": "6.07%"},
@@ -53,7 +53,7 @@ raw_keywords_info = [
     },
     {
         "id": 5, "name": "mô hình thiết bị", "searchFeature": "🔗 Organic Sitelinks", "initRank": "Top 22.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 9.0", "gscPos": 9.0,
-        "url": "mohinhkientruc.org/mo-hinh-noi-that/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/mo-hinh-3d/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 3 (P3)", "silo": "Cụm 5: Mô Hình Thiết Bị", "highlight": False,
         "start_rank": 28.0, "snapshot_rank": 22.0, "curr_rank_num": 9.0,
         "gsc_7d": {"gscPos": 9.0, "impressions": 640, "clicks": 25, "ctr": "3.91%"},
@@ -61,7 +61,7 @@ raw_keywords_info = [
     },
     {
         "id": 6, "name": "mô hình trường học", "searchFeature": "🖼️ Image Pack", "initRank": "Top 18.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 7.0", "gscPos": 7.0,
-        "url": "mohinhkientruc.org/mo-hinh-biet-thu/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/lam-sa-ban-truong-hoc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 6: Mô Hình Công Cộng", "highlight": False,
         "start_rank": 24.0, "snapshot_rank": 18.0, "curr_rank_num": 7.0,
         "gsc_7d": {"gscPos": 7.0, "impressions": 720, "clicks": 38, "ctr": "5.28%"},
@@ -69,7 +69,7 @@ raw_keywords_info = [
     },
     {
         "id": 7, "name": "mô hình bệnh viện", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 19.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 8.0", "gscPos": 8.0,
-        "url": "mohinhkientruc.org/mo-hinh-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/mo-hinh-tod-sa-ban/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 6: Mô Hình Công Cộng", "highlight": False,
         "start_rank": 26.0, "snapshot_rank": 19.0, "curr_rank_num": 8.0,
         "gsc_7d": {"gscPos": 8.0, "impressions": 530, "clicks": 22, "ctr": "4.15%"},
@@ -77,7 +77,7 @@ raw_keywords_info = [
     },
     {
         "id": 8, "name": "sa bàn quy hoạch", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 15.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "⭐ Top 4.0", "gscPos": 4.0,
-        "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 1: Mô Hình Quy Hoạch", "highlight": True,
         "start_rank": 20.0, "snapshot_rank": 15.0, "curr_rank_num": 4.0,
         "gsc_7d": {"gscPos": 4.0, "impressions": 1650, "clicks": 118, "ctr": "7.15%"},
@@ -85,7 +85,7 @@ raw_keywords_info = [
     },
     {
         "id": 9, "name": "sa bàn kiến trúc", "searchFeature": "📌 Local Map Pack", "initRank": "Top 10.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 4.5", "gscPos": 4.5,
-        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sa-ban-kien-truc/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 2: Mô Hình Kiến Trúc", "highlight": False,
         "start_rank": 16.0, "snapshot_rank": 10.0, "curr_rank_num": 4.5,
         "gsc_7d": {"gscPos": 4.5, "impressions": 2100, "clicks": 135, "ctr": "6.43%"},
@@ -93,7 +93,7 @@ raw_keywords_info = [
     },
     {
         "id": 10, "name": "sa bàn cao tầng", "searchFeature": "❓ People Also Ask", "initRank": "Top 13.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.5", "gscPos": 5.5,
-        "url": "mohinhkientruc.org/mo-hinh-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sa-ban-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 3: Mô Hình Cao Tầng", "highlight": False,
         "start_rank": 21.0, "snapshot_rank": 13.0, "curr_rank_num": 5.5,
         "gsc_7d": {"gscPos": 5.5, "impressions": 870, "clicks": 46, "ctr": "5.29%"},
@@ -101,7 +101,7 @@ raw_keywords_info = [
     },
     {
         "id": 11, "name": "sa bàn nhà máy", "searchFeature": "🖼️ Image Pack", "initRank": "Top 17.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 6.5", "gscPos": 6.5,
-        "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/thi-cong-sa-ban-nha-may-khu-cong-nghiep/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 4: Mô Hình KCN & Nhà Máy", "highlight": False,
         "start_rank": 23.0, "snapshot_rank": 17.0, "curr_rank_num": 6.5,
         "gsc_7d": {"gscPos": 6.5, "impressions": 940, "clicks": 52, "ctr": "5.53%"},
@@ -109,7 +109,7 @@ raw_keywords_info = [
     },
     {
         "id": 12, "name": "sa bàn thiết bị", "searchFeature": "🔗 Organic Sitelinks", "initRank": "Top 21.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 9.5", "gscPos": 9.5,
-        "url": "mohinhkientruc.org/mo-hinh-noi-that/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sa-ban-noi-that/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 3 (P3)", "silo": "Cụm 5: Mô Hình Thiết Bị", "highlight": False,
         "start_rank": 29.0, "snapshot_rank": 21.0, "curr_rank_num": 9.5,
         "gsc_7d": {"gscPos": 9.5, "impressions": 480, "clicks": 18, "ctr": "3.75%"},
@@ -117,7 +117,7 @@ raw_keywords_info = [
     },
     {
         "id": 13, "name": "sa bàn trường học", "searchFeature": "🖼️ Image Pack", "initRank": "Top 19.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 7.5", "gscPos": 7.5,
-        "url": "mohinhkientruc.org/mo-hinh-biet-thu/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/lam-sa-ban-truong-hoc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 6: Mô Hình Công Cộng", "highlight": False,
         "start_rank": 25.0, "snapshot_rank": 19.0, "curr_rank_num": 7.5,
         "gsc_7d": {"gscPos": 7.5, "impressions": 610, "clicks": 29, "ctr": "4.75%"},
@@ -125,7 +125,7 @@ raw_keywords_info = [
     },
     {
         "id": 14, "name": "sa bàn bệnh viện", "searchFeature": "📌 Local Map Pack", "initRank": "Top 20.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 8.5", "gscPos": 8.5,
-        "url": "mohinhkientruc.org/mo-hinh-cao-tang/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/du-an-noi-bat/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 6: Mô Hình Công Cộng", "highlight": False,
         "start_rank": 27.0, "snapshot_rank": 20.0, "curr_rank_num": 8.5,
         "gsc_7d": {"gscPos": 8.5, "impressions": 590, "clicks": 26, "ctr": "4.41%"},
@@ -134,7 +134,7 @@ raw_keywords_info = [
     # --- 8 NEW B2B KEYWORDS ADDED AS PER DIRECTIVE ---
     {
         "id": 15, "name": "vận chuyển mô hình", "searchFeature": "📌 Local Map Pack", "initRank": "Top 18.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 6.8", "gscPos": 6.8,
-        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/van-chuyen-sa-ban-kien-truc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 7: Dịch Vụ Vận Chuyển", "highlight": False,
         "start_rank": 24.5, "snapshot_rank": 18.5, "curr_rank_num": 6.8,
         "gsc_7d": {"gscPos": 6.8, "impressions": 820, "clicks": 45, "ctr": "5.49%"},
@@ -142,7 +142,7 @@ raw_keywords_info = [
     },
     {
         "id": 16, "name": "vận chuyển sa bàn", "searchFeature": "🖼️ Image Pack", "initRank": "Top 19.2 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 7.2", "gscPos": 7.2,
-        "url": "mohinhkientruc.org/dich-vu-van-chuyen-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/van-chuyen-sa-ban-kien-truc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 7: Dịch Vụ Vận Chuyển", "highlight": False,
         "start_rank": 25.0, "snapshot_rank": 19.2, "curr_rank_num": 7.2,
         "gsc_7d": {"gscPos": 7.2, "impressions": 760, "clicks": 38, "ctr": "5.00%"},
@@ -150,7 +150,7 @@ raw_keywords_info = [
     },
     {
         "id": 17, "name": "sửa chữa mô hình", "searchFeature": "❓ People Also Ask", "initRank": "Top 16.4 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.4", "gscPos": 5.4,
-        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sua-chua-mo-hinh-kien-truc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 8: Dịch Vụ Sửa Chữa", "highlight": False,
         "start_rank": 22.0, "snapshot_rank": 16.4, "curr_rank_num": 5.4,
         "gsc_7d": {"gscPos": 5.4, "impressions": 930, "clicks": 58, "ctr": "6.24%"},
@@ -158,7 +158,7 @@ raw_keywords_info = [
     },
     {
         "id": 18, "name": "sửa chữa sa bàn", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 17.1 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 5.8", "gscPos": 5.8,
-        "url": "mohinhkientruc.org/dich-vu-sua-chua-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/sua-chua-mo-hinh-kien-truc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 8: Dịch Vụ Sửa Chữa", "highlight": False,
         "start_rank": 23.0, "snapshot_rank": 17.1, "curr_rank_num": 5.8,
         "gsc_7d": {"gscPos": 5.8, "impressions": 880, "clicks": 52, "ctr": "5.91%"},
@@ -166,7 +166,7 @@ raw_keywords_info = [
     },
     {
         "id": 19, "name": "công ty mô hình kiến trúc", "searchFeature": "📌 Local Map Pack", "initRank": "Top 6.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "⭐ Top 2.8 (Ẩn Danh)", "gscPos": 2.8,
-        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/cong-ty-lam-mo-hinh/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 9: Định Vị Doanh Nghiệp", "highlight": True,
         "start_rank": 10.5, "snapshot_rank": 6.5, "curr_rank_num": 2.8,
         "gsc_7d": {"gscPos": 2.8, "impressions": 2950, "clicks": 215, "ctr": "7.29%"},
@@ -174,7 +174,7 @@ raw_keywords_info = [
     },
     {
         "id": 20, "name": "công ty sa bàn kiến trúc", "searchFeature": "🌟 Featured Snippet", "initRank": "Top 8.2 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 3.2", "gscPos": 3.2,
-        "url": "mohinhkientruc.org", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 9: Định Vị Doanh Nghiệp", "highlight": False,
         "start_rank": 12.0, "snapshot_rank": 8.2, "curr_rank_num": 3.2,
         "gsc_7d": {"gscPos": 3.2, "impressions": 2410, "clicks": 168, "ctr": "6.97%"},
@@ -182,7 +182,7 @@ raw_keywords_info = [
     },
     {
         "id": 21, "name": "làm mô hình", "searchFeature": "🖼️ Image Pack", "initRank": "Top 12.5 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 4.2", "gscPos": 4.2,
-        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/lam-mo-hinh-kien-truc/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 10: Dịch Vụ Sản Xuất", "highlight": False,
         "start_rank": 17.5, "snapshot_rank": 12.5, "curr_rank_num": 4.2,
         "gsc_7d": {"gscPos": 4.2, "impressions": 1780, "clicks": 121, "ctr": "6.80%"},
@@ -190,7 +190,7 @@ raw_keywords_info = [
     },
     {
         "id": 22, "name": "làm sa bàn", "searchFeature": "🔗 Organic Sitelinks", "initRank": "Top 13.8 (17/08/2026)", "initDate": "17/08/2026", "currRank": "Top 4.6", "gscPos": 4.6,
-        "url": "mohinhkientruc.org/xuong-san-xuat-mo-hinh/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
+        "url": "mohinhkientruc.org/lam-sa-ban/", "type": "Từ Khóa Phụ (Long-tail)", "intent": "Transactional B2B",
         "priority": "Ưu Tiên 2 (P2)", "silo": "Cụm 10: Dịch Vụ Sản Xuất", "highlight": False,
         "start_rank": 18.5, "snapshot_rank": 13.8, "curr_rank_num": 4.6,
         "gsc_7d": {"gscPos": 4.6, "impressions": 1620, "clicks": 104, "ctr": "6.42%"},
