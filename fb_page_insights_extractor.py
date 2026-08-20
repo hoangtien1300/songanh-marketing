@@ -43,14 +43,14 @@ DEFAULT_FB_CHANNELS_DATA = {
         "name": "Fanpage Mô hình kiến trúc Song Anh",
         "page_id": os.environ.get("FB_PAGE_ID_MAIN", "100063928172930"),
         "week": {
-            "views": "12,850",
-            "engagements": "1,420",
+            "views": "852",
+            "engagements": "45 xem 3s / 128",
             "chats": "86",
             "followers": "18,520"
         },
         "month": {
-            "views": "54,200",
-            "engagements": "6,180",
+            "views": "3,650",
+            "engagements": "193 xem 3s / 549",
             "chats": "340",
             "followers": "18,520"
         }

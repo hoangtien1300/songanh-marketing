@@ -30,7 +30,7 @@ new_script_code = """    <script>
         ];
 
         const fbChannelData = {
-            'fanpage-main': { name: 'Fanpage Mô hình kiến trúc Song Anh', week: { views: '12,850', engagements: '1,420', chats: '86', followers: '18,520' }, month: { views: '54,200', engagements: '6,180', chats: '340', followers: '18,520' } },
+            'fanpage-main': { name: 'Fanpage Mô hình kiến trúc Song Anh', week: { views: '852', engagements: '45 xem 3s / 128', chats: '86', followers: '18,520' }, month: { views: '3,650', engagements: '193 xem 3s / 549', chats: '340', followers: '18,520' } },
             'fanpage-en': { name: 'Fanpage Architectural Model Org', week: { views: '4,120', engagements: '380', chats: '19', followers: '5,410' }, month: { views: '18,900', engagements: '1,650', chats: '78', followers: '5,410' } },
             'profile-songanh': { name: 'Facebook Profile Song Anh', week: { views: '3,850', engagements: '620', chats: '24', followers: '4,800' }, month: { views: '15,600', engagements: '2,480', chats: '95', followers: '4,800' } }
         };

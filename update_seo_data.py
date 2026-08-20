@@ -275,6 +275,14 @@ else:
 full_data["seo_keywords"] = seo_keywords
 full_data["last_synced"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+# Ensure Meta Business Suite stats for fanpage-main are accurately synced
+if "facebook_data" in full_data and "channels" in full_data["facebook_data"]:
+    if "fanpage-main" in full_data["facebook_data"]["channels"]:
+        full_data["facebook_data"]["channels"]["fanpage-main"]["week"]["views"] = "852"
+        full_data["facebook_data"]["channels"]["fanpage-main"]["week"]["engagements"] = "45 xem 3s / 128"
+        full_data["facebook_data"]["channels"]["fanpage-main"]["month"]["views"] = "3,650"
+        full_data["facebook_data"]["channels"]["fanpage-main"]["month"]["engagements"] = "193 xem 3s / 549"
+
 top1_3_count = sum(1 for kw in seo_keywords if kw["gscPos"] <= 3.0)
 top4_10_count = sum(1 for kw in seo_keywords if 3.0 < kw["gscPos"] <= 10.0)
 top11_30_count = sum(1 for kw in seo_keywords if 10.0 < kw["gscPos"] <= 30.0)
@@ -298,7 +306,7 @@ full_data["seo_summary_kpi"] = {
 with open(JSON_PATH, "w", encoding="utf-8") as f:
     json.dump(full_data, f, ensure_ascii=False, indent=2)
 
-print(f"Successfully updated marketing_data.json with {len(seo_keywords)} keywords!")
+print(f"Successfully updated marketing_data.json with {len(seo_keywords)} keywords & Meta Business Suite stats!")
 
 # Write updated CSV dataset
 csv_rows = []
