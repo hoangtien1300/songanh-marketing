@@ -111,7 +111,9 @@ def filter_and_parse_fb_tasks(all_pages):
         task_name = "".join([t.get("plain_text", "") for t in title_list]).strip() if title_list else ""
         
         desc_list = props.get("Mô tả công việc", {}).get("rich_text", []) if props.get("Mô tả công việc") else []
-        task_description = "".join([t.get("plain_text", "") for t in desc_list]).strip() if desc_list else ""
+        raw_desc = "".join([t.get("plain_text", "") for t in desc_list]).strip() if desc_list else ""
+        task_description = raw_desc.replace('\r\n', ' \\n ').replace('\n', ' \\n ') if raw_desc else ""
+
         
         if not task_name or task_name == "Facebook Marketing":
             continue
