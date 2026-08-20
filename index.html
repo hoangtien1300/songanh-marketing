@@ -6218,6 +6218,11 @@
                 const initRankNumStr = initRankMatch ? parseFloat(initRankMatch[1]).toFixed(1) : '---';
                 const changeObj = calcRankChange(kw.initRank, kw.gscPos);
                 const searchFeature = kw.searchFeature || '🌟 Featured Snippet';
+                const rawUrl = (kw.url || '').toString().trim();
+                let fullUrl = rawUrl;
+                if (rawUrl && !rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+                    fullUrl = rawUrl.startsWith('/') ? `https://mohinhkientruc.org${rawUrl}` : `https://${rawUrl}`;
+                }
 
                 html += `
                     <tr onclick="toggleKwDetail('kw-detail-${kw.id}')" class="hover:bg-slate-100 font-medium cursor-pointer transition">
@@ -6229,7 +6234,12 @@
                         <td class="p-3 font-extrabold text-emerald-600">${gscPosNumStr}</td>
                         <td class="p-3 font-extrabold ${changeObj.color}">${changeObj.text}</td>
                         <td class="p-3 font-bold"><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-sm">${searchFeature}</span></td>
-                        <td class="p-3 font-mono text-[11px] text-slate-600 break-all leading-relaxed">${kw.url}</td>
+                        <td class="p-3 font-mono text-[11px] text-slate-600 break-all leading-relaxed" onclick="event.stopPropagation()">
+                            <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-blue-600 hover:text-blue-800 hover:underline font-bold flex items-center gap-1">
+                                <span>${kw.url}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] shrink-0"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 ${kw.id === 1 ? '' : 'hidden'}">
                         <td colspan="6" class="p-4 border-t border-b border-amber-200 space-y-3">
