@@ -2,14 +2,14 @@
   "status": "success",
   "database_id": "3c24b5e7-3d90-81df-aa41-d2f5c355f32f",
   "database_url": "https://www.notion.so/3c24b5e73d9081dfaa41d2f5c355f32f",
-  "scan_timestamp": "2026-08-20 16:13:47",
+  "scan_timestamp": "2026-08-20 16:14:32",
   "summary": {
     "total_posts": 2,
     "published_count": 2,
     "pending_count": 0,
     "recomment_needed_count": 0,
     "total_recomments": 0,
-    "last_synced": "2026-08-20 16:13:47"
+    "last_synced": "2026-08-20 16:14:32"
   },
   "data": [
     {
@@ -23,7 +23,7 @@
       "status": "Đã đăng công khai",
       "next_recomment_date": "2026-08-23",
       "recomment_count": 0,
-      "last_synced": "2026-08-20 16:13:47"
+      "last_synced": "2026-08-20 16:14:32"
     },
     {
       "page_id": "3c24b5e7-3d90-81cf-ba46-fced1f0e24c4",
@@ -36,7 +36,7 @@
       "status": "Đã đăng công khai",
       "next_recomment_date": "2026-08-23",
       "recomment_count": 0,
-      "last_synced": "2026-08-20 16:13:47"
+      "last_synced": "2026-08-20 16:14:32"
     }
   ]
 }

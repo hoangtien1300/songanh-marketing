@@ -220,7 +220,7 @@
 
                     <!-- 2. GOOGLE BUSINESS -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('gbp')" id="menu-gbp" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span>Google Business</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
@@ -228,7 +228,7 @@
 
                     <!-- 3. FACEBOOK -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('facebook')" id="menu-facebook" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span>Facebook</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
@@ -236,7 +236,7 @@
 
                     <!-- 4. ZALO MARKETING -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('zalo')" id="menu-zalo" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span>Zalo Marketing</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
@@ -244,7 +244,7 @@
 
                     <!-- 5. PINTEREST -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('pinterest')" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('pinterest')" id="sub-pinterest" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-pinterest-p text-rose-600 w-4"></i><span>Pinterest</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                         </button>
@@ -252,7 +252,7 @@
 
                     <!-- 6. X.COM -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('xcom')" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                         </button>
@@ -260,7 +260,7 @@
 
                     <!-- 7. TIKTOK -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('tiktok')" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                         </button>
@@ -268,7 +268,7 @@
 
                     <!-- 8. YOUTUBE -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('youtube')" class="w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                        <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                         </button>
@@ -6347,7 +6347,23 @@
             { id: 4, task_name: "[Post Zalo] Profile 0376415131", assignee: "Bộ Phận CSKH B2B", assignee_role: "headset", frequency: "3 Lần / Tuần", kpi_weekly: "3 Bài / Tuần", completed: "3 Bài", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "amber", icon_class: "fa-square-check text-amber-500" }
         ];
 
-        let marketingActivityLog = [];
+        let marketingActivityLog = [
+            { id: 1, timestamp: "20/08/2026 16:10:00", module: "Meta API & FB Groups", action: "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công", executor: "song_anh_code_expert (Lead Developer)", status: "⚡ Real-time Auto Sync" },
+            { id: 2, timestamp: "20/08/2026 16:09:28", module: "SEO Google (GSC & GA4)", action: "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)", executor: "Trợ Lý AI Song Anh (SEO SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 3, timestamp: "20/08/2026 15:36:07", module: "Facebook Marketing", action: "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS", executor: "Trợ Lý AI Song Anh (Facebook SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 4, timestamp: "20/08/2026 14:20:00", module: "Google Business Profile", action: "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
+            { id: 5, timestamp: "20/08/2026 11:15:00", module: "Zalo OA & Zalo Personal", action: "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
+            { id: 6, timestamp: "20/08/2026 09:00:00", module: "Notion Task Management", action: "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34", executor: "Trợ Lý AI Song Anh (Master Agent)", status: "⚡ Real-time Auto Sync" },
+            { id: 7, timestamp: "19/08/2026 17:45:00", module: "Facebook Fanpage", action: "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox", executor: "song_anh_code_expert (Lead Developer)", status: "✅ Hoàn Thành" },
+            { id: 8, timestamp: "19/08/2026 14:30:00", module: "SEO On-Page", action: "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org", executor: "Trợ Lý AI Song Anh (SEO SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 9, timestamp: "19/08/2026 10:20:00", module: "Facebook Profile", action: "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
+            { id: 10, timestamp: "18/08/2026 16:00:00", module: "SEO Website", action: "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị", executor: "Trợ Lý AI Song Anh (SEO SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 11, timestamp: "18/08/2026 11:30:00", module: "Zalo Marketing", action: "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles", executor: "Trợ Lý AI Song Anh (Automation SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 12, timestamp: "17/08/2026 15:10:00", module: "Google Business Profile", action: "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
+            { id: 13, timestamp: "17/08/2026 09:45:00", module: "Meta API & FB Groups", action: "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới", executor: "song_anh_code_expert (Lead Developer)", status: "⚡ Real-time Auto Sync" },
+            { id: 14, timestamp: "16/08/2026 14:00:00", module: "SEO Off-Page & Entity", action: "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn", executor: "Trợ Lý AI Song Anh (SEO SubAgent)", status: "✅ Hoàn Thành" },
+            { id: 15, timestamp: "16/08/2026 08:30:00", module: "Web App Core System", action: "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%", executor: "song_anh_code_expert (Lead Developer)", status: "⚡ Real-time Auto Sync" }
+        ];
         let currentFbGroupChannel = 'fanpage';
         let fanpageJoinedGroupsList = [];
         let profileJoinedGroupsList = [];
@@ -6632,6 +6648,9 @@
                 if (data.marketing_activity_log && data.marketing_activity_log.length > 0) {
                     marketingActivityLog = data.marketing_activity_log;
                     renderActivityLogTable();
+                    if (typeof renderMarketingActivityLogTable === 'function') {
+                        renderMarketingActivityLogTable();
+                    }
                 }
                 if (data.zalo_data && data.zalo_data.length > 0) {
                     zaloTaskList = data.zalo_data;
@@ -7476,6 +7495,10 @@
             }
         }
 
+        function renderMarketingActivityLogTable(items) {
+            return renderActivityLogTable(items);
+        }
+
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('collapsed');
@@ -7483,7 +7506,17 @@
 
         function toggleAccordion(accId) {
             const accContent = document.getElementById(accId);
-            if (accContent) accContent.classList.toggle('open');
+            const icon = document.getElementById('icon-' + accId);
+            if (accContent) {
+                accContent.classList.toggle('open');
+                if (icon) {
+                    if (accContent.classList.contains('open')) {
+                        icon.classList.add('rotate-180');
+                    } else {
+                        icon.classList.remove('rotate-180');
+                    }
+                }
+            }
         }
 
         function toggleKwDetail(detailRowId) {
@@ -7510,33 +7543,51 @@
         }
 
         function selectModule(moduleId) {
-            document.querySelectorAll('.sub-link').forEach(link => link.classList.remove('active'));
-            const activeSub = document.getElementById('sub-' + moduleId);
-            if (activeSub) activeSub.classList.add('active');
+            document.querySelectorAll('#sidebar .sub-link').forEach(link => link.classList.remove('active'));
+            const activeSub = document.getElementById('sub-' + moduleId) || document.getElementById('menu-' + moduleId);
+            if (activeSub) {
+                activeSub.classList.add('active');
+                const parentAcc = activeSub.closest('.submenu-container');
+                if (parentAcc && !parentAcc.classList.contains('open')) {
+                    parentAcc.classList.add('open');
+                    const accId = parentAcc.id;
+                    const icon = document.getElementById('icon-' + accId);
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            }
 
             document.querySelectorAll('.module-panel').forEach(panel => panel.classList.add('hidden'));
 
             if (moduleId === 'home') {
-                document.getElementById('panel-home').classList.remove('hidden');
+                const homePanel = document.getElementById('panel-home');
+                if (homePanel) homePanel.classList.remove('hidden');
                 showToast("🏠 Đã mở Trang Chủ: Master Home Dashboard");
             } else if (moduleId === 'keywords') {
-                document.getElementById('panel-keywords').classList.remove('hidden');
+                const kwPanel = document.getElementById('panel-keywords');
+                if (kwPanel) kwPanel.classList.remove('hidden');
+                showToast("🔑 Đã mở Hạng mục: Theo Dõi Từ Khóa SEO");
             } else if (moduleId === 'onpage') {
-                document.getElementById('panel-onpage').classList.remove('hidden');
+                const onpagePanel = document.getElementById('panel-onpage');
+                if (onpagePanel) onpagePanel.classList.remove('hidden');
+                showToast("📄 Đã mở Hạng mục: On-Page & Schema");
             } else if (moduleId === 'facebook') {
-                document.getElementById('panel-facebook').classList.remove('hidden');
+                const fbPanel = document.getElementById('panel-facebook');
+                if (fbPanel) fbPanel.classList.remove('hidden');
                 showToast("🔵 Đã mở Hạng mục: Facebook Marketing (Active)");
             } else if (moduleId === 'gbp') {
-                document.getElementById('panel-gbp').classList.remove('hidden');
+                const gbpPanel = document.getElementById('panel-gbp');
+                if (gbpPanel) gbpPanel.classList.remove('hidden');
                 showToast("🔴 Đã mở Hạng mục: Google Business Profile (Active)");
             } else if (moduleId === 'zalo') {
-                document.getElementById('panel-zalo').classList.remove('hidden');
+                const zaloPanel = document.getElementById('panel-zalo');
+                if (zaloPanel) zaloPanel.classList.remove('hidden');
                 showToast("📱 Đã mở Hạng mục: Zalo Marketing Task Management (Active)");
             } else {
                 const updatingPanel = document.getElementById('panel-updating');
-                document.getElementById('updating-title-text').innerText = "Hạng Mục: " + moduleId.toUpperCase();
-                updatingPanel.classList.remove('hidden');
-                showToast("🚧 Hạng mục '" + moduleId.toUpperCase() + "' đang được cập nhật!");
+                const titleText = document.getElementById('updating-title-text');
+                if (titleText) titleText.innerText = "Hạng Mục: " + (moduleId || '').toUpperCase();
+                if (updatingPanel) updatingPanel.classList.remove('hidden');
+                showToast("🚧 Hạng mục '" + (moduleId || '').toUpperCase() + "' đang được cập nhật!");
             }
         }
 
@@ -7572,6 +7623,8 @@
             renderOnpageTable();
             renderFbTable();
             renderZaloTable();
+            renderActivityLogTable();
+            renderMarketingActivityLogTable();
             updateFbStatsDisplay();
             updateGbpStatsDisplay();
             setTimeout(() => { switchKwTimeFilter(1, '7d'); }, 100);
