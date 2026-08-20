@@ -289,7 +289,7 @@ def fetch_notion_profile_joined_groups():
                 status_prop = props.get("Profile Song Anh", {}).get("status", {})
                 status_name = status_prop.get("name", "") if status_prop else ""
                 
-                if name and link:
+                if name and link and status_name == "Đã tham gia":
                     mem_rich = props.get("Member (K)", {}).get("rich_text", [])
                     mem_raw = "".join([t.get("plain_text", "") for t in mem_rich]) if mem_rich else ""
                     mem_fmt, mem_num = parse_member_count(mem_raw)
