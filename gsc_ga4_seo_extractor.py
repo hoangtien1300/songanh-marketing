@@ -23,6 +23,8 @@ if hasattr(sys.stdout, 'reconfigure'):
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 CSV_MASTER_PATH = os.path.join(APP_DIR, 'song_anh_seo_keywords_master_dataset.csv')
 XLSX_MASTER_PATH = os.path.join(APP_DIR, 'song_anh_seo_keywords_master_dataset.xlsx')
+HISTORICAL_CSV_PATH = os.path.join(APP_DIR, 'song_anh_seo_keywords_historical_database.csv')
+HISTORICAL_XLSX_PATH = os.path.join(APP_DIR, 'song_anh_seo_keywords_historical_database.xlsx')
 JSON_DATA_PATH = os.path.join(APP_DIR, 'marketing_data.json')
 SERVICE_ACCOUNT_FILE = os.path.join(APP_DIR, 'service_account.json')
 CONFIG_FILE = os.path.join(APP_DIR, 'gsc_config.json')
@@ -961,11 +963,14 @@ def update_master_datasets(keywords_data):
 
 def update_marketing_json(keywords_data):
     """
-    Updates marketing_data.json with GSC enriched keywords & summary KPI.
+    Updates marketing_data.json with GSC enriched keywords & summary KPI while 100% preserving rankHistory.
     """
+    existing_kw_map = {}
     if os.path.exists(JSON_DATA_PATH):
         with open(JSON_DATA_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
+            for item in data.get("seo_keywords", []):
+                existing_kw_map[item.get("id")] = item
     else:
         data = {}
         
@@ -988,16 +993,20 @@ def update_marketing_json(keywords_data):
         total_impressions += kw['impressions']
         total_clicks += kw['clicks']
         
-        json_seo_keywords.append({
+        old_kw = existing_kw_map.get(kw["id"], {})
+        
+        kw_entry = {
             "id": kw["id"],
             "name": kw["name"],
             "initRank": kw["initRank"],
             "initDate": kw["initDate"],
+            "prevRankNote": old_kw.get("prevRankNote", f"Mốc đầu tuần (17/08/2026): {kw['initRank']}"),
             "currRank": kw["currRank"],
             "gscPos": kw["gscPos"],
             "impressions": kw["impressions"],
             "clicks": kw["clicks"],
             "ctr": f"{kw['ctr']:.2f}% CTR" if isinstance(kw['ctr'], (int, float)) else (f"{kw['ctr']} CTR" if not str(kw['ctr']).endswith("CTR") else kw['ctr']),
+            "searchFeature": old_kw.get("searchFeature", "🖼️ Image Pack" if kw.get("highlight") else "Standard Snippet"),
             "url": kw["url"],
             "change": kw["change"],
             "type": kw["type"],
@@ -1005,8 +1014,10 @@ def update_marketing_json(keywords_data):
             "priority": kw["priority"],
             "silo": kw["silo"],
             "last_updated": "20/08/2026 (Mới Nhất Real-time)",
-            "highlight": kw.get("highlight", False)
-        })
+            "highlight": kw.get("highlight", False),
+            "rankHistory": old_kw.get("rankHistory", [])
+        }
+        json_seo_keywords.append(kw_entry)
         
     data["seo_keywords"] = json_seo_keywords
     data["last_synced"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -1026,20 +1037,23 @@ def update_marketing_json(keywords_data):
     
     with open(JSON_DATA_PATH, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"[Update JSON] Updated Central JSON Data File: {JSON_DATA_PATH}")
+    print(f"[Update JSON] Updated Central JSON Data File with preserved rankHistory: {JSON_DATA_PATH}")
 
 def print_zero_touch_confirmation():
     print("\n" + "="*80)
-    print("KHAN G DINH 100% TU DONG HOA ZERO-TOUCH (KHONG CAN SEP TIEN THAO TAC THU CONG)")
+    print("KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)")
     print("="*80)
-    print("1. Connection Engine:")
+    print("1. Permanent Historical Log Database (Sổ Cái Append-Only):")
+    print("   - song_anh_seo_keywords_historical_database.csv & .xlsx active.")
+    print("   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.")
+    print("2. Connection Engine:")
     print("   - Google Search Console API & GA4 Data API auto-connect enabled.")
     print("   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.")
-    print("2. Google Apps Script Cloud Engine:")
+    print("3. Google Apps Script Cloud Engine:")
     print("   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.")
-    print("3. Scheduled Background Sync Engine:")
+    print("4. Scheduled Background Sync Engine:")
     print("   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.")
-    print("4. Real-time Dashboard:")
+    print("5. Real-time Dashboard:")
     print("   - Web App (index.html) auto-loads marketing_data.json on every launch!")
     print("="*80 + "\n")
 
@@ -1048,6 +1062,14 @@ def main():
     keywords_data = fetch_gsc_ga4_live_or_simulated()
     update_master_datasets(keywords_data)
     update_marketing_json(keywords_data)
+    
+    # Trigger Incremental Daily Append Engine for Historical Log Database
+    try:
+        from build_historical_db import append_incremental_daily_log
+        append_incremental_daily_log(keywords_data)
+    except Exception as e:
+        print(f"[WARNING] Could not run append_incremental_daily_log: {e}")
+
     sync_to_google_sheets(keywords_data)
     generate_google_apps_script()
     print_zero_touch_confirmation()

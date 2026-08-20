@@ -238,12 +238,15 @@ def fetch_from_notion_db(database_id, api_token):
 
 CSV_FILE = APP_DIR / "song_anh_seo_keywords_master_dataset.csv"
 XLSX_FILE = APP_DIR / "song_anh_seo_keywords_master_dataset.xlsx"
+HISTORICAL_CSV_FILE = APP_DIR / "song_anh_seo_keywords_historical_database.csv"
+HISTORICAL_XLSX_FILE = APP_DIR / "song_anh_seo_keywords_historical_database.xlsx"
+HISTORICAL_BUILDER_FILE = APP_DIR / "build_historical_db.py"
 EXTRACTOR_FILE = APP_DIR / "gsc_ga4_seo_extractor.py"
 ENGINE_FILE = APP_DIR / "song_anh_daily_sync_engine.py"
 BAT_FILE = APP_DIR / "run_daily_seo_sync.bat"
 GS_FILE = APP_DIR / "song_anh_gsc_ga4_auto_fetcher.gs"
 
-def sync_to_gdrive(source_files=[INDEX_FILE, DATA_FILE, CSV_FILE, XLSX_FILE, EXTRACTOR_FILE, ENGINE_FILE, BAT_FILE, GS_FILE], dest_dir=GDRIVE_DIR):
+def sync_to_gdrive(source_files=[INDEX_FILE, DATA_FILE, CSV_FILE, XLSX_FILE, HISTORICAL_CSV_FILE, HISTORICAL_XLSX_FILE, HISTORICAL_BUILDER_FILE, EXTRACTOR_FILE, ENGINE_FILE, BAT_FILE, GS_FILE], dest_dir=GDRIVE_DIR):
     """Đồng bộ các tệp chỉ định sang Google Drive"""
     print(f"\n[SYNC ENGINE] Bắt đầu đồng bộ sang Google Drive...")
     print(f"--> Thư mục đích: {dest_dir}")
@@ -312,6 +315,13 @@ def run_daily_sync(gsheet_url=None, notion_db_id=None, notion_token=None):
     if not saved:
         print("[CANCELLED] Lưu tệp JSON thất bại!")
         return False
+
+    # 4.5. Trigger Incremental Daily Append Engine cho Sổ Cái Lịch Sử Database
+    try:
+        from build_historical_db import append_incremental_daily_log
+        append_incremental_daily_log(data.get("seo_keywords", []))
+    except Exception as e:
+        print(f"[HISTORICAL DB WARN] Không thể chạy append_incremental_daily_log: {e}")
 
     # 5. Sync to Google Drive
     synced = sync_to_gdrive()
