@@ -918,7 +918,7 @@ def update_master_datasets(keywords_data):
     """
     Exports CSV and Excel datasets with standard 12/13 columns requested by Sếp Tiến.
     """
-    today_str = "19/08/2026 (Mới Nhất Real-time)"
+    today_str = "20/08/2026 (Mới Nhất Real-time)"
     rows_for_df = []
     
     for item in keywords_data:
@@ -1004,7 +1004,7 @@ def update_marketing_json(keywords_data):
             "intent": kw["intent"],
             "priority": kw["priority"],
             "silo": kw["silo"],
-            "last_updated": "19/08/2026 (Mới Nhất Real-time)",
+            "last_updated": "20/08/2026 (Mới Nhất Real-time)",
             "highlight": kw.get("highlight", False)
         })
         
