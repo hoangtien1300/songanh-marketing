@@ -142,7 +142,7 @@
         <!-- Right: Metrics -->
         <div class="hidden lg:flex items-center gap-3 text-xs">
             <div class="flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200">
-                <span class="font-bold text-emerald-600">📅 Ngày 20/08/2026 (Mới Nhất Real-time)</span>
+                <span id="header-current-date-badge" class="font-bold text-emerald-600">📅 Ngày 20/08/2026</span>
             </div>
             <div class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 font-bold text-brand-navy">
                 <i class="fa-solid fa-phone"></i>
@@ -1778,7 +1778,19 @@
             setTimeout(() => { toast.classList.add('hidden'); }, 3000);
         }
 
+        function updateHeaderCurrentDate() {
+            const dateElem = document.getElementById('header-current-date-badge');
+            if (dateElem) {
+                const now = new Date();
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const year = now.getFullYear();
+                dateElem.innerText = `📅 Ngày ${day}/${month}/${year}`;
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            updateHeaderCurrentDate();
             renderKeywordTable();
             renderOnpageTable();
             renderZaloTable();
