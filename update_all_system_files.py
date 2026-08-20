@@ -48,11 +48,11 @@ for kw in marketing_data["seo_keywords"]:
     diff = round(mon_rank - gsc_pos, 1)
     
     if diff > 0:
-        kw["change"] = f"Tăng {diff:.1f} Bậc (+{diff:.1f})"
+        kw["change"] = f"↑ +{diff:.1f}"
     elif diff < 0:
-        kw["change"] = f"Giảm {abs(diff):.1f} Bậc (-{abs(diff):.1f})"
+        kw["change"] = f"↓ -{abs(diff):.1f}"
     else:
-        kw["change"] = "0.0 Bậc (0.0)"
+        kw["change"] = "=0"
 
 with open(JSON_PATH, "w", encoding="utf-8") as f:
     json.dump(marketing_data, f, ensure_ascii=False, indent=2)
@@ -114,8 +114,8 @@ print("[SUCCESS] Saved index.html.")
 csv_rows = []
 csv_rows.append([
     "Từ Khóa",
-    "Vị Trí Thứ 2 (17/08/2026)",
-    "Vị Trí GSC Real-time (20/08/2026)",
+    "Vị Trí Cũ (Thứ 2 - 17/08/2026)",
+    "Vị Trí GSC (TB) (Check: 20/08/2026)",
     "Thay Đổi Thứ Hạng",
     "Search Feature Rank Top",
     "URL Đích",
@@ -146,14 +146,14 @@ for kw in marketing_data["seo_keywords"]:
     imp_30d = gsc_30d.get("impressions", imp * 4)
     imp_30d_str = f"{imp_30d:,} Imp" if imp_30d >= 1000 else f"{imp_30d} Imp"
 
-    gsc_pos_str = f"Top {kw['gscPos']:.1f}" if isinstance(kw.get('gscPos'), (int, float)) else str(kw.get('currRank', ''))
-    if "Top" not in gsc_pos_str:
-        gsc_pos_str = f"Top {gsc_pos_str}"
+    mon_rank_val = kw_baseline_map[kw["id"]]
+    init_rank_num_str = f"{mon_rank_val:.1f}"
+    gsc_pos_num_str = f"{float(kw['gscPos']):.1f}" if isinstance(kw.get('gscPos'), (int, float)) else str(kw.get('currRank', '')).replace('Top ', '')
 
     csv_rows.append([
         kw["name"],
-        kw["initRank"],
-        gsc_pos_str,
+        init_rank_num_str,
+        gsc_pos_num_str,
         kw["change"],
         kw.get("searchFeature", "🌟 Featured Snippet"),
         kw["url"] if kw["url"].startswith("http") else "https://" + kw["url"],
