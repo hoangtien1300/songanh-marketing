@@ -1,50 +1,12 @@
 {
   "status": "success",
   "profile_name": "Facebook Profile Song Anh",
-  "scan_timestamp": "2026-08-20 15:22:34",
+  "scan_timestamp": "2026-08-20 15:36:04",
   "joined_date": "2026-08-19",
   "total_joined_groups": 194,
-  "data": [
+  "top_5_recommended_groups": [
     {
       "stt": 1,
-      "page_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
-      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
-      "group_url": "https://www.facebook.com/groups/152692778620733",
-      "group_id": "152692778620733",
-      "members_count": "46K",
-      "members_num": 46,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Mua bán tổng hợp",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đã đăng bài thành công 100% (Link: https://www.facebook.com/groups/152692778620733/posts/2222578478298809)",
-      "last_post_date": "2026-08-20",
-      "last_post_url": "https://www.facebook.com/groups/152692778620733/posts/2222578478298809",
-      "recommendation_score": 220.0
-    },
-    {
-      "stt": 2,
-      "page_id": "1a44b5e7-3d90-817d-9080-f2d3cb9ecfe0",
-      "group_name": "Cộng đồng môi giới bất động sản Việt Nam",
-      "group_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam",
-      "group_id": "1108250899216714",
-      "members_count": ".",
-      "members_num": 0,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Cộng đồng Cư dân",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đã đăng bài thành công 100% (Link: https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221)",
-      "last_post_date": "2026-08-20",
-      "last_post_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221",
-      "recommendation_score": 180.0
-    },
-    {
-      "stt": 3,
       "page_id": "1a44b5e7-3d90-8102-8d4a-dd6605e210dd",
       "group_name": "Real Estate For Sale",
       "group_url": "https://www.facebook.com/groups/1595915457384244/",
@@ -56,12 +18,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 155.0
     },
     {
-      "stt": 4,
+      "stt": 2,
       "page_id": "39d4b5e7-3d90-81f3-86da-cfda55c0a493",
       "group_name": "THIẾT KẾ & THI CÔNG NỘI THẤT",
       "group_url": "https://www.facebook.com/groups/325114677914024",
@@ -73,12 +35,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 5,
+      "stt": 3,
       "page_id": "3b34b5e7-3d90-81e8-aeca-fee6a6bc36e8",
       "group_name": "Hội Kiến Trúc Xây Dựng Miền Nam",
       "group_url": "https://www.facebook.com/groups/hoikientrucxaydungmiennam",
@@ -90,12 +52,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 6,
+      "stt": 4,
       "page_id": "3b34b5e7-3d90-81f0-827c-e1914d1f2295",
       "group_name": "XÂY DỰNG & NỘI THẤT",
       "group_url": "https://www.facebook.com/groups/643504396492185",
@@ -107,12 +69,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 7,
+      "stt": 5,
       "page_id": "3af4b5e7-3d90-81b3-97b6-f581bb24e22e",
       "group_name": "CHIA SẺ THÔNG TIN DỰ ÁN ĐẦU TƯ VÀ XÂY DỰNG",
       "group_url": "https://www.facebook.com/groups/da.dautu.xaydung",
@@ -124,12 +86,99 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 150.0
+    }
+  ],
+  "data": [
+    {
+      "stt": 1,
+      "page_id": "1a44b5e7-3d90-8102-8d4a-dd6605e210dd",
+      "group_name": "Real Estate For Sale",
+      "group_url": "https://www.facebook.com/groups/1595915457384244/",
+      "group_id": "1595915457384244",
+      "members_count": "46,300",
+      "members_num": 46300,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "📐 Kiến trúc & Quy hoạch",
+      "join_status": "Đã tham gia",
+      "joined_date": "2020-12-17",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 155.0
+    },
+    {
+      "stt": 2,
+      "page_id": "39d4b5e7-3d90-81f3-86da-cfda55c0a493",
+      "group_name": "THIẾT KẾ & THI CÔNG NỘI THẤT",
+      "group_url": "https://www.facebook.com/groups/325114677914024",
+      "group_id": "325114677914024",
+      "members_count": "555K",
+      "members_num": 555,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Thiết kế - Nội thất, Thi công - Xây dựng",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 8,
+      "stt": 3,
+      "page_id": "3b34b5e7-3d90-81e8-aeca-fee6a6bc36e8",
+      "group_name": "Hội Kiến Trúc Xây Dựng Miền Nam",
+      "group_url": "https://www.facebook.com/groups/hoikientrucxaydungmiennam",
+      "group_id": "hoikientrucxaydungmiennam",
+      "members_count": "3,4K",
+      "members_num": 34,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Thi công - Xây dựng",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 150.0
+    },
+    {
+      "stt": 4,
+      "page_id": "3b34b5e7-3d90-81f0-827c-e1914d1f2295",
+      "group_name": "XÂY DỰNG & NỘI THẤT",
+      "group_url": "https://www.facebook.com/groups/643504396492185",
+      "group_id": "643504396492185",
+      "members_count": "22K",
+      "members_num": 22,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Thiết kế - Nội thất, Thi công - Xây dựng",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 150.0
+    },
+    {
+      "stt": 5,
+      "page_id": "3af4b5e7-3d90-81b3-97b6-f581bb24e22e",
+      "group_name": "CHIA SẺ THÔNG TIN DỰ ÁN ĐẦU TƯ VÀ XÂY DỰNG",
+      "group_url": "https://www.facebook.com/groups/da.dautu.xaydung",
+      "group_id": "da.dautu.xaydung",
+      "members_count": "15K",
+      "members_num": 15,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Thi công - Xây dựng",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 150.0
+    },
+    {
+      "stt": 6,
       "page_id": "1a44b5e7-3d90-8129-98ec-d4dc1e1b04a2",
       "group_name": "CLB Mô hình tĩnh Cần Thơ",
       "group_url": "https://www.facebook.com/groups/1497955473845417",
@@ -141,12 +190,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 9,
+      "stt": 7,
       "page_id": "1a44b5e7-3d90-810a-b986-fff21cf19c54",
       "group_name": "Hội Du học sinh ngành Kiến trúc, Thiết kế & Xây dựng - VASADE",
       "group_url": "https://www.facebook.com/groups/406998143326593",
@@ -158,12 +207,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 10,
+      "stt": 8,
       "page_id": "1a44b5e7-3d90-8101-adc2-f8e2941e4474",
       "group_name": "Chợ Hobby - Mô Hình💰(Buy,Sell,Trade)",
       "group_url": "https://www.facebook.com/groups/792056207532199",
@@ -175,12 +224,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 11,
+      "stt": 9,
       "page_id": "1a44b5e7-3d90-810a-9f80-c105afdddef3",
       "group_name": "CLB Mô Hình Quân Sự - VIỆT NAM 🇻🇳",
       "group_url": "https://www.facebook.com/groups/368812904040848",
@@ -192,12 +241,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 12,
+      "stt": 10,
       "page_id": "1a44b5e7-3d90-8113-b51e-ec4eeba0e57b",
       "group_name": "HỘI MUA BÁN NHÀ ĐẤT QUẬN CẦU GIẤY - HÀ NỘI",
       "group_url": "https://www.facebook.com/groups/1062797213894953",
@@ -209,12 +258,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 13,
+      "stt": 11,
       "page_id": "1a44b5e7-3d90-81d6-93e7-ff7e4f853965",
       "group_name": "HỘI GIAO LƯU & MUA BÁN MÔ HÌNH",
       "group_url": "https://www.facebook.com/groups/718138402075556",
@@ -226,12 +275,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 14,
+      "stt": 12,
       "page_id": "1a44b5e7-3d90-8103-affb-dfd260cf7c3d",
       "group_name": "CLB Mô Hình Tỉnh Bình Phước",
       "group_url": "https://www.facebook.com/groups/357638721074410",
@@ -243,12 +292,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 15,
+      "stt": 13,
       "page_id": "1a44b5e7-3d90-816e-9642-d2b4ed631ade",
       "group_name": "Kiến Trúc - xây dựng - nội thất",
       "group_url": "https://www.facebook.com/groups/kientrucdep",
@@ -260,12 +309,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 16,
+      "stt": 14,
       "page_id": "1a44b5e7-3d90-817d-862e-d62eb231adef",
       "group_name": "Hội Quán Mô Hình Việt Nam",
       "group_url": "https://www.facebook.com/groups/muabanmohinh16",
@@ -277,12 +326,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 17,
+      "stt": 15,
       "page_id": "1a44b5e7-3d90-8111-aab6-f5b480b27318",
       "group_name": "Cambodian Construction Company",
       "group_url": "https://www.facebook.com/groups/1241875002584191/",
@@ -294,12 +343,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 18,
+      "stt": 16,
       "page_id": "1a44b5e7-3d90-81b6-80c8-fbf4fe5ca774",
       "group_name": "Chợ mô hình (Câu lạc bộ sa bàn Việt Nam)",
       "group_url": "https://www.facebook.com/groups/895302084178364",
@@ -311,12 +360,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 150.0
     },
     {
-      "stt": 19,
+      "stt": 17,
       "page_id": "1a44b5e7-3d90-8124-a9c8-d189b03f3fd7",
       "group_name": "Commercial Real Estate Property Listings in Phnom Penh: For Sale & For Rent",
       "group_url": "https://www.facebook.com/groups/1694678584046926/",
@@ -328,12 +377,29 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 20,
+      "stt": 18,
+      "page_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
+      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
+      "group_url": "https://www.facebook.com/groups/152692778620733",
+      "group_id": "152692778620733",
+      "members_count": "46K",
+      "members_num": 46,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Mua bán tổng hợp",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 140.0
+    },
+    {
+      "stt": 19,
       "page_id": "3b54b5e7-3d90-81df-a774-f00945ef783a",
       "group_name": "Chưa đọcChào mừng bạn đến với THÔNG TIN DỰ ÁN FDI... Giờ bạn có thể đăng bài, kết nối với các thành viên khác và hơn thế nữa.1 giờ",
       "group_url": "https://www.facebook.com/groups/1082951102493002",
@@ -345,12 +411,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 21,
+      "stt": 20,
       "page_id": "1a44b5e7-3d90-8184-8a67-d425f76c7064",
       "group_name": "SÀN GỖ & NỘI THẤT CAO CẤP",
       "group_url": "https://www.facebook.com/groups/602044966870408",
@@ -362,12 +428,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 22,
+      "stt": 21,
       "page_id": "1a44b5e7-3d90-8176-8666-ea8855879634",
       "group_name": "HIỆP HỘI KIẾN TRÚC VIỆT NAM 🌇 🏩 🇻🇳",
       "group_url": "https://www.facebook.com/groups/kientrucxaydungvietnam",
@@ -379,12 +445,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 23,
+      "stt": 22,
       "page_id": "1a44b5e7-3d90-8194-af20-f86217f7c0e7",
       "group_name": "KIẾN TRÚC - NỘI THẤT - NHÀ ĐẸP",
       "group_url": "https://www.facebook.com/groups/584869469050238",
@@ -396,12 +462,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 24,
+      "stt": 23,
       "page_id": "1a44b5e7-3d90-81f1-a6ce-f0d39b5047d0",
       "group_name": "Hội Kiến Trúc Sư TP.HCM",
       "group_url": "https://www.facebook.com/groups/hoikientrucsutphcm1",
@@ -413,12 +479,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 25,
+      "stt": 24,
       "page_id": "1a44b5e7-3d90-81e0-9b6c-fefbfa75b623",
       "group_name": "Kiến trúc đẹp",
       "group_url": "https://www.facebook.com/groups/kientrucnoithatdep",
@@ -430,12 +496,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 26,
+      "stt": 25,
       "page_id": "1a44b5e7-3d90-816a-b330-c1b9c671d20f",
       "group_name": "Cambodia Architecture - Past & Present",
       "group_url": "https://www.facebook.com/groups/511123369735619/",
@@ -447,12 +513,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 27,
+      "stt": 26,
       "page_id": "1a44b5e7-3d90-81ac-b1e9-eb8e3981fd15",
       "group_name": "ARCHITECTURE",
       "group_url": "https://www.facebook.com/groups/735868749862585/",
@@ -464,12 +530,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 28,
+      "stt": 27,
       "page_id": "1a44b5e7-3d90-81fd-8308-e74e0b01fb70",
       "group_name": "ARCHITECTURE HAND SKETCH",
       "group_url": "https://www.facebook.com/groups/1397775220487374/",
@@ -481,12 +547,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 29,
+      "stt": 28,
       "page_id": "1a44b5e7-3d90-8186-83f2-e88700431060",
       "group_name": "CLB | Hội Họa | Kiến trúc thành phố HCM cơ sở CT",
       "group_url": "https://www.facebook.com/groups/clbhoihoa.kts.cosocantho",
@@ -498,12 +564,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 30,
+      "stt": 29,
       "page_id": "1a44b5e7-3d90-81f3-ac25-c5ffc5979d81",
       "group_name": "CLB Kiến trúc sư Trẻ Việt Nam",
       "group_url": "https://www.facebook.com/groups/kientrucsutre/",
@@ -515,12 +581,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 31,
+      "stt": 30,
       "page_id": "1a44b5e7-3d90-816e-a41b-cc9f622da9c4",
       "group_name": "Cambodia Architecture Design Group",
       "group_url": "https://www.facebook.com/groups/1819089498356670/",
@@ -532,12 +598,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-23",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 32,
+      "stt": 31,
       "page_id": "1a44b5e7-3d90-81ec-8407-f39b4d678c07",
       "group_name": "Sinh Viên Kiến Trúc HUBT",
       "group_url": "https://www.facebook.com/groups/864359476958681/",
@@ -549,12 +615,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 33,
+      "stt": 32,
       "page_id": "1a44b5e7-3d90-8196-8c75-eb96a4b6caa4",
       "group_name": "Available apartment by camrealtyservice.com",
       "group_url": "https://www.facebook.com/groups/2617534004998640/",
@@ -566,12 +632,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 34,
+      "stt": 33,
       "page_id": "1a44b5e7-3d90-8147-9602-dc3568c2fd4b",
       "group_name": "KHOA KIẾN TRÚC - ĐHXD MIỀN TRUNG - Nhóm",
       "group_url": "https://www.facebook.com/groups/khoakientruc.muce.edu.vn",
@@ -583,12 +649,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 35,
+      "stt": 34,
       "page_id": "1a44b5e7-3d90-812d-8b13-c9625664ed48",
       "group_name": "Gupkarpeer",
       "group_url": "https://www.facebook.com/groups/Gupkarpeer/",
@@ -600,12 +666,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 36,
+      "stt": 35,
       "page_id": "1a44b5e7-3d90-81e6-bf0d-c50618d88f12",
       "group_name": "Group ID: 119482101735748",
       "group_url": "https://www.facebook.com/groups/119482101735748/",
@@ -617,12 +683,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 37,
+      "stt": 36,
       "page_id": "1a44b5e7-3d90-81c1-aedb-d2fd7807e45c",
       "group_name": "Group ID: 331486767355572",
       "group_url": "https://www.facebook.com/groups/331486767355572/",
@@ -634,12 +700,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 38,
+      "stt": 37,
       "page_id": "1a44b5e7-3d90-812c-b4aa-c629468ebeee",
       "group_name": "3D Rendering | 3D Models Collection",
       "group_url": "https://www.facebook.com/groups/3DRendering/",
@@ -651,12 +717,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 39,
+      "stt": 38,
       "page_id": "1a44b5e7-3d90-816b-851d-fe962ea21636",
       "group_name": "Expats in Saigon / Ho Chi Minh City",
       "group_url": "https://www.facebook.com/groups/expats.hcm/",
@@ -668,12 +734,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 140.0
     },
     {
-      "stt": 40,
+      "stt": 39,
       "page_id": "1a44b5e7-3d90-8133-96be-c745b97ea4cc",
       "group_name": "អចលនៈទ្រព្យក្រុងប៉ោយប៉ែត/POIPET REAL ESTATE",
       "group_url": "https://www.facebook.com/groups/855495524805109",
@@ -685,12 +751,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2023-09-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 41,
+      "stt": 40,
       "page_id": "1a44b5e7-3d90-818a-9bba-dec709451002",
       "group_name": "អចលនៈទ្រព្យក្រុងប៉ោយប៉ែត/POIPET REAL ESTATE",
       "group_url": "https://www.facebook.com/groups/855495524805109/",
@@ -702,12 +768,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-08-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 42,
+      "stt": 41,
       "page_id": "1a44b5e7-3d90-8176-bc5f-e7ce17052f2a",
       "group_name": "Đam mê BẤT ĐỘNG SẢN",
       "group_url": "https://www.facebook.com/groups/vietnamrealestateforum",
@@ -719,12 +785,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 43,
+      "stt": 42,
       "page_id": "1a44b5e7-3d90-81a7-be77-e6ddfff34cbc",
       "group_name": "Real Estate Agents in Vietnam",
       "group_url": "https://www.facebook.com/groups/288657922123993/",
@@ -736,12 +802,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 44,
+      "stt": 43,
       "page_id": "1a44b5e7-3d90-814f-bc97-d3f971d6f947",
       "group_name": "Siem Reap Tony Group Real Estate Services",
       "group_url": "https://www.facebook.com/groups/152727675342315/",
@@ -753,12 +819,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-15",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 45,
+      "stt": 44,
       "page_id": "1a44b5e7-3d90-814d-a264-cf2758f6dae8",
       "group_name": "International Real Estate Investment Group",
       "group_url": "https://www.facebook.com/groups/492619647545971/",
@@ -770,12 +836,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 46,
+      "stt": 45,
       "page_id": "1a44b5e7-3d90-81ab-a298-ea3bdaab30c9",
       "group_name": "ពត៍មានអំពីរអចលនះទ្រព្យកម្ពុជា (Cambodia Real Estates News)",
       "group_url": "https://www.facebook.com/groups/1794621344112178/",
@@ -787,12 +853,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 47,
+      "stt": 46,
       "page_id": "1a44b5e7-3d90-8147-ac1b-c1a6c0da6f68",
       "group_name": "Real Estate Cambodia",
       "group_url": "https://www.facebook.com/groups/622922761187061/",
@@ -804,12 +870,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-11",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 48,
+      "stt": 47,
       "page_id": "1a44b5e7-3d90-8193-b390-fd4724e393cb",
       "group_name": "Nhà Đất Đồng Nai - Bất Động Sản",
       "group_url": "https://www.facebook.com/groups/nhadattpbienhoa/?fref=nf&__xts__[0]=68.ARCxnO2xLrbMtU9ZySgSbKSksAHgNcDoCK33ZNRhQ80q_scbRYodyjcukPePeTX28xNV860NFeUOfI7opnZCNpuTdcx77nV3qV8nskv38VdvsYCpp7t1lXugxa-DNbe-x4Pu7iKAUwovy4SOETkli3VT21nZIpwcQR9qP6e5wWE-h8Ve5pZzo-6pFkV4kgTyc2dGkxqR4Chgip4qIHPTPjaTO-Dwo_OMiuhiV8bG2CyTUwsb_Qcvu_mlGC32q5w-CZcd6sZJEXFWL920W8yI5-S1B5MhqMTZ51Op2qsVMBiPyzxRsAj_MS5-h-rCI_0dYUPyXQ&__tn__=C-R",
@@ -821,12 +887,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 49,
+      "stt": 48,
       "page_id": "1a44b5e7-3d90-815e-b8fe-da46a1550819",
       "group_name": "Mua Bán Nhà Đất Quận 1, 3, 5, 6, 10, 11 TP.HCM",
       "group_url": "https://www.facebook.com/groups/1886741114957314/",
@@ -838,12 +904,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 120.0
     },
     {
-      "stt": 50,
+      "stt": 49,
       "page_id": "1a44b5e7-3d90-81fd-905c-dbcc1bdd5ab5",
       "group_name": "Vách ngăn - vách vệ sinh compact - vách tổ ong - rèm cửa ...",
       "group_url": "https://www.facebook.com/groups/1078298472273735/",
@@ -855,12 +921,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 51,
+      "stt": 50,
       "page_id": "1a44b5e7-3d90-8104-b45c-f216210de61a",
       "group_name": "Hội người dùng iphone Việt Nam ✅️",
       "group_url": "https://www.facebook.com/groups/644417499044890",
@@ -872,12 +938,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 52,
+      "stt": 51,
       "page_id": "1a44b5e7-3d90-813e-aae8-f5f1343d8ae4",
       "group_name": "SỨC KHỎE VÀ ĐỜI SỐNG",
       "group_url": "https://www.facebook.com/groups/1913833685426831/",
@@ -889,12 +955,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 53,
+      "stt": 52,
       "page_id": "1a44b5e7-3d90-81e0-b8a6-d8710f7f84f4",
       "group_name": "Hội Chủ Quán Cafe - Trà Sữa - Trà Chanh - Đồ Ăn Uống",
       "group_url": "https://www.facebook.com/groups/343208629724263/",
@@ -906,12 +972,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 54,
+      "stt": 53,
       "page_id": "1a44b5e7-3d90-814d-8800-dd8ef31cc83a",
       "group_name": "ទិញ លក់ ជួល បង់រំលោះ អចលនៈទ្រព្យ ២៥ ខេត្តក្រុង",
       "group_url": "https://www.facebook.com/groups/1474027552655999/",
@@ -923,12 +989,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-08-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 55,
+      "stt": 54,
       "page_id": "1a44b5e7-3d90-8113-90d5-c2df70b830b4",
       "group_name": "ទិញ លក់ ជួល អចលនទ្រព្យ នៅកម្ពុជា",
       "group_url": "https://www.facebook.com/groups/khmerestate/",
@@ -940,12 +1006,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-08-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 56,
+      "stt": 55,
       "page_id": "1a44b5e7-3d90-8143-8316-cb31c1a62a84",
       "group_name": "ទិញលក់ដោយសេរី",
       "group_url": "https://www.facebook.com/groups/1248488201946500/",
@@ -957,12 +1023,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-08-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 57,
+      "stt": 56,
       "page_id": "1a44b5e7-3d90-815c-90b4-ef70039ccefc",
       "group_name": "ចែករំលែកសេវ៉ាកម្មគ្រប់មុខ ( ទីផ្សារ ខ្មែរ កម្ពុជា )",
       "group_url": "https://www.facebook.com/groups/460769687467298/",
@@ -974,12 +1040,12 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-08-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
     {
-      "stt": 58,
+      "stt": 57,
       "page_id": "1a44b5e7-3d90-8152-829e-fddf6d2c5f21",
       "group_name": "MUA BÁN BẤT ĐỘNG SẢN QUẬN BÌNH THẠNH - TPHCM",
       "group_url": "https://www.facebook.com/groups/491508114578222",
@@ -991,7 +1057,24 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
+      "recommendation_score": 100.0
+    },
+    {
+      "stt": 58,
+      "page_id": "1a44b5e7-3d90-817d-9080-f2d3cb9ecfe0",
+      "group_name": "Cộng đồng môi giới bất động sản Việt Nam",
+      "group_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam",
+      "group_id": "1108250899216714",
+      "members_count": ".",
+      "members_num": 0,
+      "posting_permission": "Công khai (Đăng ngay)",
+      "category": "Cộng đồng Cư dân",
+      "join_status": "Đã tham gia",
+      "joined_date": "2026-08-19",
+      "profile_name": "Facebook Profile Song Anh",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1008,7 +1091,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1025,7 +1108,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1042,7 +1125,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1059,7 +1142,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1076,7 +1159,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1093,7 +1176,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1110,7 +1193,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1127,7 +1210,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1144,7 +1227,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1161,7 +1244,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1178,7 +1261,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1195,7 +1278,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1212,7 +1295,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1229,7 +1312,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1246,7 +1329,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1263,7 +1346,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1280,7 +1363,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1297,7 +1380,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1314,7 +1397,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 100.0
     },
@@ -1331,7 +1414,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 85.0
     },
@@ -1348,7 +1431,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 85.0
     },
@@ -1365,7 +1448,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-12-04",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 75.0
     },
@@ -1382,7 +1465,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 75.0
     },
@@ -1399,7 +1482,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1416,7 +1499,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1433,7 +1516,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1450,7 +1533,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1467,7 +1550,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1484,7 +1567,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1501,7 +1584,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1518,7 +1601,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1535,7 +1618,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 70.0
     },
@@ -1552,7 +1635,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2023-07-13",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1569,7 +1652,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-06-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1586,7 +1669,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1603,7 +1686,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-23",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1620,7 +1703,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1637,7 +1720,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1654,7 +1737,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1671,7 +1754,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1688,7 +1771,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1705,7 +1788,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1722,7 +1805,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1739,7 +1822,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 60.0
     },
@@ -1756,7 +1839,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 55.0
     },
@@ -1773,8 +1856,8 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đã đăng bài -> Quyền đăng bài = Kiểm duyệt (Duyệt bài)",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 45.0
     },
     {
@@ -1790,7 +1873,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1807,7 +1890,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1824,7 +1907,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1841,7 +1924,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1858,7 +1941,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-15",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1875,7 +1958,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1892,7 +1975,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1909,7 +1992,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1926,7 +2009,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1943,7 +2026,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1960,7 +2043,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 40.0
     },
@@ -1977,7 +2060,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -1994,7 +2077,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-07-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2011,7 +2094,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-06-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2028,7 +2111,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-06-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2045,7 +2128,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2062,7 +2145,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2079,7 +2162,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2096,7 +2179,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2113,7 +2196,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2130,7 +2213,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2147,7 +2230,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-26",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2164,7 +2247,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2181,7 +2264,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2198,7 +2281,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2215,7 +2298,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2232,7 +2315,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-17",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2249,7 +2332,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-15",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2266,7 +2349,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2283,7 +2366,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2300,7 +2383,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2317,7 +2400,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-09-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2334,7 +2417,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2351,7 +2434,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2368,7 +2451,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2385,7 +2468,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2402,7 +2485,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2419,7 +2502,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2436,7 +2519,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2453,7 +2536,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2470,7 +2553,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2487,7 +2570,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2504,7 +2587,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2521,7 +2604,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": 20.0
     },
@@ -2538,7 +2621,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2555,7 +2638,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2572,7 +2655,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2589,7 +2672,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2606,7 +2689,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2623,7 +2706,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2640,7 +2723,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2657,7 +2740,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2674,7 +2757,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2691,8 +2774,8 @@
       "join_status": "Đã tham gia",
       "joined_date": "2024-03-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Group Campuchia - Thị trường Ngoại (Không phù hợp B2B Việt Nam)",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
     {
@@ -2708,8 +2791,8 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Group dạng Mua Bán sản phẩm BĐS (Không phù hợp đăng Content B2B)",
+      "last_scanned": "2026-08-20 15:36:04",
+      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
     {
@@ -2725,7 +2808,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2742,7 +2825,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2759,7 +2842,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2776,7 +2859,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2793,7 +2876,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2810,7 +2893,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2827,7 +2910,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2844,7 +2927,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-07-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2861,7 +2944,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-07-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2878,7 +2961,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-07-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2895,7 +2978,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-07-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2912,7 +2995,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-06-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2929,7 +3012,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-06-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2946,7 +3029,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2963,7 +3046,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2980,7 +3063,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -2997,7 +3080,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2021-04-01",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3014,7 +3097,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3031,7 +3114,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3048,7 +3131,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3065,7 +3148,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-29",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3082,7 +3165,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-28",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3099,7 +3182,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3116,7 +3199,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-21",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3133,7 +3216,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3150,7 +3233,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3167,7 +3250,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-18",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3184,7 +3267,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3201,7 +3284,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-12-15",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3218,7 +3301,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-11-12",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3235,7 +3318,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3252,7 +3335,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3269,7 +3352,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3286,7 +3369,7 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
     },
@@ -3303,100 +3386,9 @@
       "join_status": "Đã tham gia",
       "joined_date": "2020-08-14",
       "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
+      "last_scanned": "2026-08-20 15:36:04",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
       "recommendation_score": -1000.0
-    }
-  ],
-  "top_5_recommended_groups": [
-    {
-      "stt": 1,
-      "page_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
-      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
-      "group_url": "https://www.facebook.com/groups/152692778620733",
-      "group_id": "152692778620733",
-      "members_count": "46K",
-      "members_num": 46,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Mua bán tổng hợp",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đã đăng bài thành công 100% (Link: https://www.facebook.com/groups/152692778620733/posts/2222578478298809)",
-      "last_post_date": "2026-08-20",
-      "last_post_url": "https://www.facebook.com/groups/152692778620733/posts/2222578478298809",
-      "recommendation_score": 220.0
-    },
-    {
-      "stt": 2,
-      "page_id": "1a44b5e7-3d90-817d-9080-f2d3cb9ecfe0",
-      "group_name": "Cộng đồng môi giới bất động sản Việt Nam",
-      "group_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam",
-      "group_id": "1108250899216714",
-      "members_count": ".",
-      "members_num": 0,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Cộng đồng Cư dân",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đã đăng bài thành công 100% (Link: https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221)",
-      "last_post_date": "2026-08-20",
-      "last_post_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221",
-      "recommendation_score": 180.0
-    },
-    {
-      "stt": 3,
-      "page_id": "1a44b5e7-3d90-8102-8d4a-dd6605e210dd",
-      "group_name": "Real Estate For Sale",
-      "group_url": "https://www.facebook.com/groups/1595915457384244/",
-      "group_id": "1595915457384244",
-      "members_count": "46,300",
-      "members_num": 46300,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "📐 Kiến trúc & Quy hoạch",
-      "join_status": "Đã tham gia",
-      "joined_date": "2020-12-17",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 155.0
-    },
-    {
-      "stt": 4,
-      "page_id": "39d4b5e7-3d90-81f3-86da-cfda55c0a493",
-      "group_name": "THIẾT KẾ & THI CÔNG NỘI THẤT",
-      "group_url": "https://www.facebook.com/groups/325114677914024",
-      "group_id": "325114677914024",
-      "members_count": "555K",
-      "members_num": 555,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Thiết kế - Nội thất, Thi công - Xây dựng",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 150.0
-    },
-    {
-      "stt": 5,
-      "page_id": "3b34b5e7-3d90-81e8-aeca-fee6a6bc36e8",
-      "group_name": "Hội Kiến Trúc Xây Dựng Miền Nam",
-      "group_url": "https://www.facebook.com/groups/hoikientrucxaydungmiennam",
-      "group_id": "hoikientrucxaydungmiennam",
-      "members_count": "3,4K",
-      "members_num": 34,
-      "posting_permission": "Công khai (Đăng ngay)",
-      "category": "Thi công - Xây dựng",
-      "join_status": "Đã tham gia",
-      "joined_date": "2026-08-19",
-      "profile_name": "Facebook Profile Song Anh",
-      "last_scanned": "2026-08-20 13:55:28",
-      "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 150.0
     }
   ]
 }

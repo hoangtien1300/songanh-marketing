@@ -247,10 +247,12 @@ BAT_FILE = APP_DIR / "run_daily_seo_sync.bat"
 GS_FILE = APP_DIR / "song_anh_gsc_ga4_auto_fetcher.gs"
 NOTION_FB_TASKS_SYNC_FILE = APP_DIR / "sync_notion_fb_tasks_to_webapp.py"
 NOTION_GROUPS_SYNC_FILE = APP_DIR / "sync_notion_groups_to_webapp.py"
+NOTION_HISTORY_SYNC_FILE = APP_DIR / "sync_notion_group_posts_history.py"
 FANPAGE_JSON_FILE = APP_DIR / "fanpage_joined_groups.json"
 PROFILE_JSON_FILE = APP_DIR / "profile_joined_groups.json"
+GROUP_POSTS_HISTORY_JSON_FILE = APP_DIR / "group_posts_history.json"
 
-def sync_to_gdrive(source_files=[INDEX_FILE, DATA_FILE, CSV_FILE, XLSX_FILE, HISTORICAL_CSV_FILE, HISTORICAL_XLSX_FILE, HISTORICAL_BUILDER_FILE, EXTRACTOR_FILE, ENGINE_FILE, BAT_FILE, GS_FILE, NOTION_FB_TASKS_SYNC_FILE, NOTION_GROUPS_SYNC_FILE, FANPAGE_JSON_FILE, PROFILE_JSON_FILE], dest_dir=GDRIVE_DIR):
+def sync_to_gdrive(source_files=[INDEX_FILE, DATA_FILE, CSV_FILE, XLSX_FILE, HISTORICAL_CSV_FILE, HISTORICAL_XLSX_FILE, HISTORICAL_BUILDER_FILE, EXTRACTOR_FILE, ENGINE_FILE, BAT_FILE, GS_FILE, NOTION_FB_TASKS_SYNC_FILE, NOTION_GROUPS_SYNC_FILE, NOTION_HISTORY_SYNC_FILE, FANPAGE_JSON_FILE, PROFILE_JSON_FILE, GROUP_POSTS_HISTORY_JSON_FILE], dest_dir=GDRIVE_DIR):
     """Đồng bộ các tệp chỉ định sang Google Drive"""
     print(f"\n[SYNC ENGINE] Bắt đầu đồng bộ sang Google Drive...")
     print(f"--> Thư mục đích: {dest_dir}")
@@ -331,6 +333,17 @@ def run_daily_sync(gsheet_url=None, notion_db_id=None, notion_token=None):
             data = refreshed
     except Exception as e:
         print(f"[NOTION GROUPS WARN] Lỗi khi thực thi sync_notion_groups_to_webapp: {e}")
+
+    # 2.7. Tự động chạy đồng bộ Lịch sử Đăng bài & Re-comment Group từ Notion DB
+    try:
+        from sync_notion_group_posts_history import run_notion_group_posts_history_sync
+        print("\n[SYNC ENGINE] Kích hoạt Synchronizer Lịch sử Đăng bài & Re-comment từ Notion...")
+        run_notion_group_posts_history_sync()
+        refreshed = load_marketing_data()
+        if refreshed:
+            data = refreshed
+    except Exception as e:
+        print(f"[NOTION HISTORY WARN] Lỗi khi thực thi sync_notion_group_posts_history: {e}")
 
     # 3. Tính toán Động KPI Summary Cards
     recalculate_seo_summary(data)
