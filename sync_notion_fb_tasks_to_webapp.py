@@ -120,6 +120,28 @@ def filter_and_parse_fb_tasks(all_pages):
         if not (is_descendant or is_pattern_match):
             continue
 
+        # === QUY TẮC 1: Scoping Lĩnh Vực Tab 'MÔ HÌNH' (Loại bỏ Golf và Thương mại) ===
+        task_name_lower = task_name.lower()
+        if any(kw in task_name_lower for kw in ["golf", "thương mại", "thương mai", "thuong mai"]):
+            continue
+
+        # === QUY TẮC 2: Lọc Task Active & KPI > 0 trong Bảng Facebook Marketing ===
+        # Ẩn/Loại bỏ tất cả các task có trạng thái 'Đã xong', 'Đã hủy' hoặc KPI = 0 khỏi bảng.
+        notion_status = props.get("Trạng thái", {}).get("status", {}).get("name", "Duy trì")
+        kpi_raw = props.get("KPI", {}).get("number")
+        kpi_num = float(kpi_raw) if kpi_raw is not None else 0.0
+
+        is_completed_or_cancelled = notion_status in ["Hoàn thành", "Đã xong", "Hủy", "Đã hủy"]
+        is_paused = notion_status in ["Tạm hoãn"]
+        is_active_status = notion_status in ["Đang làm", "Duy trì", "Giao việc", "Đang thực hiện", "In Progress", "Active"]
+
+        if is_completed_or_cancelled:
+            continue
+        if is_paused and kpi_num <= 0:
+            continue
+        if not (is_active_status or kpi_num > 0):
+            continue
+
         # 2. Người Phụ Trách & Role
         assignee = ""
         people = props.get("Người theo", {}).get("people", [])
