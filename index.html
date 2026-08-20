@@ -554,6 +554,46 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 🌟 BẢNG DANH SÁCH FACEBOOK GROUPS ĐÃ THAM GIA (FANPAGE MÔ HÌNH KIẾN TRÚC SONG ANH) -->
+                <div class="light-card rounded-2xl p-5 border border-slate-200 space-y-4 shadow-sm">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-slate-200 pb-3 gap-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-users-rectangle text-blue-600 text-base"></i>
+                            <div>
+                                <h3 class="font-heading font-bold text-sm text-slate-900">Danh Sách Facebook Groups Fanpage Đã Tham Gia</h3>
+                                <p class="text-[11px] text-slate-500 font-medium">Báo cáo tự động từ Playwright Stealth &amp; Facebook Graph API Engine</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                            <span id="fb-joined-groups-count-badge" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200">170 Groups Active</span>
+                            <input type="text" id="fb-group-search-input" onkeyup="filterFbJoinedGroups()" placeholder="🔍 Tìm tên group, ID, lĩnh vực..." class="px-3 py-1.5 text-xs font-medium border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-56">
+                            <a href="fanpage_joined_groups.json" target="_blank" download class="px-3 py-1.5 text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-xl transition flex items-center gap-1">
+                                <i class="fa-solid fa-file-code"></i> JSON
+                            </a>
+                            <a href="fanpage_joined_groups.xlsx" download class="px-3 py-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition flex items-center gap-1">
+                                <i class="fa-solid fa-file-excel"></i> Excel Report
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <th class="p-3.5 w-12 text-center">STT</th>
+                                    <th class="p-3.5">1. Tên Facebook Group &amp; Link Direct</th>
+                                    <th class="p-3.5">2. Group ID</th>
+                                    <th class="p-3.5">3. Số Thành Viên</th>
+                                    <th class="p-3.5">4. Quyền Đăng Bài</th>
+                                    <th class="p-3.5">5. Phân Loại Lĩnh Vực</th>
+                                    <th class="p-3.5 text-center">6. Trạng Thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fb-joined-groups-table-body" class="divide-y divide-slate-200"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <!-- 🌟 MODULE 4: GOOGLE BUSINESS PROFILE (FULL 100% COMPLETE HTML CODE) -->
@@ -6033,6 +6073,7 @@
             { id: 4, task_name: "[Post Zalo] Profile 0376415131", assignee: "Bộ Phận CSKH B2B", assignee_role: "headset", frequency: "3 Lần / Tuần", kpi_weekly: "3 Bài / Tuần", completed: "3 Bài", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "amber", icon_class: "fa-square-check text-amber-500" }
         ];
 
+        let fbJoinedGroupsList = [];
         let fbTaskList = [
             { id: 1, task_name: "[Post FB] Fanpage Mô hình kiến trúc Song Anh", assignee: "Phạm Hoàng Tiến", assignee_role: "user-tie", frequency: "Hàng Ngày", kpi_weekly: "7 Bài / Tuần", completed: "6 Bài", progress_percent: 85.7, status_text: "85.7% Đạt KPI", color_class: "blue", icon_class: "fa-square-check text-blue-600" },
             { id: 2, task_name: "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh", assignee: "Trợ Lý AI Song Anh", assignee_role: "robot", frequency: "Hàng Ngày (24/7)", kpi_weekly: "100% Phản Hồi", completed: "100% Phản Hồi", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "emerald", icon_class: "fa-square-check text-emerald-600" },
@@ -6084,6 +6125,10 @@
                 if (data.facebook_tasks && data.facebook_tasks.length > 0) {
                     fbTaskList = data.facebook_tasks;
                     renderFbTable();
+                }
+                if (data.fanpage_joined_groups && data.fanpage_joined_groups.length > 0) {
+                    fbJoinedGroupsList = data.fanpage_joined_groups;
+                    renderFbJoinedGroupsTable(fbJoinedGroupsList);
                 }
                 if (data.zalo_data && data.zalo_data.length > 0) {
                     zaloTaskList = data.zalo_data;
@@ -6640,6 +6685,76 @@
                 `;
             });
             tbody.innerHTML = html;
+        }
+
+        function renderFbJoinedGroupsTable(groupsData) {
+            const tbody = document.getElementById('fb-joined-groups-table-body');
+            const badge = document.getElementById('fb-joined-groups-count-badge');
+            if (!tbody) return;
+
+            const list = groupsData || fbJoinedGroupsList || [];
+            if (badge) badge.innerText = list.length + " Groups Active";
+
+            if (list.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400 font-medium">Đang tải dữ liệu danh sách Facebook Groups...</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            list.forEach((g, idx) => {
+                const stt = g.stt || (idx + 1);
+                const name = g.group_name || 'N/A';
+                const url = g.group_url || '#';
+                const gid = g.group_id || 'N/A';
+                const mem = g.members_count || 'N/A';
+                const perm = g.posting_permission || 'Công khai';
+                const cat = g.category || '📐 Kiến trúc & Quy hoạch';
+
+                const permColor = perm.includes('Kiểm duyệt') ? 'bg-amber-100 text-amber-800 border-amber-200' : 'bg-emerald-100 text-emerald-800 border-emerald-200';
+
+                html += `
+                    <tr class="hover:bg-slate-50 transition font-medium">
+                        <td class="p-3.5 text-center font-mono text-slate-500 font-bold">${stt}</td>
+                        <td class="p-3.5 font-bold text-slate-900 leading-relaxed">
+                            <a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1.5 font-bold">
+                                <span>${name}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] shrink-0 text-blue-500"></i>
+                            </a>
+                        </td>
+                        <td class="p-3.5 font-mono text-slate-600 font-semibold"><code>${gid}</code></td>
+                        <td class="p-3.5 font-extrabold text-blue-700">${mem}</td>
+                        <td class="p-3.5">
+                            <span class="px-2.5 py-0.5 text-[11px] font-bold rounded-lg border ${permColor}">${perm}</span>
+                        </td>
+                        <td class="p-3.5 font-bold text-slate-700"><span class="px-2 py-0.5 bg-slate-100 text-slate-800 rounded-md border border-slate-200">${cat}</span></td>
+                        <td class="p-3.5 text-center">
+                            <span class="px-2.5 py-1 text-[11px] font-extrabold bg-emerald-100 text-emerald-800 rounded-full border border-emerald-200 shadow-xs flex items-center justify-center gap-1 mx-auto w-max">
+                                <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i>
+                                <span>Đã Tham Gia</span>
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function filterFbJoinedGroups() {
+            const query = (document.getElementById('fb-group-search-input')?.value || '').toLowerCase().trim();
+            if (!query) {
+                renderFbJoinedGroupsTable(fbJoinedGroupsList);
+                return;
+            }
+
+            const filtered = fbJoinedGroupsList.filter(g => {
+                const name = (g.group_name || '').toLowerCase();
+                const gid = (g.group_id || '').toLowerCase();
+                const cat = (g.category || '').toLowerCase();
+                const perm = (g.posting_permission || '').toLowerCase();
+                return name.includes(query) || gid.includes(query) || cat.includes(query) || perm.includes(query);
+            });
+
+            renderFbJoinedGroupsTable(filtered);
         }
 
         function renderFbTable() {
