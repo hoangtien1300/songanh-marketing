@@ -120,9 +120,22 @@ def filter_and_parse_fb_tasks(all_pages):
         if not (is_descendant or is_pattern_match):
             continue
 
-        # === QUY TẮC 1: Scoping Lĩnh Vực Tab 'MÔ HÌNH' (Loại bỏ Golf và Thương mại) ===
+        # === QUY TẮC 1: Scoping Lĩnh Vực Tab 'MÔ HÌNH' (Giữ lại Mô hình kiến trúc & Sa bàn, loại bỏ Thương mại, TMĐT, Vật liệu mô hình, Golf, Tien RS) ===
         task_name_lower = task_name.lower()
-        if any(kw in task_name_lower for kw in ["golf", "thương mại", "thương mai", "thuong mai"]):
+        exclude_keywords = [
+            "làm mô hình song anh",
+            "vật liệu mô hình",
+            "vatlieumohinh",
+            "golf",
+            "thương mại",
+            "thương mai",
+            "thuong mai",
+            "tmđt",
+            "tmdt",
+            "tien rs",
+            "tiến rs"
+        ]
+        if any(kw in task_name_lower for kw in exclude_keywords):
             continue
 
         # === QUY TẮC 2: Lọc Task Active & KPI > 0 trong Bảng Facebook Marketing ===
