@@ -4,6 +4,19 @@
 
 ---
 
+### ❓ NẾU SẾP TẠO ỨNG DỤNG MỚI (CREATE NEW APP) BẠN CẦN CHỌN:
+
+1. **Tên ứng dụng (App Name) điền gì?**
+   - Sếp điền: **`Song Anh Marketing`** (Rất tuyệt vời và chuẩn xác!).
+   - Email liên hệ: **`assistant.songanh@gmail.com`**
+
+2. **Thêm trường hợp sử dụng (Use Case) chọn option nào?**
+   - Trên màn hình hiện tại, Sếp tick chọn ô: **`Tạo ứng dụng không có trường hợp sử dụng`** *(Dòng thứ 5 trong khung chính, có icon hình tròn màu đen)*  
+     *(Hoặc chọn ô `Khác` ở hàng cuối cùng dưới chữ "Bạn đang tìm gì khác ư?")*.
+   - Sau đó nút **`Tiếp`** (ở góc dưới bên phải) sẽ sáng màu xanh ➔ Sếp bấm **`Tiếp`** ➔ Nhập tên `Song Anh Marketing` & email `assistant.songanh@gmail.com` ➔ Bấm **`Tạo ứng dụng`**.
+
+---
+
 ### 🔹 BƯỚC 1: Mở Công Cụ Meta Graph API Explorer & Chọn Fanpage
 1. Truy cập đường dẫn Meta Graph API Explorer chính thức:  
    👉 **[https://developers.facebook.com/tools/explorer/](https://developers.facebook.com/tools/explorer/)**
@@ -15,12 +28,15 @@
 ---
 
 ### 🔹 BƯỚC 2: Thêm Quyền Truy Cập (Permissions) & Tạo Token
-1. Trong mục **Permissions** (Quyền) ở cột bên phải, bấm **Add a Permission** và tìm/thêm 3 quyền quan trọng sau:
-   - `pages_read_engagement` (Đọc chỉ số tương tác bài viết)
-   - `pages_show_list` (Hiển thị danh sách Fanpage quản lý)
-   - `read_insights` (Đọc số liệu Analytics & Insights thực tế)
-2. Nhấn nút màu xanh **Generate Access Token** (Tạo Mã Truy Cập).
-3. Xác nhận phân quyền trên cửa sổ pop-up của Facebook.
+
+⚠️ **XỬ LÝ LỖI "Invalid Scopes: manage_pages" (Nếu xuất hiện pop-up trong ảnh của Sếp):**
+1. Bấm nút **OK** trên màn hình thông báo lỗi.
+2. Tại mục **Permissions** ở cột bên phải, tìm quyền cũ `manage_pages` và bấm dấu **`X`** bên cạnh để **XÓA QUYỀN LỖI CŨ NÀY ĐI**.
+3. Đảm bảo chỉ còn 3 quyền mới hợp lệ:
+   - `pages_read_engagement` (Đọc số liệu bài viết & tương tác)
+   - `pages_show_list` (Hiển thị danh sách Fanpage)
+   - `read_insights` (Đọc chỉ số Analytics & Insights)
+4. Nhấn nút màu xanh **Generate Access Token** ➔ Chọn **Tiếp tục dưới tên Phạm Hoàng Tiến** ➔ Chọn **Fanpage Mô hình kiến trúc Song Anh** ➔ Bấm **Hoàn tất**!
 
 ---
 

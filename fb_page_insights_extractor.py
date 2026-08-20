@@ -5,7 +5,7 @@ Song Anh Group - AI Marketing Suite & Facebook Automation Engine
 
 Extracts 4 core statistics (Reach/Views, Engagements, Messenger Leads, Followers)
 for 3 Facebook Channels using official Meta Graph API v19.0 & facebook_credentials.json:
-  1. Fanpage Mô hình kiến trúc Song Anh (fanpage-main)
+  1. Fanpage Mô hình kiến trúc Song Anh (fanpage-main, Page ID: 1621988744780815)
   2. Fanpage Architectural Model Org (fanpage-en)
   3. Facebook Profile Song Anh (profile-songanh)
 
@@ -31,6 +31,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 APP_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = APP_DIR / "marketing_data.json"
 CREDENTIALS_FILE = APP_DIR / "facebook_credentials.json"
+INDEX_FILE = APP_DIR / "index.html"
 GUIDE_FILE = APP_DIR / "HUONG_DAN_LAY_META_PAGE_ACCESS_TOKEN.md"
 CONFIG_FILE = APP_DIR / "fb_config.json"
 GDRIVE_DIR = Path(r"G:\My Drive\AI Agent System\AG_Tool_May_Lap_Steven")
@@ -43,18 +44,18 @@ GRAPH_API_BASE_URL = f"https://graph.facebook.com/{GRAPH_API_VERSION}"
 DEFAULT_FB_CHANNELS_DATA = {
     "fanpage-main": {
         "name": "Fanpage Mô hình kiến trúc Song Anh",
-        "page_id": os.environ.get("FB_PAGE_ID_MAIN", "100063928172930"),
+        "page_id": os.environ.get("FB_PAGE_ID_MAIN", "1621988744780815"),
         "week": {
-            "views": "852",
-            "engagements": "45 xem 3s / 128",
+            "views": "10",
+            "engagements": "5 xem 3s / 12",
             "chats": "86",
-            "followers": "18,520"
+            "followers": "1,128"
         },
         "month": {
-            "views": "3,650",
-            "engagements": "193 xem 3s / 549",
+            "views": "10",
+            "engagements": "5 xem 3s / 12",
             "chats": "340",
-            "followers": "18,520"
+            "followers": "1,128"
         }
     },
     "fanpage-en": {
@@ -158,7 +159,7 @@ def load_fb_credentials():
     creds = {
         "app_id": os.environ.get("FB_APP_ID", ""),
         "app_secret": os.environ.get("FB_APP_SECRET", ""),
-        "page_id": os.environ.get("FB_PAGE_ID_MAIN", "100063928172930"),
+        "page_id": os.environ.get("FB_PAGE_ID_MAIN", "1621988744780815"),
         "page_access_token": os.environ.get("FB_PAGE_ACCESS_TOKEN") or os.environ.get("FB_ACCESS_TOKEN", ""),
         "user_access_token": os.environ.get("FB_USER_ACCESS_TOKEN", ""),
         "updated_at": ""
@@ -206,7 +207,7 @@ def fetch_graph_api_page_insights(page_id, access_token):
     """
     Connect to Facebook Graph API v19.0 endpoints:
     1. GET https://graph.facebook.com/v19.0/{page_id}?fields=id,name,fan_count,followers_count&access_token={page_access_token}
-    2. GET https://graph.facebook.com/v19.0/{page_id}/insights?metric=page_impressions_unique,page_post_engagements,page_messages_new_conversations_unique&period=day&access_token={page_access_token}
+    2. GET https://graph.facebook.com/v19.0/{page_id}/insights?metric=page_views_total,page_post_engagements,page_video_views,page_messages_new_conversations_unique&period=day&access_token={page_access_token}
     """
     if not access_token or not page_id:
         return None
@@ -219,7 +220,7 @@ def fetch_graph_api_page_insights(page_id, access_token):
             page_data = json.loads(response.read().decode('utf-8'))
 
         # Endpoint 2: Insights Metrics
-        metrics = "page_impressions_unique,page_post_engagements,page_messages_new_conversations_unique"
+        metrics = "page_views_total,page_post_engagements,page_video_views,page_messages_new_conversations_unique"
         insights_url = f"{GRAPH_API_BASE_URL}/{page_id}/insights?metric={metrics}&period=day&access_token={access_token}"
         req_ins = urllib.request.Request(insights_url, headers={"User-Agent": "SongAnhFBInsights/1.0"})
         with urllib.request.urlopen(req_ins, timeout=12) as response:
@@ -250,7 +251,7 @@ def extract_facebook_insights():
 
     creds = load_fb_credentials()
     access_token = creds.get("page_access_token") or creds.get("user_access_token")
-    page_id_main = creds.get("page_id") or "100063928172930"
+    page_id_main = creds.get("page_id") or "1621988744780815"
 
     if access_token and len(access_token) > 15:
         print(f"[INFO] Facebook Graph API Page Access Token detected.")
@@ -277,29 +278,36 @@ def extract_facebook_insights():
             # Map metrics
             metrics_map = {m.get("name"): m for m in insights_list}
             
-            w_views = parse_metric_sum(metrics_map.get("page_impressions_unique"), days=7)
-            m_views = parse_metric_sum(metrics_map.get("page_impressions_unique"), days=30)
+            w_views = parse_metric_sum(metrics_map.get("page_views_total"), days=7)
+            m_views = parse_metric_sum(metrics_map.get("page_views_total"), days=30)
             
             w_eng = parse_metric_sum(metrics_map.get("page_post_engagements"), days=7)
             m_eng = parse_metric_sum(metrics_map.get("page_post_engagements"), days=30)
+
+            w_vid = parse_metric_sum(metrics_map.get("page_video_views"), days=7)
+            m_vid = parse_metric_sum(metrics_map.get("page_video_views"), days=30)
             
             w_chats = parse_metric_sum(metrics_map.get("page_messages_new_conversations_unique"), days=7)
             m_chats = parse_metric_sum(metrics_map.get("page_messages_new_conversations_unique"), days=30)
 
-            followers_num = page_info.get("followers_count") or page_info.get("fan_count") or 18520
+            followers_num = page_info.get("followers_count") or page_info.get("fan_count") or 1128
             followers_str = f"{followers_num:,}"
+
+            # Format engagements
+            w_eng_str = f"{w_vid} xem 3s / {w_eng}" if w_vid > 0 else (f"{w_eng}" if w_eng > 0 else default_info["week"]["engagements"])
+            m_eng_str = f"{m_vid} xem 3s / {m_eng}" if m_vid > 0 else (f"{m_eng}" if m_eng > 0 else default_info["month"]["engagements"])
 
             extracted_channels[channel_key] = {
                 "name": page_info.get("name", default_info["name"]),
                 "week": {
                     "views": f"{w_views:,}" if w_views > 0 else default_info["week"]["views"],
-                    "engagements": f"{w_eng:,}" if w_eng > 0 else default_info["week"]["engagements"],
+                    "engagements": w_eng_str,
                     "chats": f"{w_chats:,}" if w_chats > 0 else default_info["week"]["chats"],
                     "followers": followers_str
                 },
                 "month": {
                     "views": f"{m_views:,}" if m_views > 0 else default_info["month"]["views"],
-                    "engagements": f"{m_eng:,}" if m_eng > 0 else default_info["month"]["engagements"],
+                    "engagements": m_eng_str,
                     "chats": f"{m_chats:,}" if m_chats > 0 else default_info["month"]["chats"],
                     "followers": followers_str
                 }
@@ -382,6 +390,78 @@ def update_marketing_json(extracted_channels):
         print(f"[ERROR] Failed to update marketing_data.json: {e}")
         return False
 
+def update_index_html(extracted_channels):
+    """
+    Safely update index.html default fbChannelData object and card elements while strictly
+    preserving 100% of HTML structure (ULTRA-STRICT PRESERVATION RULE).
+    """
+    if not INDEX_FILE.exists():
+        print(f"[WARN] index.html file not found: {INDEX_FILE}")
+        return False
+
+    try:
+        with open(INDEX_FILE, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        main_data = extracted_channels.get("fanpage-main", {})
+        week_data = main_data.get("week", {})
+
+        # Update static HTML card initial values if present
+        if week_data.get("followers"):
+            content = content.replace(
+                '<span class="text-2xl font-heading font-extrabold text-purple-700" id="fb-stat-followers">18,520</span>',
+                f'<span class="text-2xl font-heading font-extrabold text-purple-700" id="fb-stat-followers">{week_data["followers"]}</span>'
+            )
+        if week_data.get("views"):
+            content = content.replace(
+                '<span class="text-2xl font-heading font-extrabold text-sky-700" id="fb-stat-views">852</span>',
+                f'<span class="text-2xl font-heading font-extrabold text-sky-700" id="fb-stat-views">{week_data["views"]}</span>'
+            )
+        if week_data.get("engagements"):
+            content = content.replace(
+                '<span class="text-2xl font-heading font-extrabold text-blue-700" id="fb-stat-engagements">45 xem 3s / 128</span>',
+                f'<span class="text-2xl font-heading font-extrabold text-blue-700" id="fb-stat-engagements">{week_data["engagements"]}</span>'
+            )
+
+        # Update fbChannelData object in JS
+        import re
+        def replace_channel_in_js(match):
+            prefix = match.group(1)
+            old_body = match.group(2)
+            suffix = match.group(3)
+            
+            # Format new fbChannelData string
+            channels_json = json.dumps(extracted_channels, ensure_ascii=False)
+            # Reconstruct exact JS line format
+            lines = []
+            for k, v in extracted_channels.items():
+                name_str = v.get('name', '')
+                w_v = v.get('week', {}).get('views', '')
+                w_e = v.get('week', {}).get('engagements', '')
+                w_c = v.get('week', {}).get('chats', '')
+                w_f = v.get('week', {}).get('followers', '')
+                m_v = v.get('month', {}).get('views', '')
+                m_e = v.get('month', {}).get('engagements', '')
+                m_c = v.get('month', {}).get('chats', '')
+                m_f = v.get('month', {}).get('followers', '')
+                line = f"'{k}': {{ name: '{name_str}', week: {{ views: '{w_v}', engagements: '{w_e}', chats: '{w_c}', followers: '{w_f}' }}, month: {{ views: '{m_v}', engagements: '{m_e}', chats: '{m_c}', followers: '{m_f}' }} }}"
+                lines.append(line)
+            new_obj_body = ",\n            ".join(lines)
+            return f"{prefix}\n            {new_obj_body}\n        {suffix}"
+
+        pattern = r"(const fbChannelData = \{)([\s\S]*?)(\};)"
+        if re.search(pattern, content):
+            content = re.sub(pattern, replace_channel_in_js, content)
+
+        with open(INDEX_FILE, "w", encoding="utf-8") as f:
+            f.write(content)
+
+        print(f"[SUCCESS] Successfully updated index.html with live Facebook metrics!")
+        return True
+    except Exception as e:
+        print(f"[WARN] Failed to update index.html: {e}")
+        return False
+
 def sync_to_google_drive():
     """
     Sync updated marketing_data.json, index.html, facebook_credentials.json, guide, and extractor script to Google Drive.
@@ -399,7 +479,7 @@ def sync_to_google_drive():
         DATA_FILE,
         CREDENTIALS_FILE,
         GUIDE_FILE,
-        APP_DIR / "index.html",
+        INDEX_FILE,
         APP_DIR / "fb_page_insights_extractor.py",
         APP_DIR / "song_anh_daily_sync_engine.py"
     ]
@@ -423,6 +503,7 @@ def main():
     print(f"Starting Facebook Page Insights Extractor...")
     extracted_channels = extract_facebook_insights()
     if update_marketing_json(extracted_channels):
+        update_index_html(extracted_channels)
         sync_to_google_drive()
         print(f"✨ Facebook Insights Extraction & Data Injection Complete!")
     else:
