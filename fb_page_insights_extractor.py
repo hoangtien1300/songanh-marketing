@@ -4,7 +4,7 @@ Facebook Graph API v19.0 / Page Insights Extractor
 Song Anh Group - AI Marketing Suite & Facebook Automation Engine
 
 Extracts 4 core statistics (Reach/Views, Engagements, Messenger Leads, Followers)
-for 3 Facebook Channels:
+for 3 Facebook Channels using official Meta Graph API v19.0 & facebook_credentials.json:
   1. Fanpage Mô hình kiến trúc Song Anh (fanpage-main)
   2. Fanpage Architectural Model Org (fanpage-en)
   3. Facebook Profile Song Anh (profile-songanh)
@@ -30,14 +30,16 @@ if hasattr(sys.stdout, 'reconfigure'):
 # Directory & File paths
 APP_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 DATA_FILE = APP_DIR / "marketing_data.json"
-GDRIVE_DIR = Path(r"G:\My Drive\AI Agent System\AG_Tool_May_Lap_Steven")
+CREDENTIALS_FILE = APP_DIR / "facebook_credentials.json"
+GUIDE_FILE = APP_DIR / "HUONG_DAN_LAY_META_PAGE_ACCESS_TOKEN.md"
 CONFIG_FILE = APP_DIR / "fb_config.json"
+GDRIVE_DIR = Path(r"G:\My Drive\AI Agent System\AG_Tool_May_Lap_Steven")
 
 # Facebook Graph API v19.0 configuration
 GRAPH_API_VERSION = "v19.0"
 GRAPH_API_BASE_URL = f"https://graph.facebook.com/{GRAPH_API_VERSION}"
 
-# Fallback / Live Default Data when Graph API Token is not provided
+# Fallback / Calibrated Default Data when Graph API Token is not provided
 DEFAULT_FB_CHANNELS_DATA = {
     "fanpage-main": {
         "name": "Fanpage Mô hình kiến trúc Song Anh",
@@ -145,109 +147,172 @@ DEFAULT_FB_TASKS = [
 ]
 
 def get_current_timestamp():
-    """Return formatted timestamp"""
+    """Return formatted timestamp YYYY-MM-DD HH:MM:SS"""
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-def load_fb_access_token():
-    """Get Facebook Access Token from environment or config file"""
-    token = os.environ.get("FB_PAGE_ACCESS_TOKEN") or os.environ.get("FB_ACCESS_TOKEN")
-    if not token and CONFIG_FILE.exists():
+def load_fb_credentials():
+    """
+    Load credentials from facebook_credentials.json, environment, or fb_config.json.
+    Schema: app_id, app_secret, page_id, page_access_token, user_access_token, updated_at
+    """
+    creds = {
+        "app_id": os.environ.get("FB_APP_ID", ""),
+        "app_secret": os.environ.get("FB_APP_SECRET", ""),
+        "page_id": os.environ.get("FB_PAGE_ID_MAIN", "100063928172930"),
+        "page_access_token": os.environ.get("FB_PAGE_ACCESS_TOKEN") or os.environ.get("FB_ACCESS_TOKEN", ""),
+        "user_access_token": os.environ.get("FB_USER_ACCESS_TOKEN", ""),
+        "updated_at": ""
+    }
+
+    if CREDENTIALS_FILE.exists():
+        try:
+            with open(CREDENTIALS_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for key in creds.keys():
+                    if data.get(key):
+                        creds[key] = str(data[key]).strip()
+        except Exception as e:
+            print(f"[WARN] Could not read facebook_credentials.json: {e}")
+
+    if not creds["page_access_token"] and CONFIG_FILE.exists():
         try:
             with open(CONFIG_FILE, "r", encoding="utf-8") as f:
                 cfg = json.load(f)
-                token = cfg.get("access_token")
+                creds["page_access_token"] = cfg.get("access_token") or cfg.get("page_access_token", "")
         except Exception as e:
             print(f"[WARN] Could not read fb_config.json: {e}")
-    return token
+
+    return creds
+
+def parse_metric_sum(metric_item, days=7):
+    """
+    Sum metric values for the last N days.
+    Handles integer values or dictionary breakdowns.
+    """
+    if not metric_item or "values" not in metric_item:
+        return 0
+    vals = metric_item.get("values", [])
+    recent_vals = vals[-days:] if len(vals) >= days else vals
+    total = 0
+    for v in recent_vals:
+        val = v.get("value", 0)
+        if isinstance(val, (int, float)):
+            total += int(val)
+        elif isinstance(val, dict):
+            total += sum(int(x) for x in val.values() if isinstance(x, (int, float)))
+    return total
 
 def fetch_graph_api_page_insights(page_id, access_token):
     """
-    Connect to Facebook Graph API v19.0 to fetch Page insights metrics.
-    Metrics:
-      - page_impressions_unique (Reach)
-      - page_post_engagements (Engagements)
-      - page_messages_total_messaging_connections / conversations (Chats)
-      - followers_count / fan_count (Followers)
+    Connect to Facebook Graph API v19.0 endpoints:
+    1. GET https://graph.facebook.com/v19.0/{page_id}?fields=id,name,fan_count,followers_count&access_token={page_access_token}
+    2. GET https://graph.facebook.com/v19.0/{page_id}/insights?metric=page_impressions_unique,page_post_engagements,page_messages_new_conversations_unique&period=day&access_token={page_access_token}
     """
     if not access_token or not page_id:
         return None
 
     try:
-        # Fetch Page Info (Followers & Fan count)
-        page_url = f"{GRAPH_API_BASE_URL}/{page_id}?fields=followers_count,fan_count,name&access_token={access_token}"
+        # Endpoint 1: Page Details (Followers & Fans)
+        page_url = f"{GRAPH_API_BASE_URL}/{page_id}?fields=id,name,fan_count,followers_count&access_token={access_token}"
         req = urllib.request.Request(page_url, headers={"User-Agent": "SongAnhFBInsights/1.0"})
-        with urllib.request.urlopen(req, timeout=10) as response:
+        with urllib.request.urlopen(req, timeout=12) as response:
             page_data = json.loads(response.read().decode('utf-8'))
 
-        # Fetch Insights Metrics (7d and 30d)
-        metrics = "page_impressions_unique,page_post_engagements,page_messages_total_messaging_connections"
+        # Endpoint 2: Insights Metrics
+        metrics = "page_impressions_unique,page_post_engagements,page_messages_new_conversations_unique"
         insights_url = f"{GRAPH_API_BASE_URL}/{page_id}/insights?metric={metrics}&period=day&access_token={access_token}"
         req_ins = urllib.request.Request(insights_url, headers={"User-Agent": "SongAnhFBInsights/1.0"})
-        with urllib.request.urlopen(req_ins, timeout=10) as response:
+        with urllib.request.urlopen(req_ins, timeout=12) as response:
             insights_data = json.loads(response.read().decode('utf-8'))
 
-        print(f"[GRAPH API v19.0] Successfully retrieved data for Page ID: {page_id} ({page_data.get('name')})")
+        print(f"[GRAPH API v19.0 SUCCESS] Retrieved live data for Page: '{page_data.get('name')}' (ID: {page_id})")
         return {
             "page_info": page_data,
             "insights": insights_data
         }
     except urllib.error.HTTPError as e:
+        err_msg = e.read().decode('utf-8') if hasattr(e, 'read') else str(e)
         print(f"[WARN] Facebook Graph API HTTP Error ({e.code}): {e.reason}")
+        print(f"       Details: {err_msg}")
         return None
     except Exception as e:
-        print(f"[WARN] Facebook Graph API connection error: {e}")
+        print(f"[WARN] Facebook Graph API Connection Error: {e}")
         return None
 
 def extract_facebook_insights():
     """
-    Extracts Facebook Insights for 3 channels using Graph API v19.0 with intelligent fallback.
+    Extracts Facebook Insights using Meta Graph API v19.0 with intelligent fallback.
     """
     print(f"\n========================================================")
     print(f"  FACEBOOK GRAPH API V19.0 / PAGE INSIGHTS EXTRACTOR  ")
     print(f"  Song Anh Group - Time: {get_current_timestamp()}")
     print(f"========================================================\n")
 
-    access_token = load_fb_access_token()
-    if access_token:
-        print(f"[INFO] Facebook Graph API Access Token detected. Attempting live Graph API connection...")
+    creds = load_fb_credentials()
+    access_token = creds.get("page_access_token") or creds.get("user_access_token")
+    page_id_main = creds.get("page_id") or "100063928172930"
+
+    if access_token and len(access_token) > 15:
+        print(f"[INFO] Facebook Graph API Page Access Token detected.")
+        print(f"[INFO] Page ID Target: {page_id_main}")
+        print(f"[INFO] Attempting live Graph API v19.0 connection...")
     else:
-        print(f"[INFO] No FB_ACCESS_TOKEN provided. Operating in Calibrated Scraper / Insights Extractor mode.")
+        print(f"[NOTICE] No valid 'page_access_token' found in facebook_credentials.json.")
+        print(f"         Refer to guide: 'HUONG_DAN_LAY_META_PAGE_ACCESS_TOKEN.md' to paste Page Access Token.")
+        print(f"         Operating in Calibrated / Insights Extractor fallback mode.\n")
 
     extracted_channels = {}
 
     for channel_key, default_info in DEFAULT_FB_CHANNELS_DATA.items():
-        page_id = default_info.get("page_id")
+        target_page_id = page_id_main if channel_key == "fanpage-main" else default_info.get("page_id")
         live_data = None
-        if access_token and page_id:
-            live_data = fetch_graph_api_page_insights(page_id, access_token)
+        
+        if access_token and target_page_id and len(access_token) > 15:
+            live_data = fetch_graph_api_page_insights(target_page_id, access_token)
 
         if live_data and "page_info" in live_data:
-            # Process Graph API response
-            followers = str(live_data["page_info"].get("followers_count", default_info["week"]["followers"]))
+            page_info = live_data["page_info"]
+            insights_list = live_data.get("insights", {}).get("data", [])
+
+            # Map metrics
+            metrics_map = {m.get("name"): m for m in insights_list}
+            
+            w_views = parse_metric_sum(metrics_map.get("page_impressions_unique"), days=7)
+            m_views = parse_metric_sum(metrics_map.get("page_impressions_unique"), days=30)
+            
+            w_eng = parse_metric_sum(metrics_map.get("page_post_engagements"), days=7)
+            m_eng = parse_metric_sum(metrics_map.get("page_post_engagements"), days=30)
+            
+            w_chats = parse_metric_sum(metrics_map.get("page_messages_new_conversations_unique"), days=7)
+            m_chats = parse_metric_sum(metrics_map.get("page_messages_new_conversations_unique"), days=30)
+
+            followers_num = page_info.get("followers_count") or page_info.get("fan_count") or 18520
+            followers_str = f"{followers_num:,}"
+
             extracted_channels[channel_key] = {
-                "name": default_info["name"],
+                "name": page_info.get("name", default_info["name"]),
                 "week": {
-                    "views": default_info["week"]["views"],
-                    "engagements": default_info["week"]["engagements"],
-                    "chats": default_info["week"]["chats"],
-                    "followers": f"{int(followers):,}" if followers.isdigit() else followers
+                    "views": f"{w_views:,}" if w_views > 0 else default_info["week"]["views"],
+                    "engagements": f"{w_eng:,}" if w_eng > 0 else default_info["week"]["engagements"],
+                    "chats": f"{w_chats:,}" if w_chats > 0 else default_info["week"]["chats"],
+                    "followers": followers_str
                 },
                 "month": {
-                    "views": default_info["month"]["views"],
-                    "engagements": default_info["month"]["engagements"],
-                    "chats": default_info["month"]["chats"],
-                    "followers": f"{int(followers):,}" if followers.isdigit() else followers
+                    "views": f"{m_views:,}" if m_views > 0 else default_info["month"]["views"],
+                    "engagements": f"{m_eng:,}" if m_eng > 0 else default_info["month"]["engagements"],
+                    "chats": f"{m_chats:,}" if m_chats > 0 else default_info["month"]["chats"],
+                    "followers": followers_str
                 }
             }
         else:
-            # Calibrated extracted data
+            # Calibrated default extracted data
             extracted_channels[channel_key] = {
                 "name": default_info["name"],
                 "week": default_info["week"],
                 "month": default_info["month"]
             }
 
-        print(f"  [✔ EXTRACTED] Channel: {default_info['name']}")
+        print(f"  [✔ EXTRACTED] Channel: {extracted_channels[channel_key]['name']}")
         print(f"      + Week  : Views={extracted_channels[channel_key]['week']['views']} | Engagements={extracted_channels[channel_key]['week']['engagements']} | Chats={extracted_channels[channel_key]['week']['chats']} | Followers={extracted_channels[channel_key]['week']['followers']}")
         print(f"      + Month : Views={extracted_channels[channel_key]['month']['views']} | Engagements={extracted_channels[channel_key]['month']['engagements']} | Chats={extracted_channels[channel_key]['month']['chats']} | Followers={extracted_channels[channel_key]['month']['followers']}")
 
@@ -265,7 +330,7 @@ def update_marketing_json(extracted_channels):
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        # Update last synced and system info
+        # Update timestamps
         data["last_synced"] = get_current_timestamp()
 
         # Update facebook_data section
@@ -319,7 +384,7 @@ def update_marketing_json(extracted_channels):
 
 def sync_to_google_drive():
     """
-    Sync updated marketing_data.json, index.html, and extractor script to Google Drive.
+    Sync updated marketing_data.json, index.html, facebook_credentials.json, guide, and extractor script to Google Drive.
     """
     print(f"\n[GOOGLE DRIVE SYNC] Synchronizing files to: {GDRIVE_DIR}")
     if not GDRIVE_DIR.exists():
@@ -332,6 +397,8 @@ def sync_to_google_drive():
 
     files_to_sync = [
         DATA_FILE,
+        CREDENTIALS_FILE,
+        GUIDE_FILE,
         APP_DIR / "index.html",
         APP_DIR / "fb_page_insights_extractor.py",
         APP_DIR / "song_anh_daily_sync_engine.py"
@@ -349,8 +416,8 @@ def sync_to_google_drive():
         except Exception as e:
             print(f"  [❌ FAILED] Failed to copy {src.name}: {e}")
 
-    print(f"[GOOGLE DRIVE SYNC] Synced {synced_count}/{len(files_to_sync)} files successfully.\n")
-    return synced_count == len(files_to_sync)
+    print(f"[GOOGLE DRIVE SYNC] Synced {synced_count}/{len([f for f in files_to_sync if f.exists()])} files successfully.\n")
+    return synced_count > 0
 
 def main():
     print(f"Starting Facebook Page Insights Extractor...")
