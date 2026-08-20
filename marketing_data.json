@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-08-20 09:01:45",
+  "last_synced": "2026-08-20 09:06:20",
   "system_info": {
     "app_name": "Song Anh Group - Ultimate Multi-Channel AI Marketing Suite",
     "version": "21.0",
@@ -8441,5 +8441,12 @@
       "fanpage_id": "100063928172930",
       "last_scanned": "2026-08-20 08:53:27"
     }
-  ]
+  ],
+  "notion_groups_sync_info": {
+    "last_notion_sync": "2026-08-20 09:05:30",
+    "total_groups": 170,
+    "joined_date": "2026-08-19",
+    "status": "Đã tham gia",
+    "notion_database_id": "1a44b5e73d90805eb400da412d99a457"
+  }
 }
