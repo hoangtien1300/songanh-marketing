@@ -106,9 +106,12 @@ def filter_and_parse_fb_tasks(all_pages):
     for page in all_pages:
         props = page.get("properties", {})
         
-        # 1. Task Name
+        # 1. Task Name & Mô tả công việc
         title_list = props.get("Tên công việc", {}).get("title", [])
         task_name = "".join([t.get("plain_text", "") for t in title_list]).strip() if title_list else ""
+        
+        desc_list = props.get("Mô tả công việc", {}).get("rich_text", []) if props.get("Mô tả công việc") else []
+        task_description = "".join([t.get("plain_text", "") for t in desc_list]).strip() if desc_list else ""
         
         if not task_name or task_name == "Facebook Marketing":
             continue
@@ -257,6 +260,7 @@ def filter_and_parse_fb_tasks(all_pages):
         task_obj = {
             "id": task_idx,
             "task_name": task_name,
+            "description": task_description,
             "assignee": assignee,
             "assignee_role": assignee_role,
             "frequency": frequency,

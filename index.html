@@ -6124,6 +6124,7 @@
             {
                         "id": 1,
                         "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 2, Thứ 5",
@@ -6137,6 +6138,7 @@
             {
                         "id": 2,
                         "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 3, Thứ 5",
@@ -6150,6 +6152,7 @@
             {
                         "id": 3,
                         "task_name": "[Re-Cmt FB] Profile Song Anh",
+                        "description": "• Duy trì re-comment để tăng hiển thị",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 4, Thứ 7",
@@ -6163,6 +6166,7 @@
             {
                         "id": 4,
                         "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
+                        "description": "Duy trì Re-cmt để hiển thị lại các bài viết đã đăng",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 2, Thứ 5",
@@ -6176,6 +6180,7 @@
             {
                         "id": 5,
                         "task_name": "[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 4, Thứ 6",
@@ -6189,6 +6194,7 @@
             {
                         "id": 6,
                         "task_name": "[Post Fanpage] Architectural Model Org",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 5",
@@ -6202,6 +6208,7 @@
             {
                         "id": 7,
                         "task_name": "[Post Profile] Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 2",
@@ -6215,6 +6222,7 @@
             {
                         "id": 8,
                         "task_name": "[Join FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 2, Thứ 4",
@@ -6228,6 +6236,7 @@
             {
                         "id": 9,
                         "task_name": "Facebook Profile Mô hình Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Hàng Tuần (Duy trì)",
@@ -6241,6 +6250,7 @@
             {
                         "id": 10,
                         "task_name": "Facebook Profile Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Hàng Tuần (Duy trì)",
@@ -6254,6 +6264,7 @@
             {
                         "id": 11,
                         "task_name": "Fanpage Architectural Model Org",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Hàng Tuần (Duy trì)",
@@ -6267,6 +6278,7 @@
             {
                         "id": 12,
                         "task_name": "Fanpage Mô hình kiến trúc Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Hàng Tuần (Duy trì)",
@@ -6280,6 +6292,7 @@
             {
                         "id": 13,
                         "task_name": "[Post FB Group] Fanpage Mô hình kiến trúc Song Anh - Tuyển dụng Parttime",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 2, Thứ 4, Thứ 6",
@@ -6293,6 +6306,7 @@
             {
                         "id": 14,
                         "task_name": "[Post FB Group] Profile Song Anh",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Thứ 4",
@@ -6306,6 +6320,7 @@
             {
                         "id": 15,
                         "task_name": "[Search Group] Facebook",
+                        "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
                         "frequency": "Hàng Ngày",
@@ -7089,9 +7104,12 @@
                 
                 html += `
                     <tr class="hover:bg-slate-50 transition font-medium">
-                        <td class="p-3.5 font-bold text-brand-navy flex items-center gap-2 text-xs">
-                            <i class="fa-solid ${task.icon_class || 'fa-square-check text-blue-600'} text-base"></i>
-                            <span>${task.task_name}</span>
+                        <td class="p-3.5 font-bold text-brand-navy text-xs">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid ${task.icon_class || 'fa-square-check text-blue-600'} text-base"></i>
+                                <span>${task.task_name}</span>
+                            </div>
+                            ${task.description ? `<p class="text-[11px] text-slate-500 font-normal leading-relaxed pl-6">${task.description}</p>` : ''}
                         </td>
                         <td class="p-3.5 text-slate-800 font-bold"><i class="fa-solid ${iconRole}"></i> ${task.assignee}</td>
                         <td class="p-3.5 text-slate-600"><span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-semibold">${task.frequency}</span></td>

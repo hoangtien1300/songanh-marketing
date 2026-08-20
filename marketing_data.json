@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-08-20 15:36:07",
+  "last_synced": "2026-08-20 16:05:03",
   "system_info": {
     "app_name": "Song Anh Group - Ultimate Multi-Channel AI Marketing Suite",
     "version": "21.0",
@@ -5840,6 +5840,7 @@
     {
       "id": 1,
       "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 5",
@@ -5853,6 +5854,7 @@
     {
       "id": 2,
       "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 3, Thứ 5",
@@ -5866,6 +5868,7 @@
     {
       "id": 3,
       "task_name": "[Re-Cmt FB] Profile Song Anh",
+      "description": "• Duy trì re-comment để tăng hiển thị",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 4, Thứ 7",
@@ -5879,6 +5882,7 @@
     {
       "id": 4,
       "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
+      "description": "Duy trì Re-cmt để hiển thị lại các bài viết đã đăng",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 5",
@@ -5892,6 +5896,7 @@
     {
       "id": 5,
       "task_name": "[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 4, Thứ 6",
@@ -5905,6 +5910,7 @@
     {
       "id": 6,
       "task_name": "[Post Fanpage] Architectural Model Org",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 5",
@@ -5918,6 +5924,7 @@
     {
       "id": 7,
       "task_name": "[Post Profile] Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2",
@@ -5931,6 +5938,7 @@
     {
       "id": 8,
       "task_name": "[Join FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4",
@@ -5944,6 +5952,7 @@
     {
       "id": 9,
       "task_name": "Facebook Profile Mô hình Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Hàng Tuần (Duy trì)",
@@ -5957,6 +5966,7 @@
     {
       "id": 10,
       "task_name": "Facebook Profile Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Hàng Tuần (Duy trì)",
@@ -5970,6 +5980,7 @@
     {
       "id": 11,
       "task_name": "Fanpage Architectural Model Org",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Hàng Tuần (Duy trì)",
@@ -5983,6 +5994,7 @@
     {
       "id": 12,
       "task_name": "Fanpage Mô hình kiến trúc Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Hàng Tuần (Duy trì)",
@@ -5996,6 +6008,7 @@
     {
       "id": 13,
       "task_name": "[Post FB Group] Fanpage Mô hình kiến trúc Song Anh - Tuyển dụng Parttime",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4, Thứ 6",
@@ -6009,6 +6022,7 @@
     {
       "id": 14,
       "task_name": "[Post FB Group] Profile Song Anh",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 4",
@@ -6022,6 +6036,7 @@
     {
       "id": 15,
       "task_name": "[Search Group] Facebook",
+      "description": "",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Hàng Ngày",
