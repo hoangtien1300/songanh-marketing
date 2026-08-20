@@ -237,9 +237,60 @@ def parse_notion_groups(all_pages):
     print(f"   ✅ Đã bóc tách thành công: {len(fanpage_groups)} Fanpage Groups | {len(profile_groups)} Profile Groups!\n", flush=True)
     return fanpage_groups, profile_groups
 
+def calculate_group_recommendation_score(group):
+    """Thuật toán gợi ý Top Groups chuyên sâu cho Facebook Groups B2B Mô hình Kiến trúc."""
+    gname = (group.get("group_name") or "").lower()
+    cat = (group.get("category") or "").lower()
+    perm = (group.get("posting_permission") or "").lower()
+    notes = (group.get("notes") or "").lower()
+
+    if any(k in cat or k in notes or k in gname for k in [
+        "không phù hợp", "thị trường ngoại", "mua bán bđs", "campuchia", "foreign", "phòng trọ",
+        "xe/tàu", "anime", "gundam", "figure", "việc làm - hr"
+    ]):
+        return -1000.0
+
+    if perm == "không đăng được":
+        return -1000.0
+
+    score = 0.0
+    if "công khai" in perm or "đăng ngay" in perm:
+        score += 100.0
+    elif "kiểm duyệt" in perm or "duyệt bài" in perm:
+        score += 20.0
+
+    if group.get("last_post_date") == "2026-08-20" or "thành công 100%" in notes or group.get("last_post_url"):
+        score += 80.0
+
+    if any(k in cat or k in gname for k in ["chủ đầu tư", "bql", "thi công", "nhà thầu", "kcn", "kho xưởng", "mô hình"]):
+        score += 50.0
+    elif any(k in cat or k in gname for k in ["kiến trúc", "quy hoạch", "thiết kế", "nội thất", "dự án", "căn hộ"]):
+        score += 40.0
+    elif any(k in cat or k in gname for k in ["bđs (chung)", "đất nền"]):
+        score += 20.0
+
+    mem_num = group.get("members_num") or 0
+    if mem_num >= 100000:
+        score += 25.0
+    elif mem_num >= 10000:
+        score += 15.0
+    elif mem_num >= 1000:
+        score += 5.0
+
+    return score
+
 def save_individual_json_reports(fanpage_groups, profile_groups):
     """Ghi dữ liệu ra các file JSON báo cáo độc lập: fanpage_joined_groups.json & profile_joined_groups.json."""
     timestamp = get_current_timestamp()
+
+    # Tính điểm & sắp xếp cho profile_groups
+    for g in profile_groups:
+        g["recommendation_score"] = calculate_group_recommendation_score(g)
+    profile_groups.sort(key=lambda g: (g.get("recommendation_score", 0), g.get("members_num", 0)), reverse=True)
+    for idx, g in enumerate(profile_groups, start=1):
+        g["stt"] = idx
+
+    top_5_recommended = [g for g in profile_groups if g.get("recommendation_score", 0) > 0][:5]
     
     fanpage_payload = {
         "status": "success",
@@ -256,6 +307,7 @@ def save_individual_json_reports(fanpage_groups, profile_groups):
         "scan_timestamp": timestamp,
         "joined_date": "2026-08-19",
         "total_joined_groups": len(profile_groups),
+        "top_5_recommended_groups": top_5_recommended,
         "data": profile_groups
     }
 
