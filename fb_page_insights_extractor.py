@@ -355,20 +355,20 @@ def update_marketing_json(extracted_channels):
         if "workflows" not in data["facebook_data"]:
             data["facebook_data"]["workflows"] = [
                 {
-                    "badge": "POST FANPAGE",
+                    "badge": "POST FANPAGE & PROFILE",
                     "badge_color": "blue",
-                    "title": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
-                    "purpose": "Xây dựng định vị thương hiệu Mô hình Song Anh hàng đầu tại VN trên Facebook Fanpage B2B.",
-                    "method": "Biên soạn 1 Caption giật hook + Đoạn ngắn 2-3 câu súc tích tự nhiên + CTA Hotline 0929 22 4444 & link xem dự án dưới comment.",
-                    "target": "7 bài đăng/tuần, tăng 15% Reach và thu 15+ Lead nhắn tin báo giá sa bàn 1/500."
+                    "title": "[POST FB] Quy trình đăng bài Fanpage & Profile Cá Nhân Song Anh",
+                    "purpose": "Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Fanpage & Profile cá nhân.",
+                    "method": "1 Bài / Ngày (Fanpage) và 3 - 5 Bài / Ngày (Profile). Dán link website ở First Comment. Tiêu đề in đậm YayText, B2B điềm tĩnh, 1-4 ảnh thực tế sa bàn.",
+                    "target": "Tối ưu Reach B2B, tránh bóp Reach Meta, kéo traffic về website mohinhkientruc.org."
                 },
                 {
-                    "badge": "RE-COMMENT FANPAGE",
+                    "badge": "RE-COMMENT FANPAGE & PROFILE",
                     "badge_color": "emerald",
-                    "title": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
-                    "purpose": "Tự động hóa chăm sóc và giải đáp thắc mắc của khách hàng B2B ngay lập tức dưới bình luận bài đăng.",
-                    "method": "Subagent AI phân tích câu hỏi khách hàng, trả lời súc tích, lịch sự, nhúng Hotline 0929 22 4444 và điều hướng nhắn tin inbox.",
-                    "target": "Tốc độ phản hồi < 2 phút, tỷ lệ chuyển đổi Lead từ comment sang inbox đạt 80%."
+                    "title": "[RE-CMT FB] Quy trình Re-comment duy trì hiển thị Fanpage & Profile",
+                    "purpose": "Duy trì tương tác bùng nổ, kéo bài viết cũ quay lại Top Feeds Fanpage & Profile (Bump Top).",
+                    "method": "1 Bài / Ngày (Fanpage) và 3 Ngày / 1 Lần (Profile). Xoay vòng comment giải đáp kỹ thuật, ảnh sa bàn sáng đèn, Zalo/Hotline 0929 22 4444.",
+                    "target": "Kéo bài cũ lên Top Feeds, gia tăng tỷ lệ chuyển đổi Lead B2B."
                 },
                 {
                     "badge": "RE-CMT GROUPS",
