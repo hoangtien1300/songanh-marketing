@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-08-20 08:16:12",
+  "last_synced": "2026-08-20 08:47:01",
   "system_info": {
     "app_name": "Song Anh Group - Ultimate Multi-Channel AI Marketing Suite",
     "version": "21.0",
@@ -5429,7 +5429,8 @@
         "method": "Áp dụng Chiến lược Link-in-Comment (đăng bài Value bằng Chữ + Ảnh thực tế, nhúng link danh mục dưới comment sau 5-10 phút chống bóp Reach).",
         "target": "Rải 20 Groups/tuần, tỷ lệ duy trì bài đăng sống 100%, kéo traffic về mohinhkientruc.org."
       }
-    ]
+    ],
+    "last_extracted": "2026-08-20 08:47:01"
   },
   "gbp_data": {
     "locations": {
@@ -5570,5 +5571,59 @@
     "total_clicks": 1194,
     "avg_ctr": "5.98%",
     "last_calculated": "2026-08-20 08:16:12"
-  }
+  },
+  "facebook_tasks": [
+    {
+      "id": 1,
+      "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
+      "assignee": "Phạm Hoàng Tiến",
+      "assignee_role": "user-tie",
+      "frequency": "Hàng Ngày",
+      "kpi_weekly": "7 Bài / Tuần",
+      "completed": "6 Bài",
+      "progress_percent": 85.7,
+      "status_text": "85.7% Đạt KPI",
+      "color_class": "blue",
+      "icon_class": "fa-square-check text-blue-600"
+    },
+    {
+      "id": 2,
+      "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
+      "assignee": "Trợ Lý AI Song Anh",
+      "assignee_role": "robot",
+      "frequency": "Hàng Ngày (24/7)",
+      "kpi_weekly": "100% Phản Hồi",
+      "completed": "100% Phản Hồi",
+      "progress_percent": 100.0,
+      "status_text": "100% Hoàn Thành",
+      "color_class": "emerald",
+      "icon_class": "fa-square-check text-emerald-600"
+    },
+    {
+      "id": 3,
+      "task_name": "[Re-cmt FB Group] Fanpage Mô hình kiến trúc Song Anh",
+      "assignee": "Trợ Lý AI Song Anh",
+      "assignee_role": "robot",
+      "frequency": "5 Lần / Tuần",
+      "kpi_weekly": "20 Groups / Tuần",
+      "completed": "16 Groups",
+      "progress_percent": 80.0,
+      "status_text": "80% Đạt KPI",
+      "color_class": "purple",
+      "icon_class": "fa-square-check text-purple-600"
+    },
+    {
+      "id": 4,
+      "task_name": "[Post FB] Fanpage Architectural Model Org",
+      "assignee": "Phạm Hoàng Tiến",
+      "assignee_role": "user-tie",
+      "frequency": "3 Lần / Tuần",
+      "kpi_weekly": "3 Bài / Tuần",
+      "completed": "3 Bài",
+      "progress_percent": 100.0,
+      "status_text": "100% Hoàn Thành",
+      "color_class": "amber",
+      "icon_class": "fa-square-check text-amber-500"
+    }
+  ]
 }

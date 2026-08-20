@@ -486,6 +486,33 @@
                     </div>
                 </div>
 
+                <!-- 🌟 BẢNG DANH SÁCH CÁC TASK ĐANG THỰC HIỆN (ACTIVE TASKS TABLE NOTION DB) -->
+                <div class="light-card rounded-2xl p-5 border border-slate-200 space-y-4 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-blue-600 text-base"></i>
+                            <h3 class="font-heading font-bold text-sm text-slate-900">Bảng Danh Sách Công Việc Facebook Marketing</h3>
+                        </div>
+                        <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">4 Tasks Active</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <th class="p-3.5 w-1/3">1. Tên Công Việc / Task Name</th>
+                                    <th class="p-3.5">2. Người Phụ Trách</th>
+                                    <th class="p-3.5">3. Duy Trì (Lặp Lại)</th>
+                                    <th class="p-3.5">4. KPI Tuần</th>
+                                    <th class="p-3.5">5. Đã Thực Hiện</th>
+                                    <th class="p-3.5 w-48">6. % Công Việc (Tuần)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fb-table-body" class="divide-y divide-slate-200"></tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <div class="light-card p-5 rounded-2xl border border-slate-200 space-y-4">
                     <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                         <div class="flex items-center gap-2">
@@ -6006,6 +6033,13 @@
             { id: 4, task_name: "[Post Zalo] Profile 0376415131", assignee: "Bộ Phận CSKH B2B", assignee_role: "headset", frequency: "3 Lần / Tuần", kpi_weekly: "3 Bài / Tuần", completed: "3 Bài", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "amber", icon_class: "fa-square-check text-amber-500" }
         ];
 
+        let fbTaskList = [
+            { id: 1, task_name: "[Post FB] Fanpage Mô hình kiến trúc Song Anh", assignee: "Phạm Hoàng Tiến", assignee_role: "user-tie", frequency: "Hàng Ngày", kpi_weekly: "7 Bài / Tuần", completed: "6 Bài", progress_percent: 85.7, status_text: "85.7% Đạt KPI", color_class: "blue", icon_class: "fa-square-check text-blue-600" },
+            { id: 2, task_name: "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh", assignee: "Trợ Lý AI Song Anh", assignee_role: "robot", frequency: "Hàng Ngày (24/7)", kpi_weekly: "100% Phản Hồi", completed: "100% Phản Hồi", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "emerald", icon_class: "fa-square-check text-emerald-600" },
+            { id: 3, task_name: "[Re-cmt FB Group] Fanpage Mô hình kiến trúc Song Anh", assignee: "Trợ Lý AI Song Anh", assignee_role: "robot", frequency: "5 Lần / Tuần", kpi_weekly: "20 Groups / Tuần", completed: "16 Groups", progress_percent: 80.0, status_text: "80% Đạt KPI", color_class: "purple", icon_class: "fa-square-check text-purple-600" },
+            { id: 4, task_name: "[Post FB] Fanpage Architectural Model Org", assignee: "Phạm Hoàng Tiến", assignee_role: "user-tie", frequency: "3 Lần / Tuần", kpi_weekly: "3 Bài / Tuần", completed: "3 Bài", progress_percent: 100.0, status_text: "100% Hoàn Thành", color_class: "amber", icon_class: "fa-square-check text-amber-500" }
+        ];
+
         const fbChannelData = {
             'fanpage-main': { name: 'Fanpage Mô hình kiến trúc Song Anh', week: { views: '12,850', engagements: '1,420', chats: '86', followers: '18,520' }, month: { views: '54,200', engagements: '6,180', chats: '340', followers: '18,520' } },
             'fanpage-en': { name: 'Fanpage Architectural Model Org', week: { views: '4,120', engagements: '380', chats: '19', followers: '5,410' }, month: { views: '18,900', engagements: '1,650', chats: '78', followers: '5,410' } },
@@ -6046,6 +6080,10 @@
                 if (data.gbp_data && data.gbp_data.locations) {
                     Object.assign(gbpLocationData, data.gbp_data.locations);
                     updateGbpStatsDisplay();
+                }
+                if (data.facebook_tasks && data.facebook_tasks.length > 0) {
+                    fbTaskList = data.facebook_tasks;
+                    renderFbTable();
                 }
                 if (data.zalo_data && data.zalo_data.length > 0) {
                     zaloTaskList = data.zalo_data;
@@ -6604,6 +6642,40 @@
             tbody.innerHTML = html;
         }
 
+        function renderFbTable() {
+            const tbody = document.getElementById('fb-table-body');
+            if (!tbody) return;
+            let html = '';
+            fbTaskList.forEach(task => {
+                const color = task.color_class || 'blue';
+                const barColor = color === 'emerald' ? 'bg-emerald-500' : (color === 'blue' ? 'bg-blue-600' : (color === 'purple' ? 'bg-purple-600' : 'bg-amber-500'));
+                const textColor = color === 'emerald' ? 'text-emerald-600' : (color === 'blue' ? 'text-blue-600' : (color === 'purple' ? 'text-purple-600' : 'text-amber-600'));
+                const iconRole = task.assignee_role === 'robot' ? 'fa-robot text-purple-600' : (task.assignee_role === 'headset' ? 'fa-headset text-amber-600' : 'fa-user-tie text-brand-navy');
+                const completedCount = (task.completed || '').split(' ')[0];
+                const kpiCount = (task.kpi_weekly || '').split(' ')[0];
+                
+                html += `
+                    <tr class="hover:bg-slate-50 transition font-medium">
+                        <td class="p-3.5 font-bold text-brand-navy flex items-center gap-2 text-xs">
+                            <i class="fa-solid ${task.icon_class || 'fa-square-check text-blue-600'} text-base"></i>
+                            <span>${task.task_name}</span>
+                        </td>
+                        <td class="p-3.5 text-slate-800 font-bold"><i class="fa-solid ${iconRole}"></i> ${task.assignee}</td>
+                        <td class="p-3.5 text-slate-600"><span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-semibold">${task.frequency}</span></td>
+                        <td class="p-3.5 font-bold text-slate-800">${task.kpi_weekly}</td>
+                        <td class="p-3.5 font-extrabold ${textColor}">${task.completed}</td>
+                        <td class="p-3.5">
+                            <div class="space-y-1">
+                                <div class="flex items-center justify-between text-[11px] font-bold"><span class="${textColor}">${task.status_text}</span><span class="text-slate-400">${completedCount}/${kpiCount}</span></div>
+                                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden"><div class="${barColor} h-full rounded-full" style="width: ${task.progress_percent}%;"></div></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('collapsed');
@@ -6695,6 +6767,7 @@
             updateHeaderCurrentDate();
             renderKeywordTable();
             renderOnpageTable();
+            renderFbTable();
             renderZaloTable();
             updateFbStatsDisplay();
             updateGbpStatsDisplay();
