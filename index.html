@@ -566,7 +566,7 @@
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-users-rectangle text-blue-600 text-base"></i>
                             <div>
-                                <h3 id="fb-groups-section-title" class="font-heading font-bold text-sm text-slate-900">Danh Sách Facebook Groups Fanpage Đã Tham Gia</h3>
+                                <h3 id="fb-groups-section-title" class="font-heading font-bold text-sm text-slate-900">Danh sách Facebook Group đã tham gia</h3>
                                 <p id="fb-groups-section-subtitle" class="text-[11px] text-slate-500 font-medium">Báo cáo tự động từ Playwright Stealth &amp; Facebook Graph API Engine (Fanpage Mô hình Song Anh)</p>
                             </div>
                         </div>
@@ -6926,19 +6926,19 @@
             const excelBtn = document.getElementById('btn-dl-groups-excel');
 
             if (channelKey === 'fanpage') {
-                if (titleElem) titleElem.innerText = "Danh Sách Facebook Groups Fanpage Đã Tham Gia";
+                if (titleElem) titleElem.innerText = "Danh sách Facebook Group đã tham gia";
                 if (subTitleElem) subTitleElem.innerText = "Báo cáo tự động từ Playwright Stealth & Facebook Graph API Engine (Fanpage Mô hình Song Anh)";
                 if (jsonBtn) jsonBtn.setAttribute('href', 'fanpage_joined_groups.json');
                 if (excelBtn) excelBtn.setAttribute('href', 'fanpage_joined_groups.xlsx');
                 fbJoinedGroupsList = fanpageJoinedGroupsList.length > 0 ? fanpageJoinedGroupsList : fbJoinedGroupsList;
             } else if (channelKey === 'profile') {
-                if (titleElem) titleElem.innerText = "Danh Sách Facebook Groups Profile Song Anh Đã Tham Gia";
+                if (titleElem) titleElem.innerText = "Danh sách Facebook Group đã tham gia";
                 if (subTitleElem) subTitleElem.innerText = "Báo cáo tự động từ Playwright Stealth & Facebook Profile Song Anh Engine";
                 if (jsonBtn) jsonBtn.setAttribute('href', 'profile_joined_groups.json');
                 if (excelBtn) excelBtn.setAttribute('href', 'profile_joined_groups.xlsx');
                 fbJoinedGroupsList = profileJoinedGroupsList.length > 0 ? profileJoinedGroupsList : fbJoinedGroupsList;
             } else if (channelKey === 'all') {
-                if (titleElem) titleElem.innerText = "Danh Sách Tất Cả Facebook Groups Kênh Đã Tham Gia";
+                if (titleElem) titleElem.innerText = "Danh sách Facebook Group đã tham gia";
                 if (subTitleElem) subTitleElem.innerText = "Báo cáo tự động tổng hợp từ Fanpage Mô hình Song Anh & Profile Song Anh Engine";
                 if (jsonBtn) jsonBtn.setAttribute('href', 'profile_joined_groups.json');
                 if (excelBtn) excelBtn.setAttribute('href', 'profile_joined_groups.xlsx');
@@ -7001,8 +7001,9 @@
                         <td class="p-3.5 text-center">
                             <span class="px-2.5 py-1 text-[11px] font-extrabold bg-emerald-100 text-emerald-800 rounded-full border border-emerald-200 shadow-xs flex items-center justify-center gap-1 mx-auto w-max">
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i>
-                                <span>Đã Tham Gia</span>
+                                <span>${g.join_status || 'Đã Tham Gia'}</span>
                             </span>
+                            ${g.joined_date ? `<span class="text-[10px] text-slate-500 font-semibold block mt-1">📅 ${g.joined_date}</span>` : ''}
                         </td>
                     </tr>
                 `;
