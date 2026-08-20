@@ -8,8 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome 6.5.1 Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts Inter & Outfit -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts Be Vietnam Pro & Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -26,16 +26,16 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Outfit', 'sans-serif']
+                        sans: ['Be Vietnam Pro', 'Inter', 'sans-serif'],
+                        heading: ['Be Vietnam Pro', 'Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #1E293B; }
-        .font-heading { font-family: 'Outfit', sans-serif; }
+        body { font-family: 'Be Vietnam Pro', 'Inter', sans-serif; background-color: #F8FAFC; color: #1E293B; }
+        .font-heading { font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif; }
         .light-card { background: #FFFFFF; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
         .gold-badge { background: #FEF3C7; color: #B45309; border: 1px solid #FCD34D; }
         
@@ -296,9 +296,8 @@
                         <div class="flex items-center gap-2">
                             <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30 flex items-center gap-1.5">
                                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                Master Home Dashboard Live
+                                Marketing Dashboard
                             </span>
-                            <span class="text-xs text-slate-300 font-medium">Song Anh Architecture Marketing Suite</span>
                         </div>
                         <h2 class="text-xl font-heading font-black text-white flex items-center gap-2.5">
                             <span>🏠 TRANG CHỦ TỔNG QUAN HỆ THỐNG MARKETING</span>
@@ -306,9 +305,9 @@
                         <p class="text-xs text-slate-300">Báo cáo chỉ số KPI đa kênh Real-time &amp; Bảng nhật ký thao tác Marketing hệ thống</p>
                     </div>
                     <div class="flex items-center gap-3 shrink-0">
-                        <button onclick="fetchData()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md hover:shadow-blue-500/20 border border-blue-400/30">
+                        <button onclick="handleRealtimeSync(this)" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md hover:shadow-blue-500/20 border border-blue-400/30">
                             <i class="fa-solid fa-rotate text-xs"></i>
-                            <span>Đồng Bộ Real-time</span>
+                            <span>⚡ Đồng bộ Real-time</span>
                         </button>
                     </div>
                 </div>
@@ -466,6 +465,26 @@
                                 <!-- Dynamic Rows -->
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Activity Log Pagination Control Bar (10 dòng/trang) -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium">
+                        <div id="activity-log-pagination-info" class="font-semibold text-slate-500">
+                            Hiển thị <span id="activity-log-start-idx" class="font-bold text-slate-800">1</span> - <span id="activity-log-end-idx" class="font-bold text-slate-800">10</span> trên tổng <span id="activity-log-total-count" class="font-bold text-slate-800">15</span> nhật ký
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="activity-log-btn-prev" onclick="changeActivityLogPage(-1)" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold transition flex items-center gap-1.5 shadow-xs disabled:opacity-40 disabled:cursor-not-allowed">
+                                <i class="fa-solid fa-chevron-left text-[10px]"></i>
+                                <span>◀ Trang Trước</span>
+                            </button>
+                            <span id="activity-log-page-indicator" class="px-3.5 py-1.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-800 font-extrabold text-xs shadow-xs">
+                                Trang 1 / 2
+                            </span>
+                            <button id="activity-log-btn-next" onclick="changeActivityLogPage(1)" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold transition flex items-center gap-1.5 shadow-xs disabled:opacity-40 disabled:cursor-not-allowed">
+                                <span>Trang Sau ▶</span>
+                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -6598,6 +6617,28 @@
         let currentGbpLocation = 'gbp-hcm';
         let currentGbpTimeFilter = 'week';
 
+        async function handleRealtimeSync(btn) {
+            if (!btn) return;
+            const icon = btn.querySelector('i') || btn;
+            icon.classList.add('fa-spin');
+            btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+
+            try {
+                await fetchData();
+                showToast('🔄 Đã kích hoạt đồng bộ dữ liệu Real-time thành công!');
+            } catch (err) {
+                console.error("Realtime sync error:", err);
+                showToast('⚠️ Lỗi khi đồng bộ dữ liệu Real-time: ' + err.message);
+            } finally {
+                setTimeout(() => {
+                    icon.classList.remove('fa-spin');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                }, 600);
+            }
+        }
+
         async function fetchData() {
             try {
                 const res = await fetch('marketing_data.json?t=' + new Date().getTime());
@@ -7206,21 +7247,56 @@
             tbody.innerHTML = html;
         }
 
-        function renderActivityLogTable(items) {
+        let currentActivityLogPage = 1;
+        const ACTIVITY_LOG_PER_PAGE = 10;
+        let currentActivityLogFilteredList = [];
+
+        function renderActivityLogTable(items, page = currentActivityLogPage) {
             const tbody = document.getElementById('activity-log-table-body');
             const badge = document.getElementById('activity-log-count-badge');
             if (!tbody) return;
 
             const list = items || marketingActivityLog || [];
-            if (badge) badge.innerText = list.length + " Nhật Ký";
+            currentActivityLogFilteredList = list;
+            const totalItems = list.length;
+            const totalPages = Math.ceil(totalItems / ACTIVITY_LOG_PER_PAGE) || 1;
+
+            if (page < 1) page = 1;
+            if (page > totalPages) page = totalPages;
+            currentActivityLogPage = page;
+
+            if (badge) badge.innerText = totalItems + " Nhật Ký";
+
+            const startIdxElem = document.getElementById('activity-log-start-idx');
+            const endIdxElem = document.getElementById('activity-log-end-idx');
+            const totalCountElem = document.getElementById('activity-log-total-count');
+            const indicatorElem = document.getElementById('activity-log-page-indicator');
+            const btnPrev = document.getElementById('activity-log-btn-prev');
+            const btnNext = document.getElementById('activity-log-btn-next');
 
             if (list.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400 font-medium">Không tìm thấy nhật ký thao tác phù hợp.</td></tr>`;
+                if (startIdxElem) startIdxElem.innerText = "0";
+                if (endIdxElem) endIdxElem.innerText = "0";
+                if (totalCountElem) totalCountElem.innerText = "0";
+                if (indicatorElem) indicatorElem.innerText = "Trang 0 / 0";
+                if (btnPrev) btnPrev.disabled = true;
+                if (btnNext) btnNext.disabled = true;
                 return;
             }
 
+            const startIdx = (currentActivityLogPage - 1) * ACTIVITY_LOG_PER_PAGE;
+            const pageItems = list.slice(startIdx, startIdx + ACTIVITY_LOG_PER_PAGE);
+
+            if (startIdxElem) startIdxElem.innerText = startIdx + 1;
+            if (endIdxElem) endIdxElem.innerText = Math.min(startIdx + pageItems.length, totalItems);
+            if (totalCountElem) totalCountElem.innerText = totalItems;
+            if (indicatorElem) indicatorElem.innerText = `Trang ${currentActivityLogPage} / ${totalPages}`;
+            if (btnPrev) btnPrev.disabled = (currentActivityLogPage <= 1);
+            if (btnNext) btnNext.disabled = (currentActivityLogPage >= totalPages);
+
             let html = '';
-            list.forEach(item => {
+            pageItems.forEach(item => {
                 const time = item.timestamp || 'N/A';
                 const mod = item.module || 'Hệ thống';
                 const action = item.action || 'N/A';
@@ -7276,7 +7352,17 @@
             tbody.innerHTML = html;
         }
 
+        function changeActivityLogPage(delta) {
+            const list = currentActivityLogFilteredList || marketingActivityLog || [];
+            const totalPages = Math.ceil(list.length / ACTIVITY_LOG_PER_PAGE) || 1;
+            const newPage = currentActivityLogPage + delta;
+            if (newPage >= 1 && newPage <= totalPages) {
+                renderActivityLogTable(list, newPage);
+            }
+        }
+
         function filterActivityLogTable() {
+            currentActivityLogPage = 1;
             const query = (document.getElementById('activity-log-search-input')?.value || '').toLowerCase().trim();
             const modFilter = (document.getElementById('activity-log-module-filter')?.value || '').toLowerCase().trim();
 
@@ -7300,7 +7386,7 @@
                 return matchesQuery && matchesMod;
             });
 
-            renderActivityLogTable(filtered);
+            renderActivityLogTable(filtered, 1);
         }
 
         function switchFbGroupChannel(channelKey) {
