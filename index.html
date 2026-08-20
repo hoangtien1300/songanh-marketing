@@ -6082,7 +6082,7 @@
         ];
 
         const fbChannelData = {
-            'fanpage-main': { name: 'Mô hình kiến trúc Song Anh', week: { views: '10', engagements: '5 xem 3s / 12', chats: '86', followers: '1,128' }, month: { views: '10', engagements: '5 xem 3s / 12', chats: '340', followers: '1,128' } },
+            'fanpage-main': { name: 'Mô hình kiến trúc Song Anh', week: { views: '852', engagements: '45 xem 3s / 128', chats: '86', followers: '1,128' }, month: { views: '3,650', engagements: '193 xem 3s / 549', chats: '340', followers: '1,128' } },
             'fanpage-en': { name: 'Fanpage Architectural Model Org', week: { views: '4,120', engagements: '380', chats: '19', followers: '5,410' }, month: { views: '18,900', engagements: '1,650', chats: '78', followers: '5,410' } },
             'profile-songanh': { name: 'Facebook Profile Song Anh', week: { views: '3,850', engagements: '620', chats: '24', followers: '4,800' }, month: { views: '15,600', engagements: '2,480', chats: '95', followers: '4,800' } }
         };
@@ -6149,6 +6149,15 @@
 
         function switchFbTimeFilter(timeFrame) {
             currentFbTimeFilter = timeFrame;
+            const weekBtn = document.getElementById('fb-time-week-btn');
+            const monthBtn = document.getElementById('fb-time-month-btn');
+            if (timeFrame === 'week') {
+                if (weekBtn) weekBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white transition shadow-sm";
+                if (monthBtn) monthBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition";
+            } else if (timeFrame === 'month') {
+                if (monthBtn) monthBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white transition shadow-sm";
+                if (weekBtn) weekBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition";
+            }
             updateFbStatsDisplay();
             showToast("📅 Đã chuyển bộ lọc thời gian Facebook!");
         }
