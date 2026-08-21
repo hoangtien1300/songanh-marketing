@@ -1,61 +1,81 @@
 {
   "status": "success",
-  "total": 5,
+  "database_id": "3c24b5e7-3d90-81df-aa41-d2f5c355f32f",
+  "database_url": "https://www.notion.so/3c24b5e73d9081dfaa41d2f5c355f32f",
+  "scan_timestamp": "2026-08-21 10:02:30",
+  "summary": {
+    "total_posts": 5,
+    "published_count": 4,
+    "pending_count": 1,
+    "recomment_needed_count": 0,
+    "total_recomments": 0,
+    "last_synced": "2026-08-21 10:02:30"
+  },
   "data": [
+    {
+      "page_id": "3c34b5e7-3d90-8133-bda3-c82b9f18cdf0",
+      "post_title": "[Group M&A] Bài đăng Mô hình TOD 1/500",
+      "account": "Facebook Profile Song Anh",
+      "group_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
+      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
+      "post_date": "2026-08-21",
+      "post_url": "https://www.facebook.com/groups/152692778620733/posts/2223250434898280",
+      "status": "Đã đăng công khai",
+      "next_recomment_date": "2026-08-24",
+      "recomment_count": 0,
+      "last_synced": "2026-08-21 10:02:30"
+    },
     {
       "page_id": "3c34b5e7-3d90-8139-9a90-e4ffbc748161",
       "post_title": "[Kiến Trúc Xây Dựng Nội Thất] Bài đăng Mô hình TOD 1/500",
       "account": "Facebook Profile Song Anh",
+      "group_id": "1a44b5e7-3d90-816e-9642-d2b4ed631ade",
       "group_name": "Kiến Trúc - xây dựng - nội thất",
       "post_date": "2026-08-21",
+      "post_url": "https://www.facebook.com/groups/136778766509398/posts/3428058307381411/",
       "status": "Đã đăng công khai",
-      "post_link": "https://www.facebook.com/groups/136778766509398/posts/3428058307381411/",
       "next_recomment_date": "2026-08-24",
-      "recomment_count": 0
+      "recomment_count": 0,
+      "last_synced": "2026-08-21 10:02:30"
     },
     {
       "page_id": "3c34b5e7-3d90-81d4-aeaa-fab6b7dcab83",
       "post_title": "[Hội Kiến Trúc Miền Nam] Bài đăng Mô hình TOD 1/500",
       "account": "Facebook Profile Song Anh",
+      "group_id": "3b34b5e7-3d90-81e8-aeca-fee6a6bc36e8",
       "group_name": "Hội Kiến Trúc Xây Dựng Miền Nam",
       "post_date": "2026-08-21",
+      "post_url": "https://www.facebook.com/groups/745304485664200/pending_posts/3131712630356695",
       "status": "Đang chờ duyệt",
-      "post_link": "https://www.facebook.com/groups/745304485664200/pending_posts/3131712630356695",
       "next_recomment_date": "2026-08-24",
-      "recomment_count": 0
-    },
-    {
-      "page_id": "3c34b5e7-3d90-8133-bda3-c82b9f18cdf0",
-      "post_title": "[Group M&A] Bài đăng Mô hình TOD 1/500",
-      "account": "Facebook Profile Song Anh",
-      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
-      "post_date": "2026-08-21",
-      "status": "Đã đăng công khai",
-      "post_link": "https://www.facebook.com/groups/152692778620733/posts/2223250434898280",
-      "next_recomment_date": "2026-08-24",
-      "recomment_count": 0
-    },
-    {
-      "page_id": "3c24b5e7-3d90-81cf-ba46-fced1f0e24c4",
-      "post_title": "[Group M&A] Bài đăng giới thiệu Mô hình Kiến trúc Song Anh",
-      "account": "Facebook Profile Song Anh",
-      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
-      "post_date": "2026-08-20",
-      "status": "Đã đăng công khai",
-      "post_link": "https://www.facebook.com/groups/152692778620733/posts/2222578478298809",
-      "next_recomment_date": "2026-08-23",
-      "recomment_count": 0
+      "recomment_count": 0,
+      "last_synced": "2026-08-21 10:02:30"
     },
     {
       "page_id": "3c24b5e7-3d90-8128-8990-f2e4f946f840",
       "post_title": "[Cộng Đồng Môi Giới BĐS] Bài đăng giới thiệu Mô hình Kiến trúc Song Anh",
       "account": "Facebook Profile Song Anh",
+      "group_id": "1a44b5e7-3d90-817d-9080-f2d3cb9ecfe0",
       "group_name": "Cộng đồng môi giới bất động sản Việt Nam",
       "post_date": "2026-08-20",
+      "post_url": "https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221",
       "status": "Đã đăng công khai",
-      "post_link": "https://www.facebook.com/groups/congdongmoigioibdsvietnam/posts/37802634536018221",
       "next_recomment_date": "2026-08-23",
-      "recomment_count": 0
+      "recomment_count": 0,
+      "last_synced": "2026-08-21 10:02:30"
+    },
+    {
+      "page_id": "3c24b5e7-3d90-81cf-ba46-fced1f0e24c4",
+      "post_title": "[Group M&A] Bài đăng giới thiệu Mô hình Kiến trúc Song Anh",
+      "account": "Facebook Profile Song Anh",
+      "group_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
+      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
+      "post_date": "2026-08-20",
+      "post_url": "https://www.facebook.com/groups/152692778620733/posts/2222578478298809",
+      "status": "Đã đăng công khai",
+      "next_recomment_date": "2026-08-23",
+      "recomment_count": 0,
+      "last_synced": "2026-08-21 10:02:30"
     }
   ]
 }

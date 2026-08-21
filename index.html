@@ -282,13 +282,45 @@
                     </div>
 
                     <div class="accordion-group rounded-xl border border-purple-200 bg-purple-50/70 overflow-hidden">
-                        <button onclick="selectModule('tool-facebook')" id="sub-tool-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-purple-100/80 transition">
+                        <button onclick="toggleAccordion('acc-tool-facebook')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-purple-100/80 transition">
                             <div class="flex items-center gap-2">
                                 <i class="fa-brands fa-facebook text-blue-600 w-4"></i>
-                                <span>📱 Facebook Automation Tool (ATP Simple FB Pro Style)</span>
+                                <span>📱 Tool Automation Facebook</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold shadow-sm">PRO</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold shadow-sm">PRO</span>
+                                <i id="icon-acc-tool-facebook" class="fa-solid fa-chevron-down text-purple-500 text-[10px] transition-transform duration-300"></i>
+                            </div>
                         </button>
+                        
+                        <div id="acc-tool-facebook" class="submenu-container open bg-white border-t border-purple-100">
+                            <div class="py-1 pl-2">
+                                <button onclick="selectFbToolCategory('auto-friend')" id="sub-fb-auto-friend" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🤝</span> 1. Kết Bạn Tự Động</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-700 font-bold">7 Tools</span>
+                                </button>
+                                <button onclick="selectFbToolCategory('auto-engagement')" id="sub-fb-auto-engagement" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>⚡</span> 2. Tương Tác Tự Động</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">8 Tools</span>
+                                </button>
+                                <button onclick="selectFbToolCategory('uid-scraper')" id="sub-fb-uid-scraper" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🔍</span> 3. Quét UID Facebook</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">8 Tools</span>
+                                </button>
+                                <button onclick="selectFbToolCategory('fanpage-manager')" id="sub-fb-fanpage-manager" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🏢</span> 4. Hỗ Trợ Fanpage</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 font-bold">4 Tools</span>
+                                </button>
+                                <button onclick="selectFbToolCategory('facebook-groups')" id="sub-fb-facebook-groups" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🌐</span> 5. Hỗ Trợ Groups</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-bold">5 Tools</span>
+                                </button>
+                                <button onclick="selectFbToolCategory('data-backup')" id="sub-fb-data-backup" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>💾</span> 6. Backup Dữ Liệu</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-rose-100 text-rose-800 font-bold">2 Tools</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -1154,7 +1186,7 @@
                 </div>
             </div>
 
-            <!-- 🛠️ MODULE 6: FACEBOOK AUTOMATION TOOL SUITE (ATP SIMPLE FB PRO STYLE) -->
+            <!-- 🛠️ MODULE 6: TOOL AUTOMATION FACEBOOK -->
             <div id="panel-tool-facebook" class="module-panel hidden space-y-6">
                 <!-- Header Banner -->
                 <div class="light-card p-6 rounded-2xl border border-purple-200 bg-gradient-to-r from-slate-900 via-purple-950 to-indigo-950 text-white shadow-xl relative overflow-hidden">
@@ -1171,11 +1203,11 @@
                                     <i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Anti-Checkpoint Guard (30s-60s)
                                 </span>
                                 <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
-                                    ATP Simple FB Pro Architecture
+                                    34 Tools Automation Pro
                                 </span>
                             </div>
                             <h2 class="text-2xl font-extrabold tracking-tight text-white font-heading">
-                                📱 Bộ Công Cụ Tool Automation Facebook (ATP Simple FB Pro Style)
+                                📱 Tool Automation Facebook
                             </h2>
                             <p class="text-xs text-purple-200/90 max-w-3xl leading-relaxed">
                                 Giả lập hành vi người dùng thật 100% (Human-like typing, Bezier mouse trajectory, random delays, cookie injection). Chống checkpoint tuyệt đối cho 4 Tài khoản Facebook & Fanpage Song Anh Group.
@@ -1195,6 +1227,174 @@
                             <div class="text-center">
                                 <div class="text-lg font-black text-purple-300">34 / 34</div>
                                 <div class="text-[10px] text-slate-300 uppercase font-semibold">Công Cụ Sẵn Sàng</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 📁 Khối Widget: Danh Mục Công Cụ Facebook Automation (6 Cụm Danh Mục Trực Quan) -->
+                <div class="light-card rounded-2xl p-5 border border-purple-200 bg-gradient-to-b from-white to-purple-50/30 shadow-sm space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
+                                <i class="fa-solid fa-folder-tree"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-sm text-slate-900 flex items-center gap-2">
+                                    <span>📁 Danh Mục Công Cụ Facebook Automation</span>
+                                    <span class="px-2 py-0.5 rounded-full text-[10px] bg-purple-100 text-purple-700 font-extrabold">6 Danh Mục • 34 Tools</span>
+                                </h3>
+                                <p class="text-[11px] text-slate-500 font-medium">Bấm vào từng danh mục để mở cụm công cụ và cấu hình tác vụ tương ứng (1-Click Switch)</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 self-start sm:self-auto">
+                            <i class="fa-solid fa-shield-check text-emerald-600"></i> Chuẩn B2B Safe 100%
+                        </span>
+                    </div>
+
+                    <!-- 6 Category Cards Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5" id="fb-categories-widget-grid">
+                        <!-- Card 1: Kết Bạn Tự Động -->
+                        <div onclick="switchFbToolTab('auto-friend')" id="cat-card-auto-friend" class="fb-cat-card p-4 rounded-xl border border-blue-200 bg-white hover:bg-blue-50/40 hover:border-blue-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group ring-2 ring-purple-500 shadow-md bg-purple-50/50">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-user-plus"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-blue-700 transition">1. Kết Bạn Tự Động</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">7 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Kết bạn theo UID target, gợi ý Facebook, tương tác bạn bè, hủy lời mời & chống checkpoint an toàn.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">An toàn: <strong class="text-emerald-600">30s - 60s</strong></span>
+                                <span class="font-bold text-blue-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Tương Tác Tự Động -->
+                        <div onclick="switchFbToolTab('auto-engagement')" id="cat-card-auto-engagement" class="fb-cat-card p-4 rounded-xl border border-amber-200 bg-white hover:bg-amber-50/40 hover:border-amber-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-bolt"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-amber-700 transition">2. Tương Tác Tự Động</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">8 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Tương tác Newsfeed, Like/Reactions bài viết, Thả tim Story, Auto comment Spintax nội dung.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">An toàn: <strong class="text-emerald-600">Bezier Curve</strong></span>
+                                <span class="font-bold text-amber-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Quét UID Facebook -->
+                        <div onclick="switchFbToolTab('uid-scraper')" id="cat-card-uid-scraper" class="fb-cat-card p-4 rounded-xl border border-emerald-200 bg-white hover:bg-emerald-50/40 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-emerald-700 transition">3. Quét UID Facebook</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">8 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Quét tương tác bài viết, quét thành viên nhóm, quét bạn bè, trích xuất data khách hàng B2B.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">Data format: <strong class="text-slate-700">JSON/Excel</strong></span>
+                                <span class="font-bold text-emerald-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Hỗ Trợ Fanpage -->
+                        <div onclick="switchFbToolTab('fanpage-manager')" id="cat-card-fanpage-manager" class="fb-cat-card p-4 rounded-xl border border-purple-200 bg-white hover:bg-purple-50/40 hover:border-purple-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-building"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-purple-700 transition">4. Hỗ Trợ Fanpage</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800">4 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Mời bạn bè thích trang, seeding bài post, quét tương tác Fanpage, auto inbox/comment chăm sóc.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">Kết nối: <strong class="text-purple-600">Meta API/Graph</strong></span>
+                                <span class="font-bold text-purple-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Hỗ Trợ Groups -->
+                        <div onclick="switchFbToolTab('facebook-groups')" id="cat-card-facebook-groups" class="fb-cat-card p-4 rounded-xl border border-indigo-200 bg-white hover:bg-indigo-50/40 hover:border-indigo-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-users-gear"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-indigo-700 transition">5. Hỗ Trợ Groups</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">5 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Tìm kiếm nhóm B2B theo từ khóa, tham gia nhóm tự động, đăng bài Spintax & tương tác nhóm.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">Target: <strong class="text-indigo-600">20+ Groups B2B</strong></span>
+                                <span class="font-bold text-indigo-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Backup Dữ Liệu -->
+                        <div onclick="switchFbToolTab('data-backup')" id="cat-card-data-backup" class="fb-cat-card p-4 rounded-xl border border-rose-200 bg-white hover:bg-rose-50/40 hover:border-rose-400 hover:shadow-md cursor-pointer transition-all duration-200 flex flex-col justify-between space-y-3 group">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <div class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs group-hover:scale-110 transition">
+                                            <i class="fa-solid fa-floppy-disk"></i>
+                                        </div>
+                                        <h4 class="font-bold text-xs text-slate-900 group-hover:text-rose-700 transition">6. Backup Dữ Liệu</h4>
+                                    </div>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">2 Tools</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed">
+                                    Sao lưu danh sách bạn bè, backup ảnh/bài viết/tin nhắn phòng ngừa rủi ro checkpoint tài khoản.
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+                                <span class="text-slate-400 font-semibold">Lưu trữ: <strong class="text-rose-600">Local & Cloud</strong></span>
+                                <span class="font-bold text-rose-600 group-hover:translate-x-0.5 transition flex items-center gap-1">
+                                    Mở Cụm <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1246,7 +1446,7 @@
                                     <i id="current-cluster-icon" class="fa-solid fa-user-plus text-blue-600 text-base"></i>
                                     <h3 id="current-cluster-title" class="font-heading font-extrabold text-sm text-slate-900">CỤM 1: KẾT BẠN TỰ ĐỘNG (AUTO FRIEND SUITE)</h3>
                                 </div>
-                                <span class="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">ATP Simple FB Pro Standard</span>
+                                <span class="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">Chuẩn B2B Safe Mode</span>
                             </div>
 
                             <!-- Dynamic Cards Container for Selected Cluster -->
@@ -1361,7 +1561,7 @@
                     <!-- Simulated Terminal Window -->
                     <div class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-[11px] space-y-1.5 shadow-inner max-h-48 overflow-y-auto" id="fb-tool-terminal-window">
                         <div class="text-slate-500">[2026-08-21 08:30:00] [STEALTH CORE] Initializing Playwright Undetectable Engine...</div>
-                        <div class="text-purple-300">[2026-08-21 08:30:01] [SYSTEM] ATP Simple FB Pro Automation Suite loaded (34 Tools Ready).</div>
+                        <div class="text-purple-300">[2026-08-21 08:30:01] [SYSTEM] Facebook Automation Suite loaded (34 Tools Ready).</div>
                         <div class="text-emerald-400">[2026-08-21 08:30:02] [ANTI-CHECKPOINT] Bezier trajectory active | Safety delay window: 30s - 60s.</div>
                         <div class="text-amber-300">[2026-08-21 08:30:05] [STATUS] 4 Facebook Accounts & Fanpage connected with live sessions.</div>
                     </div>
@@ -6937,13 +7137,13 @@
                         "description": "",
                         "assignee": "Phạm Hoàng Tiến",
                         "assignee_role": "user-tie",
-                        "frequency": "Thứ 4",
-                        "kpi_weekly": "3 Bài / Tuần",
-                        "completed": "3 Bài",
-                        "progress_percent": 100,
-                        "status_text": "100% Hoàn Thành",
-                        "color_class": "emerald",
-                        "icon_class": "fa-square-check text-emerald-600"
+                        "frequency": "Thứ 2, Thứ 4, Thứ 6",
+                        "kpi_weekly": "9 Bài / Tuần",
+                        "completed": "5 Bài",
+                        "progress_percent": 55.6,
+                        "status_text": "55.6% Đạt KPI",
+                        "color_class": "purple",
+                        "icon_class": "fa-square-check text-purple-600"
             },
             {
                         "id": 15,
@@ -8039,7 +8239,7 @@
             } else if (moduleId === 'tool-facebook') {
                 const toolFbPanel = document.getElementById('panel-tool-facebook');
                 if (toolFbPanel) toolFbPanel.classList.remove('hidden');
-                showToast("🛠️ Đã mở Facebook Automation Tool (ATP Simple FB Pro Style)");
+                showToast("🛠️ Đã mở Tool Automation Facebook");
             } else {
                 const updatingPanel = document.getElementById('panel-updating');
                 const titleText = document.getElementById('updating-title-text');
@@ -8097,6 +8297,15 @@
         let currentSelectedToolName = 'Kết bạn theo danh sách gợi ý Facebook';
         let fbToolsSuiteData = null;
 
+        function selectFbToolCategory(clusterId) {
+            selectModule('tool-facebook');
+            switchFbToolTab(clusterId);
+            const targetElem = document.getElementById('fb-tools-tab-bar') || document.getElementById('fb-tool-cards-container');
+            if (targetElem) {
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
         function switchFbToolTab(clusterId) {
             currentFbToolCluster = clusterId;
             document.querySelectorAll('.fb-tool-tab').forEach(tab => {
@@ -8109,6 +8318,20 @@
                 activeTab.classList.remove('text-slate-600', 'hover:bg-slate-100');
             }
 
+            // Highlight active category card in widget
+            document.querySelectorAll('.fb-cat-card').forEach(card => {
+                card.classList.remove('ring-2', 'ring-purple-500', 'shadow-md', 'bg-purple-50/50');
+            });
+            const activeCard = document.getElementById('cat-card-' + clusterId);
+            if (activeCard) {
+                activeCard.classList.add('ring-2', 'ring-purple-500', 'shadow-md', 'bg-purple-50/50');
+            }
+
+            // Sync sidebar sublink active state
+            document.querySelectorAll('#acc-tool-facebook .sub-link').forEach(link => link.classList.remove('active'));
+            const activeSidebarSub = document.getElementById('sub-fb-' + clusterId);
+            if (activeSidebarSub) activeSidebarSub.classList.add('active');
+
             renderFbToolClusterCards(clusterId);
         }
 
@@ -8119,7 +8342,8 @@
 
             if (!fbToolsSuiteData || !fbToolsSuiteData.tool_categories) return;
 
-            const category = fbToolsSuiteData.tool_categories[clusterId];
+            const key = clusterId.replace(/-/g, '_');
+            const category = fbToolsSuiteData.tool_categories[clusterId] || fbToolsSuiteData.tool_categories[key];
             if (!category) return;
 
             if (iconElem) iconElem.className = `fa-solid ${category.icon} text-purple-600 text-base`;
