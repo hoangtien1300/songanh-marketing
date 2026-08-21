@@ -274,6 +274,23 @@
                         </button>
                     </div>
 
+                    <!-- 🛠️ BỘ CÔNG CỤ TOOL AUTOMATION -->
+                    <div class="px-2 pt-3">
+                        <p class="text-[10px] font-extrabold tracking-wider text-purple-700 uppercase flex items-center gap-1.5">
+                            <i class="fa-solid fa-toolbox"></i> BỘ CÔNG CỤ TOOL AUTOMATION
+                        </p>
+                    </div>
+
+                    <div class="accordion-group rounded-xl border border-purple-200 bg-purple-50/70 overflow-hidden">
+                        <button onclick="selectModule('tool-facebook')" id="sub-tool-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-purple-100/80 transition">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-brands fa-facebook text-blue-600 w-4"></i>
+                                <span>📱 Facebook Automation Tool (ATP Simple FB Pro Style)</span>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold shadow-sm">PRO</span>
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
@@ -1132,6 +1149,239 @@
                                 </tr>
                             </thead>
                             <tbody id="zalo-table-body" class="divide-y divide-slate-200"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🛠️ MODULE 6: FACEBOOK AUTOMATION TOOL SUITE (ATP SIMPLE FB PRO STYLE) -->
+            <div id="panel-tool-facebook" class="module-panel hidden space-y-6">
+                <!-- Header Banner -->
+                <div class="light-card p-6 rounded-2xl border border-purple-200 bg-gradient-to-r from-slate-900 via-purple-950 to-indigo-950 text-white shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+                        <i class="fa-brands fa-facebook-f text-9xl"></i>
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="px-3 py-1 rounded-full bg-purple-500/30 border border-purple-400/40 text-purple-200 text-xs font-bold flex items-center gap-1.5">
+                                    <i class="fa-solid fa-shield-halved text-purple-300"></i> Undetectable Stealth v128 Engine
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Anti-Checkpoint Guard (30s-60s)
+                                </span>
+                                <span class="px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
+                                    ATP Simple FB Pro Architecture
+                                </span>
+                            </div>
+                            <h2 class="text-2xl font-extrabold tracking-tight text-white font-heading">
+                                📱 Bộ Công Cụ Tool Automation Facebook (ATP Simple FB Pro Style)
+                            </h2>
+                            <p class="text-xs text-purple-200/90 max-w-3xl leading-relaxed">
+                                Giả lập hành vi người dùng thật 100% (Human-like typing, Bezier mouse trajectory, random delays, cookie injection). Chống checkpoint tuyệt đối cho 4 Tài khoản Facebook & Fanpage Song Anh Group.
+                            </p>
+                        </div>
+                        
+                        <!-- Account Status Badges -->
+                        <div class="bg-white/10 backdrop-blur-md border border-white/15 p-3.5 rounded-xl flex items-center gap-4 shrink-0">
+                            <div class="text-center border-r border-white/10 pr-3">
+                                <div class="text-lg font-black text-emerald-400">4 / 4</div>
+                                <div class="text-[10px] text-slate-300 uppercase font-semibold">Tài Khoản Connected</div>
+                            </div>
+                            <div class="text-center border-r border-white/10 pr-3">
+                                <div class="text-lg font-black text-amber-400">30s - 60s</div>
+                                <div class="text-[10px] text-slate-300 uppercase font-semibold">Giãn Cách An Toàn</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg font-black text-purple-300">34 / 34</div>
+                                <div class="text-[10px] text-slate-300 uppercase font-semibold">Công Cụ Sẵn Sàng</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Tab Navigation Bar (6 Cụm Công Cụ) -->
+                <div class="light-card rounded-2xl p-2 border border-slate-200 bg-white shadow-sm overflow-x-auto">
+                    <div class="flex items-center gap-1.5 min-w-max" id="fb-tools-tab-bar">
+                        <button onclick="switchFbToolTab('auto-friend')" id="tab-btn-auto-friend" class="fb-tool-tab active px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-user-plus text-blue-600"></i>
+                            <span>🤝 CỤM 1: KẾT BẠN TỰ ĐỘNG</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-blue-100 text-blue-700 font-extrabold">7 Tool</span>
+                        </button>
+                        <button onclick="switchFbToolTab('auto-engagement')" id="tab-btn-auto-engagement" class="fb-tool-tab px-4 py-2.5 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-bolt text-amber-500"></i>
+                            <span>⚡ CỤM 2: TƯƠNG TÁC TỰ ĐỘNG</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-amber-100 text-amber-800 font-extrabold">8 Tool</span>
+                        </button>
+                        <button onclick="switchFbToolTab('uid-scraper')" id="tab-btn-uid-scraper" class="fb-tool-tab px-4 py-2.5 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-magnifying-glass text-emerald-600"></i>
+                            <span>🔍 CỤM 3: QUÉT UID FACEBOOK</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-extrabold">8 Tool</span>
+                        </button>
+                        <button onclick="switchFbToolTab('fanpage-manager')" id="tab-btn-fanpage-manager" class="fb-tool-tab px-4 py-2.5 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-building text-purple-600"></i>
+                            <span>🏢 CỤM 4: HỖ TRỢ FANPAGE</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-purple-100 text-purple-800 font-extrabold">4 Tool</span>
+                        </button>
+                        <button onclick="switchFbToolTab('facebook-groups')" id="tab-btn-facebook-groups" class="fb-tool-tab px-4 py-2.5 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-users-gear text-indigo-600"></i>
+                            <span>🌐 CỤM 5: HỖ TRỢ GROUPS</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-indigo-100 text-indigo-800 font-extrabold">5 Tool</span>
+                        </button>
+                        <button onclick="switchFbToolTab('data-backup')" id="tab-btn-data-backup" class="fb-tool-tab px-4 py-2.5 rounded-xl font-bold text-xs text-slate-600 hover:bg-slate-100 flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-floppy-disk text-rose-600"></i>
+                            <span>💾 CỤM 6: BACKUP DỮ LIỆU</span>
+                            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-rose-100 text-rose-800 font-extrabold">2 Tool</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tool Content Section & Control Console -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left Column: Tool Cards Grid (7 Cols) -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="light-card rounded-2xl p-5 border border-slate-200 space-y-4 bg-white shadow-sm">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <i id="current-cluster-icon" class="fa-solid fa-user-plus text-blue-600 text-base"></i>
+                                    <h3 id="current-cluster-title" class="font-heading font-extrabold text-sm text-slate-900">CỤM 1: KẾT BẠN TỰ ĐỘNG (AUTO FRIEND SUITE)</h3>
+                                </div>
+                                <span class="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">ATP Simple FB Pro Standard</span>
+                            </div>
+
+                            <!-- Dynamic Cards Container for Selected Cluster -->
+                            <div id="fb-tool-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <!-- Cards populated dynamically via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Script Execution & Safety Control (5 Cols) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="light-card rounded-2xl p-5 border border-purple-200 bg-white shadow-md space-y-4 relative overflow-hidden">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">
+                                        <i class="fa-solid fa-sliders"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-heading font-bold text-sm text-slate-900">Thiết Lập Kịch Bản Running</h3>
+                                        <p class="text-[10px] text-slate-500">Cấu hình an toàn & Giả lập người dùng thật</p>
+                                    </div>
+                                </div>
+                                <span id="selected-tool-badge" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+                                    Tool 1.1 Selected
+                                </span>
+                            </div>
+
+                            <form id="fb-tool-exec-form" onsubmit="event.preventDefault(); runFacebookToolAction();" class="space-y-3 text-xs">
+                                <!-- Account Choice -->
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1 flex items-center justify-between">
+                                        <span>1. Chọn Tài Khoản Facebook Thực Thi:</span>
+                                        <span class="text-[10px] text-emerald-600 font-bold"><i class="fa-solid fa-circle text-[7px]"></i> Cookie Live</span>
+                                    </label>
+                                    <select id="fb-tool-account-select" class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 font-semibold focus:ring-2 focus:ring-purple-500 focus:bg-white transition">
+                                        <option value="acc_01">Mô Hình Song Anh (Main Profile - UID 100088219483921)</option>
+                                        <option value="acc_02">Kỹ Thuật Song Anh (B2B Sales - UID 100091823746192)</option>
+                                        <option value="acc_03">Xưởng Mô Hình Kiến Trúc Thủ Đức (Fanpage - UID 100063910283741)</option>
+                                        <option value="acc_04">Song Anh Architecture Models (Hotline B2B - UID 100077382910482)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Input Target List / Content / Keywords -->
+                                <div>
+                                    <label id="fb-tool-input-label" class="block font-bold text-slate-700 mb-1">
+                                        2. Danh Sách Target UID / Từ Khóa / Nội Dung:
+                                    </label>
+                                    <textarea id="fb-tool-input-data" rows="4" class="w-full p-3 rounded-xl border border-slate-300 bg-slate-50 text-slate-800 font-mono text-[11px] focus:ring-2 focus:ring-purple-500 focus:bg-white transition" placeholder="Nhập danh sách UID Facebook (Mỗi UID 1 dòng)...&#10;Ví dụ:&#10;100088219483921&#10;100091823746192&#10;100063910283741"></textarea>
+                                    <p class="text-[10px] text-slate-400 mt-1 flex items-center justify-between">
+                                        <span>* Hỗ trợ Spintax nội dung: <code class="bg-slate-100 px-1 py-0.5 rounded text-purple-700 font-mono">{Xin chào|Chào bạn|Hi}</code></span>
+                                        <span id="uid-count-badge" class="font-bold text-slate-600">0 dòng</span>
+                                    </p>
+                                </div>
+
+                                <!-- Safety Delay & Limits -->
+                                <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Giãn Cách Delay (giây):</label>
+                                        <div class="flex items-center gap-1">
+                                            <input type="number" id="fb-tool-delay-min" value="30" min="5" max="300" class="w-full p-1.5 rounded-lg border border-slate-300 text-center font-bold text-slate-800">
+                                            <span class="text-slate-400 font-bold">-</span>
+                                            <input type="number" id="fb-tool-delay-max" value="60" min="10" max="600" class="w-full p-1.5 rounded-lg border border-slate-300 text-center font-bold text-slate-800">
+                                        </div>
+                                        <p class="text-[9px] text-emerald-600 font-semibold mt-1">✓ Chuẩn Anti-Checkpoint</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Số Lượng Lượt Chạy Max:</label>
+                                        <input type="number" id="fb-tool-max-count" value="50" min="1" max="500" class="w-full p-1.5 rounded-lg border border-slate-300 text-center font-bold text-slate-800">
+                                        <p class="text-[9px] text-slate-500 mt-1">Giới hạn safe/ngày</p>
+                                    </div>
+                                </div>
+
+                                <!-- Advanced Stealth Checkboxes -->
+                                <div class="space-y-1.5 bg-purple-50/50 p-2.5 rounded-xl border border-purple-100 text-[11px]">
+                                    <label class="flex items-center gap-2 cursor-pointer font-semibold text-slate-700">
+                                        <input type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
+                                        <span>Quỹ đạo chuột Bezier Curve + Gõ phím Human-like</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer font-semibold text-slate-700">
+                                        <input type="checkbox" checked class="rounded text-purple-600 focus:ring-purple-500">
+                                        <span>Auto Refresh IP Resident Proxy khi phát hiện rate limit</span>
+                                    </label>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="pt-1 flex items-center gap-2">
+                                    <button type="submit" id="btn-run-fb-tool" class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-extrabold text-xs shadow-lg hover:shadow-purple-500/25 transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-bolt animate-pulse"></i>
+                                        <span>⚡ KÍCH HOẠT CHẠY TOOL</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Terminal Execution Console & Audit Logs -->
+                <div class="light-card rounded-2xl p-5 border border-slate-200 bg-white space-y-4 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-terminal text-slate-800 text-base"></i>
+                            <h3 class="font-heading font-extrabold text-sm text-slate-900">Lịch Sử Thực Thi & Nhật Ký Running Tool Real-time</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[11px] font-bold text-slate-500">Auto-sync with `marketing_data.json`</span>
+                            <button onclick="fetchData()" class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-[11px] transition">
+                                <i class="fa-solid fa-rotate text-xs"></i> Làm mới Log
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Simulated Terminal Window -->
+                    <div class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-[11px] space-y-1.5 shadow-inner max-h-48 overflow-y-auto" id="fb-tool-terminal-window">
+                        <div class="text-slate-500">[2026-08-21 08:30:00] [STEALTH CORE] Initializing Playwright Undetectable Engine...</div>
+                        <div class="text-purple-300">[2026-08-21 08:30:01] [SYSTEM] ATP Simple FB Pro Automation Suite loaded (34 Tools Ready).</div>
+                        <div class="text-emerald-400">[2026-08-21 08:30:02] [ANTI-CHECKPOINT] Bezier trajectory active | Safety delay window: 30s - 60s.</div>
+                        <div class="text-amber-300">[2026-08-21 08:30:05] [STATUS] 4 Facebook Accounts & Fanpage connected with live sessions.</div>
+                    </div>
+
+                    <!-- Logs Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <th class="p-3 w-36">1. Thời Gian</th>
+                                    <th class="p-3 w-48">2. Tên Công Cụ / Module</th>
+                                    <th class="p-3 w-44">3. Tài Khoản Thực Thi</th>
+                                    <th class="p-3 w-28 text-center">4. Số Lượng</th>
+                                    <th class="p-3 w-32 text-center">5. Trạng Thái</th>
+                                    <th class="p-3">6. Ghi Chú An Toàn / Log</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fb-tools-log-table-body" class="divide-y divide-slate-200">
+                                <!-- Log items populated dynamically -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -7767,6 +8017,10 @@
                 const zaloPanel = document.getElementById('panel-zalo');
                 if (zaloPanel) zaloPanel.classList.remove('hidden');
                 showToast("📱 Đã mở Hạng mục: Zalo Marketing Task Management (Active)");
+            } else if (moduleId === 'tool-facebook') {
+                const toolFbPanel = document.getElementById('panel-tool-facebook');
+                if (toolFbPanel) toolFbPanel.classList.remove('hidden');
+                showToast("🛠️ Đã mở Facebook Automation Tool (ATP Simple FB Pro Style)");
             } else {
                 const updatingPanel = document.getElementById('panel-updating');
                 const titleText = document.getElementById('updating-title-text');
@@ -7815,6 +8069,205 @@
             setTimeout(() => { switchKwTimeFilter(1, '7d'); }, 100);
             fetchData();
         });
+
+        // -------------------------------------------------------------
+        // 🛠️ FACEBOOK AUTOMATION TOOL SUITE (ATP SIMPLE FB PRO STYLE) JS LOGIC
+        // -------------------------------------------------------------
+        let currentFbToolCluster = 'auto-friend';
+        let currentSelectedToolId = '1.1';
+        let currentSelectedToolName = 'Kết bạn theo danh sách gợi ý Facebook';
+        let fbToolsSuiteData = null;
+
+        function switchFbToolTab(clusterId) {
+            currentFbToolCluster = clusterId;
+            document.querySelectorAll('.fb-tool-tab').forEach(tab => {
+                tab.classList.remove('active', 'bg-purple-600', 'text-white');
+                tab.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+            const activeTab = document.getElementById('tab-btn-' + clusterId);
+            if (activeTab) {
+                activeTab.classList.add('active', 'bg-purple-600', 'text-white');
+                activeTab.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            }
+
+            renderFbToolClusterCards(clusterId);
+        }
+
+        function renderFbToolClusterCards(clusterId) {
+            const container = document.getElementById('fb-tool-cards-container');
+            const iconElem = document.getElementById('current-cluster-icon');
+            const titleElem = document.getElementById('current-cluster-title');
+
+            if (!fbToolsSuiteData || !fbToolsSuiteData.tool_categories) return;
+
+            const category = fbToolsSuiteData.tool_categories[clusterId];
+            if (!category) return;
+
+            if (iconElem) iconElem.className = `fa-solid ${category.icon} text-purple-600 text-base`;
+            if (titleElem) titleElem.innerText = `${category.code}: ${category.name} (${category.features.length} Tools)`;
+
+            let cardsHtml = '';
+            category.features.forEach((feat, index) => {
+                const isSelected = feat.id === currentSelectedToolId;
+                const borderClass = isSelected ? 'border-purple-500 bg-purple-50/40 shadow-sm ring-1 ring-purple-400' : 'border-slate-200 hover:border-purple-300 hover:bg-slate-50';
+                
+                cardsHtml += `
+                    <div onclick="selectFbToolFeature('${feat.id}', '${feat.name.replace(/'/g, "\'")}', '${(feat.desc || '').replace(/'/g, "\'")}')" class="p-3.5 rounded-xl border ${borderClass} cursor-pointer transition flex flex-col justify-between space-y-2">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded bg-purple-100 text-purple-700">${feat.id}</span>
+                                    <h4 class="text-xs font-bold text-slate-800 leading-snug">${feat.name}</h4>
+                                </div>
+                                <p class="text-[10.5px] text-slate-500 font-medium leading-relaxed">${feat.desc || ''}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10px]">
+                            <span class="text-slate-400 font-semibold">Giới hạn: <strong class="text-slate-700">${feat.daily_limit || feat.speed || 'Safe'}</strong></span>
+                            <span class="text-purple-600 font-bold flex items-center gap-1">
+                                <span>Kích hoạt</span> <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (container) container.innerHTML = cardsHtml;
+
+            // Auto select first feature of cluster if current feature not in cluster
+            const hasCurrent = category.features.some(f => f.id === currentSelectedToolId);
+            if (!hasCurrent && category.features.length > 0) {
+                const first = category.features[0];
+                selectFbToolFeature(first.id, first.name, first.desc || '');
+            }
+        }
+
+        function selectFbToolFeature(toolId, toolName, toolDesc) {
+            currentSelectedToolId = toolId;
+            currentSelectedToolName = toolName;
+
+            const badge = document.getElementById('selected-tool-badge');
+            if (badge) badge.innerText = `Tool ${toolId} Selected`;
+
+            const inputLabel = document.getElementById('fb-tool-input-label');
+            const inputArea = document.getElementById('fb-tool-input-data');
+
+            if (toolId.startsWith('1.') || toolId === '3.2' || toolId === '3.3' || toolId === '3.4' || toolId === '5.2') {
+                if (inputLabel) inputLabel.innerText = "2. Danh Sách Target UID (Mỗi UID 1 dòng):";
+                if (inputArea) inputArea.placeholder = "Nhập danh sách UID Facebook (Mỗi UID 1 dòng)...
+Ví dụ:
+100088219483921
+100091823746192
+100063910283741";
+            } else if (toolId.startsWith('2.') || toolId === '4.3' || toolId === '5.3') {
+                if (inputLabel) inputLabel.innerText = "2. Nội Dung Đăng Bài / Comment / Message (Spintax Supported):";
+                if (inputArea) inputArea.placeholder = "Nhập nội dung theo cú pháp Spintax...
+Ví dụ:
+{Xin chào|Hi|Chào bạn} anh/chị! Mô Hình Song Anh chuyên sản xuất mô hình quy hoạch B2B chuẩn tỉ lệ.";
+            } else if (toolId === '5.1') {
+                if (inputLabel) inputLabel.innerText = "2. Danh Sách Từ Khóa Nhóm (Keyword Groups):";
+                if (inputArea) inputArea.placeholder = "Nhập từ khóa tìm kiếm nhóm...
+Ví dụ:
+chủ đầu tư bất động sản
+mô hình kiến trúc
+thiết kế quy hoạch";
+            } else {
+                if (inputLabel) inputLabel.innerText = "2. Cấu Hinh Dữ Liệu Thực Thi / Target:";
+                if (inputArea) inputArea.placeholder = "Nhập thông tin dữ liệu hoặc UID liên quan...";
+            }
+
+            renderFbToolClusterCards(currentFbToolCluster);
+            showToast(`⚙️ Đã chọn công cụ [${toolId}] ${toolName}`);
+        }
+
+        function runFacebookToolAction() {
+            const accSelect = document.getElementById('fb-tool-account-select');
+            const inputData = document.getElementById('fb-tool-input-data');
+            const delayMin = document.getElementById('fb-tool-delay-min').value || 30;
+            const delayMax = document.getElementById('fb-tool-delay-max').value || 60;
+            const maxCount = document.getElementById('fb-tool-max-count').value || 50;
+
+            const accName = accSelect ? accSelect.options[accSelect.selectedIndex].text.split('(')[0].trim() : 'Mô Hình Song Anh';
+            const rawText = inputData ? inputData.value.trim() : '';
+            const lineCount = rawText ? rawText.split('\n').filter(l => l.trim()).length : 15;
+
+            const nowStr = new Date().toISOString().replace('T', ' ').substring(0, 19);
+
+            const newLog = {
+                timestamp: nowStr,
+                tool_id: currentSelectedToolId,
+                tool_name: currentSelectedToolName,
+                account: accName,
+                target_count: Math.min(lineCount, parseInt(maxCount)),
+                status: "Running (Stealth Mode)",
+                note: `Giãn cách ${delayMin}s-${delayMax}s | Anti-Checkpoint Guard Active`
+            };
+
+            if (fbToolsSuiteData && fbToolsSuiteData.execution_logs) {
+                fbToolsSuiteData.execution_logs.unshift(newLog);
+            }
+
+            renderFbToolLogs();
+
+            // Terminal simulation write
+            const term = document.getElementById('fb-tool-terminal-window');
+            if (term) {
+                const logLine = document.createElement('div');
+                logLine.className = 'text-emerald-400 font-bold';
+                logLine.innerText = `[${nowStr}] [RUNNING] Tool ${currentSelectedToolId} (${currentSelectedToolName}) triggered on '${accName}' (${newLog.target_count} targets, ${delayMin}-${delayMax}s delay).`;
+                term.prepend(logLine);
+            }
+
+            showToast(`⚡ Đã kích hoạt [${currentSelectedToolId}] ${currentSelectedToolName}! Hệ thống đang chạy an toàn!`);
+        }
+
+        function renderFbToolLogs() {
+            const tbody = document.getElementById('fb-tools-log-table-body');
+            if (!tbody || !fbToolsSuiteData || !fbToolsSuiteData.execution_logs) return;
+
+            let html = '';
+            fbToolsSuiteData.execution_logs.forEach(log => {
+                const isRunning = log.status.includes('Running');
+                const badgeClass = isRunning ? 'bg-amber-100 text-amber-800 border-amber-200' : 'bg-emerald-100 text-emerald-800 border-emerald-200';
+                
+                html += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3 font-mono text-[11px] text-slate-500">${log.timestamp}</td>
+                        <td class="p-3 font-bold text-slate-800">
+                            <span class="px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-mono text-[10px] mr-1">${log.tool_id}</span>
+                            ${log.tool_name}
+                        </td>
+                        <td class="p-3 font-medium text-slate-700">${log.account}</td>
+                        <td class="p-3 text-center font-extrabold text-slate-900">${log.target_count}</td>
+                        <td class="p-3 text-center">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold border ${badgeClass}">
+                                ${log.status}
+                            </span>
+                        </td>
+                        <td class="p-3 text-slate-600 text-[11px]">${log.note}</td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        }
+
+        // Attach to fetchData
+        const origFetchData = fetchData;
+        fetchData = async function() {
+            try {
+                const res = await fetch('marketing_data.json?t=' + new Date().getTime());
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.facebook_tools_suite) {
+                        fbToolsSuiteData = data.facebook_tools_suite;
+                        renderFbToolClusterCards(currentFbToolCluster);
+                        renderFbToolLogs();
+                    }
+                }
+            } catch(e) { console.error("Error loading facebook_tools_suite", e); }
+            return origFetchData.apply(this, arguments);
+        };
     </script>
 </body>
 </html>
