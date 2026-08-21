@@ -9537,10 +9537,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 if (label) label.innerText = "3. Nhập Danh Sách Target UID (Mỗi UID 1 dòng):";
                 if (area) {
                     area.disabled = false;
-                    area.value = "100088219483921
-100091823746192
-100063910283741
-100075849201948";
+                    area.value = "100088219483921\n100091823746192\n100063910283741\n100075849201948";
                 }
                 updateLineCount('friend-input-data', 'friend-uid-count');
             } else if (mode === 'mutual') {
@@ -9564,8 +9561,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             const area = document.getElementById(textareaId);
             const badge = document.getElementById(countBadgeId);
             if (area && badge) {
-                const lines = area.value.split('
-').map(l => l.trim()).filter(l => l.length > 0);
+                const lines = area.value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
                 badge.innerText = `${lines.length} dòng`;
             }
         }
@@ -9726,8 +9722,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 "100075849201948",
                 "100049281749201"
             ];
-            const text = uids.join('
-');
+            const text = uids.join('\n');
             navigator.clipboard.writeText(text).then(() => {
                 showToast("📋 Đã copy danh sách UID vào Clipboard thành công!");
             }).catch(() => {
@@ -9736,10 +9731,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         }
 
         function exportUidListToCsv() {
-            const csvContent = "data:text/csv;charset=utf-8,STT,UID,HoTen,GioiTinh,KhuVuc,NguonQuet,BanChung
-1,100088219483921,Trần Hoàng Nam,Nam,TP. Hồ Chí Minh,Group Hội KTS Việt Nam,12
-2,100091823746192,Lê Quốc Tuấn,Nam,Bình Dương,Group Diễn Đàn BĐS B2B,8
-3,100063910283741,Nguyễn Văn Bình,Nam,Hà Nội,Likers Post Sa Bàn KCN,15";
+            const csvContent = "data:text/csv;charset=utf-8,STT,UID,HoTen,GioiTinh,KhuVuc,NguonQuet,BanChung\n1,100088219483921,Trần Hoàng Nam,Nam,TP. Hồ Chí Minh,Group Hội KTS Việt Nam,12\n2,100091823746192,Lê Quốc Tuấn,Nam,Bình Dương,Group Diễn Đàn BĐS B2B,8\n3,100063910283741,Nguyễn Văn Bình,Nam,Hà Nội,Likers Post Sa Bàn KCN,15";
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
@@ -9751,11 +9743,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         }
 
         function sendUidToFriendModule() {
-            const uids = "100088219483921
-100091823746192
-100063910283741
-100075849201948
-100049281749201";
+            const uids = "100088219483921\n100091823746192\n100063910283741\n100075849201948\n100049281749201";
             selectModule('fb-auto-friend');
             setTimeout(() => {
                 const area = document.getElementById('friend-input-data');
