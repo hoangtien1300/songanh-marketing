@@ -564,11 +564,11 @@
                         <table class="w-full text-left text-xs border-collapse">
                             <thead class="bg-slate-100 text-brand-navy font-bold uppercase tracking-wider border-b border-slate-200">
                                 <tr>
-                                    <th class="p-3.5 w-44">⏰ Thời Gian</th>
-                                    <th class="p-3.5 w-44">🎯 Hạng Mục</th>
-                                    <th class="p-3.5">📝 Thao Tác / Hành Động Marketing</th>
+                                    <th class="p-3.5 w-40">⏰ Thời Gian</th>
+                                    <th class="p-3.5 w-36">🎯 Hạng Mục</th>
+                                    <th class="p-3.5 w-5/12 min-w-[320px]">📝 Nội Dung Cập Nhật</th>
                                     <th class="p-3.5 w-48">👤 Người Thực Hiện</th>
-                                    <th class="p-3.5 w-40 text-center">🟢 Trạng Thái</th>
+                                    <th class="p-3.5 w-36 text-center">🟢 Trạng Thái</th>
                                 </tr>
                             </thead>
                             <tbody id="activity-log-table-body" class="divide-y divide-slate-200">
@@ -6728,21 +6728,21 @@
         ];
 
         let marketingActivityLog = [
-            { id: 1, timestamp: "20/08/2026 16:10:00", module: "Meta API & FB Groups", action: "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công", executor: "Kiến - Trợ lý Lập Trình (song_anh_code_expert)", status: "⚡ Real-time Auto Sync" },
-            { id: 2, timestamp: "20/08/2026 16:09:28", module: "SEO Google (GSC & GA4)", action: "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)", executor: "Trí - Trợ lý SEO Master (seo_expert)", status: "✅ Hoàn Thành" },
-            { id: 3, timestamp: "20/08/2026 15:36:07", module: "Facebook Marketing", action: "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS", executor: "Văn - Trợ lý Nội Dung (content_creator)", status: "✅ Hoàn Thành" },
-            { id: 4, timestamp: "20/08/2026 14:20:00", module: "Google Business Profile", action: "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
-            { id: 5, timestamp: "20/08/2026 11:15:00", module: "Zalo OA & Zalo Personal", action: "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
-            { id: 6, timestamp: "20/08/2026 09:00:00", module: "Notion Task Management", action: "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34", executor: "Minh - Trợ lý Điều Phối (Lead Coordinator Agent)", status: "⚡ Real-time Auto Sync" },
-            { id: 7, timestamp: "19/08/2026 17:45:00", module: "Facebook Fanpage", action: "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox", executor: "Kiến - Trợ lý Lập Trình (song_anh_code_expert)", status: "✅ Hoàn Thành" },
-            { id: 8, timestamp: "19/08/2026 14:30:00", module: "SEO On-Page", action: "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org", executor: "Thông - Trợ lý Website (song_anh_wp_publisher)", status: "✅ Hoàn Thành" },
-            { id: 9, timestamp: "19/08/2026 10:20:00", module: "Facebook Profile", action: "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
-            { id: 10, timestamp: "18/08/2026 16:00:00", module: "SEO Website", action: "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị", executor: "Trí - Trợ lý SEO Master (seo_expert)", status: "✅ Hoàn Thành" },
-            { id: 11, timestamp: "18/08/2026 11:30:00", module: "Zalo Marketing", action: "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles", executor: "Văn - Trợ lý Nội Dung (content_creator)", status: "✅ Hoàn Thành" },
-            { id: 12, timestamp: "17/08/2026 15:10:00", module: "Google Business Profile", action: "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN", executor: "Phạm Hoàng Tiến (Master Admin)", status: "✅ Hoàn Thành" },
-            { id: 13, timestamp: "17/08/2026 09:45:00", module: "Meta API & FB Groups", action: "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới", executor: "Kiến - Trợ lý Lập Trình (song_anh_code_expert)", status: "⚡ Real-time Auto Sync" },
-            { id: 14, timestamp: "16/08/2026 14:00:00", module: "SEO Off-Page & Entity", action: "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn", executor: "Trí - Trợ lý SEO Master (seo_expert)", status: "✅ Hoàn Thành" },
-            { id: 15, timestamp: "16/08/2026 08:30:00", module: "Web App Core System", action: "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%", executor: "Kiến - Trợ lý Lập Trình (song_anh_code_expert)", status: "⚡ Real-time Auto Sync" }
+            { id: 1, timestamp: "20/08/2026 16:10:00", module: "Meta API & FB Groups", action: "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" },
+            { id: 2, timestamp: "20/08/2026 16:09:28", module: "SEO Google (GSC & GA4)", action: "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
+            { id: 3, timestamp: "20/08/2026 15:36:07", module: "Facebook Marketing", action: "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS", executor: "Văn - Trợ lý Nội Dung", status: "✅ Hoàn Thành" },
+            { id: 4, timestamp: "20/08/2026 14:20:00", module: "Google Business Profile", action: "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
+            { id: 5, timestamp: "20/08/2026 11:15:00", module: "Zalo OA & Zalo Personal", action: "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
+            { id: 6, timestamp: "20/08/2026 09:00:00", module: "Notion Task Management", action: "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34", executor: "Minh - Trợ lý Điều Phối", status: "⚡ Real-time Auto Sync" },
+            { id: 7, timestamp: "19/08/2026 17:45:00", module: "Facebook Fanpage", action: "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox", executor: "Kiến - Trợ lý Lập Trình", status: "✅ Hoàn Thành" },
+            { id: 8, timestamp: "19/08/2026 14:30:00", module: "SEO On-Page", action: "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org", executor: "Thông - Trợ lý Website", status: "✅ Hoàn Thành" },
+            { id: 9, timestamp: "19/08/2026 10:20:00", module: "Facebook Profile", action: "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
+            { id: 10, timestamp: "18/08/2026 16:00:00", module: "SEO Website", action: "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
+            { id: 11, timestamp: "18/08/2026 11:30:00", module: "Zalo Marketing", action: "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles", executor: "Văn - Trợ lý Nội Dung", status: "✅ Hoàn Thành" },
+            { id: 12, timestamp: "17/08/2026 15:10:00", module: "Google Business Profile", action: "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
+            { id: 13, timestamp: "17/08/2026 09:45:00", module: "Meta API & FB Groups", action: "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" },
+            { id: 14, timestamp: "16/08/2026 14:00:00", module: "SEO Off-Page & Entity", action: "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
+            { id: 15, timestamp: "16/08/2026 08:30:00", module: "Web App Core System", action: "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" }
         ];
         let currentFbGroupChannel = 'fanpage';
         let fanpageJoinedGroupsList = [];
@@ -7658,11 +7658,30 @@
 
             let html = '';
             pageItems.forEach(item => {
-                const time = item.timestamp || 'N/A';
+                const rawTime = item.timestamp || 'N/A';
                 const mod = item.module || 'Hệ thống';
                 const action = item.action || 'N/A';
-                const exec = item.executor || 'Tự động';
+                const rawExec = item.executor || 'Tự động';
                 const status = item.status || '✅ Hoàn Thành';
+
+                // Lược bỏ hoàn toàn chuỗi mã hệ thống trong ngoặc như '(song_anh_code_expert)', '(Lead Developer)', '(Master Admin)'...
+                const exec = rawExec.replace(/\s*\([^)]*\)/g, '').trim();
+
+                // Ngắt dòng Thời gian thành 2 dòng xếp chồng: Dòng 1: 📅 Ngày (DD/MM/YYYY), Dòng 2: ⏰ Giờ (HH:MM:SS)
+                let timeDisplay = rawTime;
+                if (rawTime.includes(' ')) {
+                    const timeParts = rawTime.trim().split(/\s+/);
+                    const datePart = timeParts[0] || '';
+                    const timePart = timeParts.slice(1).join(' ') || '';
+                    timeDisplay = `
+                        <div class="flex flex-col gap-0.5 leading-snug">
+                            <span class="font-bold text-slate-800 flex items-center gap-1 text-xs whitespace-nowrap">📅 ${datePart}</span>
+                            <span class="text-[11px] font-semibold text-slate-500 flex items-center gap-1 whitespace-nowrap">⏰ ${timePart}</span>
+                        </div>
+                    `;
+                } else {
+                    timeDisplay = `<span class="font-bold text-slate-700">${rawTime}</span>`;
+                }
 
                 let modBadge = 'bg-slate-100 text-slate-800 border-slate-200';
                 if (mod.toLowerCase().includes('facebook') || mod.toLowerCase().includes('meta')) {
@@ -7691,18 +7710,18 @@
 
                 html += `
                     <tr class="hover:bg-slate-50 transition font-medium">
-                        <td class="p-3.5 font-mono text-slate-600 font-bold whitespace-nowrap">${time}</td>
-                        <td class="p-3.5">
-                            <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg border ${modBadge}">${mod}</span>
+                        <td class="p-3.5 font-mono text-slate-600 font-bold align-top">${timeDisplay}</td>
+                        <td class="p-3.5 align-top">
+                            <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg border ${modBadge} inline-block">${mod}</span>
                         </td>
-                        <td class="p-3.5 font-bold text-slate-900 leading-relaxed">${action}</td>
-                        <td class="p-3.5 text-slate-800 font-bold whitespace-nowrap">
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid ${execIcon}"></i>
-                                <span>${exec}</span>
+                        <td class="p-3.5 font-bold text-slate-900 leading-relaxed min-w-[320px] align-top">${action}</td>
+                        <td class="p-3.5 text-slate-800 font-bold align-top">
+                            <div class="flex items-start gap-1.5 leading-snug">
+                                <i class="fa-solid ${execIcon} mt-0.5"></i>
+                                <span class="break-words">${exec}</span>
                             </div>
                         </td>
-                        <td class="p-3.5 text-center whitespace-nowrap">
+                        <td class="p-3.5 text-center align-top whitespace-nowrap">
                             <span class="px-2.5 py-1 text-[11px] font-extrabold rounded-full border ${statusBadge} inline-flex items-center gap-1">
                                 ${status}
                             </span>
