@@ -8173,25 +8173,15 @@
 
             if (toolId.startsWith('1.') || toolId === '3.2' || toolId === '3.3' || toolId === '3.4' || toolId === '5.2') {
                 if (inputLabel) inputLabel.innerText = "2. Danh Sách Target UID (Mỗi UID 1 dòng):";
-                if (inputArea) inputArea.placeholder = "Nhập danh sách UID Facebook (Mỗi UID 1 dòng)...
-Ví dụ:
-100088219483921
-100091823746192
-100063910283741";
+                if (inputArea) inputArea.placeholder = "Nhập danh sách UID Facebook (Mỗi UID 1 dòng)...\nVí dụ:\n100088219483921\n100091823746192\n100063910283741";
             } else if (toolId.startsWith('2.') || toolId === '4.3' || toolId === '5.3') {
                 if (inputLabel) inputLabel.innerText = "2. Nội Dung Đăng Bài / Comment / Message (Spintax Supported):";
-                if (inputArea) inputArea.placeholder = "Nhập nội dung theo cú pháp Spintax...
-Ví dụ:
-{Xin chào|Hi|Chào bạn} anh/chị! Mô Hình Song Anh chuyên sản xuất mô hình quy hoạch B2B chuẩn tỉ lệ.";
+                if (inputArea) inputArea.placeholder = "Nhập nội dung theo cú pháp Spintax...\nVí dụ:\n{Xin chào|Hi|Chào bạn} anh/chị! Mô Hình Song Anh chuyên sản xuất mô hình quy hoạch B2B chuẩn tỉ lệ.";
             } else if (toolId === '5.1') {
                 if (inputLabel) inputLabel.innerText = "2. Danh Sách Từ Khóa Nhóm (Keyword Groups):";
-                if (inputArea) inputArea.placeholder = "Nhập từ khóa tìm kiếm nhóm...
-Ví dụ:
-chủ đầu tư bất động sản
-mô hình kiến trúc
-thiết kế quy hoạch";
+                if (inputArea) inputArea.placeholder = "Nhập từ khóa tìm kiếm nhóm...\nVí dụ:\nchủ đầu tư bất động sản\nmô hình kiến trúc\nthiết kế quy hoạch";
             } else {
-                if (inputLabel) inputLabel.innerText = "2. Cấu Hinh Dữ Liệu Thực Thi / Target:";
+                if (inputLabel) inputLabel.innerText = "2. Cấu Hình Dữ Liệu Thực Thi / Target:";
                 if (inputArea) inputArea.placeholder = "Nhập thông tin dữ liệu hoặc UID liên quan...";
             }
 
