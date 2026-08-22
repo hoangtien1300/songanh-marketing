@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hệ Thống Báo Cáo & Quản Lý Sale - Mô Hình Song Anh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #B5952F;
+            --rich-black: #0B1120;
+            --card-bg: #1E293B;
+            --card-border: #334155;
+            --slate-gray: #64748B;
+            --light-bg: #F8FAFC;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --info: #38BDF8;
+            --purple: #A855F7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--rich-black); color: var(--text-main); line-height: 1.5; padding-bottom: 60px; }
+
+        /* HEADER TOP */
+        .titlebar {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            border-bottom: 2px solid var(--primary-gold);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            gap: 10px;
+        }
+
+        .brand-wrap { display: flex; align-items: center; gap: 10px; }
+        .brand-logo {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: #0F172A;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        .brand-title { font-size: 0.95rem; font-weight: 700; color: #FFF; letter-spacing: 0.3px; line-height: 1.2; }
+        .brand-sub { font-size: 0.72rem; color: var(--primary-gold); margin-top: 2px; }
+
+        .header-actions { display: flex; gap: 6px; align-items: center; }
+
+        /* NAVBAR TOP (CUỘN NGANG TRÊN MOBILE) */
+        .navbar {
+            background: #0F172A;
+            border-bottom: 1px solid var(--card-border);
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .navbar::-webkit-scrollbar { display: none; }
+
+        .nav-item { position: relative; flex-shrink: 0; }
+
+        .nav-btn {
+            padding: 12px 14px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+        .nav-btn:hover, .nav-btn:active { color: #FFF; }
+        .nav-btn.active {
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1E293B;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            min-width: 180px;
+            z-index: 100;
+            padding: 6px 0;
+        }
+        .nav-item:hover .dropdown-menu { display: block; }
+        
+        .dropdown-item {
+            padding: 9px 14px;
+            font-size: 0.8rem;
+            color: #CBD5E1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .dropdown-item:hover { background: #334155; color: var(--primary-gold); }
+
+        .tag-update {
+            font-size: 8.5px;
+            background: #334155;
+            color: #94A3B8;
+            padding: 2px 5px;
+            border-radius: 4px;
+            margin-left: 2px;
+        }
+
+        /* CONTAINER & TAB PANES */
+        .container { max-width: 1350px; margin: 16px auto; padding: 0 14px; }
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CARDS */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 16px;
+        }
+        .card-header {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* KPI METRICS (2 CỘT MOBILE, 4 CỘT DESKTOP) */
+        .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+        @media (max-width: 900px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
+        
+        .kpi-box {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .kpi-box::before { content: ''; position: absolute; top: 0; left: 0; width: 3.5px; height: 100%; background: var(--primary-gold); }
+        .kpi-box.green::before { background: var(--success); }
+        .kpi-box.blue::before { background: var(--info); }
+        .kpi-box.slate::before { background: var(--slate-gray); }
+        
+        .kpi-label { font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.2px; line-height: 1.2; }
+        .kpi-num { font-size: 1.7rem; font-weight: 800; color: #FFF; margin-top: 3px; line-height: 1; }
+
+        /* NGUỒN KHÁCH HÀNG */
+        .source-bar {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+            background: #0F172A;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            font-size: 0.78rem;
+            align-items: center;
+        }
+        .source-pill {
+            background: #1E293B;
+            border: 1px solid var(--card-border);
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: #CBD5E1;
+            font-size: 0.75rem;
+        }
+        .source-pill strong { color: var(--primary-gold); }
+
+        /* STATUS FILTER TABS (CUỘN NGANG TRÊN MOBILE) */
+        .filter-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+            background: #0F172A;
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .filter-bar::-webkit-scrollbar { display: none; }
+
+        .filter-btn {
+            background: #1E293B;
+            border: 1px solid var(--card-border);
+            color: #CBD5E1;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            flex-shrink: 0;
+            user-select: none;
+        }
+        .filter-btn:hover, .filter-btn:active { background: #334155; color: #FFF; }
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%) !important;
+            color: #0F172A !important;
+            border-color: var(--primary-gold) !important;
+            font-weight: 700 !important;
+        }
+
+        /* DESKTOP TABLE VIEW */
+        .desktop-table-wrap { display: block; overflow-x: auto; border: 1px solid var(--card-border); border-radius: 8px; margin-bottom: 14px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        th { background: #0F172A; color: var(--text-muted); text-transform: uppercase; font-weight: 600; padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--card-border); font-size: 0.74rem; }
+        td { padding: 10px; border-bottom: 1px solid var(--card-border); color: #E2E8F0; }
+        tr:hover { background: rgba(255,255,255,0.02); }
+
+        /* MOBILE CARDS VIEW (HIỂN THỊ DẠNG THẺ TRÊN MÀN HÌNH NHỎ) */
+        .mobile-card-list { display: none; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+        @media (max-width: 768px) {
+            .desktop-table-wrap { display: none; }
+            .mobile-card-list { display: flex; }
+        }
+
+        .project-card {
+            background: #0F172A;
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            border-left: 3.5px solid var(--primary-gold);
+        }
+        .project-card.green { border-left-color: var(--success); }
+        .project-card.blue { border-left-color: var(--info); }
+        .project-card.slate { border-left-color: var(--slate-gray); }
+        .project-card.purple { border-left-color: var(--purple); }
+
+        .project-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+        .project-card-title { font-weight: 700; font-size: 0.88rem; color: #FFF; line-height: 1.3; }
+        .project-card-date { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
+
+        .project-card-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: #CBD5E1;
+            margin-bottom: 6px;
+            background: rgba(255,255,255,0.02);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .project-card-meta strong { color: var(--primary-gold); }
+
+        .project-card-note {
+            font-size: 0.78rem;
+            color: #94A3B8;
+            line-height: 1.35;
+        }
+
+        .badge { display: inline-flex; align-items: center; padding: 2px 6px; border-radius: 10px; font-weight: 600; font-size: 0.68rem; }
+        .badge-green { background: rgba(16,185,129,0.15); color: #34D399; border: 1px solid rgba(16,185,129,0.3); }
+        .badge-gold { background: rgba(212,175,55,0.15); color: var(--primary-gold); border: 1px solid rgba(212,175,55,0.3); }
+        .badge-blue { background: rgba(56,189,248,0.15); color: #38BDF8; border: 1px solid rgba(56,189,248,0.3); }
+        .badge-purple { background: rgba(168,85,247,0.15); color: #C084FC; border: 1px solid rgba(168,85,247,0.3); }
+        .badge-gray { background: #334155; color: #94A3B8; }
+
+        /* BUTTONS */
+        .btn {
+            background: #334155;
+            color: #FFF;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn:hover { background: #475569; }
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: #0F172A;
+            font-weight: 700;
+        }
+
+        /* COMING SOON CARD */
+        .coming-soon-card {
+            background: var(--card-bg);
+            border: 1px dashed var(--card-border);
+            border-radius: 12px;
+            padding: 40px 16px;
+            text-align: center;
+        }
+        .coming-soon-icon { font-size: 2.4rem; margin-bottom: 10px; }
+        .coming-soon-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-gold); margin-bottom: 6px; }
+        .coming-soon-desc { font-size: 0.82rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 16px auto; }
+
+        /* MOBILE SPECIFIC TUNING */
+        @media (max-width: 600px) {
+            .titlebar { padding: 10px 12px; }
+            .brand-title { font-size: 0.88rem; }
+            .brand-sub { font-size: 0.68rem; }
+            .container { padding: 0 10px; margin: 10px auto; }
+            .card { padding: 12px; border-radius: 10px; margin-bottom: 12px; }
+            .btn { padding: 6px 10px; font-size: 0.75rem; }
+            .kpi-num { font-size: 1.5rem; }
+            .kpi-label { font-size: 0.68rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="titlebar">
+    <div class="brand-wrap">
+        <div class="brand-logo">SA</div>
+        <div>
+            <div class="brand-title">HỆ THỐNG QUẢN LÝ SALE</div>
+            <div class="brand-sub">Tiến &amp; Sang • Song Anh Model</div>
+        </div>
+    </div>
+    <div class="header-actions">
+        <button class="btn btn-gold" onclick="window.print()">🖨️ In A4</button>
+        <button class="btn" onclick="copyQuickZalo()">📋 Zalo</button>
+    </div>
+</div>
+
+<!-- NAVBAR TOP TINH GỌN (CUỘN NGANG TRÊN ĐIỆN THOẠI) -->
+<div class="navbar">
+    <!-- 1. BÁO CÁO -->
+    <div class="nav-item">
+        <button class="nav-btn active" onclick="switchTab('tab-report', this)">
+            📊 Báo Cáo ▾
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" onclick="scrollToSection('sec-overview')">⚡ Chỉ Số Tổng Quan</a>
+            <a class="dropdown-item" onclick="scrollToSection('sec-sources')">🎯 Nguồn Khách Hàng</a>
+            <a class="dropdown-item" onclick="scrollToSection('sec-new-leads')">📋 Khách Hàng Mới</a>
+            <a class="dropdown-item" onclick="scrollToSection('sec-pipeline')">📊 Chi Tiết Trạng Thái</a>
+        </div>
+    </div>
+
+    <!-- 2. ĐƠN HÀNG -->
+    <div class="nav-item">
+        <button class="nav-btn" onclick="switchTab('tab-orders', this)">
+            📋 Đơn Hàng <span class="tag-update">Update</span>
+        </button>
+    </div>
+
+    <!-- 3. BÁO GIÁ -->
+    <div class="nav-item">
+        <button class="nav-btn" onclick="switchTab('tab-quote', this)">
+            📑 Báo Giá <span class="tag-update">Update</span>
+        </button>
+    </div>
+
+    <!-- 4. THƯ NGỎ -->
+    <div class="nav-item">
+        <button class="nav-btn" onclick="switchTab('tab-letter', this)">
+            📝 Thư Ngỏ <span class="tag-update">Update</span>
+        </button>
+    </div>
+
+    <!-- 5. TRỢ LÝ -->
+    <div class="nav-item">
+        <button class="nav-btn" onclick="switchTab('tab-agents', this)">
+            👥 Trợ Lý <span class="tag-update">Update</span>
+        </button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ==================== TAB 1: BÁO CÁO SALE HÀNG TUẦN ==================== -->
+    <div id="tab-report" class="tab-pane active">
+
+        <!-- THÔNG TIN ĐẦU TRANG & 4 THẺ KPI -->
+        <div class="card" id="sec-overview">
+            <div class="card-header">
+                <span>🏛️ BÁO CÁO SALE HÀNG TUẦN</span>
+                <span style="color: var(--primary-gold); font-size: 0.8rem;" id="currentDateText">Thứ Bảy, Tuần Này</span>
+            </div>
+            <p style="color: #CBD5E1; font-size: 0.78rem; margin-bottom: 12px;">
+                Người thực hiện: <strong>Phạm Hoàng Tiến</strong> và <strong>Võ Minh Sang</strong> • Dữ liệu bám sát <strong>Notion</strong>.
+            </p>
+
+            <!-- 4 THẺ KPI CHỈ SỐ -->
+            <div class="kpi-grid">
+                <div class="kpi-box">
+                    <div class="kpi-label">Khách hàng liên hệ tuần này</div>
+                    <div class="kpi-num" style="color: var(--primary-gold);">08</div>
+                </div>
+                <div class="kpi-box green">
+                    <div class="kpi-label">Đơn hàng ký trong tuần</div>
+                    <div class="kpi-num" style="color: #34D399;">02</div>
+                </div>
+                <div class="kpi-box blue">
+                    <div class="kpi-label">Đơn hàng đang báo giá</div>
+                    <div class="kpi-num" style="color: #38BDF8;">04</div>
+                </div>
+                <div class="kpi-box slate">
+                    <div class="kpi-label">Đơn hàng đang thi công</div>
+                    <div class="kpi-num" style="color: #94A3B8;">03</div>
+                </div>
+            </div>
+
+            <!-- PHÂN BỔ NGUỒN KHÁCH HÀNG -->
+            <div id="sec-sources" style="font-weight: 700; font-size: 0.8rem; color: var(--primary-gold); margin-bottom: 6px;">
+                🎯 NGUỒN KHÁCH HÀNG LIÊN HỆ MỚI:
+            </div>
+            <div class="source-bar">
+                <div class="source-pill">📞 Hotline Sếp: <strong>02</strong></div>
+                <div class="source-pill">📱 Số Tiến: <strong>03</strong></div>
+                <div class="source-pill">📱 Số Sang: <strong>02</strong></div>
+                <div class="source-pill">📘 Fanpage: <strong>01</strong></div>
+                <div class="source-pill">🌐 Website: <strong>00</strong></div>
+            </div>
+        </div>
+
+        <!-- BẢNG DANH SÁCH KHÁCH HÀNG MỚI TRONG TUẦN -->
+        <div class="card" id="sec-new-leads">
+            <div class="card-header">
+                <span>📋 DANH SÁCH KHÁCH HÀNG MỚI TRONG TUẦN</span>
+                <span class="badge badge-gold">8 Khách</span>
+            </div>
+            
+            <!-- DESKTOP VIEW -->
+            <div class="desktop-table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="35">#</th>
+                            <th style="min-width: 180px;">TÊN DỰ ÁN &amp; KHÁCH HÀNG</th>
+                            <th>NGUỒN KHÁCH</th>
+                            <th>TƯ VẤN</th>
+                            <th>NGÀY</th>
+                            <th>TRẠNG THÁI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td style="font-weight: 600;">Sa bàn Dự án Hướng Dương - CONA LAND</td>
+                            <td><span class="badge badge-purple">Hotline Sếp</span></td>
+                            <td>Tiến &amp; Sang</td>
+                            <td>20/08</td>
+                            <td><span class="badge badge-green">🤝 Hợp đồng</span></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td style="font-weight: 600;">Mô hình Nhà máy chế biến - Cty Nam Phát</td>
+                            <td><span class="badge badge-blue">Số Sang</span></td>
+                            <td>Sang</td>
+                            <td>19/08</td>
+                            <td><span class="badge badge-green">🤝 Hợp đồng</span></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td style="font-weight: 600;">Khu Dân Cư Sinh Thái (1/200) - CĐT Hưng Phát</td>
+                            <td><span class="badge badge-blue">Số Tiến</span></td>
+                            <td>Tiến</td>
+                            <td>18/08</td>
+                            <td><span class="badge badge-gold">🧾 Báo giá</span></td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td style="font-weight: 600;">Quy Hoạch KCN Bến Lức - Cty Kiến Trúc X</td>
+                            <td><span class="badge badge-purple">Facebook</span></td>
+                            <td>Tiến &amp; Sang</td>
+                            <td>17/08</td>
+                            <td><span class="badge badge-gold">🧾 Báo giá</span></td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td style="font-weight: 600;">Sa bàn Tòa nhà học tập - Trường Quốc Tế V</td>
+                            <td><span class="badge badge-blue">Số Sang</span></td>
+                            <td>Sang</td>
+                            <td>16/08</td>
+                            <td><span class="badge badge-gray">💬 Tư vấn</span></td>
+                        </tr>
+                        <tr>
+                            <td>06</td>
+                            <td style="font-weight: 600;">Mô hình thiết bị công nghiệp - Ms. Thúy Nhi</td>
+                            <td><span class="badge badge-blue">Số Tiến</span></td>
+                            <td>Tiến</td>
+                            <td>16/08</td>
+                            <td><span class="badge badge-gold">💬 Tư vấn</span></td>
+                        </tr>
+                        <tr>
+                            <td>07</td>
+                            <td style="font-weight: 600;">Sửa chữa sa bàn - Cty Ý Tưởng Mới</td>
+                            <td><span class="badge badge-purple">Hotline Sếp</span></td>
+                            <td>Sang</td>
+                            <td>15/08</td>
+                            <td><span class="badge badge-blue">💬 Tư vấn</span></td>
+                        </tr>
+                        <tr>
+                            <td>08</td>
+                            <td style="font-weight: 600;">Sa bàn Cảng Logistics - Vina Logistics</td>
+                            <td><span class="badge badge-blue">Số Tiến</span></td>
+                            <td>Tiến</td>
+                            <td>15/08</td>
+                            <td><span class="badge badge-gold">💬 Tư vấn</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- MOBILE CARDS VIEW -->
+            <div class="mobile-card-list">
+                <div class="project-card green">
+                    <div class="project-card-header">
+                        <div class="project-card-title">01. Sa bàn Dự án Hướng Dương - CONA LAND</div>
+                        <span class="badge badge-green">🤝 Hợp đồng</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 20/08</div>
+                        <div>📞 Nguồn: <strong>Hotline Sếp</strong></div>
+                        <div>👤 Tư vấn: <strong>Tiến &amp; Sang</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card green">
+                    <div class="project-card-header">
+                        <div class="project-card-title">02. Mô hình Nhà máy chế biến - Cty Nam Phát</div>
+                        <span class="badge badge-green">🤝 Hợp đồng</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 19/08</div>
+                        <div>📱 Nguồn: <strong>Số Sang</strong></div>
+                        <div>👤 Tư vấn: <strong>Sang</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card blue">
+                    <div class="project-card-header">
+                        <div class="project-card-title">03. Khu Dân Cư Sinh Thái (1/200) - CĐT Hưng Phát</div>
+                        <span class="badge badge-gold">🧾 Báo giá</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 18/08</div>
+                        <div>📱 Nguồn: <strong>Số Tiến</strong></div>
+                        <div>👤 Tư vấn: <strong>Tiến</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card blue">
+                    <div class="project-card-header">
+                        <div class="project-card-title">04. Quy Hoạch KCN Bến Lức - Cty Kiến Trúc X</div>
+                        <span class="badge badge-gold">🧾 Báo giá</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 17/08</div>
+                        <div>📘 Nguồn: <strong>Facebook</strong></div>
+                        <div>👤 Tư vấn: <strong>Tiến &amp; Sang</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <div class="project-card-title">05. Sa bàn Tòa nhà học tập - Trường Quốc Tế V</div>
+                        <span class="badge badge-gray">💬 Tư vấn</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 16/08</div>
+                        <div>📱 Nguồn: <strong>Số Sang</strong></div>
+                        <div>👤 Tư vấn: <strong>Sang</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <div class="project-card-title">06. Mô hình thiết bị công nghiệp - Ms. Thúy Nhi</div>
+                        <span class="badge badge-gold">💬 Tư vấn</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 16/08</div>
+                        <div>📱 Nguồn: <strong>Số Tiến</strong></div>
+                        <div>👤 Tư vấn: <strong>Tiến</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <div class="project-card-title">07. Sửa chữa sa bàn - Cty Ý Tưởng Mới</div>
+                        <span class="badge badge-blue">💬 Tư vấn</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 15/08</div>
+                        <div>📞 Nguồn: <strong>Hotline Sếp</strong></div>
+                        <div>👤 Tư vấn: <strong>Sang</strong></div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <div class="project-card-title">08. Sa bàn Cảng Logistics - Vina Logistics</div>
+                        <span class="badge badge-gold">💬 Tư vấn</span>
+                    </div>
+                    <div class="project-card-meta">
+                        <div>📅 15/08</div>
+                        <div>📱 Nguồn: <strong>Số Tiến</strong></div>
+                        <div>👤 Tư vấn: <strong>Tiến</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHI TIẾT DỰ ÁN THEO TRẠNG THÁI (BỘ LỌC TƯƠNG TÁC HOẠT ĐỘNG HOÀN HẢO CẢ TRÊN MOBILE & DESKTOP) -->
+        <div class="card" id="sec-pipeline">
+            <div class="card-header">
+                <span>📊 CHI TIẾT DỰ ÁN THEO TRẠNG THÁI</span>
+                <span id="currentFilterLabel" style="font-size: 0.78rem; color: var(--primary-gold); font-weight: 600;">Tất cả (11)</span>
+            </div>
+
+            <!-- TABS BỘ LỌC CUỘN NGANG TRÊN MOBILE -->
+            <div class="filter-bar">
+                <button class="filter-btn active" id="btn-filter-all" onclick="filterPipeline('all', this)">✨ Tất Cả (11)</button>
+                <button class="filter-btn" id="btn-filter-tuvan" onclick="filterPipeline('tuvan', this)">💬 1. Tư Vấn (3)</button>
+                <button class="filter-btn" id="btn-filter-baogia" onclick="filterPipeline('baogia', this)">🧾 2. Báo Giá (3)</button>
+                <button class="filter-btn" id="btn-filter-hopdong" onclick="filterPipeline('hopdong', this)">🤝 3. Hợp Đồng (3)</button>
+                <button class="filter-btn" id="btn-filter-danglam" onclick="filterPipeline('danglam', this)">🏗️ 4. Dự Án Đang Làm (2)</button>
+                <button class="filter-btn" id="btn-filter-thanhtoan" onclick="filterPipeline('thanhtoan', this)">💸 5. Thanh Toán / Giao (2)</button>
+            </div>
+
+            <!-- DESKTOP TABLE VIEW -->
+            <div class="desktop-table-wrap">
+                <table>
+                    <thead id="pipelineThead"></thead>
+                    <tbody id="pipelineTbody"></tbody>
+                </table>
+            </div>
+
+            <!-- MOBILE CARDS CONTAINER (HIỂN THỊ DẠNG THẺ TƯƠNG TÁC TRÊN MOBILE) -->
+            <div class="mobile-card-list" id="pipelineMobileCards">
+                <!-- Render dynamic mobile cards -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==================== CÁC TAB CÒN LẠI: TRẠNG THÁI UPDATE ==================== -->
+    <div id="tab-orders" class="tab-pane">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">📋</div>
+            <div class="coming-soon-title">MỤC ĐƠN HÀNG ĐANG CẬP NHẬT</div>
+            <div class="coming-soon-desc">Hệ thống đang tích hợp form thêm/sửa/xóa và đồng bộ 2 chiều dữ liệu với Bảng Danh Sách Dự Án trên Notion.</div>
+            <button class="btn btn-gold" onclick="switchTab('tab-report', document.querySelector('.navbar .nav-btn'))">Quay Lại Báo Cáo Sale</button>
+        </div>
+    </div>
+
+    <div id="tab-quote" class="tab-pane">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">📑</div>
+            <div class="coming-soon-title">MỤC BÁO GIÁ ĐANG CẬP NHẬT</div>
+            <div class="coming-soon-desc">Module tạo báo giá tự động 30s với Trang bìa gốc và nút xuất Google Docs đang được hoàn thiện.</div>
+            <div style="margin-bottom: 14px;">
+                <a href="CONG_CU_TAO_BAO_GIA_SONG_ANH.html" target="_blank" class="btn" style="background: #1E293B; border: 1px solid var(--primary-gold); color: var(--primary-gold);">
+                    👉 Mở CONG_CU_TAO_BAO_GIA_SONG_ANH.html
+                </a>
+            </div>
+            <button class="btn btn-gold" onclick="switchTab('tab-report', document.querySelector('.navbar .nav-btn'))">Quay Lại Báo Cáo Sale</button>
+        </div>
+    </div>
+
+    <div id="tab-letter" class="tab-pane">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">📝</div>
+            <div class="coming-soon-title">MỤC THƯ NGỎ ĐANG CẬP NHẬT</div>
+            <div class="coming-soon-desc">Module tạo Thư ngỏ chào thầu các đại dự án mới (Năng lượng, KCN, Đô thị) đang được tối ưu hóa.</div>
+            <div style="margin-bottom: 14px;">
+                <a href="CONG_CU_TAO_THU_NGO_SONG_ANH.html" target="_blank" class="btn" style="background: #1E293B; border: 1px solid var(--primary-gold); color: var(--primary-gold);">
+                    👉 Mở CONG_CU_TAO_THU_NGO_SONG_ANH.html
+                </a>
+            </div>
+            <button class="btn btn-gold" onclick="switchTab('tab-report', document.querySelector('.navbar .nav-btn'))">Quay Lại Báo Cáo Sale</button>
+        </div>
+    </div>
+
+    <div id="tab-agents" class="tab-pane">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">👥</div>
+            <div class="coming-soon-title">MỤC TRỢ LÝ ĐANG CẬP NHẬT</div>
+            <div class="coming-soon-desc">Trung tâm chỉ huy 5 Trợ lý Sales AI (Quân, Hoàng, Bách, Long, An, Hải) đang được tích hợp thêm tính năng giao việc tự động.</div>
+            <button class="btn btn-gold" onclick="switchTab('tab-report', document.querySelector('.navbar .nav-btn'))">Quay Lại Báo Cáo Sale</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const today = new Date();
+    document.getElementById('currentDateText').innerText = `Thứ Bảy, ${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+
+    // DỮ LIỆU PIPELINE CHUẨN NOTION (KÈM KỸ THUẬT PHỤ TRÁCH)
+    const pipelineData = [
+        // 1. TƯ VẤN
+        { id: 1, name: "MÔ HÌNH KIẾN TRÚC + MS THÚY HẰNG", date: "31/07", stage: "tuvan", stageLabel: "Tư vấn", assignee: "Võ Minh Sang", tech: "-", note: "Đợi khách gửi file bản vẽ để bóc tách báo giá" },
+        { id: 2, name: "Nhà máy In Bao Bì Liksin - Ms Ngọc Bích", date: "23/07", stage: "tuvan", stageLabel: "Tư vấn", assignee: "Phạm Hoàng Tiến", tech: "-", note: "Khách chưa đủ thông tin ⇒ Đang tư vấn xin file CAD" },
+        { id: 3, name: "Sa bàn nhà máy - Mr Võ Anh Tuấn", date: "16/07", stage: "tuvan", stageLabel: "Tư vấn", assignee: "Phạm Hoàng Tiến", tech: "-", note: "Khách đang trình CĐT phương án thi công" },
+        
+        // 2. BÁO GIÁ
+        { id: 4, name: "Khu Dân Cư Sinh Thái (1/200) - CĐT Hưng Phát", date: "18/08", stage: "baogia", stageLabel: "Báo giá", assignee: "Phạm Hoàng Tiến", tech: "-", note: "Khách xin giảm 5% ⇒ Đề xuất giữ giá tặng nâng cấp bục alu" },
+        { id: 5, name: "Quy Hoạch KCN Bến Lức (1/1000) - Cty Kiến Trúc X", date: "17/08", stage: "baogia", stageLabel: "Báo giá", assignee: "Tiến & Sang", tech: "-", note: "Đã gửi báo giá, khách đang trình duyệt kinh phí" },
+        { id: 6, name: "Mô hình nội thất - LG - Ms Ngọc Tuyền", date: "31/07", stage: "baogia", stageLabel: "Báo giá", assignee: "Võ Minh Sang", tech: "-", note: "Đã gửi báo giá ⇒ Đang chờ phản hồi" },
+
+        // 3. HỢP ĐỒNG
+        { id: 7, name: "Sa bàn Dự án Hướng Dương - CONA LAND", date: "20/08", stage: "hopdong", stageLabel: "Hợp đồng", assignee: "Tiến & Sang", tech: "-", note: "Đã nhận cọc 40% (66.4tr) ⇒ Chuẩn bị cắt laser mica" },
+        { id: 8, name: "Mô hình Nhà máy chế biến - Cty Nam Phát", date: "19/08", stage: "hopdong", stageLabel: "Hợp đồng", assignee: "Võ Minh Sang", tech: "-", note: "Đã ký HĐ và nhận cọc 40% (34tr) ⇒ Tiến độ 20 ngày" },
+        { id: 9, name: "Sa bàn nhà máy Makita - Toda", date: "02/07", stage: "hopdong", stageLabel: "Hợp đồng", assignee: "Phạm Hoàng Tiến", tech: "-", note: "Khách đã gửi bản Scan Hợp đồng ký 2 bên" },
+
+        // 4. DỰ ÁN ĐANG LÀM (KÈM KỸ THUẬT)
+        { id: 10, name: "Sa bàn Đô Thị Phú Mỹ (Tỷ lệ 1/500)", date: "05/08", stage: "danglam", stageLabel: "Dự án đang làm", assignee: "Võ Minh Sang", tech: "A. Nam (Laser/CNC)", note: "Tiến độ 75%: Khối nhà sơn xong, đang lên cỏ & test LED" },
+        { id: 11, name: "Dự án EZ Land - Bản đồ treo tường", date: "09/04", stage: "danglam", stageLabel: "Dự án đang làm", assignee: "Võ Minh Sang", tech: "A. Hùng (Bục gỗ/Khung)", note: "Tiến độ 50%: Đang gia công khung gỗ MDF và đi LED 12V" },
+
+        // 5. THANH TOÁN & BÀN GIAO
+        { id: 12, name: "Sa bàn Nhà máy Trần Đức - Cty TDH", date: "10/08", stage: "thanhtoan", stageLabel: "Thanh toán / Giao", assignee: "Phạm Hoàng Tiến", tech: "A. Tuấn (Lắp ráp/Thùng)", note: "Tiến độ 100%: Xong tại xưởng ⇒ Chờ lịch xuất xưởng giao" },
+        { id: 13, name: "Sa bàn Cục CN An Ninh Đông Anh", date: "09/06", stage: "thanhtoan", stageLabel: "Thanh toán / Giao", assignee: "Phạm Hoàng Tiến", tech: "A. Dũng (Hiện trường)", note: "Khách đã thanh toán đợt 1/2, nghiệm thu hoàn tất" }
+    ];
+
+    let currentStage = 'all';
+
+    function filterPipeline(stage, btnElement) {
+        currentStage = stage;
+        document.querySelectorAll('.filter-bar .filter-btn').forEach(el => el.classList.remove('active'));
+        if (btnElement) {
+            btnElement.classList.add('active');
+        } else {
+            const defaultBtn = document.getElementById('btn-filter-' + stage);
+            if (defaultBtn) defaultBtn.classList.add('active');
+        }
+
+        const labelMap = {
+            'all': 'Tất cả (11)',
+            'tuvan': '1. Tư Vấn (3)',
+            'baogia': '2. Báo Giá (3)',
+            'hopdong': '3. Hợp Đồng (3)',
+            'danglam': '4. Dự Án Đang Làm (2)',
+            'thanhtoan': '5. Thanh Toán / Giao (2)'
+        };
+        const labelEl = document.getElementById('currentFilterLabel');
+        if (labelEl) labelEl.innerText = `${labelMap[stage] || stage}`;
+
+        renderPipelineViews();
+    }
+
+    function renderPipelineViews() {
+        const filtered = currentStage === 'all' 
+            ? pipelineData 
+            : pipelineData.filter(d => d.stage === currentStage);
+
+        const showTech = currentStage === 'danglam' || currentStage === 'thanhtoan' || currentStage === 'all';
+
+        // 1. RENDER DESKTOP TABLE
+        const theadEl = document.getElementById('pipelineThead');
+        const tbodyEl = document.getElementById('pipelineTbody');
+        
+        if (theadEl && tbodyEl) {
+            let theadHtml = `
+                <tr>
+                    <th width="35">#</th>
+                    <th style="min-width: 170px;">TÊN DỰ ÁN</th>
+                    <th>NGÀY</th>
+                    <th>TƯ VẤN</th>
+                    ${showTech ? '<th>KỸ THUẬT</th>' : ''}
+                    <th style="min-width: 200px;">GHI CHÚ TIẾN ĐỘ THỰC TẾ</th>
+                </tr>
+            `;
+            theadEl.innerHTML = theadHtml;
+
+            let tbodyHtml = '';
+            filtered.forEach((d, idx) => {
+                tbodyHtml += `
+                    <tr>
+                        <td align="center">${idx + 1 < 10 ? '0' + (idx + 1) : idx + 1}</td>
+                        <td style="font-weight: 600;">${d.name}</td>
+                        <td>${d.date}</td>
+                        <td>${d.assignee}</td>
+                        ${showTech ? `<td style="color: #38BDF8; font-weight: 600;">${d.tech}</td>` : ''}
+                        <td style="font-size: 0.78rem; color: #CBD5E1;">${d.note}</td>
+                    </tr>
+                `;
+            });
+            if (filtered.length === 0) {
+                tbodyHtml = `<tr><td colspan="${showTech ? 6 : 5}" align="center" style="padding: 16px; color: var(--text-muted);">Không có dự án nào trong giai đoạn này</td></tr>`;
+            }
+            tbodyEl.innerHTML = tbodyHtml;
+        }
+
+        // 2. RENDER MOBILE CARDS (TỐI ƯU CỰC MƯỢT CHO SMARTPHONE)
+        const mobileContainer = document.getElementById('pipelineMobileCards');
+        if (mobileContainer) {
+            let mobileCardsHtml = '';
+            filtered.forEach((d, idx) => {
+                const colorClass = d.stage === 'hopdong' ? 'green' : (d.stage === 'baogia' ? 'blue' : (d.stage === 'danglam' ? 'slate' : (d.stage === 'thanhtoan' ? 'purple' : '')));
+                const badgeClass = d.stage === 'hopdong' ? 'badge-green' : (d.stage === 'baogia' ? 'badge-gold' : (d.stage === 'danglam' ? 'badge-gray' : (d.stage === 'thanhtoan' ? 'badge-purple' : 'badge-blue')));
+
+                mobileCardsHtml += `
+                    <div class="project-card ${colorClass}">
+                        <div class="project-card-header">
+                            <div class="project-card-title">${idx + 1 < 10 ? '0' + (idx + 1) : idx + 1}. ${d.name}</div>
+                            <span class="badge ${badgeClass}">${d.stageLabel}</span>
+                        </div>
+                        <div class="project-card-meta">
+                            <div>📅 ${d.date}</div>
+                            <div>👤 Tư vấn: <strong>${d.assignee}</strong></div>
+                            ${d.tech !== '-' ? `<div>🔧 Kỹ thuật: <strong style="color: #38BDF8;">${d.tech}</strong></div>` : ''}
+                        </div>
+                        <div class="project-card-note">${d.note}</div>
+                    </div>
+                `;
+            });
+
+            if (filtered.length === 0) {
+                mobileCardsHtml = `<div style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.85rem;">Không có dự án nào trong giai đoạn này</div>`;
+            }
+            mobileContainer.innerHTML = mobileCardsHtml;
+        }
+    }
+
+    function switchTab(tabId, btnElement) {
+        document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+        const target = document.getElementById(tabId);
+        if (target) target.classList.add('active');
+        if (btnElement) btnElement.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToSection(sectionId) {
+        switchTab('tab-report', document.querySelector('.navbar .nav-btn'));
+        const el = document.getElementById(sectionId);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function copyQuickZalo() {
+        const text = `📊 BÁO CÁO SALE HÀNG TUẦN\n` +
+            `Người thực hiện: Phạm Hoàng Tiến và Võ Minh Sang\n` +
+            `Thời gian: Thứ Bảy (${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()})\n\n` +
+            `🎯 1. NGUỒN KHÁCH HÀNG MỚI (8 Khách):\n` +
+            `- Hotline Sếp: 2 khách\n` +
+            `- Số Tiến (Zalo/ĐT): 3 khách\n` +
+            `- Số Sang (Zalo/ĐT): 2 khách\n` +
+            `- Facebook Fanpage: 1 khách\n\n` +
+            `📋 2. TÌNH TRẠNG ĐƠN HÀNG (THEO TRẠNG THÁI):\n` +
+            `✅ Đơn chốt mới: 2 đơn (Dự án Hướng Dương & Nhà máy Nam Phát)\n` +
+            `🧾 Đơn đang báo giá: 3 đơn (KDC Hưng Phát, KCN Bến Lức, LG)\n` +
+            `🏗️ Dự án đang làm: 2 đơn (Sa bàn Phú Mỹ - A. Nam, EZ Land - A. Hùng)\n` +
+            `🚚 Đơn chờ bàn giao: 1 đơn (Sa bàn Nhà máy Trần Đức - A. Tuấn xong 100%)\n\n` +
+            `⚠️ Việc trọng tâm tuần tới: Bàn giao sa bàn Trần Đức & chốt cọc đơn Hưng Phát.`;
+
+        navigator.clipboard.writeText(text).then(() => {
+            alert("✅ Đã sao chép nội dung Báo cáo Sale! Bạn có thể dán vào Zalo gửi ngay.");
+        });
+    }
+
+    // TỰ ĐỘNG CHẠY NGAY KHI TẢI TRANG
+    renderPipelineViews();
+    document.addEventListener('DOMContentLoaded', renderPipelineViews);
+    window.addEventListener('load', renderPipelineViews);
+</script>
+</body>
+</html>
