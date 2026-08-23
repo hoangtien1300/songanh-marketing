@@ -155,7 +155,10 @@ def parse_history_records(all_pages, group_map):
         # 7. Ngày Re-Comment Tiếp Theo
         next_recomment = props.get("Ngày Re-Comment Tiếp Theo", {}).get("date", {}).get("start", "") if props.get("Ngày Re-Comment Tiếp Theo", {}).get("date") else ""
 
-        # 8. Lượt Re-Comment
+        # 8. Ngày Re-comment Thực Tế
+        recomment_date = props.get("Ngày Re-comment", {}).get("date", {}).get("start", "") if props.get("Ngày Re-comment", {}).get("date") else ""
+
+        # 9. Lượt Re-Comment
         recomment_count = props.get("Lượt Re-Comment", {}).get("number", 0)
         if recomment_count is None:
             recomment_count = 0
@@ -170,6 +173,7 @@ def parse_history_records(all_pages, group_map):
             "post_url": post_url,
             "status": status,
             "next_recomment_date": next_recomment,
+            "recomment_date": recomment_date,
             "recomment_count": recomment_count,
             "last_synced": get_current_timestamp()
         })
