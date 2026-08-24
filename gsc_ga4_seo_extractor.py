@@ -1013,7 +1013,7 @@ def update_marketing_json(keywords_data):
             "intent": kw["intent"],
             "priority": kw["priority"],
             "silo": kw["silo"],
-            "last_updated": "20/08/2026 (Mới Nhất Real-time)",
+            "last_updated": f"{datetime.now().strftime('%d/%m/%Y')} (Mới Nhất Real-time GSC & GA4)",
             "highlight": kw.get("highlight", False),
             "rankHistory": old_kw.get("rankHistory", [])
         }
