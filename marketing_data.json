@@ -16285,6 +16285,13 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "24/08/2026\n17:13:39",
+      "category": "SEO Website",
+      "action": "Cập nhật bài viết Master SEO 'Mô hình nhà máy 2026' (4 ảnh WebP + 2 Video YouTube + Form B2B) lên website https://mohinhkientruc.org/mo-hinh-nha-may/",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+      "status": "Hoàn Thành"
+    },
+    {
       "id": 16,
       "timestamp": "21/08/2026 08:45:00",
       "module": "Facebook Marketing",
