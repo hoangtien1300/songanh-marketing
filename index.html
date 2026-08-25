@@ -491,7 +491,7 @@
                 
                 <!-- 🤖 BAN CÁN BỘ AI SONG ANH MARKETING (6 AGENTS APPROVED BY SẾP PHẠM HOÀNG TIẾN) -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
-                    <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
                         <div class="flex items-center gap-2.5">
                             <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
                                 <i class="fa-solid fa-robot"></i>
@@ -501,7 +501,7 @@
                                     <span>🤖 Ban Cán Bộ AI Song Anh Marketing</span>
                                     <span class="px-2 py-0.5 text-[10px] font-extrabold bg-emerald-100 text-emerald-800 rounded-md border border-emerald-300">Official 6 Agents</span>
                                 </h3>
-                                <p class="text-[11px] text-slate-500">Bộ danh xưng cán bộ AI chính thức được Sếp Phạm Hoàng Tiến phê duyệt (≤ 5 từ)</p>
+                                <p class="text-[11px] text-slate-500">Bộ danh xưng cán bộ AI chính thức được Sếp Phạm Hoàng Tiến phê duyệt (≤ 5 từ) • Bấm vào trợ lý để xem chi tiết</p>
                             </div>
                         </div>
                         <span class="text-[10px] text-slate-400 font-medium hidden sm:inline-block">Cập nhật: Real-time System Sync</span>
@@ -509,69 +509,93 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         <!-- Agent 1: Minh -->
-                        <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('minh')">
+                        <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('minh')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-blue-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-crown text-amber-500"></i> 1. Minh - Marketing Manager
+                                <span class="text-xs font-bold text-amber-950 flex items-center gap-1.5 group-hover:text-amber-700 transition">
+                                    <span class="text-sm">🏆</span> 1. Minh - Trợ lý Điều Phối
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-blue-200 text-blue-800">Lead Coordinator</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-200 text-amber-900">Lead Coordinator</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Điều phối hệ thống AI, quản lý phân công tác vụ Notion & giám sát luồng công việc marketing.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Bộ não điều hành trung tâm: Tiếp nhận chỉ đạo chiến lược Sếp Tiến, điều phối 5 trợ lý & tổng hợp báo cáo nghiệm thu.</p>
+                            <div class="pt-1.5 border-t border-amber-100 flex items-center justify-between text-[10px] text-amber-800 font-semibold">
+                                <span><i class="fa-solid fa-brain mr-1"></i> Minh mẫn & Sáng suốt</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
 
                         <!-- Agent 2: Kiến -->
-                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('kien')">
+                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('kien')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-code text-emerald-600"></i> 2. Kiến - Trợ lý Lập Trình
+                                <span class="text-xs font-bold text-emerald-950 flex items-center gap-1.5 group-hover:text-emerald-700 transition">
+                                    <span class="text-sm">👨‍💻</span> 2. Kiến - Trợ lý Lập Trình
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-200 text-emerald-800">Lead Developer</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-200 text-emerald-900">Lead Developer</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Phát triển Automation Stealth Engine, xử lý API Meta/GSC/GA4 & Web App Core Dashboard.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Kiến tạo nền móng: Lập trình Web App, Automation Python Engine, REST API Meta/Notion/GSC & Worker 24/7.</p>
+                            <div class="pt-1.5 border-t border-emerald-100 flex items-center justify-between text-[10px] text-emerald-800 font-semibold">
+                                <span><i class="fa-solid fa-code mr-1"></i> Kiến tạo nền móng</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
 
                         <!-- Agent 3: Văn -->
-                        <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('van')">
+                        <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('van')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-purple-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-pen-nib text-purple-600"></i> 3. Văn - Trợ lý Nội Dung
+                                <span class="text-xs font-bold text-purple-950 flex items-center gap-1.5 group-hover:text-purple-700 transition">
+                                    <span class="text-sm">✍️</span> 3. Văn - Trợ lý Nội Dung
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-purple-200 text-purple-800">Content Creator</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-purple-200 text-purple-900">Content Creator</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Sáng tạo nội dung B2B điềm tĩnh, viết bài Fanpage, Profile & kéo tương tác re-comment.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Văn chương B2B sắc nét: Soạn bài FB Groups 259 nhóm, status Profile cá nhân Sếp Tiến & kịch bản Re-comment.</p>
+                            <div class="pt-1.5 border-t border-purple-100 flex items-center justify-between text-[10px] text-purple-800 font-semibold">
+                                <span><i class="fa-solid fa-pen-nib mr-1"></i> Văn chương B2B sắc nét</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
 
                         <!-- Agent 4: Trí -->
-                        <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('tri')">
+                        <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('tri')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-amber-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-chart-line text-amber-600"></i> 4. Trí - Trợ lý SEO Master
+                                <span class="text-xs font-bold text-blue-950 flex items-center gap-1.5 group-hover:text-blue-700 transition">
+                                    <span class="text-sm">📈</span> 4. Trí - Trợ lý SEO Master
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-200 text-amber-900">SEO Analytics</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-blue-200 text-blue-900">SEO Analytics</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Phân tích dữ liệu Google Search Console, theo dõi thứ hạng 22 từ khóa B2B & tối ưu Entity.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Trí tuệ phân tích data: Bóc tách 22 KWs GSC/GA4 real-time, audit On-page, Schema JSON-LD & bảo vệ Top 1.</p>
+                            <div class="pt-1.5 border-t border-blue-100 flex items-center justify-between text-[10px] text-blue-800 font-semibold">
+                                <span><i class="fa-solid fa-chart-line mr-1"></i> Trí tuệ phân tích data</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
 
                         <!-- Agent 5: Mỹ -->
-                        <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('my')">
+                        <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('my')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-rose-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-palette text-rose-600"></i> 5. Mỹ - Trợ lý Thiết Kế
+                                <span class="text-xs font-bold text-rose-950 flex items-center gap-1.5 group-hover:text-rose-700 transition">
+                                    <span class="text-sm">🎨</span> 5. Mỹ - Trợ lý Thiết Kế
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-rose-200 text-rose-800">Visual Arts</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-rose-200 text-rose-900">Visual Arts</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Thiết kế đồ họa, xử lý visual sa bàn kiến trúc, banner quảng cáo & nhận diện thương hiệu.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Mỹ thuật & Thẩm mỹ: Prompt Google Flow ImageGen 3, tự động dán Logo, đóng EXIF bản quyền & thiết kế Thumbnail.</p>
+                            <div class="pt-1.5 border-t border-rose-100 flex items-center justify-between text-[10px] text-rose-800 font-semibold">
+                                <span><i class="fa-solid fa-palette mr-1"></i> Mỹ thuật & Thẩm mỹ</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
 
                         <!-- Agent 6: Thông -->
-                        <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/40 hover:bg-cyan-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('thong')">
+                        <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/40 hover:bg-cyan-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('thong')">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-cyan-900 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-globe text-cyan-600"></i> 6. Thông - Trợ lý Website
+                                <span class="text-xs font-bold text-cyan-950 flex items-center gap-1.5 group-hover:text-cyan-700 transition">
+                                    <span class="text-sm">📰</span> 6. Thông - Trợ lý Website
                                 </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-cyan-200 text-cyan-800">WP Publisher</span>
+                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-cyan-200 text-cyan-900">WP Publisher</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Quản trị website mohinhkientruc.org, tối ưu WordPress On-Page, Schema JSON-LD & Sitemap.</p>
+                            <p class="text-[11px] text-slate-600 leading-snug">Thông suốt xuất bản: Quản trị website mohinhkientruc.org, đăng bài RankMath REST API >85đ, check URL 200 OK.</p>
+                            <div class="pt-1.5 border-t border-cyan-100 flex items-center justify-between text-[10px] text-cyan-800 font-semibold">
+                                <span><i class="fa-solid fa-globe mr-1"></i> Thông suốt xuất bản</span>
+                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -10853,169 +10877,251 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
 
     </script>
 
-    <!-- Agent Details Modal -->
-    <div id="agentModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center">
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-xl w-full max-w-md mx-4 overflow-hidden flex flex-col">
+    
+    <!-- Rich Agent Details Modal (Synced from Minh - Marketing Manager) -->
+    <div id="agentModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl w-full max-w-xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-150">
             <!-- Header -->
-            <div id="agentModalHeader" class="px-5 py-4 flex items-center justify-between border-b">
-                <div class="flex items-center gap-2">
-                    <div id="agentModalIconContainer" class="w-8 h-8 rounded-lg flex items-center justify-center text-sm">
-                        <i id="agentModalIcon" class="fa-solid"></i>
+            <div id="agentModalHeader" class="px-6 py-4 flex items-center justify-between border-b border-slate-100 bg-slate-50/50">
+                <div class="flex items-center gap-3">
+                    <div id="agentModalIconContainer" class="w-10 h-10 rounded-2xl flex items-center justify-center text-xl shadow-xs">
+                        <span id="agentModalEmoji"></span>
                     </div>
                     <div>
-                        <h3 id="agentModalName" class="text-sm font-extrabold text-slate-800"></h3>
-                        <span id="agentModalRole" class="text-[10px] font-bold px-1.5 py-0.5 rounded"></span>
+                        <h3 id="agentModalName" class="text-base font-heading font-extrabold text-slate-900"></h3>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span id="agentModalRole" class="text-[10px] font-extrabold px-2 py-0.5 rounded-md"></span>
+                            <span id="agentModalLegacyCode" class="text-[10px] font-mono text-slate-400"></span>
+                        </div>
                     </div>
                 </div>
-                <button onclick="closeAgentModal()" class="text-slate-400 hover:text-slate-600 transition p-1">
-                    <i class="fa-solid fa-xmark text-lg"></i>
+                <button onclick="closeAgentModal()" class="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 transition flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
             </div>
             
-            <!-- Body -->
-            <div class="p-5 space-y-4">
+            <!-- Scrollable Body -->
+            <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar">
+                <!-- Meaning & Positioning Box -->
+                <div id="agentModalMeaningBox" class="p-3.5 rounded-2xl border space-y-1">
+                    <div class="text-[11px] font-extrabold uppercase tracking-wide flex items-center gap-1.5" id="agentModalMeaningTitle">
+                        <i class="fa-solid fa-sparkles"></i> Ý Nghĩa Danh Xưng & Định Vị Cốt Lõi
+                    </div>
+                    <p id="agentModalMeaning" class="text-xs font-medium leading-relaxed"></p>
+                </div>
+
+                <!-- Core Responsibilities -->
                 <div>
-                    <h4 class="text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Vai trò & Trách nhiệm</h4>
+                    <h4 class="text-xs font-bold text-slate-800 mb-2.5 uppercase tracking-wide flex items-center gap-1.5">
+                        <i class="fa-solid fa-list-check text-blue-600"></i> Nhiệm Vụ Trọng Tâm & Trách Nhiệm Chính
+                    </h4>
                     <ul id="agentModalResponsibilities" class="space-y-2">
                     </ul>
                 </div>
                 
-                <div class="pt-3 border-t border-slate-100">
-                    <p id="agentModalDesc" class="text-[11px] text-slate-600 italic leading-relaxed"></p>
+                <!-- Skills & Automation Engines -->
+                <div class="pt-3 border-t border-slate-100 space-y-2">
+                    <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-amber-500"></i> Skill Chuẩn Hóa & Engine Thực Thi
+                    </h4>
+                    <div id="agentModalSkills" class="flex flex-wrap gap-1.5">
+                    </div>
                 </div>
             </div>
             
             <!-- Footer -->
-            <div class="px-5 py-3 bg-slate-50 border-t border-slate-100 flex justify-end">
-                <button onclick="closeAgentModal()" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50 transition">Đóng</button>
+            <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-shield-check text-emerald-500 mr-1"></i> Chuẩn hóa bởi Sếp Phạm Hoàng Tiến</span>
+                <button onclick="closeAgentModal()" class="px-4 py-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition shadow-2xs">Đóng Cửa Sổ</button>
             </div>
         </div>
     </div>
 
     <script>
-        const agentData = {
+        const agentFullData = {
             'minh': {
-                name: '1. Minh - Marketing Manager',
+                name: '1. Minh - Trợ lý Điều Phối',
                 role: 'Lead Coordinator',
-                icon: 'fa-crown',
+                emoji: '🏆',
+                legacyCode: 'Antigravity / Lead',
+                bgClass: 'amber',
                 colorClass: 'amber',
-                bgClass: 'blue',
-                desc: 'Điều phối hệ thống AI, quản lý phân công tác vụ Notion & giám sát luồng công việc marketing.',
+                meaning: 'Minh mang ý nghĩa "Minh mẫn & Sáng suốt" — Đóng vai trò là bộ não điều hành trung tâm của toàn bộ hệ thống AI Marketing Song Anh.',
                 responsibilities: [
-                    'Nhận lệnh từ Giám đốc và lên kế hoạch tổng thể.',
-                    'Phân chia tác vụ cho các Agent khác trên Notion.',
-                    'Giám sát tiến độ và báo cáo hiệu suất chiến dịch.',
-                    'Điều phối xử lý khủng hoảng truyền thông (nếu có).'
+                    'Trực tiếp tiếp nhận yêu cầu và chỉ đạo chiến lược từ Sếp Phạm Hoàng Tiến.',
+                    'Phân tích bài toán, lập kế hoạch hành động và phân công nhiệm vụ cho 5 Trợ lý chuyên môn.',
+                    'Tổng hợp báo cáo, kiểm tra nghiệm thu kết quả đầu ra trước khi trình Sếp Tiến.',
+                    'Giám sát tiến độ realtime, giải quyết xung đột dữ liệu và điều phối luồng công việc tự động.'
+                ],
+                skills: [
+                    'Master Strategy Coordinator',
+                    'Notion Tasks DB Manager',
+                    'Real-time Daily Report Engine',
+                    'Anti-Crisis Management'
                 ]
             },
             'kien': {
                 name: '2. Kiến - Trợ lý Lập Trình',
                 role: 'Lead Developer',
-                icon: 'fa-code',
-                colorClass: 'emerald',
+                emoji: '👨‍💻',
+                legacyCode: 'song_anh_code_expert',
                 bgClass: 'emerald',
-                desc: 'Phát triển Automation Stealth Engine, xử lý API Meta/GSC/GA4 & Web App Core Dashboard.',
+                colorClass: 'emerald',
+                meaning: 'Kiến mang ý nghĩa "Kiến tạo nền móng" — Người xây dựng kiến trúc kỹ thuật, automation engine và bảo trì toàn bộ hệ sinh thái mã nguồn.',
                 responsibilities: [
-                    'Xây dựng công cụ Automation và kịch bản Auto-sync.',
-                    'Tích hợp các API của Facebook, Google, Notion.',
-                    'Bảo trì và nâng cấp Webapp Dashboard Marketing.',
-                    'Tối ưu hóa tốc độ và bảo mật hệ thống dữ liệu.'
+                    'Lập trình mã nguồn Web App (index.html, marketing_data.json), đảm bảo 100% responsive và 0 lỗi JS.',
+                    'Viết các Script Python Automation kết nối REST API Meta Facebook Graph v19.0, Notion API và Google Search Console.',
+                    'Vận hành Worker ngầm 24/7 (song_anh_daily_sync_engine.py), đồng bộ Git GitHub và deploy Cloudflare Workers Live.',
+                    'Xử lý bảo mật API Token, mã hóa dữ liệu và tối ưu hiệu suất tải trang cho Webapp.'
+                ],
+                skills: [
+                    'Python Automation Stealth Engine',
+                    'Meta Graph API v19.0 Client',
+                    'Cloudflare Workers / Pages Deploy',
+                    'Notion & GSC/GA4 Sync Engine'
                 ]
             },
             'van': {
                 name: '3. Văn - Trợ lý Nội Dung',
                 role: 'Content Creator',
-                icon: 'fa-pen-nib',
-                colorClass: 'purple',
+                emoji: '✍️',
+                legacyCode: 'content_creator',
                 bgClass: 'purple',
-                desc: 'Sáng tạo nội dung B2B điềm tĩnh, viết bài Fanpage, Profile & kéo tương tác re-comment.',
+                colorClass: 'purple',
+                meaning: 'Văn mang ý nghĩa "Văn chương B2B sắc nét" — Chuyên gia chấp bút truyền thông, sáng tạo thông điệp bán hàng B2B chuyên nghiệp và điềm tĩnh.',
                 responsibilities: [
-                    'Viết bài chuẩn SEO cho Website (Mô hình quy hoạch, v.v.).',
-                    'Sáng tạo kịch bản, bài đăng Facebook Group/Fanpage.',
-                    'Nghiên cứu thông điệp, văn phong B2B chuyên nghiệp.',
-                    'Seeding và Re-comment tạo tương tác mồi.'
+                    'Soạn thảo các bài viết đăng Facebook Groups B2B (Kiến trúc, Chủ đầu tư BĐS, Xây dựng, KCN).',
+                    'Viết status Profile cá nhân hóa cho Sếp Phạm Hoàng Tiến và bài viết Fanpage Mô hình kiến trúc Song Anh.',
+                    'Ứng dụng quy tắc dán Link Chống Spam Meta (Tỷ lệ 60 - 20 - 20) và Font in đậm Unicode YayText.',
+                    'Lập kịch bản Re-comment, Seeding tự nhiên và xây dựng phễu tương tác giữ chân khách hàng.'
+                ],
+                skills: [
+                    'song_anh_b2b_content_pipeline',
+                    'quy_trinh_bien_soan_bai_post_facebook_song_anh',
+                    'Anti-Spam Meta Link Strategy (60-20-20)',
+                    'YayText Unicode B2B Formatting'
                 ]
             },
             'tri': {
                 name: '4. Trí - Trợ lý SEO Master',
                 role: 'SEO Analytics',
-                icon: 'fa-chart-line',
-                colorClass: 'amber',
-                bgClass: 'amber',
-                desc: 'Phân tích dữ liệu Google Search Console, theo dõi thứ hạng 22 từ khóa B2B & tối ưu Entity.',
+                emoji: '📈',
+                legacyCode: 'seo_expert',
+                bgClass: 'blue',
+                colorClass: 'blue',
+                meaning: 'Trí mang ý nghĩa "Trí tuệ phân tích data" — Chuyên gia tối ưu hóa công cụ tìm kiếm Google và bảo vệ thứ hạng Top 1 từ khóa cốt lõi.',
                 responsibilities: [
-                    'Theo dõi thứ hạng từ khóa hàng ngày trên GSC.',
-                    'Đề xuất tối ưu On-page và Off-page (Backlinks, Entity).',
-                    'Phân tích đối thủ cạnh tranh trên SERP.',
-                    'Lập báo cáo hiệu suất Organic Traffic.'
+                    'Theo dõi và bóc tách dữ liệu 22 Từ khóa B2B cốt lõi trên Google Search Console & GA4 real-time.',
+                    'Audit On-page, xử lý trùng lặp Cannibalization, tối ưu Schema JSON-LD cho website mohinhkientruc.org.',
+                    'Quản lý Sổ cái Lịch sử thứ hạng CSV/Excel và bảo vệ thứ hạng Top 1 Google cho các sa bàn trọng điểm.',
+                    'Phân tích đối thủ cạnh tranh trên SERP và đề xuất bộ từ khóa ngách tiềm năng mang lại Leads.'
+                ],
+                skills: [
+                    'GSC & GA4 Historical Rank Tracker',
+                    'Screaming Frog On-Page Audit',
+                    'Schema JSON-LD Structure Builder',
+                    '22 Core B2B Keyword Silo Manager'
                 ]
             },
             'my': {
                 name: '5. Mỹ - Trợ lý Thiết Kế',
                 role: 'Visual Arts',
-                icon: 'fa-palette',
-                colorClass: 'rose',
+                emoji: '🎨',
+                legacyCode: 'song_anh_design_master',
                 bgClass: 'rose',
-                desc: 'Thiết kế đồ họa, xử lý visual sa bàn kiến trúc, banner quảng cáo & nhận diện thương hiệu.',
+                colorClass: 'rose',
+                meaning: 'Mỹ mang ý nghĩa "Mỹ thuật & Thẩm mỹ" — Chuyên gia sáng tạo truyền thông thị giác, xử lý hình ảnh sa bàn chuẩn chỉ B2B.',
                 responsibilities: [
-                    'Thiết kế Thumbnail bài viết Web, Facebook.',
-                    'Xử lý hình ảnh dự án sa bàn, nhà máy đẹp mắt.',
-                    'Thiết kế Banner, Profile, ấn phẩm quảng cáo.',
-                    'Đảm bảo quy chuẩn nhận diện thương hiệu Song Anh.'
+                    'Tối ưu hóa Prompt tạo ảnh AI trên công cụ Google Flow (Google ImageGen 3).',
+                    'Tự động đóng Dấu Logo thương hiệu Mô hình Song Anh, ghi thông số EXIF bản quyền và thiết kế Thumbnail Video YouTube/Social.',
+                    'Phối hợp với Trợ lý Văn để sản xuất trọn bộ bài viết kèm bộ ảnh thực tế sa bàn sắc nét.',
+                    'Chuẩn hóa màu sắc thương hiệu Gold - Navy - Black trên mọi ấn phẩm truyền thông.'
+                ],
+                skills: [
+                    'google_business_profile_post',
+                    'EXIF Geolocation Auto-Tagger',
+                    'Canva Connect API Integration',
+                    'Google ImageGen 3 Prompt Master'
                 ]
             },
             'thong': {
                 name: '6. Thông - Trợ lý Website',
                 role: 'WP Publisher',
-                icon: 'fa-globe',
-                colorClass: 'cyan',
+                emoji: '📰',
+                legacyCode: 'song_anh_wp_publisher',
                 bgClass: 'cyan',
-                desc: 'Quản trị website mohinhkientruc.org, tối ưu WordPress On-Page, Schema JSON-LD & Sitemap.',
+                colorClass: 'cyan',
+                meaning: 'Thông mang ý nghĩa "Thông suốt xuất bản" — Chuyên gia quản trị, tối ưu hóa kỹ thuật và phát hành bài viết lên website WordPress.',
                 responsibilities: [
-                    'Đăng bài, định dạng và xuất bản lên WordPress.',
-                    'Cài đặt Schema JSON-LD, thẻ Meta Tags chuẩn SEO.',
-                    'Xử lý các vấn đề kỹ thuật của Website (Tốc độ, Sitemap).',
-                    'Cập nhật giao diện và plugin WordPress.'
+                    'Biên tập và xuất bản bài viết chuẩn B2B SEO RankMath REST API trên website mohinhkientruc.org.',
+                    'Kiểm tra xả cache, xác thực URL 200 OK và đồng bộ bài viết sang Notion Database.',
+                    'Đảm bảo điểm RankMath On-Page luôn đạt chuẩn từ 85 - 100 điểm.',
+                    'Tối ưu tốc độ tải trang, cấu hình Sitemap XML và giám sát độ sẵn sàng của hệ thống web.'
+                ],
+                skills: [
+                    'quy_trinh_viet_bai_va_dang_website_mohinhkientruc',
+                    'RankMath REST API Auto Publisher',
+                    'WordPress Gutenberg Block Generator',
+                    '200 OK URL Verification Engine'
                 ]
             }
         };
 
         function showAgentModal(agentId) {
-            const data = agentData[agentId];
+            const data = agentFullData[agentId];
             if (!data) return;
 
-            // Set content
+            // Header Elements
             document.getElementById('agentModalName').textContent = data.name;
+            document.getElementById('agentModalEmoji').textContent = data.emoji;
+            document.getElementById('agentModalLegacyCode').textContent = `[ID: ${data.legacyCode}]`;
             
             const roleEl = document.getElementById('agentModalRole');
             roleEl.textContent = data.role;
-            roleEl.className = `text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-${data.bgClass}-200 text-${data.bgClass}-800`;
+            roleEl.className = `text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-${data.bgClass}-200 text-${data.bgClass}-900`;
             
             const iconContainer = document.getElementById('agentModalIconContainer');
-            iconContainer.className = `w-8 h-8 rounded-lg flex items-center justify-center text-sm bg-${data.bgClass}-100 text-${data.bgClass}-700`;
+            iconContainer.className = `w-10 h-10 rounded-2xl flex items-center justify-center text-xl shadow-xs bg-${data.bgClass}-100 border border-${data.bgClass}-200`;
             
-            const icon = document.getElementById('agentModalIcon');
-            icon.className = `fa-solid ${data.icon}`;
+            // Meaning Box
+            const meaningBox = document.getElementById('agentModalMeaningBox');
+            meaningBox.className = `p-3.5 rounded-2xl border space-y-1 bg-${data.bgClass}-50/60 border-${data.bgClass}-200 text-${data.bgClass}-950`;
             
-            document.getElementById('agentModalDesc').textContent = data.desc;
+            const meaningTitle = document.getElementById('agentModalMeaningTitle');
+            meaningTitle.className = `text-[11px] font-extrabold uppercase tracking-wide flex items-center gap-1.5 text-${data.bgClass}-800`;
             
+            document.getElementById('agentModalMeaning').textContent = data.meaning;
+            
+            // Responsibilities List
             const ul = document.getElementById('agentModalResponsibilities');
             ul.innerHTML = '';
             data.responsibilities.forEach(res => {
                 const li = document.createElement('li');
-                li.className = 'flex items-start gap-2 text-[11px] text-slate-700 font-medium';
-                li.innerHTML = `<i class="fa-solid fa-check mt-0.5 text-emerald-500"></i> <span>${res}</span>`;
+                li.className = 'flex items-start gap-2.5 text-xs text-slate-700 font-medium leading-relaxed';
+                li.innerHTML = `<span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold"><i class="fa-solid fa-check"></i></span> <span>${res}</span>`;
                 ul.appendChild(li);
             });
             
+            // Skills Badges
+            const skillsContainer = document.getElementById('agentModalSkills');
+            skillsContainer.innerHTML = '';
+            data.skills.forEach(sk => {
+                const badge = document.createElement('span');
+                badge.className = 'text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 flex items-center gap-1';
+                badge.innerHTML = `<i class="fa-solid fa-cube text-slate-400 text-[8px]"></i> ${sk}`;
+                skillsContainer.appendChild(badge);
+            });
+
             // Show modal
-            document.getElementById('agentModal').classList.remove('hidden');
-            document.getElementById('agentModal').classList.add('flex');
+            const modal = document.getElementById('agentModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
 
         function closeAgentModal() {
-            document.getElementById('agentModal').classList.add('hidden');
-            document.getElementById('agentModal').classList.remove('flex');
+            const modal = document.getElementById('agentModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
         }
         
         // Close modal when clicking outside
