@@ -509,7 +509,7 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         <!-- Agent 1: Minh -->
-                        <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('minh')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-blue-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-crown text-amber-500"></i> 1. Minh - Trợ lý Điều Phối
@@ -520,7 +520,7 @@
                         </div>
 
                         <!-- Agent 2: Kiến -->
-                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('kien')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-emerald-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-code text-emerald-600"></i> 2. Kiến - Trợ lý Lập Trình
@@ -531,7 +531,7 @@
                         </div>
 
                         <!-- Agent 3: Văn -->
-                        <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('van')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-purple-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-pen-nib text-purple-600"></i> 3. Văn - Trợ lý Nội Dung
@@ -542,7 +542,7 @@
                         </div>
 
                         <!-- Agent 4: Trí -->
-                        <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('tri')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-amber-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-chart-line text-amber-600"></i> 4. Trí - Trợ lý SEO Master
@@ -553,7 +553,7 @@
                         </div>
 
                         <!-- Agent 5: Mỹ -->
-                        <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('my')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-rose-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-palette text-rose-600"></i> 5. Mỹ - Trợ lý Thiết Kế
@@ -564,7 +564,7 @@
                         </div>
 
                         <!-- Agent 6: Thông -->
-                        <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/40 hover:bg-cyan-50 transition space-y-2">
+                        <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/40 hover:bg-cyan-50 hover:shadow-md transition space-y-2 cursor-pointer" onclick="showAgentModal('thong')">
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-bold text-cyan-900 flex items-center gap-1.5">
                                     <i class="fa-solid fa-globe text-cyan-600"></i> 6. Thông - Trợ lý Website
@@ -10810,5 +10810,179 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         }
 
     </script>
+
+    <!-- Agent Details Modal -->
+    <div id="agentModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-xl w-full max-w-md mx-4 overflow-hidden flex flex-col">
+            <!-- Header -->
+            <div id="agentModalHeader" class="px-5 py-4 flex items-center justify-between border-b">
+                <div class="flex items-center gap-2">
+                    <div id="agentModalIconContainer" class="w-8 h-8 rounded-lg flex items-center justify-center text-sm">
+                        <i id="agentModalIcon" class="fa-solid"></i>
+                    </div>
+                    <div>
+                        <h3 id="agentModalName" class="text-sm font-extrabold text-slate-800"></h3>
+                        <span id="agentModalRole" class="text-[10px] font-bold px-1.5 py-0.5 rounded"></span>
+                    </div>
+                </div>
+                <button onclick="closeAgentModal()" class="text-slate-400 hover:text-slate-600 transition p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Body -->
+            <div class="p-5 space-y-4">
+                <div>
+                    <h4 class="text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">Vai trò & Trách nhiệm</h4>
+                    <ul id="agentModalResponsibilities" class="space-y-2">
+                    </ul>
+                </div>
+                
+                <div class="pt-3 border-t border-slate-100">
+                    <p id="agentModalDesc" class="text-[11px] text-slate-600 italic leading-relaxed"></p>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="px-5 py-3 bg-slate-50 border-t border-slate-100 flex justify-end">
+                <button onclick="closeAgentModal()" class="px-4 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold text-slate-600 hover:bg-slate-50 transition">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const agentData = {
+            'minh': {
+                name: '1. Minh - Trợ lý Điều Phối',
+                role: 'Lead Coordinator',
+                icon: 'fa-crown',
+                colorClass: 'amber',
+                bgClass: 'blue',
+                desc: 'Điều phối hệ thống AI, quản lý phân công tác vụ Notion & giám sát luồng công việc marketing.',
+                responsibilities: [
+                    'Nhận lệnh từ Giám đốc và lên kế hoạch tổng thể.',
+                    'Phân chia tác vụ cho các Agent khác trên Notion.',
+                    'Giám sát tiến độ và báo cáo hiệu suất chiến dịch.',
+                    'Điều phối xử lý khủng hoảng truyền thông (nếu có).'
+                ]
+            },
+            'kien': {
+                name: '2. Kiến - Trợ lý Lập Trình',
+                role: 'Lead Developer',
+                icon: 'fa-code',
+                colorClass: 'emerald',
+                bgClass: 'emerald',
+                desc: 'Phát triển Automation Stealth Engine, xử lý API Meta/GSC/GA4 & Web App Core Dashboard.',
+                responsibilities: [
+                    'Xây dựng công cụ Automation và kịch bản Auto-sync.',
+                    'Tích hợp các API của Facebook, Google, Notion.',
+                    'Bảo trì và nâng cấp Webapp Dashboard Marketing.',
+                    'Tối ưu hóa tốc độ và bảo mật hệ thống dữ liệu.'
+                ]
+            },
+            'van': {
+                name: '3. Văn - Trợ lý Nội Dung',
+                role: 'Content Creator',
+                icon: 'fa-pen-nib',
+                colorClass: 'purple',
+                bgClass: 'purple',
+                desc: 'Sáng tạo nội dung B2B điềm tĩnh, viết bài Fanpage, Profile & kéo tương tác re-comment.',
+                responsibilities: [
+                    'Viết bài chuẩn SEO cho Website (Mô hình quy hoạch, v.v.).',
+                    'Sáng tạo kịch bản, bài đăng Facebook Group/Fanpage.',
+                    'Nghiên cứu thông điệp, văn phong B2B chuyên nghiệp.',
+                    'Seeding và Re-comment tạo tương tác mồi.'
+                ]
+            },
+            'tri': {
+                name: '4. Trí - Trợ lý SEO Master',
+                role: 'SEO Analytics',
+                icon: 'fa-chart-line',
+                colorClass: 'amber',
+                bgClass: 'amber',
+                desc: 'Phân tích dữ liệu Google Search Console, theo dõi thứ hạng 22 từ khóa B2B & tối ưu Entity.',
+                responsibilities: [
+                    'Theo dõi thứ hạng từ khóa hàng ngày trên GSC.',
+                    'Đề xuất tối ưu On-page và Off-page (Backlinks, Entity).',
+                    'Phân tích đối thủ cạnh tranh trên SERP.',
+                    'Lập báo cáo hiệu suất Organic Traffic.'
+                ]
+            },
+            'my': {
+                name: '5. Mỹ - Trợ lý Thiết Kế',
+                role: 'Visual Arts',
+                icon: 'fa-palette',
+                colorClass: 'rose',
+                bgClass: 'rose',
+                desc: 'Thiết kế đồ họa, xử lý visual sa bàn kiến trúc, banner quảng cáo & nhận diện thương hiệu.',
+                responsibilities: [
+                    'Thiết kế Thumbnail bài viết Web, Facebook.',
+                    'Xử lý hình ảnh dự án sa bàn, nhà máy đẹp mắt.',
+                    'Thiết kế Banner, Profile, ấn phẩm quảng cáo.',
+                    'Đảm bảo quy chuẩn nhận diện thương hiệu Song Anh.'
+                ]
+            },
+            'thong': {
+                name: '6. Thông - Trợ lý Website',
+                role: 'WP Publisher',
+                icon: 'fa-globe',
+                colorClass: 'cyan',
+                bgClass: 'cyan',
+                desc: 'Quản trị website mohinhkientruc.org, tối ưu WordPress On-Page, Schema JSON-LD & Sitemap.',
+                responsibilities: [
+                    'Đăng bài, định dạng và xuất bản lên WordPress.',
+                    'Cài đặt Schema JSON-LD, thẻ Meta Tags chuẩn SEO.',
+                    'Xử lý các vấn đề kỹ thuật của Website (Tốc độ, Sitemap).',
+                    'Cập nhật giao diện và plugin WordPress.'
+                ]
+            }
+        };
+
+        function showAgentModal(agentId) {
+            const data = agentData[agentId];
+            if (!data) return;
+
+            // Set content
+            document.getElementById('agentModalName').textContent = data.name;
+            
+            const roleEl = document.getElementById('agentModalRole');
+            roleEl.textContent = data.role;
+            roleEl.className = `text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-${data.bgClass}-200 text-${data.bgClass}-800`;
+            
+            const iconContainer = document.getElementById('agentModalIconContainer');
+            iconContainer.className = `w-8 h-8 rounded-lg flex items-center justify-center text-sm bg-${data.bgClass}-100 text-${data.bgClass}-700`;
+            
+            const icon = document.getElementById('agentModalIcon');
+            icon.className = `fa-solid ${data.icon}`;
+            
+            document.getElementById('agentModalDesc').textContent = data.desc;
+            
+            const ul = document.getElementById('agentModalResponsibilities');
+            ul.innerHTML = '';
+            data.responsibilities.forEach(res => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start gap-2 text-[11px] text-slate-700 font-medium';
+                li.innerHTML = `<i class="fa-solid fa-check mt-0.5 text-emerald-500"></i> <span>${res}</span>`;
+                ul.appendChild(li);
+            });
+            
+            // Show modal
+            document.getElementById('agentModal').classList.remove('hidden');
+            document.getElementById('agentModal').classList.add('flex');
+        }
+
+        function closeAgentModal() {
+            document.getElementById('agentModal').classList.add('hidden');
+            document.getElementById('agentModal').classList.remove('flex');
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('agentModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAgentModal();
+            }
+        });
+    </script>
+
 </body>
 </html>
