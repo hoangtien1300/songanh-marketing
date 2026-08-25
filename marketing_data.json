@@ -16466,123 +16466,75 @@
   },
   "marketing_activity_log": [
     {
-      "timestamp": "25/08/2026\n16:50:42",
+      "timestamp": "25/08/2026 16:35",
+      "category": "Facebook Marketing",
+      "action": "Thực thi Re-comment 3 Kênh Facebook và cập nhật ngày báo cáo Notion DB",
+      "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment cho Fanpage Song Anh (Sửa chữa sa bàn), Profile (Mô hình thiết bị 3D) và Fanpage English (World-class scale model); đồng bộ ngày 25/08/2026 trên Notion BẢNG CONTENT.",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
+    {
+      "timestamp": "25/08/2026 16:25",
+      "category": "Facebook Marketing",
+      "action": "Đóng gói 3 Quy trình Tiêu chuẩn (SOP) Re-Comment Fanpage, Profile & Fanpage Quốc Tế",
+      "description": "Đóng gói SOP 5 bước kết nối BẢNG CONTENT Notion DB, tạo 3 Option nội dung B2B xoay vòng và mẫu báo cáo 3 phần kèm link Notion cho Sếp duyệt và chuyển ngày.",
+      "performer": "Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
+    {
+      "timestamp": "25/08/2026 16:00",
       "category": "SEO Website",
-      "action": "Trí (SEO Master) phối hợp cùng Văn, Mỹ, Thông hoàn tất xuất bản Trang Báo Giá Cốt Lõi (/mo-hinh-kien-truc/), Schema JSON-LD đa tầng và Sếp Tiến đã Request Indexing GSC thành công",
-      "performer": "Trí - Trợ lý SEO Master & Phạm Hoàng Tiến",
+      "action": "Gửi yêu cầu lập chỉ mục Google Search Console (Request Indexing) & Instant Indexing",
+      "description": "Sếp Tiến cùng Trí hoàn tất Request Indexing URL /mo-hinh-kien-truc/ trên Google Search Console và kích hoạt Instant Indexing RankMath API để kích thích Googlebot lập chỉ mục ngay.",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành"
     },
     {
-      "timestamp": "25/08/2026\n16:34:24",
-      "category": "Facebook Marketing",
-      "action": "Sếp Tiến duyệt và đăng Option 2 Re-comment Fanpage Architectural Model Org (Kênh tiếng Anh) + Đã cập nhật ngày Re-comment 25/08/2026 trên Notion BẢNG CONTENT",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "timestamp": "25/08/2026 15:45",
+      "category": "SEO Website",
+      "action": "Hoàn thiện Khung On-Page & Xuất bản Trang Báo Giá Cốt Lõi mohinhkientruc.org/mo-hinh-kien-truc/",
+      "description": "Sếp Tiến trực tiếp đăng tải và định dạng bài viết 2.500+ từ chuẩn E-E-A-T, tích hợp khối CTA chuẩn B2B và gói Schema JSON-LD 5 thực thể (Article, Service, FAQ, ProfessionalService, Breadcrumb).",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành"
     },
     {
-      "timestamp": "25/08/2026\n16:08:43",
-      "category": "Facebook Marketing",
-      "action": "Sếp Tiến duyệt và đăng Option 2 Re-comment Facebook Profile Song Anh (Bài Quy trình mô hình thiết bị 3D) + Đóng gói vĩnh viễn SOP [Re-Cmt FB] Profile",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "timestamp": "25/08/2026 15:30",
+      "category": "Design & Media",
+      "action": "Sản xuất trọn bộ 06 ấn phẩm Media WebP độc bản cho Trang Báo Giá Cốt Lõi",
+      "description": "Thiết kế 01 Thumbnail 1200x628px, 01 Hero Banner, 01 Infographic 4 Yếu tố định giá và 03 ảnh thực tế xưởng Thủ Đức & dự án Kỳ Anh, Trà Vinh gắn Watermark Logo Song Anh chuẩn.",
+      "performer": "Mỹ - Trợ lý Design",
       "status": "Hoàn Thành"
     },
     {
-      "id": 32,
-      "timestamp": "25/08/2026 14:30:00",
-      "module": "Facebook Fanpage",
-      "action": "Thực thi Re-comment Option 2 (Năng lực xưởng 230/70/28 Nguyễn Xiển Thủ Đức 7-15 ngày, tối ưu 70% chi phí) cho bài viết 'Sa bàn dự án BĐS cũ bị hỏng LED/bụi bẩn' trên Fanpage Mô hình kiến trúc Song Anh • Đã cập nhật ngày Re-comment tiếp theo trên Notion DB 'BẢNG CONTENT'",
-      "actor": "Sếp Tiến & Minh - Điều Phối",
+      "timestamp": "25/08/2026 14:45",
+      "category": "Design & Media",
+      "action": "Nâng cấp Logo Vector 4K khử răng cưa và ban hành Quy chuẩn thiết kế V3.1",
+      "description": "Khử sạch 100% răng cưa logo, bổ sung stroke viền #141414 hiển thị sắc nét trên mọi nền, xuất bản file .svg và PNG Master 4K UHD (3388x952px); ban hành Unique Media Policy.",
+      "performer": "Mỹ - Trợ lý Design",
       "status": "Hoàn Thành"
     },
     {
-      "timestamp": "25/08/2026 14:30:12",
-      "category": "Facebook Marketing",
-      "action": "Sếp Tiến duyệt và đăng Option 2 Re-comment Fanpage Mô hình Song Anh (Bài Sửa chữa sa bàn BĐS) + Đóng gói vĩnh viễn SOP [Re-Cmt FB] Fanpage",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 13:58:29",
-      "category": "Team & Management",
-      "action": "Kiến đồng bộ hóa 100% danh sách 6 Trợ lý AI Agents (kèm Icon nhận diện) lên Web App Master Dashboard",
+      "timestamp": "25/08/2026 14:00",
+      "category": "Lập Trình & Web App",
+      "action": "Tối giản hóa giao diện Web App Dashboard (#panel-home) phong cách Minimalist UI",
+      "description": "Tinh gọn 4 Thẻ Hero KPIs số liệu lớn, chuyển 6 Trợ lý AI thành Grid Compact chống rối mắt, tối ưu bảng Lịch Sử Hoạt Động & Thao Tác Hệ Thống.",
       "performer": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành"
     },
     {
-      "timestamp": "25/08/2026 13:56:56",
-      "category": "Team & Management",
-      "action": "Sếp Tiến chính thức bổ nhiệm chức danh 'Minh - Marketing Manager' làm Trưởng Ban Điều Hành Đội Ngũ AI Agents Marketing Song Anh",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "timestamp": "25/08/2026 13:30",
+      "category": "Lập Trình & Web App",
+      "action": "Nâng cấp Modal 6 Trợ lý AI, Live Execution Tracker và kiểm thử Playwright 100% pass",
+      "description": "Xây dựng interactive modal 3 mục (Nhiệm vụ - Skills - Live Tracker) cho 6 Trợ lý AI, tích hợp SOP [RE-CMT FB] vào Web App, kiểm thử 21 modules điều hướng 0 lỗi Console.",
+      "performer": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành"
     },
     {
-      "timestamp": "25/08/2026 13:33:01",
-      "category": "Facebook Marketing",
-      "action": "Sếp Tiến đăng bài Video Sa bàn Nuôi tôm công khai 100% trên Group M&A (https://www.facebook.com/groups/152692778620733/posts/2226916441198346)",
-      "performer": "Phạm Hoàng Tiến",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 13:33:01",
-      "category": "Facebook Marketing",
-      "action": "Sếp Tiến đăng bài Video Sa bàn Nuôi tôm trên Group Dự Án Đầu Tư & Xây Dựng (Chờ duyệt: https://www.facebook.com/groups/1018858983450852/pending_posts/1319319740071440)",
-      "performer": "Phạm Hoàng Tiến",
-      "status": "Đang Thực Hiện"
-    },
-    {
-      "timestamp": "25/08/2026 11:47:32",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Nghỉ Lễ 2/9 Phiên Bản Đột Phá V6 Master (1080x1080px - Biểu trưng Quốc kỳ 3D Lụa Vàng & Sa bàn cao tầng) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 11:42:36",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Nghỉ Lễ 2/9 Phiên Bản Hoàn Hảo V5 Master (1080x1080px - Background mô hình cao tầng & Nút Button CTA mohinhkientruc.org) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 11:36:54",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Nghỉ Lễ 2/9 Phiên Bản Ảnh Vuông 1:1 (1080x1080px - Chuẩn Kiến Trúc Song Anh Navy, Footer tinh giản) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 11:33:05",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Nghỉ Lễ 2/9 Phiên Bản Hoàn Hảo V4 (Tone Xanh Navy Song Anh, Họa tiết Quốc kỳ 2/9 & Minimalist Footer) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 10:16:13",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt phiên bản hoàn hảo V3 Master Banner Nghỉ Lễ 2/9 (1200x628px - Multi-layer Sa Bàn & Pattern mohinhkientruc.org) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 10:10:50",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Nghỉ Lễ 2/9 Phiên Bản Nâng Cấp V2 (1200x628px - Logo Song Anh lớn & Layer CAD Blueprint) cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 10:05:59",
-      "category": "Design & Media",
-      "action": "Sếp Tiến phê duyệt thiết kế Banner Thông Báo Nghỉ Lễ Quốc Khánh 2/9 (1200x628px) chuẩn B2B cho Mô hình Song Anh",
-      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
-      "status": "Hoàn Thành"
-    },
-    {
-      "timestamp": "25/08/2026 08:14:27",
-      "category": "Google Business",
-      "action": "Xuất bản bài đăng B2B tự động lên 2 địa điểm GBP kèm ảnh Sa bàn quy hoạch & Nút CTA 'Tìm hiểu thêm' dẫn về https://mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
-      "performer": "Kiến - Trợ lý Lập Trình & Minh - Trợ lý Điều Phối",
+      "timestamp": "25/08/2026 12:00",
+      "category": "Điều Hành Marketing",
+      "action": "Thiết lập cấu trúc thư mục lưu trữ riêng cho từng Trợ lý AI trên Google Drive",
+      "description": "Khởi tạo và đồng bộ 100% tài liệu, bài viết, SOPs, script và kho ảnh vào các thư mục Drive riêng: Minh - Marketing Manager, Trí - Trợ lý SEO Master, Mỹ - Trợ Lý Design.",
+      "performer": "Minh - Marketing Manager & Toàn Đội AI",
       "status": "Hoàn Thành"
     },
     {
