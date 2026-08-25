@@ -8792,7 +8792,47 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             }
         }
 
-        async function fetchData() {
+        async 
+    function renderAiAgentsGrid() {
+      const container = document.getElementById('ai-agents-grid');
+      if (!container) return;
+      
+      const agents = marketingData.ai_agents_team || [
+        { icon: '👔', name: 'Minh - Marketing Manager', role_title: 'Trưởng Ban Điều Hành AI Marketing', specialty: 'Điều phối tổng thể, phân rã bài toán & Quản lý Gatekeeper 100%' },
+        { icon: '💻', name: 'Kiến - Trợ lý Lập Trình', role_title: 'Lead Developer & System Automation', specialty: 'Python SDK, Notion API 24/7, Web App & Bộ tool ATP Facebook' },
+        { icon: '🎨', name: 'Mỹ - Trợ lý Thiết Kế', role_title: 'Visual Arts & Media Master', specialty: 'Banner B2B CAD Blueprint, xử lý ảnh sa bàn 1:1 & Watermark Logo' },
+        { icon: '✍️', name: 'Văn - Trợ lý Nội Dung', role_title: 'Content Creator & Copywriting', specialty: 'Bài viết SEO Master 3,000 từ, Copywriting Status FB B2B & Kịch bản' },
+        { icon: '🔍', name: 'Trí - Trợ lý SEO Master', role_title: 'SEO Analytics & Search Strategy', specialty: 'Theo dõi 22 KWs Search Console, Audit On-Page & Topic Silo' },
+        { icon: '🌐', name: 'Thông - Trợ lý Website', role_title: 'WordPress & RankMath Publisher', specialty: 'Đăng bài mohinhkientruc.org, Gutenberg Block & check RankMath 85+' }
+      ];
+
+      container.innerHTML = agents.map(agent => `
+        <div class="p-4 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="text-xl p-1.5 rounded-lg bg-slate-800/80 border border-slate-700/50">${agent.icon}</span>
+                <div>
+                  <h4 class="text-xs font-bold text-white leading-snug">${agent.name}</h4>
+                  <span class="text-[10px] text-indigo-400 font-medium">${agent.role_title}</span>
+                </div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="Active"></span>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-relaxed mt-2">${agent.specialty}</p>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-800/60 flex items-center justify-between text-[10px] text-slate-500">
+            <span>Trạng thái:</span>
+            <span class="text-emerald-400 font-semibold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Sẵn sàng 24/7
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+
+    function fetchData() {
             try {
                 const res = await fetch('marketing_data.json?t=' + new Date().getTime());
                 if (!res.ok) throw new Error('Cannot load marketing_data.json');
@@ -8831,6 +8871,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 if (data.marketing_activity_log && data.marketing_activity_log.length > 0) {
                     marketingActivityLog = data.marketing_activity_log;
                     renderActivityLogTable();
+        renderAiAgentsGrid();
                     if (typeof renderMarketingActivityLogTable === 'function') {
                         renderMarketingActivityLogTable();
                     }
@@ -10566,6 +10607,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             renderFbTable();
             renderZaloTable();
             renderActivityLogTable();
+        renderAiAgentsGrid();
             renderMarketingActivityLogTable();
             updateFbStatsDisplay();
             updateGbpStatsDisplay();

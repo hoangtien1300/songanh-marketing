@@ -16443,6 +16443,13 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "25/08/2026\n13:58:29",
+      "category": "Team & Management",
+      "action": "Kiến đồng bộ hóa 100% danh sách 6 Trợ lý AI Agents (kèm Icon nhận diện) lên Web App Master Dashboard",
+      "performer": "Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "25/08/2026\n13:56:56",
       "category": "Team & Management",
       "action": "Sếp Tiến chính thức bổ nhiệm chức danh 'Minh - Marketing Manager' làm Trưởng Ban Điều Hành Đội Ngũ AI Agents Marketing Song Anh",
@@ -17398,6 +17405,62 @@
       "word_count_target": "2,600+ từ",
       "status": "Lên Kế Hoạch",
       "status_color": "slate"
+    }
+  ],
+  "ai_agents_team": [
+    {
+      "id": "minh_lead",
+      "icon": "👔",
+      "name": "Minh - Marketing Manager",
+      "role_title": "Trưởng Ban Điều Hành Đội Ngũ AI Marketing",
+      "specialty": "Điều phối tổng thể, phân rã bài toán, quản lý tiến độ các Agent & Kiểm duyệt Gatekeeper 100%",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "indigo"
+    },
+    {
+      "id": "kien_dev",
+      "icon": "💻",
+      "name": "Kiến - Trợ lý Lập Trình",
+      "role_title": "Lead Developer & System Automation",
+      "specialty": "Python SDK, Đồng bộ Notion API 24/7, Phát triển Web App & Bộ công cụ ATP Facebook Automation",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "blue"
+    },
+    {
+      "id": "my_design",
+      "icon": "🎨",
+      "name": "Mỹ - Trợ lý Thiết Kế",
+      "role_title": "Visual Arts & Media Master",
+      "specialty": "Thiết kế Banner B2B CAD Blueprint, xử lý ảnh sa bàn 1:1, gắn Watermark Logo & Prompt Google Flow",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "purple"
+    },
+    {
+      "id": "van_content",
+      "icon": "✍️",
+      "name": "Văn - Trợ lý Nội Dung",
+      "role_title": "Content Creator & Copywriting",
+      "specialty": "Biên soạn bài viết SEO Master 3,000 từ, Copywriting Status Facebook B2B, Kịch bản Video & PR B2B",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "emerald"
+    },
+    {
+      "id": "tri_seo",
+      "icon": "🔍",
+      "name": "Trí - Trợ lý SEO Master",
+      "role_title": "SEO Analytics & Search Strategy",
+      "specialty": "Theo dõi 22 KWs Google Search Console, phân tích đối thủ Top 1-3, xây dựng Topic Silo & RankMath On-Page",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "amber"
+    },
+    {
+      "id": "thong_wp",
+      "icon": "🌐",
+      "name": "Thông - Trợ lý Website",
+      "role_title": "WordPress & RankMath Publisher",
+      "specialty": "Đăng bài trực tiếp mohinhkientruc.org, định dạng Gutenberg Block, tối ưu Alt ảnh & check RankMath 85+",
+      "status": "Đang hoạt động (Active)",
+      "badge_color": "teal"
     }
   ]
 }
