@@ -360,314 +360,241 @@
         <main class="flex-1 overflow-y-auto p-6 space-y-5">
 
             <!-- 🌟 MODULE 1: THEO DÕI TỪ KHÓA (FULL 100% COMPLETE HTML CODE & 14 KEYWORDS & LINE CHART) -->
-            <!-- 0. MASTER HOME DASHBOARD PANEL (#panel-home) -->
-            <div id="panel-home" class="module-panel space-y-6">
-                <!-- Header Section for Home Dashboard -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-brand-navy to-slate-800 p-6 rounded-2xl text-white shadow-lg border border-slate-700">
-                    <div class="space-y-1">
-                        <div class="flex items-center gap-2">
-                            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-400/30 flex items-center gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                Marketing Dashboard
-                            </span>
+                        <!-- 0. MASTER HOME DASHBOARD PANEL (#panel-home) -->
+            <div id="panel-home" class="module-panel space-y-4">
+                <!-- Clean Minimal Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900 px-5 py-4 rounded-2xl text-white shadow-xs border border-slate-800">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-base">
+                            <i class="fa-solid fa-chart-pie"></i>
                         </div>
-                        <h2 class="text-xl font-heading font-black text-white flex items-center gap-2.5">
-                            <span>🏠 TRANG CHỦ TỔNG QUAN HỆ THỐNG MARKETING</span>
-                        </h2>
-                        <p class="text-xs text-slate-300 flex items-center gap-2 font-medium"><span>KPI Đa Kênh Real-time</span><span class="text-slate-500">•</span><span>Nhật Ký Thao Tác Tự Động</span></p>
+                        <div>
+                            <h2 class="text-sm font-heading font-black text-white flex items-center gap-2">
+                                <span>Tổng Quan Marketing Song Anh</span>
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live Sync
+                                </span>
+                            </h2>
+                            <p class="text-[11px] text-slate-400">Chỉ số vận hành hệ thống & Ban Trợ lý AI</p>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 shrink-0">
-                        <button onclick="handleRealtimeSync(this)" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md hover:shadow-blue-500/20 border border-blue-400/30">
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button onclick="handleRealtimeSync(this)" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-xs">
                             <i class="fa-solid fa-rotate text-xs"></i>
-                            <span>⚡ Đồng bộ Real-time</span>
+                            <span>Đồng bộ Real-time</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- 4 KPI SUMMARY CARDS -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- 1. SEO Master Overview -->
-                    <div class="bg-white p-5 rounded-2xl border border-sky-100 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-sky-50 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                        <div class="relative z-10 space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-lg border border-sky-200">
-                                    <i class="fa-solid fa-globe"></i>
-                                </div>
-                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-sky-100 text-sky-800 rounded-md border border-sky-200 uppercase">GSC Real-time</span>
+                <!-- 4 Sleek KPI Hero Stat Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                    <!-- 1. SEO Master -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">SEO Google</span>
+                            <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-globe"></i>
                             </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">SEO Master Overview</p>
-                                <div class="flex items-baseline gap-2 mt-1">
-                                    <h3 id="home-kpi-seo-total" class="text-2xl font-black text-brand-navy">22 KWs</h3>
-                                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">B2B Core</span>
-                                </div>
-                            </div>
-                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                                <span class="font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-lg border border-emerald-200">🏆 Top 1-3: <strong id="home-kpi-seo-top13">13 KWs</strong></span>
-                                <span class="font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-lg border border-blue-200">🎯 Top 4-10: <strong id="home-kpi-seo-top410">9 KWs</strong></span>
-                            </div>
+                        </div>
+                        <div class="flex items-baseline justify-between">
+                            <h3 id="home-kpi-seo-total" class="text-xl font-heading font-black text-slate-900">22 KWs</h3>
+                            <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200" id="home-kpi-seo-top13">Top 1-3: 13</span>
                         </div>
                     </div>
 
-                    <!-- 2. Meta Facebook Channel -->
-                    <div class="bg-white p-5 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                        <div class="relative z-10 space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg border border-blue-200">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                </div>
-                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-blue-100 text-blue-800 rounded-md border border-blue-200 uppercase flex items-center gap-1">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping"></span> Live Meta API
-                                </span>
+                    <!-- 2. Meta Facebook -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Facebook Fanpage</span>
+                            <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs">
+                                <i class="fa-brands fa-facebook-f"></i>
                             </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Meta Facebook Channel</p>
-                                <div class="flex items-baseline gap-2 mt-1">
-                                    <h3 id="home-kpi-fb-followers" class="text-2xl font-black text-blue-900">1,128</h3>
-                                    <span class="text-xs font-bold text-slate-600">Followers Live</span>
-                                </div>
-                            </div>
-                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                                <span class="font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-lg border border-slate-200">👁️ Views: <strong id="home-kpi-fb-views">10</strong></span>
-                                <span class="font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded-lg border border-blue-200">💬 Leads Inbox: <strong id="home-kpi-fb-leads">86</strong></span>
-                            </div>
+                        </div>
+                        <div class="flex items-baseline justify-between">
+                            <h3 id="home-kpi-fb-followers" class="text-xl font-heading font-black text-slate-900">1,128</h3>
+                            <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200" id="home-kpi-fb-leads">86 Leads Inbox</span>
                         </div>
                     </div>
 
-                    <!-- 3. Google Business Profile -->
-                    <div class="bg-white p-5 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                        <div class="relative z-10 space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-lg border border-rose-200">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-amber-100 text-amber-900 rounded-md border border-amber-300 flex items-center gap-1">
-                                    <i class="fa-solid fa-star text-amber-500 text-[10px]"></i> Avg 4.9 ⭐
-                                </span>
+                    <!-- 3. Google Business -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Google Maps (GBP)</span>
+                            <div class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-location-dot"></i>
                             </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Google Business Profile</p>
-                                <div class="flex items-baseline gap-2 mt-1">
-                                    <h3 id="home-kpi-gbp-branches" class="text-2xl font-black text-rose-950">3 Chi Nhánh</h3>
-                                </div>
-                            </div>
-                            <div class="pt-2 border-t border-slate-100 flex items-center gap-1.5 flex-wrap text-[11px] font-bold">
-                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200">📍 TP.HCM</span>
-                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200">📍 Hà Nội</span>
-                                <span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200">📍 Cần Thơ</span>
-                            </div>
+                        </div>
+                        <div class="flex items-baseline justify-between">
+                            <h3 id="home-kpi-gbp-branches" class="text-xl font-heading font-black text-slate-900">3 Xưởng</h3>
+                            <span class="text-[10px] font-extrabold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200">⭐ 4.9 Avg</span>
                         </div>
                     </div>
 
-                    <!-- 4. Task Management Notion Sync -->
-                    <div class="bg-white p-5 rounded-2xl border border-purple-100 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-50 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                        <div class="relative z-10 space-y-3">
-                            <div class="flex items-center justify-between">
-                                <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-lg border border-purple-200">
-                                    <i class="fa-solid fa-list-check"></i>
-                                </div>
-                                <span class="px-2 py-0.5 text-[10px] font-extrabold bg-purple-100 text-purple-800 rounded-md border border-purple-200 uppercase">Notion API</span>
+                    <!-- 4. Active Tasks -->
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tác vụ Notion</span>
+                            <div class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-list-check"></i>
                             </div>
-                            <div>
-                                <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Task &amp; Groups Sync</p>
-                                <div class="flex items-baseline gap-2 mt-1">
-                                    <h3 id="home-kpi-notion-tasks" class="text-2xl font-black text-purple-950">15 Active Tasks</h3>
-                                </div>
-                            </div>
-                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
-                                <span class="text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-lg border border-purple-200 flex items-center gap-1">
-                                    <i class="fa-solid fa-users text-[10px]"></i> 259 FB Groups
-                                </span>
-                                <span class="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 text-[10px]">Sync DB</span>
-                            </div>
+                        </div>
+                        <div class="flex items-baseline justify-between">
+                            <h3 id="home-kpi-notion-tasks" class="text-xl font-heading font-black text-slate-900">15 Tasks</h3>
+                            <span class="text-[10px] font-extrabold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">259 FB Groups</span>
                         </div>
                     </div>
                 </div>
 
-                
-                <!-- 🤖 BAN CÁN BỘ AI SONG ANH MARKETING (6 AGENTS APPROVED BY SẾP PHẠM HOÀNG TIẾN) -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 space-y-4">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">
-                                <i class="fa-solid fa-robot"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-sm font-heading font-extrabold text-brand-navy flex items-center gap-2">
-                                    <span>🤖 Ban Cán Bộ AI Song Anh Marketing</span>
-                                    <span class="px-2 py-0.5 text-[10px] font-extrabold bg-emerald-100 text-emerald-800 rounded-md border border-emerald-300">Official 6 Agents</span>
-                                </h3>
-                                <p class="text-[11px] text-slate-500">Bộ danh xưng cán bộ AI chính thức được Sếp Phạm Hoàng Tiến phê duyệt (≤ 5 từ) • Bấm vào trợ lý để xem chi tiết</p>
-                            </div>
+                <!-- 🤖 Compact & Elegant Ban Cán Bộ AI Section -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4.5 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-heading font-extrabold text-slate-800 flex items-center gap-1.5">
+                                <span>🤖 Ban Cán Bộ AI Marketing</span>
+                                <span class="px-1.5 py-0.2 text-[9px] font-bold bg-slate-100 text-slate-600 rounded">6 Trợ lý</span>
+                            </span>
                         </div>
-                        <span class="text-[10px] text-slate-400 font-medium hidden sm:inline-block">Cập nhật: Real-time System Sync</span>
+                        <span class="text-[10px] text-slate-400 font-medium">Bấm vào trợ lý để xem chi tiết vai trò & trách nhiệm</span>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                        <!-- Agent 1: Minh -->
-                        <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('minh')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-amber-950 flex items-center gap-1.5 group-hover:text-amber-700 transition">
-                                    <span class="text-sm">🏆</span> 1. Minh - Trợ lý Điều Phối
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-amber-200 text-amber-900">Lead Coordinator</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+                        <!-- Minh -->
+                        <div onclick="showAgentModal('minh')" class="p-3 rounded-xl border border-amber-200/60 bg-amber-50/20 hover:bg-amber-50/80 hover:border-amber-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>🏆</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Bộ não điều hành trung tâm: Tiếp nhận chỉ đạo chiến lược Sếp Tiến, điều phối 5 trợ lý & tổng hợp báo cáo nghiệm thu.</p>
-                            <div class="pt-1.5 border-t border-amber-100 flex items-center justify-between text-[10px] text-amber-800 font-semibold">
-                                <span><i class="fa-solid fa-brain mr-1"></i> Minh mẫn & Sáng suốt</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-amber-700 transition">Minh</h4>
+                                <p class="text-[10px] text-amber-800 font-bold">Điều Phối</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Coordinator</span>
                         </div>
 
-                        <!-- Agent 2: Kiến -->
-                        <div class="p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('kien')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-emerald-950 flex items-center gap-1.5 group-hover:text-emerald-700 transition">
-                                    <span class="text-sm">👨‍💻</span> 2. Kiến - Trợ lý Lập Trình
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-200 text-emerald-900">Lead Developer</span>
+                        <!-- Kiến -->
+                        <div onclick="showAgentModal('kien')" class="p-3 rounded-xl border border-emerald-200/60 bg-emerald-50/20 hover:bg-emerald-50/80 hover:border-emerald-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>👨‍💻</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Kiến tạo nền móng: Lập trình Web App, Automation Python Engine, REST API Meta/Notion/GSC & Worker 24/7.</p>
-                            <div class="pt-1.5 border-t border-emerald-100 flex items-center justify-between text-[10px] text-emerald-800 font-semibold">
-                                <span><i class="fa-solid fa-code mr-1"></i> Kiến tạo nền móng</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-emerald-700 transition">Kiến</h4>
+                                <p class="text-[10px] text-emerald-800 font-bold">Lập Trình</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Developer</span>
                         </div>
 
-                        <!-- Agent 3: Văn -->
-                        <div class="p-3.5 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('van')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-purple-950 flex items-center gap-1.5 group-hover:text-purple-700 transition">
-                                    <span class="text-sm">✍️</span> 3. Văn - Trợ lý Nội Dung
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-purple-200 text-purple-900">Content Creator</span>
+                        <!-- Văn -->
+                        <div onclick="showAgentModal('van')" class="p-3 rounded-xl border border-purple-200/60 bg-purple-50/20 hover:bg-purple-50/80 hover:border-purple-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>✍️</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Văn chương B2B sắc nét: Soạn bài FB Groups 259 nhóm, status Profile cá nhân Sếp Tiến & kịch bản Re-comment.</p>
-                            <div class="pt-1.5 border-t border-purple-100 flex items-center justify-between text-[10px] text-purple-800 font-semibold">
-                                <span><i class="fa-solid fa-pen-nib mr-1"></i> Văn chương B2B sắc nét</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-purple-700 transition">Văn</h4>
+                                <p class="text-[10px] text-purple-800 font-bold">Nội Dung</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Content</span>
                         </div>
 
-                        <!-- Agent 4: Trí -->
-                        <div class="p-3.5 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('tri')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-blue-950 flex items-center gap-1.5 group-hover:text-blue-700 transition">
-                                    <span class="text-sm">📈</span> 4. Trí - Trợ lý SEO Master
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-blue-200 text-blue-900">SEO Analytics</span>
+                        <!-- Trí -->
+                        <div onclick="showAgentModal('tri')" class="p-3 rounded-xl border border-blue-200/60 bg-blue-50/20 hover:bg-blue-50/80 hover:border-blue-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>📈</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Trí tuệ phân tích data: Bóc tách 22 KWs GSC/GA4 real-time, audit On-page, Schema JSON-LD & bảo vệ Top 1.</p>
-                            <div class="pt-1.5 border-t border-blue-100 flex items-center justify-between text-[10px] text-blue-800 font-semibold">
-                                <span><i class="fa-solid fa-chart-line mr-1"></i> Trí tuệ phân tích data</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-blue-700 transition">Trí</h4>
+                                <p class="text-[10px] text-blue-800 font-bold">SEO Master</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Analytics</span>
                         </div>
 
-                        <!-- Agent 5: Mỹ -->
-                        <div class="p-3.5 rounded-xl border border-rose-200 bg-rose-50/40 hover:bg-rose-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('my')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-rose-950 flex items-center gap-1.5 group-hover:text-rose-700 transition">
-                                    <span class="text-sm">🎨</span> 5. Mỹ - Trợ lý Thiết Kế
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-rose-200 text-rose-900">Visual Arts</span>
+                        <!-- Mỹ -->
+                        <div onclick="showAgentModal('my')" class="p-3 rounded-xl border border-rose-200/60 bg-rose-50/20 hover:bg-rose-50/80 hover:border-rose-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>🎨</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Mỹ thuật & Thẩm mỹ: Prompt Google Flow ImageGen 3, tự động dán Logo, đóng EXIF bản quyền & thiết kế Thumbnail.</p>
-                            <div class="pt-1.5 border-t border-rose-100 flex items-center justify-between text-[10px] text-rose-800 font-semibold">
-                                <span><i class="fa-solid fa-palette mr-1"></i> Mỹ thuật & Thẩm mỹ</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-rose-700 transition">Mỹ</h4>
+                                <p class="text-[10px] text-rose-800 font-bold">Thiết Kế</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Design</span>
                         </div>
 
-                        <!-- Agent 6: Thông -->
-                        <div class="p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/40 hover:bg-cyan-50/80 hover:shadow-md transition space-y-2 cursor-pointer group" onclick="showAgentModal('thong')">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-cyan-950 flex items-center gap-1.5 group-hover:text-cyan-700 transition">
-                                    <span class="text-sm">📰</span> 6. Thông - Trợ lý Website
-                                </span>
-                                <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-cyan-200 text-cyan-900">WP Publisher</span>
+                        <!-- Thông -->
+                        <div onclick="showAgentModal('thong')" class="p-3 rounded-xl border border-cyan-200/60 bg-cyan-50/20 hover:bg-cyan-50/80 hover:border-cyan-300 hover:shadow-sm transition cursor-pointer flex flex-col items-center text-center space-y-1.5 group">
+                            <div class="w-9 h-9 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center text-base shadow-2xs group-hover:scale-105 transition">
+                                <span>📰</span>
                             </div>
-                            <p class="text-[11px] text-slate-600 leading-snug">Thông suốt xuất bản: Quản trị website mohinhkientruc.org, đăng bài RankMath REST API >85đ, check URL 200 OK.</p>
-                            <div class="pt-1.5 border-t border-cyan-100 flex items-center justify-between text-[10px] text-cyan-800 font-semibold">
-                                <span><i class="fa-solid fa-globe mr-1"></i> Thông suốt xuất bản</span>
-                                <span class="text-blue-600 group-hover:underline flex items-center gap-0.5">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 group-hover:text-cyan-700 transition">Thông</h4>
+                                <p class="text-[10px] text-cyan-800 font-bold">Website</p>
                             </div>
+                            <span class="text-[9px] font-semibold text-slate-400 bg-white px-1.5 py-0.2 rounded border border-slate-200">Publisher</span>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- MARKETING AUDIT & ACTIVITY LOG TABLE -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden space-y-4 p-5">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <!-- Clean Activity Log Table -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden space-y-3 p-4.5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
                         <div>
-                            <h3 class="text-base font-heading font-extrabold text-brand-navy flex items-center gap-2">
-                                <span>📋 Bảng Lịch Sử Cập Nhật &amp; Thao Tác Marketing</span>
-                                <span class="text-xs font-semibold text-slate-500">(System Real-Time Activity Log)</span>
+                            <h3 class="text-xs font-heading font-extrabold text-slate-800 flex items-center gap-2">
+                                <span>📋 Lịch Sử Hoạt Động & Thao Tác Hệ Thống</span>
                             </h3>
-                            <p class="text-xs text-slate-500 mt-0.5">Theo dõi lịch sử nhật ký tác vụ tự động và thao tác marketing của nhân sự &amp; Trợ lý AI</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">Nhật ký tự động hóa realtime từ Trợ lý AI & Nhân sự</p>
                         </div>
                         
-                        <!-- Filters & Actions -->
-                        <div class="flex flex-wrap items-center gap-2">
+                        <!-- Filters & Search -->
+                        <div class="flex items-center gap-2">
                             <div class="relative">
-                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                                <input type="text" id="activity-log-search-input" onkeyup="filterActivityLogTable()" placeholder="Tìm kiếm nhật ký..." class="pl-8 pr-3 py-1.5 text-xs font-semibold border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 transition shadow-xs">
+                                <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-[10px]"></i>
+                                <input type="text" id="activity-log-search-input" onkeyup="filterActivityLogTable()" placeholder="Tìm nhật ký..." class="pl-7 pr-2.5 py-1 text-[11px] font-semibold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 w-36 transition">
                             </div>
                             
-                            <select id="activity-log-module-filter" onchange="filterActivityLogTable()" class="px-3 py-1.5 text-xs font-bold border border-slate-300 rounded-xl bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-700 cursor-pointer shadow-xs">
-                                <option value="">🎯 Tất cả Hạng Mục</option>
-                                <option value="Facebook">Facebook / Meta API</option>
-                                <option value="SEO">SEO Website</option>
-                                <option value="Notion">Notion Sync</option>
-                                <option value="GBP">Google Business Profile</option>
-                                <option value="Zalo">Zalo Marketing</option>
+                            <select id="activity-log-module-filter" onchange="filterActivityLogTable()" class="px-2.5 py-1 text-[11px] font-bold border border-slate-200 rounded-lg bg-slate-50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 text-slate-700 cursor-pointer">
+                                <option value="">Tất cả Mục</option>
+                                <option value="Facebook">Facebook</option>
+                                <option value="SEO">SEO</option>
+                                <option value="Notion">Notion</option>
+                                <option value="GBP">GBP Maps</option>
                             </select>
 
-                            <span id="activity-log-count-badge" class="px-3 py-1.5 text-xs font-extrabold bg-blue-50 text-blue-700 rounded-xl border border-blue-200">
-                                8 Nhật Ký
+                            <span id="activity-log-count-badge" class="px-2 py-1 text-[10px] font-extrabold bg-slate-100 text-slate-600 rounded-lg border border-slate-200">
+                                8 Logs
                             </span>
                         </div>
                     </div>
 
                     <!-- Table Container -->
-                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                    <div class="overflow-x-auto rounded-xl border border-slate-100">
                         <table class="w-full text-left text-xs border-collapse">
-                            <thead class="bg-slate-100 text-brand-navy font-bold uppercase tracking-wider border-b border-slate-200">
+                            <thead class="bg-slate-50 text-slate-600 font-bold text-[11px] border-b border-slate-100">
                                 <tr>
-                                    <th class="p-3.5 w-40">⏰ Thời Gian</th>
-                                    <th class="p-3.5 w-36">🎯 Hạng Mục</th>
-                                    <th class="p-3.5 w-5/12 min-w-[320px]">📝 Nội Dung Cập Nhật</th>
-                                    <th class="p-3.5 w-48">👤 Người Thực Hiện</th>
-                                    <th class="p-3.5 w-36 text-center">🟢 Trạng Thái</th>
+                                    <th class="p-3 w-36">Thời Gian</th>
+                                    <th class="p-3 w-28">Hạng Mục</th>
+                                    <th class="p-3 min-w-[280px]">Nội Dung Cập Nhật</th>
+                                    <th class="p-3 w-40">Thực Hiện</th>
+                                    <th class="p-3 w-28 text-center">Trạng Thái</th>
                                 </tr>
                             </thead>
-                            <tbody id="activity-log-table-body" class="divide-y divide-slate-200">
+                            <tbody id="activity-log-table-body" class="divide-y divide-slate-100 text-[11px]">
                                 <!-- Dynamic Rows -->
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Activity Log Pagination Control Bar (10 dòng/trang) -->
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-200 text-xs text-slate-600 font-medium">
-                        <div id="activity-log-pagination-info" class="font-semibold text-slate-500">
-                            Hiển thị <span id="activity-log-start-idx" class="font-bold text-slate-800">1</span> - <span id="activity-log-end-idx" class="font-bold text-slate-800">10</span> trên tổng <span id="activity-log-total-count" class="font-bold text-slate-800">15</span> nhật ký
+                    <!-- Pagination -->
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px] text-slate-500">
+                        <div id="activity-log-pagination-info">
+                            Hiển thị <span id="activity-log-start-idx" class="font-bold text-slate-700">1</span> - <span id="activity-log-end-idx" class="font-bold text-slate-700">10</span> / <span id="activity-log-total-count" class="font-bold text-slate-700">15</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <button id="activity-log-btn-prev" onclick="changeActivityLogPage(-1)" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold transition flex items-center gap-1.5 shadow-xs disabled:opacity-40 disabled:cursor-not-allowed">
-                                <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                                <span>◀ Trang Trước</span>
+                        <div class="flex items-center gap-1.5">
+                            <button id="activity-log-btn-prev" onclick="changeActivityLogPage(-1)" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-bold transition disabled:opacity-40">
+                                ◀ Trước
                             </button>
-                            <span id="activity-log-page-indicator" class="px-3.5 py-1.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-800 font-extrabold text-xs shadow-xs">
-                                Trang 1 / 2
+                            <span id="activity-log-page-indicator" class="px-2.5 py-1 rounded-lg border border-blue-200 bg-blue-50 text-blue-800 font-bold text-[10px]">
+                                1 / 2
                             </span>
-                            <button id="activity-log-btn-next" onclick="changeActivityLogPage(1)" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold transition flex items-center gap-1.5 shadow-xs disabled:opacity-40 disabled:cursor-not-allowed">
-                                <span>Trang Sau ▶</span>
-                                <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            <button id="activity-log-btn-next" onclick="changeActivityLogPage(1)" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-bold transition disabled:opacity-40">
+                                Sau ▶
                             </button>
                         </div>
                     </div>
