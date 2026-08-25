@@ -34,6 +34,13 @@
         }
     </script>
     <style>
+        /* Bulletproof Native Display Rules (Prevents CDN load failure from breaking UI) */
+        .hidden { display: none !important; }
+        .module-panel.hidden { display: none !important; }
+        .module-panel { display: block; }
+        #panel-home.hidden { display: none !important; }
+        #agentModal.hidden { display: none !important; }
+
         body { font-family: 'Be Vietnam Pro', 'Inter', sans-serif; background-color: #F8FAFC; color: #1E293B; }
         .font-heading { font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif; }
         .light-card { background: #FFFFFF; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
@@ -3188,12 +3195,13 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
     </div>
 
     <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl text-xs shadow-xl hidden transition transform duration-300 flex items-center gap-3 z-50">
+    <div id="toast" style="display: none;" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl text-xs shadow-xl hidden transition transform duration-300 flex items-center gap-3 z-50">
         <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
         <span id="toast-message">Thông báo</span>
     </div>
 
     <script>
+        let marketingData = {};
         let keywordList = [
             {
                         "id": 1,
@@ -8494,237 +8502,459 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         ];
 
         let marketingActivityLog = [
-            { id: 1, timestamp: "20/08/2026 16:10:00", module: "Meta API & FB Groups", action: "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" },
-            { id: 2, timestamp: "20/08/2026 16:09:28", module: "SEO Google (GSC & GA4)", action: "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
-            { id: 3, timestamp: "20/08/2026 15:36:07", module: "Facebook Marketing", action: "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS", executor: "Văn - Trợ lý Nội Dung", status: "✅ Hoàn Thành" },
-            { id: 4, timestamp: "20/08/2026 14:20:00", module: "Google Business Profile", action: "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
-            { id: 5, timestamp: "20/08/2026 11:15:00", module: "Zalo OA & Zalo Personal", action: "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
-            { id: 6, timestamp: "20/08/2026 09:00:00", module: "Notion Task Management", action: "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34", executor: "Minh - Marketing Manager", status: "⚡ Real-time Auto Sync" },
-            { id: 7, timestamp: "19/08/2026 17:45:00", module: "Facebook Fanpage", action: "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox", executor: "Kiến - Trợ lý Lập Trình", status: "✅ Hoàn Thành" },
-            { id: 8, timestamp: "19/08/2026 14:30:00", module: "SEO On-Page", action: "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org", executor: "Thông - Trợ lý Website", status: "✅ Hoàn Thành" },
-            { id: 9, timestamp: "19/08/2026 10:20:00", module: "Facebook Profile", action: "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
-            { id: 10, timestamp: "18/08/2026 16:00:00", module: "SEO Website", action: "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
-            { id: 11, timestamp: "18/08/2026 11:30:00", module: "Zalo Marketing", action: "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles", executor: "Văn - Trợ lý Nội Dung", status: "✅ Hoàn Thành" },
-            { id: 12, timestamp: "17/08/2026 15:10:00", module: "Google Business Profile", action: "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN", executor: "Phạm Hoàng Tiến", status: "✅ Hoàn Thành" },
-            { id: 13, timestamp: "17/08/2026 09:45:00", module: "Meta API & FB Groups", action: "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" },
-            { id: 14, timestamp: "16/08/2026 14:00:00", module: "SEO Off-Page & Entity", action: "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn", executor: "Trí - Trợ lý SEO Master", status: "✅ Hoàn Thành" },
-            { id: 15, timestamp: "16/08/2026 08:30:00", module: "Web App Core System", action: "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%", executor: "Kiến - Trợ lý Lập Trình", status: "⚡ Real-time Auto Sync" }
-        ];
+        {
+                "timestamp": "25/08/2026 16:35",
+                "category": "Facebook Marketing",
+                "action": "Thực thi Re-comment 3 Kênh Facebook và cập nhật ngày báo cáo Notion DB",
+                "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment cho Fanpage Song Anh (Sửa chữa sa bàn), Profile (Mô hình thiết bị 3D) và Fanpage English (World-class scale model); đồng bộ ngày 25/08/2026 trên Notion BẢNG CONTENT.",
+                "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 16:25",
+                "category": "Facebook Marketing",
+                "action": "Đóng gói 3 Quy trình Tiêu chuẩn (SOP) Re-Comment Fanpage, Profile & Fanpage Quốc Tế",
+                "description": "Đóng gói SOP 5 bước kết nối BẢNG CONTENT Notion DB, tạo 3 Option nội dung B2B xoay vòng và mẫu báo cáo 3 phần kèm link Notion cho Sếp duyệt và chuyển ngày.",
+                "performer": "Minh - Marketing Manager",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 16:00",
+                "category": "SEO Website",
+                "action": "Gửi yêu cầu lập chỉ mục Google Search Console (Request Indexing) & Instant Indexing",
+                "description": "Sếp Tiến cùng Trí hoàn tất Request Indexing URL /mo-hinh-kien-truc/ trên Google Search Console và kích hoạt Instant Indexing RankMath API để kích thích Googlebot lập chỉ mục ngay.",
+                "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 15:45",
+                "category": "SEO Website",
+                "action": "Hoàn thiện Khung On-Page & Xuất bản Trang Báo Giá Cốt Lõi mohinhkientruc.org/mo-hinh-kien-truc/",
+                "description": "Sếp Tiến trực tiếp đăng tải và định dạng bài viết 2.500+ từ chuẩn E-E-A-T, tích hợp khối CTA chuẩn B2B và gói Schema JSON-LD 5 thực thể (Article, Service, FAQ, ProfessionalService, Breadcrumb).",
+                "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 15:30",
+                "category": "Design & Media",
+                "action": "Sản xuất trọn bộ 06 ấn phẩm Media WebP độc bản cho Trang Báo Giá Cốt Lõi",
+                "description": "Thiết kế 01 Thumbnail 1200x628px, 01 Hero Banner, 01 Infographic 4 Yếu tố định giá và 03 ảnh thực tế xưởng Thủ Đức & dự án Kỳ Anh, Trà Vinh gắn Watermark Logo Song Anh chuẩn.",
+                "performer": "Mỹ - Trợ lý Design",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 14:45",
+                "category": "Design & Media",
+                "action": "Nâng cấp Logo Vector 4K khử răng cưa và ban hành Quy chuẩn thiết kế V3.1",
+                "description": "Khử sạch 100% răng cưa logo, bổ sung stroke viền #141414 hiển thị sắc nét trên mọi nền, xuất bản file .svg và PNG Master 4K UHD (3388x952px); ban hành Unique Media Policy.",
+                "performer": "Mỹ - Trợ lý Design",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 14:00",
+                "category": "Lập Trình & Web App",
+                "action": "Tối giản hóa giao diện Web App Dashboard (#panel-home) phong cách Minimalist UI",
+                "description": "Tinh gọn 4 Thẻ Hero KPIs số liệu lớn, chuyển 6 Trợ lý AI thành Grid Compact chống rối mắt, tối ưu bảng Lịch Sử Hoạt Động & Thao Tác Hệ Thống.",
+                "performer": "Kiến - Trợ lý Lập Trình",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 13:30",
+                "category": "Lập Trình & Web App",
+                "action": "Nâng cấp Modal 6 Trợ lý AI, Live Execution Tracker và kiểm thử Playwright 100% pass",
+                "description": "Xây dựng interactive modal 3 mục (Nhiệm vụ - Skills - Live Tracker) cho 6 Trợ lý AI, tích hợp SOP [RE-CMT FB] vào Web App, kiểm thử 21 modules điều hướng 0 lỗi Console.",
+                "performer": "Kiến - Trợ lý Lập Trình",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "25/08/2026 12:00",
+                "category": "Điều Hành Marketing",
+                "action": "Thiết lập cấu trúc thư mục lưu trữ riêng cho từng Trợ lý AI trên Google Drive",
+                "description": "Khởi tạo và đồng bộ 100% tài liệu, bài viết, SOPs, script và kho ảnh vào các thư mục Drive riêng: Minh - Marketing Manager, Trí - Trợ lý SEO Master, Mỹ - Trợ Lý Design.",
+                "performer": "Minh - Marketing Manager & Toàn Đội AI",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "24/08/2026 17:17:14",
+                "category": "Google Business",
+                "action": "Xuất bản bài đăng B2B tự động lên 2 địa điểm GBP (Thủ Đức & Q.1) kèm ảnh Thumbnail sa bàn nhà máy & Nút CTA 'Tìm hiểu thêm' dẫn về https://mohinhkientruc.org/mo-hinh-nha-may/",
+                "performer": "Kiến - Trợ lý Lập Trình & Minh - Trợ lý Điều Phối",
+                "status": "Hoàn Thành"
+        },
+        {
+                "timestamp": "24/08/2026 17:13:39",
+                "category": "SEO Website",
+                "action": "Cập nhật bài viết Master SEO 'Mô hình nhà máy 2026' (4 ảnh WebP + 2 Video YouTube + Form B2B) lên website https://mohinhkientruc.org/mo-hinh-nha-may/",
+                "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+                "status": "Hoàn Thành"
+        },
+        {
+                "id": 16,
+                "timestamp": "21/08/2026 08:45:00",
+                "module": "Facebook Marketing",
+                "action": "Vận hành thực tế đăng bài Mô hình TOD 1/500 trên 5 Groups Facebook & đồng bộ kết quả duyệt bài",
+                "executor": "Phạm Hoàng Tiến & Trợ lý Kiến",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 15,
+                "timestamp": "16/08/2026 08:30:00",
+                "module": "Web App Core System",
+                "action": "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%",
+                "executor": "Kiến - Trợ lý Lập Trình",
+                "status": "⚡ Real-time Auto Sync"
+        },
+        {
+                "id": 14,
+                "timestamp": "16/08/2026 14:00:00",
+                "module": "SEO Off-Page & Entity",
+                "action": "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn",
+                "executor": "Trí - Trợ lý SEO Master",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 13,
+                "timestamp": "17/08/2026 09:45:00",
+                "module": "Meta API & FB Groups",
+                "action": "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới",
+                "executor": "Kiến - Trợ lý Lập Trình",
+                "status": "⚡ Real-time Auto Sync"
+        },
+        {
+                "id": 12,
+                "timestamp": "17/08/2026 15:10:00",
+                "module": "Google Business Profile",
+                "action": "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN",
+                "executor": "Phạm Hoàng Tiến",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 11,
+                "timestamp": "18/08/2026 11:30:00",
+                "module": "Zalo Marketing",
+                "action": "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles",
+                "executor": "Văn - Trợ lý Nội Dung",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 10,
+                "timestamp": "18/08/2026 16:00:00",
+                "module": "SEO Website",
+                "action": "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị",
+                "executor": "Trí - Trợ lý SEO Master",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 9,
+                "timestamp": "19/08/2026 10:20:00",
+                "module": "Facebook Profile",
+                "action": "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile",
+                "executor": "Phạm Hoàng Tiến",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 8,
+                "timestamp": "19/08/2026 14:30:00",
+                "module": "SEO On-Page",
+                "action": "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org",
+                "executor": "Thông - Trợ lý Website",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 7,
+                "timestamp": "19/08/2026 17:45:00",
+                "module": "Facebook Fanpage",
+                "action": "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox",
+                "executor": "Kiến - Trợ lý Lập Trình",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 6,
+                "timestamp": "20/08/2026 09:00:00",
+                "module": "Notion Task Management",
+                "action": "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34",
+                "executor": "Minh - Trợ lý Điều Phối",
+                "status": "⚡ Real-time Auto Sync"
+        },
+        {
+                "id": 5,
+                "timestamp": "20/08/2026 11:15:00",
+                "module": "Zalo OA & Zalo Personal",
+                "action": "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox",
+                "executor": "Phạm Hoàng Tiến",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 4,
+                "timestamp": "20/08/2026 14:20:00",
+                "module": "Google Business Profile",
+                "action": "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)",
+                "executor": "Phạm Hoàng Tiến",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 3,
+                "timestamp": "20/08/2026 15:36:07",
+                "module": "Facebook Marketing",
+                "action": "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS",
+                "executor": "Văn - Trợ lý Nội Dung",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 2,
+                "timestamp": "20/08/2026 16:09:28",
+                "module": "SEO Google (GSC & GA4)",
+                "action": "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)",
+                "executor": "Trí - Trợ lý SEO Master",
+                "status": "✅ Hoàn Thành"
+        },
+        {
+                "id": 1,
+                "timestamp": "20/08/2026 16:10:00",
+                "module": "Meta API & FB Groups",
+                "action": "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công",
+                "executor": "Kiến - Trợ lý Lập Trình",
+                "status": "⚡ Real-time Auto Sync"
+        }
+];
         let currentFbGroupChannel = 'fanpage';
         let fanpageJoinedGroupsList = [];
         let profileJoinedGroupsList = [];
         let fbJoinedGroupsList = [];
         let fbTaskList = [
-            {
-                        "id": 1,
-                        "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
-                        "description": "🎯 Mục tiêu: Phân phối nội dung B2B chuyên sâu từ Website mohinhkientruc.org lên Fanpage Mô hình kiến trúc Song Anh nhằm tiếp cận Chủ đầu tư, KTS & Tổng thầu. \n ⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6 lúc 08:30 - 09:30). \n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh, chỉn chu (Không dùng từ teen 'nhé/nha/nè'). \n 🖼️ Hình ảnh/Video: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh hoặc video cận cảnh độ tinh xảo.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 4, Thứ 6",
-                        "kpi_weekly": "3 Bài / Tuần",
-                        "completed": "3 Bài",
-                        "progress_percent": 100,
-                        "status_text": "100% Hoàn Thành",
-                        "color_class": "emerald",
-                        "icon_class": "fa-square-check text-emerald-600"
-            },
-            {
-                        "id": 2,
-                        "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
-                        "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Fanpage để duy trì hiển thị B2B và kéo dài vòng đời bài viết 10-14 ngày.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 3, Thứ 5, Thứ 7",
-                        "kpi_weekly": "3 Lần / Tuần",
-                        "completed": "3 Lần",
-                        "progress_percent": 100,
-                        "status_text": "100% Hoàn Thành",
-                        "color_class": "emerald",
-                        "icon_class": "fa-square-check text-emerald-600"
-            },
-            {
-                        "id": 3,
-                        "task_name": "[Re-Cmt FB] Profile Song Anh",
-                        "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Profile Song Anh để duy trì tương tác cá nhân B2B và mở rộng kết nối KTS/Chủ đầu tư 10-14 ngày.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 3, Thứ 5, Thứ 7",
-                        "kpi_weekly": "3 Lần / Tuần",
-                        "completed": "0 Lần",
-                        "progress_percent": 0,
-                        "status_text": "Duy trì",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 4,
-                        "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
-                        "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org để duy trì tương tác B2B quốc tế 10-14 ngày.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 3, Thứ 5, Thứ 7",
-                        "kpi_weekly": "3 Lần / Tuần",
-                        "completed": "0 Lần",
-                        "progress_percent": 0,
-                        "status_text": "Duy trì",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 5,
-                        "task_name": "[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh",
-                        "description": "Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm, tiếp cận KTS & Chủ đầu tư mới 10-12 ngày.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7",
-                        "kpi_weekly": "6 Group / Tuần",
-                        "completed": "1 Group",
-                        "progress_percent": 16.7,
-                        "status_text": "16.7% Đạt KPI",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 6,
-                        "task_name": "[Post Fanpage] Architectural Model Org",
-                        "description": "Xuất bản bài viết/Reel B2B Tiếng Anh 3 bài/tuần lên Fanpage Architectural Model Org tiếp cận KTS & Chủ đầu tư quốc tế.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 4, Thứ 6",
-                        "kpi_weekly": "3 Bài / Tuần",
-                        "completed": "1 Bài",
-                        "progress_percent": 33.3,
-                        "status_text": "33.3% Đạt KPI",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 7,
-                        "task_name": "[Post Profile] Song Anh",
-                        "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân. \n ⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile). \n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè'). \n 🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2",
-                        "kpi_weekly": "1 Bài / Tuần",
-                        "completed": "1 Bài",
-                        "progress_percent": 100,
-                        "status_text": "100% Hoàn Thành",
-                        "color_class": "emerald",
-                        "icon_class": "fa-square-check text-emerald-600"
-            },
-            {
-                        "id": 8,
-                        "task_name": "[Join FB Group] | Fanpage Mô hình kiến trúc Song Anh",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 4",
-                        "kpi_weekly": "6 Group / Tuần",
-                        "completed": "35 Group",
-                        "progress_percent": 5.8,
-                        "status_text": "5.8% Đạt KPI",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 9,
-                        "task_name": "Facebook Profile Mô hình Song Anh",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Hàng Tuần (Duy trì)",
-                        "kpi_weekly": "Duy Trì 100%",
-                        "completed": "0",
-                        "progress_percent": 0.0,
-                        "status_text": "Đang làm",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 10,
-                        "task_name": "Facebook Profile Song Anh",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Hàng Tuần (Duy trì)",
-                        "kpi_weekly": "Duy Trì 100%",
-                        "completed": "0",
-                        "progress_percent": 0.0,
-                        "status_text": "Đang làm",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 11,
-                        "task_name": "Fanpage Architectural Model Org",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Hàng Tuần (Duy trì)",
-                        "kpi_weekly": "Duy Trì 100%",
-                        "completed": "0",
-                        "progress_percent": 0.0,
-                        "status_text": "Đang làm",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 12,
-                        "task_name": "Fanpage Mô hình kiến trúc Song Anh",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Hàng Tuần (Duy trì)",
-                        "kpi_weekly": "Duy Trì 100%",
-                        "completed": "0",
-                        "progress_percent": 0,
-                        "status_text": "Đang làm",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 13,
-                        "task_name": "[Post FB Group] Fanpage Mô hình kiến trúc Song Anh - Tuyển dụng Parttime",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 4, Thứ 6",
-                        "kpi_weekly": "9 Bài / Tuần",
-                        "completed": "4 Bài",
-                        "progress_percent": 44.4,
-                        "status_text": "44.4% Đạt KPI",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            },
-            {
-                        "id": 14,
-                        "task_name": "[Post FB Group] Profile Song Anh",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Thứ 2, Thứ 4, Thứ 6",
-                        "kpi_weekly": "9 Bài / Tuần",
-                        "completed": "9 Bài",
-                        "progress_percent": 100,
-                        "status_text": "100% Hoàn Thành",
-                        "color_class": "emerald",
-                        "icon_class": "fa-square-check text-emerald-600"
-            },
-            {
-                        "id": 15,
-                        "task_name": "[Search Group] Facebook",
-                        "description": "",
-                        "assignee": "Phạm Hoàng Tiến",
-                        "assignee_role": "user-tie",
-                        "frequency": "Hàng Ngày",
-                        "kpi_weekly": "35 Group / Tuần",
-                        "completed": "9 Group",
-                        "progress_percent": 25.7,
-                        "status_text": "25.7% Đạt KPI",
-                        "color_class": "amber",
-                        "icon_class": "fa-square-check text-amber-500"
-            }
+        {
+                "id": 1,
+                "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
+                "description": "🎯 Mục tiêu: Phân phối nội dung B2B chuyên sâu từ Website mohinhkientruc.org lên Fanpage Mô hình kiến trúc Song Anh nhằm tiếp cận Chủ đầu tư, KTS & Tổng thầu. \n ⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6 lúc 08:30 - 09:30). \n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh, chỉn chu (Không dùng từ teen 'nhé/nha/nè'). \n 🖼️ Hình ảnh/Video: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh hoặc video cận cảnh độ tinh xảo.",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 4, Thứ 6",
+                "kpi_weekly": "3 Bài / Tuần",
+                "completed": "3 Bài",
+                "progress_percent": 100,
+                "status_text": "100% Hoàn Thành",
+                "color_class": "emerald",
+                "icon_class": "fa-square-check text-emerald-600"
+        },
+        {
+                "id": 2,
+                "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
+                "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 3, Thứ 5, Thứ 7",
+                "kpi_weekly": "3 Lần / Tuần",
+                "completed": "1 Lượt",
+                "progress_percent": 33,
+                "status_text": "1/3 Lượt (Đang Thực Hiện)",
+                "color_class": "emerald",
+                "icon_class": "fa-square-check text-emerald-600",
+                "sop_5_steps": {
+                        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
+                        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
+                        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
+                        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
+                        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
+                },
+                "last_run": "25/08/2026 14:30",
+                "next_run": "27/08/2026"
+        },
+        {
+                "id": 3,
+                "task_name": "[Re-Cmt FB] Profile Song Anh",
+                "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 3, Thứ 5, Thứ 7",
+                "kpi_weekly": "3 Lần / Tuần",
+                "completed": "0 Lần",
+                "progress_percent": 0,
+                "status_text": "Duy trì",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500",
+                "sop_5_steps": {
+                        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
+                        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
+                        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
+                        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
+                        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
+                }
+        },
+        {
+                "id": 4,
+                "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
+                "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 3, Thứ 5, Thứ 7",
+                "kpi_weekly": "3 Lần / Tuần",
+                "completed": "0 Lần",
+                "progress_percent": 0,
+                "status_text": "Duy trì",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500",
+                "sop_5_steps": {
+                        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
+                        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
+                        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
+                        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
+                        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
+                }
+        },
+        {
+                "id": 5,
+                "task_name": "[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+                "description": "Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm, tiếp cận KTS & Chủ đầu tư mới 10-12 ngày.",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7",
+                "kpi_weekly": "6 Group / Tuần",
+                "completed": "1 Group",
+                "progress_percent": 16.7,
+                "status_text": "16.7% Đạt KPI",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 6,
+                "task_name": "[Post Fanpage] Architectural Model Org",
+                "description": "Xuất bản bài viết/Reel B2B Tiếng Anh 3 bài/tuần lên Fanpage Architectural Model Org tiếp cận KTS & Chủ đầu tư quốc tế.",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 4, Thứ 6",
+                "kpi_weekly": "3 Bài / Tuần",
+                "completed": "1 Bài",
+                "progress_percent": 33.3,
+                "status_text": "33.3% Đạt KPI",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 7,
+                "task_name": "[Post Profile] Song Anh",
+                "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân. \n ⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile). \n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè'). \n 🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2",
+                "kpi_weekly": "1 Bài / Tuần",
+                "completed": "1 Bài",
+                "progress_percent": 100,
+                "status_text": "100% Hoàn Thành",
+                "color_class": "emerald",
+                "icon_class": "fa-square-check text-emerald-600"
+        },
+        {
+                "id": 8,
+                "task_name": "[Join FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 4",
+                "kpi_weekly": "6 Group / Tuần",
+                "completed": "35 Group",
+                "progress_percent": 5.8,
+                "status_text": "5.8% Đạt KPI",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 9,
+                "task_name": "Facebook Profile Mô hình Song Anh",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Hàng Tuần (Duy trì)",
+                "kpi_weekly": "Duy Trì 100%",
+                "completed": "0",
+                "progress_percent": 0.0,
+                "status_text": "Đang làm",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 10,
+                "task_name": "Facebook Profile Song Anh",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Hàng Tuần (Duy trì)",
+                "kpi_weekly": "Duy Trì 100%",
+                "completed": "0",
+                "progress_percent": 0.0,
+                "status_text": "Đang làm",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 11,
+                "task_name": "Fanpage Architectural Model Org",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Hàng Tuần (Duy trì)",
+                "kpi_weekly": "Duy Trì 100%",
+                "completed": "0",
+                "progress_percent": 0.0,
+                "status_text": "Đang làm",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 12,
+                "task_name": "Fanpage Mô hình kiến trúc Song Anh",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Hàng Tuần (Duy trì)",
+                "kpi_weekly": "Duy Trì 100%",
+                "completed": "0",
+                "progress_percent": 0,
+                "status_text": "Đang làm",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 13,
+                "task_name": "[Post FB Group] Fanpage Mô hình kiến trúc Song Anh - Tuyển dụng Parttime",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 4, Thứ 6",
+                "kpi_weekly": "9 Bài / Tuần",
+                "completed": "4 Bài",
+                "progress_percent": 44.4,
+                "status_text": "44.4% Đạt KPI",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        },
+        {
+                "id": 14,
+                "task_name": "[Post FB Group] Profile Song Anh",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Thứ 2, Thứ 4, Thứ 6",
+                "kpi_weekly": "9 Bài / Tuần",
+                "completed": "9 Bài",
+                "progress_percent": 100,
+                "status_text": "100% Hoàn Thành",
+                "color_class": "emerald",
+                "icon_class": "fa-square-check text-emerald-600"
+        },
+        {
+                "id": 15,
+                "task_name": "[Search Group] Facebook",
+                "description": "",
+                "assignee": "Phạm Hoàng Tiến",
+                "assignee_role": "user-tie",
+                "frequency": "Hàng Ngày",
+                "kpi_weekly": "35 Group / Tuần",
+                "completed": "9 Group",
+                "progress_percent": 25.7,
+                "status_text": "25.7% Đạt KPI",
+                "color_class": "amber",
+                "icon_class": "fa-square-check text-amber-500"
+        }
 ];
 
         const fbChannelData = {
@@ -8770,7 +9000,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
       const container = document.getElementById('ai-agents-grid');
       if (!container) return;
       
-      const agents = marketingData.ai_agents_team || [
+      const agents = (typeof marketingData !== 'undefined' && marketingData && marketingData.ai_agents_team) ? marketingData.ai_agents_team : [
         { icon: '👔', name: 'Minh - Marketing Manager', role_title: 'Trưởng Ban Điều Hành AI Marketing', specialty: 'Điều phối tổng thể, phân rã bài toán & Quản lý Gatekeeper 100%' },
         { icon: '💻', name: 'Kiến - Trợ lý Lập Trình', role_title: 'Lead Developer & System Automation', specialty: 'Python SDK, Notion API 24/7, Web App & Bộ tool ATP Facebook' },
         { icon: '🎨', name: 'Mỹ - Trợ lý Thiết Kế', role_title: 'Visual Arts & Media Master', specialty: 'Banner B2B CAD Blueprint, xử lý ảnh sa bàn 1:1 & Watermark Logo' },
@@ -8805,7 +9035,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
     }
 
 
-    function fetchData() {
+    async function fetchData() {
             try {
                 const res = await fetch('marketing_data.json?t=' + new Date().getTime());
                 if (!res.ok) throw new Error('Cannot load marketing_data.json');
@@ -10107,16 +10337,17 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
 
             let html = '';
             pageItems.forEach(item => {
-                const rawTime = item.timestamp || 'N/A';
+                const rawTime = (item.timestamp || 'N/A').replace(/\r?\n/g, ' ').trim();
                 const mod = item.module || 'Hệ thống';
-                const action = item.action || 'N/A';
-                const rawExec = item.executor || 'Tự động';
-                const status = item.status || '✅ Hoàn Thành';
+                const title = item.title || item.action || 'N/A';
+                const desc = item.desc || item.description || '';
+                const rawExec = (item.executor || item.actor || 'Tự động').replace(/\r?\n/g, ' ').trim();
+                const status = item.status || 'Hoàn Thành';
 
-                // Lược bỏ hoàn toàn chuỗi mã hệ thống trong ngoặc như '(song_anh_code_expert)', '(Lead Developer)', '(Master Admin)'...
+                // Format Người thực hiện
                 const exec = rawExec.replace(/\s*\([^)]*\)/g, '').trim();
 
-                // Ngắt dòng Thời gian thành 2 dòng xếp chồng: Dòng 1: 📅 Ngày (DD/MM/YYYY), Dòng 2: ⏰ Giờ (HH:MM:SS)
+                // Format Thời gian
                 let timeDisplay = rawTime;
                 if (rawTime.includes(' ')) {
                     const timeParts = rawTime.trim().split(/\s+/);
@@ -10137,12 +10368,14 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                     modBadge = 'bg-blue-100 text-blue-800 border-blue-200';
                 } else if (mod.toLowerCase().includes('seo')) {
                     modBadge = 'bg-sky-100 text-sky-800 border-sky-200';
+                } else if (mod.toLowerCase().includes('design') || mod.toLowerCase().includes('media')) {
+                    modBadge = 'bg-rose-100 text-rose-800 border-rose-200';
+                } else if (mod.toLowerCase().includes('lập trình') || mod.toLowerCase().includes('web app') || mod.toLowerCase().includes('dev')) {
+                    modBadge = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+                } else if (mod.toLowerCase().includes('điều hành') || mod.toLowerCase().includes('manager')) {
+                    modBadge = 'bg-amber-100 text-amber-800 border-amber-200';
                 } else if (mod.toLowerCase().includes('notion')) {
                     modBadge = 'bg-purple-100 text-purple-800 border-purple-200';
-                } else if (mod.toLowerCase().includes('google') || mod.toLowerCase().includes('gbp')) {
-                    modBadge = 'bg-rose-100 text-rose-800 border-rose-200';
-                } else if (mod.toLowerCase().includes('zalo')) {
-                    modBadge = 'bg-indigo-100 text-indigo-800 border-indigo-200';
                 }
 
                 let statusBadge = 'bg-emerald-100 text-emerald-800 border-emerald-200';
@@ -10150,11 +10383,17 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                     statusBadge = 'bg-blue-100 text-blue-800 border-blue-200';
                 }
 
-                let execIcon = 'fa-user-tie text-brand-navy';
-                if (exec.includes('Minh') || exec.includes('Kiến') || exec.includes('Văn') || exec.includes('Trí') || exec.includes('Mỹ') || exec.includes('Thông') || exec.includes('AI') || exec.includes('Agent') || exec.includes('expert') || exec.includes('Trợ lý')) {
-                    execIcon = 'fa-robot text-purple-600';
-                } else if (exec.includes('Tiến')) {
-                    execIcon = 'fa-user-gear text-amber-600';
+                let execIcon = 'fa-robot text-purple-600';
+                if (exec.includes('Tiến') || exec.includes('Phạm Hoàng Tiến')) {
+                    execIcon = 'fa-user-tie text-amber-600';
+                } else if (exec.includes('Kiến')) {
+                    execIcon = 'fa-laptop-code text-emerald-600';
+                } else if (exec.includes('Trí')) {
+                    execIcon = 'fa-magnifying-glass-chart text-sky-600';
+                } else if (exec.includes('Mỹ')) {
+                    execIcon = 'fa-palette text-rose-600';
+                } else if (exec.includes('Minh')) {
+                    execIcon = 'fa-user-shield text-amber-600';
                 }
 
                 html += `
@@ -10163,16 +10402,22 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                         <td class="p-3.5 align-top">
                             <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg border ${modBadge} inline-block">${mod}</span>
                         </td>
-                        <td class="p-3.5 font-bold text-slate-900 leading-relaxed min-w-[320px] align-top">${action}</td>
+                        <td class="p-3.5 align-top min-w-[340px]">
+                            <div class="space-y-1">
+                                <div class="font-bold text-slate-900 text-xs leading-snug">${title}</div>
+                                ${desc ? `<div class="text-[11px] text-slate-500 leading-relaxed font-normal">${desc}</div>` : ''}
+                            </div>
+                        </td>
                         <td class="p-3.5 text-slate-800 font-bold align-top">
                             <div class="flex items-start gap-1.5 leading-snug">
-                                <i class="fa-solid ${execIcon} mt-0.5"></i>
-                                <span class="break-words">${exec}</span>
+                                <i class="fa-solid ${execIcon} mt-0.5 text-xs"></i>
+                                <span class="break-words text-xs">${exec}</span>
                             </div>
                         </td>
                         <td class="p-3.5 text-center align-top whitespace-nowrap">
                             <span class="px-2.5 py-1 text-[11px] font-extrabold rounded-full border ${statusBadge} inline-flex items-center gap-1">
-                                ${status}
+                                <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i>
+                                <span>${status}</span>
                             </span>
                         </td>
                     </tr>
@@ -10445,30 +10690,35 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         }
 
         function selectModule(moduleId) {
-            // Hide all panels
+            console.log("Switching to module:", moduleId);
+            
+            // 1. Hide all module panels explicitly via class AND inline style
             const panels = document.querySelectorAll('.module-panel');
-            panels.forEach(p => p.classList.add('hidden'));
+            panels.forEach(p => {
+                p.classList.add('hidden');
+                p.style.display = 'none';
+            });
 
-            // Remove active from all sidebar links
+            // 2. Reset all sidebar link active states
             const sidebarLinks = document.querySelectorAll('.sidebar-link, .sub-link');
             sidebarLinks.forEach(link => {
-                link.classList.remove('active', 'bg-purple-50', 'text-brand-navy', 'font-bold');
+                link.classList.remove('active', 'bg-purple-50', 'text-brand-navy', 'font-bold', 'bg-blue-100');
                 link.classList.add('text-slate-600');
             });
 
-            // Handle tool-facebook default redirection
+            // 3. Handle tool-facebook default redirection
             if (moduleId === 'tool-facebook') {
                 moduleId = 'fb-auto-friend';
             }
 
-            // Sync sidebar active state
+            // 4. Sync sidebar active state
             const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId);
             if (targetLink) {
-                targetLink.classList.add('active', 'bg-purple-50', 'text-brand-navy', 'font-bold');
+                targetLink.classList.add('active', 'font-bold');
                 targetLink.classList.remove('text-slate-600');
             }
 
-            // Open parent accordion if it is a sub-link
+            // 5. Open parent accordion if it is a sub-link
             if (moduleId.startsWith('fb-')) {
                 const acc = document.getElementById('acc-tool-facebook');
                 const icon = document.getElementById('icon-acc-tool-facebook');
@@ -10476,74 +10726,43 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                     acc.classList.add('open');
                     if (icon) icon.classList.add('rotate-180');
                 }
+            } else if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
+                const acc = document.getElementById('acc-seo');
+                const icon = document.getElementById('icon-acc-seo');
+                if (acc && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
+                    if (icon) icon.classList.add('rotate-180');
+                }
             }
 
-            if (moduleId === 'home') {
-                const homePanel = document.getElementById('panel-home');
-                if (homePanel) homePanel.classList.remove('hidden');
-                showToast("🏠 Đã mở Tổng Quan KPI Dự Án");
-            } else if (moduleId === 'keywords') {
-                const kwPanel = document.getElementById('panel-keywords');
-                if (kwPanel) kwPanel.classList.remove('hidden');
-                showToast("🎯 Đã mở Hạng mục: Danh Mục Từ Khóa SEO");
-            } else if (moduleId === 'content-link') {
-                const clPanel = document.getElementById('panel-content-link');
-                if (clPanel) clPanel.classList.remove('hidden');
-                renderContentUpgradeTable();
-                renderContentNewTable();
-                showToast("🔗 Đã mở Hạng mục: Quản Trị Nội Dung & Liên Kết (Content & Link)");
-            } else if (moduleId === 'competitor') {
-                const compPanel = document.getElementById('panel-competitor');
-                if (compPanel) compPanel.classList.remove('hidden');
-                renderCompetitorTable();
-                showToast("🏆 Đã mở Hạng mục: Phân Tích Đối Thủ Top 1 (Competitor Intelligence)");
-            } else if (moduleId === 'onpage') {
-                const onpagePanel = document.getElementById('panel-onpage');
-                if (onpagePanel) onpagePanel.classList.remove('hidden');
-                showToast("📄 Đã mở Hạng mục: On-Page & Schema");
-            } else if (moduleId === 'facebook') {
-                const fbPanel = document.getElementById('panel-facebook');
-                if (fbPanel) fbPanel.classList.remove('hidden');
-                showToast("🔵 Đã mở Hạng mục: Facebook Marketing (Active)");
-            } else if (moduleId === 'gbp') {
-                const gbpPanel = document.getElementById('panel-gbp');
-                if (gbpPanel) gbpPanel.classList.remove('hidden');
-                showToast("🔴 Đã mở Hạng mục: Google Business Profile (Active)");
-            } else if (moduleId === 'zalo') {
-                const zaloPanel = document.getElementById('panel-zalo');
-                if (zaloPanel) zaloPanel.classList.remove('hidden');
-                showToast("📱 Đã mở Hạng mục: Zalo Marketing Task Management (Active)");
-            } else if (moduleId === 'fb-auto-friend') {
-                const panel = document.getElementById('panel-fb-auto-friend');
-                if (panel) panel.classList.remove('hidden');
-                showToast("🤝 Đã mở Giao diện 1: Kết Bạn Tự Động Facebook");
-            } else if (moduleId === 'fb-auto-engagement') {
-                const panel = document.getElementById('panel-fb-auto-engagement');
-                if (panel) panel.classList.remove('hidden');
-                showToast("⚡ Đã mở Giao diện 2: Tương Tác Tự Động Facebook");
-            } else if (moduleId === 'fb-uid-scraper') {
-                const panel = document.getElementById('panel-fb-uid-scraper');
-                if (panel) panel.classList.remove('hidden');
-                showToast("🔍 Đã mở Giao diện 3: Quét UID Facebook");
-            } else if (moduleId === 'fb-fanpage-manager') {
-                const panel = document.getElementById('panel-fb-fanpage-manager');
-                if (panel) panel.classList.remove('hidden');
-                showToast("🏢 Đã mở Giao diện 4: Hỗ Trợ Fanpage Facebook");
-            } else if (moduleId === 'fb-facebook-groups') {
-                const panel = document.getElementById('panel-fb-facebook-groups');
-                if (panel) panel.classList.remove('hidden');
-                showToast("🌐 Đã mở Giao diện 5: Hỗ Trợ Groups Facebook");
-            } else if (moduleId === 'fb-data-backup') {
-                const panel = document.getElementById('panel-fb-data-backup');
-                if (panel) panel.classList.remove('hidden');
-                showToast("💾 Đã mở Giao diện 6: Backup Dữ Liệu Facebook");
-            } else {
-                const updatingPanel = document.getElementById('panel-updating');
+            // 6. Show target panel
+            let activePanelId = 'panel-' + moduleId;
+            if (['audit', 'cannibalization', 'offpage', 'pinterest', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
+                activePanelId = 'panel-updating';
                 const titleText = document.getElementById('updating-title-text');
                 if (titleText) titleText.innerText = "Hạng Mục: " + (moduleId || '').toUpperCase();
-                if (updatingPanel) updatingPanel.classList.remove('hidden');
-                showToast("🚧 Hạng mục '" + (moduleId || '').toUpperCase() + "' đang được cập nhật!");
             }
+
+            const activePanel = document.getElementById(activePanelId);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+                activePanel.style.display = 'block';
+            } else {
+                console.warn("Panel not found:", activePanelId);
+            }
+
+            // Sub-render triggers
+            if (moduleId === 'content-link') {
+                if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
+                if (typeof renderContentNewTable === 'function') renderContentNewTable();
+            } else if (moduleId === 'competitor') {
+                if (typeof renderCompetitorTable === 'function') renderCompetitorTable();
+            }
+
+            if (typeof showToast === 'function') {
+                showToast("👉 Đã mở Hạng mục: " + moduleId.toUpperCase());
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -10557,9 +10776,15 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = msg;
+            if (!toast) return;
+            const msgEl = document.getElementById('toast-message');
+            if (msgEl) msgEl.innerText = msg;
             toast.classList.remove('hidden');
-            setTimeout(() => { toast.classList.add('hidden'); }, 3000);
+            toast.style.display = 'flex';
+            setTimeout(() => { 
+                toast.classList.add('hidden'); 
+                toast.style.display = 'none';
+            }, 3000);
         }
 
         function updateHeaderCurrentDate() {
@@ -10574,18 +10799,21 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            updateHeaderCurrentDate();
-            renderKeywordTable();
-            renderOnpageTable();
-            renderFbTable();
-            renderZaloTable();
-            renderActivityLogTable();
-        renderAiAgentsGrid();
-            renderMarketingActivityLogTable();
-            updateFbStatsDisplay();
-            updateGbpStatsDisplay();
-            setTimeout(() => { switchKwTimeFilter(1, '7d'); }, 100);
-            fetchData();
+            const safeCall = (fn, name) => {
+                try { if (typeof fn === 'function') fn(); }
+                catch(err) { console.error(`[Init Error] in ${name}:`, err); }
+            };
+            safeCall(updateHeaderCurrentDate, 'updateHeaderCurrentDate');
+            safeCall(renderKeywordTable, 'renderKeywordTable');
+            safeCall(renderOnpageTable, 'renderOnpageTable');
+            safeCall(renderFbTable, 'renderFbTable');
+            safeCall(renderZaloTable, 'renderZaloTable');
+            safeCall(renderActivityLogTable, 'renderActivityLogTable');
+            safeCall(renderMarketingActivityLogTable, 'renderMarketingActivityLogTable');
+            safeCall(updateFbStatsDisplay, 'updateFbStatsDisplay');
+            safeCall(updateGbpStatsDisplay, 'updateGbpStatsDisplay');
+            try { setTimeout(() => { if (typeof switchKwTimeFilter === 'function') switchKwTimeFilter(1, '7d'); }, 100); } catch(e) {}
+            safeCall(fetchData, 'fetchData');
         });
 
         
@@ -10827,17 +11055,19 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
     </script>
 
     
-    <!-- Rich Agent Details Modal (Synced from Minh - Marketing Manager) -->
-    <div id="agentModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl w-full max-w-xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-150">
+    
+    
+    <!-- Rich Agent Details Modal (Nhiệm Vụ, Skill & Trạng Thái Thực Thi Quy Trình Thực Tế) -->
+    <div id="agentModal" style="display: none;" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[92vh] animate-in fade-in zoom-in duration-150">
             <!-- Header -->
-            <div id="agentModalHeader" class="px-6 py-4 flex items-center justify-between border-b border-slate-100 bg-slate-50/50">
+            <div id="agentModalHeader" class="px-6 py-4 flex items-center justify-between border-b border-slate-100 bg-slate-50/70">
                 <div class="flex items-center gap-3">
-                    <div id="agentModalIconContainer" class="w-10 h-10 rounded-2xl flex items-center justify-center text-xl shadow-xs">
+                    <div id="agentModalIconContainer" class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl shadow-xs">
                         <span id="agentModalEmoji"></span>
                     </div>
                     <div>
-                        <h3 id="agentModalName" class="text-base font-heading font-extrabold text-slate-900"></h3>
+                        <h3 id="agentModalName" class="text-base font-heading font-black text-slate-900"></h3>
                         <div class="flex items-center gap-2 mt-0.5">
                             <span id="agentModalRole" class="text-[10px] font-extrabold px-2 py-0.5 rounded-md"></span>
                             <span id="agentModalLegacyCode" class="text-[10px] font-mono text-slate-400"></span>
@@ -10851,7 +11081,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             
             <!-- Scrollable Body -->
             <div class="p-6 space-y-4 overflow-y-auto custom-scrollbar">
-                <!-- Meaning & Positioning Box -->
+                <!-- Box Ý Nghĩa Danh Xưng & Định Vị -->
                 <div id="agentModalMeaningBox" class="p-3.5 rounded-2xl border space-y-1">
                     <div class="text-[11px] font-extrabold uppercase tracking-wide flex items-center gap-1.5" id="agentModalMeaningTitle">
                         <i class="fa-solid fa-sparkles"></i> Ý Nghĩa Danh Xưng & Định Vị Cốt Lõi
@@ -10859,28 +11089,49 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                     <p id="agentModalMeaning" class="text-xs font-medium leading-relaxed"></p>
                 </div>
 
-                <!-- Core Responsibilities -->
-                <div>
-                    <h4 class="text-xs font-bold text-slate-800 mb-2.5 uppercase tracking-wide flex items-center gap-1.5">
-                        <i class="fa-solid fa-list-check text-blue-600"></i> Nhiệm Vụ Trọng Tâm & Trách Nhiệm Chính
+                <!-- 1. Nhiệm Vụ & Trách Nhiệm -->
+                <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/40 space-y-2.5">
+                    <h4 class="text-xs font-heading font-extrabold text-slate-900 uppercase tracking-wide flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-[11px] font-bold">1</span>
+                            <span>Nhiệm Vụ & Trách Nhiệm Cốt Lõi</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-semibold lowercase">Chỉ đạo bởi Sếp Tiến</span>
                     </h4>
-                    <ul id="agentModalResponsibilities" class="space-y-2">
+                    <ul id="agentModalResponsibilities" class="space-y-2 pl-1">
                     </ul>
                 </div>
                 
-                <!-- Skills & Automation Engines -->
-                <div class="pt-3 border-t border-slate-100 space-y-2">
-                    <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide flex items-center gap-1.5">
-                        <i class="fa-solid fa-bolt text-amber-500"></i> Skill Chuẩn Hóa & Engine Thực Thi
+                <!-- 2. Skill Đã Trang Bị -->
+                <div class="p-4 rounded-2xl border border-slate-200/80 bg-slate-50/40 space-y-2.5">
+                    <h4 class="text-xs font-heading font-extrabold text-slate-900 uppercase tracking-wide flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-[11px] font-bold">2</span>
+                            <span>Skill Chuẩn Hóa & Năng Lực Trang Bị</span>
+                        </div>
+                        <span class="text-[10px] text-slate-400 font-semibold lowercase">4 Skills Master</span>
                     </h4>
-                    <div id="agentModalSkills" class="flex flex-wrap gap-1.5">
+                    <div id="agentModalSkills" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    </div>
+                </div>
+
+                <!-- 3. Các Quy Trình Đã Giao & Trạng Thái Thực Hiện Thực Tế -->
+                <div class="p-4 rounded-2xl border border-emerald-200/80 bg-emerald-50/20 space-y-3">
+                    <div class="flex items-center justify-between border-b border-emerald-200/50 pb-2">
+                        <h4 class="text-xs font-heading font-extrabold text-emerald-950 uppercase tracking-wide flex items-center gap-2">
+                            <span class="w-5 h-5 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-[11px] font-bold">3</span>
+                            <span>Quy Trình Đã Giao & Trạng Thái Thực Hiện Thực Tế</span>
+                        </h4>
+                        <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full border border-emerald-300">Live Execution Tracker</span>
+                    </div>
+                    <div id="agentModalWorkflows" class="space-y-2.5">
                     </div>
                 </div>
             </div>
             
             <!-- Footer -->
             <div class="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-shield-check text-emerald-500 mr-1"></i> Chuẩn hóa bởi Sếp Phạm Hoàng Tiến</span>
+                <span class="text-slate-500 text-[11px] flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Dữ liệu đồng bộ Real-time từ hệ thống AI Task Runner</span>
                 <button onclick="closeAgentModal()" class="px-4 py-1.5 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition shadow-2xs">Đóng Cửa Sổ</button>
             </div>
         </div>
@@ -10895,18 +11146,48 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'Antigravity / Lead',
                 bgClass: 'amber',
                 colorClass: 'amber',
-                meaning: 'Minh mang ý nghĩa "Minh mẫn & Sáng suốt" — Đóng vai trò là bộ não điều hành trung tâm của toàn bộ hệ thống AI Marketing Song Anh.',
+                meaning: 'Minh mang ý nghĩa "Minh mẫn & Sáng suốt" — Đóng vai trò là bộ não điều hành trung tâm, chịu trách nhiệm tiếp nhận chỉ đạo chiến lược từ Sếp Phạm Hoàng Tiến và điều phối toàn bộ đội ngũ AI.',
                 responsibilities: [
-                    'Trực tiếp tiếp nhận yêu cầu và chỉ đạo chiến lược từ Sếp Phạm Hoàng Tiến.',
-                    'Phân tích bài toán, lập kế hoạch hành động và phân công nhiệm vụ cho 5 Trợ lý chuyên môn.',
-                    'Tổng hợp báo cáo, kiểm tra nghiệm thu kết quả đầu ra trước khi trình Sếp Tiến.',
-                    'Giám sát tiến độ realtime, giải quyết xung đột dữ liệu và điều phối luồng công việc tự động.'
+                    'Trực tiếp tiếp nhận yêu cầu, chỉ đạo chiến lược và mục tiêu kinh doanh từ Sếp Phạm Hoàng Tiến.',
+                    'Phân tích bài toán, lập kế hoạch hành động tổng thể và phân công nhiệm vụ cho 5 Trợ lý AI chuyên môn.',
+                    'Giám sát tiến độ realtime, kiểm tra nghiệm thu chất lượng sản phẩm đầu ra trước khi trình Sếp Tiến.',
+                    'Tổng hợp báo cáo định kỳ (Hàng ngày / Hàng tuần) và điều phối xử lý khủng hoảng truyền thông.'
                 ],
                 skills: [
-                    'Master Strategy Coordinator',
-                    'Notion Tasks DB Manager',
-                    'Real-time Daily Report Engine',
-                    'Anti-Crisis Management'
+                    { name: 'Master Strategy Coordinator', desc: 'Kỹ năng điều phối chiến lược marketing đa kênh B2B.' },
+                    { name: 'Notion Tasks DB Manager', desc: 'Quản trị CSDL Notion Tasks DB & phân luồng tự động.' },
+                    { name: 'Real-time Reporting Engine', desc: 'Tổng hợp báo cáo tự động và đo lường KPIs.' },
+                    { name: 'Risk & Crisis Gatekeeper', desc: 'Kiểm soát rủi ro, chống spam thuật toán và bảo vệ hệ thống.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Quy trình [Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:30',
+                        result: 'Đã hoàn tất Re-comment Option 2 (Năng lực xưởng 230/70/28 Nguyễn Xiển Thủ Đức, tiến độ 7-15 ngày, tối ưu 70% chi phí) cho bài viết "Sa bàn dự án BĐS cũ bị hỏng LED/bụi bẩn" • Đã cập nhật ngày Re-comment tiếp theo trên Notion DB "BẢNG CONTENT".'
+                    },
+                    {
+                        title: 'Kế hoạch Tổng thể 5 Giai đoạn Bài viết Trụ cột /mo-hinh-kien-truc/',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ HOÀN TẤT',
+                        last_run: '25/08/2026 15:15',
+                        result: 'Đã xây dựng xong Master Roadmap 5 Giai đoạn cho Core Pillar Page mohinhkientruc.org/mo-hinh-kien-truc/ (Chờ Trí tối ưu SEO On-Page để kích hoạt Văn, Mỹ, Thông).'
+                    },
+                    {
+                        title: 'Quy trình Lập kế hoạch & Phân rã task Marketing tuần trên Notion Database',
+                        status: 'active',
+                        status_badge: '⚡ ĐANG VẬN HÀNH',
+                        last_run: '25/08/2026 (Realtime)',
+                        result: 'Đang quản lý 15 Active Tasks trên Notion DB, điều phối tự động sang Webapp và phân luồng nhân sự AI.'
+                    },
+                    {
+                        title: 'Quy trình Điều phối Vòng quay Nội dung 6 Nhóm Dịch vụ Sa bàn',
+                        status: 'active',
+                        status_badge: '⚡ ĐANG VẬN HÀNH',
+                        last_run: 'Tuần 34/2026',
+                        result: 'Đang điều phối xoay vòng lịch đăng giữa Mô hình Quy hoạch, Nhà máy KCN, Cao tầng, Trường học, TOD & Thiết bị.'
+                    }
                 ]
             },
             'kien': {
@@ -10916,18 +11197,48 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'song_anh_code_expert',
                 bgClass: 'emerald',
                 colorClass: 'emerald',
-                meaning: 'Kiến mang ý nghĩa "Kiến tạo nền móng" — Người xây dựng kiến trúc kỹ thuật, automation engine và bảo trì toàn bộ hệ sinh thái mã nguồn.',
+                meaning: 'Kiến mang ý nghĩa "Kiến tạo nền móng" — Kỹ sư hệ thống & tự động hóa, chịu trách nhiệm xây dựng kiến trúc kỹ thuật, kết nối API và vận hành backend 24/7.',
                 responsibilities: [
-                    'Lập trình mã nguồn Web App (index.html, marketing_data.json), đảm bảo 100% responsive và 0 lỗi JS.',
+                    'Lập trình mã nguồn Web App Core Dashboard (index.html), tối ưu tốc độ tải và responsive 100%.',
                     'Viết các Script Python Automation kết nối REST API Meta Facebook Graph v19.0, Notion API và Google Search Console.',
-                    'Vận hành Worker ngầm 24/7 (song_anh_daily_sync_engine.py), đồng bộ Git GitHub và deploy Cloudflare Workers Live.',
-                    'Xử lý bảo mật API Token, mã hóa dữ liệu và tối ưu hiệu suất tải trang cho Webapp.'
+                    'Vận hành và giám sát Daily Sync Engine ngầm 24/7 (song_anh_daily_sync_engine.py).',
+                    'Quản trị kho mã nguồn Git GitHub, tối ưu hạ tầng lưu trữ và bảo mật dữ liệu.'
                 ],
                 skills: [
-                    'Python Automation Stealth Engine',
-                    'Meta Graph API v19.0 Client',
-                    'Cloudflare Workers / Pages Deploy',
-                    'Notion & GSC/GA4 Sync Engine'
+                    { name: 'Python Stealth Automation', desc: 'Engine lập trình tự động hóa Python Selenium / Requests.' },
+                    { name: 'Meta Graph API v19.0 Client', desc: 'Tích hợp Meta Graph REST API v19.0 cho Fanpage & Group.' },
+                    { name: 'GSC & GA4 Sync Engine', desc: 'Engine đồng bộ chỉ số Google Search Console & Analytics.' },
+                    { name: 'Web Dashboard Engineering', desc: 'Phát triển Dashboard UI/UX và đồng bộ dữ liệu Real-time.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Tối giản hóa giao diện Dashboard (Minimalist & Clean UI/UX)',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:20',
+                        result: 'Đã hoàn tất refactor trang Dashboard theo chuẩn Minimalist: Tinh gọn 6 Thẻ Agent Compact, 4 Thẻ Hero KPIs số liệu lớn & tinh lọc bảng Activity Log.'
+                    },
+                    {
+                        title: 'Tích hợp SOP 5 Bước Re-comment Fanpage vào Webapp & CSDL',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:35',
+                        result: 'Đã cập nhật chi tiết SOP 5 Bước Re-comment Fanpage B2B vào #panel-facebook, đồng bộ marketing_data.json và mảng fbTaskList.'
+                    },
+                    {
+                        title: 'Khắc phục lỗi cú pháp JS & Khôi phục sự kiện Click Taskbar/Sidebar',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:40',
+                        result: 'Đã sửa lỗi async function renderAiAgentsGrid, phục hồi 100% khả năng chuyển Tab và điều hướng Sidebar trên toàn hệ thống.'
+                    },
+                    {
+                        title: 'Quy trình Daily Auto-Sync Engine 24/7',
+                        status: 'active',
+                        status_badge: '⚡ ĐANG CHẠY 06H00',
+                        last_run: '25/08/2026 06:00',
+                        result: 'Tự động quét dữ liệu GSC, GA4, Meta API, Notion DB và xuất các tệp Master Dataset CSV/Excel.'
+                    }
                 ]
             },
             'van': {
@@ -10937,18 +11248,41 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'content_creator',
                 bgClass: 'purple',
                 colorClass: 'purple',
-                meaning: 'Văn mang ý nghĩa "Văn chương B2B sắc nét" — Chuyên gia chấp bút truyền thông, sáng tạo thông điệp bán hàng B2B chuyên nghiệp và điềm tĩnh.',
+                meaning: 'Văn mang ý nghĩa "Văn chương B2B sắc nét" — Chuyên gia biên soạn nội dung truyền thông, định vị thương hiệu sa bàn kiến trúc điềm tĩnh, chuyên nghiệp.',
                 responsibilities: [
-                    'Soạn thảo các bài viết đăng Facebook Groups B2B (Kiến trúc, Chủ đầu tư BĐS, Xây dựng, KCN).',
-                    'Viết status Profile cá nhân hóa cho Sếp Phạm Hoàng Tiến và bài viết Fanpage Mô hình kiến trúc Song Anh.',
-                    'Ứng dụng quy tắc dán Link Chống Spam Meta (Tỷ lệ 60 - 20 - 20) và Font in đậm Unicode YayText.',
-                    'Lập kịch bản Re-comment, Seeding tự nhiên và xây dựng phễu tương tác giữ chân khách hàng.'
+                    'Soạn thảo các bài viết đăng 259 Facebook Groups B2B (Kiến trúc, Xây dựng, BĐS, KCN).',
+                    'Biên soạn bài viết Fanpage Mô hình kiến trúc Song Anh và status Profile cá nhân Sếp Tiến.',
+                    'Thực hiện kịch bản Re-comment và Seeding tự nhiên duy trì tương tác bài đăng.',
+                    'Áp dụng quy tắc dán link chống spam Meta (Tỷ lệ 60-20-20) và định dạng in đậm Unicode YayText.'
                 ],
                 skills: [
-                    'song_anh_b2b_content_pipeline',
-                    'quy_trinh_bien_soan_bai_post_facebook_song_anh',
-                    'Anti-Spam Meta Link Strategy (60-20-20)',
-                    'YayText Unicode B2B Formatting'
+                    { name: 'song_anh_b2b_content_pipeline', desc: 'Quy trình 7 bước sản xuất nội dung B2B chuyên sâu.' },
+                    { name: 'quy_trinh_bien_soan_bai_post_facebook', desc: 'Chuyển thể bài web thành bộ 3 bài post FB giật hook.' },
+                    { name: 'quy_trinh_dang_bai_profile_ca_nhan', desc: 'Biên soạn status Profile cá nhân hóa Sếp Tiến.' },
+                    { name: 'Anti-Spam Meta Link Strategy', desc: 'Kỹ thuật seeding dán link né thuật toán chặn spam Meta.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Soạn thảo 3 Option Re-comment Fanpage B2B cho bài Sa bàn BĐS',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:25',
+                        result: 'Đã hoàn tất soạn 3 Option xoay vòng (Kỹ thuật in 3D SLA, Năng lực xưởng Nguyễn Xiển, CTA nhận dự toán Zalo) • Sếp Tiến đã duyệt và đăng Option 2.'
+                    },
+                    {
+                        title: 'Quy trình Đăng bài 259 Groups Facebook theo lịch xoay vòng 6 Dịch vụ',
+                        status: 'active',
+                        status_badge: '⚡ ĐANG VẬN HÀNH',
+                        last_run: 'Hàng ngày',
+                        result: 'Đang duy trì tần suất post bài tự nhiên vào các nhóm B2B Kiến trúc & BĐS với tỷ lệ link 60-20-20.'
+                    },
+                    {
+                        title: 'Biên soạn Bài viết SEO Pillar Page /mo-hinh-kien-truc/ (3,000+ từ)',
+                        status: 'pending',
+                        status_badge: '🕒 CHỜ TRI SEO AUDIT',
+                        last_run: 'Sẵn sàng triển khai',
+                        result: 'Đã chuẩn bị khung outline chuẩn B2B E-E-A-T, chờ Trí hoàn tất Audit On-page để tiến hành viết.'
+                    }
                 ]
             },
             'tri': {
@@ -10958,18 +11292,41 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'seo_expert',
                 bgClass: 'blue',
                 colorClass: 'blue',
-                meaning: 'Trí mang ý nghĩa "Trí tuệ phân tích data" — Chuyên gia tối ưu hóa công cụ tìm kiếm Google và bảo vệ thứ hạng Top 1 từ khóa cốt lõi.',
+                meaning: 'Trí mang ý nghĩa "Trí tuệ phân tích data" — Chuyên gia tối ưu hóa công cụ tìm kiếm Google, phân tích dữ liệu SERP và bảo vệ vị thế Top 1 ngành sa bàn.',
                 responsibilities: [
                     'Theo dõi và bóc tách dữ liệu 22 Từ khóa B2B cốt lõi trên Google Search Console & GA4 real-time.',
-                    'Audit On-page, xử lý trùng lặp Cannibalization, tối ưu Schema JSON-LD cho website mohinhkientruc.org.',
-                    'Quản lý Sổ cái Lịch sử thứ hạng CSV/Excel và bảo vệ thứ hạng Top 1 Google cho các sa bàn trọng điểm.',
-                    'Phân tích đối thủ cạnh tranh trên SERP và đề xuất bộ từ khóa ngách tiềm năng mang lại Leads.'
+                    'Audit kỹ thuật On-Page, xử lý hiện tượng ăn thịt từ khóa (Keyword Cannibalization).',
+                    'Tối ưu cấu trúc dữ liệu Schema JSON-LD và hệ thống Internal Link theo cụm Topic Silo.',
+                    'Phân tích đối thủ cạnh tranh Top 1 (3DCraft, Hoàng Kim...) và đề xuất chiến lược bứt phá.'
                 ],
                 skills: [
-                    'GSC & GA4 Historical Rank Tracker',
-                    'Screaming Frog On-Page Audit',
-                    'Schema JSON-LD Structure Builder',
-                    '22 Core B2B Keyword Silo Manager'
+                    { name: 'GSC & GA4 Historical Rank Tracker', desc: 'Theo dõi và lập biểu đồ biến động thứ hạng từ khóa.' },
+                    { name: 'Screaming Frog Technical Audit', desc: 'Kiểm toán On-Page, mã phản hồi 200 OK và thẻ Meta.' },
+                    { name: 'Schema JSON-LD Structure Builder', desc: 'Xây dựng cấu trúc dữ liệu ItemList, Article, LocalBusiness.' },
+                    { name: '22 Core B2B Keyword Silo Manager', desc: 'Gom nhóm từ khóa và triệt tiêu xung đột trang đích.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Đo lường & Cập nhật thứ hạng 22 Từ khóa SEO B2B Cốt lõi',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 06:00',
+                        result: 'Đã ghi nhận 13/22 từ khóa đạt Top 1-3 Google (59.1%) và 9/22 từ khóa đạt Top 4-10 (40.9%) • 100% trang 1 Google.'
+                    },
+                    {
+                        title: 'Audit Kỹ thuật & Tối ưu SEO On-Page cho Pillar Page /mo-hinh-kien-truc/',
+                        status: 'active',
+                        status_badge: '⚡ ĐANG THỰC HIỆN',
+                        last_run: '25/08/2026 15:20',
+                        result: 'Đang quét Screaming Frog, kiểm tra cấu trúc thẻ H1-H3, tối ưu Schema ItemList và phân bổ Internal Links.'
+                    },
+                    {
+                        title: 'Xác thực 100% URL Trang Đích 200 OK & Triệt tiêu 404',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ HOÀN TẤT',
+                        last_run: '20/08/2026',
+                        result: 'Đã chuẩn hóa 100% URL sạch cho 22 từ khóa (sửa /xuong-san-xuat-mo-hinh/ -> /lam-sa-ban/).'
+                    }
                 ]
             },
             'my': {
@@ -10979,18 +11336,41 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'song_anh_design_master',
                 bgClass: 'rose',
                 colorClass: 'rose',
-                meaning: 'Mỹ mang ý nghĩa "Mỹ thuật & Thẩm mỹ" — Chuyên gia sáng tạo truyền thông thị giác, xử lý hình ảnh sa bàn chuẩn chỉ B2B.',
+                meaning: 'Mỹ mang ý nghĩa "Mỹ thuật & Thẩm mỹ" — Chuyên gia truyền thông thị giác, xử lý hình ảnh sa bàn kiến trúc và bảo vệ nhận diện thương hiệu.',
                 responsibilities: [
-                    'Tối ưu hóa Prompt tạo ảnh AI trên công cụ Google Flow (Google ImageGen 3).',
-                    'Tự động đóng Dấu Logo thương hiệu Mô hình Song Anh, ghi thông số EXIF bản quyền và thiết kế Thumbnail Video YouTube/Social.',
-                    'Phối hợp với Trợ lý Văn để sản xuất trọn bộ bài viết kèm bộ ảnh thực tế sa bàn sắc nét.',
-                    'Chuẩn hóa màu sắc thương hiệu Gold - Navy - Black trên mọi ấn phẩm truyền thông.'
+                    'Tối ưu hóa câu lệnh Prompt tạo ảnh AI trên công cụ Google Flow (Google ImageGen 3).',
+                    'Tự động đóng Dấu Logo thương hiệu Mô hình Song Anh chuẩn tỷ lệ và màu sắc.',
+                    'Nhúng thông số định vị Geo-location EXIF bản quyền xưởng (230/70/28 Nguyễn Xiển, Thủ Đức).',
+                    'Thiết kế Thumbnail Video YouTube, Banner quảng cáo và ấn phẩm truyền thông B2B.'
                 ],
                 skills: [
-                    'google_business_profile_post',
-                    'EXIF Geolocation Auto-Tagger',
-                    'Canva Connect API Integration',
-                    'Google ImageGen 3 Prompt Master'
+                    { name: 'google_business_profile_post', desc: 'Xử lý ảnh định dạng chuẩn Google Maps & dán nhãn CTA.' },
+                    { name: 'EXIF Geolocation Auto-Tagger', desc: 'Tự động ghi metadata vị trí xưởng và thông tin bản quyền.' },
+                    { name: 'Google ImageGen 3 Prompt Master', desc: 'Kỹ thuật tạo ảnh sa bàn 3D chân thực bằng AI.' },
+                    { name: 'Canva Connect API Integration', desc: 'Tự động ghép khung mẫu và chuẩn hóa kích thước đa kênh.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Đóng dấu Logo & Nhúng EXIF Geolocation vị trí xưởng Thủ Đức',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ ĐÓNG GÓI 100%',
+                        last_run: 'Tự động theo đợt ảnh',
+                        result: 'Tự động nhúng tọa độ 10.841... xưởng Song Anh và watermark chuẩn Gold-Navy lên 100% ảnh dự án.'
+                    },
+                    {
+                        title: 'Thiết kế Bộ ảnh Showcase & Thumbnail Video Sa bàn B2B',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ HOÀN TẤT',
+                        last_run: '24/08/2026',
+                        result: 'Đã hoàn tất bộ ảnh sa bàn nhà máy Đại Nghĩa Steel, sa bàn TOD Metro và sa bàn trường học UTS.'
+                    },
+                    {
+                        title: 'Sản xuất Hình ảnh Media cho Bài viết Trụ cột /mo-hinh-kien-truc/',
+                        status: 'pending',
+                        status_badge: '🕒 SẴN SÀNG',
+                        last_run: 'Chờ lệnh',
+                        result: 'Đã sẵn sàng kho 15 ảnh thực tế sa bàn độ phân giải cao tại xưởng để nhúng vào bài viết.'
+                    }
                 ]
             },
             'thong': {
@@ -11000,18 +11380,41 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                 legacyCode: 'song_anh_wp_publisher',
                 bgClass: 'cyan',
                 colorClass: 'cyan',
-                meaning: 'Thông mang ý nghĩa "Thông suốt xuất bản" — Chuyên gia quản trị, tối ưu hóa kỹ thuật và phát hành bài viết lên website WordPress.',
+                meaning: 'Thông mang ý nghĩa "Thông suốt xuất bản" — Chuyên gia quản trị kỹ thuật website WordPress, đảm bảo quy trình xuất bản mượt mà, chuẩn SEO On-Page.',
                 responsibilities: [
-                    'Biên tập và xuất bản bài viết chuẩn B2B SEO RankMath REST API trên website mohinhkientruc.org.',
-                    'Kiểm tra xả cache, xác thực URL 200 OK và đồng bộ bài viết sang Notion Database.',
-                    'Đảm bảo điểm RankMath On-Page luôn đạt chuẩn từ 85 - 100 điểm.',
-                    'Tối ưu tốc độ tải trang, cấu hình Sitemap XML và giám sát độ sẵn sàng của hệ thống web.'
+                    'Biên tập và xuất bản bài viết chuẩn B2B SEO RankMath REST API trên mohinhkientruc.org.',
+                    'Kiểm tra xả cache, xác thực 100% URL trả về mã phản hồi 200 OK.',
+                    'Đồng bộ trạng thái bài viết và link xuất bản sang Notion Database BẢNG CONTENT.',
+                    'Đảm bảo điểm chấm RankMath On-Page luôn đạt từ 85 - 100 điểm trước khi công khai.'
                 ],
                 skills: [
-                    'quy_trinh_viet_bai_va_dang_website_mohinhkientruc',
-                    'RankMath REST API Auto Publisher',
-                    'WordPress Gutenberg Block Generator',
-                    '200 OK URL Verification Engine'
+                    { name: 'quy_trinh_viet_bai_va_dang_website', desc: 'Quy trình 6 bước xuất bản bài viết WordPress.' },
+                    { name: 'RankMath REST API Auto Publisher', desc: 'Tự động đẩy bài viết, thẻ Meta và Focus Keyword qua API.' },
+                    { name: 'WordPress Gutenberg Block Generator', desc: 'Tạo khối giao diện Gutenberg chuẩn hiển thị.' },
+                    { name: '200 OK URL Verification Engine', desc: 'Quét và bảo vệ liên kết sạch không bị lỗi 404.' }
+                ],
+                workflows: [
+                    {
+                        title: 'Xuất bản Bài viết Gutenberg chuẩn RankMath SEO 85+ điểm',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '22/08/2026',
+                        result: 'Đã đăng bài Mô hình TOD Sa bàn (88/100 điểm) và bài Sa bàn Nhà máy KCN (91/100 điểm) lên mohinhkientruc.org.'
+                    },
+                    {
+                        title: 'Đồng bộ Bài viết Xuất bản sang Notion DB "BẢNG CONTENT"',
+                        status: 'done',
+                        status_badge: '🟢 ĐÃ THỰC HIỆN',
+                        last_run: '25/08/2026 14:30',
+                        result: 'Đã trích xuất và đồng bộ trạng thái bài viết, ngày Re-comment phục vụ quy trình [Re-Cmt FB] của Minh.'
+                    },
+                    {
+                        title: 'Cập nhật & Xuất bản Bài viết Trụ cột /mo-hinh-kien-truc/',
+                        status: 'pending',
+                        status_badge: '🕒 SẴN SÀNG',
+                        last_run: 'Chờ duyệt nội dung',
+                        result: 'Sẵn sàng tiếp nhận bản thảo hoàn chỉnh từ Văn và Mỹ để đẩy lên WordPress qua REST API.'
+                    }
                 ]
             }
         };
@@ -11030,7 +11433,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             roleEl.className = `text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-${data.bgClass}-200 text-${data.bgClass}-900`;
             
             const iconContainer = document.getElementById('agentModalIconContainer');
-            iconContainer.className = `w-10 h-10 rounded-2xl flex items-center justify-center text-xl shadow-xs bg-${data.bgClass}-100 border border-${data.bgClass}-200`;
+            iconContainer.className = `w-11 h-11 rounded-2xl flex items-center justify-center text-2xl shadow-xs bg-${data.bgClass}-100 border border-${data.bgClass}-200`;
             
             // Meaning Box
             const meaningBox = document.getElementById('agentModalMeaningBox');
@@ -11041,36 +11444,77 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             
             document.getElementById('agentModalMeaning').textContent = data.meaning;
             
-            // Responsibilities List
-            const ul = document.getElementById('agentModalResponsibilities');
-            ul.innerHTML = '';
+            // 1. Responsibilities List
+            const ulRes = document.getElementById('agentModalResponsibilities');
+            ulRes.innerHTML = '';
             data.responsibilities.forEach(res => {
                 const li = document.createElement('li');
                 li.className = 'flex items-start gap-2.5 text-xs text-slate-700 font-medium leading-relaxed';
-                li.innerHTML = `<span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5 text-[10px] font-bold"><i class="fa-solid fa-check"></i></span> <span>${res}</span>`;
-                ul.appendChild(li);
+                li.innerHTML = `<span class="w-4 h-4 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-0.5 text-[9px] font-bold"><i class="fa-solid fa-check"></i></span> <span>${res}</span>`;
+                ulRes.appendChild(li);
             });
             
-            // Skills Badges
+            // 2. Skills Grid
             const skillsContainer = document.getElementById('agentModalSkills');
             skillsContainer.innerHTML = '';
             data.skills.forEach(sk => {
-                const badge = document.createElement('span');
-                badge.className = 'text-[10px] font-bold px-2 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 flex items-center gap-1';
-                badge.innerHTML = `<i class="fa-solid fa-cube text-slate-400 text-[8px]"></i> ${sk}`;
-                skillsContainer.appendChild(badge);
+                const card = document.createElement('div');
+                card.className = 'p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-2xs space-y-0.5';
+                card.innerHTML = `
+                    <div class="text-[11px] font-extrabold text-slate-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-bolt text-amber-500 text-[9px]"></i>
+                        <span>${sk.name}</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500 leading-snug">${sk.desc}</p>
+                `;
+                skillsContainer.appendChild(card);
             });
 
-            // Show modal
+            // 3. Workflows List (Execution Status Tracker Cards)
+            const ulWf = document.getElementById('agentModalWorkflows');
+            ulWf.innerHTML = '';
+            data.workflows.forEach(wf => {
+                const isDone = wf.status === 'done';
+                const isActive = wf.status === 'active';
+                
+                const badgeBg = isDone ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : (isActive ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-slate-100 text-slate-700 border-slate-300');
+                const iconColor = isDone ? 'text-emerald-600' : (isActive ? 'text-blue-600' : 'text-slate-400');
+                const iconClass = isDone ? 'fa-circle-check' : (isActive ? 'fa-arrows-rotate' : 'fa-clock');
+
+                const card = document.createElement('div');
+                card.className = 'p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-2';
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-2">
+                        <span class="text-xs font-bold text-slate-800 leading-snug flex items-center gap-1.5">
+                            <i class="fa-solid ${iconClass} ${iconColor} text-[11px]"></i>
+                            <span>${wf.title}</span>
+                        </span>
+                        <span class="px-2 py-0.5 rounded-md text-[9px] font-extrabold border shrink-0 ${badgeBg}">${wf.status_badge}</span>
+                    </div>
+                    <div class="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-100 leading-relaxed font-medium space-y-1">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-2">
+                            <span><i class="fa-solid fa-calendar-check mr-1"></i> Mốc thực thi: <strong class="text-slate-600">${wf.last_run}</strong></span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 font-bold">Kết quả thực tế:</span> ${wf.result}
+                        </div>
+                    </div>
+                `;
+                ulWf.appendChild(card);
+            });
+
+            // Show modal using BOTH class and inline style
             const modal = document.getElementById('agentModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
+            modal.style.display = 'flex';
         }
 
         function closeAgentModal() {
             const modal = document.getElementById('agentModal');
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            modal.style.display = 'none';
         }
         
         // Close modal when clicking outside
