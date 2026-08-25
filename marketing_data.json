@@ -12436,14 +12436,16 @@
       "group_id": "da.dautu.xaydung",
       "members_count": "15K",
       "members_num": 15,
-      "posting_permission": "Công khai (Đăng ngay)",
+      "posting_permission": "Kiểm duyệt (Duyệt bài)",
       "category": "Thi công - Xây dựng",
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
       "last_scanned": "2026-08-24 08:14:07",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 150.0
+      "recommendation_score": 150.0,
+      "last_posted_date": "2026-08-25",
+      "latest_post_url": "https://www.facebook.com/groups/1018858983450852/pending_posts/1319319740071440"
     },
     {
       "stt": 5,
@@ -12647,7 +12649,9 @@
       "profile_name": "Facebook Profile Song Anh",
       "last_scanned": "2026-08-24 08:14:07",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 140.0
+      "recommendation_score": 200.0,
+      "last_posted_date": "2026-08-25",
+      "latest_post_url": "https://www.facebook.com/groups/152692778620733/posts/2226916441198346"
     },
     {
       "stt": 17,
@@ -14289,14 +14293,14 @@
       "group_id": "768878153314912",
       "members_count": ".",
       "members_num": 0,
-      "posting_permission": "Kiểm duyệt (Duyệt bài)",
-      "category": "BĐS (Chung)",
+      "posting_permission": "Group Mua Bán (Không phù hợp B2B)",
+      "category": "Group Mua Bán (Không phù hợp đăng Content B2B)",
       "join_status": "Đã tham gia",
       "joined_date": "2026-08-19",
       "profile_name": "Facebook Profile Song Anh",
       "last_scanned": "2026-08-24 08:14:07",
       "notes": "Đồng bộ 100% từ Notion Database (Danh sách Group Facebook)",
-      "recommendation_score": 40.0
+      "recommendation_score": -100.0
     },
     {
       "stt": 114,
@@ -16438,6 +16442,20 @@
     "total_posts": 47
   },
   "marketing_activity_log": [
+    {
+      "timestamp": "25/08/2026\n13:33:01",
+      "category": "Facebook Marketing",
+      "action": "Sếp Tiến đăng bài Video Sa bàn Nuôi tôm công khai 100% trên Group M&A (https://www.facebook.com/groups/152692778620733/posts/2226916441198346)",
+      "performer": "Phạm Hoàng Tiến",
+      "status": "Hoàn Thành"
+    },
+    {
+      "timestamp": "25/08/2026\n13:33:01",
+      "category": "Facebook Marketing",
+      "action": "Sếp Tiến đăng bài Video Sa bàn Nuôi tôm trên Group Dự Án Đầu Tư & Xây Dựng (Chờ duyệt: https://www.facebook.com/groups/1018858983450852/pending_posts/1319319740071440)",
+      "performer": "Phạm Hoàng Tiến",
+      "status": "Đang Thực Hiện"
+    },
     {
       "timestamp": "25/08/2026\n11:47:32",
       "category": "Design & Media",
