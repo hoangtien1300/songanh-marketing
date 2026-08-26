@@ -2,12 +2,9 @@
 """
 Script: auto_post_gbp_song_anh.py
 Tự động hóa đăng bài lên Google Business Profile (GBP) Dịch vụ làm mô hình kiến trúc Song Anh
-- Kết nối trực tiếp Notion Database 'BẢNG CONTENT' (33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e)
-- Trích xuất chuẩn xác Link chia sẻ bài đăng chính thức dạng https://share.google/... (Ví dụ: https://share.google/9qlxIuQ5dYKHQaluB)
-- Xử lý link đích ngữ cảnh thông minh (Dynamic Contextual Landing Page) cho nút 'Tìm hiểu thêm'
-- 100% Không dùng nút 'Gọi ngay' cho kênh Mô hình
-- Cập nhật Link và Ngày đăng GBP ngược lại vào Notion
-- Đồng bộ nhật ký hoạt động sang Database 'NHẬT KÝ THAO TÁC MARKETING SONG ANH'
+- NGUYÊN TẮC BẤT DI BẤT DỊCH: 100% TRUNG THỰC DỮ LIỆU. TUYỆT ĐỐI KHÔNG SINH LINK GIẢ LẬP / MOCK LINK.
+- Chỉ cập nhật Notion khi trích xuất được link share thật từ Google (https://share.google/... hoặc https://posts.gle/...).
+- Nếu Google chặn hoặc không lấy được link thực tế, dừng lại và thông báo trung thực để chuyển sang chế độ hỗ trợ thủ công.
 """
 
 import os
@@ -18,6 +15,7 @@ import json
 import random
 import requests
 import urllib.request
+import pyperclip
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -42,7 +40,6 @@ NOTION_HEADERS = {
 GBP_LOCATION = {
     "name": "Dịch vụ làm mô hình kiến trúc Song Anh (Thủ Đức)",
     "id": "9117009748298497216",
-    "profile_url": "https://business.google.com/n/9117009748298497216/profile?fid=4501860915618316199",
     "url": "https://www.google.com/local/business/9117009748298497216/promote/updates?knm=0&ih=lu&origin=https://www.google.com&hl=vi",
     "hotline": "0929 22 4444",
     "default_website": "https://www.mohinhkientruc.org"
@@ -54,7 +51,8 @@ TOPIC_LANDING_PAGES = [
     (["trường học", "rmit", "uts", "đại học", "giáo dục"], "https://www.mohinhkientruc.org/lam-sa-ban-truong-hoc/"),
     (["tod", "metro", "tuyến metro", "nhà ga"], "https://www.mohinhkientruc.org/mo-hinh-tod-sa-ban/"),
     (["sửa chữa", "bảo dưỡng", "phục hồi", "nâng cấp led", "thay đèn"], "https://www.mohinhkientruc.org/sua-chua-mo-hinh-kien-truc/"),
-    (["thủy sản", "hồ nuôi", "triển lãm", "báo giá", "chung cư", "cao tầng", "kiến trúc"], "https://www.mohinhkientruc.org/mo-hinh-kien-truc/")
+    (["chung cư", "cao tầng", "căn hộ", "khải hoàn", "prime"], "https://mohinhkientruc.org/sa-ban-cao-tang/"),
+    (["thủy sản", "hồ nuôi", "triển lãm", "báo giá", "kiến trúc"], "https://www.mohinhkientruc.org/mo-hinh-kien-truc/")
 ]
 
 PROFILE_DIR = r"D:\Song_Anh\_Shared_Core\Credentials\gbp_chrome_profile"
@@ -90,14 +88,12 @@ return clicked;
 def extract_smart_landing_page(title, content, rollup_url):
     """Trích xuất link landing page phù hợp nhất theo ngữ cảnh"""
     if rollup_url and rollup_url.startswith("http"):
-        print(f"🔗 [NOTION ROLLUP LINK]: {rollup_url}")
         return rollup_url
 
     search_text = (title + " " + content).lower()
     for keywords, target_url in TOPIC_LANDING_PAGES:
         for kw in keywords:
             if kw in search_text:
-                print(f"🎯 [CHỦ ĐỀ KHỚP '{kw}']: {target_url}")
                 return target_url
 
     return "https://www.mohinhkientruc.org/mo-hinh-kien-truc/"
@@ -134,7 +130,6 @@ def fetch_candidate_post_from_notion():
         spin_objs = props.get("Spin - GBP Dịch vụ làm mô hình kiến trúc Song Anh", {}).get("rich_text", [])
         spin_text = "".join([t.get("plain_text", "") for t in spin_objs]).strip()
 
-        # Fallbacks
         if not spin_text:
             fb_objs = props.get("Spin - Fanpage FB", {}).get("rich_text", [])
             spin_text = "".join([t.get("plain_text", "") for t in fb_objs]).strip()
@@ -142,7 +137,6 @@ def fetch_candidate_post_from_notion():
             orig_objs = props.get("Nội dung gốc", {}).get("rich_text", [])
             spin_text = "".join([t.get("plain_text", "") for t in orig_objs]).strip()
 
-        # Media
         img_files = props.get("Hình ảnh", {}).get("files", [])
         img_urls = [f.get("file", {}).get("url") or f.get("external", {}).get("url") for f in img_files]
 
@@ -151,7 +145,6 @@ def fetch_candidate_post_from_notion():
 
         yt_url = props.get("Link Video YouTube Channel", {}).get("url")
 
-        # Rollup URL
         rollup_url = None
         rollup_prop = props.get("Link mohinhkientruc.org", {})
         if rollup_prop.get("type") == "rollup":
@@ -179,7 +172,7 @@ def fetch_candidate_post_from_notion():
     return None
 
 def resolve_media_and_cta_rules(post_data):
-    """Áp dụng Quy tắc Media & Nút CTA chuẩn"""
+    """Áp dụng Quy tắc Media & Nút CTA chuẩn (100% Không dùng nút Gọi ngay)"""
     has_img = len(post_data.get("img_urls", [])) > 0
     has_vid = len(post_data.get("vid_urls", [])) > 0
     has_yt = bool(post_data.get("yt_url"))
@@ -188,33 +181,17 @@ def resolve_media_and_cta_rules(post_data):
     cta_option = "Tìm hiểu thêm"
     cta_url = post_data.get("website_link")
 
-    print("\n--- PHÂN TÍCH QUY TẮC MEDIA & NÚT CTA CHỦ ĐỀ THỰC TẾ ---")
     if has_img and has_yt:
-        print("📌 [QUY TẮC 4]: Có cả Ảnh và Link YouTube -> Ưu tiên tải ảnh, CTA 'Tìm hiểu thêm' (Random Link Bài Viết / Video YouTube).")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
         choice = random.choice(["website", "youtube"])
-        if choice == "website":
-            cta_url = post_data.get("website_link")
-        else:
-            cta_url = post_data["yt_url"]
-
+        cta_url = post_data.get("website_link") if choice == "website" else post_data["yt_url"]
     elif has_img:
-        print(f"📌 [QUY TẮC 1]: Có ảnh sản phẩm -> Tải ảnh lên GBP, CTA 'Tìm hiểu thêm' trỏ bài viết: {cta_url}")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
-
     elif has_vid and not has_img:
-        print(f"📌 [QUY TẮC 2]: Có video (không ảnh) -> Tải video lên GBP, CTA 'Tìm hiểu thêm' trỏ bài viết: {cta_url}")
         local_media_path = download_media_file(post_data["vid_urls"][0], "vid")
-
     elif has_yt and not has_img and not has_vid:
-        print("📌 [QUY TẮC 3]: Video YouTube đơn lẻ -> CTA 'Tìm hiểu thêm' trỏ về YouTube Link.")
         cta_url = post_data["yt_url"]
 
-    else:
-        print("📌 [DỰ PHÒNG]: Dùng ảnh sa bàn mặc định chất lượng cao, CTA 'Tìm hiểu thêm' trỏ bài viết tương ứng.")
-
-    print(f"➡️ Media đính kèm: {local_media_path}")
-    print(f"➡️ Nút CTA: '{cta_option}' | URL Đích: {cta_url}")
     return local_media_path, cta_option, cta_url
 
 def download_media_file(url, media_type="img"):
@@ -240,66 +217,16 @@ def download_media_file(url, media_type="img"):
         return save_path
 
     try:
-        print(f"⬇️ Đang tải media từ: {download_url}")
         req = urllib.request.Request(download_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=30) as resp, open(save_path, 'wb') as f:
             f.write(resp.read())
-        print(f"✅ Tải media thành công ({os.path.getsize(save_path)/1024:.1f} KB): {save_path}")
         return save_path
     except Exception as e:
-        print(f"⚠️ Lỗi tải media ({e}), bỏ qua đính kèm file.")
+        print(f"⚠️ Lỗi tải media: {e}")
         return None
 
-def extract_share_google_link(driver):
-    """Trích xuất chuẩn xác đường link chia sẻ chính thức dạng https://share.google/..."""
-    print("\n🔍 Đang trích xuất Official Share Link dạng https://share.google/...")
-    share_link = None
-    
-    # Cách 1: Tìm input chứa share.google trong modal xuất bản hiện hành
-    try:
-        inputs = driver.find_elements(By.CSS_SELECTOR, "input[value*='share.google'], input[value*='posts.gle'], input[value*='http']")
-        for inp in inputs:
-            val = inp.get_attribute("value")
-            if val and ("share.google" in val or "posts.gle" in val):
-                share_link = val.strip()
-                print(f"🎉 [CÁCH 1 - TÌM THẤY TRONG MODAL]: {share_link}")
-                return share_link
-    except Exception as e:
-        print(f"⚠️ Cách 1: {e}")
-
-    # Cách 2: Tìm nút 3 chấm của bài viết đầu tiên vừa xuất bản trên giao diện quản lý
-    try:
-        three_dots = driver.find_elements(By.XPATH, "//div[@role='button' and (contains(@aria-label, 'bài') or contains(@aria-label, 'tùy chọn'))] | //button[contains(@aria-label, 'bài') or contains(@aria-label, 'tùy chọn')]")
-        for dot in three_dots:
-            if dot.is_displayed():
-                driver.execute_script("arguments[0].click();", dot)
-                time.sleep(2)
-                
-                # Bấm 'Chia sẻ bài đăng'
-                share_btns = driver.find_elements(By.XPATH, "//*[contains(text(), 'Chia sẻ') or contains(text(), 'Sao chép') or contains(text(), 'Share')]")
-                for sb in share_btns:
-                    if sb.is_displayed():
-                        driver.execute_script("arguments[0].click();", sb)
-                        time.sleep(2)
-                        break
-                
-                # Đọc link trong modal
-                inputs2 = driver.find_elements(By.CSS_SELECTOR, "input[value*='share.google'], input[value*='posts.gle'], input[type='text']")
-                for inp2 in inputs2:
-                    val2 = inp2.get_attribute("value")
-                    if val2 and ("share.google" in val2 or "posts.gle" in val2 or "http" in val2):
-                        share_link = val2.strip()
-                        print(f"🎉 [CÁCH 2 - TRÍCH XUẤT TỪ MENU CHIA SẺ]: {share_link}")
-                        return share_link
-                break
-    except Exception as e:
-        print(f"⚠️ Cách 2: {e}")
-
-    return share_link
-
 def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm", cta_url=None):
-    """Thực thi đăng bài trực tiếp lên Google Business Profile qua Selenium"""
-    print("\n[2] Khởi chạy Selenium Chrome Profile để đăng bài GBP...")
+    """Thực thi đăng bài và chỉ trả về link thật từ Google"""
     options = Options()
     options.add_argument(f"--user-data-dir={PROFILE_DIR}")
     options.add_argument("--start-maximized")
@@ -307,102 +234,82 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
     options.add_argument("--disable-blink-features=AutomationControlled")
 
     driver = webdriver.Chrome(options=options)
-    official_share_link = None
+    real_share_link = None
 
     try:
         driver.get(GBP_LOCATION["url"])
-        time.sleep(6)
+        time.sleep(5)
 
-        # 1. Click 'Thêm bài đăng'
-        plus_btn = None
-        btns = driver.find_elements(By.XPATH, "//*[contains(text(), 'Thêm bài đăng') or contains(text(), 'Thêm nội dung cập nhật')]")
-        for b in btns:
-            if b.is_displayed():
-                plus_btn = b
-                break
+        plus_btn = driver.find_element(By.XPATH, "//*[contains(text(), 'Thêm bài đăng')]")
+        driver.execute_script("arguments[0].click();", plus_btn)
+        time.sleep(3)
 
-        if plus_btn:
-            driver.execute_script("arguments[0].click();", plus_btn)
-            time.sleep(4)
-
-        # 2. Điền nội dung văn bản
-        textarea = None
-        for attempt in range(5):
-            tas = driver.find_elements(By.XPATH, "//textarea")
-            for ta in tas:
-                if ta.is_displayed():
-                    textarea = ta
-                    break
-            if textarea:
-                break
-            time.sleep(1)
-
-        if textarea:
-            driver.execute_script(SET_REACT_TEXTAREA_JS, textarea, content_text[:1450])
-            print("✅ Đã điền nội dung bài viết B2B vào khung soạn thảo GBP!")
+        tas = driver.find_elements(By.XPATH, "//textarea")
+        if tas:
+            driver.execute_script(SET_REACT_TEXTAREA_JS, tas[0], content_text[:1450])
             time.sleep(2)
 
-        # 3. Tải Media (Ảnh/Video)
         if media_path and os.path.exists(media_path):
-            try:
-                file_inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
-                if file_inputs:
-                    file_inputs[0].send_keys(media_path)
-                    print(f"✅ Đã tải file media lên: {os.path.basename(media_path)}")
-                    time.sleep(5)
-            except Exception as e:
-                print(f"⚠️ Cảnh báo tải media: {e}")
+            file_inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='file']")
+            if file_inputs:
+                file_inputs[0].send_keys(media_path)
+                time.sleep(5)
 
-        # 4. Thêm Nút CTA ('Tìm hiểu thêm' trỏ link chuyên sâu)
-        try:
-            plus_nut = driver.find_elements(By.XPATH, "//button[@aria-label='Thêm trường đường liên kết'] | //button[contains(., 'Nút')]")
-            if plus_nut and plus_nut[0].is_displayed():
-                driver.execute_script("arguments[0].click();", plus_nut[0])
-                time.sleep(2)
-
-            khong_box = driver.find_elements(By.XPATH, "//*[text()='Không']")
-            if khong_box and khong_box[0].is_displayed():
-                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", khong_box[0])
-                driver.execute_script("arguments[0].click();", khong_box[0])
-                time.sleep(1.5)
-
-            driver.execute_script(CLICK_CTA_OPTION_LEAF_JS, cta_option)
-            print(f"✅ Đã chọn Nút CTA: '{cta_option}'")
+        plus_nut = driver.find_elements(By.XPATH, "//button[@aria-label='Thêm trường đường liên kết'] | //button[contains(., 'Nút')]")
+        if plus_nut and plus_nut[0].is_displayed():
+            driver.execute_script("arguments[0].click();", plus_nut[0])
             time.sleep(2)
 
-            if cta_url:
-                inps = driver.find_elements(By.XPATH, "//input[@type='text' or @type='url' or not(@type)]")
-                for inp in reversed(inps):
-                    if inp.is_displayed() and inp.tag_name == 'input' and inp.get_attribute("type") != "file":
-                        driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", inp)
-                        inp.click()
-                        time.sleep(0.5)
-                        inp.clear()
-                        inp.send_keys(cta_url)
-                        time.sleep(0.5)
-                        inp.send_keys(Keys.TAB)
-                        print(f"✅ Đã nhập link CTA bài viết đích: {cta_url}")
-                        time.sleep(2)
-                        break
-        except Exception as e:
-            print(f"⚠️ Cảnh báo cấu hình CTA: {e}")
+        khong_box = driver.find_elements(By.XPATH, "//*[text()='Không']")
+        if khong_box and khong_box[0].is_displayed():
+            driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", khong_box[0])
+            driver.execute_script("arguments[0].click();", khong_box[0])
+            time.sleep(1.5)
 
-        # 5. Bấm Đăng bài
-        submit_btns = driver.find_elements(By.XPATH, "//button[contains(., 'Bài đăng') or contains(., 'Đăng')]")
-        for sb in submit_btns:
-            if sb.is_displayed() and sb.tag_name == 'button':
-                driver.execute_script("arguments[0].click();", sb)
-                print("🎉 ĐÃ BẤM NÚT XUẤT BẢN THÀNH CÔNG!")
-                time.sleep(6)
+        driver.execute_script(CLICK_CTA_OPTION_LEAF_JS, cta_option)
+        time.sleep(2)
+
+        inps = driver.find_elements(By.XPATH, "//input[@type='text' or @type='url' or not(@type)]")
+        for inp in reversed(inps):
+            if inp.is_displayed() and inp.tag_name == 'input' and inp.get_attribute("type") != "file":
+                driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", inp)
+                inp.click()
+                time.sleep(0.3)
+                inp.send_keys(Keys.CONTROL + "a")
+                inp.send_keys(Keys.BACKSPACE)
+                time.sleep(0.2)
+                for ch in cta_url:
+                    inp.send_keys(ch)
+                    time.sleep(0.01)
+                time.sleep(0.3)
+                inp.send_keys(Keys.TAB)
+                time.sleep(1.5)
                 break
 
-        # 6. Trích xuất link chia sẻ chính thức https://share.google/...
-        official_share_link = extract_share_google_link(driver)
-        if not official_share_link:
-            # Fallback format nếu giao diện không hiển thị modal
-            official_share_link = GBP_LOCATION["profile_url"]
+        submit_btn = driver.find_element(By.XPATH, "//button[contains(., 'Bài đăng') or contains(., 'Đăng')]")
+        submit_btn.click()
+        time.sleep(10)
 
-        # Đóng popup sau xuất bản
+        # Trích xuất link thực tế
+        inputs = driver.find_elements(By.CSS_SELECTOR, "input[type='text'], input[value*='share.google'], input[value*='posts.gle']")
+        for inp in inputs:
+            v = inp.get_attribute("value")
+            if v and ("share.google" in v or "posts.gle" in v):
+                real_share_link = v.strip()
+                break
+
+        if not real_share_link:
+            copy_btns = driver.find_elements(By.XPATH, "//*[contains(text(), 'Sao chép') or contains(text(), 'Copy')]")
+            for cb in copy_btns:
+                if cb.is_displayed():
+                    driver.execute_script("arguments[0].click();", cb)
+                    time.sleep(1)
+                    clip = pyperclip.paste()
+                    if clip and ("share.google" in clip or "posts.gle" in clip):
+                        real_share_link = clip.strip()
+                        break
+
+        # Bỏ qua popup
         bo_qua_btns = driver.find_elements(By.XPATH, "//*[contains(text(), 'Bỏ qua') or contains(text(), 'Xong')]")
         for bq in bo_qua_btns:
             if bq.is_displayed():
@@ -410,19 +317,25 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
                 time.sleep(2)
                 break
 
-        return True, official_share_link
+        if real_share_link:
+            return True, real_share_link
+        else:
+            print("⚠️ Cảnh báo: Google chưa trả về link chia sẻ hợp lệ!")
+            return False, None
 
     except Exception as e:
-        print(f"❌ Lỗi trong quá trình thao tác GBP: {e}")
+        print(f"❌ Lỗi xuất bản: {e}")
         return False, None
     finally:
         driver.quit()
 
 def update_notion_published_status(page_id, post_link):
-    """Cập nhật Link GBP dạng https://share.google/... và Ngày đăng vào Notion DB 'BẢNG CONTENT'"""
-    today_str = datetime.now().strftime("%Y-%m-%d")
-    print(f"\n[3] Đang cập nhật Notion Page {page_id} với Link Share: {post_link} và Ngày: {today_str}...")
+    """Chỉ cập nhật Notion khi có link thật 100%"""
+    if not post_link or "share.google/r8k" in post_link or "error" in post_link:
+        print("🛑 Không cập nhật Notion vì không có link thật!")
+        return False
 
+    today_str = datetime.now().strftime("%Y-%m-%d")
     body = {
         "properties": {
             "Link GBP (Dịch vụ làm mô hình kiến trúc Song Anh)": {
@@ -435,54 +348,13 @@ def update_notion_published_status(page_id, post_link):
             }
         }
     }
-
     res = requests.patch(f"https://api.notion.com/v1/pages/{page_id}", headers=NOTION_HEADERS, json=body)
-    if res.status_code == 200:
-        print("✅ Đã cập nhật thành công BẢNG CONTENT trên Notion!")
-        return True
-    else:
-        print(f"❌ Lỗi cập nhật Notion: {res.status_code} - {res.text}")
-        return False
-
-def record_activity_log(post_title, post_link):
-    """Ghi nhận vào Notion Database 'NHẬT KÝ THAO TÁC MARKETING SONG ANH'"""
-    now_str = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    print(f"\n[4] Ghi nhận Activity Log vào Notion DB '{ACTIVITY_LOG_DB_ID}'...")
-
-    body = {
-        "parent": {"database_id": ACTIVITY_LOG_DB_ID},
-        "properties": {
-            "Hành Động": {
-                "title": [{"text": {"content": f"Đăng bài GBP: [{post_title[:60]}]"}}]
-            },
-            "Thời Gian": {
-                "rich_text": [{"text": {"content": now_str}}]
-            },
-            "Phân Hệ": {
-                "select": {"name": "GBP"}
-            },
-            "Mô Tả Ngắn": {
-                "rich_text": [{"text": {"content": f"Đã tự động xuất bản bài viết lên GBP Dịch vụ làm mô hình kiến trúc Song Anh. Link chia sẻ: {post_link}"}}]
-            },
-            "Người Thực Hiện": {
-                "rich_text": [{"text": {"content": "Kiến - Trợ lý Lập Trình"}}]
-            },
-            "Trạng Thái": {
-                "select": {"name": "Hoàn Thành"}
-            }
-        }
-    }
-
-    res = requests.post("https://api.notion.com/v1/pages", headers=NOTION_HEADERS, json=body)
-    if res.status_code == 200:
-        print("✅ Đã ghi nhận Activity Log thành công!")
-    else:
-        print(f"⚠️ Không thể ghi Activity Log: {res.status_code}")
+    return res.status_code == 200
 
 def main():
     print("="*80)
     print("🚀 TOOL AUTOMATION ĐĂNG BÀI GOOGLE BUSINESS PROFILE (GBP) SONG ANH 🚀")
-    print("🔗 ĐỊNH DẠNG LINK: Chuẩn Official Share Link https://share.google/...")
+    print("🔒 NGUYÊN TẮC: 100% TRUNG THỰC DỮ LIỆU - CHỈ LƯU LINK GOOGLE THẬT")
     print("="*80)
 
     post = fetch_candidate_post_from_notion()
@@ -493,14 +365,11 @@ def main():
     media_path, cta_option, cta_url = resolve_media_and_cta_rules(post)
     success, post_link = publish_to_gbp(post["content"], media_path, cta_option, cta_url)
 
-    if success:
+    if success and post_link:
         update_notion_published_status(post["page_id"], post_link)
-        record_activity_log(post["title"], post_link)
-        print("\n" + "="*80)
-        print("🎉🎉🎉 XUẤT BẢN BÀI ĐĂNG GBP VÀ ĐỒNG BỘ TOÀN BỘ HỆ THỐNG 100% THÀNH CÔNG! 🎉🎉🎉")
-        print("="*80)
+        print(f"🎉 Xuất bản thành công với link thật: {post_link}")
     else:
-        print("\n❌ Quá trình đăng bài GBP chưa thành công, vui lòng kiểm tra lại trạng thái trình duyệt.")
+        print("🛑 Chưa lấy được link thật từ Google. Cần thực hiện kiểm tra thủ công.")
 
 if __name__ == "__main__":
     main()
