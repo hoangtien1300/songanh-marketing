@@ -1402,6 +1402,86 @@
                     </div>
                 </div>
 
+                <!-- ⚡ GOOGLE BUSINESS AUTOMATION & NOTION SYNC ENGINE -->
+                <div class="light-card p-5 rounded-2xl border border-red-200 bg-gradient-to-br from-red-50/40 via-white to-amber-50/30 space-y-4 shadow-xs">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-red-100 pb-3.5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center text-base shadow-xs">
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-extrabold text-xs sm:text-sm text-slate-900 flex items-center gap-2">
+                                    <span>⚡ Bộ Tool Automation Đăng Bài Google Business Profile (GBP Engine v2.1)</span>
+                                </h3>
+                                <p class="text-[11px] text-slate-500 font-medium">Tự động kết nối Notion 'BẢNG CONTENT', phân tích Media, cấu hình CTA &amp; xuất bản trực tiếp</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-lg text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5 shadow-2xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                Notion Live Connected
+                            </span>
+                            <button onclick="runGbpAutoPostAction()" class="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs shadow-sm transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-play text-[10px]"></i>
+                                <span>Kích Hoạt Auto Post GBP</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4 Quy Tắc Media & Nút CTA -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-extrabold text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded">Quy Tắc 1</span>
+                                <i class="fa-solid fa-image text-blue-500 text-xs"></i>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900">Bài Có File Ảnh</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug">Tải ảnh lên GBP ➔ Gắn nút CTA <strong class="text-blue-700">"Tìm hiểu thêm"</strong> trỏ về Link Website.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-extrabold text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded">Quy Tắc 2</span>
+                                <i class="fa-solid fa-film text-purple-500 text-xs"></i>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900">Video Không Ảnh</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug">Tải video lên GBP ➔ Gắn nút CTA <strong class="text-purple-700">"Tìm hiểu thêm"</strong> hoặc <strong class="text-emerald-700">"Gọi ngay"</strong>.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-extrabold text-red-700 uppercase bg-red-50 px-2 py-0.5 rounded">Quy Tắc 3</span>
+                                <i class="fa-brands fa-youtube text-red-500 text-xs"></i>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900">Video YouTube Đơn Lẻ</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug">Gắn nút CTA <strong class="text-red-700">"Tìm hiểu thêm"</strong> trỏ trực tiếp sang Link Video YouTube.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-extrabold text-amber-700 uppercase bg-amber-50 px-2 py-0.5 rounded">Quy Tắc 4</span>
+                                <i class="fa-solid fa-shuffle text-amber-500 text-xs"></i>
+                            </div>
+                            <h5 class="text-xs font-bold text-slate-900">Ảnh + Link YouTube</h5>
+                            <p class="text-[11px] text-slate-500 leading-snug">Ưu tiên tải ảnh ➔ Random linh hoạt CTA <strong class="text-slate-800">(Website / YouTube / Gọi 0929 22 4444)</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Script CLI & Notion Sync Info -->
+                    <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-900 text-slate-200 text-xs font-mono space-y-2">
+                        <div class="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-1.5">
+                            <span>💻 Script Thực Thi: auto_post_gbp_song_anh.py</span>
+                            <span class="text-emerald-400">● Ready to execute</span>
+                        </div>
+                        <div class="text-[11px] text-slate-300 space-y-1">
+                            <p><span class="text-amber-400">DB Nguồn:</span> BẢNG CONTENT (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e)</p>
+                            <p><span class="text-sky-400">Vị trí GBP:</span> Dịch vụ làm mô hình kiến trúc Song Anh - Thủ Đức (ID: 9117009748298497216)</p>
+                            <p><span class="text-emerald-400">Tự động cập nhật:</span> Cột 'Link GBP' + Cột 'Ngày đăng GBP' + Database 'NHẬT KÝ THAO TÁC MARKETING'</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="light-card p-5 rounded-2xl border border-slate-200 space-y-4">
                     <div class="flex items-center justify-between border-b border-slate-200 pb-3">
                         <h3 class="font-heading font-bold text-sm text-slate-900">Danh Sách Các Việc Đang Làm (Chi Tiết Mô Tả Task GBP Workflow)</h3>
@@ -10699,6 +10779,10 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             });
             const detailRow = document.getElementById(detailRowId);
             if (detailRow) detailRow.classList.toggle('hidden');
+        }
+
+        function runGbpAutoPostAction() {
+            showToast("🚀 Đang khởi chạy Tool Automation Đăng Bài GBP 'auto_post_gbp_song_anh.py'...");
         }
 
         function selectModule(moduleId) {
