@@ -17644,5 +17644,17 @@
       "status": "Đang hoạt động (Active)",
       "badge_color": "teal"
     }
+  ],
+  "marketingActivityLog": [
+    {
+      "id": "log_1787719187",
+      "time": "26/08/2026 11:39:47",
+      "category": "GBP",
+      "system": "GBP Maps",
+      "taskName": "Đăng bài GBP: [MÔ HÌNH CHUNG CƯ KHẢI HOÀN PRIME]",
+      "desc": "Đã xuất bản bài viết sa bàn Khải Hoàn Prime lên GBP (Thủ Đức). Kèm 5 ảnh thực tế xưởng, CTA Tìm hiểu thêm trỏ /sa-ban-cao-tang/. Link share: https://share.google/r8kX9qZomK2jKe98",
+      "assignee": "Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn Thành"
+    }
   ]
 }
