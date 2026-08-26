@@ -3,7 +3,8 @@
 Script: auto_post_gbp_song_anh.py
 Tự động hóa đăng bài lên Google Business Profile (GBP) Dịch vụ làm mô hình kiến trúc Song Anh
 - Kết nối trực tiếp Notion Database 'BẢNG CONTENT' (33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e)
-- Tuân thủ quy tắc Media & CTA: Đối với kênh Mô hình KHÔNG DÙNG nút 'Gọi ngay' (chỉ dùng 'Tìm hiểu thêm' trỏ Website/YouTube)
+- Xử lý link đích ngữ cảnh thông minh (Dynamic Contextual Landing Page): Tùy theo chủ đề bài viết mà trỏ đúng URL bài viết chuyên sâu trên website (không trỏ cứng 1 link trang chủ).
+- 100% Nút 'Tìm hiểu thêm' (Website / YouTube) - Không dùng nút 'Gọi ngay' cho kênh Mô hình.
 - Cập nhật Link và Ngày đăng GBP ngược lại vào Notion
 - Đồng bộ nhật ký hoạt động sang Database 'NHẬT KÝ THAO TÁC MARKETING SONG ANH'
 """
@@ -46,6 +47,16 @@ GBP_LOCATION = {
     "default_website": "https://www.mohinhkientruc.org"
 }
 
+# 🗺️ BẢNG ÁNH XẠ CHỦ ĐỀ VÀ LINK BÀI VIẾT CHUYÊN SÂU TRÊN WEBSITE
+TOPIC_LANDING_PAGES = [
+    (["quy hoạch", "đô thị", "phân khu", "bản đồ quy hoạch"], "https://www.mohinhkientruc.org/mo-hinh-quy-hoach/"),
+    (["nhà máy", "nhà xưởng", "khu công nghiệp", "kcn", "logistics"], "https://www.mohinhkientruc.org/mo-hinh-nha-may/"),
+    (["trường học", "rmit", "uts", "đại học", "giáo dục"], "https://www.mohinhkientruc.org/lam-sa-ban-truong-hoc/"),
+    (["tod", "metro", "tuyến metro", "nhà ga"], "https://www.mohinhkientruc.org/mo-hinh-tod-sa-ban/"),
+    (["sửa chữa", "bảo dưỡng", "phục hồi", "nâng cấp led", "thay đèn"], "https://www.mohinhkientruc.org/sua-chua-mo-hinh-kien-truc/"),
+    (["thủy sản", "hồ nuôi", "triển lãm", "báo giá", "chung cư", "cao tầng", "kiến trúc"], "https://www.mohinhkientruc.org/mo-hinh-kien-truc/")
+]
+
 PROFILE_DIR = r"D:\Song_Anh\_Shared_Core\Credentials\gbp_chrome_profile"
 DOWNLOAD_DIR = r"D:\Song_Anh\01_Mo_Hinh_Kien_Truc\Project_Assets"
 
@@ -75,6 +86,27 @@ for (var i = 0; i < elems.length; i++) {
 }
 return clicked;
 """
+
+def extract_smart_landing_page(title, content, rollup_url):
+    """
+    Trích xuất link landing page phù hợp nhất theo chỉ đạo của Sếp Tiến:
+    1. Ưu tiên 1: Link bài viết cụ thể từ cột Rollup 'Link mohinhkientruc.org' trên Notion.
+    2. Ưu tiên 2: Tự động phân tích từ khóa chủ đề bài viết để trỏ đúng URL bài viết chuyên sâu.
+    3. Ưu tiên 3: Trang Báo giá & Dịch vụ cốt lõi /mo-hinh-kien-truc/.
+    """
+    if rollup_url and rollup_url.startswith("http"):
+        print(f"🔗 [NOTION ROLLUP LINK]: Trỏ chính xác bài viết Notion: {rollup_url}")
+        return rollup_url
+
+    search_text = (title + " " + content).lower()
+    for keywords, target_url in TOPIC_LANDING_PAGES:
+        for kw in keywords:
+            if kw in search_text:
+                print(f"🎯 [CHỦ ĐỀ KHỚP TỪ KHÓA '{kw}']: Trỏ về bài viết chuyên sâu: {target_url}")
+                return target_url
+
+    print("🌐 [FALLBACK]: Trỏ về Trang Báo Giá Cốt Lõi: https://www.mohinhkientruc.org/mo-hinh-kien-truc/")
+    return "https://www.mohinhkientruc.org/mo-hinh-kien-truc/"
 
 def fetch_candidate_post_from_notion():
     """Lọc bài viết từ trên xuống theo Ngày viết chưa đăng GBP Kênh 1"""
@@ -124,7 +156,19 @@ def fetch_candidate_post_from_notion():
         vid_urls = [f.get("file", {}).get("url") or f.get("external", {}).get("url") for f in vid_files]
 
         yt_url = props.get("Link Video YouTube Channel", {}).get("url")
-        website_link = GBP_LOCATION["default_website"]
+
+        # Rollup URL
+        rollup_url = None
+        rollup_prop = props.get("Link mohinhkientruc.org", {})
+        if rollup_prop.get("type") == "rollup":
+            arr = rollup_prop.get("rollup", {}).get("array", [])
+            for item in arr:
+                if item.get("type") == "url":
+                    rollup_url = item.get("url")
+                    break
+
+        # Dynamic smart landing page
+        website_link = extract_smart_landing_page(title, spin_text, rollup_url)
 
         if not gbp_link or not gbp_date:
             print(f"✅ Chọn bài viết: [{title}] (Page ID: {page['id']})")
@@ -143,14 +187,9 @@ def fetch_candidate_post_from_notion():
 
 def resolve_media_and_cta_rules(post_data):
     """
-    Áp dụng Quy tắc Media & Nút CTA chuẩn theo chỉ đạo của Sếp Tiến:
-    ⚠️ LƯU Ý ĐẶC BIỆT: Kênh GBP Mô hình KHÔNG DÙNG nút 'Gọi ngay' (do số điện thoại gắn trên profile là hotline TMĐT).
-    100% Bài đăng lĩnh vực Mô hình sử dụng nút CTA 'Tìm hiểu thêm' trỏ Website hoặc YouTube.
-
-    - Quy tắc 1 (Có ảnh): Tải ảnh lên GBP ➔ CTA 'Tìm hiểu thêm' trỏ về Link Website (mohinhkientruc.org).
-    - Quy tắc 2 (Video không ảnh): Tải video lên GBP ➔ CTA 'Tìm hiểu thêm' trỏ về Link Website.
-    - Quy tắc 3 (Video YouTube đơn lẻ): CTA 'Tìm hiểu thêm' trỏ về Link YouTube.
-    - Quy tắc 4 (Có link YouTube + Có link Ảnh): Ưu tiên tải ảnh lên ➔ CTA 'Tìm hiểu thêm' random linh hoạt giữa Website và YouTube.
+    Áp dụng Quy tắc Media & Nút CTA chuẩn:
+    - CTA 'Tìm hiểu thêm' trỏ đúng Link bài viết theo chủ đề nội dung (Dynamic Contextual Landing Page).
+    - 100% Không dùng nút 'Gọi ngay' cho kênh Mô hình.
     """
     has_img = len(post_data.get("img_urls", [])) > 0
     has_vid = len(post_data.get("vid_urls", [])) > 0
@@ -158,38 +197,35 @@ def resolve_media_and_cta_rules(post_data):
 
     local_media_path = None
     cta_option = "Tìm hiểu thêm"
-    cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
+    cta_url = post_data.get("website_link")
 
-    print("\n--- PHÂN TÍCH QUY TẮC MEDIA & NÚT CTA (KHÔNG DÙNG NÚT GỌI NGAY CHO MÔ HÌNH) ---")
+    print("\n--- PHÂN TÍCH QUY TẮC MEDIA & NÚT CTA CHỦ ĐỀ THỰC TẾ ---")
     if has_img and has_yt:
-        print("📌 [QUY TẮC 4]: Có cả Ảnh và Link YouTube -> Ưu tiên tải ảnh, CTA 'Tìm hiểu thêm' (Random Website / YouTube).")
+        print("📌 [QUY TẮC 4]: Có cả Ảnh và Link YouTube -> Ưu tiên tải ảnh, CTA 'Tìm hiểu thêm' (Random Link Bài Viết / Video YouTube).")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
         choice = random.choice(["website", "youtube"])
         if choice == "website":
-            cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
+            cta_url = post_data.get("website_link")
         else:
             cta_url = post_data["yt_url"]
 
     elif has_img:
-        print("📌 [QUY TẮC 1]: Có ảnh sản phẩm -> Tải ảnh lên GBP, CTA 'Tìm hiểu thêm' trỏ Website.")
+        print(f"📌 [QUY TẮC 1]: Có ảnh sản phẩm -> Tải ảnh lên GBP, CTA 'Tìm hiểu thêm' trỏ bài viết chuyên sâu: {cta_url}")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
-        cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
 
     elif has_vid and not has_img:
-        print("📌 [QUY TẮC 2]: Có video (không ảnh) -> Tải video lên GBP, CTA 'Tìm hiểu thêm' trỏ Website.")
+        print(f"📌 [QUY TẮC 2]: Có video (không ảnh) -> Tải video lên GBP, CTA 'Tìm hiểu thêm' trỏ bài viết: {cta_url}")
         local_media_path = download_media_file(post_data["vid_urls"][0], "vid")
-        cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
 
     elif has_yt and not has_img and not has_vid:
         print("📌 [QUY TẮC 3]: Video YouTube đơn lẻ -> CTA 'Tìm hiểu thêm' trỏ về YouTube Link.")
         cta_url = post_data["yt_url"]
 
     else:
-        print("📌 [DỰ PHÒNG]: Dùng ảnh sa bàn mặc định chất lượng cao, CTA 'Tìm hiểu thêm'.")
-        cta_url = GBP_LOCATION["default_website"]
+        print("📌 [DỰ PHÒNG]: Dùng ảnh sa bàn mặc định chất lượng cao, CTA 'Tìm hiểu thêm' trỏ bài viết tương ứng.")
 
-    print(f"➡️ Media: {local_media_path}")
-    print(f"➡️ Nút CTA: '{cta_option}' | URL: {cta_url}")
+    print(f"➡️ Media đính kèm: {local_media_path}")
+    print(f"➡️ Nút CTA: '{cta_option}' | URL Đích: {cta_url}")
     return local_media_path, cta_option, cta_url
 
 def download_media_file(url, media_type="img"):
@@ -281,7 +317,7 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
             except Exception as e:
                 print(f"⚠️ Cảnh báo tải media: {e}")
 
-        # 4. Thêm Nút CTA ('Tìm hiểu thêm' trỏ link)
+        # 4. Thêm Nút CTA ('Tìm hiểu thêm' trỏ link chuyên sâu)
         try:
             plus_nut = driver.find_elements(By.XPATH, "//button[@aria-label='Thêm trường đường liên kết'] | //button[contains(., 'Nút')]")
             if plus_nut and plus_nut[0].is_displayed():
@@ -309,7 +345,7 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
                         inp.send_keys(cta_url)
                         time.sleep(0.5)
                         inp.send_keys(Keys.TAB)
-                        print(f"✅ Đã nhập link CTA: {cta_url}")
+                        print(f"✅ Đã nhập link CTA bài viết đích: {cta_url}")
                         time.sleep(2)
                         break
         except Exception as e:
@@ -384,7 +420,7 @@ def record_activity_log(post_title, post_link):
                 "select": {"name": "GBP"}
             },
             "Mô Tả Ngắn": {
-                "rich_text": [{"text": {"content": f"Đã tự động xuất bản bài viết lên GBP Dịch vụ làm mô hình kiến trúc Song Anh (Thủ Đức). CTA 'Tìm hiểu thêm'. Link: {post_link}"}}]
+                "rich_text": [{"text": {"content": f"Đã tự động xuất bản bài viết lên GBP Dịch vụ làm mô hình kiến trúc Song Anh (Thủ Đức). CTA 'Tìm hiểu thêm' trỏ link bài viết phù hợp. Link: {post_link}"}}]
             },
             "Người Thực Hiện": {
                 "rich_text": [{"text": {"content": "Kiến - Trợ lý Lập Trình"}}]
@@ -404,7 +440,7 @@ def record_activity_log(post_title, post_link):
 def main():
     print("="*80)
     print("🚀 TOOL AUTOMATION ĐĂNG BÀI GOOGLE BUSINESS PROFILE (GBP) SONG ANH 🚀")
-    print("⚠️ CHẾ ĐỘ: 100% Nút 'Tìm hiểu thêm' (Website / YouTube) - KHÔNG DÙNG Nút 'Gọi ngay'")
+    print("🌐 CHẾ ĐỘ: Dynamic Landing Page trỏ đúng bài viết chuyên sâu theo chủ đề")
     print("="*80)
 
     post = fetch_candidate_post_from_notion()
