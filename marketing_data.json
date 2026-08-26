@@ -16620,6 +16620,14 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "26/08/2026 11:10",
+      "category": "GBP",
+      "action": "Xuất bản bài đăng GBP Dịch vụ làm mô hình kiến trúc Song Anh (Dự án Khải Hoàn Prime)",
+      "description": "Sếp Tiến duyệt xuất bản bài đăng Sa bàn Chung cư Khải Hoàn Prime kèm 05 ảnh thực tế, nút CTA Tìm hiểu thêm trỏ về /sa-ban-cao-tang/; đã cập nhật ngày 26/08/2026 trên Notion BẢNG CONTENT.",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "25/08/2026 16:35",
       "category": "Facebook",
       "action": "Thực thi Re-comment 3 Kênh Facebook và cập nhật ngày báo cáo Notion DB",
