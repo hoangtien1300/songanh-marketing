@@ -3,7 +3,7 @@
 Script: auto_post_gbp_song_anh.py
 Tự động hóa đăng bài lên Google Business Profile (GBP) Dịch vụ làm mô hình kiến trúc Song Anh
 - Kết nối trực tiếp Notion Database 'BẢNG CONTENT' (33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e)
-- Tuân thủ nghiêm ngặt 4 Quy tắc Media & Nút CTA
+- Tuân thủ quy tắc Media & CTA: Đối với kênh Mô hình KHÔNG DÙNG nút 'Gọi ngay' (chỉ dùng 'Tìm hiểu thêm' trỏ Website/YouTube)
 - Cập nhật Link và Ngày đăng GBP ngược lại vào Notion
 - Đồng bộ nhật ký hoạt động sang Database 'NHẬT KÝ THAO TÁC MARKETING SONG ANH'
 """
@@ -98,7 +98,6 @@ def fetch_candidate_post_from_notion():
     for page in results:
         props = page["properties"]
         
-        # Check if already published on GBP Kênh 1
         gbp_link = props.get("Link GBP (Dịch vụ làm mô hình kiến trúc Song Anh)", {}).get("url")
         gbp_date = props.get("Ngày đăng GBP (Dịch vụ làm mô hình kiến trúc Song Anh)", {}).get("date")
 
@@ -125,7 +124,6 @@ def fetch_candidate_post_from_notion():
         vid_urls = [f.get("file", {}).get("url") or f.get("external", {}).get("url") for f in vid_files]
 
         yt_url = props.get("Link Video YouTube Channel", {}).get("url")
-
         website_link = GBP_LOCATION["default_website"]
 
         if not gbp_link or not gbp_date:
@@ -145,11 +143,14 @@ def fetch_candidate_post_from_notion():
 
 def resolve_media_and_cta_rules(post_data):
     """
-    Áp dụng 4 Quy tắc Media & CTA chuẩn theo chỉ đạo của Sếp Tiến:
-    - Quy tắc 1 (Có ảnh): Tải ảnh lên GBP -> CTA 'Tìm hiểu thêm' trỏ về link website.
-    - Quy tắc 2 (Video không ảnh): Tải video lên GBP -> CTA 'Tìm hiểu thêm' hoặc 'Gọi ngay'.
+    Áp dụng Quy tắc Media & Nút CTA chuẩn theo chỉ đạo của Sếp Tiến:
+    ⚠️ LƯU Ý ĐẶC BIỆT: Kênh GBP Mô hình KHÔNG DÙNG nút 'Gọi ngay' (do số điện thoại gắn trên profile là hotline TMĐT).
+    100% Bài đăng lĩnh vực Mô hình sử dụng nút CTA 'Tìm hiểu thêm' trỏ Website hoặc YouTube.
+
+    - Quy tắc 1 (Có ảnh): Tải ảnh lên GBP ➔ CTA 'Tìm hiểu thêm' trỏ về Link Website (mohinhkientruc.org).
+    - Quy tắc 2 (Video không ảnh): Tải video lên GBP ➔ CTA 'Tìm hiểu thêm' trỏ về Link Website.
     - Quy tắc 3 (Video YouTube đơn lẻ): CTA 'Tìm hiểu thêm' trỏ về Link YouTube.
-    - Quy tắc 4 (Có link YouTube + Có link Ảnh): Ưu tiên tải ảnh lên, random linh hoạt CTA (Website / YouTube / Gọi ngay).
+    - Quy tắc 4 (Có link YouTube + Có link Ảnh): Ưu tiên tải ảnh lên ➔ CTA 'Tìm hiểu thêm' random linh hoạt giữa Website và YouTube.
     """
     has_img = len(post_data.get("img_urls", [])) > 0
     has_vid = len(post_data.get("vid_urls", [])) > 0
@@ -159,41 +160,32 @@ def resolve_media_and_cta_rules(post_data):
     cta_option = "Tìm hiểu thêm"
     cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
 
-    print("\n--- PHÂN TÍCH QUY TẮC MEDIA & NÚT CTA ---")
+    print("\n--- PHÂN TÍCH QUY TẮC MEDIA & NÚT CTA (KHÔNG DÙNG NÚT GỌI NGAY CHO MÔ HÌNH) ---")
     if has_img and has_yt:
-        print("📌 [QUY TẮC 4]: Có cả Ảnh và Link YouTube -> Ưu tiên tải ảnh, linh hoạt CTA.")
+        print("📌 [QUY TẮC 4]: Có cả Ảnh và Link YouTube -> Ưu tiên tải ảnh, CTA 'Tìm hiểu thêm' (Random Website / YouTube).")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
-        choice = random.choice(["website", "youtube", "call"])
+        choice = random.choice(["website", "youtube"])
         if choice == "website":
-            cta_option = "Tìm hiểu thêm"
             cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
-        elif choice == "youtube":
-            cta_option = "Tìm hiểu thêm"
-            cta_url = post_data["yt_url"]
         else:
-            cta_option = "Gọi ngay"
-            cta_url = GBP_LOCATION["hotline"]
+            cta_url = post_data["yt_url"]
 
     elif has_img:
         print("📌 [QUY TẮC 1]: Có ảnh sản phẩm -> Tải ảnh lên GBP, CTA 'Tìm hiểu thêm' trỏ Website.")
         local_media_path = download_media_file(post_data["img_urls"][0], "img")
-        cta_option = "Tìm hiểu thêm"
         cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
 
     elif has_vid and not has_img:
-        print("📌 [QUY TẮC 2]: Có video (không ảnh) -> Tải video lên GBP, CTA 'Tìm hiểu thêm' hoặc 'Gọi ngay'.")
+        print("📌 [QUY TẮC 2]: Có video (không ảnh) -> Tải video lên GBP, CTA 'Tìm hiểu thêm' trỏ Website.")
         local_media_path = download_media_file(post_data["vid_urls"][0], "vid")
-        cta_option = random.choice(["Tìm hiểu thêm", "Gọi ngay"])
-        cta_url = post_data.get("website_link") if cta_option == "Tìm hiểu thêm" else GBP_LOCATION["hotline"]
+        cta_url = post_data.get("website_link") or GBP_LOCATION["default_website"]
 
     elif has_yt and not has_img and not has_vid:
         print("📌 [QUY TẮC 3]: Video YouTube đơn lẻ -> CTA 'Tìm hiểu thêm' trỏ về YouTube Link.")
-        cta_option = "Tìm hiểu thêm"
         cta_url = post_data["yt_url"]
 
     else:
         print("📌 [DỰ PHÒNG]: Dùng ảnh sa bàn mặc định chất lượng cao, CTA 'Tìm hiểu thêm'.")
-        cta_option = "Tìm hiểu thêm"
         cta_url = GBP_LOCATION["default_website"]
 
     print(f"➡️ Media: {local_media_path}")
@@ -289,7 +281,7 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
             except Exception as e:
                 print(f"⚠️ Cảnh báo tải media: {e}")
 
-        # 4. Thêm Nút CTA
+        # 4. Thêm Nút CTA ('Tìm hiểu thêm' trỏ link)
         try:
             plus_nut = driver.find_elements(By.XPATH, "//button[@aria-label='Thêm trường đường liên kết'] | //button[contains(., 'Nút')]")
             if plus_nut and plus_nut[0].is_displayed():
@@ -306,7 +298,7 @@ def publish_to_gbp(content_text, media_path=None, cta_option="Tìm hiểu thêm"
             print(f"✅ Đã chọn Nút CTA: '{cta_option}'")
             time.sleep(2)
 
-            if cta_option != "Gọi ngay" and cta_url:
+            if cta_url:
                 inps = driver.find_elements(By.XPATH, "//input[@type='text' or @type='url' or not(@type)]")
                 for inp in reversed(inps):
                     if inp.is_displayed() and inp.tag_name == 'input' and inp.get_attribute("type") != "file":
@@ -392,7 +384,7 @@ def record_activity_log(post_title, post_link):
                 "select": {"name": "GBP"}
             },
             "Mô Tả Ngắn": {
-                "rich_text": [{"text": {"content": f"Đã tự động xuất bản bài viết lên GBP Dịch vụ làm mô hình kiến trúc Song Anh (Thủ Đức). Link: {post_link}"}}]
+                "rich_text": [{"text": {"content": f"Đã tự động xuất bản bài viết lên GBP Dịch vụ làm mô hình kiến trúc Song Anh (Thủ Đức). CTA 'Tìm hiểu thêm'. Link: {post_link}"}}]
             },
             "Người Thực Hiện": {
                 "rich_text": [{"text": {"content": "Kiến - Trợ lý Lập Trình"}}]
@@ -412,6 +404,7 @@ def record_activity_log(post_title, post_link):
 def main():
     print("="*80)
     print("🚀 TOOL AUTOMATION ĐĂNG BÀI GOOGLE BUSINESS PROFILE (GBP) SONG ANH 🚀")
+    print("⚠️ CHẾ ĐỘ: 100% Nút 'Tìm hiểu thêm' (Website / YouTube) - KHÔNG DÙNG Nút 'Gọi ngay'")
     print("="*80)
 
     post = fetch_candidate_post_from_notion()
