@@ -16774,6 +16774,14 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "27/08/2026 12:00",
+      "category": "Facebook",
+      "action": "Thực thi Re-comment Group Bất Động Sản Long Thành - Nhơn Trạch",
+      "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment (Tư vấn quy hoạch tỷ lệ 1/500 - 1/1000) vào Group Long Thành - Nhơn Trạch; cập nhật Ngày Re-comment 27/08/2026 và Lượt Re-cmt 1 (Lịch tiếp theo tự động 03/09/2026) trên Notion DB.",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "27/08/2026 09:36",
       "category": "Facebook",
       "action": "Thực thi Re-comment Fanpage Mô hình Song Anh (Bài M Riverside Đà Nẵng)",
