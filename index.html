@@ -350,6 +350,17 @@
                         </button>
                     </div>
 
+                                        <!-- 💡 AI CONTENT STUDIO (TỪ Ý TƯỞNG ĐẾN BÀI ĐĂNG) -->
+                    <div class="accordion-group rounded-xl border border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50 overflow-hidden mb-2 shadow-xs">
+                        <button onclick="selectModule('tool-content-generator')" id="sub-tool-content-generator" class="sub-link w-full flex items-center justify-between p-2.5 font-black text-brand-navy hover:bg-amber-100/80 transition">
+                            <div class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs shadow-xs">💡</span>
+                                <span class="text-amber-950 font-black">AI Content Studio</span>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold shadow-2xs">HOT</span>
+                        </button>
+                    </div>
+
                     <!-- 🛠️ BỘ CÔNG CỤ TOOL AUTOMATION -->
                     <div class="px-2 pt-3">
                         <p class="text-[10px] font-extrabold tracking-wider text-purple-700 uppercase flex items-center gap-1.5">
@@ -493,9 +504,9 @@
                         </button>
 
                         <!-- Action 3: Quét UID FB -->
-                        <button onclick="selectModule('fb-uid-scraper')" class="mobile-touch-btn p-3 rounded-xl bg-purple-600 hover:bg-purple-500 active:scale-95 text-white font-bold text-xs flex flex-col items-center justify-center gap-1.5 shadow-sm transition border border-purple-400/30">
+                        <button id="btn-hub-ai-studio" onclick="selectModule('tool-content-generator')" class="mobile-touch-btn p-3 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 active:scale-95 text-white font-bold text-xs flex flex-col items-center justify-center gap-1.5 shadow-sm transition border border-amber-300/40">
                             <i class="fa-solid fa-users-viewfinder text-base text-purple-200"></i>
-                            <span class="text-[11px] font-extrabold text-center leading-tight">3. Quét UID Khách FB</span>
+                            <span class="text-[11px] font-extrabold text-center leading-tight">3. 💡 AI Content Studio</span>
                         </button>
 
                         <!-- Action 4: Real-time Sync -->
@@ -3357,6 +3368,283 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
             </div>
 
             <!-- 🚧 TAB PLACEHOLDER ĐANG UPDATE -->
+                        <!-- 💡 MODULE: AI CONTENT IDEA-TO-POST STUDIO (#panel-tool-content-generator) -->
+            <div id="panel-tool-content-generator" class="module-panel hidden space-y-6">
+                <!-- Header Card -->
+                <div class="bg-gradient-to-br from-amber-500 via-orange-600 to-amber-700 p-5 sm:p-6 rounded-2xl text-white shadow-md space-y-2">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/30">
+                                💡
+                            </div>
+                            <div>
+                                <h2 class="text-base sm:text-lg font-heading font-black tracking-tight">AI Content Studio (Từ Ý Tưởng Đến Bài Đăng)</h2>
+                                <p class="text-xs text-amber-100 font-medium">Chuyển hóa ghi chú thô của Sếp Tiến thành bài viết B2B sắc bén, chuẩn văn phong từng kênh</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">⚡ Matrix 8 Kênh</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">🎯 6 Đối Tượng</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">📸 ImageGen 3 Prompt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Generator Workspace -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    
+                    <!-- Left: Form Controls (7 Columns) -->
+                    <div class="lg:col-span-7 space-y-4">
+                        
+                        <!-- 1. Textarea Ý Tưởng Thô -->
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-3">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">1</span>
+                                    <span>Ý Tưởng Thô / Ghi Chú Dự Án Của Sếp</span>
+                                </label>
+                                <span class="text-[10px] text-slate-600 font-bold">Gõ tự do hoặc bấm mẫu nhanh 👇</span>
+                            </div>
+                            
+                            <textarea id="ai-raw-idea" rows="4" class="w-full p-3.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 font-medium leading-relaxed transition" placeholder="Ví dụ: Sa bàn chung cư Khải Hoàn Prime Nam Sài Gòn, tỷ lệ 1/100, khối tháp căn hộ, hệ thống chiếu sáng LED 3 chế độ ngày đêm lung linh, giao cho Sales Gallery thu hút khách mua..."></textarea>
+                            
+                            <!-- Quick Preset Buttons -->
+                            <div class="flex items-center gap-1.5 flex-wrap pt-1">
+                                <span class="text-[10px] font-bold text-slate-600">Gợi ý mẫu:</span>
+                                <button onclick="setRawIdeaPreset('khai_hoan')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🏢 Khải Hoàn Prime</button>
+                                <button onclick="setRawIdeaPreset('kcn_quy_hoach')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🗺️ Quy Hoạch KCN</button>
+                                <button onclick="setRawIdeaPreset('nha_may_fdi')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🏭 Nhà Máy FDI</button>
+                                <button onclick="setRawIdeaPreset('noi_that_3d')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">📐 Cắt Bổ 3D</button>
+                                <button onclick="setRawIdeaPreset('bao_tri')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🛠️ Bảo Trì Sa Bàn</button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Bộ Chọn Đối Tượng Khách Hàng (6 Thẻ) -->
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-3">
+                            <label class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">2</span>
+                                <span>Đối Tượng Khách Hàng Mục Tiêu</span>
+                            </label>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="ai-audience-selector">
+                                <div onclick="selectAiAudience('investor')" data-aud="investor" class="ai-aud-card active p-2.5 rounded-xl border border-amber-500 bg-amber-50/80 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">🏢</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Chủ Đầu Tư BĐS</p>
+                                        <p class="text-[9.5px] text-slate-500">Sales Gallery & Dự án</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiAudience('architect')" data-aud="architect" class="ai-aud-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">📐</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">KTS & Thiết Kế</p>
+                                        <p class="text-[9.5px] text-slate-500">Chuẩn tỷ lệ & Thẩm mỹ</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiAudience('contractor')" data-aud="contractor" class="ai-aud-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">🏗️</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Tổng Thầu & Kỹ Sư</p>
+                                        <p class="text-[9.5px] text-slate-500">Biện pháp thi công</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiAudience('fdi')" data-aud="fdi" class="ai-aud-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">🏭</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Doanh Nghiệp FDI</p>
+                                        <p class="text-[9.5px] text-slate-500">KCN, Nhà máy & Kho</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiAudience('gov_edu')" data-aud="gov_edu" class="ai-aud-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">🎓</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Cơ Quan & Trường Học</p>
+                                        <p class="text-[9.5px] text-slate-500">Quy hoạch & Sa bàn học</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiAudience('global')" data-aud="global" class="ai-aud-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2">
+                                    <span class="text-base">🌍</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Khách Quốc Tế</p>
+                                        <p class="text-[9.5px] text-slate-500">Global Export & Org</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Bộ Chọn Mục Tiêu Nội Dung (5 Thẻ) -->
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-3">
+                            <label class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">3</span>
+                                <span>Mục Tiêu Nội Dung (Content Goal)</span>
+                            </label>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="ai-goal-selector">
+                                <div onclick="selectAiGoal('quotation')" data-goal="quotation" class="ai-goal-card active p-2.5 rounded-xl border border-amber-500 bg-amber-50/80 cursor-pointer transition flex items-center gap-2.5">
+                                    <span class="text-base">🎯</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Báo Giá & Kích Hoạt Gọi</p>
+                                        <p class="text-[9.5px] text-slate-500">Thúc đẩy Inbox & Hotline Zalo</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiGoal('technical')" data-goal="technical" class="ai-goal-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2.5">
+                                    <span class="text-base">💎</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Khẳng Định Kỹ Thuật & Sắc Nét</p>
+                                        <p class="text-[9.5px] text-slate-500">Vật liệu, LED & Tỷ lệ chuẩn</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiGoal('trust_workshop')" data-goal="trust_workshop" class="ai-goal-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2.5">
+                                    <span class="text-base">🏭</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Xây Dựng Lòng Tin Xưởng Thật</p>
+                                        <p class="text-[9.5px] text-slate-500">Hình ảnh sản xuất tại Thủ Đức</p>
+                                    </div>
+                                </div>
+                                <div onclick="selectAiGoal('case_study')" data-goal="case_study" class="ai-goal-card p-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex items-center gap-2.5">
+                                    <span class="text-base">🛠️</span>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-800 leading-tight">Hậu Trường Xử Lý Ca Khó</p>
+                                        <p class="text-[9.5px] text-slate-500">Bàn giao gấp & Giải pháp sáng tạo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Bộ Chọn Kênh Xuất Bản (8 Thẻ) -->
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-3">
+                            <label class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">4</span>
+                                <span>Kênh Xuất Bản Mục Tiêu (Target Channel)</span>
+                            </label>
+                            
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="ai-channel-selector">
+                                <div onclick="selectAiChannel('fanpage_song_anh')" data-channel="fanpage_song_anh" class="ai-chan-card active p-2 rounded-xl border border-blue-500 bg-blue-50/80 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-brands fa-facebook-f text-blue-600 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">Fanpage Song Anh</span>
+                                </div>
+                                <div onclick="selectAiChannel('profile_tien')" data-channel="profile_tien" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-user-tie text-slate-700 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">Profile Sếp Tiến</span>
+                                </div>
+                                <div onclick="selectAiChannel('fb_groups')" data-channel="fb_groups" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-users text-indigo-600 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">FB Groups B2B</span>
+                                </div>
+                                <div onclick="selectAiChannel('architectural_org')" data-channel="architectural_org" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-globe text-emerald-600 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">Model Org (ENG)</span>
+                                </div>
+                                <div onclick="selectAiChannel('gbp_saban')" data-channel="gbp_saban" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-location-dot text-rose-500 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">GBP Sa Bàn Q1</span>
+                                </div>
+                                <div onclick="selectAiChannel('gbp_dichvu')" data-channel="gbp_dichvu" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-map-pin text-rose-600 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">GBP Dịch Vụ</span>
+                                </div>
+                                <div onclick="selectAiChannel('website_article')" data-channel="website_article" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-solid fa-file-lines text-sky-600 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">Website Article</span>
+                                </div>
+                                <div onclick="selectAiChannel('short_video')" data-channel="short_video" class="ai-chan-card p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer transition flex flex-col items-center justify-center text-center gap-1">
+                                    <i class="fa-brands fa-tiktok text-slate-900 text-sm"></i>
+                                    <span class="text-[11px] font-black text-slate-800">Video Reels/Shorts</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Big Generate Button -->
+                        <button onclick="handleGenerateSmartContent()" id="btn-generate-ai" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-[0.98] text-white font-heading font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2.5">
+                            <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                            <span>✨ TẠO BÀI VIẾT BẰNG AI NGAY</span>
+                        </button>
+                    </div>
+
+                    <!-- Right: Output Showcase (5 Columns) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        
+                        <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4 sticky top-20">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></span>
+                                    <h3 class="text-xs sm:text-sm font-heading font-black text-slate-900">Kết Quả Xuất Bản Trực Quan</h3>
+                                </div>
+                                <span id="ai-output-badge" class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-extrabold">Fanpage B2B</span>
+                            </div>
+
+                            <!-- Output Tabs -->
+                            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
+                                <button onclick="switchAiOutputTab('post')" id="tab-out-post" class="flex-1 py-1.5 rounded-lg bg-white text-slate-900 shadow-2xs transition">📄 Bài Viết</button>
+                                <button onclick="switchAiOutputTab('comment')" id="tab-out-comment" class="flex-1 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">💬 Re-Cmt</button>
+                                <button onclick="switchAiOutputTab('prompt')" id="tab-out-prompt" class="flex-1 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">📸 Prompt Ảnh</button>
+                            </div>
+
+                            <!-- View 1: Main Post Content -->
+                            <div id="ai-view-post" class="space-y-2">
+                                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 font-sans leading-relaxed whitespace-pre-line max-h-[380px] overflow-y-auto" id="ai-result-post">
+🏗️ THI CÔNG SA BÀN KIẾN TRÚC B2B CHUYÊN NGHIỆP | MÔ HÌNH SONG ANH
+
+Mô hình kiến trúc Song Anh hân hạnh giới thiệu các dự án sa bàn quy hoạch và cao tầng được chế tác tỉ mỉ tại Xưởng Thủ Đức.
+
+🌟 ĐIỂM NỔI BẬT DỰ ÁN:
+✓ Tái hiện chuẩn xác tỷ lệ 1/100, 1/500 theo đúng bản vẽ thiết kế.
+✓ Hệ thống chiếu sáng LED phân tầng điều khiển từ xa.
+✓ Độ bền màu cao với vật liệu Acrylic nhập khẩu.
+
+🌐 Xem chi tiết tại: https://mohinhkientruc.org/sa-ban-cao-tang/
+📞 Hotline & Zalo Báo Giá: 0929 22 4444 (Tư vấn 24/7)
+🏭 Xưởng sản xuất: TP. Thủ Đức, TP. Hồ Chí Minh
+                                </div>
+                            </div>
+
+                            <!-- View 2: First Comment & Deep-link -->
+                            <div id="ai-view-comment" class="hidden space-y-2">
+                                <div class="p-3.5 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-blue-950 font-sans leading-relaxed whitespace-pre-line max-h-[380px] overflow-y-auto" id="ai-result-comment">
+💬 First Comment / Re-comment Điều Hướng Chuẩn:
+
+Mô hình kiến trúc Song Anh cung cấp trọn gói 6 dịch vụ cốt lõi:
+1) Sa bàn quy hoạch đô thị & KCN
+2) Sa bàn cao tầng chung cư
+3) Sa bàn nhà máy nhà xưởng FDI
+4) Sa bàn biệt thự nhà phố
+5) Sa bàn cắt bổ nội thất 3D
+6) Bảo trì & sửa chữa sa bàn tận nơi toàn quốc.
+
+🔗 Xem thư viện dự án: https://mohinhkientruc.org/sa-ban-cao-tang/
+📞 Hotline kỹ thuật: 0929 22 4444
+                                </div>
+                            </div>
+
+                            <!-- View 3: AI ImageGen Prompt -->
+                            <div id="ai-view-prompt" class="hidden space-y-2">
+                                <div class="p-3.5 rounded-xl bg-purple-50/70 border border-purple-200 text-xs text-purple-950 font-mono leading-relaxed whitespace-pre-line max-h-[380px] overflow-y-auto" id="ai-result-prompt">
+Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residential condominium building, 1/100 scale, miniature acrylic balconies, lush landscaped podium garden with warm ambient LED illumination, luxury Sales Gallery showroom environment, sharp focus, professional architectural photography, 8k resolution, cinematic lighting, photorealistic --ar 16:9
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100">
+                                <button onclick="copyAiGeneratedContent()" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-copy text-slate-600"></i>
+                                    <span>Sao Chép</span>
+                                </button>
+                                <button onclick="saveAiContentToNotion()" class="py-2 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 active:scale-95 text-amber-900 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-cloud-arrow-up text-amber-700"></i>
+                                    <span>Lưu Notion</span>
+                                </button>
+                                <button onclick="triggerQuickPublishFromAiStudio()" class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs">
+                                    <i class="fa-solid fa-bolt text-amber-300"></i>
+                                    <span>Đăng Ngay</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
             <div id="panel-updating" class="module-panel hidden">
                 <div class="light-card rounded-2xl p-12 border border-slate-200 text-center space-y-5 bg-white">
                     <div class="w-20 h-20 bg-amber-50 border border-amber-200 rounded-3xl flex items-center justify-center mx-auto">
