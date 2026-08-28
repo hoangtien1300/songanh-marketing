@@ -17,6 +17,84 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
+
+        // ==========================================
+        // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
+        // ==========================================
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (sidebar.classList.contains('mobile-open')) {
+                closeMobileSidebar();
+            } else {
+                sidebar.classList.add('mobile-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+        }
+
+        function selectMobileBottomNav(moduleId) {
+            selectModule(moduleId);
+            closeMobileSidebar();
+            document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
+            const activeBtn = document.getElementById(`bnav-${moduleId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function triggerMobileQuickAction(actionType) {
+            if (actionType === 'fb-recomment') {
+                showToast('🚀 Đang kết nối FB Engine v3.1 để Re-comment Fanpage...', 'info');
+                selectModule('facebook');
+            } else if (actionType === 'gbp-post') {
+                showToast('📍 Đang mở GBP Automation Engine v2.1...', 'info');
+                selectModule('gbp');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            let toast = document.getElementById('global-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'global-toast';
+                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                document.body.appendChild(toast);
+            }
+            const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
+            const isWarning = (message.includes('🚧') || message.includes('Update'));
+            
+            let bgClass = 'bg-slate-900 border border-slate-700';
+            let icon = '<i class="fa-solid fa-circle-info text-sky-400"></i>';
+            
+            if (isSuccess) {
+                bgClass = 'bg-emerald-600 border border-emerald-500';
+                icon = '<i class="fa-solid fa-circle-check text-white"></i>';
+            } else if (isWarning) {
+                bgClass = 'bg-amber-600 border border-amber-500';
+                icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
+            }
+
+            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            toast.style.display = 'flex';
+            
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function showToastNotification(message, type = 'info') {
+            showToast(message, type);
+        }
+
         tailwind.config = {
             theme: {
                 extend: {
@@ -759,7 +837,7 @@
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Live Sync
                                 </span>
                             </h2>
-                            <p class="text-[11px] text-slate-400">Chỉ số vận hành hệ thống & Ban Trợ lý AI</p>
+                            <p class="text-[11px] text-slate-400">Chỉ số vận hành Realtime</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2 shrink-0">
@@ -780,7 +858,7 @@
                                     <span>Trung Tâm Điều Khiển 1-Click Di Động</span>
                                     <span class="text-[9px] px-2 py-0.5 rounded-full bg-amber-400 text-slate-950 font-black">MOBILE FIRST</span>
                                 </h3>
-                                <p class="text-[10.5px] text-slate-300">Sếp bấm 1 chạm trên điện thoại — Ban Trợ lý AI thực thi tự động</p>
+                                <p class="text-[10.5px] text-slate-300">Sếp chạm 1 nút — Ban Trợ lý AI thực thi tự động</p>
                             </div>
                         </div>
                         <span class="hidden sm:inline-flex text-[10px] bg-white/10 px-2 py-1 rounded-lg text-slate-300 font-bold border border-white/10">📱 Sếp Tiến Control</span>
@@ -3910,6 +3988,84 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
     </div>
 
     <script>
+
+        // ==========================================
+        // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
+        // ==========================================
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (sidebar.classList.contains('mobile-open')) {
+                closeMobileSidebar();
+            } else {
+                sidebar.classList.add('mobile-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+        }
+
+        function selectMobileBottomNav(moduleId) {
+            selectModule(moduleId);
+            closeMobileSidebar();
+            document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
+            const activeBtn = document.getElementById(`bnav-${moduleId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function triggerMobileQuickAction(actionType) {
+            if (actionType === 'fb-recomment') {
+                showToast('🚀 Đang kết nối FB Engine v3.1 để Re-comment Fanpage...', 'info');
+                selectModule('facebook');
+            } else if (actionType === 'gbp-post') {
+                showToast('📍 Đang mở GBP Automation Engine v2.1...', 'info');
+                selectModule('gbp');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            let toast = document.getElementById('global-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'global-toast';
+                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                document.body.appendChild(toast);
+            }
+            const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
+            const isWarning = (message.includes('🚧') || message.includes('Update'));
+            
+            let bgClass = 'bg-slate-900 border border-slate-700';
+            let icon = '<i class="fa-solid fa-circle-info text-sky-400"></i>';
+            
+            if (isSuccess) {
+                bgClass = 'bg-emerald-600 border border-emerald-500';
+                icon = '<i class="fa-solid fa-circle-check text-white"></i>';
+            } else if (isWarning) {
+                bgClass = 'bg-amber-600 border border-amber-500';
+                icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
+            }
+
+            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            toast.style.display = 'flex';
+            
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function showToastNotification(message, type = 'info') {
+            showToast(message, type);
+        }
+
         let marketingData = {};
         let keywordList = [
             {
@@ -10712,7 +10868,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${item.status_badge || 'bg-emerald-100 text-emerald-800'} block whitespace-nowrap shadow-sm">
                                 ${item.status}
                             </span>
-                            <button onclick="event.stopPropagation(); showDraftOutlineModal(${item.id});" class="mt-1.5 px-2 py-0.5 rounded bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold transition shadow-xs">
+                            <button onclick="event.stopPropagation();  showDraftOutlineModal(${item.id});" class="mt-1.5 px-2 py-0.5 rounded bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold transition shadow-xs">
                                 📋 Xem Dàn Ý
                             </button>
                         </td>
@@ -11860,6 +12016,84 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
     </div>
 
     <script>
+
+        // ==========================================
+        // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
+        // ==========================================
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (sidebar.classList.contains('mobile-open')) {
+                closeMobileSidebar();
+            } else {
+                sidebar.classList.add('mobile-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (backdrop) backdrop.classList.remove('active');
+        }
+
+        function selectMobileBottomNav(moduleId) {
+            selectModule(moduleId);
+            closeMobileSidebar();
+            document.querySelectorAll('.bottom-nav-item').forEach(el => el.classList.remove('active'));
+            const activeBtn = document.getElementById(`bnav-${moduleId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function triggerMobileQuickAction(actionType) {
+            if (actionType === 'fb-recomment') {
+                showToast('🚀 Đang kết nối FB Engine v3.1 để Re-comment Fanpage...', 'info');
+                selectModule('facebook');
+            } else if (actionType === 'gbp-post') {
+                showToast('📍 Đang mở GBP Automation Engine v2.1...', 'info');
+                selectModule('gbp');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            let toast = document.getElementById('global-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'global-toast';
+                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                document.body.appendChild(toast);
+            }
+            const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
+            const isWarning = (message.includes('🚧') || message.includes('Update'));
+            
+            let bgClass = 'bg-slate-900 border border-slate-700';
+            let icon = '<i class="fa-solid fa-circle-info text-sky-400"></i>';
+            
+            if (isSuccess) {
+                bgClass = 'bg-emerald-600 border border-emerald-500';
+                icon = '<i class="fa-solid fa-circle-check text-white"></i>';
+            } else if (isWarning) {
+                bgClass = 'bg-amber-600 border border-amber-500';
+                icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
+            }
+
+            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.innerHTML = `${icon} <span>${message}</span>`;
+            toast.style.display = 'flex';
+            
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function showToastNotification(message, type = 'info') {
+            showToast(message, type);
+        }
+
         const agentFullData = {
             'minh': {
                 name: '1. Minh - Trợ lý Điều Phối',
