@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-08-27 06:00:18",
+  "last_synced": "2026-08-28 06:00:22",
   "system_info": {
     "app_name": "Song Anh Group - Ultimate Multi-Channel AI Marketing Suite",
     "version": "21.0",
@@ -14,19 +14,19 @@
       "initRank": "Top 12.0 (17/08/2026)",
       "initDate": "17/08/2026",
       "prevRankNote": "Mốc đầu tuần Thứ 2 (17/08/2026): Top 12.0",
-      "currRank": "Top 7.6",
-      "gscPos": 7.6,
-      "impressions": 49,
-      "clicks": 3,
-      "ctr": "6.12% CTR",
+      "currRank": "Top 7.5",
+      "gscPos": 7.5,
+      "impressions": 50,
+      "clicks": 4,
+      "ctr": "8.00% CTR",
       "searchFeature": "🖼️ Image Pack",
       "url": "mohinhkientruc.org/danh-muc-du-an/mo-hinh-quy-hoach/",
-      "change": "Tăng 4.4 Bậc (+4.4)",
+      "change": "Tăng 4.5 Bậc (+4.5)",
       "type": "Từ Khóa Chính (Core Focus)",
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 1: Mô Hình Quy Hoạch",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": true,
       "rankHistory": [
         {
@@ -287,6 +287,13 @@
           "impressions": 49,
           "clicks": 3,
           "ctr": "6.12%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 7.5,
+          "impressions": 50,
+          "clicks": 4,
+          "ctr": "8.00%"
         }
       ]
     },
@@ -296,19 +303,19 @@
       "initRank": "Top 8.0 (17/08/2026)",
       "initDate": "17/08/2026",
       "prevRankNote": "Mốc đầu tuần Thứ 2 (17/08/2026): Top 8.0",
-      "currRank": "Top 17.9",
-      "gscPos": 17.9,
-      "impressions": 128,
-      "clicks": 4,
-      "ctr": "3.12% CTR",
+      "currRank": "Top 17.3",
+      "gscPos": 17.3,
+      "impressions": 133,
+      "clicks": 5,
+      "ctr": "3.76% CTR",
       "searchFeature": "🌟 Featured Snippet",
       "url": "mohinhkientruc.org/mo-hinh-kien-truc/",
-      "change": "Giảm 9.9 Bậc (-9.9)",
+      "change": "Giảm 9.3 Bậc (-9.3)",
       "type": "Từ Khóa Chính (Core Focus)",
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 2: Mô Hình Kiến Trúc",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -569,6 +576,13 @@
           "impressions": 128,
           "clicks": 4,
           "ctr": "3.12%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 17.3,
+          "impressions": 133,
+          "clicks": 5,
+          "ctr": "3.76%"
         }
       ]
     },
@@ -590,7 +604,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 3: Mô Hình Cao Tầng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -851,6 +865,13 @@
           "impressions": 980,
           "clicks": 54,
           "ctr": "5.51%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 5.0,
+          "impressions": 980,
+          "clicks": 54,
+          "ctr": "5.51%"
         }
       ]
     },
@@ -872,7 +893,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 4: Mô Hình KCN & Nhà Máy",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -1133,6 +1154,13 @@
           "impressions": 1120,
           "clicks": 68,
           "ctr": "6.07%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 6.0,
+          "impressions": 1120,
+          "clicks": 68,
+          "ctr": "6.07%"
         }
       ]
     },
@@ -1154,7 +1182,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 3 (P3)",
       "silo": "Cụm 5: Mô Hình Thiết Bị",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -1415,6 +1443,13 @@
           "impressions": 640,
           "clicks": 25,
           "ctr": "3.91%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 9.0,
+          "impressions": 640,
+          "clicks": 25,
+          "ctr": "3.91%"
         }
       ]
     },
@@ -1436,7 +1471,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 6: Mô Hình Công Cộng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -1697,6 +1732,13 @@
           "impressions": 720,
           "clicks": 38,
           "ctr": "5.28%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 7.0,
+          "impressions": 720,
+          "clicks": 38,
+          "ctr": "5.28%"
         }
       ]
     },
@@ -1718,7 +1760,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 6: Mô Hình Công Cộng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -1979,6 +2021,13 @@
           "impressions": 530,
           "clicks": 22,
           "ctr": "4.15%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 8.0,
+          "impressions": 530,
+          "clicks": 22,
+          "ctr": "4.15%"
         }
       ]
     },
@@ -2000,7 +2049,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 1: Mô Hình Quy Hoạch",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": true,
       "rankHistory": [
         {
@@ -2261,6 +2310,13 @@
           "impressions": 1650,
           "clicks": 118,
           "ctr": "7.15%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 4.0,
+          "impressions": 1650,
+          "clicks": 118,
+          "ctr": "7.15%"
         }
       ]
     },
@@ -2282,7 +2338,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 2: Mô Hình Kiến Trúc",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -2543,6 +2599,13 @@
           "impressions": 2100,
           "clicks": 135,
           "ctr": "6.43%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 4.5,
+          "impressions": 2100,
+          "clicks": 135,
+          "ctr": "6.43%"
         }
       ]
     },
@@ -2564,7 +2627,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 3: Mô Hình Cao Tầng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -2825,6 +2888,13 @@
           "impressions": 870,
           "clicks": 46,
           "ctr": "5.29%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 5.5,
+          "impressions": 870,
+          "clicks": 46,
+          "ctr": "5.29%"
         }
       ]
     },
@@ -2834,19 +2904,19 @@
       "initRank": "Top 17.0 (17/08/2026)",
       "initDate": "17/08/2026",
       "prevRankNote": "Mốc đầu tuần Thứ 2 (17/08/2026): Top 17.0",
-      "currRank": "Top 2.4",
-      "gscPos": 2.4,
-      "impressions": 9,
+      "currRank": "Top 2.2",
+      "gscPos": 2.2,
+      "impressions": 11,
       "clicks": 1,
-      "ctr": "11.11% CTR",
+      "ctr": "9.09% CTR",
       "searchFeature": "🖼️ Image Pack",
       "url": "mohinhkientruc.org/thi-cong-sa-ban-nha-may-khu-cong-nghiep/",
-      "change": "Tăng 14.6 Bậc (+14.6)",
+      "change": "Tăng 14.8 Bậc (+14.8)",
       "type": "Từ Khóa Phụ (Long-tail)",
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 4: Mô Hình KCN & Nhà Máy",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -3107,6 +3177,13 @@
           "impressions": 9,
           "clicks": 1,
           "ctr": "11.11%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 2.2,
+          "impressions": 11,
+          "clicks": 1,
+          "ctr": "9.09%"
         }
       ]
     },
@@ -3128,7 +3205,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 3 (P3)",
       "silo": "Cụm 5: Mô Hình Thiết Bị",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -3389,6 +3466,13 @@
           "impressions": 480,
           "clicks": 18,
           "ctr": "3.75%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 9.5,
+          "impressions": 480,
+          "clicks": 18,
+          "ctr": "3.75%"
         }
       ]
     },
@@ -3410,7 +3494,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 6: Mô Hình Công Cộng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -3671,6 +3755,13 @@
           "impressions": 3,
           "clicks": 1,
           "ctr": "33.33%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 6.7,
+          "impressions": 3,
+          "clicks": 1,
+          "ctr": "33.33%"
         }
       ]
     },
@@ -3692,7 +3783,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 6: Mô Hình Công Cộng",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -3953,6 +4044,13 @@
           "impressions": 590,
           "clicks": 26,
           "ctr": "4.41%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 8.5,
+          "impressions": 590,
+          "clicks": 26,
+          "ctr": "4.41%"
         }
       ]
     },
@@ -3974,7 +4072,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 7: Dịch Vụ Vận Chuyển",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -4235,6 +4333,13 @@
           "impressions": 820,
           "clicks": 45,
           "ctr": "5.49%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 6.8,
+          "impressions": 820,
+          "clicks": 45,
+          "ctr": "5.49%"
         }
       ]
     },
@@ -4256,7 +4361,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 7: Dịch Vụ Vận Chuyển",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -4517,6 +4622,13 @@
           "impressions": 760,
           "clicks": 38,
           "ctr": "5.00%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 7.2,
+          "impressions": 760,
+          "clicks": 38,
+          "ctr": "5.00%"
         }
       ]
     },
@@ -4538,7 +4650,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 8: Dịch Vụ Sửa Chữa",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -4799,6 +4911,13 @@
           "impressions": 930,
           "clicks": 58,
           "ctr": "6.24%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 5.4,
+          "impressions": 930,
+          "clicks": 58,
+          "ctr": "6.24%"
         }
       ]
     },
@@ -4820,7 +4939,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 8: Dịch Vụ Sửa Chữa",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -5081,6 +5200,13 @@
           "impressions": 880,
           "clicks": 52,
           "ctr": "5.91%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 5.8,
+          "impressions": 880,
+          "clicks": 52,
+          "ctr": "5.91%"
         }
       ]
     },
@@ -5090,19 +5216,19 @@
       "initRank": "Top 6.5 (17/08/2026)",
       "initDate": "17/08/2026",
       "prevRankNote": "Mốc đầu tuần Thứ 2 (17/08/2026): Top 6.5",
-      "currRank": "Top 43.8",
-      "gscPos": 43.8,
-      "impressions": 32,
+      "currRank": "Top 41.7",
+      "gscPos": 41.7,
+      "impressions": 34,
       "clicks": 0,
       "ctr": "0.00% CTR",
       "searchFeature": "📌 Local Map Pack",
       "url": "mohinhkientruc.org/cong-ty-lam-mo-hinh/",
-      "change": "Giảm 37.3 Bậc (-37.3)",
+      "change": "Giảm 35.2 Bậc (-35.2)",
       "type": "Từ Khóa Chính (Core Focus)",
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 9: Định Vị Doanh Nghiệp",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": true,
       "rankHistory": [
         {
@@ -5363,6 +5489,13 @@
           "impressions": 32,
           "clicks": 0,
           "ctr": "0.00%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 41.7,
+          "impressions": 34,
+          "clicks": 0,
+          "ctr": "0.00%"
         }
       ]
     },
@@ -5384,7 +5517,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 1 (P1 - Top 1-3)",
       "silo": "Cụm 9: Định Vị Doanh Nghiệp",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -5645,6 +5778,13 @@
           "impressions": 2410,
           "clicks": 168,
           "ctr": "6.97%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 3.2,
+          "impressions": 2410,
+          "clicks": 168,
+          "ctr": "6.97%"
         }
       ]
     },
@@ -5666,7 +5806,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 10: Dịch Vụ Sản Xuất",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -5927,6 +6067,13 @@
           "impressions": 1780,
           "clicks": 121,
           "ctr": "6.80%"
+        },
+        {
+          "date": "28/08/2026",
+          "rank": 4.2,
+          "impressions": 1780,
+          "clicks": 121,
+          "ctr": "6.80%"
         }
       ]
     },
@@ -5948,7 +6095,7 @@
       "intent": "Transactional B2B",
       "priority": "Ưu Tiên 2 (P2)",
       "silo": "Cụm 10: Dịch Vụ Sản Xuất",
-      "last_updated": "27/08/2026 (Mới Nhất Real-time GSC & GA4)",
+      "last_updated": "28/08/2026 (Mới Nhất Real-time GSC & GA4)",
       "highlight": false,
       "rankHistory": [
         {
@@ -6205,6 +6352,13 @@
         },
         {
           "date": "27/08/2026",
+          "rank": 4.6,
+          "impressions": 1620,
+          "clicks": 104,
+          "ctr": "6.42%"
+        },
+        {
+          "date": "28/08/2026",
           "rank": 4.6,
           "impressions": 1620,
           "clicks": 104,
@@ -6491,10 +6645,10 @@
     "top4_10": 19,
     "top11_30": 1,
     "top31_plus": 0,
-    "total_impressions": 19101,
-    "total_clicks": 1145,
-    "avg_ctr": "5.99%",
-    "last_calculated": "2026-08-27 06:00:18"
+    "total_impressions": 19111,
+    "total_clicks": 1147,
+    "avg_ctr": "6.00%",
+    "last_calculated": "2026-08-28 06:00:22"
   },
   "facebook_tasks": [
     {
@@ -16773,6 +16927,14 @@
     "total_posts": 47
   },
   "marketing_activity_log": [
+    {
+      "timestamp": "28/08/2026 09:26",
+      "category": "Web App",
+      "action": "Phê duyệt & Khởi công xây dựng Tool AI Content Studio (Từ Ý Tưởng Đến Bài Đăng)",
+      "description": "Sếp Tiến phê duyệt kế hoạch công cụ AI Content Studio biến ý tưởng thô thành bài viết đa kênh chuẩn B2B (Facebook, GBP, Web, Video, English); Minh đã giao đặc tả cho Kiến bắt tay lập trình Frontend & Engine.",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
     {
       "timestamp": "27/08/2026 12:00",
       "category": "Facebook",
