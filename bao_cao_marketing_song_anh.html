@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Marketing Theo Mục Tiêu - Mô Hình Kiến Trúc Song Anh</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 Pro CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B3C5D',
+                            dark: '#061D2D',
+                            gold: '#D97706',
+                            amber: '#F59E0B',
+                            accent: '#2563EB',
+                            emerald: '#059669'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B132B;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        .glass-card-header {
+            background: linear-gradient(135deg, rgba(11, 60, 93, 0.4) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        .table-row-hover:hover {
+            background-color: rgba(30, 41, 59, 0.85);
+        }
+        @media print {
+            body {
+                background: #FFFFFF;
+                color: #0F172A;
+            }
+            .glass-card {
+                background: #FFFFFF;
+                border: 1px solid #CBD5E1;
+                box-shadow: none;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-6 lg:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- HEADER SECTION -->
+        <header class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl border border-slate-700/60">
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            Notion DB Live Synchronized
+                        </span>
+                        <span class="text-xs text-slate-400 font-mono">📅 Cập nhật: 31/08/2026</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight">
+                        BÁO CÁO MARKETING THEO MỤC TIÊU
+                    </h1>
+                    <p class="text-slate-300 text-sm flex flex-wrap items-center gap-x-4 gap-y-1">
+                        <span>🏢 Doanh nghiệp: <strong class="text-amber-300">MÔ HÌNH KIẾN TRÚC SONG ANH</strong></span>
+                        <span>🏷️ Lĩnh vực: <strong class="text-sky-300">Mô hình kiến trúc &amp; Sa bàn</strong></span>
+                        <span>📞 Hotline: <strong class="text-emerald-400 font-mono">0929 22 4444</strong></span>
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3 no-print w-full md:w-auto justify-end">
+                    <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-600 transition flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-print"></i> In / Xuất PDF
+                    </button>
+                    <a href="https://app.notion.com/p/19a4b5e73d9080f4a51ef769967547a5" target="_blank" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-600 transition flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở Notion DB
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI SUMMARY CARDS -->
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Tasks Đang Chạy</span>
+                    <i class="fa-solid fa-list-check text-sky-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-white tracking-tight">22 Công Việc</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1">Đủ 4 điều kiện KPI &amp; Nhắc hẹn</div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Tổng KPI Đặt Ra</span>
+                    <i class="fa-solid fa-bullseye text-amber-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-amber-400 tracking-tight">108 Chỉ Tiêu</div>
+                <div class="text-[11px] text-slate-400 font-medium mt-1">Theo chu kỳ tuần</div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Đã Thực Hiện</span>
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-emerald-400 tracking-tight">60 Lượt</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1">Đã hoàn tất kiểm duyệt</div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>% Hoàn Thành Bình Quân</span>
+                    <i class="fa-solid fa-chart-pie text-purple-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-purple-300 tracking-tight">55.6%</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1">Tiến độ vận hành chuẩn B2B</div>
+            </div>
+        </section>
+
+        <!-- TASKS GROUPED BY GOALS -->
+        <section class="space-y-6">
+
+            <div class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+                <!-- Goal Card Header -->
+                <div class="glass-card-header p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-lg text-indigo-400">
+                            <i class="fa-brands fa-facebook"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-heading font-extrabold text-white">Phủ sóng & Tìm kiếm khách hàng Facebook</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Tổng số công việc: <strong class="text-white">12 tasks</strong> | KPI: <strong class="text-amber-400">38/81</strong> (46.9% đạt)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <div class="w-32 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style="width: 46.9%"></div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-indigo-500/20 text-indigo-300 border-indigo-500/40 whitespace-nowrap">46.9% Hoàn thành</span>
+                    </div>
+                </div>
+
+                <!-- Goal Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                            <tr>
+                                <th class="py-3 px-4">Tên Công Việc</th>
+                                <th class="py-3 px-4 text-center">Trạng Thái</th>
+                                <th class="py-3 px-4 text-center">KPI Tuần</th>
+                                <th class="py-3 px-4 text-center">Đã Thực Hiện</th>
+                                <th class="py-3 px-4 text-center">Tiến Độ %</th>
+                                <th class="py-3 px-4">Lịch Nhắc Hẹn (Khung Giờ)</th>
+                                <th class="py-3 px-4">Tần Suất Lặp</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-medium">
+    
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Re-Cmt FB] Profile Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Profile Song Anh để duy trì tương tác cá nhân B2B và mở rộng kết nối KTS/Chủ đầu tư 10-14 ngày.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-01 11:30:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 5, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post FB Group] Fanpage Mô hình kiến trúc Song Anh - Tuyển dụng Parttime</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">9</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">4</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">44.4%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-22 15:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Search Group] Facebook</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">35</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">12</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">34.3%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 09:45:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7, Chủ nhật</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Join FB Group] | Fanpage Mô hình kiến trúc Song Anh</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">0</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-slate-400">0.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 11:30:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post FB Group] Profile Song Anh</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">66.7%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 15:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Re-cmt FB] Profile Tiến RS</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-02 11:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 4, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm, tiếp cận KTS & Chủ đầu tư mới 10-12 ngày.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">33.3%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-27 16:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Re-Cmt Fb] Fanpage Architectural Model Org</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org để duy trì tương tác B2B quốc tế 10-14 ngày.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">33.3%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-01 14:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 5, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Profile] Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân.
+⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile).
+📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.
+✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè').
+🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/40 whitespace-nowrap">Đang làm</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 10:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Fanpage để duy trì hiển thị B2B và kéo dài vòng đời bài viết 10-14 ngày.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-01 08:30:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 5, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post FB] Fanpage Mô hình kiến trúc Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">🎯 Mục tiêu: Phân phối nội dung B2B chuyên sâu từ Website mohinhkientruc.org lên Fanpage Mô hình kiến trúc Song Anh nhằm tiếp cận Chủ đầu tư, KTS & Tổng thầu.
+⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6 lúc 08:30 - 09:30).
+📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.
+✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh, chỉn chu (Không dùng từ teen 'nhé/nha/nè').
+🖼️ Hình ảnh/Video: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh hoặc video cận cảnh độ tinh xảo.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 09:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Fanpage] Architectural Model Org</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Xuất bản bài viết/Reel B2B Tiếng Anh 3 bài/tuần lên Fanpage Architectural Model Org tiếp cận KTS & Chủ đầu tư quốc tế.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">33.3%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-24 16:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+                <!-- Goal Card Header -->
+                <div class="glass-card-header p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-lg text-pink-400">
+                            <i class="fa-camera"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-heading font-extrabold text-white">Sản xuất hình ảnh xưởng & Video dự án thực tế</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Tổng số công việc: <strong class="text-white">2 tasks</strong> | KPI: <strong class="text-amber-400">8/9</strong> (88.9% đạt)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <div class="w-32 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style="width: 88.9%"></div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-pink-500/20 text-pink-300 border-pink-500/40 whitespace-nowrap">88.9% Hoàn thành</span>
+                    </div>
+                </div>
+
+                <!-- Goal Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                            <tr>
+                                <th class="py-3 px-4">Tên Công Việc</th>
+                                <th class="py-3 px-4 text-center">Trạng Thái</th>
+                                <th class="py-3 px-4 text-center">KPI Tuần</th>
+                                <th class="py-3 px-4 text-center">Đã Thực Hiện</th>
+                                <th class="py-3 px-4 text-center">Tiến Độ %</th>
+                                <th class="py-3 px-4">Lịch Nhắc Hẹn (Khung Giờ)</th>
+                                <th class="py-3 px-4">Tần Suất Lặp</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-medium">
+    
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">Tạo nội dung cho mô hình</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">  • Tạo các nội dung video dạng ảnh/ video cho mô hình
+  • Tạo nội dung và gửi qua Group Zalo Song Anh - Winning Team để duyệt
+  • Ít nhất 3 bài/ tuần</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/40 whitespace-nowrap">Giao việc</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">66.7%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Hàng tuần</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">Content - Mô hình</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-blue-500/20 text-blue-300 border-blue-500/40 whitespace-nowrap">Đang làm</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">6</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 13:30:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4</span>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+                <!-- Goal Card Header -->
+                <div class="glass-card-header p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-lg text-emerald-400">
+                            <i class="fa-comment-dots"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-heading font-extrabold text-white">Chăm sóc & Tư vấn khách hàng qua Zalo</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Tổng số công việc: <strong class="text-white">4 tasks</strong> | KPI: <strong class="text-amber-400">6/9</strong> (66.7% đạt)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <div class="w-32 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style="width: 66.7%"></div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">66.7% Hoàn thành</span>
+                    </div>
+                </div>
+
+                <!-- Goal Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                            <tr>
+                                <th class="py-3 px-4">Tên Công Việc</th>
+                                <th class="py-3 px-4 text-center">Trạng Thái</th>
+                                <th class="py-3 px-4 text-center">KPI Tuần</th>
+                                <th class="py-3 px-4 text-center">Đã Thực Hiện</th>
+                                <th class="py-3 px-4 text-center">Tiến Độ %</th>
+                                <th class="py-3 px-4">Lịch Nhắc Hẹn (Khung Giờ)</th>
+                                <th class="py-3 px-4">Tần Suất Lặp</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-medium">
+    
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Zalo] Profile 0376415131 | Mô hình</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Đăng bài/Khoảnh khắc B2B lên Nhật ký Zalo 0376415131 (Sang giữ máy) 2-3 bài/tuần để duy trì tương tác danh bạ KTS & Chủ đầu tư, kéo inbox chốt deal.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-02 09:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 4, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Zalo] Profile 0988 080 440 | Mô hình</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">50.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-01 09:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 5</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Zalo] Profile 0386989087 | Mô hình</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">  • Duy trì 2 bài đăng/ tuần</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-01 11:45:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post Zalo] Profile 0981169200 | Mô hình</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">🎯 Mục tiêu: Tiếp cận trực tiếp tệp khách hàng tiềm năng, Chủ đầu tư, KTS & Đối tác đã lưu số điện thoại 0981169200 của Song Anh qua Nhật ký Zalo (hiển thị 100% không bị bóp reach).
+⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6) + Bổ trợ 3-5 Zalo Khoảnh Khắc (Story 24h) / Tuần.
+⏰ Khung giờ vàng Zalo: 08:00 - 09:00 (Sáng) | 11:30 - 12:30 (Trưa) | 16:30 - 17:30 (Chiều).
+🖼️ Hình ảnh & Video: 1-4 ảnh thực tế sa bàn sáng đèn lung linh tại xưởng Song Anh, cận cảnh độ tinh xảo vi mô, video thợ thi công hoặc đóng gói xuất xưởng.
+✍️ Định dạng: Ngắn gọn, súc tích, văn phong chuyên gia B2B điềm tĩnh, kèm Hotline/Zalo tư vấn 0981 169 200 - 0929 22 4444.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">33.3%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-02 08:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+                <!-- Goal Card Header -->
+                <div class="glass-card-header p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-lg text-blue-400">
+                            <i class="fa-bullseye"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-heading font-extrabold text-white">Tăng đơn hàng thương mại điện tử</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Tổng số công việc: <strong class="text-white">1 tasks</strong> | KPI: <strong class="text-amber-400">0/1</strong> (0.0% đạt)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <div class="w-32 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style="width: 0.0%"></div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-blue-500/20 text-blue-300 border-blue-500/40 whitespace-nowrap">0.0% Hoàn thành</span>
+                    </div>
+                </div>
+
+                <!-- Goal Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                            <tr>
+                                <th class="py-3 px-4">Tên Công Việc</th>
+                                <th class="py-3 px-4 text-center">Trạng Thái</th>
+                                <th class="py-3 px-4 text-center">KPI Tuần</th>
+                                <th class="py-3 px-4 text-center">Đã Thực Hiện</th>
+                                <th class="py-3 px-4 text-center">Tiến Độ %</th>
+                                <th class="py-3 px-4">Lịch Nhắc Hẹn (Khung Giờ)</th>
+                                <th class="py-3 px-4">Tần Suất Lặp</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-medium">
+    
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post FB Profile] Mô hình Song Anh</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân.
+⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile).
+📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.
+✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè').
+🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">1</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">0</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-slate-400">0.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-09-03 09:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 5</span>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+            <div class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+                <!-- Goal Card Header -->
+                <div class="glass-card-header p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-lg text-amber-400">
+                            <i class="fa-location-dot"></i>
+                        </span>
+                        <div>
+                            <h2 class="text-base sm:text-lg font-heading font-extrabold text-white">Phát triển khách hàng Google Business Profile</h2>
+                            <p class="text-xs text-slate-400 mt-0.5">Tổng số công việc: <strong class="text-white">3 tasks</strong> | KPI: <strong class="text-amber-400">8/8</strong> (100.0% đạt)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                        <div class="w-32 bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+                            <div class="bg-gradient-to-r from-blue-500 to-emerald-400 h-2.5 rounded-full" style="width: 100%"></div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold font-mono border bg-amber-500/20 text-amber-300 border-amber-500/40 whitespace-nowrap">100.0% Hoàn thành</span>
+                    </div>
+                </div>
+
+                <!-- Goal Tasks Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                            <tr>
+                                <th class="py-3 px-4">Tên Công Việc</th>
+                                <th class="py-3 px-4 text-center">Trạng Thái</th>
+                                <th class="py-3 px-4 text-center">KPI Tuần</th>
+                                <th class="py-3 px-4 text-center">Đã Thực Hiện</th>
+                                <th class="py-3 px-4 text-center">Tiến Độ %</th>
+                                <th class="py-3 px-4">Lịch Nhắc Hẹn (Khung Giờ)</th>
+                                <th class="py-3 px-4">Tần Suất Lặp</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-medium">
+    
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post] Google Business | Sa bàn kiến trúc Song Anh</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-29 09:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 3, Thứ 5, Thứ 7</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post] GBP | Dịch vụ làm mô hình kiến trúc Song Anh | Mô hình</span>
+                                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed max-w-md line-clamp-2">Đăng bài cập nhật B2B lên Google Business Profile (Dịch vụ làm mô hình kiến trúc Song Anh) 2 bài/tuần để gia tăng tín hiệu SEO Local Map, kéo cuộc gọi & khách ghé xưởng.</p>
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">3</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 15:00:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 4, Thứ 6</span>
+                                </td>
+                            </tr>
+        
+                            <tr class="table-row-hover transition">
+                                <td class="py-3 px-4">
+                                    <span class="font-bold text-white text-sm block">[Post] GBP | Mô hình kiến trúc Song Anh</span>
+                                    
+                                </td>
+                                <td class="py-3 px-4 text-center">
+                                    <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold border bg-emerald-500/20 text-emerald-300 border-emerald-500/40 whitespace-nowrap">Duy trì</span>
+                                </td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-amber-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">2</td>
+                                <td class="py-3 px-4 text-center font-mono font-bold text-emerald-400">100.0%</td>
+                                <td class="py-3 px-4 font-mono text-[11px] text-sky-300">
+                                    <i class="fa-regular fa-clock mr-1 text-slate-500"></i>2026-08-31 09:15:00
+                                </td>
+                                <td class="py-3 px-4 text-slate-300 text-[11px]">
+                                    <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Thứ 2, Thứ 5</span>
+                                </td>
+                            </tr>
+        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="glass-card rounded-2xl p-5 text-center text-xs text-slate-400 border border-slate-700/60 space-y-1">
+            <p>Báo cáo Marketing được xuất bản tự động theo 4 tiêu chí lọc KPI &amp; Nhắc hẹn bởi <strong>Minh - Marketing Manager</strong>.</p>
+            <p class="text-slate-500 font-mono">Bản quyền © 2026 MÔ HÌNH KIẾN TRÚC SONG ANH. Lưu trữ tại: <code>G:\My Drive\AI Agent System\AG_Tool_May_Lap_Steven\Minh - Marketing Manager\</code></p>
+        </footer>
+
+    </div>
+</body>
+</html>
