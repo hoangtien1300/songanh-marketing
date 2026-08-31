@@ -694,10 +694,10 @@
                     </div>
 
                     <!-- 5. PINTEREST -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('pinterest')" id="sub-pinterest" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-pinterest-p text-rose-600 w-4"></i><span>Pinterest</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                    <div class="accordion-group rounded-xl border border-rose-200 bg-rose-50/50 overflow-hidden">
+                        <button onclick="selectModule('pinterest')" id="sub-pinterest" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-rose-100/80 transition">
+                            <div class="flex items-center gap-2"><i class="fa-brands fa-pinterest-p text-rose-600 w-4"></i><span>Pinterest Studio</span></div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300">Active</span>
                         </button>
                     </div>
 
@@ -11615,7 +11615,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
             // 6. Show target panel
             let activePanelId = 'panel-' + moduleId;
-            if (['audit', 'cannibalization', 'offpage', 'pinterest', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
+            if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
                 activePanelId = 'panel-updating';
                 const titleText = document.getElementById('updating-title-text');
                 if (titleText) titleText.innerText = "Hạng Mục: " + (moduleId || '').toUpperCase();
@@ -12479,6 +12479,311 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 closeAgentModal();
             }
         });
+    
+        // =========================================================================
+        // 📌 PINTEREST STUDIO ENGINE CONTROLLER (3 TEMPLATES & HTML5 CANVAS RENDER)
+        // =========================================================================
+        let currentPinTemplate = 1;
+        let pinUploadedImage = null;
+
+        function switchPinterestTab(tabId) {
+            document.querySelectorAll('.ptab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+            const activeBtn = document.getElementById('ptab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-navy', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            document.getElementById('ptab-content-studio').classList.add('hidden');
+            document.getElementById('ptab-content-boards').classList.add('hidden');
+            document.getElementById('ptab-content-schedule').classList.add('hidden');
+
+            const activeContent = document.getElementById('ptab-content-' + tabId);
+            if (activeContent) activeContent.classList.remove('hidden');
+
+            if (tabId === 'studio') {
+                renderPinCanvas();
+            }
+        }
+
+        function setPinTemplate(templateId) {
+            currentPinTemplate = templateId;
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById('btn-tmpl-' + i);
+                if (btn) {
+                    if (i === templateId) {
+                        btn.className = "p-2 rounded-xl border-2 border-rose-600 bg-rose-50/70 text-left transition space-y-0.5";
+                    } else {
+                        btn.className = "p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-left transition space-y-0.5";
+                    }
+                }
+            }
+            renderPinCanvas();
+            showToast("🎨 Đã chuyển sang Mẫu Template " + templateId);
+        }
+
+        function loadPinPreset(presetKey) {
+            const titleInput = document.getElementById('pin-title-input');
+            const subInput = document.getElementById('pin-subtitle-input');
+            const boardSelect = document.getElementById('pin-board-select');
+            const urlInput = document.getElementById('pin-url-input');
+
+            if (presetKey === 'vsip') {
+                if (titleInput) titleInput.value = "SA BÀN QUY HOẠCH ĐÔ THỊ 500HA";
+                if (subInput) subInput.value = "TỔ HỢP ĐÔ THỊ & KCN VSIP • TỶ LỆ 1/1000 • LED VIỀN";
+                if (boardSelect) boardSelect.value = "saban_quyhoach";
+                if (urlInput) urlInput.value = "https://mohinhkientruc.org/sa-ban-quy-hoach/";
+            } else if (presetKey === 'khaihoan') {
+                if (titleInput) titleInput.value = "MÔ HÌNH CĂN HỘ CAO TẦNG KHẢI HOÀN";
+                if (subInput) subInput.value = "THÁP ĐÔI 45 TẦNG • TỶ LỆ 1/100 • HỒ BƠI TẦNG MÁI";
+                if (boardSelect) boardSelect.value = "saban_caotang";
+                if (urlInput) urlInput.value = "https://mohinhkientruc.org/sa-ban-cao-tang/";
+            } else if (presetKey === 'nhamay') {
+                if (titleInput) titleInput.value = "SA BÀN NHÀ MÁY FDI NHẬT BẢN";
+                if (subInput) subInput.value = "DÂY CHUYỀN TỰ ĐỘNG HÓA • TỶ LỆ 1/300 • PIN MẶT TRỜI";
+                if (boardSelect) boardSelect.value = "saban_nhamay";
+                if (urlInput) urlInput.value = "https://mohinhkientruc.org/thi-cong-sa-ban-nha-may-khu-cong-nghiep/";
+            } else if (presetKey === 'benhvien') {
+                if (titleInput) titleInput.value = "MÔ HÌNH BỆNH VIỆN ĐA KHOA QUỐC TẾ";
+                if (subInput) subInput.value = "TỔ HỢP 5 KHỐI NHÀ • TỶ LỆ 1/250 • SÂN BAY TRỰC THĂNG";
+                if (boardSelect) boardSelect.value = "saban_truonghoc";
+                if (urlInput) urlInput.value = "https://mohinhkientruc.org/lam-sa-ban-benh-vien/";
+            }
+            renderPinCanvas();
+            showToast("⚡ Đã nạp Preset dự án: " + presetKey.toUpperCase());
+        }
+
+        function handlePinImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        pinUploadedImage = img;
+                        renderPinCanvas();
+                        showToast("📸 Đã tải ảnh lên Studio thành công!");
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function renderPinCanvas() {
+            const canvas = document.getElementById('pinterestCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const W = 1000;
+            const H = 1500;
+
+            const title = (document.getElementById('pin-title-input')?.value || "SA BÀN QUY HOẠCH ĐÔ THỊ").toUpperCase();
+            const subtitle = document.getElementById('pin-subtitle-input')?.value || "TỔ HỢP ĐÔ THỊ SINH THÁI 50HA • TỶ LỆ 1/500";
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Draw Base Image or Placeholder
+            if (pinUploadedImage) {
+                // Cover fit to 1000x1500
+                const imgRatio = pinUploadedImage.width / pinUploadedImage.height;
+                const targetRatio = W / H;
+                let sW, sH, sX, sY;
+                if (imgRatio > targetRatio) {
+                    sH = pinUploadedImage.height;
+                    sW = sH * targetRatio;
+                    sX = (pinUploadedImage.width - sW) / 2;
+                    sY = 0;
+                } else {
+                    sW = pinUploadedImage.width;
+                    sH = sW / targetRatio;
+                    sX = 0;
+                    sY = (pinUploadedImage.height - sH) / 2;
+                }
+                ctx.drawImage(pinUploadedImage, sX, sY, sW, sH, 0, 0, W, H);
+            } else {
+                // Futuristic dark architect placeholder
+                ctx.fillStyle = "#0F172A";
+                ctx.fillRect(0, 0, W, H);
+                
+                // Grid pattern
+                ctx.strokeStyle = "#1E293B";
+                ctx.lineWidth = 2;
+                for (let x = 0; x < W; x += 50) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+                }
+                for (let y = 0; y < H; y += 50) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+                }
+                
+                ctx.fillStyle = "#334155";
+                ctx.font = "bold 28px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("📸 CHỌN HOẶC TẢI ẢNH SA BÀN THỰC TẾ", W/2, H/2 - 50);
+                ctx.font = "20px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("Khung chuẩn tỷ lệ vàng 2:3 (1000 x 1500 px)", W/2, H/2);
+            }
+
+            if (currentPinTemplate === 1) {
+                // TEMPLATE 1: Minimalist Modern (Dark Bottom Gradient)
+                const grad = ctx.createLinearGradient(0, H - 480, 0, H);
+                grad.addColorStop(0, "rgba(11, 19, 43, 0)");
+                grad.addColorStop(0.3, "rgba(11, 19, 43, 0.75)");
+                grad.addColorStop(1, "rgba(11, 19, 43, 0.98)");
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, H - 480, W, 480);
+
+                // Top Brand Tag
+                ctx.fillStyle = "rgba(15, 23, 42, 0.88)";
+                ctx.beginPath();
+                ctx.roundRect(40, 40, 460, 60, 12);
+                ctx.fill();
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 24px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText("MÔ HÌNH KIẾN TRÚC SONG ANH", 65, 78);
+
+                // Bottom Badge
+                ctx.fillStyle = "#D4A017";
+                ctx.beginPath();
+                ctx.roundRect(60, H - 360, 280, 40, 8);
+                ctx.fill();
+                ctx.fillStyle = "#0F172A";
+                ctx.font = "bold 18px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("🌟 TIÊU CHUẨN XUẤT XƯỞNG", 80, H - 334);
+
+                // Bottom Title
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 40px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(title, 60, H - 270);
+
+                // Subtitle
+                ctx.fillStyle = "#CBD5E1";
+                ctx.font = "500 24px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(subtitle, 60, H - 210);
+
+                // Line & Footer
+                ctx.strokeStyle = "#475569";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(60, H - 150);
+                ctx.lineTo(W - 60, H - 150);
+                ctx.stroke();
+
+                ctx.fillStyle = "#FEF3C7";
+                ctx.font = "bold 20px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("📞 Hotline: 0929 22 4444 • 🌐 mohinhkientruc.org", 60, H - 110);
+
+                ctx.fillStyle = "#94A3B8";
+                ctx.font = "18px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("📍 Xưởng: 230/70/28 Nguyễn Xiển, TP. Thủ Đức, TP.HCM", 60, H - 65);
+
+            } else if (currentPinTemplate === 2) {
+                // TEMPLATE 2: Editorial Magazine (Top 75% image, Bottom 25% pristine card)
+                const cardH = 400;
+                ctx.fillStyle = "#F8FAFC";
+                ctx.fillRect(0, H - cardH, W, cardH);
+
+                ctx.fillStyle = "#D4A017";
+                ctx.fillRect(0, H - cardH, W, 8);
+
+                // Top Brand Tag
+                ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+                ctx.beginPath();
+                ctx.roundRect(40, 40, 460, 60, 12);
+                ctx.fill();
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 24px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText("MÔ HÌNH KIẾN TRÚC SONG ANH", 65, 78);
+
+                // Bottom Content
+                ctx.fillStyle = "#0F172A";
+                ctx.font = "bold 38px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(title, 60, H - cardH + 70);
+
+                ctx.fillStyle = "#475569";
+                ctx.font = "500 24px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(subtitle, 60, H - cardH + 130);
+
+                ctx.strokeStyle = "#E2E8F0";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(60, H - cardH + 180);
+                ctx.lineTo(W - 60, H - cardH + 180);
+                ctx.stroke();
+
+                ctx.fillStyle = "#B45309";
+                ctx.font = "bold 22px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("📞 Hotline: 0929 22 4444 • 🌐 mohinhkientruc.org", 60, H - cardH + 230);
+
+                ctx.fillStyle = "#64748B";
+                ctx.font = "18px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("📍 230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM", 60, H - cardH + 280);
+
+            } else if (currentPinTemplate === 3) {
+                // TEMPLATE 3: Dual-Focus Detail & Context
+                // Middle Banner
+                ctx.fillStyle = "#0B3C5D";
+                ctx.fillRect(0, 880, W, 200);
+                ctx.fillStyle = "#D4A017";
+                ctx.fillRect(0, 880, W, 5);
+                ctx.fillRect(0, 1075, W, 5);
+
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 36px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText(title, 60, 950);
+
+                ctx.fillStyle = "#FEF3C7";
+                ctx.font = "500 22px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(subtitle + " • Hotline: 0929 22 4444", 60, 1010);
+
+                // Top Tag
+                ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+                ctx.beginPath();
+                ctx.roundRect(40, 40, 460, 60, 12);
+                ctx.fill();
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 24px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("MÔ HÌNH KIẾN TRÚC SONG ANH", 65, 78);
+
+                // Bottom Macro Label
+                ctx.fillStyle = "rgba(15, 23, 42, 0.85)";
+                ctx.beginPath();
+                ctx.roundRect(W - 380, H - 70, 340, 45, 8);
+                ctx.fill();
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 17px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("🔍 CẬN CẢNH ĐÈN LED CHI TIẾT", W - 360, H - 40);
+            }
+        }
+
+        function downloadPinImage() {
+            const canvas = document.getElementById('pinterestCanvas');
+            if (!canvas) return;
+            const title = (document.getElementById('pin-title-input')?.value || "pin_song_anh").toLowerCase().replace(/[^a-z0-9]/g, '_');
+            const link = document.createElement('a');
+            link.download = `pinterest_${title}_2x3.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 0.95);
+            link.click();
+            showToast("🎉 Đã tải ảnh Ghim Pinterest 2:3 chuẩn 1000x1500px về máy!");
+        }
+
+        function copyPinMetadata() {
+            const title = document.getElementById('pin-title-input')?.value || "Sa Bàn Quy Hoạch Đô Thị";
+            const sub = document.getElementById('pin-subtitle-input')?.value || "Tỷ lệ 1/500";
+            const url = document.getElementById('pin-url-input')?.value || "https://mohinhkientruc.org/sa-ban-quy-hoach/";
+            
+            const metaText = `📌 TIÊU ĐỀ GHIM:\n${title} - ${sub} | Mô Hình Song Anh\n\n📝 MÔ TẢ GHIM:\n${title} chất lượng cao, thi công chuẩn tỷ lệ và tích hợp hệ thống ánh sáng LED lập trình phân tầng. Ứng dụng công nghệ in 3D SLA 8K và cắt laser mica sắc nét tại xưởng Thủ Đức.\n📞 Hotline/Zalo: 0929 22 4444 nhận dự toán chi tiết.\n\n🔗 LINK ĐÍCH:\n${url}\n\n🏷️ HASHTAGS:\n#sabanquyhoach #mohinhkientruc #sabanKCN #mohinhsonganh #architecturalmodel`;
+
+            navigator.clipboard.writeText(metaText).then(() => {
+                showToast("📋 Đã sao chép bộ Metadata Tiêu đề & Mô tả chuẩn SEO Pinterest!");
+            });
+        }
+
     </script>
 
     <!-- 📱 MOBILE BOTTOM NAVIGATION BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH CHO ĐIỆN THOẠI) -->
