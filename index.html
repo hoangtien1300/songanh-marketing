@@ -491,6 +491,18 @@
             transform: translateX(-50%) translateY(-8px);
         }
     
+                /* 🌟 Bulletproof Desktop & Tablet Menu Button */
+        .desktop-header-menu-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        @media (max-width: 767px) {
+            .desktop-header-menu-btn {
+                display: none !important;
+            }
+        }
+
         /* 🌟 MODERN EXECUTIVE DRAWER SIDEBAR (DEFAULT COLLAPSED ON ALL SCREENS) */
         #sidebar {
             position: fixed !important;
@@ -588,10 +600,10 @@
         
         <!-- Left: Hamburger Menu (Mobile & Desktop) + Logo + Title -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-            <!-- Desktop & Tablet Sidebar Toggle Button (Hidden only on Mobile < 768px because Mobile has Bottom Nav) -->
-            <button onclick="toggleSidebarMenu()" id="sidebar-toggle-btn" class="hidden md:flex h-9 px-3 rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 hover:from-slate-200 hover:to-slate-300 active:scale-95 text-brand-navy border border-slate-300 items-center gap-1.5 transition shrink-0 shadow-2xs font-extrabold text-xs" title="Bật/Tắt Menu Sidebar">
+            <!-- Desktop & Tablet Sidebar Toggle Button (Visible on Desktop & Tablet, Hidden only on Mobile < 768px) -->
+            <button onclick="toggleSidebarMenu()" id="sidebar-toggle-btn" class="desktop-header-menu-btn h-9 px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-900 border border-slate-300 gap-1.5 transition shrink-0 shadow-xs font-black text-xs cursor-pointer" title="Bật/Tắt Menu Sidebar">
                 <i class="fa-solid fa-bars text-sm text-brand-gold"></i>
-                <span>Menu</span>
+                <span class="font-black text-slate-800 tracking-tight">Menu</span>
             </button>
 
             <!-- Logo & Brand Name (Stacked Vertically on Mobile & Desktop) -->
