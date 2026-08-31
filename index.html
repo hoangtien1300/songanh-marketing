@@ -861,23 +861,26 @@
                         </div>
                     </div>
 
-                </div>
-            </div>
+                    <!-- ⚙️ CỤM CÀI ĐẶT & HỆ THỐNG (SETTINGS) -->
+                    <div class="px-2 pt-3 pb-1">
+                        <p class="text-[10px] font-black tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+                            <i class="fa-solid fa-sliders text-slate-500"></i> CÀI ĐẶT HỆ THỐNG
+                        </p>
+                    </div>
 
-                                <!-- ⚙️ HỆ THỐNG TRI THỨC (ACCORDION CHUẨN) -->
-                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/60 overflow-hidden mb-1 shadow-2xs">
-                        <button onclick="toggleAccordion('acc-system')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-indigo-100/70 transition">
+                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
+                        <button onclick="toggleAccordion('acc-settings')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-gear text-indigo-600 w-4"></i>
-                                <span class="font-extrabold text-slate-900">⚙️ Hệ Thống Tri Thức</span>
+                                <i class="fa-solid fa-gear text-slate-700 w-4"></i>
+                                <span class="font-extrabold text-slate-900">⚙️ Cài Đặt</span>
                             </div>
                             <div class="flex items-center gap-1">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-600 text-white font-extrabold shadow-2xs">AI DATA</span>
-                                <i id="icon-acc-system" class="fa-solid fa-chevron-down text-indigo-500 text-[10px] transition-transform duration-300"></i>
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-extrabold">SETTINGS</span>
+                                <i id="icon-acc-settings" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-300"></i>
                             </div>
                         </button>
                         
-                        <div id="acc-system" class="submenu-container open bg-white border-t border-indigo-100">
+                        <div id="acc-settings" class="submenu-container open bg-white border-t border-slate-100">
                             <div class="py-1 pl-2">
                                 <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-indigo-800 hover:bg-indigo-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Đối Tượng Khách Hàng</span>
@@ -886,6 +889,9 @@
                             </div>
                         </div>
                     </div>
+
+                </div>
+            </div>
 
             <!-- Footer Company Tag -->
             <div class="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-[10px] space-y-1">
@@ -11844,7 +11850,14 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // 5. Open parent accordion if it is a sub-link
-            if (moduleId.startsWith('fb-')) {
+            if (moduleId === 'target-audience') {
+                const acc = document.getElementById('acc-settings');
+                const icon = document.getElementById('icon-acc-settings');
+                if (acc && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            } else if (moduleId.startsWith('fb-')) {
                 const acc = document.getElementById('acc-tool-facebook');
                 const icon = document.getElementById('icon-acc-tool-facebook');
                 if (acc && !acc.classList.contains('open')) {
