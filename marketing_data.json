@@ -10878,6 +10878,14 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "31/08/2026 08:30",
+      "category": "Notion Task Management",
+      "action": "Hoàn tất gom nhóm 89 tasks vào 7 Mục Tiêu Công Việc chuẩn trên Notion DB",
+      "description": "Gán thành công thuộc tính 'MỤC TIÊU CÔNG VIỆC' cho 89 tasks: SEO Website (20), Facebook (19), GBP (9), Zalo (11), Visual Media (13), Tuyển dụng (6), Tự động hóa (11).",
+      "performer": "Kiến - Trợ lý Lập Trình & Minh",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "31/08/2026 07:15",
       "category": "SEO Website",
       "action": "Cập nhật dữ liệu thứ hạng 22 Từ Khóa B2B Real-time GSC đầu tuần",
