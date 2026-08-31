@@ -12621,21 +12621,24 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 ctx.fillText("Tỷ lệ chuẩn Pinterest 2:3 (1000 x 1500 px)", W/2, H/2 + 5);
             }
 
-            // Function to draw Top Logo Pill
+            // Function to draw Pure Transparent Logo PNG (No background box/pill)
+            let songAnhLogoImg = null;
             function drawTopLogo() {
-                ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
-                ctx.strokeStyle = "rgba(212, 160, 23, 0.9)";
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.roundRect(40, 40, 220, 68, 14);
-                ctx.fill();
-                ctx.stroke();
-
-                // Draw Song Anh text / mini logo
-                ctx.fillStyle = "#D4A017";
-                ctx.font = "bold 20px 'Be Vietnam Pro', sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText("🏛️ SONG ANH", 150, 82);
+                if (!songAnhLogoImg) {
+                    songAnhLogoImg = new Image();
+                    songAnhLogoImg.src = 'logo-songanh.png';
+                }
+                if (songAnhLogoImg && songAnhLogoImg.complete && songAnhLogoImg.naturalWidth > 0) {
+                    const lW = 210;
+                    const lH = (songAnhLogoImg.naturalHeight / songAnhLogoImg.naturalWidth) * lW;
+                    ctx.drawImage(songAnhLogoImg, 45, 45, lW, lH);
+                } else {
+                    // Clean floating transparent text fallback
+                    ctx.fillStyle = "#D4A017";
+                    ctx.font = "bold 26px 'Be Vietnam Pro', sans-serif";
+                    ctx.textAlign = "left";
+                    ctx.fillText("🏛️ SONG ANH", 45, 75);
+                }
             }
 
             if (currentPinTemplate === 1) {
