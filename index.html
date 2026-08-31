@@ -864,22 +864,27 @@
                 </div>
             </div>
 
-                                <!-- ⚙️ CỤM HỆ THỐNG & DỮ LIỆU TRI THỨC -->
-                    <div class="px-2 pt-3 pb-1">
-                        <p class="text-[10px] font-black tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
-                            <i class="fa-solid fa-gear text-slate-500"></i> ⚙️ HỆ THỐNG & TRI THỨC
-                        </p>
-                    </div>
-
-                    <!-- Chân dung Đối tượng Khách hàng -->
-                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-1 shadow-2xs">
-                        <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-indigo-100/80 transition">
+                                <!-- ⚙️ HỆ THỐNG TRI THỨC (ACCORDION CHUẨN) -->
+                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/60 overflow-hidden mb-1 shadow-2xs">
+                        <button onclick="toggleAccordion('acc-system')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-indigo-100/70 transition">
                             <div class="flex items-center gap-2">
-                                <span class="w-5 h-5 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs shadow-xs font-black">🎯</span>
-                                <span class="text-indigo-950 font-bold">Đối Tượng Khách Hàng</span>
+                                <i class="fa-solid fa-gear text-indigo-600 w-4"></i>
+                                <span class="font-extrabold text-slate-900">⚙️ Hệ Thống Tri Thức</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-extrabold border border-indigo-300">DATA</span>
+                            <div class="flex items-center gap-1">
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-600 text-white font-extrabold shadow-2xs">AI DATA</span>
+                                <i id="icon-acc-system" class="fa-solid fa-chevron-down text-indigo-500 text-[10px] transition-transform duration-300"></i>
+                            </div>
                         </button>
+                        
+                        <div id="acc-system" class="submenu-container open bg-white border-t border-indigo-100">
+                            <div class="py-1 pl-2">
+                                <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-indigo-800 hover:bg-indigo-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🎯</span> Đối Tượng Khách Hàng</span>
+                                    <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-200 font-black">6 Personas</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
             <!-- Footer Company Tag -->
@@ -11872,7 +11877,13 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // Sub-render triggers
-            if (moduleId === 'content-link') {
+            if (moduleId === 'target-audience') {
+                if (typeof initTargetAudiencesData === 'function') {
+                    initTargetAudiencesData();
+                } else if (typeof renderAudienceCards === 'function') {
+                    renderAudienceCards();
+                }
+            } else if (moduleId === 'content-link') {
                 if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
                 if (typeof renderContentNewTable === 'function') renderContentNewTable();
             } else if (moduleId === 'competitor') {
