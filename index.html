@@ -588,9 +588,10 @@
         
         <!-- Left: Hamburger Menu (Mobile & Desktop) + Logo + Title -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-            <button onclick="toggleSidebarMenu()" id="sidebar-toggle-btn" class="h-9 px-3 rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 hover:from-slate-200 hover:to-slate-300 active:scale-95 text-brand-navy border border-slate-300 flex items-center gap-1.5 transition shrink-0 shadow-2xs font-extrabold text-xs" title="Bật/Tắt Menu Sidebar">
+            <!-- Desktop Sidebar Toggle Button (Hidden on Mobile because Mobile has Bottom Nav) -->
+            <button onclick="toggleSidebarMenu()" id="sidebar-toggle-btn" class="hidden lg:flex h-9 px-3 rounded-xl bg-gradient-to-r from-slate-100 to-slate-200 hover:from-slate-200 hover:to-slate-300 active:scale-95 text-brand-navy border border-slate-300 items-center gap-1.5 transition shrink-0 shadow-2xs font-extrabold text-xs" title="Bật/Tắt Menu Sidebar">
                 <i class="fa-solid fa-bars text-sm text-brand-gold"></i>
-                <span class="hidden sm:inline">Menu</span>
+                <span>Menu</span>
             </button>
 
             <!-- Logo & Brand Name (Stacked Vertically on Mobile & Desktop) -->
