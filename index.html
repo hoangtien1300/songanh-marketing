@@ -629,11 +629,11 @@
             </button>
         </div>
 
-        <!-- Right: Realtime Badge (Desktop & Mobile) -->
+        <!-- Right: Realtime Badge (Desktop & Mobile - Live Dynamic Date) -->
         <div class="flex items-center gap-2 text-xs shrink-0">
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] sm:text-xs font-bold">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] sm:text-xs font-bold" title="Thời gian thực hệ thống">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>26/08</span>
+                <span id="header-realtime-date">31/08</span>
             </span>
             <div class="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 font-bold text-brand-navy">
                 <i class="fa-solid fa-phone text-xs text-brand-gold"></i>
@@ -12238,6 +12238,15 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             showToast(`💡 Đã nạp chân dung [${item.name}] vào AI Content Studio!`);
         }
 
+                function updateHeaderRealtimeDate() {
+            const el = document.getElementById('header-realtime-date');
+            if (el) {
+                const now = new Date();
+                const d = String(now.getDate()).padStart(2, '0');
+                const m = String(now.getMonth() + 1).padStart(2, '0');
+                el.innerText = `${d}/${m}`;
+            }
+        }
         window.addEventListener('DOMContentLoaded', () => {
             const safeCall = (fn, name) => {
                 try { if (typeof fn === 'function') fn(); }
@@ -12246,6 +12255,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             safeCall(updateHeaderCurrentDate, 'updateHeaderCurrentDate');
             safeCall(renderKeywordTable, 'renderKeywordTable');
             safeCall(initTargetAudiencesData, 'initTargetAudiencesData');
+            safeCall(updateHeaderRealtimeDate, 'updateHeaderRealtimeDate');
             safeCall(renderOnpageTable, 'renderOnpageTable');
             safeCall(renderFbTable, 'renderFbTable');
             safeCall(renderZaloTable, 'renderZaloTable');
