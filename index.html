@@ -852,6 +852,24 @@
                 </div>
             </div>
 
+                                <!-- ⚙️ CỤM HỆ THỐNG & DỮ LIỆU TRI THỨC -->
+                    <div class="px-2 pt-3 pb-1">
+                        <p class="text-[10px] font-black tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+                            <i class="fa-solid fa-gear text-slate-500"></i> ⚙️ HỆ THỐNG & TRI THỨC
+                        </p>
+                    </div>
+
+                    <!-- Chân dung Đối tượng Khách hàng -->
+                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-1 shadow-2xs">
+                        <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-indigo-100/80 transition">
+                            <div class="flex items-center gap-2">
+                                <span class="w-5 h-5 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs shadow-xs font-black">🎯</span>
+                                <span class="text-indigo-950 font-bold">Đối Tượng Khách Hàng</span>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-extrabold border border-indigo-300">DATA</span>
+                        </button>
+                    </div>
+
             <!-- Footer Company Tag -->
             <div class="p-2.5 rounded-xl bg-slate-100 border border-slate-200 text-[10px] space-y-1">
                 <div class="flex items-center justify-between">
@@ -4035,6 +4053,152 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">🌐 Thông - Trợ lý Website</span>
                 </div>
             </footer>
+
+        
+        <!-- ========================================================================= -->
+        <!-- 🎯 PANEL: QUẢN LÝ CHÂN DUNG ĐỐI TƯỢNG KHÁCH HÀNG B2B (CUSTOMER PERSONAS) -->
+        <!-- ========================================================================= -->
+        <section id="panel-target-audience" class="module-panel hidden space-y-5">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-brand-navy p-5 sm:p-6 rounded-2xl text-white shadow-md border border-indigo-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-full bg-indigo-500/30 text-indigo-300 text-[10px] font-black border border-indigo-400/30 uppercase tracking-wider">HỆ THỐNG TRI THỨC B2B</span>
+                        <span class="text-xs text-indigo-200">Song Anh AI Knowledge Base</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-heading font-black text-white flex items-center gap-2">
+                        <span>🎯 Quản Lý Đối Tượng Khách Hàng Mục Tiêu</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                        Kho dữ liệu chân dung khách hàng & Insight tâm lý B2B. Làm dữ liệu nền tảng cho <strong>💡 AI Content Studio</strong> viết bài trúng đích tâm lý và nỗi đau của từng phân khúc.
+                    </p>
+                </div>
+
+                <!-- Big Add Button -->
+                <div class="shrink-0 flex items-center gap-2">
+                    <button onclick="openAddAudienceModal()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 active:scale-95 text-slate-950 font-black text-xs sm:text-sm shadow-md transition flex items-center gap-2 border border-amber-300">
+                        <i class="fa-solid fa-circle-plus text-base"></i>
+                        <span>+ Thêm Đối Tượng Mới</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <div class="relative flex-1 sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="audience-search-input" oninput="filterAudienceCards()" placeholder="Tìm tên đối tượng, nỗi đau..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden transition">
+                    </div>
+                    <select id="audience-segment-filter" onchange="filterAudienceCards()" class="text-xs bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 font-bold text-slate-700 focus:outline-hidden">
+                        <option value="all">🌐 Tất Cả Phân Khúc</option>
+                        <option value="bds">🏢 Chủ Đầu Tư BĐS</option>
+                        <option value="kts">📐 Kiến Trúc Sư & Thiết Kế</option>
+                        <option value="fdi">🏭 Doanh Nghiệp FDI / KCN</option>
+                        <option value="epc">🏗️ Tổng Thầu EPC Xây Dựng</option>
+                        <option value="quyhoach">🏛️ Ban Quản Lý & Quy Hoạch</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 font-bold">
+                    <span>Tổng số:</span>
+                    <span id="audience-total-count" class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-black text-xs">6 Chân Dung</span>
+                </div>
+            </div>
+
+            <!-- Audience Cards Grid Container -->
+            <div id="audience-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Injected via JavaScript renderAudienceCards() -->
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- 📝 MODAL: THÊM / SỬA CHÂN DUNG ĐỐI TƯỢNG KHÁCH HÀNG -->
+        <!-- ========================================================================= -->
+        <div id="audience-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                <!-- Modal Header -->
+                <div class="px-5 py-4 bg-gradient-to-r from-slate-900 to-indigo-950 text-white flex items-center justify-between border-b border-indigo-900/50">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-8 h-8 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center text-base font-black shadow-xs">🎯</span>
+                        <div>
+                            <h3 id="audience-modal-title" class="font-heading font-black text-sm text-white">Thêm Chân Dung Đối Tượng Khách Hàng</h3>
+                            <p class="text-[10.5px] text-slate-300">Nhập dữ liệu insight để AI Content Studio viết bài chuẩn xác</p>
+                        </div>
+                    </div>
+                    <button onclick="closeAudienceModal()" class="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body Form -->
+                <form id="audience-form" onsubmit="handleSaveAudience(event)" class="p-5 space-y-3.5 max-h-[75vh] overflow-y-auto">
+                    <input type="hidden" id="audience-id" value="">
+
+                    <!-- Row 1: Tên & Phân khúc -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-2 space-y-1">
+                            <label class="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                                <span>Tên Đối Tượng / Nhóm Khách Hàng</span> <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="audience-name" required placeholder="VD: Chủ Đầu Tư Bất Động Sản & Giám Đốc Dự Án" class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden font-bold text-slate-800">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] font-black text-slate-700">Icon &amp; Phân Khúc</label>
+                            <select id="audience-segment" class="w-full px-2.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-700 focus:outline-hidden">
+                                <option value="bds">🏢 Bất Động Sản</option>
+                                <option value="kts">📐 KTS &amp; Thiết Kế</option>
+                                <option value="fdi">🏭 FDI &amp; KCN</option>
+                                <option value="epc">🏗️ Tổng Thầu EPC</option>
+                                <option value="quyhoach">🏛️ Ban Quản Lý Quy Hoạch</option>
+                                <option value="khac">⭐ Khác</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Nỗi đau & Nhu cầu cốt lõi (Pain Points) -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                            <span>Nỗi Đau &amp; Nhu Cầu Cốt Lõi (Pain Points &amp; Core Needs)</span> <span class="text-rose-500">*</span>
+                        </label>
+                        <textarea id="audience-pain-points" required rows="2" placeholder="VD: Cần sa bàn quy hoạch & căn hộ bán hàng đẳng cấp, sáng đèn LED ấn tượng, thu hút người mua nhà tại nhà mẫu, cam kết bàn giao đúng tiến độ khai trương." class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden font-medium text-slate-800 leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Row 3: Động cơ ra quyết định (Buying Triggers) -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                            <span>Động Cơ Ra Quyết Định Mua Hàng (Buying Triggers)</span>
+                        </label>
+                        <input type="text" id="audience-triggers" placeholder="VD: Uy tín thương hiệu, chất lượng hoàn thiện sắc nét, tiến độ cam kết bằng hợp đồng" class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden font-medium text-slate-800">
+                    </div>
+
+                    <!-- Row 4: Tone of Voice & Phong Cách Viết Bài -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-black text-slate-700 flex items-center gap-1">
+                            <span>Tone of Voice (Giọng văn AI viết bài phù hợp)</span>
+                        </label>
+                        <input type="text" id="audience-tone" placeholder="VD: Điềm tĩnh, tự tin, tôn vinh đẳng cấp dự án, cam kết bảo mật & tiến độ" class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden font-medium text-slate-800">
+                    </div>
+
+                    <!-- Row 5: Mô tả chi tiết & Ghi chú bổ sung -->
+                    <div class="space-y-1">
+                        <label class="text-[11px] font-black text-slate-700">Mô Tả Chi Tiết &amp; Kênh Tiếp Cận Hiệu Quả</label>
+                        <textarea id="audience-desc" rows="2" placeholder="Ghi chú về chức vụ (Tổng Giám Đốc, Trưởng Ban QLDA), kênh tiếp cận chính (LinkedIn, Facebook Group B2B, Gặp trực tiếp)..." class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden font-medium text-slate-800 leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Modal Actions Footer -->
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2.5">
+                        <button type="button" onclick="closeAudienceModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition">
+                            Hủy
+                        </button>
+                        <button type="submit" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black shadow-md transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Lưu Dữ Liệu Đối Tượng</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         </main>
     </div>
@@ -11742,6 +11906,295 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
         }
 
+        
+        // =========================================================================
+        // 🎯 TARGET AUDIENCES (CHÂN DUNG ĐỐI TƯỢNG KHÁCH HÀNG B2B) CONTROLLER
+        // =========================================================================
+        let targetAudiencesData = [
+            {
+                id: "aud-bds",
+                name: "Chủ Đầu Tư Bất Động Sản & Giám Đốc Dự Án",
+                segment: "bds",
+                icon: "🏢",
+                painPoints: "Cần sa bàn quy hoạch tổng thể & căn hộ mẫu bán hàng đẳng cấp, tích hợp hệ thống đèn LED phân tầng ấn tượng để thuyết phục khách mua nhà tại Sales Gallery, cam kết bàn giao đúng tiến độ khai trương.",
+                triggers: "Chất lượng hoàn thiện tinh xảo, tiến độ bàn giao cam kết hợp đồng, kinh nghiệm thực hiện các dự án quy mô lớn (Vingroup, Khải Hoàn, An Huy...).",
+                tone: "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án, nhấn mạnh giá trị gia tăng và tiến độ cam kết.",
+                desc: "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án. Tiếp cận hiệu quả qua Profile Sếp Tiến, Hội đồng BĐS, Báo Đầu Tư."
+            },
+            {
+                id: "aud-kts",
+                name: "Kiến Trúc Sư Trưởng & Giám Đốc Thiết Kế",
+                segment: "kts",
+                icon: "📐",
+                painPoints: "Đòi hỏi độ chính xác tỷ lệ 100%, sắc sảo từng đường nét chi tiết, độ trung thực vật liệu (mica, gỗ, in 3D 8K) và ánh sáng mô phỏng đúng ngôn ngữ bản vẽ concept 3D.",
+                triggers: "Khả năng đọc hiểu bản vẽ CAD/Revit chuyên sâu, máy móc cắt laser & in 3D chính xác từng milimet, tính thẩm mỹ nghệ thuật cao.",
+                tone: "Chuyên môn sâu sắc, sử dụng chuẩn xác thuật ngữ kiến trúc (tỷ lệ, cao độ, hình khối, cảnh quan), tôn trọng ý tưởng thiết kế.",
+                desc: "KTS Trưởng tại các công ty tư vấn kiến trúc quốc tế & trong nước (Archetype, Baumschlager Eberle, GMP...). Thích xem ảnh chi tiết cận cảnh tại Pinterest và Fanpage."
+            },
+            {
+                id: "aud-fdi",
+                name: "Doanh Nghiệp FDI & Ban Quản Lý Khu Công Nghiệp",
+                segment: "fdi",
+                icon: "🏭",
+                painPoints: "Sa bàn tổ hợp nhà máy công nghệ cao, kho bãi logistics, mô phỏng quy trình dây chuyền sản xuất và hệ thống an toàn PCCC phục vụ báo cáo HĐQT, đối tác quốc tế và trưng bày sảnh lễ tân.",
+                triggers: "Quy chuẩn an toàn công nghiệp, độ bền vật liệu cao, khả năng lập trình điều khiển tự động hóa LED, giao tiếp làm việc chuẩn mực.",
+                tone: "Logic, súc tích, chuẩn mực kỹ thuật, độ tin cậy tuyệt đối, phong cách làm việc quốc tế.",
+                desc: "Doanh nghiệp FDI Nhật Bản, Hàn Quốc, Châu Âu, Singapore đầu tư tại VSIP, Becamex, Long Hậu... Tiếp cận qua Website, Google Maps GBP và Email B2B."
+            },
+            {
+                id: "aud-epc",
+                name: "Tổng Thầu EPC & Nhà Thầu Thi Công Xây Dựng",
+                segment: "epc",
+                icon: "🏗️",
+                painPoints: "Sa bàn thi công hạ tầng, mô phỏng biện pháp thi công đồi núi/cầu hầm, tiến độ đường găng và an toàn lao động phục vụ lễ khởi công, đấu thầu dự án và báo cáo chủ đầu tư.",
+                triggers: "Tốc độ sản xuất nhanh đáp ứng sự kiện khẩn cấp, độ bền chịu lực khi vận chuyển đi tỉnh xa, giá thành hợp lý theo dự toán.",
+                tone: "Thực tế, chắc chắn, tập trung vào năng lực thi công, tiến độ giao hàng và dịch vụ bảo hành tận nơi.",
+                desc: "Tổng thầu xây dựng (Coteccons, Hòa Bình, Ricons, Newtecons, Đèo Cả...). Tiếp cận qua Zalo Marketing, Group Facebook Xây Dựng."
+            },
+            {
+                id: "aud-quyhoach",
+                name: "Ban Quản Lý Dự Án & Viện Quy Hoạch Nhà Nước",
+                segment: "quyhoach",
+                icon: "🏛️",
+                painPoints: "Sa bàn quy hoạch phân khu đô thị, sa bàn địa hình tỷ lệ lớn (1/1000 - 1/2000), tích hợp chiếu sáng LED thông minh theo quy hoạch vùng phục vụ triển lãm, xúc tiến đầu tư và hội nghị công bố quy hoạch.",
+                triggers: "Năng lực hồ sơ pháp lý đầy đủ, xuất hóa đơn VAT chuẩn, kinh nghiệm thực hiện các sa bàn tỉnh thành (Kỳ Anh, Trà Vinh, Nha Trang...).",
+                tone: "Trọng thể, uy tín, chuẩn mực quy hoạch quốc gia, tôn vinh tầm nhìn phát triển kinh tế xã hội.",
+                desc: "Ban Quản lý Khu kinh tế, Sở Xây dựng, Viện Quy hoạch đô thị nông thôn. Tiếp cận qua công văn, đấu thầu công và Website mohinhkientruc.org."
+            },
+            {
+                id: "aud-resort",
+                name: "Chủ Đầu Tư Resort Nghỉ Dưỡng & Trung Tâm Thương Mại",
+                segment: "bds",
+                icon: "⭐",
+                painPoints: "Sa bàn cảnh quan sinh thái ven biển, hiệu ứng mặt nước, cây xanh sân golf và hệ thống chiếu sáng ban đêm lung linh đặt tại sảnh đón tiếp để tạo ấn tượng cho khách VIP.",
+                triggers: "Hiệu ứng thị giác ngoạn mục (Water effect, Dynamic LED), tính sang trọng độc bản, khả năng bảo trì định kỳ.",
+                tone: "Tinh tế, cảm xúc thị giác mạnh mẽ, sang trọng và tôn vinh phong cách sống thượng lưu.",
+                desc: "Chủ đầu tư chuỗi khách sạn, quần thể nghỉ dưỡng ven biển Đà Nẵng, Phú Quốc, Nha Trang... Tiếp cận qua Pinterest, Profile Sếp Tiến."
+            }
+        ];
+
+        function initTargetAudiencesData() {
+            try {
+                const saved = localStorage.getItem('songanh_target_audiences');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        targetAudiencesData = parsed;
+                    }
+                }
+            } catch(e) { console.error("Error loading audiences:", e); }
+            renderAudienceCards();
+        }
+
+        function renderAudienceCards() {
+            const container = document.getElementById('audience-cards-container');
+            const totalCountEl = document.getElementById('audience-total-count');
+            if (!container) return;
+
+            const searchVal = (document.getElementById('audience-search-input')?.value || '').toLowerCase().trim();
+            const segmentVal = document.getElementById('audience-segment-filter')?.value || 'all';
+
+            const filtered = targetAudiencesData.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(searchVal) || 
+                                    item.painPoints.toLowerCase().includes(searchVal) ||
+                                    (item.triggers && item.triggers.toLowerCase().includes(searchVal));
+                const matchSegment = (segmentVal === 'all') || (item.segment === segmentVal);
+                return matchSearch && matchSegment;
+            });
+
+            if (totalCountEl) totalCountEl.innerText = `${filtered.length} Chân Dung`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400 space-y-2 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-user-slash text-3xl text-slate-300"></i>
+                        <p class="text-xs font-bold text-slate-600">Không tìm thấy chân dung khách hàng phù hợp</p>
+                        <p class="text-[11px] text-slate-400">Bấm nút '+ Thêm Đối Tượng Mới' để tạo chân dung đầu tiên</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => `
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md hover:border-indigo-300 transition p-4.5 flex flex-col justify-between space-y-3 group">
+                    <div class="space-y-2.5">
+                        <!-- Card Header -->
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-lg flex items-center justify-center shadow-2xs group-hover:scale-105 transition shrink-0">${item.icon || '🎯'}</span>
+                                <div>
+                                    <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-indigo-700 transition">${item.name}</h4>
+                                    <span class="text-[9.5px] px-2 py-0.2 rounded-full font-bold uppercase tracking-wider ${getSegmentBadgeClass(item.segment)}">${getSegmentLabel(item.segment)}</span>
+                                </div>
+                            </div>
+                            <!-- Action Dropdown/Buttons -->
+                            <div class="flex items-center gap-1 shrink-0">
+                                <button onclick="editAudience('${item.id}')" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-indigo-600 flex items-center justify-center transition" title="Sửa">
+                                    <i class="fa-solid fa-pen text-xs"></i>
+                                </button>
+                                <button onclick="deleteAudience('${item.id}')" class="w-7 h-7 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition" title="Xóa">
+                                    <i class="fa-solid fa-trash-can text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Pain Points Box -->
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-[11px] space-y-1">
+                            <p class="font-extrabold text-slate-700 flex items-center gap-1">
+                                <span class="text-rose-500">⚡</span> Nỗi Đau &amp; Nhu Cầu Cốt Lõi:
+                            </p>
+                            <p class="text-slate-600 leading-relaxed">${item.painPoints}</p>
+                        </div>
+
+                        <!-- Triggers & Tone -->
+                        <div class="space-y-1.5 text-[10.5px]">
+                            ${item.triggers ? `
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="font-black text-slate-700 shrink-0">🎯 Động cơ:</span>
+                                <span class="text-slate-600">${item.triggers}</span>
+                            </div>` : ''}
+                            ${item.tone ? `
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="font-black text-slate-700 shrink-0">🗣️ Giọng văn:</span>
+                                <span class="text-indigo-700 font-medium">${item.tone}</span>
+                            </div>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Card Footer: Quick Use Button for AI Content Studio -->
+                    <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-[9.5px] text-slate-400 font-medium">Sẵn sàng nạp vào AI</span>
+                        <button onclick="useAudienceForAIContent('${item.id}')" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 text-white font-extrabold text-[10.5px] shadow-2xs transition flex items-center gap-1">
+                            <span>💡 Dùng Viết Bài AI</span>
+                            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getSegmentLabel(seg) {
+            const map = {
+                bds: "Bất Động Sản",
+                kts: "KTS & Thiết Kế",
+                fdi: "FDI & KCN",
+                epc: "Tổng Thầu EPC",
+                quyhoach: "Quy Hoạch Nhà Nước",
+                khac: "Khách Hàng Mục Tiêu"
+            };
+            return map[seg] || "Khách Hàng";
+        }
+
+        function getSegmentBadgeClass(seg) {
+            const map = {
+                bds: "bg-blue-100 text-blue-800 border border-blue-200",
+                kts: "bg-purple-100 text-purple-800 border border-purple-200",
+                fdi: "bg-emerald-100 text-emerald-800 border border-emerald-200",
+                epc: "bg-amber-100 text-amber-800 border border-amber-200",
+                quyhoach: "bg-rose-100 text-rose-800 border border-rose-200",
+                khac: "bg-slate-100 text-slate-700 border border-slate-200"
+            };
+            return map[seg] || "bg-slate-100 text-slate-700";
+        }
+
+        function filterAudienceCards() {
+            renderAudienceCards();
+        }
+
+        function openAddAudienceModal() {
+            document.getElementById('audience-form').reset();
+            document.getElementById('audience-id').value = '';
+            document.getElementById('audience-modal-title').innerText = 'Thêm Chân Dung Đối Tượng Khách Hàng Mới';
+            const modal = document.getElementById('audience-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeAudienceModal() {
+            const modal = document.getElementById('audience-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function editAudience(id) {
+            const item = targetAudiencesData.find(a => a.id === id);
+            if (!item) return;
+
+            document.getElementById('audience-id').value = item.id;
+            document.getElementById('audience-name').value = item.name || '';
+            document.getElementById('audience-segment').value = item.segment || 'bds';
+            document.getElementById('audience-pain-points').value = item.painPoints || '';
+            document.getElementById('audience-triggers').value = item.triggers || '';
+            document.getElementById('audience-tone').value = item.tone || '';
+            document.getElementById('audience-desc').value = item.desc || '';
+
+            document.getElementById('audience-modal-title').innerText = 'Chỉnh Sửa Chân Dung: ' + item.name;
+            const modal = document.getElementById('audience-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function handleSaveAudience(e) {
+            e.preventDefault();
+            const id = document.getElementById('audience-id').value.trim();
+            const name = document.getElementById('audience-name').value.trim();
+            const segment = document.getElementById('audience-segment').value;
+            const painPoints = document.getElementById('audience-pain-points').value.trim();
+            const triggers = document.getElementById('audience-triggers').value.trim();
+            const tone = document.getElementById('audience-tone').value.trim();
+            const desc = document.getElementById('audience-desc').value.trim();
+
+            const segIcons = { bds: "🏢", kts: "📐", fdi: "🏭", epc: "🏗️", quyhoach: "🏛️", khac: "⭐" };
+            const icon = segIcons[segment] || "🎯";
+
+            if (id) {
+                // Update
+                const idx = targetAudiencesData.findIndex(a => a.id === id);
+                if (idx !== -1) {
+                    targetAudiencesData[idx] = { ...targetAudiencesData[idx], name, segment, icon, painPoints, triggers, tone, desc };
+                }
+                showToast("✅ Đã cập nhật chân dung khách hàng: " + name);
+            } else {
+                // Add New
+                const newId = 'aud-' + Date.now();
+                targetAudiencesData.unshift({
+                    id: newId,
+                    name,
+                    segment,
+                    icon,
+                    painPoints,
+                    triggers,
+                    tone,
+                    desc
+                });
+                showToast("🎉 Đã thêm chân dung khách hàng mới: " + name);
+            }
+
+            try {
+                localStorage.setItem('songanh_target_audiences', JSON.stringify(targetAudiencesData));
+            } catch(err) { console.error(err); }
+
+            closeAudienceModal();
+            renderAudienceCards();
+        }
+
+        function deleteAudience(id) {
+            const item = targetAudiencesData.find(a => a.id === id);
+            if (!item) return;
+            if (confirm(`Sếp có chắc chắn muốn xóa đối tượng "${item.name}" không?`)) {
+                targetAudiencesData = targetAudiencesData.filter(a => a.id !== id);
+                try {
+                    localStorage.setItem('songanh_target_audiences', JSON.stringify(targetAudiencesData));
+                } catch(err) { console.error(err); }
+                showToast("🗑️ Đã xóa chân dung: " + item.name);
+                renderAudienceCards();
+            }
+        }
+
+        function useAudienceForAIContent(id) {
+            const item = targetAudiencesData.find(a => a.id === id);
+            if (!item) return;
+            selectModule('tool-content-generator');
+            showToast(`💡 Đã nạp chân dung [${item.name}] vào AI Content Studio!`);
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             const safeCall = (fn, name) => {
                 try { if (typeof fn === 'function') fn(); }
@@ -11749,6 +12202,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             };
             safeCall(updateHeaderCurrentDate, 'updateHeaderCurrentDate');
             safeCall(renderKeywordTable, 'renderKeywordTable');
+            safeCall(initTargetAudiencesData, 'initTargetAudiencesData');
             safeCall(renderOnpageTable, 'renderOnpageTable');
             safeCall(renderFbTable, 'renderFbTable');
             safeCall(renderZaloTable, 'renderZaloTable');
