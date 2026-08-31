@@ -12005,64 +12005,77 @@
     },
     "target_audiences": [
         {
-            "id": "aud-bds",
-            "name": "Chủ Đầu Tư Bất Động Sản & Giám Đốc Dự Án",
-            "segment": "bds",
-            "icon": "🏢",
-            "pain_points": "Cần sa bàn quy hoạch tổng thể & căn hộ mẫu bán hàng đẳng cấp, tích hợp hệ thống đèn LED phân tầng ấn tượng để thuyết phục khách mua nhà tại Sales Gallery, cam kết bàn giao đúng tiến độ khai trương.",
-            "buying_triggers": "Chất lượng hoàn thiện tinh xảo, tiến độ bàn giao cam kết hợp đồng, kinh nghiệm thực hiện các dự án quy mô lớn (Vingroup, Khải Hoàn, An Huy...).",
-            "tone_of_voice": "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án, nhấn mạnh giá trị gia tăng và tiến độ cam kết.",
-            "description": "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án."
-        },
-        {
-            "id": "aud-kts",
-            "name": "Kiến Trúc Sư Trưởng & Giám Đốc Thiết Kế",
-            "segment": "kts",
-            "icon": "📐",
-            "pain_points": "Đòi hỏi độ chính xác tỷ lệ 100%, sắc sảo từng đường nét chi tiết, độ trung thực vật liệu (mica, gỗ, in 3D 8K) và ánh sáng mô phỏng đúng ngôn ngữ bản vẽ concept 3D.",
-            "buying_triggers": "Khả năng đọc hiểu bản vẽ CAD/Revit chuyên sâu, máy móc cắt laser & in 3D chính xác từng milimet, tính thẩm mỹ nghệ thuật cao.",
-            "tone_of_voice": "Chuyên môn sâu sắc, sử dụng chuẩn xác thuật ngữ kiến trúc (tỷ lệ, cao độ, hình khối, cảnh quan), tôn trọng ý tưởng thiết kế.",
-            "description": "KTS Trưởng tại các công ty tư vấn kiến trúc quốc tế & trong nước (Archetype, Baumschlager Eberle, GMP...)."
-        },
-        {
-            "id": "aud-fdi",
-            "name": "Doanh Nghiệp FDI & Ban Quản Lý Khu Công Nghiệp",
-            "segment": "fdi",
-            "icon": "🏭",
-            "pain_points": "Sa bàn tổ hợp nhà máy công nghệ cao, kho bãi logistics, mô phỏng quy trình dây chuyền sản xuất và hệ thống an toàn PCCC phục vụ báo cáo HĐQT, đối tác quốc tế và trưng bày sảnh lễ tân.",
-            "buying_triggers": "Quy chuẩn an toàn công nghiệp, độ bền vật liệu cao, khả năng lập trình điều khiển tự động hóa LED, giao tiếp làm việc chuẩn mực.",
-            "tone_of_voice": "Logic, súc tích, chuẩn mực kỹ thuật, độ tin cậy tuyệt đối, phong cách làm việc quốc tế.",
-            "description": "Doanh nghiệp FDI Nhật Bản, Hàn Quốc, Châu Âu, Singapore đầu tư tại VSIP, Becamex, Long Hậu..."
-        },
-        {
-            "id": "aud-epc",
-            "name": "Tổng Thầu EPC & Nhà Thầu Thi Công Xây Dựng",
-            "segment": "epc",
-            "icon": "🏗️",
-            "pain_points": "Sa bàn thi công hạ tầng, mô phỏng biện pháp thi công đồi núi/cầu hầm, tiến độ đường găng và an toàn lao động phục vụ lễ khởi công, đấu thầu dự án và báo cáo chủ đầu tư.",
-            "buying_triggers": "Tốc độ sản xuất nhanh đáp ứng sự kiện khẩn cấp, độ bền chịu lực khi vận chuyển đi tỉnh xa, giá thành hợp lý theo dự toán.",
-            "tone_of_voice": "Thực tế, chắc chắn, tập trung vào năng lực thi công, tiến độ giao hàng và dịch vụ bảo hành tận nơi.",
-            "description": "Tổng thầu xây dựng (Coteccons, Hòa Bình, Ricons, Newtecons, Đèo Cả...)."
-        },
-        {
-            "id": "aud-quyhoach",
-            "name": "Ban Quản Lý Dự Án & Viện Quy Hoạch Nhà Nước",
-            "segment": "quyhoach",
-            "icon": "🏛️",
-            "pain_points": "Sa bàn quy hoạch phân khu đô thị, sa bàn địa hình tỷ lệ lớn (1/1000 - 1/2000), tích hợp chiếu sáng LED thông minh theo quy hoạch vùng phục vụ triển lãm, xúc tiến đầu tư và hội nghị công bố quy hoạch.",
-            "buying_triggers": "Năng lực hồ sơ pháp lý đầy đủ, xuất hóa đơn VAT chuẩn, kinh nghiệm thực hiện các sa bàn tỉnh thành (Kỳ Anh, Trà Vinh, Nha Trang...).",
-            "tone_of_voice": "Trọng thể, uy tín, chuẩn mực quy hoạch quốc gia, tôn vinh tầm nhìn phát triển kinh tế xã hội.",
-            "description": "Ban Quản lý Khu kinh tế, Sở Xây dựng, Viện Quy hoạch đô thị nông thôn."
-        },
-        {
             "id": "aud-resort",
+            "page_id": "3cd4b5e7-3d90-81da-a90c-d25ce18c01dd",
             "name": "Chủ Đầu Tư Resort Nghỉ Dưỡng & Trung Tâm Thương Mại",
             "segment": "bds",
+            "segment_name": "⭐ Resort & TTTM",
             "icon": "⭐",
             "pain_points": "Sa bàn cảnh quan sinh thái ven biển, hiệu ứng mặt nước, cây xanh sân golf và hệ thống chiếu sáng ban đêm lung linh đặt tại sảnh đón tiếp để tạo ấn tượng cho khách VIP.",
             "buying_triggers": "Hiệu ứng thị giác ngoạn mục (Water effect, Dynamic LED), tính sang trọng độc bản, khả năng bảo trì định kỳ.",
             "tone_of_voice": "Tinh tế, cảm xúc thị giác mạnh mẽ, sang trọng và tôn vinh phong cách sống thượng lưu.",
-            "description": "Chủ đầu tư chuỗi khách sạn, quần thể nghỉ dưỡng ven biển Đà Nẵng, Phú Quốc, Nha Trang..."
+            "description": "Chủ đầu tư chuỗi khách sạn, quần thể nghỉ dưỡng ven biển Đà Nẵng, Phú Quốc, Nha Trang... Tiếp cận qua Pinterest, Profile Sếp Tiến."
+        },
+        {
+            "id": "aud-quyhoach",
+            "page_id": "3cd4b5e7-3d90-8185-a370-eb8e60e6c896",
+            "name": "Ban Quản Lý Dự Án & Viện Quy Hoạch Nhà Nước",
+            "segment": "quyhoach",
+            "segment_name": "🏛️ Quy Hoạch Nhà Nước",
+            "icon": "🏛️",
+            "pain_points": "Sa bàn quy hoạch phân khu đô thị, sa bàn địa hình tỷ lệ lớn (1/1000 - 1/2000), tích hợp chiếu sáng LED thông minh theo quy hoạch vùng phục vụ triển lãm, xúc tiến đầu tư và hội nghị công bố quy hoạch.",
+            "buying_triggers": "Năng lực hồ sơ pháp lý đầy đủ, xuất hóa đơn VAT chuẩn, kinh nghiệm thực hiện các sa bàn tỉnh thành (Kỳ Anh, Trà Vinh, Nha Trang...).",
+            "tone_of_voice": "Trọng thể, uy tín, chuẩn mực quy hoạch quốc gia, tôn vinh tầm nhìn phát triển kinh tế xã hội.",
+            "description": "Ban Quản lý Khu kinh tế, Sở Xây dựng, Viện Quy hoạch đô thị nông thôn. Tiếp cận qua công văn, đấu thầu công và Website mohinhkientruc.org."
+        },
+        {
+            "id": "aud-epc",
+            "page_id": "3cd4b5e7-3d90-8129-b449-f68d731853b2",
+            "name": "Tổng Thầu EPC & Nhà Thầu Thi Công Xây Dựng",
+            "segment": "epc",
+            "segment_name": "🏗️ Tổng Thầu EPC",
+            "icon": "🏗️",
+            "pain_points": "Sa bàn thi công hạ tầng, mô phỏng biện pháp thi công đồi núi/cầu hầm, tiến độ đường găng và an toàn lao động phục vụ lễ khởi công, đấu thầu dự án và báo cáo chủ đầu tư.",
+            "buying_triggers": "Tốc độ sản xuất nhanh đáp ứng sự kiện khẩn cấp, độ bền chịu lực khi vận chuyển đi tỉnh xa, giá thành hợp lý theo dự toán.",
+            "tone_of_voice": "Thực tế, chắc chắn, tập trung vào năng lực thi công, tiến độ giao hàng và dịch vụ bảo hành tận nơi.",
+            "description": "Tổng thầu xây dựng (Coteccons, Hòa Bình, Ricons, Newtecons, Đèo Cả...). Tiếp cận qua Zalo Marketing, Group Facebook Xây Dựng."
+        },
+        {
+            "id": "aud-fdi",
+            "page_id": "3cd4b5e7-3d90-81bd-97d2-c09d403603da",
+            "name": "Doanh Nghiệp FDI & Ban Quản Lý Khu Công Nghiệp",
+            "segment": "fdi",
+            "segment_name": "🏭 FDI & KCN",
+            "icon": "🏭",
+            "pain_points": "Sa bàn tổ hợp nhà máy công nghệ cao, kho bãi logistics, mô phỏng quy trình dây chuyền sản xuất và hệ thống an toàn PCCC phục vụ báo cáo HĐQT, đối tác quốc tế và trưng bày sảnh lễ tân.",
+            "buying_triggers": "Quy chuẩn an toàn công nghiệp, độ bền vật liệu cao, khả năng lập trình điều khiển tự động hóa LED, giao tiếp làm việc chuẩn mực.",
+            "tone_of_voice": "Logic, súc tích, chuẩn mực kỹ thuật, độ tin cậy tuyệt đối, phong cách làm việc quốc tế.",
+            "description": "Doanh nghiệp FDI Nhật Bản, Hàn Quốc, Châu Âu, Singapore đầu tư tại VSIP, Becamex, Long Hậu... Tiếp cận qua Website, Google Maps GBP và Email B2B."
+        },
+        {
+            "id": "aud-kts",
+            "page_id": "3cd4b5e7-3d90-81cb-8528-deb409107240",
+            "name": "Kiến Trúc Sư Trưởng & Giám Đốc Thiết Kế",
+            "segment": "kts",
+            "segment_name": "📐 KTS & Thiết Kế",
+            "icon": "📐",
+            "pain_points": "Đòi hỏi độ chính xác tỷ lệ 100%, sắc sảo từng đường nét chi tiết, độ trung thực vật liệu (mica, gỗ, in 3D 8K) và ánh sáng mô phỏng đúng ngôn ngữ bản vẽ concept 3D.",
+            "buying_triggers": "Khả năng đọc hiểu bản vẽ CAD/Revit chuyên sâu, máy móc cắt laser & in 3D chính xác từng milimet, tính thẩm mỹ nghệ thuật cao.",
+            "tone_of_voice": "Chuyên môn sâu sắc, sử dụng chuẩn xác thuật ngữ kiến trúc (tỷ lệ, cao độ, hình khối, cảnh quan), tôn trọng ý tưởng thiết kế.",
+            "description": "KTS Trưởng tại các công ty tư vấn kiến trúc quốc tế & trong nước (Archetype, Baumschlager Eberle, GMP...). Thích xem ảnh chi tiết cận cảnh tại Pinterest và Fanpage."
+        },
+        {
+            "id": "aud-bds",
+            "page_id": "3cd4b5e7-3d90-8129-b0df-cb011a77808f",
+            "name": "Chủ Đầu Tư Bất Động Sản & Giám Đốc Dự Án",
+            "segment": "bds",
+            "segment_name": "🏢 Bất Động Sản",
+            "icon": "🏢",
+            "pain_points": "Cần sa bàn quy hoạch tổng thể & căn hộ mẫu bán hàng đẳng cấp, tích hợp hệ thống đèn LED phân tầng ấn tượng để thuyết phục khách mua nhà tại Sales Gallery, cam kết bàn giao đúng tiến độ khai trương.",
+            "buying_triggers": "Chất lượng hoàn thiện tinh xảo, tiến độ bàn giao cam kết hợp đồng, kinh nghiệm thực hiện các dự án quy mô lớn (Vingroup, Khải Hoàn, An Huy...).",
+            "tone_of_voice": "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án, nhấn mạnh giá trị gia tăng và tiến độ cam kết.",
+            "description": "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án. Tiếp cận hiệu quả qua Profile Sếp Tiến, Hội đồng BĐS, Báo Đầu Tư."
         }
-    ]
+    ],
+    "target_audiences_notion_url": "https://www.notion.so/3cd4b5e73d90813d8812c44bc8ad33df"
 }
