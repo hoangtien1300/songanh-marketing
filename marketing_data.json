@@ -10878,6 +10878,14 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "31/08/2026 10:08",
+      "category": "SEO Keyword Strategy",
+      "action": "Ghi nhận chỉ đạo Sếp Thiện: Triển khai đánh từ khóa 'mô hình lịch sử'",
+      "description": "Lên kế hoạch Silo SEO, bài viết E-E-A-T 3,200 từ và bộ ảnh phục dựng sa bàn di tích lịch sử / bảo tàng.",
+      "performer": "Sếp Thiện & Minh",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "31/08/2026 08:30",
       "category": "Notion Task Management",
       "action": "Hoàn tất gom nhóm 89 tasks vào 7 Mục Tiêu Công Việc chuẩn trên Notion DB",
