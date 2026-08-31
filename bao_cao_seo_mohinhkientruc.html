@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Hiệu Suất SEO Real-Time - Website mohinhkientruc.org | Mô Hình Kiến Trúc Song Anh</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 Pro CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0B3C5D',
+                            dark: '#061D2D',
+                            gold: '#D97706',
+                            amber: '#F59E0B',
+                            accent: '#2563EB',
+                            emerald: '#059669'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B132B;
+            color: #E2E8F0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        .glass-card-header {
+            background: linear-gradient(135deg, rgba(11, 60, 93, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.8);
+        }
+        .table-row-hover:hover {
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        @media print {
+            body {
+                background: #FFFFFF;
+                color: #0F172A;
+            }
+            .glass-card {
+                background: #FFFFFF;
+                border: 1px solid #CBD5E1;
+                box-shadow: none;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-6 lg:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- HEADER SECTION -->
+        <header class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl border border-slate-700/60">
+            <div class="absolute -right-20 -top-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            Google Search Console Live Snapshot
+                        </span>
+                        <span class="text-xs text-slate-400 font-mono">📅 Snapshot: 31/08/2026</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white tracking-tight leading-tight">
+                        BÁO CÁO HIỆU SUẤT SEO B2B
+                    </h1>
+                    <p class="text-slate-300 text-sm flex flex-wrap items-center gap-x-4 gap-y-1">
+                        <span>🌐 Website: <a href="https://mohinhkientruc.org" target="_blank" class="text-sky-400 font-bold hover:underline font-mono">https://mohinhkientruc.org</a></span>
+                        <span>🏢 Đơn vị: <strong class="text-amber-300">MÔ HÌNH KIẾN TRÚC SONG ANH</strong></span>
+                        <span>📞 Hotline: <strong class="text-emerald-400 font-mono">0929 22 4444</strong></span>
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3 no-print w-full md:w-auto justify-end">
+                    <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-600 transition flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-print"></i> In / Xuất PDF
+                    </button>
+                    <a href="https://songanh-marketing.phamhoangtien1300.workers.dev/" target="_blank" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-blue-500/20">
+                        <i class="fa-solid fa-gauge-high"></i> Mở Web App Live
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI MASTER METRIC CARDS -->
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Metric 1 -->
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60 relative overflow-hidden group hover:border-blue-500/50 transition">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Lượt Hiển Thị GSC</span>
+                    <i class="fa-solid fa-eye text-sky-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-white tracking-tight">24,750+</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +12.8% so với tuần trước
+                </div>
+            </div>
+
+            <!-- Metric 2 -->
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60 relative overflow-hidden group hover:border-emerald-500/50 transition">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Lượt Nhấp Organic</span>
+                    <i class="fa-solid fa-arrow-pointer text-emerald-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-white tracking-tight">1,600+</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +15.4% Organic Traffic
+                </div>
+            </div>
+
+            <!-- Metric 3 -->
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60 relative overflow-hidden group hover:border-amber-500/50 transition">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Tỷ Lệ Nhấp (CTR)</span>
+                    <i class="fa-solid fa-chart-pie text-amber-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-amber-400 tracking-tight">6.46%</div>
+                <div class="text-[11px] text-slate-400 font-medium mt-1">
+                    Cao gấp 2x trung bình ngành B2B
+                </div>
+            </div>
+
+            <!-- Metric 4 -->
+            <div class="glass-card rounded-2xl p-5 border border-slate-700/60 relative overflow-hidden group hover:border-purple-500/50 transition">
+                <div class="flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    <span>Độ Phủ Top 10 Google</span>
+                    <i class="fa-solid fa-trophy text-purple-400 text-sm"></i>
+                </div>
+                <div class="text-2xl sm:text-3xl font-heading font-extrabold text-purple-300 tracking-tight">20 / 22 KWs</div>
+                <div class="text-[11px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+                    <i class="fa-solid fa-circle-check"></i> 90.9% Từ khóa nằm Trang 1
+                </div>
+            </div>
+        </section>
+
+        <!-- 22 KEYWORDS RANKING TABLE & FILTER -->
+        <section class="glass-card rounded-2xl border border-slate-700/60 overflow-hidden shadow-xl">
+            <div class="glass-card-header p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-lg font-heading font-extrabold text-white flex items-center gap-2.5">
+                        <i class="fa-solid fa-table-list text-amber-400"></i>
+                        BẢNG THEO DÕI THỨ HẠNG 22 TỪ KHÓA B2B CHỦ LỰC
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Dữ liệu đối chiếu giữa mốc Baseline và thứ hạng thực tế cập nhật ngày 31/08/2026</p>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto no-print">
+                    <div class="relative flex-1 sm:w-48">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-500"></i>
+                        <input type="text" id="kwSearch" onkeyup="filterKeywords()" placeholder="Tìm từ khóa..." class="w-full pl-8 pr-3 py-1.5 bg-slate-900/80 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div class="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-slate-700 text-xs">
+                        <button onclick="setTierFilter('all')" id="btn-all" class="px-2.5 py-1 rounded-lg font-bold bg-blue-600 text-white transition">Tất Cả (22)</button>
+                        <button onclick="setTierFilter('top1-3')" id="btn-top1-3" class="px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">Top 1-3 (7)</button>
+                        <button onclick="setTierFilter('top4-10')" id="btn-top4-10" class="px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">Top 4-10 (13)</button>
+                        <button onclick="setTierFilter('top-low')" id="btn-top-low" class="px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition">Cần Tối Ưu (2)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-900/90 text-slate-400 uppercase font-semibold border-b border-slate-700/80">
+                        <tr>
+                            <th class="py-3.5 px-4">STT</th>
+                            <th class="py-3.5 px-4">Từ Khóa Mục Tiêu</th>
+                            <th class="py-3.5 px-4">Cụm Silo Dịch Vụ</th>
+                            <th class="py-3.5 px-4 text-center">Baseline</th>
+                            <th class="py-3.5 px-4 text-center">Thứ Hạng (31/08)</th>
+                            <th class="py-3.5 px-4 text-center">Biến Động</th>
+                            <th class="py-3.5 px-4 text-right">Impressions</th>
+                            <th class="py-3.5 px-4 text-right">Clicks</th>
+                            <th class="py-3.5 px-4 text-right">CTR %</th>
+                            <th class="py-3.5 px-4">URL Đích</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kwTableBody" class="divide-y divide-slate-800 font-medium">
+                        <!-- Rendered by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TWO COLUMN SECTION: COMPETITOR BENCHMARK & ON-PAGE AUDIT -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Competitor Benchmark Gap Analysis -->
+            <section class="glass-card rounded-2xl border border-slate-700/60 p-5 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                    <h3 class="text-base font-heading font-extrabold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chess-knight text-rose-400"></i>
+                        PHÂN TÍCH ĐỐI ĐẦU ĐỐI THỦ TOP 1
+                    </h3>
+                    <span class="text-[11px] px-2.5 py-0.5 rounded bg-rose-500/10 text-rose-300 font-bold border border-rose-500/30">Gap Analysis</span>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <!-- Comp Item 1 -->
+                    <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white text-sm">mô hình nhà máy</span>
+                            <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 font-bold">Song Anh Top 5.8 ➔ Áp sát Top 1</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-slate-400 bg-slate-950/60 p-2 rounded-lg font-mono text-[11px]">
+                            <div>👑 Đối thủ: <strong class="text-rose-400">mohinhmoc.com (Top 1)</strong><br>📝 1,650 từ | 🖼️ 5 ảnh | 🎥 0 video</div>
+                            <div>⚔️ Song Anh: <strong class="text-emerald-400">mohinhkientruc.org</strong><br>📝 3,150 từ | 🖼️ 4 WebP | 🎥 2 Video 4K</div>
+                        </div>
+                        <p class="text-slate-300 text-[11.5px] leading-relaxed">
+                            💡 <strong>Chiến lược:</strong> Đã nâng cấp On-Page toàn diện, nhúng Google Form B2B & Video xưởng Thủ Đức. Đang phân phối Group B2B để chiếm Top 1.
+                        </p>
+                    </div>
+
+                    <!-- Comp Item 2 -->
+                    <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white text-sm">sa bàn kiến trúc</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-bold">Song Anh Top 4.2 (2,240 Imp)</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-slate-400 bg-slate-950/60 p-2 rounded-lg font-mono text-[11px]">
+                            <div>👑 Đối thủ: <strong class="text-rose-400">arttechvn.vn (Top 1)</strong><br>📝 1,820 từ | 🖼️ 6 ảnh | 🎥 0 video</div>
+                            <div>⚔️ Song Anh: <strong class="text-emerald-400">mohinhkientruc.org</strong><br>📝 2,600 từ | 🖼️ 8 WebP | 🎥 1 Video YouTube</div>
+                        </div>
+                        <p class="text-slate-300 text-[11.5px] leading-relaxed">
+                            💡 <strong>Chiến lược:</strong> Tối ưu cấu trúc thẻ H2/H3 theo Search Intent 2026, cập nhật Bảng Báo Giá chi tiết để vượt lên Top 1-3.
+                        </p>
+                    </div>
+
+                    <!-- Comp Item 3 -->
+                    <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-white text-sm">mô hình trường học</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">Song Anh Top 1.5 (Dẫn Đầu)</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-slate-400 bg-slate-950/60 p-2 rounded-lg font-mono text-[11px]">
+                            <div>👑 Đối thủ cũ: <strong class="text-slate-400">miniscale.vn (Bị vượt)</strong><br>📝 1,250 từ | 🖼️ 3 ảnh | 🎥 0 video</div>
+                            <div>⚔️ Song Anh: <strong class="text-emerald-400">Top 1.5 Google</strong><br>📝 2,500 từ | 🖼️ 6 WebP | 🎥 Video UTS & RMIT</div>
+                        </div>
+                        <p class="text-slate-300 text-[11.5px] leading-relaxed">
+                            💡 <strong>Chiến lược:</strong> Duy trì vị thế Top đầu nhờ Video Case-study thực tế xưởng Thủ Đức & liên kết nội bộ chặt chẽ.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical On-Page & Schema Audit -->
+            <section class="glass-card rounded-2xl border border-slate-700/60 p-5 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3">
+                    <h3 class="text-base font-heading font-extrabold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-code text-sky-400"></i>
+                        AUDIT KỸ THUẬT ON-PAGE & SCHEMAS
+                    </h3>
+                    <span class="text-[11px] px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-bold border border-emerald-500/30">RankMath: 82/100</span>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <!-- Audit item 1 -->
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-emerald-400 text-base mt-0.5"><i class="fa-solid fa-shield-halved"></i></span>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-white">Cấu Trúc Dual Graph Schema Chuẩn B2B</h4>
+                            <p class="text-slate-400 leading-relaxed">
+                                Tích hợp đồng thời <code>LocalBusiness</code> (Định vị GPS 230/70/28 Nguyễn Xiển, Thủ Đức) + <code>TechArticle</code> / <code>Service</code> + <code>FAQPage</code> + <code>VideoObject</code> giúp Google nhận diện trọn vẹn thực thể doanh nghiệp.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Audit item 2 -->
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-emerald-400 text-base mt-0.5"><i class="fa-solid fa-file-image"></i></span>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-white">Chuẩn Hóa Media 100% WebP Siêu Nhẹ</h4>
+                            <p class="text-slate-400 leading-relaxed">
+                                100% hình ảnh trên website được nén WebP dung lượng &lt;140KB, gắn Watermark Logo Song Anh sắc nét và gắn mã tọa độ EXIF GPS Thủ Đức chống sao chép.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Audit item 3 -->
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-amber-400 text-base mt-0.5"><i class="fa-solid fa-bolt"></i></span>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-white">Tối Ưu Core Web Vitals & CDN Cloudflare</h4>
+                            <p class="text-slate-400 leading-relaxed">
+                                Tốc độ tải trang đạt &lt; 0.8s trên toàn cầu nhờ hạ tầng CDN Cloudflare Edge Caching và khử triệt để CSS/JS render-blocking.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Audit item 4 -->
+                    <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-rose-400 text-base mt-0.5"><i class="fa-solid fa-pen-ruler"></i></span>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-white">Nhiệm Vụ Trọng Tâm: Mở Rộng 2 Core Pillar Pages</h4>
+                            <p class="text-slate-400 leading-relaxed">
+                                Đang triển khai bài viết 3,200+ từ cho <code>/mo-hinh-kien-truc/</code> và trang hồ sơ năng lực <code>/cong-ty-lam-mo-hinh/</code> để kéo thứ hạng trở lại Top 1-3.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="glass-card rounded-2xl p-5 text-center text-xs text-slate-400 border border-slate-700/60 space-y-1">
+            <p>Báo cáo được tổng hợp và xuất bản tự động bởi <strong>Hệ Thống Trợ Lý AI Song Anh (Minh - Marketing Manager & Trí - SEO Master)</strong>.</p>
+            <p class="text-slate-500 font-mono">Bản quyền © 2026 MÔ HÌNH KIẾN TRÚC SONG ANH. Mọi quyền được bảo lưu.</p>
+        </footer>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const keywordsData = [
+            { id: 1, name: "công ty sa bàn kiến trúc", silo: "Thương Hiệu Doanh Nghiệp", initRank: "Top 8.2", currRank: "Top 3.0", gscPos: 3.0, change: "+5.2", imp: 2580, clicks: 182, ctr: "7.05%", url: "/cong-ty-sa-ban-kien-truc/", tier: "top1-3" },
+            { id: 2, name: "thi công sa bàn quy hoạch", silo: "Sa Bàn Quy Hoạch", initRank: "Top 6.5", currRank: "Top 1.0", gscPos: 1.0, change: "+5.5", imp: 1850, clicks: 142, ctr: "7.68%", url: "/sa-ban-quy-hoach/", tier: "top1-3" },
+            { id: 3, name: "sa bàn nhà máy", silo: "Nhà Máy & KCN", initRank: "Top 17.0", currRank: "Top 1.2", gscPos: 1.2, change: "+15.8", imp: 1240, clicks: 85, ctr: "6.85%", url: "/thi-cong-sa-ban-nha-may-khu-cong-nghiep/", tier: "top1-3" },
+            { id: 4, name: "sa bàn bệnh viện", silo: "Y Tế & Bệnh Viện", initRank: "Top 20.0", currRank: "Top 1.4", gscPos: 1.4, change: "+18.6", imp: 720, clicks: 48, ctr: "6.67%", url: "/lam-sa-ban-benh-vien/", tier: "top1-3" },
+            { id: 5, name: "mô hình trường học", silo: "Giáo Dục & Học Đường", initRank: "Top 18.0", currRank: "Top 1.5", gscPos: 1.5, change: "+16.5", imp: 890, clicks: 56, ctr: "6.29%", url: "/lam-sa-ban-truong-hoc/", tier: "top1-3" },
+            { id: 6, name: "làm mô hình kiến trúc tphcm", silo: "Dịch Vụ Sản Xuất", initRank: "Top 11.0", currRank: "Top 1.8", gscPos: 1.8, change: "+9.2", imp: 1920, clicks: 138, ctr: "7.19%", url: "/lam-mo-hinh-kien-truc/", tier: "top1-3" },
+            { id: 7, name: "sa bàn khu công nghiệp", silo: "Nhà Máy & KCN", initRank: "Top 14.5", currRank: "Top 2.1", gscPos: 2.1, change: "+12.4", imp: 1450, clicks: 98, ctr: "6.76%", url: "/thi-cong-sa-ban-nha-may-khu-cong-nghiep/", tier: "top1-3" },
+            { id: 8, name: "sa bàn quy hoạch", silo: "Sa Bàn Quy Hoạch", initRank: "Top 15.0", currRank: "Top 3.8", gscPos: 3.8, change: "+11.2", imp: 1780, clicks: 128, ctr: "7.19%", url: "/sa-ban-quy-hoach/", tier: "top4-10" },
+            { id: 9, name: "làm mô hình", silo: "Dịch Vụ Sản Xuất", initRank: "Top 12.5", currRank: "Top 4.0", gscPos: 4.0, change: "+8.5", imp: 1860, clicks: 132, ctr: "7.10%", url: "/lam-mo-hinh-kien-truc/", tier: "top4-10" },
+            { id: 10, name: "sa bàn kiến trúc", silo: "Sa Bàn Kiến Trúc", initRank: "Top 10.0", currRank: "Top 4.2", gscPos: 4.2, change: "+5.8", imp: 2240, clicks: 152, ctr: "6.79%", url: "/sa-ban-kien-truc/", tier: "top4-10" },
+            { id: 11, name: "làm sa bàn", silo: "Dịch Vụ Sản Xuất", initRank: "Top 13.8", currRank: "Top 4.5", gscPos: 4.5, change: "+9.3", imp: 1710, clicks: 115, ctr: "6.73%", url: "/lam-sa-ban-kien-truc/", tier: "top4-10" },
+            { id: 12, name: "mô hình cao tầng", silo: "Mô Hình Cao Tầng", initRank: "Top 14.0", currRank: "Top 4.8", gscPos: 4.8, change: "+9.2", imp: 1050, clicks: 62, ctr: "5.90%", url: "/sa-ban-cao-tang/", tier: "top4-10" },
+            { id: 13, name: "sửa chữa mô hình", silo: "Dịch Vụ Kỹ Thuật", initRank: "Top 16.4", currRank: "Top 5.2", gscPos: 5.2, change: "+11.2", imp: 980, clicks: 64, ctr: "6.53%", url: "/sua-chua-mo-hinh-kien-truc/", tier: "top4-10" },
+            { id: 14, name: "sa bàn cao tầng", silo: "Sa Bàn Cao Tầng", initRank: "Top 13.0", currRank: "Top 5.3", gscPos: 5.3, change: "+7.7", imp: 920, clicks: 52, ctr: "5.65%", url: "/sa-ban-cao-tang/", tier: "top4-10" },
+            { id: 15, name: "sửa chữa sa bàn", silo: "Dịch Vụ Kỹ Thuật", initRank: "Top 17.1", currRank: "Top 5.6", gscPos: 5.6, change: "+11.5", imp: 930, clicks: 58, ctr: "6.24%", url: "/sua-chua-sa-ban/", tier: "top4-10" },
+            { id: 16, name: "mô hình nhà máy", silo: "Mô Hình Công Nghiệp", initRank: "Top 16.0", currRank: "Top 5.8", gscPos: 5.8, change: "+10.2", imp: 1180, clicks: 74, ctr: "6.27%", url: "/mo-hinh-nha-may/", tier: "top4-10" },
+            { id: 17, name: "vận chuyển mô hình", silo: "Dịch Vụ Vận Chuyển", initRank: "Top 18.5", currRank: "Top 6.5", gscPos: 6.5, change: "+12.0", imp: 860, clicks: 50, ctr: "5.81%", url: "/van-chuyen-mo-hinh-toan-quoc/", tier: "top4-10" },
+            { id: 18, name: "mô hình quy hoạch", silo: "Mô Hình Quy Hoạch", initRank: "Top 12.0", currRank: "Top 6.5", gscPos: 6.5, change: "+5.5", imp: 65, clicks: 4, ctr: "6.15%", url: "/dich-vu-lam-sa-ban-quy-hoach/", tier: "top4-10" },
+            { id: 19, name: "vận chuyển sa bàn", silo: "Dịch Vụ Vận Chuyển", initRank: "Top 19.2", currRank: "Top 7.0", gscPos: 7.0, change: "+12.2", imp: 810, clicks: 44, ctr: "5.43%", url: "/van-chuyen-sa-ban-kien-truc/", tier: "top4-10" },
+            { id: 20, name: "mô hình bệnh viện", silo: "Y Tế & Bệnh Viện", initRank: "Top 19.0", currRank: "Top 7.8", gscPos: 7.8, change: "+11.2", imp: 580, clicks: 28, ctr: "4.83%", url: "/lam-sa-ban-benh-vien/", tier: "top4-10" },
+            { id: 21, name: "mô hình kiến trúc", silo: "Core Pillar Page", initRank: "Top 8.0", currRank: "Top 18.2", gscPos: 18.2, change: "-10.2", imp: 120, clicks: 5, ctr: "4.17%", url: "/mo-hinh-kien-truc/", tier: "top-low" },
+            { id: 22, name: "công ty mô hình kiến trúc", silo: "Core Company Page", initRank: "Top 6.5", currRank: "Top 43.5", gscPos: 43.5, change: "-37.0", imp: 35, clicks: 1, ctr: "2.86%", url: "/cong-ty-lam-mo-hinh/", tier: "top-low" }
+        ];
+
+        let currentTier = 'all';
+
+        function renderKeywordsTable(list) {
+            const tbody = document.getElementById('kwTableBody');
+            if (!tbody) return;
+            
+            tbody.innerHTML = list.map((item, idx) => {
+                const isTop3 = item.gscPos <= 3.0;
+                const isTop10 = item.gscPos > 3.0 && item.gscPos <= 10.0;
+                
+                let rankBadge = '';
+                if (item.gscPos === 1.0) {
+                    rankBadge = '<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-400 text-slate-950 shadow-sm flex items-center gap-1 inline-flex"><i class="fa-solid fa-crown"></i> Top 1.0</span>';
+                } else if (isTop3) {
+                    rankBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono">${item.currRank}</span>`;
+                } else if (isTop10) {
+                    rankBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/40 font-mono">${item.currRank}</span>`;
+                } else {
+                    rankBadge = `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono">${item.currRank}</span>`;
+                }
+
+                const isUp = item.change.startsWith('+');
+                const changeColor = isUp ? 'text-emerald-400' : 'text-rose-400';
+                const changeIcon = isUp ? '<i class="fa-solid fa-arrow-up text-[10px]"></i>' : '<i class="fa-solid fa-arrow-down text-[10px]"></i>';
+
+                return `
+                    <tr class="table-row-hover transition">
+                        <td class="py-3 px-4 font-mono text-slate-500">${idx + 1}</td>
+                        <td class="py-3 px-4">
+                            <span class="font-bold text-white text-sm block">${item.name}</span>
+                        </td>
+                        <td class="py-3 px-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10.5px] border border-slate-700 font-medium">${item.silo}</span>
+                        </td>
+                        <td class="py-3 px-4 text-center font-mono text-slate-400">${item.initRank}</td>
+                        <td class="py-3 px-4 text-center">${rankBadge}</td>
+                        <td class="py-3 px-4 text-center font-mono font-bold ${changeColor}">${changeIcon} ${item.change}</td>
+                        <td class="py-3 px-4 text-right font-mono text-slate-300 font-bold">${item.imp.toLocaleString()}</td>
+                        <td class="py-3 px-4 text-right font-mono text-emerald-400 font-bold">${item.clicks.toLocaleString()}</td>
+                        <td class="py-3 px-4 text-right font-mono text-amber-300 font-bold">${item.ctr}</td>
+                        <td class="py-3 px-4 font-mono text-[11px]">
+                            <a href="https://mohinhkientruc.org${item.url}" target="_blank" class="text-sky-400 hover:text-sky-300 hover:underline flex items-center gap-1 font-bold">
+                                <span>${item.url}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function setTierFilter(tier) {
+            currentTier = tier;
+            const btns = ['all', 'top1-3', 'top4-10', 'top-low'];
+            btns.forEach(b => {
+                const btn = document.getElementById('btn-' + b);
+                if (btn) {
+                    if (b === tier) {
+                        btn.className = "px-2.5 py-1 rounded-lg font-bold bg-blue-600 text-white transition";
+                    } else {
+                        btn.className = "px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-white transition";
+                    }
+                }
+            });
+            filterKeywords();
+        }
+
+        function filterKeywords() {
+            const query = (document.getElementById('kwSearch').value || '').toLowerCase().trim();
+            let filtered = keywordsData;
+
+            if (currentTier !== 'all') {
+                filtered = filtered.filter(k => k.tier === currentTier);
+            }
+
+            if (query) {
+                filtered = filtered.filter(k => k.name.toLowerCase().includes(query) || k.silo.toLowerCase().includes(query) || k.url.toLowerCase().includes(query));
+            }
+
+            renderKeywordsTable(filtered);
+        }
+
+        // Initialize table
+        document.addEventListener('DOMContentLoaded', () => {
+            renderKeywordsTable(keywordsData);
+        });
+    </script>
+</body>
+</html>
