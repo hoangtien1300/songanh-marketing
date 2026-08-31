@@ -21,24 +21,30 @@
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
-        function toggleMobileSidebar() {
+        function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            if (sidebar.classList.contains('mobile-open')) {
-                closeMobileSidebar();
+            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                closeSidebarMenu();
             } else {
+                sidebar.classList.add('sidebar-open');
                 sidebar.classList.add('mobile-open');
                 if (backdrop) backdrop.classList.add('active');
             }
         }
-
-        function closeMobileSidebar() {
+        function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
-            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (sidebar) {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.remove('mobile-open');
+            }
             if (backdrop) backdrop.classList.remove('active');
         }
+        function toggleMobileSidebar() { toggleSidebarMenu(); }
+        function closeMobileSidebar() { closeSidebarMenu(); }
 
         function selectMobileBottomNav(moduleId) {
             selectModule(moduleId);
@@ -491,11 +497,11 @@
             top: 0 !important;
             bottom: 0 !important;
             left: 0 !important;
-            z-index: 100 !important;
-            width: 300px !important;
+            z-index: 99999 !important;
+            width: 310px !important;
             transform: translateX(-100%) !important;
-            box-shadow: 4px 0 28px rgba(15, 23, 42, 0.25) !important;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: 6px 0 32px rgba(15, 23, 42, 0.35) !important;
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
             height: 100vh !important;
             background: #FFFFFF !important;
         }
@@ -506,10 +512,10 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(3px);
-            z-index: 99;
-            transition: opacity 0.25s ease;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(4px);
+            z-index: 99990 !important;
+            cursor: pointer;
         }
         #mobile-drawer-backdrop.active {
             display: block !important;
@@ -547,6 +553,33 @@
         }
 
     </style>
+    <script>
+        // Early global definition for Instant Menu Toggle
+        function toggleSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                closeSidebarMenu();
+            } else {
+                sidebar.classList.add('sidebar-open');
+                sidebar.classList.add('mobile-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+        function closeSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (sidebar) {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.remove('mobile-open');
+            }
+            if (backdrop) backdrop.classList.remove('active');
+        }
+        function toggleMobileSidebar() { toggleSidebarMenu(); }
+        function closeMobileSidebar() { closeSidebarMenu(); }
+    </script>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-white">
 
@@ -4019,24 +4052,30 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
-        function toggleMobileSidebar() {
+        function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            if (sidebar.classList.contains('mobile-open')) {
-                closeMobileSidebar();
+            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                closeSidebarMenu();
             } else {
+                sidebar.classList.add('sidebar-open');
                 sidebar.classList.add('mobile-open');
                 if (backdrop) backdrop.classList.add('active');
             }
         }
-
-        function closeMobileSidebar() {
+        function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
-            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (sidebar) {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.remove('mobile-open');
+            }
             if (backdrop) backdrop.classList.remove('active');
         }
+        function toggleMobileSidebar() { toggleSidebarMenu(); }
+        function closeMobileSidebar() { closeSidebarMenu(); }
 
         function selectMobileBottomNav(moduleId) {
             selectModule(moduleId);
@@ -12049,24 +12088,30 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
-        function toggleMobileSidebar() {
+        function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            if (sidebar.classList.contains('mobile-open')) {
-                closeMobileSidebar();
+            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
+            if (isOpen) {
+                closeSidebarMenu();
             } else {
+                sidebar.classList.add('sidebar-open');
                 sidebar.classList.add('mobile-open');
                 if (backdrop) backdrop.classList.add('active');
             }
         }
-
-        function closeMobileSidebar() {
+        function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
-            if (sidebar) sidebar.classList.remove('mobile-open');
+            if (sidebar) {
+                sidebar.classList.remove('sidebar-open');
+                sidebar.classList.remove('mobile-open');
+            }
             if (backdrop) backdrop.classList.remove('active');
         }
+        function toggleMobileSidebar() { toggleSidebarMenu(); }
+        function closeMobileSidebar() { closeSidebarMenu(); }
 
         function selectMobileBottomNav(moduleId) {
             selectModule(moduleId);
