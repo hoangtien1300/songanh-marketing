@@ -12511,7 +12511,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
         function setPinTemplate(templateId) {
             currentPinTemplate = templateId;
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 4; i++) {
                 const btn = document.getElementById('btn-tmpl-' + i);
                 if (btn) {
                     if (i === templateId) {
@@ -12522,7 +12522,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 }
             }
             renderPinCanvas();
-            showToast("🎨 Đã chuyển sang Mẫu Template " + templateId);
+            showToast("🎨 Đã chuyển sang Mẫu Canva Style " + templateId);
         }
 
         function loadPinPreset(presetKey) {
@@ -12641,129 +12641,192 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 }
             }
 
-            if (currentPinTemplate === 1) {
+                        if (currentPinTemplate === 1) {
                 // =========================================================================
-                // TEMPLATE 1: MODERN ARCHITECTURAL MINIMALIST V2
+                // CANVA STYLE 1: ARCHDAILY / LUXURY MINIMALIST HERO (Thin hairline white frame)
                 // =========================================================================
-                const grad = ctx.createLinearGradient(0, H - 450, 0, H);
+                // Hairline white frame
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
+                ctx.lineWidth = 2;
+                ctx.strokeRect(30, 30, W - 60, H - 60);
+
+                // Deep gradient
+                const grad = ctx.createLinearGradient(0, H - 460, 0, H);
                 grad.addColorStop(0, "rgba(11, 19, 43, 0)");
                 grad.addColorStop(0.35, "rgba(11, 19, 43, 0.85)");
                 grad.addColorStop(1, "rgba(11, 19, 43, 0.98)");
                 ctx.fillStyle = grad;
-                ctx.fillRect(0, H - 450, W, 450);
+                ctx.fillRect(0, H - 460, W, 460);
 
                 drawTopLogo();
 
                 // Gold Badge
                 ctx.fillStyle = "#D4A017";
                 ctx.beginPath();
-                ctx.roundRect(50, H - 320, 260, 42, 10);
+                ctx.roundRect(60, H - 330, 280, 42, 8);
                 ctx.fill();
                 ctx.fillStyle = "#0F172A";
                 ctx.font = "bold 18px 'Be Vietnam Pro', sans-serif";
                 ctx.textAlign = "left";
-                ctx.fillText("★ TỶ LỆ 1/500 • LED 3 CHẾ ĐỘ", 68, H - 293);
+                ctx.fillText("★ SA BÀN QUY HOẠCH ĐÔ THỊ", 78, H - 303);
 
                 // Main Title
                 ctx.fillStyle = "#FFFFFF";
                 ctx.font = "bold 44px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText(title, 50, H - 235);
+                ctx.fillText(title, 60, H - 245);
 
                 // Subtitle
                 ctx.fillStyle = "#CBD5E1";
                 ctx.font = "500 24px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText(subtitle, 50, H - 180);
+                ctx.fillText(subtitle, 60, H - 190);
 
                 // Footer Line & Meta
                 ctx.strokeStyle = "#475569";
-                ctx.lineWidth = 2;
+                ctx.lineWidth = 1;
                 ctx.beginPath();
-                ctx.moveTo(50, H - 130); ctx.lineTo(W - 50, H - 130);
+                ctx.moveTo(60, H - 140); ctx.lineTo(W - 60, H - 140);
                 ctx.stroke();
 
                 ctx.fillStyle = "#FEF3C7";
-                ctx.font = "bold 22px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 50, H - 90);
+                ctx.font = "bold 20px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 60, H - 105);
 
                 ctx.fillStyle = "#94A3B8";
                 ctx.font = "20px 'Be Vietnam Pro', sans-serif";
                 ctx.textAlign = "right";
-                ctx.fillText("Xưởng Thủ Đức, TP.HCM", W - 50, H - 90);
+                ctx.fillText("Xưởng Thủ Đức, TP.HCM", W - 60, H - 105);
 
             } else if (currentPinTemplate === 2) {
                 // =========================================================================
-                // TEMPLATE 2: EDITORIAL MAGAZINE V2
+                // CANVA STYLE 2: SCANDINAVIAN STUDIO EDITORIAL
                 // =========================================================================
-                const cardH = 360;
+                const cardH = 380;
                 ctx.fillStyle = "#F8FAFC";
                 ctx.fillRect(0, H - cardH, W, cardH);
 
                 ctx.fillStyle = "#D4A017";
-                ctx.fillRect(0, H - cardH, W, 8);
+                ctx.fillRect(0, H - cardH, W, 6);
 
                 drawTopLogo();
 
+                ctx.fillStyle = "#B45309";
+                ctx.font = "bold 18px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText("SA BÀN NHÀ MÁY & KHU CÔNG NGHIỆP", 60, H - cardH + 45);
+
                 ctx.fillStyle = "#0F172A";
                 ctx.font = "bold 42px 'Be Vietnam Pro', sans-serif";
-                ctx.textAlign = "left";
-                ctx.fillText(title, 50, H - cardH + 70);
+                ctx.fillText(title, 60, H - cardH + 95);
 
                 ctx.fillStyle = "#475569";
                 ctx.font = "500 24px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText(subtitle, 50, H - cardH + 130);
+                ctx.fillText(subtitle, 60, H - cardH + 155);
 
                 ctx.strokeStyle = "#E2E8F0";
                 ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(50, H - cardH + 180); ctx.lineTo(W - 50, H - cardH + 180);
+                ctx.moveTo(60, H - cardH + 205); ctx.lineTo(W - 60, H - cardH + 205);
                 ctx.stroke();
 
                 ctx.fillStyle = "#B45309";
-                ctx.font = "bold 22px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 50, H - cardH + 230);
+                ctx.font = "bold 20px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 60, H - cardH + 245);
 
                 ctx.fillStyle = "#64748B";
                 ctx.font = "20px 'Be Vietnam Pro', sans-serif";
                 ctx.textAlign = "right";
-                ctx.fillText("Xưởng Thủ Đức, TP.HCM", W - 50, H - cardH + 230);
+                ctx.fillText("Xưởng: TP. Thủ Đức, TP.HCM", W - 60, H - cardH + 245);
 
             } else if (currentPinTemplate === 3) {
                 // =========================================================================
-                // TEMPLATE 3: DUAL-FOCUS DETAIL & CONTEXT V2 (BRAND NAVY & GOLD)
+                // CANVA STYLE 3: 3-FRAME ARCHITECTURAL STORY GRID (Collage Grid)
                 // =========================================================================
-                const bannerH = 160;
-                const topH = 920;
-
-                ctx.fillStyle = "#0B3C5D";
-                ctx.fillRect(0, topH, W, bannerH);
-                ctx.fillStyle = "#D4A017";
-                ctx.fillRect(0, topH, W, 6);
-                ctx.fillRect(0, topH + bannerH - 6, W, 6);
+                // Draw middle floating ribbon
+                ctx.fillStyle = "rgba(11, 60, 93, 0.96)";
+                ctx.strokeStyle = "#D4A017";
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.roundRect(40, 780, W - 80, 180, 16);
+                ctx.fill();
+                ctx.stroke();
 
                 drawTopLogo();
 
                 ctx.fillStyle = "#FFFFFF";
-                ctx.font = "bold 38px 'Be Vietnam Pro', sans-serif";
+                ctx.font = "bold 36px 'Be Vietnam Pro', sans-serif";
                 ctx.textAlign = "left";
-                ctx.fillText(title, 50, topH + 65);
+                ctx.fillText(title, 70, 835);
 
                 ctx.fillStyle = "#FEF3C7";
                 ctx.font = "500 22px 'Be Vietnam Pro', sans-serif";
-                ctx.fillText(subtitle + " • Hotline: 0929 22 4444", 50, topH + 120);
+                ctx.fillText(subtitle, 70, 885);
 
-                // Bottom Macro Label
-                ctx.fillStyle = "rgba(11, 60, 93, 0.9)";
-                ctx.strokeStyle = "#D4A017";
-                ctx.lineWidth = 2;
+                ctx.fillStyle = "#94A3B8";
+                ctx.font = "18px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 70, 925);
+
+                // Bottom badges
+                ctx.fillStyle = "rgba(15, 23, 42, 0.88)";
                 ctx.beginPath();
-                ctx.roundRect(W - 360, H - 70, 310, 45, 10);
+                ctx.roundRect(35, H - 75, 220, 40, 6);
+                ctx.roundRect(W - 275, H - 75, 240, 40, 6);
                 ctx.fill();
-                ctx.stroke();
 
                 ctx.fillStyle = "#FFFFFF";
-                ctx.font = "bold 17px 'Be Vietnam Pro', sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText("🔍 CẬN CẢNH ĐÈN LED CHI TIẾT", W - 205, H - 42);
+                ctx.font = "bold 16px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("🔍 CHI TIẾT IN 3D 8K", 55, H - 48);
+                ctx.fillText("💡 ĐÈN LED ĐÊM", W - 255, H - 48);
+
+            } else if (currentPinTemplate === 4) {
+                // =========================================================================
+                // CANVA STYLE 4: DARK LUXURY GOLD BRAND IDENTITY (Top Header Strip)
+                // =========================================================================
+                const stripH = 130;
+                ctx.fillStyle = "#0B3C5D";
+                ctx.fillRect(0, 0, W, stripH);
+                ctx.fillStyle = "#D4A017";
+                ctx.fillRect(0, stripH - 5, W, 5);
+
+                drawTopLogo();
+
+                const grad = ctx.createLinearGradient(0, H - 420, 0, H);
+                grad.addColorStop(0, "rgba(11, 19, 43, 0)");
+                grad.addColorStop(0.35, "rgba(11, 19, 43, 0.85)");
+                grad.addColorStop(1, "rgba(11, 19, 43, 0.98)");
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, H - 420, W, 420);
+
+                ctx.fillStyle = "#D4A017";
+                ctx.beginPath();
+                ctx.roundRect(50, H - 310, 260, 42, 8);
+                ctx.fill();
+                ctx.fillStyle = "#0F172A";
+                ctx.font = "bold 18px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "left";
+                ctx.fillText("★ CHẤT LƯỢNG CAO CẤP", 68, H - 283);
+
+                ctx.fillStyle = "#FFFFFF";
+                ctx.font = "bold 44px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(title, 50, H - 225);
+
+                ctx.fillStyle = "#CBD5E1";
+                ctx.font = "500 24px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText(subtitle, 50, H - 170);
+
+                ctx.strokeStyle = "#475569";
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(50, H - 120); ctx.lineTo(W - 50, H - 120);
+                ctx.stroke();
+
+                ctx.fillStyle = "#FEF3C7";
+                ctx.font = "bold 20px 'Be Vietnam Pro', sans-serif";
+                ctx.fillText("Hotline: 0929 22 4444 • mohinhkientruc.org", 50, H - 85);
+
+                ctx.fillStyle = "#94A3B8";
+                ctx.font = "20px 'Be Vietnam Pro', sans-serif";
+                ctx.textAlign = "right";
+                ctx.fillText("Xưởng Thủ Đức, TP.HCM", W - 50, H - 85);
             }
         }
 
