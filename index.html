@@ -4103,12 +4103,13 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         <input type="text" id="audience-search-input" oninput="filterAudienceCards()" placeholder="Tìm tên đối tượng, nỗi đau..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-hidden transition">
                     </div>
                     <select id="audience-segment-filter" onchange="filterAudienceCards()" class="text-xs bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 font-bold text-slate-700 focus:outline-hidden">
-                        <option value="all">🌐 Tất Cả Phân Khúc</option>
-                        <option value="bds">🏢 Chủ Đầu Tư BĐS</option>
-                        <option value="kts">📐 Kiến Trúc Sư & Thiết Kế</option>
-                        <option value="fdi">🏭 Doanh Nghiệp FDI / KCN</option>
+                        <option value="all">🌐 Tất Cả Phân Khúc (12 Chân Dung)</option>
+                        <option value="bds">🏢 Chủ Đầu Tư BĐS & Sân Golf</option>
+                        <option value="kts">📐 KTS & Thiết Kế Quốc Tế</option>
+                        <option value="fdi">🏭 FDI, Logistics & Thủy Sản</option>
                         <option value="epc">🏗️ Tổng Thầu EPC Xây Dựng</option>
-                        <option value="quyhoach">🏛️ Ban Quản Lý & Quy Hoạch</option>
+                        <option value="quyhoach">🏛️ Quy Hoạch, Trường Học & Y Tế</option>
+                        <option value="khac">🎓 TMĐT Vật Liệu & Khác</option>
                     </select>
                 </div>
 
@@ -11954,6 +11955,66 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // =========================================================================
         let targetAudiencesData = [
             {
+                        "id": "aud-retail-materials",
+                        "name": "Sinh Viên Kiến Trúc, KTS Trẻ & Xưởng Thủ Công Làm Sa Bàn (Mảng TMĐT Vật Liệu)",
+                        "segment": "khac",
+                        "icon": "🎓",
+                        "painPoints": "Cần tìm nguồn cung cấp bột cỏ tơi xốp không rụng, keo xịt DM Super 77 dán không ố mica, cây mô hình, đèn LED vi mạch và phụ kiện sa bàn chính hãng giao nhanh hỏa tốc.",
+                        "triggers": "Hàng sẵn tại xưởng Thủ Đức, giá sỉ/lẻ cạnh tranh, tư vấn kỹ thuật tận tâm, ship hỏa tốc kịp làm đồ án tốt nghiệp.",
+                        "tone": "Thân thiện, chia sẻ bí quyết nghề thực tế, truyền cảm hứng đam mê sáng tạo kiến trúc.",
+                        "desc": "Sinh viên ĐH Kiến Trúc, Bách Khoa, Văn Lang, HUTECH; KTS nội thất tự làm mô hình concept. Tiếp cận qua Kênh TMĐT, Shopee, Group Facebook Mô Hình."
+            },
+            {
+                        "id": "aud-global-architects",
+                        "name": "Văn Phòng Kiến Trúc Quốc Tế & Nhà Phát Triển BĐS Nước Ngoài (Mỹ, Úc, Singapore)",
+                        "segment": "kts",
+                        "icon": "🌍",
+                        "painPoints": "Cần tìm đối tác xưởng gia công sa bàn kiến trúc xuất khẩu chất lượng cao (Scale Model Making in Vietnam) với chi phí tối ưu 50-70% so với nội địa, đóng thùng gỗ chuẩn hàng không.",
+                        "triggers": "Khả năng đọc hiểu bản vẽ tiếng Anh/Revit chuẩn 100%, máy in 3D 8K sắc sảo, giao tiếp chuyên nghiệp bằng Tiếng Anh, tiến độ cam kết kịp ngày bay sự kiện.",
+                        "tone": "Professional Global B2B English & Vietnamese, precise technical terminology, high-end craftsmanship.",
+                        "desc": "Design firms tại Mỹ, Úc, Singapore, Nhật Bản, Campuchia... Tiếp cận qua Fanpage Architectural Model Org, LinkedIn và Website Tiếng Anh."
+            },
+            {
+                        "id": "aud-agri-aquaculture",
+                        "name": "Doanh Nghiệp Nông Nghiệp & Thủy Sản Công Nghệ Cao",
+                        "segment": "fdi",
+                        "icon": "🦐",
+                        "painPoints": "Sa bàn mô hình trang trại nuôi tôm siêu thâm canh, nhà màng nông nghiệp thông minh, hệ thống ao tròn và mương cấp thoát khép kín phục vụ gian hàng triển lãm Vietfish và hội chợ xúc tiến thương mại.",
+                        "triggers": "Trực quan hóa công nghệ xử lý nước và tuần hoàn oxy trong 30 giây, kết cấu khung nhôm gọn nhẹ dễ dàng đóng gói di chuyển triển lãm toàn quốc.",
+                        "tone": "Thực tế, dẫn đầu xu hướng công nghệ xanh, bảo vệ môi trường, tối ưu năng suất canh tác.",
+                        "desc": "Tập đoàn Thủy sản (Minh Phú, CP, Việt Úc...), Hợp tác xã nông nghiệp công nghệ cao. Tiếp cận qua Facebook Groups Nông nghiệp, Triển lãm Vietfish."
+            },
+            {
+                        "id": "aud-logistics-port",
+                        "name": "Doanh Nghiệp Cảng Biển, Cảng Cạn ICD & Trung Tâm Logistics",
+                        "segment": "fdi",
+                        "icon": "📦",
+                        "painPoints": "Sa bàn cụm cảng nước sâu, bến bãi container, cầu cạn, luồng tàu bè và mạng lưới hạ tầng kết nối liên vùng phục vụ báo cáo Bộ GTVT, trình duyệt quy hoạch và xúc tiến hãng tàu quốc tế.",
+                        "triggers": "Mô phỏng chi tiết cẩu giàn bờ STS, xe nâng reach stacker, đèn tín hiệu luồng hàng hải, độ bền vật liệu cao trong môi trường sảnh tiếp đón.",
+                        "tone": "Vững chãi, tầm nhìn chiến lược vĩ mô, chuẩn mực kỹ thuật hàng hải và chuỗi cung ứng toàn cầu.",
+                        "desc": "Tổng Công ty Tân Cảng, Cảng Sài Gòn, Gemadept, Doanh nghiệp Logistics KCN. Tiếp cận qua Website, Báo Đầu Tư và GBP Maps."
+            },
+            {
+                        "id": "aud-golf",
+                        "name": "Chủ Đầu Tư Sân Golf & Khu Nghỉ Dưỡng Golf Cao Cấp",
+                        "segment": "bds",
+                        "icon": "⛳",
+                        "painPoints": "Sa bàn địa hình 18-36 hố golf, Clubhouse và biệt thự sân golf với cao độ đồi dốc giật cấp, hồ nước và bẫy cát sinh động phục vụ bán thẻ hội viên (Golf Club Membership) và tiếp đón golfer VIP.",
+                        "triggers": "Độ chuẩn xác địa hình giật cấp từng milimet, hiệu ứng cỏ fairway và bunker cát chân thực, ánh sáng dynamic ban đêm sang trọng.",
+                        "tone": "Thượng lưu, tinh tế, đẳng cấp, tôn vinh nghệ thuật thiết kế cảnh quan sân golf và trải nghiệm thể thao đỉnh cao.",
+                        "desc": "Chủ đầu tư chuỗi sân golf, Giám đốc điều hành Golf Club, Quản lý sân tập golf 3D. Tiếp cận qua Profile Sếp Tiến, Hội Golfer và Pinterest."
+            },
+            {
+                        "id": "aud-edu-med",
+                        "name": "Ban Giám Hiệu & HĐQT Trường Quốc Tế, Viện Nghiên Cứu & Bệnh Viện",
+                        "segment": "quyhoach",
+                        "icon": "🏫",
+                        "painPoints": "Sa bàn tổng thể khuôn viên trường học, bệnh viện đa khoa, trung tâm y tế kỹ thuật cao phục vụ lễ khánh thành, tuyển sinh, xúc tiến tài trợ và trưng bày sảnh truyền thống.",
+                        "triggers": "Tái hiện cảnh quan xanh tơi xốp, hệ thống khối nhà giảng đường/khu nội trú đạt chuẩn quốc tế, ánh sáng LED ấm áp, đóng gói bảo quản lâu năm.",
+                        "tone": "Trang trọng, nhân văn, chuẩn mực học thuật và y đức, đề cao môi trường giáo dục và chăm sóc sức khỏe cộng đồng.",
+                        "desc": "Hội đồng trường quốc tế (UTS, RMIT, BIS...), Ban Giám đốc Bệnh viện công & tư. Tiếp cận qua công văn, triển lãm giáo dục và Website."
+            },
+            {
                         "id": "aud-resort",
                         "name": "Chủ Đầu Tư Resort Nghỉ Dưỡng & Trung Tâm Thương Mại",
                         "segment": "bds",
@@ -12013,7 +12074,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         "tone": "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án, nhấn mạnh giá trị gia tăng và tiến độ cam kết.",
                         "desc": "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án. Tiếp cận hiệu quả qua Profile Sếp Tiến, Hội đồng BĐS, Báo Đầu Tư."
             }
-];
+]
         const TARGET_AUDIENCES_NOTION_URL = 'https://www.notion.so/3cd4b5e73d90813d8812c44bc8ad33df';
 
         function initTargetAudiencesData() {
@@ -12021,8 +12082,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 const saved = localStorage.getItem('songanh_target_audiences');
                 if (saved) {
                     const parsed = JSON.parse(saved);
-                    if (Array.isArray(parsed) && parsed.length > 0) {
+                    if (Array.isArray(parsed) && parsed.length >= 12) {
                         targetAudiencesData = parsed;
+                    } else {
+                        localStorage.removeItem('songanh_target_audiences');
                     }
                 }
             } catch(e) { console.error("Error loading audiences:", e); }
