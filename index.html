@@ -557,48 +557,37 @@
 
             // 1. Resolve Objects from System Data
             const selectedAud = (Array.isArray(targetAudiencesData) ? targetAudiencesData.find(a => a.id === audId) : null) || {
-                name: "Chủ Đầu Tư & Đối Tác B2B",
-                segment: "bds",
-                painPoints: "Khách hàng khó hình dung không gian thực tế từ bản vẽ 2D",
-                triggers: "Chất lượng hoàn thiện tinh xảo, tiến độ bàn giao đúng hẹn",
-                tone: "Điềm tĩnh, trang trọng, chuyên nghiệp B2B"
+                name: "Khách Hàng & Đối Tác",
+                segment: "bds"
             };
 
             const selectedGoal = (Array.isArray(contentGoalsData) ? contentGoalsData.find(g => g.id === goalId) : null) || {
-                name: "Khẳng Định Năng Lực & Dự Toán B2B",
-                type: "Báo Giá & Chuyển Đổi",
-                intent: "Thúc đẩy chuyển đổi và liên hệ tư vấn phương án kỹ thuật",
-                structure: "Đi từ vấn đề thực tế đến giải pháp sa bàn và kêu gọi hành động",
-                cta: "Kính mời gửi file CAD/Revit qua Zalo 0929 22 4444 nhận dự toán chi tiết trong 30 phút."
+                name: "Báo Giá & Xem Mẫu Thực Tế",
+                type: "Báo Giá"
             };
 
             const selectedChan = (Array.isArray(socialChannelsData) ? socialChannelsData.find(c => c.id === chanId) : null) || {
                 name: "Fanpage Mô hình kiến trúc Song Anh",
                 platform: "Facebook",
-                type: "Fanpage Chính (B2B VN)",
-                direct_url: "https://mohinhkientruc.org",
-                gioithieu: "Trang thông tin chính thức của Mô hình kiến trúc Song Anh.",
-                vaitro: "Kênh phân phối nội dung B2B cốt lõi",
-                mucdich: "Tiếp cận khách hàng B2B"
+                type: "Fanpage Chính",
+                direct_url: "https://mohinhkientruc.org"
             };
 
             const selectedFormula = (Array.isArray(writingFormulasData) ? writingFormulasData.find(f => f.id === formulaId) : null) || {
                 code: "PAS",
-                name: "PAS (Problem - Agitate - Solution)",
-                structure: "1. Vấn đề ➔ 2. Đào sâu rủi ro ➔ 3. Giải pháp sa bàn Song Anh"
+                name: "PAS"
             };
 
-            // 2. Extract Project Core & Context
-            const topicBrief = rawIdea || "Sa bàn kiến trúc chất lượng cao tại Xưởng Mô hình Song Anh";
+            // 2. Extract Project Core & Context (Dễ hiểu, bình dân)
+            const topicBrief = rawIdea || "Sa bàn kiến trúc tại Xưởng Mô hình Song Anh";
             const rawLower = topicBrief.toLowerCase();
             const projName = cleanProjectRawTitle(topicBrief);
 
-            // Detect Project Domain
             let isEventOrUrban = rawLower.includes("sự kiện") || rawLower.includes("xúc tiến") || rawLower.includes("cà mau") || rawLower.includes("tỉnh") || rawLower.includes("quy hoạch");
-            let isIndustrial = rawLower.includes("kcn") || rawLower.includes("nhà máy") || rawLower.includes("fdi") || rawLower.includes("thép") || rawLower.includes("kho bãi");
-            let isGolf = rawLower.includes("golf") || rawLower.includes("fairway") || rawLower.includes("bunker");
             let isMaintenance = rawLower.includes("sửa") || rawLower.includes("bảo trì") || rawLower.includes("hỏng") || rawLower.includes("bụi bẩn") || rawLower.includes("vệ sinh");
-            let isInterior = rawLower.includes("cắt bổ") || rawLower.includes("nội thất") || rawLower.includes("penthouse") || rawLower.includes("duplex");
+            let isIndustrial = rawLower.includes("kcn") || rawLower.includes("nhà máy") || rawLower.includes("fdi") || rawLower.includes("thép") || rawLower.includes("kho bãi");
+            let isGolf = rawLower.includes("golf") || rawLower.includes("fairway");
+            let isInterior = rawLower.includes("cắt bổ") || rawLower.includes("nội thất") || rawLower.includes("căn hộ mẫu") || rawLower.includes("penthouse");
 
             let postText = "";
             let commentText = "";
@@ -611,142 +600,138 @@
             const isGroupChannel = selectedChan.name.includes("Groups") || selectedChan.name.includes("Group");
 
             // -----------------------------------------------------------------
-            // 📝 PUNCHY, HIGH-CONVERTING B2B COPYWRITING ENGINE
+            // 📝 BÌNH DÂN HỌC VỤ B2B COPYWRITING ENGINE (ĐỜI THƯỜNG, DỄ HIỂU, GẦN GŨI)
             // -----------------------------------------------------------------
 
-            // CASE 1: GLOBAL ENGLISH (Quốc tế - Súc tích, sang trọng)
+            // CASE 1: GLOBAL ENGLISH (Quốc tế súc tích, tự nhiên)
             if (isGlobalEnglish) {
                 badgeText = "🌐 Global English Post";
-                postText = `PHYSICAL SCALE MODELS — THE ULTIMATE CENTERPIECE FOR STRATEGIC PRESENTATIONS\n\n` +
-                    `Transforming complex architectural and provincial masterplans into an intuitive, tangible physical experience for ${selectedAud.name}.\n\n` +
-                    `At the upcoming event, physical scale models serve as the visual magnet — providing global investors and stakeholders with an immediate, comprehensive understanding of the masterplan.\n\n` +
-                    `✔ High-precision SLA resin 3D printing & Laser Acrylic craftsmanship.\n` +
-                    `✔ Multi-zone Micro-LED system replicating true-to-life ambient illumination.\n` +
-                    `✔ Custom heavy-duty shockproof wooden packaging for safe worldwide delivery.\n\n` +
-                    `📞 Direct Inquiry/WhatsApp: +84 929 22 4444\n` +
+                postText = `BRINGING ARCHITECTURAL PLANS TO LIFE WITH REALISTIC SCALE MODELS\n\n` +
+                    `Instead of looking at complex 2D drawings, a detailed scale model helps investors and clients immediately see the big picture.\n\n` +
+                    `✔ Precise miniature detailing with 8K 3D printing & clean acrylic.\n` +
+                    `✔ Warm ambient LED lighting that makes the whole project glow.\n` +
+                    `✔ Safe shockproof wooden crate packaging delivered worldwide.\n\n` +
+                    `📞 Contact/WhatsApp: +84 929 22 4444\n` +
                     `🌐 https://architecturalmodel.org/en/`;
 
-                commentText = `💬 First Comment / Reference Link:\nExplore our international typical project portfolio: https://architecturalmodel.org/en/category/typical-project/\nHotline: +84 929 22 4444`;
-                promptText = `Ultra-realistic professional architectural scale model of ${projName}, 1/100 scale, miniature illuminated buildings, warm ambient LED lighting, exhibition showroom lighting, professional architectural photography, 8k resolution --ar 16:9`;
+                commentText = `💬 First Comment:\nSee our latest project portfolio at: https://architecturalmodel.org/en/category/typical-project/\nHotline: +84 929 22 4444`;
+                promptText = `Realistic architectural scale model of ${projName}, miniature buildings, warm ambient LED lighting, exhibition showroom setting, sharp focus, 8k --ar 16:9`;
 
-            // CASE 2: PROFILE SẾP TIẾN (Chân thực, trải lòng, góc nhìn chuyên gia B2B)
+            // CASE 2: PROFILE SẾP TIẾN (Giọng kể chuyện người thật việc thật, mộc mạc)
             } else if (isProfileChannel) {
                 badgeText = "👤 Profile Sếp Tiến";
 
                 if (isEventOrUrban) {
-                    postText = `Có mặt trực tiếp tại địa điểm sự kiện trước giờ khai mạc để cùng anh em kỹ thuật hoàn thiện những công đoạn căn chỉnh sa bàn cuối cùng.\n\n` +
-                        `Khi toàn bộ hệ thống dải LED giao thông và phân khu kinh tế được kích hoạt sáng đồng bộ, cả hội trường như bừng sáng. Đằng sau một tác phẩm quy hoạch hoàn thiện là nhiều ngày đêm anh em tại xưởng Song Anh làm việc liên tục để đảm bảo tiến độ và độ sắc nét từng chi tiết.\n\n` +
-                        `Với Tiến, sa bàn không chỉ là vật phẩm trưng bày. Đó là cây cầu trực quan nhất giúp các nhà đầu tư và lãnh đạo nhìn thấy rõ tầm nhìn phát triển của cả một vùng đất ngay trong tầm mắt.\n\n` +
-                        `Chúc sự kiện diễn ra thành công tốt đẹp và mở ra nhiều cơ hội hợp tác bứt phá! 🤝\n\n` +
-                        `#MoHinhKienTruc #SaBanQuyHoach #SongAnhModel #TienRS`;
+                    postText = `Hôm nay em có mặt ở Cà Mau từ sớm để kịp lắp đặt sa bàn cho sự kiện xúc tiến thương mại của tỉnh.\n\n` +
+                        `Chạy xe đường dài cũng mệt, nhưng lúc cắm điện lên, thấy toàn bộ mô hình sáng đèn rực rỡ, từng tuyến đường và khu đất hiện lên rõ ràng, bao nhiêu mệt mỏi tự nhiên tan biến hết.\n\n` +
+                        `Có cái mô hình thực tế đặt ở sảnh thế này, bà con hay các bác đầu tư tới xem chỉ cần nhìn qua là hiểu ngay dự án và quy hoạch sắp tới ra sao, không cần phải đọc bản vẽ phức tạp.\n\n` +
+                        `Chúc cho sự kiện của tỉnh Cà Mau diễn ra thật thành công và thuận lợi! 🤝\n\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh #tienrs`;
                 } else if (isMaintenance) {
-                    postText = `Nhiều chủ đầu tư thường lo lắng khi sa bàn tại Sales Gallery sau 1-2 năm bị bám bụi hoặc chập chờn đèn LED thì xử lý thế nào.\n\n` +
-                        `Hôm nay đội kỹ thuật Song Anh vừa hoàn tất ca phục hồi tại chỗ trong 24 giờ: hút bụi tĩnh điện, phục chế màu sơn và nâng cấp toàn bộ vi mạch LED mới. Khi bật điện lại, không gian sảnh đón tiếp lập tức lấy lại vẻ sang trọng như ngày đầu khai trương.\n\n` +
-                        `Sa bàn là bộ mặt của dự án, giữ gìn độ sáng đẹp chính là giữ gìn uy tín với khách mua nhà. 🤝\n\n` +
-                        `#BaoTriSaBan #MoHinhKienTruc #SongAnhModel`;
+                    postText = `Sa bàn để ở phòng bán hàng lâu ngày bị bám bụi hay chập đèn, nhìn vừa mất thẩm mỹ lại giảm giá trị dự án.\n\n` +
+                        `Hôm nay đội thợ bên em vừa chạy qua vệ sinh, sơn sửa lại và thay dàn đèn mới toanh trong ngày. Bật điện lên cái là sảnh đón tiếp sáng đẹp y như lúc mới khai trương.\n\n` +
+                        `Anh em nào sa bàn cũ cần tút tát lại cho mới cứ ới em nhé, làm nhanh gọn tận nơi luôn ạ! 🤝\n\n` +
+                        `#suasaban #baotrisaban #mohinhsonganh #tienrs`;
                 } else {
-                    // Standard Highrise / Industrial / Concept
-                    postText = `Mỗi dự án sa bàn khi hoàn thiện bàn giao luôn mang lại những cảm xúc rất tự hào cho Tiến và anh em kỹ thuật.\n\n` +
-                        `Hôm nay xưởng vừa hoàn tất công đoạn test sáng cuối cùng cho ${projName}. Khi cắm điện chạy thử nghiệm, từng khối tháp căn hộ và cảnh quan nội khu hiện lên lung linh đúng ý đồ bản vẽ thiết kế, bao nhiêu áp lực tăng ca đều tan biến.\n\n` +
-                        `Cảm ơn các Quý Chủ đầu tư và anh em Kiến trúc sư đã luôn tin tưởng gửi gắm những công trình tâm huyết cho Song Anh! 🤝\n\n` +
-                        `#MoHinhKienTruc #SaBanKienTruc #SongAnhModel #KienTrucVietNam`;
+                    postText = `Làm nghề này vui nhất là lúc hoàn thiện xong mô hình, cắm điện lên thấy đèn sáng rực rỡ, từng căn nhà góc phố hiện lên y như thật.\n\n` +
+                        `Hôm nay xưởng bên em vừa làm xong phần sa bàn ${projName}. Anh em thợ chăm chút từng chi tiết nhỏ xíu để kịp bàn giao cho khách hàng mở bán đợt này.\n\n` +
+                        `Cảm ơn các anh chị chủ đầu tư và anh em kiến trúc sư đã luôn tin tưởng ủng hộ xưởng Mô hình Song Anh! 🤝\n\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh #tienrs`;
                 }
 
-                commentText = `💬 First Comment:\nAnh em cần tư vấn phương án kỹ thuật tỷ lệ sa bàn hoặc dự toán nhanh có thể nhắn trực tiếp qua Zalo/Hotline Tiến nhé: 0929 22 4444. Xem thêm các dự án tại: https://mohinhkientruc.org/`;
-                promptText = `Behind the scenes architectural model workshop, professional craftsman adjusting miniature lighting on scale model ${projName}, authentic workshop setting, warm lighting, Leica photo style --ar 4:3`;
+                commentText = `💬 First Comment:\nAnh chị cần làm mô hình hoặc tư vấn kích thước cứ nhắn Zalo em nhé: 0929 22 4444. Xem thêm các mẫu tại: https://mohinhkientruc.org/`;
+                promptText = `Behind the scenes architectural model workshop, craftsman adjusting miniature lighting on scale model ${projName}, authentic workshop setting, warm lighting --ar 4:3`;
 
-            // CASE 3: GOOGLE BUSINESS PROFILE (Ngắn gọn, kích thích cuộc gọi / tìm hiểu)
+            // CASE 3: GOOGLE BUSINESS (Ngắn gọn, dễ hiểu nhất)
             } else if (isGbpChannel) {
                 const isCallBtn = selectedChan.name.includes("Mô hình kiến trúc Song Anh") || selectedChan.name.includes("Sa bàn");
                 badgeText = isCallBtn ? "📍 GBP (Nút Gọi Ngay)" : "📍 GBP (Nút Tìm Hiểu Thêm)";
 
-                postText = `TRỰC QUAN HÓA DỰ ÁN — SA BÀN KIẾN TRÚC & QUY HOẠCH SONG ANH\n\n` +
-                    `Điểm nhấn trung tâm tại Sales Gallery và các sự kiện xúc tiến thương mại, giúp nâng cao uy tín và thúc đẩy quyết định đầu tư.\n\n` +
-                    `✓ Gia công sắc nét bằng công nghệ in 3D SLA 8K kết hợp Mica Acrylic.\n` +
-                    `✓ Chiếu sáng LED vi mạch phân tầng ngày đêm điều khiển từ xa.\n` +
-                    `✓ Sản xuất trực tiếp tại xưởng Thủ Đức, vận chuyển lắp đặt an toàn toàn quốc trong 7 - 15 ngày.\n\n` +
-                    (isCallBtn ? `👉 Nhấn nút [GỌI NGAY] 0929 22 4444 nhận dự toán bóc tách trong 30 phút!` : `👉 Nhấn nút [TÌM HIỂU THÊM] bên dưới để xem bảng giá và dự án tiêu biểu!`);
+                postText = `MÔ HÌNH KIẾN TRÚC & SA BÀN SONG ANH — LÀM ĐẸP NHƯ THẬT\n\n` +
+                    `Giúp khách xem là hiểu ngay toàn bộ dự án, không cần phải đứng tưởng tượng qua giấy tờ phức tạp.\n\n` +
+                    `✓ Thu nhỏ chi tiết từng căn nhà, cây xanh, đường sá y như ngoài đời.\n` +
+                    `✓ Đèn sáng lung linh, cắm điện là bật sáng rực rỡ.\n` +
+                    `✓ Làm tận xưởng Thủ Đức, giá tốt, chở tới tận nơi lắp đặt toàn quốc.\n\n` +
+                    (isCallBtn ? `👉 Bấm nút [GỌI NGAY] 0929 22 4444 để em gửi báo giá và mẫu tham khảo nhanh nhất!` : `👉 Bấm nút [TÌM HIỂU THÊM] bên dưới để xem thêm các mẫu sa bàn đẹp!`);
 
-                commentText = `💬 Link Điều Hướng Website:\nKhám phá các dự án sa bàn tiêu biểu tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
-                promptText = `Professional architectural scale model of ${projName}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, 8k resolution --ar 16:9`;
+                commentText = `💬 Link Xem Dự Án:\nXem thêm các mẫu sa bàn thực tế tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
+                promptText = `Realistic architectural scale model of ${projName}, 1/100 scale, glowing interior lights, clean showroom setting, 8k --ar 16:9`;
 
-            // CASE 4: FACEBOOK GROUPS (Dạng chia sẻ chuyên môn, cởi mở)
+            // CASE 4: FACEBOOK GROUPS (Chuyện trò thân thiện, bình dân)
             } else if (isGroupChannel) {
-                badgeText = "👥 FB Group B2B";
+                badgeText = "👥 FB Group";
 
-                postText = `[Góc Chia Sẻ Kỹ Thuật] Kinh nghiệm thi công sa bàn ${projName}:\n\n` +
-                    `Khi triển khai các công trình sa bàn quy mô thực tế, có 2 chi tiết kỹ thuật cốt lõi xưởng Song Anh luôn ưu tiên hàng đầu:\n` +
-                    `1. Phân tầng ánh sáng LED: Phải tách biệt rõ giữa chiếu sáng nội bộ công trình và dải LED viền giao thông để người xem nắm bắt trọn vẹn quy hoạch mà không bị chói mắt.\n` +
-                    `2. Quy chuẩn đóng kiện: Di chuyển đường dài liên tỉnh bắt buộc phải có màng xốp chống sốc định hình cố định 4 góc bảo vệ kết cấu an toàn tuyệt đối.\n\n` +
-                    `Anh em đang triển khai dự án tương tự cần trao đổi thêm về giải pháp vật liệu cứ để lại comment trao đổi nhé!`;
+                postText = `Hôm nay chở sa bàn ${projName} đi lắp đặt, chia sẻ với anh em vài kinh nghiệm thực tế:\n\n` +
+                    `1. Đi đường xa thì khâu đóng thùng gỗ với lót xốp là quan trọng nhất, giữ cho cây cối với các chi tiết nhỏ không bị rụng hay gãy.\n` +
+                    `2. Đèn đóm phải đi dây gọn gàng, làm công tắc riêng để khách tới xem bấm thử cho tiện và dễ hiểu.\n\n` +
+                    `Anh em nào đang tính làm mô hình có thắc mắc gì cứ bình luận bên dưới, em biết gì chia sẻ nấy nha!`;
 
-                commentText = `💬 First Comment:\nAnh em cần file tư vấn kích thước và quy cách sa bàn tiêu chuẩn có thể tham khảo tại: https://mohinhkientruc.org/mo-hinh-3d/`;
-                promptText = `Close-up architectural scale model detailing of ${projName}, macro photography of miniature buildings, glowing micro LEDs, clean acrylic craftsmanship, 8k --ar 16:9`;
+                commentText = `💬 First Comment:\nAnh em cần tham khảo kích thước chuẩn sa bàn có thể xem tại: https://mohinhkientruc.org/mo-hinh-3d/`;
+                promptText = `Close-up scale model detailing of ${projName}, miniature glowing lights, clean workshop craftsmanship, 8k --ar 16:9`;
 
-            // CASE 5: FANPAGE MÔ HÌNH SONG ANH (Mặc định - Chuẩn B2B, áp dụng Công Thức Viết Bài sắc bén)
+            // CASE 5: FANPAGE SONG ANH (Bình dị, dễ hiểu, theo công thức viết bài)
             } else {
                 badgeText = `🚩 ${selectedChan.name}`;
 
-                // Structure according to Formula
                 if (selectedFormula.code === 'PAS') {
-                    // Problem - Agitate - Solution
-                    postText = `Một bản vẽ 2D dù chi tiết đến mấy cũng rất khó truyền tải trọn vẹn tầm nhìn dự án đến các nhà đầu tư và khách mua nhà.\n\n` +
-                        `Khi đối tác không hình dung được không gian thực tế, cơ hội chốt hợp đồng và niềm tin tại Sales Gallery sẽ bị giảm đi đáng kể.\n\n` +
-                        `Sa bàn ${projName} từ Mô hình Song Anh giải quyết triệt để bài toán đó:\n` +
-                        `🔹 Tái hiện chuẩn xác từng milimet kiến trúc và cảnh quan.\n` +
-                        `🔹 Hệ thống đèn LED phân tầng thông minh tạo điểm nhấn thị giác cuốn hút.\n` +
-                        `🔹 Thi công trực tiếp tại xưởng Thủ Đức, bàn giao lắp đặt an toàn tận nơi đúng tiến độ.\n\n` +
-                        `📞 Hotline/Zalo tư vấn kỹ thuật: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Problem - Agitate - Solution (Bình dân)
+                    postText = `Nhiều khi nhìn bản vẽ trên giấy hay trên máy tính, nói thật là rất khó để hình dung dự án bên ngoài trông sẽ như thế nào.\n\n` +
+                        `Khách đến xem mà cứ phải đứng tưởng tượng thì rất khó để tin và quyết định xuống tiền mua.\n\n` +
+                        `Làm một cái sa bàn ${projName} thu nhỏ đặt ngay sảnh sẽ giải quyết được hết:\n` +
+                        `🔹 Nhìn vào là thấy rõ từng căn nhà, con đường, cây xanh y như thật.\n` +
+                        `🔹 Cắm điện lên là đèn sáng lung linh, ai đi ngang qua cũng muốn đứng lại xem.\n` +
+                        `🔹 Làm trực tiếp tại xưởng Song Anh, đóng thùng gỗ chở tới tận nơi lắp đặt hoàn chỉnh.\n\n` +
+                        `📞 Anh chị cần làm mô hình cho dự án, nhắn Zalo em tư vấn và báo giá nhanh nhé: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
 
                 } else if (selectedFormula.code === 'AIDA') {
-                    // Attention - Interest - Desire - Action
-                    postText = `Điểm nhấn trực quan nâng tầm vị thế dự án tại không gian trưng bày.\n\n` +
-                        `Tại các sự kiện xúc tiến và Sales Gallery, sa bàn ${projName} đóng vai trò là "thỏi nam châm" thu hút mọi ánh nhìn của đối tác và khách tham quan:\n` +
-                        `🔹 Công nghệ in 3D SLA 8K sắc nét kết hợp Mica Acrylic cao cấp.\n` +
-                        `🔹 Chiếu sáng LED vi mạch lập trình thông minh mô phỏng sinh động nhịp sống dự án.\n` +
-                        `🔹 Bàn giao cấp tốc 7 - 15 ngày, bảo hành bảo trì tận nơi toàn quốc.\n\n` +
-                        `📞 Gửi bản vẽ nhận dự toán trong 30 phút qua Hotline/Zalo: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Attention - Interest - Desire - Action (Bình dân)
+                    postText = `Điểm nhấn hút mắt nhất tại phòng bán hàng và sự kiện giới thiệu dự án!\n\n` +
+                        `Thay vì chỉ xem tờ rơi, khách bước vào là thấy ngay sa bàn ${projName} sáng rực rỡ trước mắt:\n` +
+                        `🔹 Từng khối nhà, hồ bơi, công viên thu nhỏ đẹp mắt và sống động.\n` +
+                        `🔹 Hệ thống đèn đêm lung linh giúp người xem cảm nhận rõ không gian sống tương lai.\n` +
+                        `🔹 Làm nhanh trong 7 - 15 ngày, bảo hành và bảo trì tận nơi chu đáo.\n\n` +
+                        `📞 Gửi bản vẽ là có ngay báo giá chi tiết sau 30 phút qua Zalo: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
 
                 } else if (selectedFormula.code === 'BAB') {
-                    // Before - After - Bridge
-                    postText = `Khi chưa có sa bàn, khách hàng chỉ có thể hình dung dự án qua những trang tài liệu và màn hình phẳng trừu tượng.\n\n` +
-                        `Sau khi sa bàn ${projName} được đặt tại trung tâm sảnh đón, toàn bộ bức tranh kiến trúc và tiện ích hiện lên sống động, giúp khách hàng tin tưởng và dễ dàng đưa ra quyết định.\n\n` +
-                        `Mô hình Song Anh là cầu nối trực quan hóa ý tưởng thiết kế của Quý Doanh nghiệp bằng năng lực gia công chuyên sâu tại xưởng Thủ Đức.\n\n` +
-                        `📞 Hotline kỹ thuật: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Before - After - Bridge (Bình dân)
+                    postText = `Trước đây khi chưa có sa bàn, tư vấn cho khách cứ phải chỉ trỏ trên bản vẽ 2D rất vất vả.\n\n` +
+                        `Từ ngày đặt cái sa bàn ${projName} giữa sảnh, khách tới xem chỉ cần ngắm vài phút là hiểu hết mọi tiện ích xung quanh, tư vấn dễ và chốt cọc nhanh hơn hẳn.\n\n` +
+                        `Xưởng Mô hình Song Anh chuyên nhận làm sa bàn các loại, giao hàng và lắp ráp trọn gói tận nơi.\n\n` +
+                        `📞 Hotline/Zalo tư vấn: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
 
                 } else if (selectedFormula.code === 'FAB') {
-                    // Features - Advantages - Benefits
-                    postText = `Đột phá trải nghiệm thị giác cho ${selectedAud.name} cùng sa bàn ${projName}.\n\n` +
-                        `🔹 Tính năng: Ứng dụng công nghệ in 3D resin SLA 8K siêu mịn kết hợp cắt Laser Acrylic độ chính xác 0.05mm.\n` +
-                        `🔹 Ưu điểm: Hệ thống LED vi mạch phân tầng ngày đêm bền bỉ, thùng gỗ lót màng xốp bảo vệ chống sốc khi vận chuyển liên tỉnh.\n` +
-                        `🔹 Lợi ích: Trực quan hóa 100% concept thiết kế, gia tăng tỷ lệ chốt cọc và khẳng định tầm vóc của Chủ đầu tư.\n\n` +
-                        `📞 Hotline/Zalo tư vấn phương án: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Features - Advantages - Benefits (Bình dân)
+                    postText = `Vì sao các chủ đầu tư luôn chọn làm sa bàn ${projName} tại xưởng Song Anh?\n\n` +
+                        `🔹 Làm sắc nét: Dùng công nghệ in 3D hiện đại, từng chi tiết nhỏ xíu đều sắc sảo không bị lem nhem.\n` +
+                        `🔹 Bền và sáng: Đèn LED bật cả ngày đêm vẫn êm, thùng gỗ lót xốp dày chở đi tỉnh xa không lo nứt vỡ.\n` +
+                        `🔹 Hiệu quả cao: Khách xem thích mắt, tin tưởng dự án hơn và tỷ lệ mua hàng tăng lên rõ rệt.\n\n` +
+                        `📞 Nhắn Zalo em để xem thêm nhiều mẫu đẹp nhé: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
 
                 } else if (selectedFormula.code === 'SSS') {
-                    // Star - Story - Solution
-                    postText = `Hành trình hoàn thiện sa bàn ${projName} — Dấu ấn tâm huyết từ xưởng Mô hình Song Anh.\n\n` +
-                        `Trước yêu cầu khắt khe về độ chính xác tỷ lệ và tiến độ bàn giao khẩn trương phục vụ sự kiện, đội ngũ kỹ sư và nghệ nhân Song Anh đã tập trung cao độ trong từng công đoạn gia công và đi dây vi mạch LED.\n\n` +
-                        `Thành quả là một tác phẩm sa bàn hoàn mỹ, sáng đèn lung linh và sẵn sàng tạo ấn tượng mạnh mẽ với các đối tác cấp cao.\n\n` +
-                        `📞 Hotline kỹ thuật: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Star - Story - Solution (Bình dân)
+                    postText = `Chuyện làm sa bàn ${projName} — Vừa hoàn thành bàn giao kịp ngày mở bán!\n\n` +
+                        `Khách cần gấp trong vòng chưa tới 10 ngày để kịp sự kiện, anh em thợ xưởng Song Anh thay nhau làm việc không quản ngày đêm.\n\n` +
+                        `Lúc chở tới nơi lắp đặt hoàn thiện, cắm điện lên đèn sáng rực cả sảnh đón, khách khen tấm tắc làm cả đội vui không tả nổi.\n\n` +
+                        `📞 Hotline/Zalo nhận làm sa bàn nhanh: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
 
                 } else {
-                    // Standard Sharp Post
-                    postText = `Trực quan hóa không gian dự án — Điểm nhấn khẳng định vị thế thương hiệu.\n\n` +
-                        `Mô hình kiến trúc Song Anh tự hào đồng hành kiến tạo sa bàn ${projName} với tiêu chuẩn hoàn thiện sắc nét và bền bỉ:\n` +
-                        `🔹 Công nghệ in 3D SLA 8K kết hợp Laser Acrylic siêu mịn.\n` +
-                        `🔹 Mạch đèn LED vi điều khiển phân tầng ánh sáng tự nhiên, ấm cúng.\n` +
-                        `🔹 Đóng kiện chuyên dụng, giao lắp an toàn tận nơi toàn quốc.\n\n` +
-                        `📞 Hotline/Zalo tư vấn dự toán: 0929 22 4444\n` +
-                        `#mohinhkientruc #sabanquyhoach #mohinhsonganh`;
+                    // Standard Simple Post
+                    postText = `Sa bàn ${projName} — Mô hình thu nhỏ đẹp và chân thực từ xưởng Song Anh.\n\n` +
+                        `Giúp khách hàng nhìn vào là thấy rõ toàn bộ công trình từ tổng thể đến từng chi tiết nhỏ:\n` +
+                        `🔹 Đường nét sắc sảo, màu sắc tươi tắn bền đẹp.\n` +
+                        `🔹 Đèn LED sáng ấm cúng, nổi bật không gian trưng bày.\n` +
+                        `🔹 Đóng thùng cẩn thận, chở tới tận nơi lắp đặt hoàn chỉnh.\n\n` +
+                        `📞 Anh chị cần tư vấn cứ nhắn Zalo em nhé: 0929 22 4444.\n` +
+                        `#mohinhkientruc #saban #mohinhsonganh`;
                 }
 
-                commentText = `💬 First Comment:\nKhám phá thư viện các dự án sa bàn tiêu biểu tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
-                promptText = `Professional architectural scale model of ${projName}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, professional architectural photography, 8k resolution --ar 16:9`;
+                commentText = `💬 First Comment:\nXem thêm các mẫu sa bàn xưởng bên em đã làm tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
+                promptText = `Realistic architectural scale model of ${projName}, miniature glowing lights, Sales Gallery showroom setting, clean photography, 8k --ar 16:9`;
             }
 
             // Save to memory
@@ -766,7 +751,7 @@
             if (elComment) elComment.innerText = commentText;
             if (elPrompt) elPrompt.innerText = promptText;
 
-            showToast("✨ Văn AI đã tạo bài viết B2B ngắn gọn, sắc bén và thuyết phục!");
+            showToast("✨ Văn AI đã tạo bài viết bình dân, gần gũi và dễ hiểu!");
         }function switchAiOutputTab(tab) {
             const viewPost = document.getElementById('ai-view-post');
             const viewComment = document.getElementById('ai-view-comment');
