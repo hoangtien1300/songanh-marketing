@@ -12103,6 +12103,129 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // 🎯 CÀI ĐẶT ĐỐI TƯỢNG & CONTENT GOALS JS CONTROLLER
         // -------------------------------------------------------------
         let currentSettingSubTab = 'audience';
+        const TARGET_AUDIENCES_NOTION_URL = 'https://app.notion.com/p/3cd4b5e73d90813d8812c44bc8ad33df';
+        let targetAudiencesData = [
+            {
+                        "id": "aud-retail-materials",
+                        "name": "Sinh Viên Kiến Trúc, KTS Trẻ & Xưởng Thủ Công Làm Sa Bàn (Mảng TMĐT Vật Liệu)",
+                        "segment": "khac",
+                        "icon": "🎓",
+                        "painPoints": "Cần tìm nguồn cung cấp bột cỏ tơi xốp không rụng, keo xịt DM Super 77 dán không ố mica, cây mô hình, đèn LED vi mạch và phụ kiện sa bàn chính hãng giao nhanh hỏa tốc.",
+                        "triggers": "Hàng sẵn tại xưởng Thủ Đức, giá sỉ/lẻ cạnh tranh, tư vấn kỹ thuật tận tâm, ship hỏa tốc kịp làm đồ án tốt nghiệp.",
+                        "tone": "Thân thiện, chia sẻ bí quyết nghề thực tế, truyền cảm hứng đam mê sáng tạo kiến trúc.",
+                        "desc": "Sinh viên ĐH Kiến Trúc, Bách Khoa, Văn Lang, HUTECH; KTS nội thất tự làm mô hình concept. Tiếp cận qua Kênh TMĐT, Shopee, Group Facebook Mô Hình."
+            },
+            {
+                        "id": "aud-global-architects",
+                        "name": "Văn Phòng Kiến Trúc Quốc Tế & Nhà Phát Triển BĐS Nước Ngoài (Mỹ, Úc, Singapore)",
+                        "segment": "kts",
+                        "icon": "🌍",
+                        "painPoints": "Cần tìm đối tác xưởng gia công sa bàn kiến trúc xuất khẩu chất lượng cao (Scale Model Making in Vietnam) với chi phí tối ưu 50-70% so với nội địa, đóng thùng gỗ chuẩn hàng không.",
+                        "triggers": "Khả năng đọc hiểu bản vẽ tiếng Anh/Revit chuẩn 100%, máy in 3D 8K sắc sảo, giao tiếp chuyên nghiệp bằng Tiếng Anh, tiến độ cam kết kịp ngày bay sự kiện.",
+                        "tone": "Professional Global B2B English & Vietnamese, precise technical terminology, high-end craftsmanship.",
+                        "desc": "Design firms tại Mỹ, Úc, Singapore, Nhật Bản, Campuchia... Tiếp cận qua Fanpage Architectural Model Org, LinkedIn và Website Tiếng Anh."
+            },
+            {
+                        "id": "aud-agri-aquaculture",
+                        "name": "Doanh Nghiệp Nông Nghiệp & Thủy Sản Công Nghệ Cao",
+                        "segment": "fdi",
+                        "icon": "🦐",
+                        "painPoints": "Sa bàn mô hình trang trại nuôi tôm siêu thâm canh, nhà màng nông nghiệp thông minh, hệ thống ao tròn và mương cấp thoát khép kín phục vụ gian hàng triển lãm Vietfish và hội chợ xúc tiến thương mại.",
+                        "triggers": "Trực quan hóa công nghệ xử lý nước và tuần hoàn oxy trong 30 giây, kết cấu khung nhôm gọn nhẹ dễ dàng đóng gói di chuyển triển lãm toàn quốc.",
+                        "tone": "Thực tế, dẫn đầu xu hướng công nghệ xanh, bảo vệ môi trường, tối ưu năng suất canh tác.",
+                        "desc": "Tập đoàn Thủy sản (Minh Phú, CP, Việt Úc...), Hợp tác xã nông nghiệp công nghệ cao. Tiếp cận qua Facebook Groups Nông nghiệp, Triển lãm Vietfish."
+            },
+            {
+                        "id": "aud-logistics-port",
+                        "name": "Doanh Nghiệp Cảng Biển, Cảng Cạn ICD & Trung Tâm Logistics",
+                        "segment": "fdi",
+                        "icon": "📦",
+                        "painPoints": "Sa bàn cụm cảng nước sâu, bến bãi container, cầu cạn, luồng tàu bè và mạng lưới hạ tầng kết nối liên vùng phục vụ báo cáo Bộ GTVT, trình duyệt quy hoạch và xúc tiến hãng tàu quốc tế.",
+                        "triggers": "Mô phỏng chi tiết cẩu giàn bờ STS, xe nâng reach stacker, đèn tín hiệu luồng hàng hải, độ bền vật liệu cao trong môi trường sảnh tiếp đón.",
+                        "tone": "Vững chãi, tầm nhìn chiến lược vĩ mô, chuẩn mực kỹ thuật hàng hải và chuỗi cung ứng toàn cầu.",
+                        "desc": "Tổng Công ty Tân Cảng, Cảng Sài Gòn, Gemadept, Doanh nghiệp Logistics KCN. Tiếp cận qua Website, Báo Đầu Tư và GBP Maps."
+            },
+            {
+                        "id": "aud-golf",
+                        "name": "Chủ Đầu Tư Sân Golf & Khu Nghỉ Dưỡng Golf Cao Cấp",
+                        "segment": "bds",
+                        "icon": "⛳",
+                        "painPoints": "Sa bàn địa hình 18-36 hố golf, Clubhouse và biệt thự sân golf với cao độ đồi dốc giật cấp, hồ nước và bẫy cát sinh động phục vụ bán thẻ hội viên (Golf Club Membership) và tiếp đón golfer VIP.",
+                        "triggers": "Độ chuẩn xác địa hình giật cấp từng milimet, hiệu ứng cỏ fairway và bunker cát chân thực, ánh sáng dynamic ban đêm sang trọng.",
+                        "tone": "Thượng lưu, tinh tế, đẳng cấp, tôn vinh nghệ thuật thiết kế cảnh quan sân golf và trải nghiệm thể thao đỉnh cao.",
+                        "desc": "Chủ đầu tư chuỗi sân golf, Giám đốc điều hành Golf Club, Quản lý sân tập golf 3D. Tiếp cận qua Profile Sếp Tiến, Hội Golfer và Pinterest."
+            },
+            {
+                        "id": "aud-edu-med",
+                        "name": "Ban Giám Hiệu & HĐQT Trường Quốc Tế, Viện Nghiên Cứu & Bệnh Viện",
+                        "segment": "quyhoach",
+                        "icon": "🏫",
+                        "painPoints": "Sa bàn tổng thể khuôn viên trường học, bệnh viện đa khoa, trung tâm y tế kỹ thuật cao phục vụ lễ khánh thành, tuyển sinh, xúc tiến tài trợ và trưng bày sảnh truyền thống.",
+                        "triggers": "Tái hiện cảnh quan xanh tơi xốp, hệ thống khối nhà giảng đường/khu nội trú đạt chuẩn quốc tế, ánh sáng LED ấm áp, đóng gói bảo quản lâu năm.",
+                        "tone": "Trang trọng, nhân văn, chuẩn mực học thuật và y đức, đề cao môi trường giáo dục và chăm sóc sức khỏe cộng đồng.",
+                        "desc": "Hội đồng trường quốc tế (UTS, RMIT, BIS...), Ban Giám đốc Bệnh viện công & tư. Tiếp cận qua công văn, triển lãm giáo dục và Website."
+            },
+            {
+                        "id": "aud-resort",
+                        "name": "Chủ Đầu Tư Resort Nghỉ Dưỡng & Trung Tâm Thương Mại",
+                        "segment": "bds",
+                        "icon": "⭐",
+                        "painPoints": "Sa bàn cảnh quan sinh thái ven biển, hiệu ứng mặt nước, cây xanh sân golf và hệ thống chiếu sáng ban đêm lung linh đặt tại sảnh đón tiếp để tạo ấn tượng cho khách VIP.",
+                        "triggers": "Hiệu ứng thị giác ngoạn mục (Water effect, Dynamic LED), tính sang trọng độc bản, khả năng bảo trì định kỳ.",
+                        "tone": "Tinh tế, cảm xúc thị giác mạnh mẽ, sang trọng và tôn vinh phong cách sống thượng lưu.",
+                        "desc": "Chủ đầu tư chuỗi khách sạn, quần thể nghỉ dưỡng ven biển Đà Nẵng, Phú Quốc, Nha Trang... Tiếp cận qua Pinterest, Profile Sếp Tiến."
+            },
+            {
+                        "id": "aud-quyhoach",
+                        "name": "Ban Quản Lý Dự Án & Viện Quy Hoạch Nhà Nước",
+                        "segment": "quyhoach",
+                        "icon": "🏛️",
+                        "painPoints": "Sa bàn quy hoạch phân khu đô thị, sa bàn địa hình tỷ lệ lớn (1/1000 - 1/2000), tích hợp chiếu sáng LED thông minh theo quy hoạch vùng phục vụ triển lãm, xúc tiến đầu tư và hội nghị công bố quy hoạch.",
+                        "triggers": "Năng lực hồ sơ pháp lý đầy đủ, xuất hóa đơn VAT chuẩn, kinh nghiệm thực hiện các sa bàn tỉnh thành (Kỳ Anh, Trà Vinh, Nha Trang...).",
+                        "tone": "Trọng thể, uy tín, chuẩn mực quy hoạch quốc gia, tôn vinh tầm nhìn phát triển kinh tế xã hội.",
+                        "desc": "Ban Quản lý Khu kinh tế, Sở Xây dựng, Viện Quy hoạch đô thị nông thôn. Tiếp cận qua công văn, đấu thầu công và Website mohinhkientruc.org."
+            },
+            {
+                        "id": "aud-epc",
+                        "name": "Tổng Thầu EPC & Nhà Thầu Thi Công Xây Dựng",
+                        "segment": "epc",
+                        "icon": "🏗️",
+                        "painPoints": "Sa bàn thi công hạ tầng, mô phỏng biện pháp thi công đồi núi/cầu hầm, tiến độ đường găng và an toàn lao động phục vụ lễ khởi công, đấu thầu dự án và báo cáo chủ đầu tư.",
+                        "triggers": "Tốc độ sản xuất nhanh đáp ứng sự kiện khẩn cấp, độ bền chịu lực khi vận chuyển đi tỉnh xa, giá thành hợp lý theo dự toán.",
+                        "tone": "Thực tế, chắc chắn, tập trung vào năng lực thi công, tiến độ giao hàng và dịch vụ bảo hành tận nơi.",
+                        "desc": "Tổng thầu xây dựng (Coteccons, Hòa Bình, Ricons, Newtecons, Đèo Cả...). Tiếp cận qua Zalo Marketing, Group Facebook Xây Dựng."
+            },
+            {
+                        "id": "aud-fdi",
+                        "name": "Doanh Nghiệp FDI & Ban Quản Lý Khu Công Nghiệp",
+                        "segment": "fdi",
+                        "icon": "🏭",
+                        "painPoints": "Sa bàn tổ hợp nhà máy công nghệ cao, kho bãi logistics, mô phỏng quy trình dây chuyền sản xuất và hệ thống an toàn PCCC phục vụ báo cáo HĐQT, đối tác quốc tế và trưng bày sảnh lễ tân.",
+                        "triggers": "Quy chuẩn an toàn công nghiệp, độ bền vật liệu cao, khả năng lập trình điều khiển tự động hóa LED, giao tiếp làm việc chuẩn mực.",
+                        "tone": "Logic, súc tích, chuẩn mực kỹ thuật, độ tin cậy tuyệt đối, phong cách làm việc quốc tế.",
+                        "desc": "Doanh nghiệp FDI Nhật Bản, Hàn Quốc, Châu Âu, Singapore đầu tư tại VSIP, Becamex, Long Hậu... Tiếp cận qua Website, Google Maps GBP và Email B2B."
+            },
+            {
+                        "id": "aud-kts",
+                        "name": "Kiến Trúc Sư Trưởng & Giám Đốc Thiết Kế",
+                        "segment": "kts",
+                        "icon": "📐",
+                        "painPoints": "Đòi hỏi độ chính xác tỷ lệ 100%, sắc sảo từng đường nét chi tiết, độ trung thực vật liệu (mica, gỗ, in 3D 8K) và ánh sáng mô phỏng đúng ngôn ngữ bản vẽ concept 3D.",
+                        "triggers": "Khả năng đọc hiểu bản vẽ CAD/Revit chuyên sâu, máy móc cắt laser & in 3D chính xác từng milimet, tính thẩm mỹ nghệ thuật cao.",
+                        "tone": "Chuyên môn sâu sắc, sử dụng chuẩn xác thuật ngữ kiến trúc (tỷ lệ, cao độ, hình khối, cảnh quan), tôn trọng ý tưởng thiết kế.",
+                        "desc": "KTS Trưởng tại các công ty tư vấn kiến trúc quốc tế & trong nước (Archetype, Baumschlager Eberle, GMP...). Thích xem ảnh chi tiết cận cảnh tại Pinterest và Fanpage."
+            },
+            {
+                        "id": "aud-bds",
+                        "name": "Chủ Đầu Tư Bất Động Sản & Giám Đốc Dự Án",
+                        "segment": "bds",
+                        "icon": "🏢",
+                        "painPoints": "Cần sa bàn quy hoạch tổng thể & căn hộ mẫu bán hàng đẳng cấp, tích hợp hệ thống đèn LED phân tầng ấn tượng để thuyết phục khách mua nhà tại Sales Gallery, cam kết bàn giao đúng tiến độ khai trương.",
+                        "triggers": "Chất lượng hoàn thiện tinh xảo, tiến độ bàn giao cam kết hợp đồng, kinh nghiệm thực hiện các dự án quy mô lớn (Vingroup, Khải Hoàn, An Huy...).",
+                        "tone": "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án, nhấn mạnh giá trị gia tăng và tiến độ cam kết.",
+                        "desc": "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án. Tiếp cận hiệu quả qua Profile Sếp Tiến, Hội đồng BĐS, Báo Đầu Tư."
+            }
+];
         let contentGoalsData = [
             {
                         "id": "goal-cta-chot-sale",
@@ -12183,6 +12306,20 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 ];
         const CONTENT_GOALS_NOTION_URL = 'https://app.notion.com/p/3ce4b5e73d9081aeb70cec549e601228';
+
+                function initTargetAudiencesData() {
+            try {
+                const saved = localStorage.getItem('songanh_target_audiences');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length >= 12) {
+                        targetAudiencesData = parsed;
+                    }
+                }
+            } catch(e) { console.error("Error loading audiences:", e); }
+            renderAudienceCards();
+            renderContentGoalsCards();
+        }
 
         function switchSettingSubTab(tabKey) {
             currentSettingSubTab = tabKey;
