@@ -212,8 +212,16 @@
         }
 
         // -------------------------------------------------------------------------
-        // 🪄 AI BIÊN SOẠN LẠI Ý TƯỞNG THÔ THÀNH BRIEF HOÀN CHỈNH, RÕ NGHĨA
+        // 🪄 AI BIÊN SOẠN LẠI Ý TƯỞNG THÔ THÀNH ĐOẠN VĂN NGẮN ĐẦY ĐỦ Ý VÀ CHI TIẾT
         // -------------------------------------------------------------------------
+        function cleanProjectRawTitle(raw) {
+            let t = raw.replace(/1[/:]\d+/g, '').replace(/[\n\r]+/g, ' ');
+            t = t.replace(/\b(tháp căn hộ|đèn led|sales gallery|báo cáo fdi|xúc tiến đầu tư|bàn giao gấp \d+ ngày|bunker|hồ nước|led đêm|bị hỏng led|bụi bẩn|view sông|giá sỉ|ánh dương shop|sa bàn|mô hình)\b/gi, ' ');
+            t = t.replace(/\s+/g, ' ').trim();
+            if (!t || t.length < 3) t = raw.split('\n')[0].trim();
+            return t.charAt(0).toUpperCase() + t.slice(1);
+        }
+
         function refineRawIdeaWithAi() {
             const area = document.getElementById('ai-raw-idea');
             const btn = document.getElementById('btn-refine-ai');
@@ -226,76 +234,94 @@
                 return;
             }
 
-            // Button Loading animation
+            // Button Loading state
             const originalBtnHtml = btn ? btn.innerHTML : '';
             if (btn) {
                 btn.disabled = true;
-                btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span>Đang biên soạn...</span>`;
+                btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span>Văn AI đang phân tích &amp; biên soạn...</span>`;
             }
 
             setTimeout(() => {
-                // Intelligent B2B Model Refinement Engine
-                let projectName = text;
-                let scale = "1/100 (Cao tầng / Quy hoạch phân khu) hoặc 1/500 (Tổng thể)";
-                let materials = "Mica Acrylic Đài Loan chống ố vàng, in 3D resin SLA 8K siêu mịn, đế gỗ sồi sơn PU cao cấp";
-                let lighting = "Hệ thống LED vi điều khiển lập trình 3 chế độ (Ngày / Đêm / Điểm nhấn phân tầng)";
-                let goalContext = "Trưng bày sảnh Sales Gallery đón khách VIP, phục vụ lễ mở bán và thuyết phục Chủ đầu tư & Khách mua nhà";
+                const rawLower = text.toLowerCase();
+                const projName = cleanProjectRawTitle(text);
 
-                if (text.toLowerCase().includes("kcn") || text.toLowerCase().includes("nhà máy") || text.toLowerCase().includes("fdi") || text.toLowerCase().includes("công nghiệp")) {
-                    scale = "1/500 đến 1/1000";
-                    materials = "Mica Acrylic cắt CNC laser độ chính xác 0.05mm, bóc tách phân khu xưởng, kho bãi ICD & trạm biến áp";
-                    lighting = "Dải LED viền giao thông nội khu, đèn pha chiếu sáng cảnh quan công nghiệp";
-                    goalContext = "Báo cáo HĐQT, phục vụ xúc tiến thu hút vốn đầu tư FDI và trưng bày sảnh điều hành";
-                } else if (text.toLowerCase().includes("nội thất") || text.toLowerCase().includes("căn hộ") || text.toLowerCase().includes("penthouse") || text.toLowerCase().includes("villa") || text.toLowerCase().includes("biệt thự")) {
-                    scale = "1/25 đến 1/50";
-                    materials = "Cắt bổ 3D chi tiết nội thất, sofa acrylic bọc nỉ, đèn chùm micro LED, ban công view panorama";
-                    lighting = "Ánh sáng vàng ấm 3000K mô phỏng không gian sống sang trọng, ấm cúng";
-                    goalContext = "Giúp khách hàng cảm nhận trực quan từng góc không gian sống và công năng sử dụng căn hộ";
-                } else if (text.toLowerCase().includes("golf")) {
-                    scale = "1/500 đến 1/1000 địa hình giật cấp";
-                    materials = "Tái hiện thảm cỏ fairway uốn lượn, hồ nước nhân tạo acrylic trong suốt, bunker cát tự nhiên";
-                    lighting = "Chiếu sáng LED phân luồng đường line đánh golf ban đêm (Night Golf)";
-                    goalContext = "Trưng bày sảnh Clubhouse và thuyết trình quy hoạch quần thể nghỉ dưỡng sân golf";
-                } else if (text.toLowerCase().includes("vật liệu") || text.toLowerCase().includes("ánh dương") || text.toLowerCase().includes("shop")) {
-                    materials = "Cung cấp trọn gói cây mô hình, tấm mica, đèn LED dây, mô tơ xoay và phụ kiện sa bàn giá sỉ";
-                    goalContext = "Cung ứng vật tư giá sỉ toàn quốc cho xưởng sa bàn, KTS và sinh viên kiến trúc";
+                // Detect explicit scale or defaults
+                let scaleMatch = text.match(/(1[/:]\d+)/);
+                let detectedScale = scaleMatch ? scaleMatch[1].replace(':', '/') : "";
+
+                let detectedCategory = "highrise";
+                let detectedMaterials = "";
+                let detectedLighting = "";
+                let detectedPurpose = "";
+
+                if (rawLower.includes("sửa") || rawLower.includes("bảo trì") || rawLower.includes("vệ sinh") || rawLower.includes("phục chế") || rawLower.includes("hỏng") || rawLower.includes("bụi bẩn") || rawLower.includes("thay đèn")) {
+                    detectedCategory = "maintenance";
+                    detectedScale = detectedScale || "nguyên bản theo thiết kế";
+                    detectedMaterials = "quy trình vệ sinh hút bụi tĩnh điện chuyên sâu, phục chế màu sơn bề mặt và căn chỉnh lại các chi tiết kiến trúc bị xê dịch";
+                    detectedLighting = "rà soát toàn diện đường dây điện âm sàn, thay mới bóng LED chập cháy và nâng cấp bộ vi mạch điều khiển an toàn chống quá tải";
+                    detectedPurpose = "làm mới diện mạo sa bàn như lúc xuất xưởng trực tiếp tại văn phòng bán hàng Sales Gallery trong vòng 24 giờ, đảm bảo sự sang trọng đón tiếp khách hàng";
+
+                } else if (rawLower.includes("kcn") || rawLower.includes("khu công nghiệp") || rawLower.includes("nhà máy") || rawLower.includes("fdi") || rawLower.includes("nhà xưởng") || rawLower.includes("kho bãi") || rawLower.includes("logistics") || rawLower.includes("thép")) {
+                    detectedCategory = "industrial";
+                    detectedScale = detectedScale || "1/500";
+                    detectedMaterials = "vật liệu Mica Acrylic cao cấp cắt laser chính xác kết hợp công nghệ in 3D SLA độ nét cao từng khối nhà xưởng";
+                    detectedLighting = "hệ thống dải đèn LED viền phân khu chức năng, phân định rõ trục đường giao thông nội khu, kho bãi logistics và trạm hạ thế";
+                    detectedPurpose = "phục vụ báo cáo Hội đồng quản trị, trưng bày sảnh điều hành và xúc tiến thu hút nguồn vốn đầu tư FDI";
+
+                } else if (rawLower.includes("golf") || rawLower.includes("sân golf") || rawLower.includes("fairway") || rawLower.includes("bunker") || rawLower.includes("green")) {
+                    detectedCategory = "golf";
+                    detectedScale = detectedScale || "1/1000";
+                    detectedMaterials = "kỹ thuật giật cấp địa hình cao độ chân thực, thảm cỏ fairway uốn lượn, bẫy cát bunker và mặt nước hồ cảnh quan trong suốt";
+                    detectedLighting = "hệ thống chiếu sáng LED Night Golf mô phỏng đường line đánh bóng ban đêm sang trọng";
+                    detectedPurpose = "trưng bày tại sảnh đón tiếp Clubhouse và thuyết trình quy hoạch tổng thể quần thể nghỉ dưỡng thể thao thượng lưu";
+
+                } else if (rawLower.includes("cắt bổ") || rawLower.includes("nội thất") || rawLower.includes("penthouse") || rawLower.includes("duplex") || rawLower.includes("shophouse") || rawLower.includes("căn hộ mẫu") || rawLower.includes("villa") || rawLower.includes("biệt thự")) {
+                    detectedCategory = "interior";
+                    detectedScale = detectedScale || "1/25 đến 1/50";
+                    detectedMaterials = "kỹ thuật cắt bổ không gian 3D chi tiết, tái hiện đầy đủ layout nội thất, sofa bọc nỉ, vách ngăn mica và ban công panorama";
+                    detectedLighting = "ánh sáng LED vi mạch vàng ấm (3000K) mô phỏng không gian sống tiện nghi, ấm cúng";
+                    detectedPurpose = "giúp khách hàng hình dung trọn vẹn công năng sử dụng từng phòng và thúc đẩy quyết định đặt cọc mua nhà";
+
+                } else if (rawLower.includes("vật liệu") || rawLower.includes("ánh dương") || rawLower.includes("shop") || rawLower.includes("phụ kiện") || rawLower.includes("cây") || rawLower.includes("mica")) {
+                    detectedCategory = "materials";
+                    detectedScale = detectedScale || "tiêu chuẩn mô hình";
+                    detectedMaterials = "tấm Mica Acrylic Đài Loan, cây tiểu cảnh mô hình đa dạng kích thước, đèn LED dây siêu nhỏ và các linh kiện sa bàn chuyên dụng";
+                    detectedLighting = "bộ vi mạch và phụ kiện nguồn LED đồng bộ dễ dàng lắp ráp";
+                    detectedPurpose = "cung ứng nguồn vật tư giá sỉ ổn định, giao hàng toàn quốc cho các xưởng sa bàn, văn phòng kiến trúc và sinh viên chuyên ngành";
+
+                } else if (rawLower.includes("quy hoạch") || rawLower.includes("đô thị") || rawLower.includes("tod") || rawLower.includes("tỉnh") || rawLower.includes("huyện") || rawLower.includes("vùng")) {
+                    detectedCategory = "urban";
+                    detectedScale = detectedScale || "1/1000";
+                    detectedMaterials = "khối đế địa hình phân tầng, mạng lưới giao thông liên vùng kết hợp in 3D các công trình điểm nhấn trung tâm";
+                    detectedLighting = "hệ thống chiếu sáng LED lập trình điều khiển thông minh theo từng phân khu chức năng đô thị";
+                    detectedPurpose = "phục vụ công tác công bố quy hoạch, hội nghị xúc tiến đầu tư và trưng bày tại trung tâm hành chính triển lãm";
+
+                } else {
+                    // Default High-Rise Condominium
+                    detectedCategory = "highrise";
+                    detectedScale = detectedScale || "1/100";
+                    detectedMaterials = "khối tháp cao tầng sắc nét bằng Mica Acrylic kết hợp chi tiết in 3D resin SLA 8K siêu mịn, tái hiện trọn vẹn kiến trúc mặt đứng và cảnh quan nội khu";
+                    detectedLighting = "hệ thống đèn LED vi mạch phân tầng 3 chế độ (chiếu sáng nội bộ căn hộ, chiếu sáng sảnh podium và đèn cảnh quan ngoại vi)";
+                    detectedPurpose = "đặt tại trung tâm Sales Gallery nhằm trực quan hóa không gian dự án, gia tăng niềm tin và thúc đẩy tỷ lệ chốt cọc của khách hàng";
                 }
 
-                const refinedText = `📌 DỰ ÁN & Ý TƯỞNG:
-${text}
+                // Construct an elegant, rich, comprehensive B2B paragraph
+                const refinedParagraph = `Sa bàn ${projName} được định hướng thi công chuẩn tỷ lệ ${detectedScale}, ứng dụng ${detectedMaterials}. Công trình tích hợp ${detectedLighting}, mang lại hiệu ứng thị giác lung linh và chân thực. Toàn bộ sa bàn được sản xuất nhằm ${detectedPurpose}, cam kết đóng thùng gỗ lót màng xốp chống sốc chuyên dụng và vận chuyển bàn giao lắp đặt tận nơi từ xưởng Mô hình Song Anh (Thủ Đức) đúng tiến độ cam kết.`;
 
-` +
-                    `📐 TỶ LỆ & QUY CÁCH ĐỀ XUẤT:
-` +
-                    `• Tỷ lệ thi công: ${scale}
-` +
-                    `• Vật liệu chủ đạo: ${materials}
-` +
-                    `• Hệ thống ánh sáng: ${lighting}
-
-` +
-                    `🎯 MỤC TIÊU & ỨNG DỤNG B2B:
-` +
-                    `• ${goalContext}
-` +
-                    `• Đóng kiện gỗ chống sốc lót mút EVA bàn giao lắp đặt tận nơi từ Xưởng Song Anh (Thủ Đức).
-` +
-                    `• Cam kết tiến độ thi công chuẩn xác 7 - 15 ngày, bảo hành bảo trì 24/7.`;
-
-                area.value = refinedText;
-                area.rows = 7;
+                area.value = refinedParagraph;
+                area.rows = 5;
 
                 if (btn) {
                     btn.disabled = false;
                     btn.innerHTML = originalBtnHtml;
                 }
 
-                showToast("✨ AI đã biên soạn lại ý tưởng hoàn chỉnh & rõ nghĩa!");
-            }, 350);
+                showToast("✨ Văn AI đã biên soạn ý tưởng thô thành đoạn văn ngắn đầy đủ ý & chi tiết!");
+            }, 300);
         }
 
         // -------------------------------------------------------------------------
-        // ✨ TẠO BÀI VIẾT B2B TỪ Ý TƯỞNG + ĐỐI TƯỢNG + GOAL + KÊNH SOCIAL
+        // ✨ TẠO BÀI VIẾT B2B TỪ ĐOẠN VĂN Ý TƯỞNG + ĐỐI TƯỢNG + GOAL + KÊNH SOCIAL
         // -------------------------------------------------------------------------
         function handleGenerateSmartContent() {
             const rawIdea = (document.getElementById('ai-raw-idea') ? document.getElementById('ai-raw-idea').value.trim() : "");
@@ -303,55 +329,54 @@ ${text}
             const goalId = (document.getElementById('ai-content-goal') ? document.getElementById('ai-content-goal').value : "");
             const chanId = (document.getElementById('ai-content-channel') ? document.getElementById('ai-content-channel').value : "");
 
-            // Lookup Objects from Data
+            // Lookup Objects from System Data
             const selectedAud = (Array.isArray(targetAudiencesData) ? targetAudiencesData.find(a => a.id === audId) : null) || {
-                name: "Khách Hàng & Đối Tác B2B",
+                name: "Quý Khách Hàng & Đối Tác B2B",
                 segment: "bds",
-                painPoints: "Yêu cầu chất lượng tinh xảo, tiến độ bàn giao đúng hạn và ánh sáng LED lung linh.",
-                triggers: "Chất lượng hoàn thiện cao, bảo hành tận nơi, xưởng trực tiếp không qua trung gian.",
+                painPoints: "Yêu cầu chất lượng hoàn thiện tinh xảo, tiến độ bàn giao đúng hẹn và hệ thống ánh sáng LED lung linh.",
+                triggers: "Chất lượng hoàn thiện cao, giá trực tiếp tại xưởng không qua trung gian, bảo hành bảo trì tận nơi.",
                 tone: "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án."
             };
 
             const selectedGoal = (Array.isArray(contentGoalsData) ? contentGoalsData.find(g => g.id === goalId) : null) || {
                 name: "Khẳng Định Năng Lực & Dự Toán B2B",
                 type: "Báo Giá & Chuyển Đổi",
-                intent: "Thúc đẩy liên hệ nhận báo giá và tư vấn phương án kỹ thuật.",
+                intent: "Thúc đẩy liên hệ nhận báo giá bóc tách và tư vấn giải pháp kỹ thuật.",
                 structure: "1. Tiêu đề nổi bật -> 2. Điểm tinh xảo công trình -> 3. Lợi ích đối tác -> 4. Hotline/Zalo.",
                 cta: "Kính mời gửi file CAD/Revit qua Zalo 0929 22 4444 nhận dự toán chi tiết trong 30 phút."
             };
 
             const selectedChan = (Array.isArray(socialChannelsData) ? socialChannelsData.find(c => c.id === chanId) : null) || {
-                name: "Mô hình kiến trúc Song Anh",
+                name: "Fanpage Mô hình kiến trúc Song Anh",
                 platform: "Facebook",
-                type: "Fanpage Chính",
+                type: "Fanpage Chính (B2B VN)",
                 direct_url: "https://mohinhkientruc.org",
                 gioithieu: "Trang thông tin chính thức của Mô hình kiến trúc Song Anh.",
-                vaitro: "Kênh phân phối nội dung B2B",
+                vaitro: "Kênh phân phối nội dung B2B cốt lõi",
                 mucdich: "Tiếp cận khách hàng B2B"
             };
 
-            const topicBrief = rawIdea || "Dự án sa bàn kiến trúc B2B cao cấp tại Xưởng Mô hình Song Anh";
-
-            // Post Title Construction
-            let cleanTitle = topicBrief.split('\n')[0].replace(/^📌\s*DỰ ÁN & Ý TƯỞNG:\s*/i, '').trim();
-            if (!cleanTitle || cleanTitle.length < 5) cleanTitle = "THI CÔNG SA BÀN KIẾN TRÚC & QUY HOẠCH CHUYÊN NGHIỆP";
+            const topicBrief = rawIdea || "Sa bàn kiến trúc chất lượng cao tại Xưởng Mô hình Song Anh";
+            let cleanTitle = cleanProjectRawTitle(topicBrief);
+            if (!cleanTitle || cleanTitle.length < 5) cleanTitle = "DỰ ÁN SA BÀN KIẾN TRÚC & QUY HOẠCH CHUYÊN NGHIỆP";
 
             let postText = "";
             let commentText = "";
             let promptText = "";
-            let badgeText = `${selectedChan.name} (${selectedChan.platform})`;
+            let badgeText = `${selectedChan.name}`;
 
             const isEnglish = (selectedChan.name.includes("Architectural Model Org") || selectedAud.id === 'aud-kts-global');
 
             if (isEnglish) {
                 badgeText = "🌐 Global English Post";
                 postText = `🏢🌐 𝗪𝗢𝗥𝗟𝗗-𝗖𝗟𝗔𝗦𝗦 𝗔𝗥𝗖𝗛𝗜𝗧𝗘𝗖𝗧𝗨𝗥𝗔𝗟 𝗦𝗖𝗔𝗟𝗘 𝗠𝗢𝗗𝗘𝗟 𝗠𝗔𝗞𝗜𝗡𝗚 𝗜𝗡 𝗩𝗜𝗘𝗧𝗡𝗔𝗠 | 𝗣𝗥𝗘𝗖𝗜𝗦𝗜𝗢𝗡 𝗖𝗥𝗔𝗙𝗧𝗦𝗠𝗔𝗡𝗦𝗛𝗜𝗣\n\n` +
-                    `Transforming complex architectural and masterplan concepts into intuitive physical centerpieces for ${selectedAud.name}.\n\n` +
-                    `📌 PROJECT BRIEF: ${cleanTitle}\n\n` +
+                    `Transforming complex architectural and industrial masterplans into intuitive physical centerpieces for ${selectedAud.name}.\n\n` +
+                    `📌 PROJECT CONTEXT:\n` +
+                    `${topicBrief}\n\n` +
                     `🌟 TECHNICAL SPECIFICATIONS & CRAFTSMANSHIP:\n` +
                     `✔ High-Precision Manufacturing: 8K SLA resin 3D printing & CNC laser-cut acrylic detailing (accuracy within 0.05mm).\n` +
-                    `✔ Dynamic Micro-LED System: Multi-zone circuit programmed to replicate natural daylight (4000K) and warm ambient glow (3000K).\n` +
-                    `✔ Purpose: ${selectedGoal.intent}\n` +
+                    `✔ Dynamic Micro-LED System: Multi-zone circuit programmed to replicate natural daylight (4000K) and warm interior illumination (3000K).\n` +
+                    `✔ Strategic Alignment: ${selectedGoal.intent}\n` +
                     `✔ Heavy-Duty Export Packaging: Custom wooden crates lined with shockproof EVA foam, engineered for safe international air & sea freight.\n\n` +
                     `---\n` +
                     `🏢 SONG ANH ARCHITECTURAL SCALE MODEL STUDIO\n` +
@@ -371,30 +396,34 @@ ${text}
                 badgeText = isCallBtn ? "📍 GBP (Nút Gọi Ngay)" : "📍 GBP (Nút Tìm Hiểu Thêm)";
 
                 postText = `🏢✨ ${cleanTitle.toUpperCase()} — MÔ HÌNH KIẾN TRÚC SONG ANH\n\n` +
-                    `👉 Giải pháp tối ưu dành cho ${selectedAud.name}:\n` +
+                    `👉 Giải pháp trực quan dành riêng cho ${selectedAud.name}:\n` +
                     `• ${selectedAud.painPoints}\n\n` +
-                    `🌟 ĐIỂM TINH XẢO TẠI XƯỞNG SONG ANH:\n` +
-                    `✓ Công nghệ in 3D SLA 8K kết hợp khắc Laser Mica Acrylic siêu mịn chuẩn từng milimet.\n` +
+                    `📌 THÔNG TIN CÔNG TRÌNH:\n` +
+                    `${topicBrief}\n\n` +
+                    `🌟 TIÊU CHUẨN KỸ THUẬT TẠI XƯỞNG SONG ANH:\n` +
+                    `✓ Công nghệ in 3D SLA 8K kết hợp cắt Laser Mica Acrylic độ chính xác từng milimet.\n` +
                     `✓ Hệ thống đèn LED vi mạch phân tầng ngày đêm điều khiển từ xa ấn tượng.\n` +
-                    `✓ Tiến độ bàn giao nhanh 7 - 15 ngày, tối ưu 70% chi phí sản xuất trực tiếp tại xưởng Thủ Đức.\n` +
-                    `✓ Đóng thùng gỗ bọc mút EVA chống sốc, vận chuyển và bàn giao lắp đặt tận nơi toàn quốc.\n\n` +
+                    `✓ Tiến độ thi công nhanh 7 - 15 ngày, tối ưu chi phí sản xuất trực tiếp tại xưởng Thủ Đức.\n` +
+                    `✓ Đóng thùng gỗ lót màng xốp chống sốc, vận chuyển bàn giao lắp đặt tận nơi toàn quốc.\n\n` +
                     `🎯 ${selectedGoal.structure}\n\n` +
                     `🏢 MÔ HÌNH KIẾN TRÚC SONG ANH\n` +
                     `🏭 Xưởng Sản Xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM.\n` +
                     `📞 Hotline kỹ thuật: 0929 22 4444\n` +
-                    (isCallBtn ? `👉 Nhấn nút [GỌI NGAY] để kết nối trực tiếp với đội ngũ kỹ thuật trong 30 phút!` : `👉 Nhấn nút [TÌM HIỂU THÊM] bên dưới để xem báo giá và dự án mẫu!`);
+                    (isCallBtn ? `👉 Nhấn nút [GỌI NGAY] 0929 22 4444 để nhận tư vấn phương án và dự toán bóc tách trong 30 phút!` : `👉 Nhấn nút [TÌM HIỂU THÊM] bên dưới để khám phá bảng giá và quy trình thi công chi tiết!`);
 
                 commentText = `💬 Link Điều Hướng Website:\nKhám phá các dự án sa bàn tiêu biểu tại: ${selectedChan.direct_url && selectedChan.direct_url !== '#' ? selectedChan.direct_url : 'https://mohinhkientruc.org/sa-ban-cao-tang/'}\nHotline: 0929 22 4444`;
 
                 promptText = `Professional architectural scale model of ${cleanTitle}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, 8k resolution, cinematic lighting --ar 16:9`;
 
             } else if (selectedChan.name.includes("Profile Tiến RS") || selectedChan.name.includes("Profile")) {
-                // Profile Cá Nhân
+                // Profile Cá Nhân (Sếp Tiến)
                 badgeText = "👤 Profile Cá Nhân B2B";
                 postText = `Mỗi dự án sa bàn khi hoàn thiện bàn giao luôn mang lại những cảm xúc rất tự hào cho Tiến và anh em kỹ thuật tại xưởng Song Anh.\n\n` +
                     `Hôm nay xưởng vừa hoàn tất công đoạn căn chỉnh ánh sáng cuối cùng cho dự án: ${cleanTitle}\n\n` +
                     `🎯 Góc nhìn chuyên môn gửi đến ${selectedAud.name}:\n` +
                     `• ${selectedAud.triggers}\n\n` +
+                    `📌 BỐI CẢNH THỰC TẾ:\n` +
+                    `${topicBrief}\n\n` +
                     `Đối với các công trình đòi hỏi độ chính xác cao, khâu xử lý bề mặt mica và đi dây LED phân tầng âm sàn luôn là thử thách thú vị nhất. Khi cắm điện chạy thử nghiệm lần cuối trước khi đóng kiện gỗ giao cho khách hàng, nhìn từng góc công trình sáng đèn lung linh đúng ý đồ thiết kế, mọi mệt mỏi đều tan biến.\n\n` +
                     `Cảm ơn các Quý Chủ đầu tư và anh em Kiến trúc sư đã luôn tin tưởng giao phó những công trình tâm huyết cho Song Anh! 🤝\n\n` +
                     `#MoHinhKienTruc #SaBanKienTruc #SongAnhModel #KienTrucVietNam #TienRS`;
@@ -410,10 +439,12 @@ ${text}
                     `Chào các anh em trong nhóm,\n\n` +
                     `🎯 Về mặt ứng dụng thực tế cho ${selectedAud.name}:\n` +
                     `• ${selectedAud.painPoints}\n\n` +
+                    `📌 CHI TIẾT CÔNG TRÌNH:\n` +
+                    `${topicBrief}\n\n` +
                     `Khi triển khai các sa bàn quy mô thực tế, có 3 chi tiết kỹ thuật cốt lõi xưởng Song Anh luôn ưu tiên hàng đầu để đảm bảo độ bền và hiệu ứng thị giác tốt nhất:\n` +
-                    `1. Chọn đúng tỷ lệ: Tỷ lệ 1/100 - 1/500 cho cao tầng và 1/1000 cho quy hoạch giúp người xem nắm trọn bức tranh tổng thể mà không bị rối mắt.\n` +
+                    `1. Chọn đúng tỷ lệ: Giúp người xem nắm trọn bức tranh tổng thể mà không bị rối mắt.\n` +
                     `2. Xử lý ánh sáng LED: Phân cụm độc lập giữa chiếu sáng nội bộ công trình (3000K) và hạ tầng giao thông viền LED.\n` +
-                    `3. Đóng thùng gỗ chống sốc: Lót xốp EVA dày 5cm cố định 4 góc bảo đảm di chuyển đường dài an toàn tuyệt đối.\n\n` +
+                    `3. Đóng thùng gỗ chống sốc: Lót màng xốp chuyên dụng cố định 4 góc bảo đảm di chuyển đường dài an toàn tuyệt đối.\n\n` +
                     `Anh em nào đang triển khai dự án cần trao đổi thêm về kinh nghiệm chọn vật liệu cứ cmt bên dưới nhé!`;
 
                 commentText = `💬 First Comment:\nAnh em cần file tư vấn kích thước và quy cách sa bàn tiêu chuẩn có thể tham khảo tại: https://mohinhkientruc.org/mo-hinh-3d/`;
@@ -421,16 +452,18 @@ ${text}
                 promptText = `Close-up architectural scale model detailing of ${cleanTitle}, macro photography of miniature buildings, glowing micro LEDs, clean acrylic craftsmanship, 8k --ar 16:9`;
 
             } else {
-                // Standard Fanpage Song Anh
+                // Standard Fanpage Song Anh B2B
                 badgeText = `🚩 ${selectedChan.name}`;
                 postText = `🏢✨ ${cleanTitle.toUpperCase()} | MÔ HÌNH KIẾN TRÚC SONG ANH\n\n` +
                     `Mô hình kiến trúc Song Anh tự hào là đơn vị đồng hành tin cậy trong việc trực quan hóa các công trình kiến trúc đẳng cấp cho ${selectedAud.name}.\n\n` +
                     `🎯 ỨNG DỤNG THỰC TẾ & GIÁ TRỊ DỰ ÁN:\n` +
                     `• ${selectedAud.triggers}\n\n` +
+                    `📌 THÔNG TIN DỰ ÁN TẠI XƯỞNG:\n` +
+                    `${topicBrief}\n\n` +
                     `🌟 TIÊU CHUẨN KỸ THUẬT TẠI XƯỞNG SONG ANH:\n` +
                     `✔ Gia công sắc nét: Công nghệ in 3D SLA 8K kết hợp cắt khắc Laser Acrylic chính xác từng chi tiết.\n` +
                     `✔ Hệ thống chiếu sáng thông minh: Mạch LED vi điều khiển phân tầng ánh sáng tự nhiên và ấm cúng.\n` +
-                    `✔ Đóng gói & Vận chuyển: Thùng gỗ bọc xốp EVA tiêu chuẩn chuyên dụng, bàn giao lắp đặt an toàn tận nơi.\n\n` +
+                    `✔ Đóng gói & Vận chuyển: Thùng gỗ lót màng xốp chống sốc chuyên dụng, bàn giao lắp đặt an toàn tận nơi.\n\n` +
                     `💰 ${selectedGoal.cta}\n\n` +
                     `---\n` +
                     `🏢 MÔ HÌNH KIẾN TRÚC SONG ANH\n` +
@@ -461,7 +494,7 @@ ${text}
             if (elComment) elComment.innerText = commentText;
             if (elPrompt) elPrompt.innerText = promptText;
 
-            showToast("✨ Đã tạo bài viết AI B2B chuẩn xác theo Đối tượng, Goal & Kênh!");
+            showToast("✨ Văn AI đã tạo bài viết B2B sắc bén kết hợp trọn vẹn Đối tượng, Goal & Kênh!");
         }
 
         function switchAiOutputTab(tab) {
