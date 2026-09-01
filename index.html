@@ -137,6 +137,209 @@
 
         // =========================================================================
         // =========================================================================
+        
+        // =========================================================================
+        // ✍️ SONG ANH WRITING FORMULAS CONTROLLER & FLASHCARD RENDERER
+        // =========================================================================
+        function renderWritingFormulas() {
+            const container = document.getElementById('formula-cards-container');
+            if (!container) return;
+
+            const searchVal = (document.getElementById('formula-search-input')?.value || '').toLowerCase().trim();
+            const catVal = document.getElementById('formula-category-filter')?.value || 'all';
+
+            const filtered = writingFormulasData.filter(item => {
+                const matchSearch = (item.name || '').toLowerCase().includes(searchVal) ||
+                                    (item.code || '').toLowerCase().includes(searchVal) ||
+                                    (item.desc || '').toLowerCase().includes(searchVal) ||
+                                    (item.structure || '').toLowerCase().includes(searchVal) ||
+                                    (item.example || '').toLowerCase().includes(searchVal);
+                const matchCat = (catVal === 'all') || (item.category === catVal);
+                return matchSearch && matchCat;
+            });
+
+            const badge = document.getElementById('nav-formula-badge');
+            if (badge) badge.textContent = `${filtered.length} Công Thức`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white rounded-2xl border border-slate-200 p-8 text-center space-y-2">
+                        <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center mx-auto text-xl font-bold">✍️</div>
+                        <p class="text-xs font-bold text-slate-600">Không tìm thấy công thức viết bài phù hợp với bộ lọc.</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => `
+                <!-- Horizontal Flashcard for Writing Formula -->
+                <div class="w-full max-w-full min-w-0 bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-rose-300 hover:shadow-md transition p-4 sm:p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 overflow-hidden break-words group">
+                    
+                    <!-- Left Block: Big Icon + Code + Name + Category Badge -->
+                    <div class="flex items-start gap-3.5 w-full lg:w-3/12 shrink-0 min-w-0">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-50 to-pink-50 border border-rose-100 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
+                            ${item.icon || '✍️'}
+                        </div>
+                        <div class="space-y-1 min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="px-2 py-0.5 rounded-md bg-rose-100 text-rose-900 font-black text-[10px] uppercase tracking-wider">${item.code || 'FORMULA'}</span>
+                            </div>
+                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-rose-700 transition break-words">${item.name}</h4>
+                            <span class="inline-block text-[9.5px] px-2.5 py-0.5 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">${item.category || 'Công thức B2B'}</span>
+                        </div>
+                    </div>
+
+                    <!-- Center Block: Ý Nghĩa, Cấu Trúc Triển Khai & Ví Dụ Thực Chiến -->
+                    <div class="flex-1 min-w-0 w-full space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-3 lg:py-0 lg:px-4 break-words">
+                        <div class="space-y-0.5">
+                            <span class="font-extrabold text-slate-800 flex items-center gap-1 text-[11.5px]">
+                                <span class="text-rose-600">📌</span> Ý nghĩa &amp; Mục tiêu:
+                            </span>
+                            <p class="text-slate-600 text-[11px] sm:text-[11.5px] leading-relaxed break-words whitespace-normal">${item.desc}</p>
+                        </div>
+
+                        <div class="space-y-0.5">
+                            <span class="font-extrabold text-slate-800 flex items-center gap-1 text-[11.5px]">
+                                <span class="text-amber-500">📐</span> Cấu trúc từng bước:
+                            </span>
+                            <p class="text-slate-700 font-mono text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-200/80 leading-relaxed break-words whitespace-normal">${item.structure}</p>
+                        </div>
+
+                        ${item.example ? `
+                        <div class="space-y-0.5">
+                            <span class="font-extrabold text-slate-800 flex items-center gap-1 text-[11.5px]">
+                                <span class="text-emerald-800">💡</span> Ví dụ thực chiến Song Anh:
+                            </span>
+                            <p class="text-slate-600 text-[11px] leading-relaxed break-words whitespace-normal">${item.example}</p>
+                        </div>` : ''}
+
+                        ${item.bestFor ? `
+                        <div class="pt-1 flex items-center gap-1.5 text-[10.5px] text-purple-700 font-bold border-t border-slate-50">
+                            <i class="fa-solid fa-bullseye text-purple-500"></i>
+                            <span>Phù hợp nhất: ${item.bestFor}</span>
+                        </div>` : ''}
+                    </div>
+
+                    <!-- Right Block: Action Buttons -->
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+                        <button onclick="useFormulaForAIContent('${item.id}')" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 text-white font-black text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+                            <i class="fa-solid fa-wand-magic-sparkles text-[10px]"></i>
+                            <span>⚡ Dùng Cho AI Studio</span>
+                        </button>
+                        
+                        <div class="flex items-center gap-1">
+                            <button onclick="editFormula('${item.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
+                                <i class="fa-solid fa-pen text-xs"></i>
+                            </button>
+                            <button onclick="deleteFormula('${item.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            `).join('');
+        }
+
+        function openAddFormulaModal() {
+            document.getElementById('formula-id').value = '';
+            document.getElementById('formula-name').value = '';
+            document.getElementById('formula-code').value = '';
+            document.getElementById('formula-category').value = 'Chuyển Đổi Nhanh';
+            document.getElementById('formula-desc').value = '';
+            document.getElementById('formula-structure').value = '';
+            document.getElementById('formula-example').value = '';
+            document.getElementById('formula-best-for').value = '';
+            document.getElementById('formula-modal-title').innerText = 'Thêm Công Thức Viết Bài Mới';
+
+            const modal = document.getElementById('formula-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeFormulaModal() {
+            const modal = document.getElementById('formula-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function editFormula(id) {
+            const item = writingFormulasData.find(f => f.id === id);
+            if (!item) return;
+
+            document.getElementById('formula-id').value = item.id;
+            document.getElementById('formula-name').value = item.name || '';
+            document.getElementById('formula-code').value = item.code || '';
+            document.getElementById('formula-category').value = item.category || 'Chuyển Đổi Nhanh';
+            document.getElementById('formula-desc').value = item.desc || '';
+            document.getElementById('formula-structure').value = item.structure || '';
+            document.getElementById('formula-example').value = item.example || '';
+            document.getElementById('formula-best-for').value = item.bestFor || '';
+
+            document.getElementById('formula-modal-title').innerText = 'Chỉnh Sửa Công Thức: ' + (item.code || item.name);
+            const modal = document.getElementById('formula-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function handleSaveFormula(e) {
+            e.preventDefault();
+            const id = document.getElementById('formula-id').value.trim();
+            const name = document.getElementById('formula-name').value.trim();
+            const code = document.getElementById('formula-code').value.trim() || 'FORMULA';
+            const category = document.getElementById('formula-category').value;
+            const desc = document.getElementById('formula-desc').value.trim();
+            const structure = document.getElementById('formula-structure').value.trim();
+            const example = document.getElementById('formula-example').value.trim();
+            const bestFor = document.getElementById('formula-best-for').value.trim();
+
+            if (id) {
+                const idx = writingFormulasData.findIndex(f => f.id === id);
+                if (idx !== -1) {
+                    writingFormulasData[idx] = { ...writingFormulasData[idx], name, code, category, desc, structure, example, bestFor };
+                }
+                showToast("✅ Đã cập nhật công thức: " + code);
+            } else {
+                const newId = 'formula-' + Date.now();
+                writingFormulasData.unshift({
+                    id: newId,
+                    name,
+                    code,
+                    icon: "✍️",
+                    category,
+                    desc,
+                    structure,
+                    example,
+                    bestFor
+                });
+                showToast("🎉 Đã thêm công thức mới: " + code);
+            }
+
+            closeFormulaModal();
+            renderWritingFormulas();
+            if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
+        }
+
+        function deleteFormula(id) {
+            const item = writingFormulasData.find(f => f.id === id);
+            if (!item) return;
+            if (confirm(`Sếp có chắc chắn muốn xóa công thức "${item.name}" không?`)) {
+                writingFormulasData = writingFormulasData.filter(f => f.id !== id);
+                showToast("🗑️ Đã xóa công thức: " + item.name);
+                renderWritingFormulas();
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
+            }
+        }
+
+        function useFormulaForAIContent(id) {
+            const item = writingFormulasData.find(f => f.id === id);
+            if (!item) return;
+            selectModule('tool-content-generator');
+            setTimeout(() => {
+                const fSelect = document.getElementById('ai-content-formula');
+                if (fSelect) {
+                    fSelect.value = id;
+                    showToast(`💡 Đã nạp công thức [${item.code}] vào AI Content Studio!`);
+                }
+            }, 100);
+        }
+
         // 💡 SONG ANH AI CONTENT STUDIO ENGINE (TỪ Ý TƯỞNG ĐẾN BÀI ĐĂNG)
         // =========================================================================
 
@@ -208,6 +411,18 @@
                 });
                 chanSelect.innerHTML = chanHtml;
                 if (currentChanVal) chanSelect.value = currentChanVal;
+            }
+
+            // 4. Công thức viết bài (Mặc định: -- Chọn Công thức viết bài --)
+            const formulaSelect = document.getElementById('ai-content-formula');
+            if (formulaSelect && Array.isArray(writingFormulasData)) {
+                const currentFormulaVal = formulaSelect.value;
+                let formulaHtml = '<option value="" selected>-- Chọn Công thức viết bài --</option>';
+                writingFormulasData.forEach(f => {
+                    formulaHtml += `<option value="${f.id}">${f.icon || '✍️'} ${f.name} (${f.category})</option>`;
+                });
+                formulaSelect.innerHTML = formulaHtml;
+                if (currentFormulaVal) formulaSelect.value = currentFormulaVal;
             }
         }
 
@@ -338,6 +553,13 @@
             const audId = (document.getElementById('ai-content-audience') ? document.getElementById('ai-content-audience').value : "");
             const goalId = (document.getElementById('ai-content-goal') ? document.getElementById('ai-content-goal').value : "");
             const chanId = (document.getElementById('ai-content-channel') ? document.getElementById('ai-content-channel').value : "");
+            const formulaId = (document.getElementById('ai-content-formula') ? document.getElementById('ai-content-formula').value : "");
+
+            const selectedFormula = (Array.isArray(writingFormulasData) ? writingFormulasData.find(f => f.id === formulaId) : null) || {
+                code: "B2B Standard",
+                name: "Chuẩn B2B Song Anh",
+                structure: "1. Tiêu đề nổi bật ➔ 2. Nỗi đau & Điểm nhấn ➔ 3. Giải pháp & Cam kết xưởng Song Anh ➔ 4. CTA liên hệ."
+            };
 
             // Lookup Objects from System Data
             const selectedAud = (Array.isArray(targetAudiencesData) ? targetAudiencesData.find(a => a.id === audId) : null) || {
@@ -1075,6 +1297,10 @@
                                 </button>
                                 <button onclick="selectModule('social-channels')" id="sub-social-channels" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🌐</span> Kênh Social</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                                <button onclick="selectModule('writing-formulas')" id="sub-writing-formulas" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-rose-900 hover:bg-rose-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>✍️</span> Công thức viết bài</span>
                                     <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                                 </button>
                             </div>
@@ -4113,11 +4339,22 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                             <!-- Dropdown 3: Kênh Social -->
                             <div class="space-y-1.5">
                                 <label for="ai-content-channel" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">4</span>
+                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">3</span>
                                     <span>Kênh Social</span>
                                 </label>
                                 <select id="ai-content-channel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer shadow-xs transition">
                                     <option value="">-- Chọn Kênh Social --</option>
+                                </select>
+                            </div>
+
+                            <!-- Dropdown 4: Công thức viết bài -->
+                            <div class="space-y-1.5">
+                                <label for="ai-content-formula" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-rose-100 text-rose-800 flex items-center justify-center text-[10px]">4</span>
+                                    <span>Công thức viết bài</span>
+                                </label>
+                                <select id="ai-content-formula" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer shadow-xs transition">
+                                    <option value="" selected>-- Chọn Công thức viết bài --</option>
                                 </select>
                             </div>
                         </div>
@@ -4416,6 +4653,137 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 <!-- Injected via JavaScript renderSocialChannels() -->
             </div>
         </section>
+
+        <!-- ========================================================================= -->
+        <!-- ✍️ PANEL 4: QUẢN LÝ CÔNG THỨC VIẾT BÀI (COPYWRITING FRAMEWORKS) -->
+        <!-- ========================================================================= -->
+        <section id="panel-writing-formulas" class="module-panel hidden space-y-5">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-rose-900 via-slate-900 to-brand-navy p-5 sm:p-6 rounded-2xl text-white shadow-md border border-rose-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-full bg-rose-500/30 text-rose-300 text-[10px] font-black border border-rose-400/30 uppercase tracking-wider">HỆ THỐNG CÔNG THỨC B2B</span>
+                        <span class="text-xs text-rose-200">Song Anh Copywriting Frameworks</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-heading font-black text-white flex items-center gap-2">
+                        <span>✍️ Quản Lý Công Thức Viết Bài B2B</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                        Kho 8 công thức viết bài kinh điển (PAS, AIDA, BAB, FAB, SSS, 4P, QUEST, PASTOR) được tối ưu hóa riêng cho ngành sa bàn kiến trúc. Kết nối trực tiếp với <strong>💡 AI Content Studio</strong> để tự động định hình cấu trúc bài viết sắc bén.
+                    </p>
+                </div>
+
+                <!-- Action Buttons: Big Add Button & AI Studio Shortcut -->
+                <div class="flex items-center gap-2 flex-wrap shrink-0">
+                    <button onclick="selectModule('tool-content-generator')" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-extrabold text-xs shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>💡 Mở AI Content Studio</span>
+                    </button>
+                    <button onclick="openAddFormulaModal()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 active:scale-95 text-white font-extrabold text-xs shadow-md transition flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>+ Thêm Công Thức Mới</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Control Bar: Search & Category Filter -->
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-2 w-full md:w-auto flex-1">
+                    <div class="relative flex-1 max-w-md">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="formula-search-input" oninput="renderWritingFormulas()" placeholder="Tìm kiếm công thức theo tên, mã (PAS, AIDA...), từ khóa..." class="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-200 focus:outline-hidden transition">
+                    </div>
+                    <select id="formula-category-filter" onchange="renderWritingFormulas()" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:bg-white focus:border-rose-500 focus:outline-hidden transition">
+                        <option value="all">Tất cả danh mục công thức</option>
+                        <option value="Chuyển Đổi Nhanh">Chuyển Đổi Nhanh (PAS...)</option>
+                        <option value="Phễu Bán Hàng Toàn Diện">Phễu Bán Hàng (AIDA...)</option>
+                        <option value="Tương Phản Thị Giác">Tương Phản (BAB...)</option>
+                        <option value="Thuyết Phục Kỹ Thuật">Kỹ Thuật (FAB...)</option>
+                        <option value="Câu Chuyện Dự Án Thực Chiến">Storytelling (SSS...)</option>
+                        <option value="Thuyết Phục B2B Cấp Cao">B2B Cấp Cao (4P...)</option>
+                        <option value="Giáo Dục &amp; Chuyển Đổi Sâu">Giáo Dục (QUEST...)</option>
+                        <option value="Bài Viết Trọng Điểm Toàn Diện">Bài Viết Trọng Điểm (PASTOR...)</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-500 font-bold shrink-0">
+                    <span id="nav-formula-badge" class="px-2.5 py-1 rounded-lg bg-rose-100 text-rose-800 font-black text-[11px]">8 Công Thức</span>
+                </div>
+            </div>
+
+            <!-- Horizontal Flashcards Container for Writing Formulas -->
+            <div id="formula-cards-container" class="space-y-3.5">
+                <!-- Dynamically Rendered by renderWritingFormulas() -->
+            </div>
+        </section>
+
+        <!-- ✍️ MODAL: THÊM / SỬA CÔNG THỨC VIẾT BÀI -->
+        <div id="formula-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[90vh] overflow-y-auto">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center font-black">✍️</span>
+                        <h3 class="text-sm sm:text-base font-heading font-black text-slate-900" id="formula-modal-title">Thêm Công Thức Viết Bài Mới</h3>
+                    </div>
+                    <button onclick="closeFormulaModal()" class="w-8 h-8 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <form onsubmit="handleSaveFormula(event)" class="space-y-3 text-xs">
+                    <input type="hidden" id="formula-id">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-2 space-y-1">
+                            <label class="font-bold text-slate-700">Tên Công Thức <span class="text-rose-500">*</span></label>
+                            <input type="text" id="formula-name" required placeholder="VD: PAS (Problem - Agitate - Solution)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-bold text-slate-700">Mã / Icon</label>
+                            <input type="text" id="formula-code" placeholder="VD: ⚡ PAS" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-700">Phân Loại Danh Mục</label>
+                        <select id="formula-category" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden font-medium">
+                            <option value="Chuyển Đổi Nhanh">Chuyển Đổi Nhanh</option>
+                            <option value="Phễu Bán Hàng Toàn Diện">Phễu Bán Hàng Toàn Diện</option>
+                            <option value="Tương Phản Thị Giác">Tương Phản Thị Giác</option>
+                            <option value="Thuyết Phục Kỹ Thuật">Thuyết Phục Kỹ Thuật</option>
+                            <option value="Câu Chuyện Dự Án Thực Chiến">Câu Chuyện Dự Án Thực Chiến</option>
+                            <option value="Thuyết Phục B2B Cấp Cao">Thuyết Phục B2B Cấp Cao</option>
+                            <option value="Giáo Dục &amp; Chuyển Đổi Sâu">Giáo Dục &amp; Chuyển Đổi Sâu</option>
+                            <option value="Bài Viết Trọng Điểm Toàn Diện">Bài Viết Trọng Điểm Toàn Diện</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-700">Ý Nghĩa &amp; Mô Tả Công Thức <span class="text-rose-500">*</span></label>
+                        <textarea id="formula-desc" rows="2" required placeholder="Mô tả mục tiêu của công thức và cách thức dẫn dắt tâm lý người đọc..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden"></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-700">Cấu Trúc Triển Khai Từng Bước <span class="text-rose-500">*</span></label>
+                        <textarea id="formula-structure" rows="2" required placeholder="VD: 1. Nêu vấn đề ➔ 2. Đào sâu áp lực ➔ 3. Giải pháp từ xưởng Song Anh." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden font-mono text-[11px]"></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-700">Ví Dụ Áp Dụng Thực Tế Tại Song Anh</label>
+                        <textarea id="formula-example" rows="2" placeholder="Ví dụ câu từ cụ thể ứng dụng cho sa bàn cao tầng, KCN, sân golf..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden text-[11px]"></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-bold text-slate-700">Phù Hợp Nhất Cho Kênh Nào</label>
+                        <input type="text" id="formula-best-for" placeholder="VD: Fanpage B2B, Profile Sếp Tiến, GBP Maps..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-rose-500 focus:outline-hidden">
+                    </div>
+
+                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                        <button type="button" onclick="closeFormulaModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">Hủy</button>
+                        <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-extrabold shadow-md transition">Lưu Công Thức</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
             <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
@@ -12362,7 +12730,9 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // Sub-render triggers
-            if (moduleId === 'tool-content-generator') {
+            if (moduleId === 'writing-formulas') {
+                if (typeof renderWritingFormulas === 'function') renderWritingFormulas();
+            } else if (moduleId === 'tool-content-generator') {
                 if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
             } else if (moduleId === 'target-audience') {
                 if (typeof initTargetAudiencesData === 'function') initTargetAudiencesData();
@@ -12861,6 +13231,97 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // -------------------------------------------------------------
         // 🌐 KÊNH SOCIAL CONTROLLER (18 TÀI KHOẢN NOTION SYNC)
         // -------------------------------------------------------------
+        let writingFormulasData = [
+            {
+                        "id": "formula-pas",
+                        "name": "PAS (Problem - Agitate - Solution)",
+                        "code": "PAS",
+                        "icon": "⚡",
+                        "category": "Chuyển Đổi Nhanh",
+                        "desc": "Công thức kinh điển đánh trực diện vào nỗi đau khách hàng, đào sâu áp lực rủi ro và đưa ra giải pháp sa bàn kiến trúc Song Anh để giải quyết triệt để.",
+                        "structure": "1. Problem (Nêu nỗi đau/vấn đề khó khăn) ➔ 2. Agitate (Đào sâu áp lực/hậu quả nếu không giải quyết) ➔ 3. Solution (Giải pháp kỹ thuật từ xưởng Song Anh).",
+                        "example": "Khách mua khó hình dung bản vẽ 2D ➔ Mất khách vào tay đối thủ có Sales Gallery đẹp ➔ Sa bàn Song Anh in 3D 8K sáng đèn lung linh giúp tăng 50% tỷ lệ chốt cọc.",
+                        "bestFor": "Bài viết chốt Sale Fanpage, GBP Maps, Profile cá nhân khi nhấn mạnh giải pháp thay thế."
+            },
+            {
+                        "id": "formula-aida",
+                        "name": "AIDA (Attention - Interest - Desire - Action)",
+                        "code": "AIDA",
+                        "icon": "🎯",
+                        "category": "Phễu Bán Hàng Toàn Diện",
+                        "desc": "Mô hình phễu kinh điển dẫn dắt tâm lý khách hàng từ ấn tượng ban đầu đến mong muốn sở hữu và hành động nhấc máy liên hệ ngay.",
+                        "structure": "1. Attention (Hook giật điểm chú ý thị giác) ➔ 2. Interest (Chi tiết kỹ thuật tinh xảo) ➔ 3. Desire (Lợi ích gia tăng vị thế dự án) ➔ 4. Action (CTA gửi bản vẽ nhận báo giá 30p).",
+                        "example": "Góc quay sa bàn sáng rực ban đêm ➔ Bóc tách tỷ lệ chuẩn từng milimet ➔ Khách tham quan choáng ngợp tại Sales Gallery ➔ Hotline/Zalo 0929 22 4444 nhận dự toán.",
+                        "bestFor": "Bài viết Fanpage B2B, Bài PR báo chí, Kịch bản Video ngắn Reels/TikTok."
+            },
+            {
+                        "id": "formula-bab",
+                        "name": "BAB (Before - After - Bridge)",
+                        "code": "BAB",
+                        "icon": "🌉",
+                        "category": "Tương Phản Thị Giác",
+                        "desc": "Tạo sự tương phản mạnh mẽ giữa thực trạng bế tắc trước đây và viễn cảnh rực rỡ sau khi có sa bàn, với cầu nối là năng lực thi công xưởng Song Anh.",
+                        "structure": "1. Before (Thực trạng khi chưa có sa bàn hoặc dùng sa bàn cũ hỏng) ➔ 2. After (Không gian Sales Gallery lung linh, khách mua tin tưởng) ➔ 3. Bridge (Cầu nối gia công/làm mới từ Song Anh).",
+                        "example": "Bản vẽ 2D trừu tượng khách xem xong ra về ➔ Sa bàn sáng đèn rực rỡ khách nán lại nghe tư vấn ➔ Dịch vụ gia công sa bàn chuẩn tiến độ 7-15 ngày tại xưởng Thủ Đức.",
+                        "bestFor": "Bài viết Case Study, Dịch vụ sửa chữa bảo trì sa bàn, Bài đăng Profile Sếp Tiến."
+            },
+            {
+                        "id": "formula-fab",
+                        "name": "FAB (Features - Advantages - Benefits)",
+                        "code": "FAB",
+                        "icon": "💎",
+                        "category": "Thuyết Phục Kỹ Thuật",
+                        "desc": "Công thức thuyết phục giới chuyên môn (Kiến trúc sư, Chủ đầu tư kỹ tính) bằng cách chuyển hóa tính năng máy móc thành lợi ích kinh doanh thực tế.",
+                        "structure": "1. Features (Tính năng công nghệ: in 3D 8K, Mica Acrylic) ➔ 2. Advantages (Ưu điểm vượt trội: sắc nét 0.05mm, bền màu) ➔ 3. Benefits (Lợi ích cốt lõi: tiết kiệm chi phí, nâng tầm uy tín).",
+                        "example": "Công nghệ in 3D SLA 8K siêu mịn ➔ Chi tiết ban công và cây xanh sắc sảo không bị bavia ➔ Tôn vinh đẳng cấp concept thiết kế của KTS Trưởng.",
+                        "bestFor": "Bài viết tiếp cận Kiến Trúc Sư, Tổng thầu EPC, Bài chia sẻ chuyên môn kỹ thuật Group Facebook."
+            },
+            {
+                        "id": "formula-sss",
+                        "name": "SSS (Star - Story - Solution)",
+                        "code": "SSS",
+                        "icon": "⭐",
+                        "category": "Câu Chuyện Dự Án Thực Chiến",
+                        "desc": "Công thức kể chuyện cuốn hút xây dựng lòng tin tuyệt đối (Social Proof) thông qua hành trình chinh phục một ca khó hoặc dự án trọng điểm.",
+                        "structure": "1. Star (Giới thiệu nhân vật/dự án ngôi sao) ➔ 2. Story (Câu chuyện thử thách tiến độ gấp hoặc độ phức tạp) ➔ 3. Solution (Giải pháp và thành quả bàn giao ngoạn mục).",
+                        "example": "Dự án Khải Hoàn Prime / Nhà máy Đại Nghĩa ➔ Yêu cầu bàn giao gấp trong 10 ngày trước lễ khởi công ➔ Đội ngũ Song Anh tăng ca 3 kíp, hoàn thiện lắp đặt an toàn 100%.",
+                        "bestFor": "Bài đăng Profile cá nhân Sếp Tiến, Bài viết Storytelling trên Fanpage & LinkedIn."
+            },
+            {
+                        "id": "formula-4p",
+                        "name": "4P (Picture - Promise - Prove - Push)",
+                        "code": "4P",
+                        "icon": "📸",
+                        "category": "Thuyết Phục B2B Cấp Cao",
+                        "desc": "Vẽ nên bức tranh không gian đẳng cấp, cam kết chất lượng, chứng minh năng lực thực tế và thúc đẩy hành động hợp tác.",
+                        "structure": "1. Picture (Vẽ bức tranh không gian rực rỡ) ➔ 2. Promise (Cam kết chất lượng chuẩn concept) ➔ 3. Prove (Chứng minh bằng 150+ dự án đã bàn giao) ➔ 4. Push (Kêu gọi liên hệ ngay).",
+                        "example": "Bức tranh sảnh lễ tân đón tiếp đối tác quốc tế ➔ Cam kết tiến độ và độ chuẩn tỷ lệ ➔ Hàng trăm dự án KCN VSIP, Becamex ➔ Gửi bản vẽ nhận dự toán trong 30p.",
+                        "bestFor": "Bài viết tiếp cận Doanh nghiệp FDI, Chủ đầu tư BĐS lớn, Quảng cáo B2B."
+            },
+            {
+                        "id": "formula-quest",
+                        "name": "QUEST (Qualify - Understand - Educate - Stimulate - Transition)",
+                        "code": "QUEST",
+                        "icon": "🧭",
+                        "category": "Giáo Dục & Chuyển Đổi Sâu",
+                        "desc": "Quy trình 5 bước sàng lọc đúng đối tượng mục tiêu, thấu hiểu khó khăn, chia sẻ kiến thức chuyên ngành và chuyển đổi thành hợp đồng.",
+                        "structure": "1. Qualify (Sàng lọc đúng đối tượng B2B) ➔ 2. Understand (Đồng cảm khó khăn) ➔ 3. Educate (Cung cấp giải pháp kỹ thuật) ➔ 4. Stimulate (Khơi dậy động lực) ➔ 5. Transition (Chuyển đổi).",
+                        "example": "Dành riêng cho các đơn vị đang chuẩn bị mở bán ➔ Nỗi lo chậm tiến độ khai trương ➔ Cách chọn xưởng có năng lực máy in 3D 8K ➔ Tự tin tỏa sáng ngày mở bán ➔ Hotline Song Anh.",
+                        "bestFor": "Bài viết Pillar SEO Website, Bài viết phân tích chuyên sâu trên Group Kiến Trúc & BĐS."
+            },
+            {
+                        "id": "formula-pastor",
+                        "name": "PASTOR (Problem - Amplify - Story - Transformation - Offer - Response)",
+                        "code": "PASTOR",
+                        "icon": "👑",
+                        "category": "Bài Viết Trọng Điểm Toàn Diện",
+                        "desc": "Công thức tối thượng dành cho các bài viết bán hàng chuyên sâu, thư chào thầu B2B hoặc bài viết trụ cột trên Website.",
+                        "structure": "1. Problem (Vấn đề) ➔ 2. Amplify (Khuếch đại hậu quả) ➔ 3. Story (Câu chuyện chuyển mình) ➔ 4. Transformation (Sự thay đổi) ➔ 5. Offer (Gói giải pháp & ưu đãi) ➔ 6. Response (Hành động).",
+                        "example": "Nỗi lo sa bàn bị méo mó tỷ lệ ➔ Ảnh hưởng uy tín Chủ đầu tư ➔ Trải nghiệm chọn xưởng Song Anh ➔ Doanh số bùng nổ ngày mở bán ➔ Trọn gói thi công bảo hành trọn đời ➔ Đặt lịch khảo sát mặt bằng.",
+                        "bestFor": "Trang đích dịch vụ (Landing Page), Hồ sơ năng lực (Profile Doanh Nghiệp), Bài viết Website chuyên sâu."
+            }
+];
+
         let socialChannelsData = [
             {
                         "id": "3aa4b5e7-3d90-80f2-b98c-c03c4e6f384c",
@@ -13711,6 +14172,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             safeCall(renderKeywordTable, 'renderKeywordTable');
             safeCall(initTargetAudiencesData, 'initTargetAudiencesData');
             safeCall(renderSocialChannels, 'renderSocialChannels');
+            safeCall(renderWritingFormulas, 'renderWritingFormulas');
             safeCall(updateHeaderRealtimeDate, 'updateHeaderRealtimeDate');
             safeCall(renderOnpageTable, 'renderOnpageTable');
             safeCall(renderFbTable, 'renderFbTable');

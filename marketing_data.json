@@ -12946,5 +12946,95 @@
             "status": "Active"
         }
     ],
-    "social_channels_notion_url": "https://app.notion.com/p/39d4b5e73d908170af7cefd31f1d056b?v=39d4b5e73d90817a975c000c68ebda79"
+    "social_channels_notion_url": "https://app.notion.com/p/39d4b5e73d908170af7cefd31f1d056b?v=39d4b5e73d90817a975c000c68ebda79",
+    "writing_formulas": [
+        {
+            "id": "formula-pas",
+            "name": "PAS (Problem - Agitate - Solution)",
+            "code": "PAS",
+            "icon": "⚡",
+            "category": "Chuyển Đổi Nhanh",
+            "desc": "Công thức kinh điển đánh trực diện vào nỗi đau khách hàng, đào sâu áp lực rủi ro và đưa ra giải pháp sa bàn kiến trúc Song Anh để giải quyết triệt để.",
+            "structure": "1. Problem (Nêu nỗi đau/vấn đề khó khăn) ➔ 2. Agitate (Đào sâu áp lực/hậu quả nếu không giải quyết) ➔ 3. Solution (Giải pháp kỹ thuật từ xưởng Song Anh).",
+            "example": "Khách mua khó hình dung bản vẽ 2D ➔ Mất khách vào tay đối thủ có Sales Gallery đẹp ➔ Sa bàn Song Anh in 3D 8K sáng đèn lung linh giúp tăng 50% tỷ lệ chốt cọc.",
+            "bestFor": "Bài viết chốt Sale Fanpage, GBP Maps, Profile cá nhân khi nhấn mạnh giải pháp thay thế."
+        },
+        {
+            "id": "formula-aida",
+            "name": "AIDA (Attention - Interest - Desire - Action)",
+            "code": "AIDA",
+            "icon": "🎯",
+            "category": "Phễu Bán Hàng Toàn Diện",
+            "desc": "Mô hình phễu kinh điển dẫn dắt tâm lý khách hàng từ ấn tượng ban đầu đến mong muốn sở hữu và hành động nhấc máy liên hệ ngay.",
+            "structure": "1. Attention (Hook giật điểm chú ý thị giác) ➔ 2. Interest (Chi tiết kỹ thuật tinh xảo) ➔ 3. Desire (Lợi ích gia tăng vị thế dự án) ➔ 4. Action (CTA gửi bản vẽ nhận báo giá 30p).",
+            "example": "Góc quay sa bàn sáng rực ban đêm ➔ Bóc tách tỷ lệ chuẩn từng milimet ➔ Khách tham quan choáng ngợp tại Sales Gallery ➔ Hotline/Zalo 0929 22 4444 nhận dự toán.",
+            "bestFor": "Bài viết Fanpage B2B, Bài PR báo chí, Kịch bản Video ngắn Reels/TikTok."
+        },
+        {
+            "id": "formula-bab",
+            "name": "BAB (Before - After - Bridge)",
+            "code": "BAB",
+            "icon": "🌉",
+            "category": "Tương Phản Thị Giác",
+            "desc": "Tạo sự tương phản mạnh mẽ giữa thực trạng bế tắc trước đây và viễn cảnh rực rỡ sau khi có sa bàn, với cầu nối là năng lực thi công xưởng Song Anh.",
+            "structure": "1. Before (Thực trạng khi chưa có sa bàn hoặc dùng sa bàn cũ hỏng) ➔ 2. After (Không gian Sales Gallery lung linh, khách mua tin tưởng) ➔ 3. Bridge (Cầu nối gia công/làm mới từ Song Anh).",
+            "example": "Bản vẽ 2D trừu tượng khách xem xong ra về ➔ Sa bàn sáng đèn rực rỡ khách nán lại nghe tư vấn ➔ Dịch vụ gia công sa bàn chuẩn tiến độ 7-15 ngày tại xưởng Thủ Đức.",
+            "bestFor": "Bài viết Case Study, Dịch vụ sửa chữa bảo trì sa bàn, Bài đăng Profile Sếp Tiến."
+        },
+        {
+            "id": "formula-fab",
+            "name": "FAB (Features - Advantages - Benefits)",
+            "code": "FAB",
+            "icon": "💎",
+            "category": "Thuyết Phục Kỹ Thuật",
+            "desc": "Công thức thuyết phục giới chuyên môn (Kiến trúc sư, Chủ đầu tư kỹ tính) bằng cách chuyển hóa tính năng máy móc thành lợi ích kinh doanh thực tế.",
+            "structure": "1. Features (Tính năng công nghệ: in 3D 8K, Mica Acrylic) ➔ 2. Advantages (Ưu điểm vượt trội: sắc nét 0.05mm, bền màu) ➔ 3. Benefits (Lợi ích cốt lõi: tiết kiệm chi phí, nâng tầm uy tín).",
+            "example": "Công nghệ in 3D SLA 8K siêu mịn ➔ Chi tiết ban công và cây xanh sắc sảo không bị bavia ➔ Tôn vinh đẳng cấp concept thiết kế của KTS Trưởng.",
+            "bestFor": "Bài viết tiếp cận Kiến Trúc Sư, Tổng thầu EPC, Bài chia sẻ chuyên môn kỹ thuật Group Facebook."
+        },
+        {
+            "id": "formula-sss",
+            "name": "SSS (Star - Story - Solution)",
+            "code": "SSS",
+            "icon": "⭐",
+            "category": "Câu Chuyện Dự Án Thực Chiến",
+            "desc": "Công thức kể chuyện cuốn hút xây dựng lòng tin tuyệt đối (Social Proof) thông qua hành trình chinh phục một ca khó hoặc dự án trọng điểm.",
+            "structure": "1. Star (Giới thiệu nhân vật/dự án ngôi sao) ➔ 2. Story (Câu chuyện thử thách tiến độ gấp hoặc độ phức tạp) ➔ 3. Solution (Giải pháp và thành quả bàn giao ngoạn mục).",
+            "example": "Dự án Khải Hoàn Prime / Nhà máy Đại Nghĩa ➔ Yêu cầu bàn giao gấp trong 10 ngày trước lễ khởi công ➔ Đội ngũ Song Anh tăng ca 3 kíp, hoàn thiện lắp đặt an toàn 100%.",
+            "bestFor": "Bài đăng Profile cá nhân Sếp Tiến, Bài viết Storytelling trên Fanpage & LinkedIn."
+        },
+        {
+            "id": "formula-4p",
+            "name": "4P (Picture - Promise - Prove - Push)",
+            "code": "4P",
+            "icon": "📸",
+            "category": "Thuyết Phục B2B Cấp Cao",
+            "desc": "Vẽ nên bức tranh không gian đẳng cấp, cam kết chất lượng, chứng minh năng lực thực tế và thúc đẩy hành động hợp tác.",
+            "structure": "1. Picture (Vẽ bức tranh không gian rực rỡ) ➔ 2. Promise (Cam kết chất lượng chuẩn concept) ➔ 3. Prove (Chứng minh bằng 150+ dự án đã bàn giao) ➔ 4. Push (Kêu gọi liên hệ ngay).",
+            "example": "Bức tranh sảnh lễ tân đón tiếp đối tác quốc tế ➔ Cam kết tiến độ và độ chuẩn tỷ lệ ➔ Hàng trăm dự án KCN VSIP, Becamex ➔ Gửi bản vẽ nhận dự toán trong 30p.",
+            "bestFor": "Bài viết tiếp cận Doanh nghiệp FDI, Chủ đầu tư BĐS lớn, Quảng cáo B2B."
+        },
+        {
+            "id": "formula-quest",
+            "name": "QUEST (Qualify - Understand - Educate - Stimulate - Transition)",
+            "code": "QUEST",
+            "icon": "🧭",
+            "category": "Giáo Dục & Chuyển Đổi Sâu",
+            "desc": "Quy trình 5 bước sàng lọc đúng đối tượng mục tiêu, thấu hiểu khó khăn, chia sẻ kiến thức chuyên ngành và chuyển đổi thành hợp đồng.",
+            "structure": "1. Qualify (Sàng lọc đúng đối tượng B2B) ➔ 2. Understand (Đồng cảm khó khăn) ➔ 3. Educate (Cung cấp giải pháp kỹ thuật) ➔ 4. Stimulate (Khơi dậy động lực) ➔ 5. Transition (Chuyển đổi).",
+            "example": "Dành riêng cho các đơn vị đang chuẩn bị mở bán ➔ Nỗi lo chậm tiến độ khai trương ➔ Cách chọn xưởng có năng lực máy in 3D 8K ➔ Tự tin tỏa sáng ngày mở bán ➔ Hotline Song Anh.",
+            "bestFor": "Bài viết Pillar SEO Website, Bài viết phân tích chuyên sâu trên Group Kiến Trúc & BĐS."
+        },
+        {
+            "id": "formula-pastor",
+            "name": "PASTOR (Problem - Amplify - Story - Transformation - Offer - Response)",
+            "code": "PASTOR",
+            "icon": "👑",
+            "category": "Bài Viết Trọng Điểm Toàn Diện",
+            "desc": "Công thức tối thượng dành cho các bài viết bán hàng chuyên sâu, thư chào thầu B2B hoặc bài viết trụ cột trên Website.",
+            "structure": "1. Problem (Vấn đề) ➔ 2. Amplify (Khuếch đại hậu quả) ➔ 3. Story (Câu chuyện chuyển mình) ➔ 4. Transformation (Sự thay đổi) ➔ 5. Offer (Gói giải pháp & ưu đãi) ➔ 6. Response (Hành động).",
+            "example": "Nỗi lo sa bàn bị méo mó tỷ lệ ➔ Ảnh hưởng uy tín Chủ đầu tư ➔ Trải nghiệm chọn xưởng Song Anh ➔ Doanh số bùng nổ ngày mở bán ➔ Trọn gói thi công bảo hành trọn đời ➔ Đặt lịch khảo sát mặt bằng.",
+            "bestFor": "Trang đích dịch vụ (Landing Page), Hồ sơ năng lực (Profile Doanh Nghiệp), Bài viết Website chuyên sâu."
+        }
+    ]
 }
