@@ -11272,6 +11272,15 @@
     },
     "marketing_activity_log": [
         {
+            "timestamp": "2026-09-01 13:29:17",
+            "date": "01/09/2026",
+            "time": "13:28:48",
+            "module": "Facebook Profile",
+            "action": "Re-comment bài đăng Profile Song Anh (Option 2 - Sa bàn Trang trại nuôi tôm) thành công 100%.",
+            "operator": "Phạm Hoàng Tiến",
+            "status": "Hoàn Thành"
+        },
+        {
             "timestamp": "01/09/2026 08:58:00",
             "module": "Facebook",
             "action": "Sếp Tiến duyệt và đăng Option 3 Re-comment cho bài viết sa bàn RMIT trên Fanpage Mô hình kiến trúc Song Anh; đồng bộ ngày 01/09/2026 trên Notion BẢNG CONTENT.",
