@@ -12823,16 +12823,16 @@
         },
         {
             "id": "3aa4b5e7-3d90-8093-8378-c171cb8a0f91",
-            "name": "Tiktok Vật liệu mô hình",
+            "name": "Vật liệu mô hình",
             "platform": "Tiktok",
             "category": "tiktok",
             "icon_class": "fa-brands fa-tiktok text-slate-900",
             "badge_class": "bg-slate-100 text-slate-900 border-slate-300",
-            "type": "Kênh Video Ngắn TikTok",
-            "frequency": "3 clip / tuần",
-            "direct_url": "https://www.tiktok.com/@mohinhsonganh",
-            "notion_url": "https://app.notion.com/p/Tiktok-V-t-li-u-m-h-nh-3aa4b5e73d9080938378c171cb8a0f91",
-            "desc": "Hậu trường máy cắt laser, in 3D 8K và nghệ thuật lắp ráp sa bàn.",
+            "type": "Tài khoản B2B",
+            "frequency": "1 bài / ngày",
+            "direct_url": "https://mohinhkientruc.org",
+            "notion_url": "https://app.notion.com/p/V-t-li-u-m-h-nh-3aa4b5e73d9080938378c171cb8a0f91",
+            "desc": "Kênh phân phối nội dung thương hiệu Song Anh.",
             "status": "Active"
         },
         {
