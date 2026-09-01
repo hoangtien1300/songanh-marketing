@@ -732,7 +732,7 @@
                                 <i class="fa-solid fa-house text-blue-600 w-4"></i>
                                 <span>Trang chủ</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-600 text-white font-extrabold">LIVE</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
                     </div>
                     
@@ -743,7 +743,10 @@
                                 <i class="fa-solid fa-globe text-sky-600 w-4"></i>
                                 <span>SEO Website</span>
                             </div>
-                            <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                            </div>
                         </button>
                         
                         <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
@@ -804,9 +807,7 @@
                         </button>
                     </div>
 
-
-
-                    <!-- 6. X.COM -->
+                    <!-- 5. X.COM -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
                         <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
@@ -814,7 +815,7 @@
                         </button>
                     </div>
 
-                    <!-- 7. TIKTOK -->
+                    <!-- 6. TIKTOK -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
                         <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
@@ -822,7 +823,7 @@
                         </button>
                     </div>
 
-                    <!-- 8. YOUTUBE -->
+                    <!-- 7. YOUTUBE -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
                         <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
@@ -844,7 +845,7 @@
                                 <span class="w-5 h-5 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs shadow-xs">💡</span>
                                 <span class="text-amber-950 font-black">AI Content Studio</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-gradient-to-r from-amber-500 to-orange-500 text-white font-extrabold shadow-2xs">HOT</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
                     </div>
 
@@ -855,10 +856,11 @@
                                 <span class="w-5 h-5 rounded-lg bg-rose-500 text-white flex items-center justify-center text-xs shadow-xs">📌</span>
                                 <span class="text-rose-950 font-bold">Pinterest Image Studio</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-extrabold border border-emerald-300">Active</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
                     </div>
 
+                    <!-- 3. Facebook Tool (Mặc định ẩn submenu) -->
                     <div class="accordion-group rounded-xl border border-purple-200 bg-purple-50/70 overflow-hidden">
                         <button onclick="toggleAccordion('acc-tool-facebook')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-purple-100/80 transition">
                             <div class="flex items-center gap-2">
@@ -866,8 +868,7 @@
                                 <span>Facebook Tool</span>
                             </div>
                             <div class="flex items-center gap-1.5">
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold shadow-sm">Update</span>
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-extrabold shadow-sm">PRO</span>
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 <i id="icon-acc-tool-facebook" class="fa-solid fa-chevron-down text-purple-500 text-[10px] transition-transform duration-300"></i>
                             </div>
                         </button>
@@ -876,45 +877,27 @@
                             <div class="py-1 pl-2">
                                 <button onclick="selectModule('fb-auto-friend')" id="sub-fb-auto-friend" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🤝</span> 1. Kết Bạn Tự Động</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-100 text-blue-700 font-bold">7 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                                 <button onclick="selectModule('fb-auto-engagement')" id="sub-fb-auto-engagement" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>⚡</span> 2. Tương Tác Tự Động</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">8 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                                 <button onclick="selectModule('fb-uid-scraper')" id="sub-fb-uid-scraper" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🔍</span> 3. Quét UID Facebook</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">8 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                                 <button onclick="selectModule('fb-fanpage-manager')" id="sub-fb-fanpage-manager" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🏢</span> 4. Hỗ Trợ Fanpage</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 font-bold">4 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                                 <button onclick="selectModule('fb-facebook-groups')" id="sub-fb-facebook-groups" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🌐</span> 5. Hỗ Trợ Groups</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-bold">5 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                                 <button onclick="selectModule('fb-data-backup')" id="sub-fb-data-backup" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-purple-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>💾</span> 6. Backup Dữ Liệu</span>
-                                    <div class="flex items-center gap-1">
-                                        <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-extrabold">Update</span>
-                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-rose-100 text-rose-800 font-bold">2 Tools</span>
-                                    </div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
                                 </button>
                             </div>
                         </div>
@@ -923,7 +906,7 @@
                     <!-- ⚙️ CỤM CÀI ĐẶT & HỆ THỐNG (SETTINGS) -->
                     <div class="px-2 pt-3 pb-1">
                         <p class="text-[10px] font-black tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
-                            <i class="fa-solid fa-sliders text-slate-500"></i> CÀI ĐẶT HỆ THỐNG
+                            <i class="fa-solid fa-sliders text-slate-500"></i> CÀI ĐẶT
                         </p>
                     </div>
 
@@ -934,7 +917,7 @@
                                 <span class="font-extrabold text-slate-900">⚙️ Cài Đặt</span>
                             </div>
                             <div class="flex items-center gap-1">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-700 font-extrabold">SETTINGS</span>
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                                 <i id="icon-acc-settings" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-300"></i>
                             </div>
                         </button>
@@ -943,15 +926,15 @@
                             <div class="py-1 pl-2 space-y-0.5">
                                 <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-indigo-800 hover:bg-indigo-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Đối tượng khách hàng</span>
-                                    <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 border border-indigo-200 font-black">12 Personas</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                                 </button>
                                 <button onclick="selectModule('content-goals')" id="sub-content-goals" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-amber-900 hover:bg-amber-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Content Goal</span>
-                                    <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200 font-black">7 Goals</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                                 </button>
                                 <button onclick="selectModule('social-channels')" id="sub-social-channels" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🌐</span> Kênh Social</span>
-                                    <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200 font-black">18 Kênh</span>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                                 </button>
                             </div>
                         </div>
