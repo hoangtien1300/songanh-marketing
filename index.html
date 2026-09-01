@@ -151,7 +151,7 @@
         // 🔄 POPULATE DROPDOWNS DYNAMICALLY FROM CÀI ĐẶT (ĐỐI TƯỢNG, GOAL, KÊNH)
         // -------------------------------------------------------------------------
         function populateAiContentStudioDropdowns() {
-            // 1. Đối tượng khách hàng
+            // 1. Đối tượng khách hàng (Mặc định: -- Chọn đối tượng khách hàng --)
             const audSelect = document.getElementById('ai-content-audience');
             if (audSelect && Array.isArray(targetAudiencesData)) {
                 const currentAudVal = audSelect.value;
@@ -169,29 +169,27 @@
                     return true;
                 });
 
-                let audHtml = '<option value="">-- Chọn đối tượng khách hàng --</option>';
+                let audHtml = '<option value="" selected>-- Chọn đối tượng khách hàng --</option>';
                 filteredAud.forEach(aud => {
                     audHtml += `<option value="${aud.id}">${aud.icon || '🎯'} ${aud.name} (${getSegmentLabel(aud.segment)})</option>`;
                 });
                 audSelect.innerHTML = audHtml;
                 if (currentAudVal) audSelect.value = currentAudVal;
-                if (!audSelect.value && filteredAud.length > 0) audSelect.selectedIndex = 1;
             }
 
-            // 2. Content Goal
+            // 2. Content Goal (Mặc định: -- Chọn Content Goal --)
             const goalSelect = document.getElementById('ai-content-goal');
             if (goalSelect && Array.isArray(contentGoalsData)) {
                 const currentGoalVal = goalSelect.value;
-                let goalHtml = '<option value="">-- Chọn Content Goal --</option>';
+                let goalHtml = '<option value="" selected>-- Chọn Content Goal --</option>';
                 contentGoalsData.forEach(goal => {
                     goalHtml += `<option value="${goal.id}">${goal.icon || '🎯'} ${goal.name} (${goal.type})</option>`;
                 });
                 goalSelect.innerHTML = goalHtml;
                 if (currentGoalVal) goalSelect.value = currentGoalVal;
-                if (!goalSelect.value && contentGoalsData.length > 0) goalSelect.selectedIndex = 1;
             }
 
-            // 3. Kênh Social (Lọc theo currentDomain)
+            // 3. Kênh Social (Mặc định: -- Chọn Kênh Social --)
             const chanSelect = document.getElementById('ai-content-channel');
             if (chanSelect && Array.isArray(socialChannelsData)) {
                 const currentChanVal = chanSelect.value;
@@ -203,14 +201,13 @@
                     return true;
                 });
 
-                let chanHtml = '<option value="">-- Chọn Kênh Social --</option>';
+                let chanHtml = '<option value="" selected>-- Chọn Kênh Social --</option>';
                 filteredChan.forEach(ch => {
                     const iconEmoji = ch.platform === 'Facebook' ? '📘' : (ch.platform === 'Google' ? '📍' : (ch.platform === 'Pinterest' ? '📌' : (ch.platform === 'Youtube' ? '🎬' : (ch.platform === 'Tiktok' ? '🎵' : '💬'))));
                     chanHtml += `<option value="${ch.id}">${iconEmoji} ${ch.name} (${ch.platform} - ${ch.type})</option>`;
                 });
                 chanSelect.innerHTML = chanHtml;
                 if (currentChanVal) chanSelect.value = currentChanVal;
-                if (!chanSelect.value && filteredChan.length > 0) chanSelect.selectedIndex = 1;
             }
         }
 
