@@ -144,160 +144,275 @@
             post: "",
             comment: "",
             prompt: "",
-            channelName: "Fanpage B2B"
+            channelName: "B2B Content"
         };
 
-        function setRawIdeaPreset(type) {
-            const rawIdeaInput = document.getElementById('ai-raw-idea');
+        // -------------------------------------------------------------------------
+        // 🔄 POPULATE DROPDOWNS DYNAMICALLY FROM CÀI ĐẶT (ĐỐI TƯỢNG, GOAL, KÊNH)
+        // -------------------------------------------------------------------------
+        function populateAiContentStudioDropdowns() {
+            // 1. Đối tượng khách hàng
             const audSelect = document.getElementById('ai-content-audience');
-            const goalSelect = document.getElementById('ai-content-goal');
-            const chanSelect = document.getElementById('ai-content-channel');
+            if (audSelect && Array.isArray(targetAudiencesData)) {
+                const currentAudVal = audSelect.value;
+                
+                const filteredAud = targetAudiencesData.filter(item => {
+                    const seg = item.segment || '';
+                    const nameLow = (item.name || '').toLowerCase();
+                    if (currentDomain === 'mo-hinh') {
+                        return (seg !== 'khac' || !nameLow.includes('tmđt'));
+                    } else if (currentDomain === 'tmdt') {
+                        return (seg === 'khac' || nameLow.includes('tmđt') || nameLow.includes('vật liệu'));
+                    } else if (currentDomain === 'golf') {
+                        return nameLow.includes('golf') || (seg === 'bds' && nameLow.includes('golf'));
+                    }
+                    return true;
+                });
 
-            if (!rawIdeaInput) return;
-
-            if (type === 'khai_hoan') {
-                rawIdeaInput.value = "Sa bàn dự án căn hộ cao cấp Khải Hoàn Prime Nam Sài Gòn, tỷ lệ 1/100, khối tháp cao tầng hiện đại, phân khu cảnh quan hồ bơi tầng mái, ánh sáng LED 3 chế độ ngày đêm, phục vụ Sales Gallery tư vấn khách hàng.";
-                if (audSelect) audSelect.value = "investor_bds";
-                if (goalSelect) goalSelect.value = "technical";
-                if (chanSelect) chanSelect.value = "fanpage_song_anh";
-            } else if (type === 'kcn_quy_hoach') {
-                rawIdeaInput.value = "Sa bàn quy hoạch tổng thể Khu công nghiệp và Đô thị dịch vụ VSIP 500ha, tỷ lệ 1/1000, phân khu chức năng nhà xưởng, cảng cạn ICD, cây xanh giao thông dải LED viền, phục vụ xúc tiến đầu tư FDI.";
-                if (audSelect) audSelect.value = "factory_kcn";
-                if (goalSelect) goalSelect.value = "quotation";
-                if (chanSelect) chanSelect.value = "gbp_saban";
-            } else if (type === 'nha_may_fdi') {
-                rawIdeaInput.value = "Mô hình tổ hợp nhà máy sản xuất linh kiện điện tử FDI công nghệ cao, tỷ lệ 1/200, bóc tách cấu trúc mái panel pin năng lượng mặt trời, dây chuyền sản xuất tự động hóa bên trong, phục vụ trưng bày sảnh lễ tân đón đối tác quốc tế.";
-                if (audSelect) audSelect.value = "global";
-                if (goalSelect) goalSelect.value = "technical";
-                if (chanSelect) chanSelect.value = "architectural_org";
-            } else if (type === 'noi_that_3d') {
-                rawIdeaInput.value = "Sa bàn cắt bổ nội thất 3D căn hộ Penthouse 2 tầng Duplex, tỷ lệ 1/25, đầy đủ sofa gỗ acrylic, đèn chùm micro LED, ban công view sông, giúp khách hàng hình dung trọn vẹn không gian sống.";
-                if (audSelect) audSelect.value = "architect";
-                if (goalSelect) goalSelect.value = "case_study";
-                if (chanSelect) chanSelect.value = "profile_tien";
-            } else if (type === 'bao_tri') {
-                rawIdeaInput.value = "Dịch vụ bảo trì, vệ sinh hút bụi, căn chỉnh hệ thống đèn LED và phục chế màu sa bàn kiến trúc cũ tại văn phòng bán hàng Chủ đầu tư trong 24h, bảo hành trọn đời.";
-                if (audSelect) audSelect.value = "investor_bds";
-                if (goalSelect) goalSelect.value = "case_study";
-                if (chanSelect) chanSelect.value = "gbp_dichvu";
+                let audHtml = '<option value="">-- Chọn đối tượng khách hàng --</option>';
+                filteredAud.forEach(aud => {
+                    audHtml += `<option value="${aud.id}">${aud.icon || '🎯'} ${aud.name} (${getSegmentLabel(aud.segment)})</option>`;
+                });
+                audSelect.innerHTML = audHtml;
+                if (currentAudVal) audSelect.value = currentAudVal;
+                if (!audSelect.value && filteredAud.length > 0) audSelect.selectedIndex = 1;
             }
 
-            handleGenerateSmartContent();
+            // 2. Content Goal
+            const goalSelect = document.getElementById('ai-content-goal');
+            if (goalSelect && Array.isArray(contentGoalsData)) {
+                const currentGoalVal = goalSelect.value;
+                let goalHtml = '<option value="">-- Chọn Content Goal --</option>';
+                contentGoalsData.forEach(goal => {
+                    goalHtml += `<option value="${goal.id}">${goal.icon || '🎯'} ${goal.name} (${goal.type})</option>`;
+                });
+                goalSelect.innerHTML = goalHtml;
+                if (currentGoalVal) goalSelect.value = currentGoalVal;
+                if (!goalSelect.value && contentGoalsData.length > 0) goalSelect.selectedIndex = 1;
+            }
+
+            // 3. Kênh Social (Lọc theo currentDomain)
+            const chanSelect = document.getElementById('ai-content-channel');
+            if (chanSelect && Array.isArray(socialChannelsData)) {
+                const currentChanVal = chanSelect.value;
+                
+                const filteredChan = socialChannelsData.filter(ch => {
+                    if (currentDomain === 'mo-hinh') return (ch.domain_scope === 'mo-hinh');
+                    if (currentDomain === 'tmdt') return (ch.domain_scope === 'tmdt');
+                    if (currentDomain === 'golf') return (ch.domain_scope === 'golf');
+                    return true;
+                });
+
+                let chanHtml = '<option value="">-- Chọn Kênh Social --</option>';
+                filteredChan.forEach(ch => {
+                    const iconEmoji = ch.platform === 'Facebook' ? '📘' : (ch.platform === 'Google' ? '📍' : (ch.platform === 'Pinterest' ? '📌' : (ch.platform === 'Youtube' ? '🎬' : (ch.platform === 'Tiktok' ? '🎵' : '💬'))));
+                    chanHtml += `<option value="${ch.id}">${iconEmoji} ${ch.name} (${ch.platform} - ${ch.type})</option>`;
+                });
+                chanSelect.innerHTML = chanHtml;
+                if (currentChanVal) chanSelect.value = currentChanVal;
+                if (!chanSelect.value && filteredChan.length > 0) chanSelect.selectedIndex = 1;
+            }
         }
 
+        // -------------------------------------------------------------------------
+        // 🪄 AI BIÊN SOẠN LẠI Ý TƯỞNG THÔ THÀNH BRIEF HOÀN CHỈNH, RÕ NGHĨA
+        // -------------------------------------------------------------------------
+        function refineRawIdeaWithAi() {
+            const area = document.getElementById('ai-raw-idea');
+            const btn = document.getElementById('btn-refine-ai');
+            if (!area) return;
+
+            const text = area.value.trim();
+            if (!text) {
+                showToast("⚠️ Vui lòng nhập vài từ hoặc ghi chú ý tưởng thô trước khi AI biên soạn!");
+                area.focus();
+                return;
+            }
+
+            // Button Loading animation
+            const originalBtnHtml = btn ? btn.innerHTML : '';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span>Đang biên soạn...</span>`;
+            }
+
+            setTimeout(() => {
+                // Intelligent B2B Model Refinement Engine
+                let projectName = text;
+                let scale = "1/100 (Cao tầng / Quy hoạch phân khu) hoặc 1/500 (Tổng thể)";
+                let materials = "Mica Acrylic Đài Loan chống ố vàng, in 3D resin SLA 8K siêu mịn, đế gỗ sồi sơn PU cao cấp";
+                let lighting = "Hệ thống LED vi điều khiển lập trình 3 chế độ (Ngày / Đêm / Điểm nhấn phân tầng)";
+                let goalContext = "Trưng bày sảnh Sales Gallery đón khách VIP, phục vụ lễ mở bán và thuyết phục Chủ đầu tư & Khách mua nhà";
+
+                if (text.toLowerCase().includes("kcn") || text.toLowerCase().includes("nhà máy") || text.toLowerCase().includes("fdi") || text.toLowerCase().includes("công nghiệp")) {
+                    scale = "1/500 đến 1/1000";
+                    materials = "Mica Acrylic cắt CNC laser độ chính xác 0.05mm, bóc tách phân khu xưởng, kho bãi ICD & trạm biến áp";
+                    lighting = "Dải LED viền giao thông nội khu, đèn pha chiếu sáng cảnh quan công nghiệp";
+                    goalContext = "Báo cáo HĐQT, phục vụ xúc tiến thu hút vốn đầu tư FDI và trưng bày sảnh điều hành";
+                } else if (text.toLowerCase().includes("nội thất") || text.toLowerCase().includes("căn hộ") || text.toLowerCase().includes("penthouse") || text.toLowerCase().includes("villa") || text.toLowerCase().includes("biệt thự")) {
+                    scale = "1/25 đến 1/50";
+                    materials = "Cắt bổ 3D chi tiết nội thất, sofa acrylic bọc nỉ, đèn chùm micro LED, ban công view panorama";
+                    lighting = "Ánh sáng vàng ấm 3000K mô phỏng không gian sống sang trọng, ấm cúng";
+                    goalContext = "Giúp khách hàng cảm nhận trực quan từng góc không gian sống và công năng sử dụng căn hộ";
+                } else if (text.toLowerCase().includes("golf")) {
+                    scale = "1/500 đến 1/1000 địa hình giật cấp";
+                    materials = "Tái hiện thảm cỏ fairway uốn lượn, hồ nước nhân tạo acrylic trong suốt, bunker cát tự nhiên";
+                    lighting = "Chiếu sáng LED phân luồng đường line đánh golf ban đêm (Night Golf)";
+                    goalContext = "Trưng bày sảnh Clubhouse và thuyết trình quy hoạch quần thể nghỉ dưỡng sân golf";
+                } else if (text.toLowerCase().includes("vật liệu") || text.toLowerCase().includes("ánh dương") || text.toLowerCase().includes("shop")) {
+                    materials = "Cung cấp trọn gói cây mô hình, tấm mica, đèn LED dây, mô tơ xoay và phụ kiện sa bàn giá sỉ";
+                    goalContext = "Cung ứng vật tư giá sỉ toàn quốc cho xưởng sa bàn, KTS và sinh viên kiến trúc";
+                }
+
+                const refinedText = `📌 DỰ ÁN & Ý TƯỞNG:
+${text}
+
+` +
+                    `📐 TỶ LỆ & QUY CÁCH ĐỀ XUẤT:
+` +
+                    `• Tỷ lệ thi công: ${scale}
+` +
+                    `• Vật liệu chủ đạo: ${materials}
+` +
+                    `• Hệ thống ánh sáng: ${lighting}
+
+` +
+                    `🎯 MỤC TIÊU & ỨNG DỤNG B2B:
+` +
+                    `• ${goalContext}
+` +
+                    `• Đóng kiện gỗ chống sốc lót mút EVA bàn giao lắp đặt tận nơi từ Xưởng Song Anh (Thủ Đức).
+` +
+                    `• Cam kết tiến độ thi công chuẩn xác 7 - 15 ngày, bảo hành bảo trì 24/7.`;
+
+                area.value = refinedText;
+                area.rows = 7;
+
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = originalBtnHtml;
+                }
+
+                showToast("✨ AI đã biên soạn lại ý tưởng hoàn chỉnh & rõ nghĩa!");
+            }, 350);
+        }
+
+        // -------------------------------------------------------------------------
+        // ✨ TẠO BÀI VIẾT B2B TỪ Ý TƯỞNG + ĐỐI TƯỢNG + GOAL + KÊNH SOCIAL
+        // -------------------------------------------------------------------------
         function handleGenerateSmartContent() {
             const rawIdea = (document.getElementById('ai-raw-idea') ? document.getElementById('ai-raw-idea').value.trim() : "");
-            const audience = (document.getElementById('ai-content-audience') ? document.getElementById('ai-content-audience').value : "investor_bds");
-            const goal = (document.getElementById('ai-content-goal') ? document.getElementById('ai-content-goal').value : "quotation");
-            const channel = (document.getElementById('ai-content-channel') ? document.getElementById('ai-content-channel').value : "fanpage_song_anh");
+            const audId = (document.getElementById('ai-content-audience') ? document.getElementById('ai-content-audience').value : "");
+            const goalId = (document.getElementById('ai-content-goal') ? document.getElementById('ai-content-goal').value : "");
+            const chanId = (document.getElementById('ai-content-channel') ? document.getElementById('ai-content-channel').value : "");
 
-            const topicText = rawIdea || "Dự án sa bàn kiến trúc B2B cao cấp tại Xưởng Mô hình Song Anh";
+            // Lookup Objects from Data
+            const selectedAud = (Array.isArray(targetAudiencesData) ? targetAudiencesData.find(a => a.id === audId) : null) || {
+                name: "Khách Hàng & Đối Tác B2B",
+                segment: "bds",
+                painPoints: "Yêu cầu chất lượng tinh xảo, tiến độ bàn giao đúng hạn và ánh sáng LED lung linh.",
+                triggers: "Chất lượng hoàn thiện cao, bảo hành tận nơi, xưởng trực tiếp không qua trung gian.",
+                tone: "Điềm tĩnh, trang trọng B2B, tôn vinh vị thế dự án."
+            };
 
-            // Define Audience Angles
-            let audienceHook = "";
-            let audienceCTA = "";
-            if (audience === 'military') {
-                audienceHook = "Phục vụ công tác huấn luyện, diễn tập tác chiến và quy hoạch địa bàn quân khu với độ chính xác cao trình địa hình thực địa GIS.";
-                audienceCTA = "Tư vấn phương án gia công sa bàn địa hình quân sự bảo mật & chính xác.";
-            } else if (audience === 'event_company') {
-                audienceHook = "Tạo điểm nhấn thị giác trung tâm, thu hút hàng ngàn khách tham quan và đối tác tại gian hàng hội chợ triển lãm & lễ ra mắt dự án.";
-                audienceCTA = "Thiết kế & thi công mô hình trưng bày triển lãm module tháo lắp linh hoạt.";
-            } else if (audience === 'student_arch') {
-                audienceHook = "Hỗ trợ các bạn sinh viên kiến trúc hoàn thiện mô hình đồ án tốt nghiệp chuẩn xác từng chi tiết, in 3D SLA 8K siêu mịn, cắt laser mica lấy nhanh trong 24-48h với chi phí hỗ trợ sinh viên.";
-                audienceCTA = "Gửi file CAD/3D nhận báo giá hỗ trợ sinh viên kiến trúc ngay.";
-            } else if (audience === 'teacher_school') {
-                audienceHook = "Giúp học sinh sinh viên trực quan hóa kiến thức không gian, lịch sử và địa lý thông qua sa bàn học đường sinh động.";
-                audienceCTA = "Tư vấn sa bàn giáo cụ trực quan và sa bàn khuôn viên trường học.";
-            } else if (audience === 'factory_kcn') {
-                audienceHook = "Giúp ban quản lý KCN và chủ doanh nghiệp FDI trực quan hóa dây chuyền sản xuất tự động, kho bãi logistics và hệ thống xử lý môi trường.";
-                audienceCTA = "Nhận dự toán thi công sa bàn nhà máy & KCN trong 30 phút.";
-            } else if (audience === 'architect') {
-                audienceHook = "Tái hiện chính xác 100% ý tưởng thiết kế kiến trúc từ bản vẽ CAD/3D sang mô hình vật lý với độ hoàn thiện tinh xảo.";
-                audienceCTA = "Hợp tác kỹ thuật và báo giá chiết khấu cho đơn vị tư vấn thiết kế.";
-            } else {
-                audienceHook = "Giúp Chủ đầu tư và các sàn phân phối bất động sản trực quan hóa dự án, gia tăng niềm tin và thúc đẩy tỷ lệ chốt cọc tại Sales Gallery.";
-                audienceCTA = "Nhận dự toán và giải pháp sa bàn Sales Gallery trong 30 phút.";
-            }
+            const selectedGoal = (Array.isArray(contentGoalsData) ? contentGoalsData.find(g => g.id === goalId) : null) || {
+                name: "Khẳng Định Năng Lực & Dự Toán B2B",
+                type: "Báo Giá & Chuyển Đổi",
+                intent: "Thúc đẩy liên hệ nhận báo giá và tư vấn phương án kỹ thuật.",
+                structure: "1. Tiêu đề nổi bật -> 2. Điểm tinh xảo công trình -> 3. Lợi ích đối tác -> 4. Hotline/Zalo.",
+                cta: "Kính mời gửi file CAD/Revit qua Zalo 0929 22 4444 nhận dự toán chi tiết trong 30 phút."
+            };
+
+            const selectedChan = (Array.isArray(socialChannelsData) ? socialChannelsData.find(c => c.id === chanId) : null) || {
+                name: "Mô hình kiến trúc Song Anh",
+                platform: "Facebook",
+                type: "Fanpage Chính",
+                direct_url: "https://mohinhkientruc.org",
+                gioithieu: "Trang thông tin chính thức của Mô hình kiến trúc Song Anh.",
+                vaitro: "Kênh phân phối nội dung B2B",
+                mucdich: "Tiếp cận khách hàng B2B"
+            };
+
+            const topicBrief = rawIdea || "Dự án sa bàn kiến trúc B2B cao cấp tại Xưởng Mô hình Song Anh";
+
+            // Post Title Construction
+            let cleanTitle = topicBrief.split('\n')[0].replace(/^📌\s*DỰ ÁN & Ý TƯỞNG:\s*/i, '').trim();
+            if (!cleanTitle || cleanTitle.length < 5) cleanTitle = "THI CÔNG SA BÀN KIẾN TRÚC & QUY HOẠCH CHUYÊN NGHIỆP";
 
             let postText = "";
             let commentText = "";
             let promptText = "";
-            let badgeText = "Fanpage B2B";
+            let badgeText = `${selectedChan.name} (${selectedChan.platform})`;
 
-            if (channel === 'architectural_org') {
-                badgeText = "🌐 Model Org (100% English)";
+            const isEnglish = (selectedChan.name.includes("Architectural Model Org") || selectedAud.id === 'aud-kts-global');
+
+            if (isEnglish) {
+                badgeText = "🌐 Global English Post";
                 postText = `🏢🌐 𝗪𝗢𝗥𝗟𝗗-𝗖𝗟𝗔𝗦𝗦 𝗔𝗥𝗖𝗛𝗜𝗧𝗘𝗖𝗧𝗨𝗥𝗔𝗟 𝗦𝗖𝗔𝗟𝗘 𝗠𝗢𝗗𝗘𝗟 𝗠𝗔𝗞𝗜𝗡𝗚 𝗜𝗡 𝗩𝗜𝗘𝗧𝗡𝗔𝗠 | 𝗣𝗥𝗘𝗖𝗜𝗦𝗜𝗢𝗡 𝗖𝗥𝗔𝗙𝗧𝗦𝗠𝗔𝗡𝗦𝗛𝗜𝗣\n\n` +
-                    `Transforming complex architectural and industrial masterplans into intuitive physical centerpieces for global developers, architects, and institutions.\n\n` +
-                    `📌 PROJECT HIGHLIGHTS: ${topicText}\n` +
-                    `✔ High-Precision Manufacturing: 8K SLA resin 3D printing & CNC laser-cut acrylic detailing.\n` +
-                    `✔ Smart Lighting: Multi-zone Micro LED system replicating daylight (4000K) and warm interior illumination (3000K).\n` +
-                    `✔ Heavy-Duty Export Packaging: Custom-built wooden crates lined with shockproof EVA foam, engineered for international air & sea freight.\n\n` +
+                    `Transforming complex architectural and masterplan concepts into intuitive physical centerpieces for ${selectedAud.name}.\n\n` +
+                    `📌 PROJECT BRIEF: ${cleanTitle}\n\n` +
+                    `🌟 TECHNICAL SPECIFICATIONS & CRAFTSMANSHIP:\n` +
+                    `✔ High-Precision Manufacturing: 8K SLA resin 3D printing & CNC laser-cut acrylic detailing (accuracy within 0.05mm).\n` +
+                    `✔ Dynamic Micro-LED System: Multi-zone circuit programmed to replicate natural daylight (4000K) and warm ambient glow (3000K).\n` +
+                    `✔ Purpose: ${selectedGoal.intent}\n` +
+                    `✔ Heavy-Duty Export Packaging: Custom wooden crates lined with shockproof EVA foam, engineered for safe international air & sea freight.\n\n` +
                     `---\n` +
                     `🏢 SONG ANH ARCHITECTURAL SCALE MODEL STUDIO\n` +
-                    `🌐 Global Website: https://architecturalmodel.org/en/\n` +
-                    `📞 Hotline: 0929 22 4444\n` +
+                    `🌐 Website: https://architecturalmodel.org/en/\n` +
+                    `📞 Hotline/WhatsApp: +84 929 22 4444\n` +
                     `🏭 Workshop: 230/70/28 Nguyen Xien Street, Long Phuoc Ward, Thu Duc City, Ho Chi Minh City, Vietnam\n` +
-                    `📧 Direct Inquiry: mohinhsonganh@gmail.com\n\n` +
+                    `📧 Inquiry: mohinhsonganh@gmail.com\n\n` +
                     `#ArchitecturalModel #ScaleModelMaker #ScaleModelVietnam #MasterplanModel #SongAnhModel`;
 
-                commentText = `💬 First Comment / Reference Link:\nExplore our global architectural scale model project portfolio: https://architecturalmodel.org/en/category/typical-project/\nHotline: 0929 22 4444`;
+                commentText = `💬 First Comment / Reference Link:\nExplore our global project portfolio: https://architecturalmodel.org/en/category/typical-project/\nDirect Contact: +84 929 22 4444`;
 
-                promptText = `Ultra-realistic professional architectural scale model of ${rawIdea || 'modern architectural masterplan complex'}, scale 1/100, illuminated with warm interior LED lighting, acrylic precision laser craftsmanship, exhibition showroom lighting, professional architectural photography, 8k resolution, cinematic atmosphere --ar 16:9`;
+                promptText = `Ultra-realistic professional architectural scale model of ${cleanTitle}, 1/100 scale, miniature illuminated buildings, lush landscaping, warm ambient LED lighting, exhibition showroom lighting, professional architectural photography, 8k resolution, cinematic atmosphere --ar 16:9`;
 
-            } else if (channel === 'gbp_saban') {
-                badgeText = "📍 GBP Sa Bàn (Gọi ngay)";
-                postText = `🏢✨ SA BÀN KIẾN TRÚC SONG ANH — GIẢI PHÁP TRỰC QUAN HÓA CÔNG TRÌNH CHUYÊN NGHIỆP\n\n` +
-                    `Dự án: ${topicText}\n\n` +
-                    `👉 Giá trị thực tế: ${audienceHook}\n\n` +
-                    `Tại xưởng Mô hình Song Anh, mỗi sa bàn là một tác phẩm kết hợp giữa công nghệ in 3D SLA 8K, phay CNC laser mica acrylic và hệ thống dải đèn LED viền phân khu thông minh.\n\n` +
-                    `✔ Tỷ lệ chuẩn xác tuyệt đối 1/100, 1/500 theo bản vẽ CAD.\n` +
-                    `✔ Thời gian thi công nhanh 7 - 15 ngày, tối ưu 70% chi phí bàn giao.\n` +
-                    `✔ Vận chuyển lắp đặt tận nơi tại công trình và bảo hành bảo trì 24/7.\n\n` +
+            } else if (selectedChan.platform === 'Google') {
+                // GBP Local Post
+                const isCallBtn = selectedChan.name.includes("Mô hình kiến trúc Song Anh") || selectedChan.name.includes("Sa bàn");
+                badgeText = isCallBtn ? "📍 GBP (Nút Gọi Ngay)" : "📍 GBP (Nút Tìm Hiểu Thêm)";
+
+                postText = `🏢✨ ${cleanTitle.toUpperCase()} — MÔ HÌNH KIẾN TRÚC SONG ANH\n\n` +
+                    `👉 Giải pháp tối ưu dành cho ${selectedAud.name}:\n` +
+                    `• ${selectedAud.painPoints}\n\n` +
+                    `🌟 ĐIỂM TINH XẢO TẠI XƯỞNG SONG ANH:\n` +
+                    `✓ Công nghệ in 3D SLA 8K kết hợp khắc Laser Mica Acrylic siêu mịn chuẩn từng milimet.\n` +
+                    `✓ Hệ thống đèn LED vi mạch phân tầng ngày đêm điều khiển từ xa ấn tượng.\n` +
+                    `✓ Tiến độ bàn giao nhanh 7 - 15 ngày, tối ưu 70% chi phí sản xuất trực tiếp tại xưởng Thủ Đức.\n` +
+                    `✓ Đóng thùng gỗ bọc mút EVA chống sốc, vận chuyển và bàn giao lắp đặt tận nơi toàn quốc.\n\n` +
+                    `🎯 ${selectedGoal.structure}\n\n` +
                     `🏢 MÔ HÌNH KIẾN TRÚC SONG ANH\n` +
                     `🏭 Xưởng Sản Xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM.\n` +
-                    `📞 Hotline: 0929 22 4444\n` +
-                    `👉 Nhấn nút [GỌI NGAY] 0929 22 4444 để nhận tư vấn kỹ thuật và dự toán chi tiết trong 30 phút!`;
+                    `📞 Hotline kỹ thuật: 0929 22 4444\n` +
+                    (isCallBtn ? `👉 Nhấn nút [GỌI NGAY] để kết nối trực tiếp với đội ngũ kỹ thuật trong 30 phút!` : `👉 Nhấn nút [TÌM HIỂU THÊM] bên dưới để xem báo giá và dự án mẫu!`);
 
-                commentText = `💬 First Comment Điều Hướng:\nQuý đối tác có thể xem thêm các công trình sa bàn tiêu biểu tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
+                commentText = `💬 Link Điều Hướng Website:\nKhám phá các dự án sa bàn tiêu biểu tại: ${selectedChan.direct_url && selectedChan.direct_url !== '#' ? selectedChan.direct_url : 'https://mohinhkientruc.org/sa-ban-cao-tang/'}\nHotline: 0929 22 4444`;
 
-                promptText = `Professional scale model of modern architectural project ${rawIdea || 'luxury high-rise building with landscape'}, sharp detail, 1/100 scale, warm ambient LED lighting, Sales Gallery exhibition table, 8k, photorealistic --ar 16:9`;
+                promptText = `Professional architectural scale model of ${cleanTitle}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, 8k resolution, cinematic lighting --ar 16:9`;
 
-            } else if (channel === 'gbp_dichvu') {
-                badgeText = "📍 GBP Dịch Vụ (Tìm hiểu thêm)";
-                postText = `🛠️ DỊCH VỤ THI CÔNG & BẢO TRÌ SA BÀN KIẾN TRÚC CHUYÊN NGHIỆP TP. THỦ ĐỨC\n\n` +
-                    `Nội dung: ${topicText}\n\n` +
-                    `👉 Giải pháp tối ưu: ${audienceHook}\n\n` +
-                    `Mô hình Song Anh chuyên cung cấp trọn gói giải pháp:\n` +
-                    `1. Thi công sa bàn cao tầng, quy hoạch KCN & nhà máy FDI.\n` +
-                    `2. Cắt bổ nội thất 3D căn hộ, biệt thự chuẩn từng milimet.\n` +
-                    `3. Bảo trì, vệ sinh, phục chế màu và sửa chữa hệ thống đèn LED sa bàn tận nơi toàn quốc.\n\n` +
-                    `🏢 MÔ HÌNH KIẾN TRÚC SONG ANH\n` +
-                    `🏭 Xưởng Sản Xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM.\n` +
-                    `📞 Hotline: 0929 22 4444\n` +
-                    `👉 Nhấn nút [TÌM HIỂU THÊM] bên dưới để khám phá bảng giá và quy trình thi công chi tiết!`;
+            } else if (selectedChan.name.includes("Profile Tiến RS") || selectedChan.name.includes("Profile")) {
+                // Profile Cá Nhân
+                badgeText = "👤 Profile Cá Nhân B2B";
+                postText = `Mỗi dự án sa bàn khi hoàn thiện bàn giao luôn mang lại những cảm xúc rất tự hào cho Tiến và anh em kỹ thuật tại xưởng Song Anh.\n\n` +
+                    `Hôm nay xưởng vừa hoàn tất công đoạn căn chỉnh ánh sáng cuối cùng cho dự án: ${cleanTitle}\n\n` +
+                    `🎯 Góc nhìn chuyên môn gửi đến ${selectedAud.name}:\n` +
+                    `• ${selectedAud.triggers}\n\n` +
+                    `Đối với các công trình đòi hỏi độ chính xác cao, khâu xử lý bề mặt mica và đi dây LED phân tầng âm sàn luôn là thử thách thú vị nhất. Khi cắm điện chạy thử nghiệm lần cuối trước khi đóng kiện gỗ giao cho khách hàng, nhìn từng góc công trình sáng đèn lung linh đúng ý đồ thiết kế, mọi mệt mỏi đều tan biến.\n\n` +
+                    `Cảm ơn các Quý Chủ đầu tư và anh em Kiến trúc sư đã luôn tin tưởng giao phó những công trình tâm huyết cho Song Anh! 🤝\n\n` +
+                    `#MoHinhKienTruc #SaBanKienTruc #SongAnhModel #KienTrucVietNam #TienRS`;
 
-                commentText = `💬 Link Điều Hướng Website:\nKhám phá dịch vụ thi công và sửa chữa sa bàn: https://mohinhkientruc.org/dich-vu-lam-sa-ban-quy-hoach/\nHotline: 0929 22 4444`;
+                commentText = `💬 First Comment:\nAnh em cần tư vấn giải pháp kỹ thuật tỷ lệ sa bàn hoặc dự toán nhanh có thể nhắn trực tiếp qua Zalo/Hotline Tiến nhé: 0929 22 4444. Xem thêm các dự án tại: https://mohinhkientruc.org/`;
 
-                promptText = `Craftsman workshop background, architectural scale model making process, miniature laser cut acrylic details, precision tools, warm studio light, 8k resolution --ar 16:9`;
+                promptText = `Behind the scenes architectural model workshop, professional craftsman adjusting miniature lighting on scale model ${cleanTitle}, authentic workshop setting, warm lighting, Leica photo style --ar 4:3`;
 
-            } else if (channel === 'profile_tien') {
-                badgeText = "👤 Profile Sếp Tiến";
-                postText = `Mỗi dự án sa bàn hoàn thiện tại xưởng luôn mang lại những cảm xúc rất đặc biệt cho Tiến và anh em kỹ thuật.\n\n` +
-                    `Hôm nay xưởng vừa hoàn tất công đoạn căn chỉnh cuối cùng: ${topicText}\n\n` +
-                    `🎯 Điểm cốt lõi của công trình: ${audienceHook}\n\n` +
-                    `Đối với các công trình đòi hỏi độ chính xác cao, khâu xử lý bề mặt mica và đi dây LED phân tầng âm sàn luôn là thử thách thú vị nhất. Khi cắm điện chạy thử nghiệm lần cuối trước khi đóng kiện gỗ giao cho khách hàng, nhìn từng góc công trình sáng đèn đồng bộ, mọi mệt mỏi đều tan biến.\n\n` +
-                    `Cảm ơn các anh em đối tác đã luôn tin tưởng giao phó những công trình tâm huyết cho Song Anh! 🤝\n\n` +
-                    `#MoHinhKienTruc #SaBanKienTruc #SongAnhModel #KienTrucVietNam`;
-
-                commentText = `💬 First Comment:\nAnh em cần tư vấn giải pháp kỹ thuật tỷ lệ sa bàn hoặc dự toán nhanh có thể liên hệ trực tiếp Hotline Tiến nhé: 0929 22 4444. Xem thêm các dự án tại: https://mohinhkientruc.org/`;
-
-                promptText = `Behind the scenes architectural model workshop, professional craftsman adjusting miniature lighting on scale model, authentic workshop setting, warm lighting, Leica photo style --ar 4:3`;
-
-            } else if (channel === 'fb_groups') {
-                badgeText = "👥 FB Groups B2B";
-                postText = `[Góc Chia Sẻ Kỹ Thuật Sa Bàn] ${topicText}\n\n` +
+            } else if (selectedChan.name.includes("Groups") || selectedChan.name.includes("Group")) {
+                // Facebook Groups B2B
+                badgeText = "👥 FB Group B2B";
+                postText = `[Góc Chia Sẻ Kỹ Thuật Sa Bàn] ${cleanTitle}\n\n` +
                     `Chào các anh em trong nhóm,\n\n` +
-                    `🎯 Về mặt ứng dụng thực tế: ${audienceHook}\n\n` +
+                    `🎯 Về mặt ứng dụng thực tế cho ${selectedAud.name}:\n` +
+                    `• ${selectedAud.painPoints}\n\n` +
                     `Khi triển khai các sa bàn quy mô thực tế, có 3 chi tiết kỹ thuật cốt lõi xưởng Song Anh luôn ưu tiên hàng đầu để đảm bảo độ bền và hiệu ứng thị giác tốt nhất:\n` +
                     `1. Chọn đúng tỷ lệ: Tỷ lệ 1/100 - 1/500 cho cao tầng và 1/1000 cho quy hoạch giúp người xem nắm trọn bức tranh tổng thể mà không bị rối mắt.\n` +
                     `2. Xử lý ánh sáng LED: Phân cụm độc lập giữa chiếu sáng nội bộ công trình (3000K) và hạ tầng giao thông viền LED.\n` +
@@ -306,44 +421,30 @@
 
                 commentText = `💬 First Comment:\nAnh em cần file tư vấn kích thước và quy cách sa bàn tiêu chuẩn có thể tham khảo tại: https://mohinhkientruc.org/mo-hinh-3d/`;
 
-                promptText = `Close-up architectural scale model detailing, macro photography of miniature buildings, glowing micro LEDs, clean acrylic craftsmanship, 8k --ar 16:9`;
-
-            } else if (channel === 'short_video') {
-                badgeText = "🎬 Video Reels/Shorts";
-                postText = `🎬 KỊCH BẢN VIDEO NGẮN (REELS / TIKTOK / YOUTUBE SHORTS - 45s)\n\n` +
-                    `[00:00 - 00:05] HOOK MỞ ĐẦU (Góc quay cận cảnh đèn LED sa bàn sáng rực):\n` +
-                    `"Bạn có tin toàn bộ dự án quy mô này được thu nhỏ hoàn hảo chỉ trong 1 sa bàn không?"\n\n` +
-                    `[00:05 - 00:20] HẬU TRƯỜNG KỸ THUẬT (Máy in 3D SLA 8K và nghệ nhân gia công):\n` +
-                    `"Tại xưởng Mô hình Song Anh, từng khối kiến trúc và hạ tầng được in 3D siêu mịn với độ chính xác 0.05mm. ${audienceHook}"\n\n` +
-                    `[00:20 - 00:35] SHOW TOÀN CẢNH HOÀN THIỆN:\n` +
-                    `"Chủ đề hôm nay: ${topicText}. Bàn giao cấp tốc trong 7-15 ngày, giao lắp tận nơi."\n\n` +
-                    `[00:35 - 00:45] CTA CHỐT:\n` +
-                    `"Gửi bản vẽ CAD nhận dự toán 30 phút qua Hotline 0929 22 4444! Follow Song Anh để xem thêm nhiều sa bàn đỉnh cao!"`;
-
-                commentText = `💬 Link đính kèm ghim bình luận video:\nXem chi tiết tại website: https://mohinhkientruc.org/\nHotline: 0929 22 4444`;
-
-                promptText = `Vertical 9:16 aspect ratio, architectural scale model glowing at night with colorful miniature LED lights, cinematic camera angle, 8k resolution --ar 9:16`;
+                promptText = `Close-up architectural scale model detailing of ${cleanTitle}, macro photography of miniature buildings, glowing micro LEDs, clean acrylic craftsmanship, 8k --ar 16:9`;
 
             } else {
-                // Default: Fanpage Song Anh
-                badgeText = "🚩 Fanpage Song Anh B2B";
-                postText = `🏢✨ ${topicText.toUpperCase()}\n\n` +
-                    `Mô hình kiến trúc Song Anh tự hào là đơn vị đồng hành tin cậy trong việc trực quan hóa các công trình kiến trúc đẳng cấp.\n\n` +
-                    `🎯 ỨNG DỤNG THỰC TẾ: ${audienceHook}\n\n` +
+                // Standard Fanpage Song Anh
+                badgeText = `🚩 ${selectedChan.name}`;
+                postText = `🏢✨ ${cleanTitle.toUpperCase()} | MÔ HÌNH KIẾN TRÚC SONG ANH\n\n` +
+                    `Mô hình kiến trúc Song Anh tự hào là đơn vị đồng hành tin cậy trong việc trực quan hóa các công trình kiến trúc đẳng cấp cho ${selectedAud.name}.\n\n` +
+                    `🎯 ỨNG DỤNG THỰC TẾ & GIÁ TRỊ DỰ ÁN:\n` +
+                    `• ${selectedAud.triggers}\n\n` +
                     `🌟 TIÊU CHUẨN KỸ THUẬT TẠI XƯỞNG SONG ANH:\n` +
                     `✔ Gia công sắc nét: Công nghệ in 3D SLA 8K kết hợp cắt khắc Laser Acrylic chính xác từng chi tiết.\n` +
                     `✔ Hệ thống chiếu sáng thông minh: Mạch LED vi điều khiển phân tầng ánh sáng tự nhiên và ấm cúng.\n` +
                     `✔ Đóng gói & Vận chuyển: Thùng gỗ bọc xốp EVA tiêu chuẩn chuyên dụng, bàn giao lắp đặt an toàn tận nơi.\n\n` +
+                    `💰 ${selectedGoal.cta}\n\n` +
                     `---\n` +
                     `🏢 MÔ HÌNH KIẾN TRÚC SONG ANH\n` +
                     `🌐 Website: https://mohinhkientruc.org\n` +
-                    `📞 Hotline: 0929 22 4444\n` +
+                    `📞 Hotline/Zalo: 0929 22 4444\n` +
                     `🏭 Xưởng Sản Xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM.\n\n` +
                     `#MoHinhKienTruc #SaBanKienTruc #MoHinhSongAnh #LamSaBan #SaBanDuAn`;
 
                 commentText = `💬 First Comment:\nKhám phá thư viện các dự án sa bàn tiêu biểu tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
 
-                promptText = `Professional architectural scale model of ${rawIdea || 'modern residential and commercial complex'}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, professional architectural photography, 8k resolution --ar 16:9`;
+                promptText = `Professional architectural scale model of ${cleanTitle}, 1/100 scale, sharp acrylic details, illuminated with warm interior LED lighting, Sales Gallery showroom environment, professional architectural photography, 8k resolution --ar 16:9`;
             }
 
             // Save to memory
@@ -363,7 +464,7 @@
             if (elComment) elComment.innerText = commentText;
             if (elPrompt) elPrompt.innerText = promptText;
 
-            showToast("✨ Đã tạo bài viết AI B2B thành công!");
+            showToast("✨ Đã tạo bài viết AI B2B chuẩn xác theo Đối tượng, Goal & Kênh!");
         }
 
         function switchAiOutputTab(tab) {
@@ -839,13 +940,13 @@
                     </div>
 
                     <!-- 1. AI Content Studio -->
-                    <div class="accordion-group rounded-xl border border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50 overflow-hidden mb-1 shadow-2xs">
-                        <button onclick="selectModule('tool-content-generator')" id="sub-tool-content-generator" class="sub-link w-full flex items-center justify-between p-2.5 font-black text-brand-navy hover:bg-amber-100/80 transition">
-                            <div class="flex items-center gap-2">
-                                <span class="w-5 h-5 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs shadow-xs">💡</span>
-                                <span class="text-amber-950 font-black">AI Content Studio</span>
+                    <div class="accordion-group rounded-xl border border-amber-300 bg-amber-50/70 overflow-hidden mb-1 shadow-2xs">
+                        <button onclick="selectModule('tool-content-generator')" id="sub-tool-content-generator" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-amber-100/80 transition">
+                            <div class="flex items-center gap-2 min-w-0">
+                                <span class="w-5 h-5 rounded-lg bg-amber-500 text-white flex items-center justify-center text-xs shadow-xs shrink-0">💡</span>
+                                <span class="text-slate-900 font-bold text-xs truncate">AI Content Studio</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold shrink-0 ml-1">Active</span>
                         </button>
                     </div>
 
@@ -3892,6 +3993,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
 
             <!-- 🚧 TAB PLACEHOLDER ĐANG UPDATE -->
                         <!-- 💡 MODULE: AI CONTENT IDEA-TO-POST STUDIO (#panel-tool-content-generator) -->
+            <!-- 💡 MODULE: AI CONTENT IDEA-TO-POST STUDIO (#panel-tool-content-generator) -->
             <div id="panel-tool-content-generator" class="module-panel hidden space-y-6">
                 <!-- Header Card -->
                 <div class="bg-gradient-to-br from-amber-500 via-orange-600 to-amber-700 p-5 sm:p-6 rounded-2xl text-white shadow-md space-y-2">
@@ -3901,14 +4003,20 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                                 💡
                             </div>
                             <div>
-                                <h2 class="text-base sm:text-lg font-heading font-black tracking-tight">AI Content Studio (Từ Ý Tưởng Đến Bài Đăng)</h2>
-                                <p class="text-xs text-amber-100 font-medium">Chuyển hóa ghi chú thô của Sếp Tiến thành bài viết B2B sắc bén, chuẩn văn phong từng kênh</p>
+                                <h2 class="text-base sm:text-lg font-heading font-black tracking-tight">AI Content Studio</h2>
+                                <p class="text-xs text-amber-100 font-medium">Biên soạn ý tưởng thô thành bài viết B2B hoàn chỉnh, liên kết trực tiếp Đối tượng, Content Goal &amp; Kênh Social</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-1.5 flex-wrap">
-                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">⚡ Matrix 8 Kênh</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">🎯 6 Đối Tượng</span>
-                            <span class="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-md text-[10px] font-extrabold border border-white/20">📸 ImageGen 3 Prompt</span>
+                            <button onclick="selectModule('social-channels')" class="px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-[10.5px] font-extrabold border border-white/20 transition flex items-center gap-1">
+                                <span>🌐 Kênh Social</span>
+                            </button>
+                            <button onclick="selectModule('target-audience')" class="px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-[10.5px] font-extrabold border border-white/20 transition flex items-center gap-1">
+                                <span>🎯 Đối Tượng</span>
+                            </button>
+                            <button onclick="selectModule('content-goals')" class="px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-md text-[10.5px] font-extrabold border border-white/20 transition flex items-center gap-1">
+                                <span>🎯 Content Goal</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -3919,95 +4027,63 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                     <!-- Left: Form Controls (7 Columns) -->
                     <div class="lg:col-span-7 space-y-4">
                         
-                        <!-- 1. Textarea Ý Tưởng Thô -->
+                        <!-- 1. Textarea Ý Tưởng Thô & Nút AI Biên Soạn Lại -->
                         <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-3">
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
                                 <label class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
                                     <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">1</span>
-                                    <span>Ý Tưởng Thô / Ghi Chú Dự Án Của Sếp</span>
+                                    <span>Ý tưởng thô</span>
                                 </label>
-                                <span class="text-[10px] text-slate-600 font-bold">Gõ tự do hoặc bấm mẫu nhanh 👇</span>
+                                
+                                <!-- Nút AI biên soạn lại -->
+                                <button type="button" onclick="refineRawIdeaWithAi()" id="btn-refine-ai" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 text-white font-extrabold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-[11px]"></i>
+                                    <span>AI biên soạn lại</span>
+                                </button>
                             </div>
                             
-                            <textarea id="ai-raw-idea" rows="4" class="w-full p-3.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 font-medium leading-relaxed transition" placeholder="Ví dụ: Sa bàn chung cư Khải Hoàn Prime Nam Sài Gòn, tỷ lệ 1/100, khối tháp căn hộ, hệ thống chiếu sáng LED 3 chế độ ngày đêm lung linh, giao cho Sales Gallery thu hút khách mua..."></textarea>
-                            
-                            <!-- Quick Preset Buttons -->
-                            <div class="flex items-center gap-1.5 flex-wrap pt-1">
-                                <span class="text-[10px] font-bold text-slate-600">Gợi ý mẫu:</span>
-                                <button onclick="setRawIdeaPreset('khai_hoan')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🏢 Khải Hoàn Prime</button>
-                                <button onclick="setRawIdeaPreset('kcn_quy_hoach')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🗺️ Quy Hoạch KCN</button>
-                                <button onclick="setRawIdeaPreset('nha_may_fdi')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🏭 Nhà Máy FDI</button>
-                                <button onclick="setRawIdeaPreset('noi_that_3d')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">📐 Cắt Bổ 3D</button>
-                                <button onclick="setRawIdeaPreset('bao_tri')" class="text-[10.5px] px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-amber-100 hover:text-amber-900 text-slate-600 font-bold border border-slate-200 transition">🛠️ Bảo Trì Sa Bàn</button>
-                            </div>
+                            <textarea id="ai-raw-idea" rows="4" class="w-full p-3.5 rounded-xl border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 font-medium leading-relaxed transition" placeholder="Nhập ghi chú ý tưởng thô tại đây (Ví dụ: Sa bàn căn hộ Khải Hoàn Prime, 1/100, tháp căn hộ, đèn LED 3 chế độ ngày đêm, đặt Sales Gallery...)."></textarea>
                         </div>
 
-                        <!-- 2. Bộ 3 Danh Mục Sổ Xuống (Dropdown Selectors Chuẩn UI) -->
+                        <!-- 2. Bộ 3 Danh Mục Sổ Xuống (Dropdown Selectors Chuẩn Lựa Chọn Hệ Thống Cài Đặt) -->
                         <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
                             
                             <!-- Dropdown 1: Đối Tượng Khách Hàng -->
                             <div class="space-y-1.5">
-                                <label for="ai-content-audience" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center justify-between">
-                                    <span class="flex items-center gap-1.5">
-                                        <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">2</span>
-                                        <span>Đối Tượng Khách Hàng Mục Tiêu</span>
-                                    </span>
-                                    <span class="text-[10px] text-slate-400 font-semibold">Tùy biến tâm lý & xưng hô</span>
+                                <label for="ai-content-audience" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">2</span>
+                                    <span>Đối tượng khách hàng</span>
                                 </label>
                                 <select id="ai-content-audience" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer shadow-xs transition">
-                                    <option value="investor_bds" selected>🏢 Chủ Đầu Tư & Công Ty Bất Động Sản (Sales Gallery, Mở bán & Tiếp cận người mua)</option>
-                                    <option value="architect">📐 Kiến Trúc Sư & Đơn Vị Tư Vấn Thiết Kế (Chuẩn tỷ lệ, thẩm mỹ vật liệu & thi công)</option>
-                                    <option value="military">🎖️ Quân Đội & Quân Khu (Sa bàn địa hình quân sự, diễn tập, tác chiến & quản lý vùng)</option>
-                                    <option value="factory_kcn">🏭 Nhà Máy & Khu Công Nghiệp (Quy hoạch tổng thể KCN, bóc tách dây chuyền FDI & logistic)</option>
-                                    <option value="event_company">🎪 Công Ty Sự Kiện & Hội Chợ Triển Lãm (Mô hình trưng bày điểm nhấn booth, sự kiện ra mắt)</option>
-                                    <option value="teacher_school">🏫 Giáo Viên & Ban Giám Hiệu Trường Học (Sa bàn học đường, giáo cụ mô phỏng & truyền thống)</option>
-                                    <option value="student_arch">🎓 Sinh Viên Kiến Trúc (Gia công in 3D, cắt laser mica đồ án tốt nghiệp gấp)</option>
-                                    <option value="global">🌍 Khách Hàng & Đối Tác Quốc Tế (Global B2B Clients - 100% English Export)</option>
+                                    <option value="">-- Chọn đối tượng khách hàng --</option>
                                 </select>
                             </div>
 
-                            <!-- Dropdown 2: Mục Tiêu Nội Dung -->
+                            <!-- Dropdown 2: Content Goal -->
                             <div class="space-y-1.5">
-                                <label for="ai-content-goal" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center justify-between">
-                                    <span class="flex items-center gap-1.5">
-                                        <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">3</span>
-                                        <span>Mục Tiêu Nội Dung Chính (Content Goal)</span>
-                                    </span>
-                                    <span class="text-[10px] text-slate-400 font-semibold">Cấu trúc hook & CTA</span>
+                                <label for="ai-content-goal" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">3</span>
+                                    <span>Content Goal</span>
                                 </label>
                                 <select id="ai-content-goal" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer shadow-xs transition">
-                                    <option value="quotation" selected>🎯 Báo Giá Nhanh & Kích Hoạt Cuộc Gọi Hotline/Zalo (Lead Gen B2B)</option>
-                                    <option value="technical">💎 Khẳng Định Chuyên Môn Kỹ Thuật & Độ Sắc Nét (In 3D SLA 8K, Laser Acrylic, Micro LED)</option>
-                                    <option value="trust_workshop">🏭 Xây Dựng Lòng Tin Xưởng Thật & Quy Trình Đóng Kiện Gỗ An Toàn (Thủ Đức)</option>
-                                    <option value="case_study">🛠️ Hậu Trường Xử Lý Ca Khó, Tiến Độ Gấp 7-15 Ngày & Bàn Giao Tận Nơi</option>
-                                    <option value="recomment">💬 Giữ Tương Tác / Re-comment Tự Nhiên (Bump Top bài viết)</option>
+                                    <option value="">-- Chọn Content Goal --</option>
                                 </select>
                             </div>
 
-                            <!-- Dropdown 3: Kênh Xuất Bản Mục Tiêu -->
+                            <!-- Dropdown 3: Kênh Social -->
                             <div class="space-y-1.5">
-                                <label for="ai-content-channel" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center justify-between">
-                                    <span class="flex items-center gap-1.5">
-                                        <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">4</span>
-                                        <span>Kênh Xuất Bản Mục Tiêu (Target Channel)</span>
-                                    </span>
-                                    <span class="text-[10px] text-slate-400 font-semibold">Khóa chuẩn Website & CTA</span>
+                                <label for="ai-content-channel" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                                    <span class="w-4 h-4 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-[10px]">4</span>
+                                    <span>Kênh Social</span>
                                 </label>
                                 <select id="ai-content-channel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-xs sm:text-sm font-bold text-slate-800 cursor-pointer shadow-xs transition">
-                                    <option value="fanpage_song_anh" selected>🚩 Fanpage Facebook: Mô hình kiến trúc Song Anh</option>
-                                    <option value="profile_tien">👤 Profile Cá Nhân: Sếp Phạm Hoàng Tiến (Facebook B2B)</option>
-                                    <option value="fb_groups">👥 Facebook Groups B2B (Cộng đồng BĐS, KTS, KCN & M&A)</option>
-                                    <option value="architectural_org">🌐 Fanpage Facebook: Architectural Model Org (100% Tiếng Anh & architecturalmodel.org/en/)</option>
-                                    <option value="gbp_saban">📍 Google Business Profile: Sa bàn kiến trúc Song Anh (Nút CTA Gọi ngay 0929 22 4444)</option>
-                                    <option value="gbp_dichvu">📍 Google Business Profile: Dịch vụ làm mô hình Song Anh (Nút CTA Tìm hiểu thêm link Web)</option>
-                                    <option value="website_article">🌐 Bài Viết Website: Case Study / Chuyên Ngành (SEO Pillar)</option>
-                                    <option value="short_video">🎬 Kịch Bản Video Ngắn: Reels / TikTok / YouTube Shorts</option>
+                                    <option value="">-- Chọn Kênh Social --</option>
                                 </select>
                             </div>
                         </div>
 
                         <!-- Big Generate Button -->
-                        <button onclick="handleGenerateSmartContent()" id="btn-generate-ai" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-[0.98] text-white font-heading font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2.5">
+                        <button onclick="handleGenerateSmartContent()" id="btn-generate-ai" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-[0.98] text-white font-heading font-black text-sm sm:text-base shadow-lg hover:shadow-xl transition flex items-center justify-center gap-2.5 cursor-pointer">
                             <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
                             <span>✨ TẠO BÀI VIẾT BẰNG AI NGAY</span>
                         </button>
@@ -4022,7 +4098,7 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                                     <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></span>
                                     <h3 class="text-xs sm:text-sm font-heading font-black text-slate-900">Kết Quả Xuất Bản Trực Quan</h3>
                                 </div>
-                                <span id="ai-output-badge" class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-extrabold">Fanpage B2B</span>
+                                <span id="ai-output-badge" class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-800 text-[10px] font-extrabold">B2B Content</span>
                             </div>
 
                             <!-- Output Tabs -->
@@ -4045,7 +4121,7 @@ Mô hình kiến trúc Song Anh hân hạnh giới thiệu các dự án sa bàn
 ✓ Độ bền màu cao với vật liệu Acrylic nhập khẩu.
 
 🌐 Xem chi tiết tại: https://mohinhkientruc.org/sa-ban-cao-tang/
-📞 Hotline: 0929 22 4444
+📞 Hotline/Zalo: 0929 22 4444
 🏭 Xưởng sản xuất: TP. Thủ Đức, TP. Hồ Chí Minh
                                 </div>
                             </div>
@@ -4056,12 +4132,12 @@ Mô hình kiến trúc Song Anh hân hạnh giới thiệu các dự án sa bàn
 💬 First Comment / Re-comment Điều Hướng Chuẩn:
 
 Mô hình kiến trúc Song Anh cung cấp trọn gói 6 dịch vụ cốt lõi:
-1) Sa bàn quy hoạch đô thị & KCN
+1) Sa bàn quy hoạch đô thị &amp; KCN
 2) Sa bàn cao tầng chung cư
 3) Sa bàn nhà máy nhà xưởng FDI
 4) Sa bàn biệt thự nhà phố
 5) Sa bàn cắt bổ nội thất 3D
-6) Bảo trì & sửa chữa sa bàn tận nơi toàn quốc.
+6) Bảo trì &amp; sửa chữa sa bàn tận nơi toàn quốc.
 
 🔗 Xem thư viện dự án: https://mohinhkientruc.org/sa-ban-cao-tang/
 📞 Hotline kỹ thuật: 0929 22 4444
@@ -4078,16 +4154,16 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <!-- Action Buttons -->
                             <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100">
                                 <button onclick="copyAiGeneratedContent()" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5 transition">
-                                    <i class="fa-solid fa-copy text-slate-600"></i>
-                                    <span>Sao Chép</span>
+                                    <i class="fa-solid fa-copy"></i>
+                                    <span>Copy</span>
                                 </button>
-                                <button onclick="saveAiContentToNotion()" class="py-2 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 active:scale-95 text-amber-900 font-bold text-xs flex items-center justify-center gap-1.5 transition">
-                                    <i class="fa-solid fa-cloud-arrow-up text-amber-700"></i>
-                                    <span>Lưu Notion</span>
+                                <button onclick="handleGenerateSmartContent()" class="py-2 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 active:scale-95 text-amber-800 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-rotate"></i>
+                                    <span>Tạo Lại</span>
                                 </button>
-                                <button onclick="triggerQuickPublishFromAiStudio()" class="py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs">
-                                    <i class="fa-solid fa-bolt text-amber-300"></i>
-                                    <span>Đăng Ngay</span>
+                                <button onclick="showToast('🎉 Đã lưu bài viết vào kho bản thảo!')" class="py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 active:scale-95 text-blue-700 font-bold text-xs flex items-center justify-center gap-1.5 transition">
+                                    <i class="fa-solid fa-bookmark"></i>
+                                    <span>Lưu</span>
                                 </button>
                             </div>
                         </div>
@@ -4095,7 +4171,6 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     </div>
                 </div>
             </div>
-
 
             <div id="panel-updating" class="module-panel hidden">
                 <div class="light-card rounded-2xl p-12 border border-slate-200 text-center space-y-5 bg-white">
@@ -12247,13 +12322,16 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // Sub-render triggers
-            if (moduleId === 'target-audience') {
+            if (moduleId === 'tool-content-generator') {
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
+            } else if (moduleId === 'target-audience') {
                 if (typeof initTargetAudiencesData === 'function') initTargetAudiencesData();
                 if (typeof renderAudienceCards === 'function') renderAudienceCards();
             } else if (moduleId === 'content-goals') {
                 if (typeof renderContentGoalsCards === 'function') renderContentGoalsCards();
             } else if (moduleId === 'social-channels') {
                 if (typeof renderSocialChannels === 'function') renderSocialChannels();
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
             } else if (moduleId === 'content-link') {
                 if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
                 if (typeof renderContentNewTable === 'function') renderContentNewTable();
@@ -12309,6 +12387,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
             try {
                 if (typeof renderSocialChannels === 'function') renderSocialChannels();
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
                 if (typeof renderAudienceCards === 'function') renderAudienceCards();
                 if (typeof renderFbTable === 'function') renderFbTable();
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
