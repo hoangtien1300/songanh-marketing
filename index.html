@@ -21,30 +21,43 @@
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
-        function toggleSidebarMenu() {
+                function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
-            if (isOpen) {
-                closeSidebarMenu();
+
+            if (window.innerWidth >= 768) {
+                // Desktop: Toggle collapsed state
+                sidebar.classList.toggle('sidebar-collapsed');
             } else {
-                sidebar.classList.add('sidebar-open');
-                sidebar.classList.add('mobile-open');
-                if (backdrop) backdrop.classList.add('active');
+                // Mobile: Toggle open drawer
+                const isOpen = sidebar.classList.contains('mobile-open');
+                if (isOpen) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.remove('active');
+                } else {
+                    sidebar.classList.add('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.add('active');
+                }
             }
         }
+
         function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (sidebar) {
-                sidebar.classList.remove('sidebar-open');
-                sidebar.classList.remove('mobile-open');
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.add('sidebar-collapsed');
+                } else {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                }
             }
             if (backdrop) backdrop.classList.remove('active');
         }
-        function toggleMobileSidebar() { toggleSidebarMenu(); }
-        function closeMobileSidebar() { closeSidebarMenu(); }
+
+        function closeMobileSidebar() {
+            closeSidebarMenu();
+        }
 
         function selectMobileBottomNav(moduleId) {
             selectModule(moduleId);
@@ -503,38 +516,84 @@
             }
         }
 
-        /* 🌟 MODERN EXECUTIVE DRAWER SIDEBAR (DEFAULT COLLAPSED ON ALL SCREENS) */
-        #sidebar {
-            position: fixed !important;
-            top: 0 !important;
-            bottom: 0 !important;
-            left: 0 !important;
-            z-index: 99999 !important;
-            width: 310px !important;
-            transform: translateX(-100%) !important;
-            box-shadow: 6px 0 32px rgba(15, 23, 42, 0.35) !important;
-            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            height: 100vh !important;
-            background: #FFFFFF !important;
+        /* 🌟 GLOBAL TEXT OVERFLOW & RESPONSIVE FIX */
+        *, ::before, ::after {
+            box-sizing: border-box;
         }
-        #sidebar.sidebar-open, #sidebar.mobile-open {
-            transform: translateX(0) !important;
+        body, main, section, div, p, span, h1, h2, h3, h4, h5, h6 {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
-        #mobile-drawer-backdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(15, 23, 42, 0.55);
-            backdrop-filter: blur(4px);
-            z-index: 99990 !important;
-            cursor: pointer;
+
+        /* 🌟 COMPACT PERSISTENT DESKTOP SIDEBAR (DEFAULT VISIBLE & SLIM) */
+        @media (min-width: 768px) {
+            #sidebar {
+                position: relative !important;
+                top: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                z-index: 10 !important;
+                width: 215px !important;
+                min-width: 215px !important;
+                max-width: 215px !important;
+                transform: none !important;
+                box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05) !important;
+                height: auto !important;
+                display: flex !important;
+                transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease !important;
+                background: #FFFFFF !important;
+            }
+            #sidebar.sidebar-collapsed {
+                width: 0 !important;
+                min-width: 0 !important;
+                max-width: 0 !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+                border-right: none !important;
+            }
+            #mobile-drawer-backdrop {
+                display: none !important;
+            }
         }
-        #mobile-drawer-backdrop.active {
-            display: block !important;
+
+        /* 🌟 MOBILE DRAWER SIDEBAR */
+        @media (max-width: 767px) {
+            #sidebar {
+                position: fixed !important;
+                top: 0 !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                z-index: 99999 !important;
+                width: 270px !important;
+                transform: translateX(-100%) !important;
+                box-shadow: 6px 0 32px rgba(15, 23, 42, 0.35) !important;
+                transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                height: 100vh !important;
+                background: #FFFFFF !important;
+            }
+            #sidebar.mobile-open, #sidebar.sidebar-open {
+                transform: translateX(0) !important;
+            }
+            #mobile-drawer-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(15, 23, 42, 0.55);
+                backdrop-filter: blur(4px);
+                z-index: 99990 !important;
+                cursor: pointer;
+            }
+            #mobile-drawer-backdrop.active {
+                display: block !important;
+            }
         }
+
         main {
+            flex: 1 1 0% !important;
+            min-width: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
+            overflow-x: hidden !important;
         }
 
         /* Touch Target Enhancement on Mobile */
@@ -12410,54 +12469,54 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             container.innerHTML = filtered.map(item => `
-                <!-- Horizontal Flashcard for Target Audience -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md transition p-4 sm:p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 group">
+                <!-- Horizontal Flashcard for Target Audience (100% Mobile Safe) -->
+                <div class="w-full max-w-full min-w-0 bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md transition p-3.5 sm:p-4.5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 sm:gap-4 overflow-hidden break-words group">
                     
                     <!-- Left Block: Big Icon + Name + Segment Badge -->
-                    <div class="flex items-start gap-3.5 lg:w-3/12 shrink-0">
-                        <div class="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
+                    <div class="flex items-start gap-3 w-full lg:w-3/12 shrink-0 min-w-0">
+                        <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-xl sm:text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
                             ${item.icon || '🎯'}
                         </div>
-                        <div class="space-y-1">
-                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-indigo-700 transition">${item.name}</h4>
-                            <span class="inline-block text-[9.5px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${getSegmentBadgeClass(item.segment)}">${getSegmentLabel(item.segment)}</span>
+                        <div class="space-y-1 min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-indigo-700 transition break-words">${item.name}</h4>
+                            <span class="inline-block text-[9px] sm:text-[9.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${getSegmentBadgeClass(item.segment)} break-words max-w-full truncate">${getSegmentLabel(item.segment)}</span>
                         </div>
                     </div>
 
                     <!-- Center Block: Pain Points, Triggers & Tone of Voice -->
-                    <div class="flex-1 min-w-0 space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-3 lg:py-0 lg:px-4">
+                    <div class="flex-1 min-w-0 w-full space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-2.5 lg:py-0 lg:px-4 break-words">
                         <div class="space-y-1">
                             <span class="font-extrabold text-slate-800 flex items-center gap-1">
                                 <span class="text-rose-500">⚡</span> Nỗi Đau &amp; Nhu Cầu Cốt Lõi:
                             </span>
-                            <p class="text-slate-600 text-[11.5px] leading-relaxed">${item.painPoints}</p>
+                            <p class="text-slate-600 text-[11px] sm:text-[11.5px] leading-relaxed break-words whitespace-normal">${item.painPoints}</p>
                         </div>
 
                         ${item.triggers ? `
-                        <div class="flex items-baseline gap-1.5 text-[11px]">
+                        <div class="flex items-baseline gap-1.5 text-[11px] break-words">
                             <span class="font-bold text-slate-700 shrink-0">🎯 Động cơ:</span>
-                            <span class="text-slate-600 truncate">${item.triggers}</span>
+                            <span class="text-slate-600 break-words whitespace-normal">${item.triggers}</span>
                         </div>` : ''}
 
                         ${item.tone ? `
-                        <div class="flex items-baseline gap-1.5 text-[11px]">
+                        <div class="flex items-baseline gap-1.5 text-[11px] break-words">
                             <span class="font-bold text-indigo-900 shrink-0">🗣️ Giọng văn AI:</span>
-                            <span class="text-indigo-700 font-medium">${item.tone}</span>
+                            <span class="text-indigo-700 font-medium break-words whitespace-normal">${item.tone}</span>
                         </div>` : ''}
                     </div>
 
                     <!-- Right Block: Quick Action Buttons -->
-                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0">
-                        <button onclick="useAudienceForAIContent('${item.id}')" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 text-white font-black text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap">
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+                        <button onclick="useAudienceForAIContent('${item.id}')" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-95 text-white font-black text-[11px] sm:text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap">
                             <span>💡 Dùng Viết Bài AI</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            <i class="fa-solid fa-arrow-right text-[9px]"></i>
                         </button>
                         
                         <div class="flex items-center gap-1">
-                            <button onclick="editAudience('${item.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-indigo-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
+                            <button onclick="editAudience('${item.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-indigo-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
                                 <i class="fa-solid fa-pen text-xs"></i>
                             </button>
-                            <button onclick="deleteAudience('${item.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
+                            <button onclick="deleteAudience('${item.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
                                 <i class="fa-solid fa-trash-can text-xs"></i>
                             </button>
                         </div>
@@ -12508,53 +12567,53 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             container.innerHTML = filtered.map(g => `
-                <!-- Horizontal Flashcard for Content Goal -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-amber-300 hover:shadow-md transition p-4 sm:p-5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 group">
+                <!-- Horizontal Flashcard for Content Goal (100% Mobile Safe) -->
+                <div class="w-full max-w-full min-w-0 bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-amber-300 hover:shadow-md transition p-3.5 sm:p-4.5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 sm:gap-4 overflow-hidden break-words group">
                     
                     <!-- Left Block: Big Icon + Goal Name + Type Badge -->
-                    <div class="flex items-start gap-3.5 lg:w-3/12 shrink-0">
-                        <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
+                    <div class="flex items-start gap-3 w-full lg:w-3/12 shrink-0 min-w-0">
+                        <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-xl sm:text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
                             ${g.icon || '🎯'}
                         </div>
-                        <div class="space-y-1">
-                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-amber-700 transition">${g.name}</h4>
-                            <span class="inline-block text-[9.5px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-200">${g.type || 'Mục Tiêu B2B'}</span>
+                        <div class="space-y-1 min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-amber-700 transition break-words">${g.name}</h4>
+                            <span class="inline-block text-[9px] sm:text-[9.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-200 break-words max-w-full truncate">${g.type || 'Mục Tiêu B2B'}</span>
                         </div>
                     </div>
 
                     <!-- Center Block: Intent, Structure & Suggested CTA -->
-                    <div class="flex-1 min-w-0 space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-3 lg:py-0 lg:px-4">
+                    <div class="flex-1 min-w-0 w-full space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-2.5 lg:py-0 lg:px-4 break-words">
                         <div class="space-y-1">
                             <span class="font-extrabold text-slate-800 flex items-center gap-1">
                                 <span class="text-sky-600">🧠</span> Ý Định Người Đọc (Intent):
                             </span>
-                            <p class="text-slate-600 text-[11.5px] leading-relaxed">${g.intent || 'Tiếp cận và kích thích phản hồi tích cực từ khách hàng.'}</p>
+                            <p class="text-slate-600 text-[11px] sm:text-[11.5px] leading-relaxed break-words whitespace-normal">${g.intent || 'Tiếp cận và kích thích phản hồi tích cực từ khách hàng.'}</p>
                         </div>
 
                         ${g.structure ? `
-                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-[11px] text-slate-700">
+                        <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 text-[11px] text-slate-700 break-words whitespace-normal">
                             <span class="font-bold text-slate-900">📝 Cấu trúc gợi ý:</span> ${g.structure}
                         </div>` : ''}
 
                         ${g.cta ? `
-                        <div class="flex items-baseline gap-1.5 text-[11px]">
+                        <div class="flex items-baseline gap-1.5 text-[11px] break-words">
                             <span class="font-bold text-emerald-800 shrink-0">📢 Gợi ý CTA:</span>
-                            <span class="text-emerald-700 font-medium">${g.cta}</span>
+                            <span class="text-emerald-700 font-medium break-words whitespace-normal">${g.cta}</span>
                         </div>` : ''}
                     </div>
 
                     <!-- Right Block: Quick Action Buttons -->
-                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0">
-                        <button onclick="useContentGoalForAI('${g.id}')" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 active:scale-95 text-white font-black text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap">
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+                        <button onclick="useContentGoalForAI('${g.id}')" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 active:scale-95 text-white font-black text-[11px] sm:text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap">
                             <span>💡 Dùng Viết Bài AI</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            <i class="fa-solid fa-arrow-right text-[9px]"></i>
                         </button>
                         
                         <div class="flex items-center gap-1">
-                            <button onclick="editGoal('${g.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-amber-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
+                            <button onclick="editGoal('${g.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-amber-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
                                 <i class="fa-solid fa-pen text-xs"></i>
                             </button>
-                            <button onclick="deleteGoal('${g.id}')" class="w-8 h-8 rounded-xl bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
+                            <button onclick="deleteGoal('${g.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
                                 <i class="fa-solid fa-trash-can text-xs"></i>
                             </button>
                         </div>
