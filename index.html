@@ -949,6 +949,10 @@
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Content Goal</span>
                                     <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-200 font-black">7 Goals</span>
                                 </button>
+                                <button onclick="selectModule('social-channels')" id="sub-social-channels" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50 transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5"><span>🌐</span> Kênh Social</span>
+                                    <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200 font-black">18 Kênh</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -4251,6 +4255,70 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             </div>
         </section>
 
+            
+        <!-- ========================================================================= -->
+        <!-- 🌐 PANEL 3: QUẢN LÝ HỆ THỐNG KÊNH SOCIAL & MẠNG XÃ HỘI (NOTION SYNC) -->
+        <!-- ========================================================================= -->
+        <section id="panel-social-channels" class="module-panel hidden space-y-5">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 p-5 sm:p-6 rounded-2xl text-white shadow-md border border-blue-700/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-0.5 rounded-full bg-blue-500/30 text-blue-300 text-[10px] font-black border border-blue-400/30 uppercase tracking-wider">HỆ THỐNG ĐA KÊNH B2B</span>
+                        <span class="text-xs text-blue-200">Song Anh Omnichannel Social Suite</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-heading font-black text-white flex items-center gap-2">
+                        <span>🌐 Quản Lý Hệ Thống Kênh Social &amp; Mạng Xã Hội</span>
+                    </h2>
+                    <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                        Tổng hợp 18 tài khoản &amp; chi nhánh mạng xã hội chính thức của Song Anh Group (Facebook, GBP, Pinterest, YouTube, TikTok, X, Zalo). Dữ liệu đồng bộ trực tiếp từ Notion Database <strong>KÊNH SOCIAL</strong>.
+                    </p>
+                </div>
+
+                <!-- Action Buttons: Notion DB Link & Big Add Button -->
+                <div class="shrink-0 flex flex-wrap items-center gap-2">
+                    <a href="https://app.notion.com/p/39d4b5e73d908170af7cefd31f1d056b?v=39d4b5e73d90817a975c000c68ebda79" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 border border-white/20" title="Mở bảng cơ sở dữ liệu Kênh Social trên Notion">
+                        <i class="fa-solid fa-database text-blue-300"></i>
+                        <span>📑 Mở Notion DB Kênh Social</span>
+                    </a>
+                    <button onclick="openAddSocialModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:scale-95 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center gap-2 border border-blue-300">
+                        <i class="fa-solid fa-circle-plus text-base"></i>
+                        <span>+ Thêm Kênh Mới</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-2 w-full sm:w-auto flex-wrap sm:flex-nowrap">
+                    <div class="relative flex-1 sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="social-search-input" oninput="filterSocialChannels()" placeholder="Tìm tên kênh, nền tảng..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                    </div>
+                    <select id="social-platform-filter" onchange="filterSocialChannels()" class="text-xs bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5 font-bold text-slate-700 focus:outline-hidden">
+                        <option value="all">🌐 Tất Cả Nền Tảng (18 Kênh)</option>
+                        <option value="facebook">📘 Facebook (7 Tài khoản)</option>
+                        <option value="gbp">📍 Google Business Profile (3 Chi nhánh)</option>
+                        <option value="pinterest">📌 Pinterest (2 Kênh)</option>
+                        <option value="youtube">🎬 YouTube (1 Kênh)</option>
+                        <option value="tiktok">🎵 TikTok (1 Kênh)</option>
+                        <option value="x">𝕏 X / Twitter (1 Kênh)</option>
+                        <option value="zalo">💬 Zalo B2B (4 Hotline)</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 text-xs text-slate-500 font-bold">
+                    <span>Tổng số:</span>
+                    <span id="nav-social-badge" class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-black text-xs">18 Kênh</span>
+                </div>
+            </div>
+
+            <!-- Horizontal Flashcards Container for Social Channels -->
+            <div id="social-cards-container" class="space-y-3">
+                <!-- Injected via JavaScript renderSocialChannels() -->
+            </div>
+        </section>
+
             <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
                     <span class="font-bold text-slate-700">Mô Hình Song Anh © 2026</span>
@@ -4268,6 +4336,84 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             </footer>
 
         
+        
+        <!-- ========================================================================= -->
+        <!-- 🌐 MODAL: THÊM / SỬA KÊNH SOCIAL -->
+        <!-- ========================================================================= -->
+        <div id="social-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                <!-- Modal Header -->
+                <div class="px-5 py-4 bg-gradient-to-r from-slate-900 to-blue-950 text-white flex items-center justify-between border-b border-blue-900/50">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-8 h-8 rounded-xl bg-blue-500 text-white flex items-center justify-center text-base font-black shadow-xs">🌐</span>
+                        <div>
+                            <h3 id="social-modal-title" class="font-heading font-black text-sm text-white">Thêm Kênh Social Mới</h3>
+                            <p class="text-[10.5px] text-slate-300">Đăng ký tài khoản mạng xã hội vào hệ thống Marketing Song Anh</p>
+                        </div>
+                    </div>
+                    <button onclick="closeSocialModal()" class="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body Form -->
+                <form id="social-form" onsubmit="handleSaveSocial(event)" class="p-5 space-y-3.5 text-xs">
+                    <input type="hidden" id="social-id" value="">
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-2 space-y-1">
+                            <label class="font-black text-slate-700 flex items-center gap-1">
+                                <span>🌐 Tên Kênh / Tài Khoản:</span> <span class="text-rose-500">*</span>
+                            </label>
+                            <input type="text" id="social-name" required placeholder="Ví dụ: Fanpage Mô hình kiến trúc Song Anh" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-black text-slate-700">📱 Nền Tảng:</label>
+                            <select id="social-platform" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-800 focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                                <option value="Facebook">📘 Facebook</option>
+                                <option value="Google">📍 Google (GBP)</option>
+                                <option value="Pinterest">📌 Pinterest</option>
+                                <option value="Youtube">🎬 YouTube</option>
+                                <option value="Tiktok">🎵 TikTok</option>
+                                <option value="X">𝕏 X (Twitter)</option>
+                                <option value="Zalo">💬 Zalo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="font-black text-slate-700">🏷️ Phân Loại Kênh:</label>
+                            <input type="text" id="social-type" placeholder="Ví dụ: Fanpage Chính (B2B VN)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-black text-slate-700">⏱️ Tần Suất Xuất Bản:</label>
+                            <input type="text" id="social-frequency" placeholder="Ví dụ: 1 bài / ngày (Khung 11:30)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-black text-slate-700">🔗 Đường Link Kênh Trực Tiếp (URL):</label>
+                        <input type="url" id="social-url" placeholder="https://www.facebook.com/mohinhtphcm" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 focus:bg-white focus:border-blue-500 focus:outline-hidden transition">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="font-black text-slate-700">📝 Mô Tả &amp; Mục Tiêu Kênh:</label>
+                        <textarea id="social-desc" rows="2" placeholder="Mục tiêu tiếp cận và quy cách nội dung trên kênh này..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-slate-700 focus:bg-white focus:border-blue-500 focus:outline-hidden transition"></textarea>
+                    </div>
+
+                    <!-- Modal Footer Buttons -->
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+                        <button type="button" onclick="closeSocialModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold transition">Hủy Bỏ</button>
+                        <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-95 text-white font-black shadow-md transition flex items-center gap-1.5 border border-blue-400">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            <span>Lưu Kênh</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- ========================================================================= -->
         <!-- 🎯 MODAL: THÊM / SỬA MỤC TIÊU NỘI DUNG (CONTENT GOAL) -->
         <!-- ========================================================================= -->
@@ -12054,7 +12200,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // 5. Open parent accordion if it is a sub-link
-            if (moduleId === 'target-audience' || moduleId === 'content-goals') {
+            if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
                 const acc = document.getElementById('acc-settings');
                 const icon = document.getElementById('icon-acc-settings');
                 if (acc && !acc.classList.contains('open')) {
@@ -12099,6 +12245,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 if (typeof renderAudienceCards === 'function') renderAudienceCards();
             } else if (moduleId === 'content-goals') {
                 if (typeof renderContentGoalsCards === 'function') renderContentGoalsCards();
+            } else if (moduleId === 'social-channels') {
+                if (typeof renderSocialChannels === 'function') renderSocialChannels();
             } else if (moduleId === 'content-link') {
                 if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
                 if (typeof renderContentNewTable === 'function') renderContentNewTable();
@@ -12527,6 +12675,465 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         }
 
         // --- HORIZONTAL FLASHCARDS FOR CONTENT GOALS ---
+        
+        // -------------------------------------------------------------
+        // 🌐 KÊNH SOCIAL CONTROLLER (18 TÀI KHOẢN NOTION SYNC)
+        // -------------------------------------------------------------
+        let socialChannelsData = [
+            {
+                        "id": "3aa4b5e7-3d90-80f2-b98c-c03c4e6f384c",
+                        "name": "Fanpage Architectural Model Org",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Fanpage Quốc Tế (English)",
+                        "frequency": "1 bài / ngày (Tiếng Anh)",
+                        "direct_url": "https://www.facebook.com/architecturalmodel.org",
+                        "notion_url": "https://app.notion.com/p/Fanpage-Architectural-Model-Org-3aa4b5e73d9080f2b98cc03c4e6f384c",
+                        "desc": "Kênh B2B toàn cầu tiếp cận khách hàng FDI, văn phòng KTS Mỹ, Úc, Singapore.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3aa4b5e7-3d90-80fa-916f-f05294adbd65",
+                        "name": "Fanpage Làm mô hình Song Anh",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Tài khoản B2B",
+                        "frequency": "1 bài / ngày",
+                        "direct_url": "https://mohinhkientruc.org",
+                        "notion_url": "https://app.notion.com/p/Fanpage-L-m-m-h-nh-Song-Anh-3aa4b5e73d9080fa916ff05294adbd65",
+                        "desc": "Kênh phân phối nội dung thương hiệu Song Anh.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-8145-8ff2-e255190d0e6a",
+                        "name": "Fanpage Mô hình kiến trúc Song Anh",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Fanpage Chính (B2B VN)",
+                        "frequency": "1 bài / ngày (Khung 11:30)",
+                        "direct_url": "https://www.facebook.com/mohinhtphcm",
+                        "notion_url": "https://app.notion.com/p/Fanpage-M-h-nh-ki-n-tr-c-Song-Anh-39d4b5e73d9081458ff2e255190d0e6a",
+                        "desc": "Kênh Fanpage cốt lõi tiếp cận Chủ đầu tư BĐS, KTS và Tổng thầu Việt Nam.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3af4b5e7-3d90-81da-b761-e2a06944238f",
+                        "name": "Fanpage Vật liệu mô hình",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Tài khoản B2B",
+                        "frequency": "1 bài / ngày",
+                        "direct_url": "https://mohinhkientruc.org",
+                        "notion_url": "https://app.notion.com/p/Fanpage-V-t-li-u-m-h-nh-3af4b5e73d9081dab761e2a06944238f",
+                        "desc": "Kênh phân phối nội dung thương hiệu Song Anh.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3af4b5e7-3d90-812e-b863-cefd7b4f6727",
+                        "name": "Profile Mô hình Song Anh",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Tài khoản B2B",
+                        "frequency": "1 bài / ngày",
+                        "direct_url": "https://mohinhkientruc.org",
+                        "notion_url": "https://app.notion.com/p/Profile-M-h-nh-Song-Anh-3af4b5e73d90812eb863cefd7b4f6727",
+                        "desc": "Kênh phân phối nội dung thương hiệu Song Anh.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-8131-9be4-c0ee9fea8fb8",
+                        "name": "Profile Song Anh",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Profile Cá Nhân Chuyên Gia",
+                        "frequency": "3 - 5 bài / tuần",
+                        "direct_url": "https://www.facebook.com/profile.php?id=100086782531649",
+                        "notion_url": "https://app.notion.com/p/Profile-Song-Anh-39d4b5e73d9081319be4c0ee9fea8fb8",
+                        "desc": "Profile chuyên gia đăng góc nhìn xưởng thật và phân phối vào 194+ Groups B2B.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3af4b5e7-3d90-8142-a4d6-fcb9ad5ce344",
+                        "name": "Profile Tiến RS",
+                        "platform": "Facebook",
+                        "category": "facebook",
+                        "icon_class": "fa-brands fa-facebook text-blue-600",
+                        "badge_class": "bg-blue-100 text-blue-800 border-blue-200",
+                        "type": "Profile Founder / Sếp Tiến",
+                        "frequency": "2 - 3 bài / tuần",
+                        "direct_url": "https://www.facebook.com/profile.php?id=100008323871676",
+                        "notion_url": "https://app.notion.com/p/Profile-Ti-n-RS-3af4b5e73d908142a4d6fcb9ad5ce344",
+                        "desc": "Xây dựng thương hiệu cá nhân Founder & kết nối mạng lưới đối tác cấp cao.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-8104-88f1-df54c99bc328",
+                        "name": "GBP Dịch vụ làm mô hình kiến trúc Song Anh",
+                        "platform": "Google",
+                        "category": "gbp",
+                        "icon_class": "fa-brands fa-google text-red-500",
+                        "badge_class": "bg-red-100 text-red-800 border-red-200",
+                        "type": "Chi Nhánh 3 (Dịch Vụ Trọn Gói)",
+                        "frequency": "1 bài / ngày",
+                        "direct_url": "https://maps.app.goo.gl/9T2n1V5k4M7b8P2a1",
+                        "notion_url": "https://app.notion.com/p/GBP-D-ch-v-l-m-m-h-nh-ki-n-tr-c-Song-Anh-39d4b5e73d90810488f1df54c99bc328",
+                        "desc": "Gia công mô hình kiến trúc theo yêu cầu và dịch vụ bảo trì tận nơi.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-81b8-8e18-e5ef67a3683e",
+                        "name": "GBP Mô hình kiến trúc Song Anh",
+                        "platform": "Google",
+                        "category": "gbp",
+                        "icon_class": "fa-brands fa-google text-red-500",
+                        "badge_class": "bg-red-100 text-red-800 border-red-200",
+                        "type": "Chi Nhánh 1 (Trụ Sở Chính)",
+                        "frequency": "1 bài / ngày (Có CTA Gọi ngay)",
+                        "direct_url": "https://maps.app.goo.gl/yM4kZ6X3vYjYp6Z47",
+                        "notion_url": "https://app.notion.com/p/GBP-M-h-nh-ki-n-tr-c-Song-Anh-39d4b5e73d9081b88e18e5ef67a3683e",
+                        "desc": "230/70/28 Nguyễn Xiển, Long Thạnh Mỹ, TP. Thủ Đức, TP.HCM.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-81d6-bc82-c9d5644a13ac",
+                        "name": "GBP Sa bàn kiến trúc Song Anh",
+                        "platform": "Google",
+                        "category": "gbp",
+                        "icon_class": "fa-brands fa-google text-red-500",
+                        "badge_class": "bg-red-100 text-red-800 border-red-200",
+                        "type": "Chi Nhánh 2 (Sa Bàn)",
+                        "frequency": "1 bài / ngày (Có CTA Tìm hiểu thêm)",
+                        "direct_url": "https://maps.app.goo.gl/uL3a5F4b6s1u9V3f7",
+                        "notion_url": "https://app.notion.com/p/GBP-Sa-b-n-ki-n-tr-c-Song-Anh-39d4b5e73d9081d6bc82c9d5644a13ac",
+                        "desc": "Chi nhánh Sa bàn quy hoạch & Dự án công nghiệp lớn.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3ce4b5e7-3d90-80b5-8eb7-dab8ee520d31",
+                        "name": "Song Anh",
+                        "platform": "Pinterest",
+                        "category": "pinterest",
+                        "icon_class": "fa-brands fa-pinterest text-rose-600",
+                        "badge_class": "bg-rose-100 text-rose-800 border-rose-200",
+                        "type": "Bộ Sưu Tập Ảnh Pinterest (2:3)",
+                        "frequency": "2 Pin / ngày",
+                        "direct_url": "https://www.pinterest.com/mohinhsonganh/",
+                        "notion_url": "https://app.notion.com/p/Song-Anh-3ce4b5e73d9080b58eb7dab8ee520d31",
+                        "desc": "Bộ ảnh sa bàn nét cao 1000x1500px gắn logo và backlink về website.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3ce4b5e7-3d90-803c-8759-cf095572a1f3",
+                        "name": "Song Anh Shop",
+                        "platform": "Pinterest",
+                        "category": "pinterest",
+                        "icon_class": "fa-brands fa-pinterest text-rose-600",
+                        "badge_class": "bg-rose-100 text-rose-800 border-rose-200",
+                        "type": "Bộ Sưu Tập Ảnh Pinterest (2:3)",
+                        "frequency": "2 Pin / ngày",
+                        "direct_url": "https://www.pinterest.com/mohinhsonganh/",
+                        "notion_url": "https://app.notion.com/p/Song-Anh-Shop-3ce4b5e73d90803c8759cf095572a1f3",
+                        "desc": "Bộ ảnh sa bàn nét cao 1000x1500px gắn logo và backlink về website.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3ce4b5e7-3d90-8073-8042-e6e3a454e8b1",
+                        "name": "Song Anh Channel",
+                        "platform": "Youtube",
+                        "category": "youtube",
+                        "icon_class": "fa-brands fa-youtube text-red-600",
+                        "badge_class": "bg-red-100 text-red-800 border-red-200",
+                        "type": "Kênh Video YouTube B2B",
+                        "frequency": "2 video / tuần (4K/HD)",
+                        "direct_url": "https://www.youtube.com/@songanhchannel",
+                        "notion_url": "https://app.notion.com/p/Song-Anh-Channel-3ce4b5e73d9080738042e6e3a454e8b1",
+                        "desc": "Video review bàn giao sa bàn thực tế, cận cảnh nghệ nhân chế tác tại xưởng.",
+                        "status": "Active"
+            },
+            {
+                        "id": "3aa4b5e7-3d90-8093-8378-c171cb8a0f91",
+                        "name": "Tiktok Vật liệu mô hình",
+                        "platform": "Tiktok",
+                        "category": "tiktok",
+                        "icon_class": "fa-brands fa-tiktok text-slate-900",
+                        "badge_class": "bg-slate-100 text-slate-900 border-slate-300",
+                        "type": "Kênh Video Ngắn TikTok",
+                        "frequency": "3 clip / tuần",
+                        "direct_url": "https://www.tiktok.com/@mohinhsonganh",
+                        "notion_url": "https://app.notion.com/p/Tiktok-V-t-li-u-m-h-nh-3aa4b5e73d9080938378c171cb8a0f91",
+                        "desc": "Hậu trường máy cắt laser, in 3D 8K và nghệ thuật lắp ráp sa bàn.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-81ff-9360-f252aebbfc18",
+                        "name": "Zalo  0981 169 200",
+                        "platform": "Zalo",
+                        "category": "zalo",
+                        "icon_class": "fa-solid fa-comment-dots text-sky-600",
+                        "badge_class": "bg-sky-100 text-sky-800 border-sky-200",
+                        "type": "Hotline & Tư Vấn Kỹ Thuật",
+                        "frequency": "Trực 24/7",
+                        "direct_url": "https://zalo.me/0929224444",
+                        "notion_url": "https://app.notion.com/p/Zalo-0981-169-200-39d4b5e73d9081ff9360f252aebbfc18",
+                        "desc": "Tiếp nhận bản vẽ CAD/Revit và tư vấn phương án thi công sa bàn.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-8132-a289-c10337cc85a8",
+                        "name": "Zalo  0988 080 440",
+                        "platform": "Zalo",
+                        "category": "zalo",
+                        "icon_class": "fa-solid fa-comment-dots text-sky-600",
+                        "badge_class": "bg-sky-100 text-sky-800 border-sky-200",
+                        "type": "Hotline & Tư Vấn Kỹ Thuật",
+                        "frequency": "Trực 24/7",
+                        "direct_url": "https://zalo.me/0929224444",
+                        "notion_url": "https://app.notion.com/p/Zalo-0988-080-440-39d4b5e73d908132a289c10337cc85a8",
+                        "desc": "Tiếp nhận bản vẽ CAD/Revit và tư vấn phương án thi công sa bàn.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-81fd-9671-cd411da3b218",
+                        "name": "Zalo 0376 41 51 31",
+                        "platform": "Zalo",
+                        "category": "zalo",
+                        "icon_class": "fa-solid fa-comment-dots text-sky-600",
+                        "badge_class": "bg-sky-100 text-sky-800 border-sky-200",
+                        "type": "Hotline & Tư Vấn Kỹ Thuật",
+                        "frequency": "Trực 24/7",
+                        "direct_url": "https://zalo.me/0929224444",
+                        "notion_url": "https://app.notion.com/p/Zalo-0376-41-51-31-39d4b5e73d9081fd9671cd411da3b218",
+                        "desc": "Tiếp nhận bản vẽ CAD/Revit và tư vấn phương án thi công sa bàn.",
+                        "status": "Active"
+            },
+            {
+                        "id": "39d4b5e7-3d90-8103-a730-fdcf1280acc3",
+                        "name": "Zalo 0386 989 087",
+                        "platform": "Zalo",
+                        "category": "zalo",
+                        "icon_class": "fa-solid fa-comment-dots text-sky-600",
+                        "badge_class": "bg-sky-100 text-sky-800 border-sky-200",
+                        "type": "Hotline & Tư Vấn Kỹ Thuật",
+                        "frequency": "Trực 24/7",
+                        "direct_url": "https://zalo.me/0929224444",
+                        "notion_url": "https://app.notion.com/p/Zalo-0386-989-087-39d4b5e73d908103a730fdcf1280acc3",
+                        "desc": "Tiếp nhận bản vẽ CAD/Revit và tư vấn phương án thi công sa bàn.",
+                        "status": "Active"
+            }
+];
+        const SOCIAL_CHANNELS_NOTION_URL = 'https://app.notion.com/p/39d4b5e73d908170af7cefd31f1d056b?v=39d4b5e73d90817a975c000c68ebda79';
+
+        function renderSocialChannels() {
+            const container = document.getElementById('social-cards-container');
+            const navBadge = document.getElementById('nav-social-badge');
+            if (!container) return;
+
+            const searchVal = (document.getElementById('social-search-input')?.value || '').toLowerCase().trim();
+            const platformVal = document.getElementById('social-platform-filter')?.value || 'all';
+
+            const filtered = socialChannelsData.filter(ch => {
+                const matchSearch = (ch.name || '').toLowerCase().includes(searchVal) || 
+                                    (ch.platform || '').toLowerCase().includes(searchVal) ||
+                                    (ch.type || '').toLowerCase().includes(searchVal) ||
+                                    (ch.desc || '').toLowerCase().includes(searchVal);
+                
+                let matchPlatform = true;
+                if (platformVal !== 'all') {
+                    matchPlatform = (ch.category === platformVal);
+                }
+
+                return matchSearch && matchPlatform;
+            });
+
+            if (navBadge) navBadge.innerText = socialChannelsData.length + " Kênh";
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-slate-400 space-y-2 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-share-nodes text-3xl text-slate-300"></i>
+                        <p class="text-xs font-bold text-slate-600">Không tìm thấy kênh social phù hợp</p>
+                        <p class="text-[11px] text-slate-400">Bấm nút '+ Thêm Kênh Mới' để thêm kênh vào hệ thống</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(ch => `
+                <!-- Horizontal Flashcard for Social Channel -->
+                <div class="w-full max-w-full min-w-0 bg-white rounded-2xl border border-slate-200 shadow-2xs hover:border-blue-300 hover:shadow-md transition p-3.5 sm:p-4.5 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 sm:gap-4 overflow-hidden break-words group">
+                    
+                    <!-- Left Block: Platform Icon + Name + Platform Badge -->
+                    <div class="flex items-start gap-3 w-full lg:w-4/12 shrink-0 min-w-0">
+                        <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-xl sm:text-2xl shadow-2xs group-hover:scale-105 transition shrink-0">
+                            <i class="${ch.icon_class || 'fa-solid fa-share-nodes text-indigo-600'}"></i>
+                        </div>
+                        <div class="space-y-1 min-w-0 flex-1">
+                            <h4 class="text-xs sm:text-sm font-heading font-black text-slate-900 leading-snug group-hover:text-blue-700 transition break-words">${ch.name}</h4>
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="inline-block text-[9px] sm:text-[9.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${ch.badge_class || 'bg-slate-100 text-slate-800 border border-slate-200'}">${ch.platform}</span>
+                                <span class="inline-block text-[9px] sm:text-[9.5px] px-2 py-0.5 rounded-full font-bold bg-slate-100 text-slate-700 border border-slate-200">${ch.type || 'Tài khoản B2B'}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center Block: Description, Frequency & Active Status -->
+                    <div class="flex-1 min-w-0 w-full space-y-2 text-xs border-y lg:border-y-0 lg:border-x border-slate-100 py-2.5 lg:py-0 lg:px-4 break-words">
+                        <p class="text-slate-600 text-[11px] sm:text-[11.5px] leading-relaxed break-words whitespace-normal">${ch.desc || 'Kênh phân phối nội dung thương hiệu Song Anh.'}</p>
+                        
+                        <div class="flex items-center gap-3 text-[11px] flex-wrap">
+                            <div class="flex items-center gap-1 text-slate-500">
+                                <i class="fa-solid fa-clock text-amber-500 text-[10px]"></i>
+                                <span><strong>Tần suất:</strong> ${ch.frequency || '1 bài / ngày'}</span>
+                            </div>
+                            <div class="flex items-center gap-1 text-emerald-700 font-bold">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>Hoạt động</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Block: Action Buttons -->
+                    <div class="flex flex-row lg:flex-col items-center lg:items-end justify-between w-full lg:w-auto gap-2 shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+                        <div class="flex items-center gap-1.5">
+                            ${ch.direct_url && ch.direct_url !== '#' ? `
+                            <a href="${ch.direct_url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 active:scale-95 text-white font-black text-[11px] sm:text-xs shadow-2xs transition flex items-center gap-1.5 whitespace-nowrap">
+                                <span>🔗 Mở Kênh</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </a>` : ''}
+
+                            ${ch.notion_url ? `
+                            <a href="${ch.notion_url}" target="_blank" rel="noopener noreferrer" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-blue-600 flex items-center justify-center transition border border-slate-200" title="Mở trang Notion">
+                                <i class="fa-solid fa-database text-xs"></i>
+                            </a>` : ''}
+                        </div>
+                        
+                        <div class="flex items-center gap-1">
+                            <button onclick="editSocial('${ch.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-500 hover:text-blue-600 flex items-center justify-center transition border border-slate-200" title="Chỉnh sửa">
+                                <i class="fa-solid fa-pen text-xs"></i>
+                            </button>
+                            <button onclick="deleteSocial('${ch.id}')" class="w-7 sm:w-8 h-7 sm:h-8 rounded-lg bg-slate-50 hover:bg-rose-50 text-slate-400 hover:text-rose-600 flex items-center justify-center transition border border-slate-200" title="Xóa">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            `).join('');
+        }
+
+        function filterSocialChannels() {
+            renderSocialChannels();
+        }
+
+        function openAddSocialModal() {
+            document.getElementById('social-form').reset();
+            document.getElementById('social-id').value = '';
+            document.getElementById('social-modal-title').innerText = 'Thêm Kênh Social Mới';
+            const modal = document.getElementById('social-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSocialModal() {
+            const modal = document.getElementById('social-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function editSocial(id) {
+            const ch = socialChannelsData.find(item => item.id === id);
+            if (!ch) return;
+
+            document.getElementById('social-id').value = ch.id;
+            document.getElementById('social-name').value = ch.name || '';
+            document.getElementById('social-platform').value = ch.platform || 'Facebook';
+            document.getElementById('social-type').value = ch.type || '';
+            document.getElementById('social-frequency').value = ch.frequency || '';
+            document.getElementById('social-url').value = ch.direct_url || '';
+            document.getElementById('social-desc').value = ch.desc || '';
+
+            document.getElementById('social-modal-title').innerText = 'Chỉnh Sửa Kênh: ' + ch.name;
+            const modal = document.getElementById('social-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function handleSaveSocial(e) {
+            e.preventDefault();
+            const id = document.getElementById('social-id').value.trim();
+            const name = document.getElementById('social-name').value.trim();
+            const platform = document.getElementById('social-platform').value;
+            const type = document.getElementById('social-type').value.trim();
+            const frequency = document.getElementById('social-frequency').value.trim();
+            const direct_url = document.getElementById('social-url').value.trim();
+            const desc = document.getElementById('social-desc').value.trim();
+
+            const pMeta = {
+                "Facebook": { "icon": "fa-brands fa-facebook text-blue-600", "bg": "bg-blue-100 text-blue-800 border-blue-200", "category": "facebook" },
+                "Google": { "icon": "fa-brands fa-google text-red-500", "bg": "bg-red-100 text-red-800 border-red-200", "category": "gbp" },
+                "Pinterest": { "icon": "fa-brands fa-pinterest text-rose-600", "bg": "bg-rose-100 text-rose-800 border-rose-200", "category": "pinterest" },
+                "Youtube": { "icon": "fa-brands fa-youtube text-red-600", "bg": "bg-red-100 text-red-800 border-red-200", "category": "youtube" },
+                "Tiktok": { "icon": "fa-brands fa-tiktok text-slate-900", "bg": "bg-slate-100 text-slate-900 border-slate-300", "category": "tiktok" },
+                "X": { "icon": "fa-brands fa-x-twitter text-slate-900", "bg": "bg-slate-100 text-slate-900 border-slate-300", "category": "x" },
+                "Zalo": { "icon": "fa-solid fa-comment-dots text-sky-600", "bg": "bg-sky-100 text-sky-800 border-sky-200", "category": "zalo" }
+            };
+            const meta = pMeta[platform] || { "icon": "fa-solid fa-share-nodes text-indigo-600", "bg": "bg-indigo-100 text-indigo-800 border-indigo-200", "category": "other" };
+
+            if (id) {
+                const idx = socialChannelsData.findIndex(item => item.id === id);
+                if (idx !== -1) {
+                    socialChannelsData[idx] = { ...socialChannelsData[idx], name, platform, type, frequency, direct_url, desc, icon_class: meta.icon, badge_class: meta.bg, category: meta.category };
+                }
+                showToast("✅ Đã cập nhật kênh social: " + name);
+            } else {
+                const newId = 'soc-' + Date.now();
+                socialChannelsData.unshift({
+                    id: newId,
+                    name,
+                    platform,
+                    type: type || 'Tài khoản B2B',
+                    frequency: frequency || '1 bài / ngày',
+                    direct_url: direct_url || '#',
+                    desc,
+                    icon_class: meta.icon,
+                    badge_class: meta.bg,
+                    category: meta.category,
+                    status: 'Active'
+                });
+                showToast("🎉 Đã thêm kênh social mới: " + name);
+            }
+
+            try {
+                localStorage.setItem('songanh_social_channels', JSON.stringify(socialChannelsData));
+            } catch(err) { console.error(err); }
+
+            closeSocialModal();
+            renderSocialChannels();
+        }
+
+        function deleteSocial(id) {
+            const ch = socialChannelsData.find(item => item.id === id);
+            if (!ch) return;
+            if (confirm(`Sếp có chắc chắn muốn xóa kênh "${ch.name}" không?`)) {
+                socialChannelsData = socialChannelsData.filter(item => item.id !== id);
+                try {
+                    localStorage.setItem('songanh_social_channels', JSON.stringify(socialChannelsData));
+                } catch(err) { console.error(err); }
+                showToast("🗑️ Đã xóa kênh: " + ch.name);
+                renderSocialChannels();
+            }
+        }
+
+
         function renderContentGoalsCards() {
             const container = document.getElementById('goals-cards-container');
             const navBadge = document.getElementById('nav-goals-badge');
@@ -12837,6 +13444,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             safeCall(updateHeaderCurrentDate, 'updateHeaderCurrentDate');
             safeCall(renderKeywordTable, 'renderKeywordTable');
             safeCall(initTargetAudiencesData, 'initTargetAudiencesData');
+            safeCall(renderSocialChannels, 'renderSocialChannels');
             safeCall(updateHeaderRealtimeDate, 'updateHeaderRealtimeDate');
             safeCall(renderOnpageTable, 'renderOnpageTable');
             safeCall(renderFbTable, 'renderFbTable');
