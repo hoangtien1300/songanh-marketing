@@ -12557,5 +12557,85 @@
             "description": "Đối tượng quyết định ngân sách: Tổng Giám Đốc, Giám Đốc Ban Quản Lý Dự Án, Giám Đốc Khối Phát Triển Dự Án. Tiếp cận hiệu quả qua Profile Sếp Tiến, Hội đồng BĐS, Báo Đầu Tư."
         }
     ],
-    "target_audiences_notion_url": "https://www.notion.so/3cd4b5e73d90813d8812c44bc8ad33df"
+    "target_audiences_notion_url": "https://www.notion.so/3cd4b5e73d90813d8812c44bc8ad33df",
+    "content_goals": [
+        {
+            "id": "goal-cta-chot-sale",
+            "page_id": "3ce4b5e7-3d90-8118-9b7d-d3bc5b5732a7",
+            "name": "Kêu Gọi Hành Động (CTA Chốt Hẹn & Khảo Sát)",
+            "icon": "🎯",
+            "type": "🎯 Kêu Gọi Hành Động (CTA)",
+            "intent": "Khách hàng đã có nhu cầu và cần một lý do để nhấc máy liên hệ hoặc đặt lịch hẹn khảo sát thực tế.",
+            "structure": "1. Nêu điểm nóng nhu cầu cấp bách -> 2. Giải pháp hỗ trợ tận nơi miễn phí -> 3. Ưu đãi tư vấn mẫu vật liệu -> 4. Hotline / Zalo trực tiếp.",
+            "cta": "Hotline kỹ thuật 24/7: 0929 22 4444 (Tư vấn phương án & khảo sát mặt bằng tận nơi).",
+            "desc": "Thúc đẩy chuyển đổi trực tiếp, biến lượt xem bài viết thành cuộc gọi hoặc tin nhắn Zalo tư vấn dự án."
+        },
+        {
+            "id": "goal-hau-truong",
+            "page_id": "3ce4b5e7-3d90-813c-9b29-ea7bc7acb253",
+            "name": "Hậu Trường Xưởng Sản Xuất (Behind-The-Scenes)",
+            "icon": "🎬",
+            "type": "🎬 Hậu Trường Xưởng Sản Xuất",
+            "intent": "Khách hàng tò mò về quy trình chế tác thật, máy móc công nghệ cao và tay nghề của đội ngũ kỹ thuật viên tại xưởng.",
+            "structure": "1. Cận cảnh quy trình máy in 3D 8K/cắt laser -> 2. Thao tác tỉ mỉ gắn vi mạch LED và tiểu cảnh cây xanh -> 3. Khâu kiểm tra chất lượng (QC) trước khi đóng kiện gỗ.",
+            "cta": "Kính mời Quý Khách hàng ghé thăm xưởng sản xuất Song Anh tại 230/70/28 Nguyễn Xiển, Thủ Đức để trải nghiệm quy trình thực tế.",
+            "desc": "Mang lại cảm giác chân thật 100% (Real Proof), loại bỏ hoàn toàn tính chất quảng cáo sáo rỗng, tạo sự thích thú và gắn kết."
+        },
+        {
+            "id": "goal-long-tin",
+            "page_id": "3ce4b5e7-3d90-81bf-bbc5-f59bd4513568",
+            "name": "Xây Dựng Lòng Tin (Social Proof & Case Study)",
+            "icon": "🤝",
+            "type": "🤝 Xây Dựng Lòng Tin (Trust)",
+            "intent": "Khách hàng còn băn khoăn về độ bền sa bàn sau nhiều năm sử dụng, dịch vụ bảo trì và độ tin cậy của nhà thầu.",
+            "structure": "1. Khảo sát thực tế sa bàn sau 2-3 năm -> 2. Đánh giá độ bền màu mica và đèn LED -> 3. Chính sách bảo hành tận nơi trọn đời -> 4. Lời cam kết thương hiệu.",
+            "cta": "Liên hệ ngay để nhận gói bảo trì và làm mới sa bàn định kỳ cho Sales Gallery của Quý Doanh nghiệp.",
+            "desc": "Triệt tiêu nỗi sợ rủi ro của khách hàng, nhấn mạnh cam kết đồng hành dài lâu và dịch vụ sau bán hàng chu đáo."
+        },
+        {
+            "id": "goal-khang-dinh",
+            "page_id": "3ce4b5e7-3d90-815e-aa08-cebc899fd6c9",
+            "name": "Khẳng Định Vị Thế & Năng Lực Dự Án Lớn",
+            "icon": "🏆",
+            "type": "🏆 Khẳng Định Vị Thế & Uy Tín",
+            "intent": "Khách hàng cấp cao (Tổng Giám Đốc, Chủ tịch HĐQT) cần sự đảm bảo chắc chắn về năng lực thực hiện các dự án quy mô hàng nghìn ha.",
+            "structure": "1. Tuyên ngôn năng lực qua dự án tiêu biểu (Khải Hoàn Prime, RMIT, Cát Lái...) -> 2. Điểm tinh xảo công nghệ độc bản -> 3. Lời khẳng định tiêu chuẩn B2B.",
+            "cta": "Đồng hành cùng Quý Chủ đầu tư kiến tạo những tác phẩm sa bàn tầm vóc quốc tế.",
+            "desc": "Tôn vinh đẳng cấp thương hiệu Song Anh, khẳng định vị thế xưởng gia công sa bàn chất lượng hàng đầu khu vực phía Nam."
+        },
+        {
+            "id": "goal-thong-bao",
+            "page_id": "3ce4b5e7-3d90-811f-a23c-c5e9985b2b42",
+            "name": "Thông Báo Sự Kiện, Lễ Khởi Công & Bàn Giao",
+            "icon": "📢",
+            "type": "📢 Thông Báo & Sự Kiện",
+            "intent": "Khách hàng cần nắm bắt tiến độ, thông tin sự kiện triển lãm, lễ bàn giao sa bàn đúng hẹn phục vụ ngày khai trương.",
+            "structure": "1. Tiêu đề thông báo sự kiện trang trọng -> 2. Thông số dự án & quy mô sa bàn -> 3. Hình ảnh bàn giao thực tế tại sảnh -> 4. Lời chúc mừng Quý Chủ đầu tư.",
+            "cta": "Mô hình Song Anh kính chúc dự án khai trương hồng phát và đạt kết quả kinh doanh vượt bậc!",
+            "desc": "Cập nhật nhịp đập hoạt động thực tế của xưởng, chứng minh năng lực đáp ứng các sự kiện khẩn cấp và tiến độ đường găng."
+        },
+        {
+            "id": "goal-chia-se",
+            "page_id": "3ce4b5e7-3d90-8145-8a03-c1d5d775ee60",
+            "name": "Chia Sẻ Chuyên Môn & Kiến Thức Kỹ Thuật",
+            "icon": "💡",
+            "type": "💡 Chia Sẻ & Giáo Dục Kỹ Thuật",
+            "intent": "Khách hàng muốn hiểu sâu về công nghệ (in 3D SLA, cắt Laser mica, hệ thống đèn LED thông minh, tỷ lệ sa bàn phù hợp).",
+            "structure": "1. Đặt vấn đề/lỗi thường gặp -> 2. Phân tích nguyên nhân kỹ thuật -> 3. Giải pháp chuyên môn từ xưởng Song Anh -> 4. Đúc kết kinh nghiệm cho KTS/Chủ đầu tư.",
+            "cta": "Quý Kiến trúc sư cần tư vấn giải pháp bóc tách tỷ lệ sa bàn, liên hệ đội ngũ kỹ thuật Song Anh để được hỗ trợ chuyên sâu.",
+            "desc": "Xây dựng vị thế chuyên gia đầu ngành trong lĩnh vực sa bàn kiến trúc & quy hoạch, tạo sự tin tưởng tuyệt đối với giới Kiến trúc sư."
+        },
+        {
+            "id": "goal-bao-gia",
+            "page_id": "3ce4b5e7-3d90-816f-bfea-d038a831056e",
+            "name": "Báo Giá & Dự Toán Chi Phí",
+            "icon": "💰",
+            "type": "💰 Chuyển Đổi & Báo Giá",
+            "intent": "Khách hàng đang trong giai đoạn so sánh giá, cần biết ngân sách dự toán, quy cách vật liệu và thời gian hoàn thiện.",
+            "structure": "1. Nêu bối cảnh dự án -> 2. Giải trình chi phí tối ưu tại xưởng trực tiếp không qua trung gian -> 3. Cam kết không phát sinh -> 4. Mời gửi file nhận bảng bóc tách trong 30 phút.",
+            "cta": "Kính mời gửi file CAD/Revit hoặc layout mặt bằng qua Zalo 0929 22 4444 nhận dự toán chi tiết trong 30 phút.",
+            "desc": "Tập trung giải tỏa nỗi lo về ngân sách, làm nổi bật lợi thế giá gốc tại xưởng Thủ Đức và chính sách xuất hóa đơn VAT đầy đủ."
+        }
+    ],
+    "content_goals_notion_url": "https://www.notion.so/3ce4b5e73d9081aeb70cec549e601228"
 }
