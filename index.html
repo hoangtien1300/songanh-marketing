@@ -216,7 +216,17 @@
         // -------------------------------------------------------------------------
         function cleanProjectRawTitle(raw) {
             let t = raw.replace(/1[/:]\d+/g, '').replace(/[\n\r]+/g, ' ');
-            t = t.replace(/\b(tháp căn hộ|đèn led|sales gallery|báo cáo fdi|xúc tiến đầu tư|bàn giao gấp \d+ ngày|bunker|hồ nước|led đêm|bị hỏng led|bụi bẩn|view sông|giá sỉ|ánh dương shop|sa bàn|mô hình)\b/gi, ' ');
+            
+            // If user typed first person action e.g. "Tôi đang đi sự kiện..."
+            if (/\b(tôi đang|chúng tôi|anh em|xưởng đang|đang đi|đang làm)\b/i.test(t)) {
+                let locationMatch = t.match(/\b(tại tỉnh|tỉnh|thành phố|tp\.?)\s+([A-Za-zÀ-ỹ\s]+)/i);
+                if (locationMatch) {
+                    let locName = locationMatch[2].split(/\b(và|đang|cho|tham gia|vào)\b/i)[0].trim();
+                    return "Quy Hoạch Xúc Tiến Đầu Tư & Thương Mại Tỉnh " + (locName.charAt(0).toUpperCase() + locName.slice(1));
+                }
+            }
+
+            t = t.replace(/\b(tôi đang đi sự kiện|đang lắp đặt|cho tỉnh tham gia vào sự kiện|tháp căn hộ|đèn led|sales gallery|báo cáo fdi|xúc tiến đầu tư|bàn giao gấp \d+ ngày|bunker|hồ nước|led đêm|bị hỏng led|bụi bẩn|view sông|giá sỉ|ánh dương shop|sa bàn|mô hình)\b/gi, ' ');
             t = t.replace(/\s+/g, ' ').trim();
             if (!t || t.length < 3) t = raw.split('\n')[0].trim();
             return t.charAt(0).toUpperCase() + t.slice(1);
