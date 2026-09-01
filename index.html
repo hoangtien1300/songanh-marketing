@@ -672,19 +672,19 @@
             </div>
         </div>
 
-        <!-- Center: 3 TAB LĨNH VỰC KINH DOANH (Ultra-Compact Responsive) -->
-        <div class="flex items-center gap-0.5 sm:gap-1 bg-slate-100 p-0.5 sm:p-1 rounded-xl border border-slate-200 shrink-0">
-            <button onclick="switchDomain('mo-hinh')" id="domain-tab-mo-hinh" class="domain-tab active px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-city text-amber-500 text-[9px] sm:text-[11px]"></i>
-                <span class="text-[10px] sm:text-xs">MÔ HÌNH</span>
+        <!-- Center: 3 TAB LĨNH VỰC KINH DOANH (Interactive Domain Filter) -->
+        <div class="flex items-center gap-0.5 sm:gap-1 bg-slate-100 p-0.5 sm:p-1 rounded-xl border border-slate-200 shrink-0 shadow-2xs">
+            <button onclick="switchDomain('mo-hinh')" id="domain-tab-mo-hinh" class="domain-tab active px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-black transition flex items-center gap-1.5 bg-brand-navy text-white shadow-xs">
+                <i class="fa-solid fa-city text-amber-400 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">MÔ HÌNH</span>
             </button>
-            <button onclick="switchDomain('golf')" id="domain-tab-golf" class="domain-tab px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-golf-ball-tee text-emerald-600 text-[9px] sm:text-[11px]"></i>
-                <span class="inline">GOLF</span>
+            <button onclick="switchDomain('golf')" id="domain-tab-golf" class="domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5">
+                <i class="fa-solid fa-golf-ball-tee text-emerald-600 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">GOLF</span>
             </button>
-            <button onclick="switchDomain('thuong-mai')" id="domain-tab-thuong-mai" class="domain-tab px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-cart-shopping text-sky-600 text-[9px] sm:text-[11px]"></i>
-                <span class="inline">TMĐT</span>
+            <button onclick="switchDomain('tmdt')" id="domain-tab-tmdt" class="domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping text-sky-600 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">TMĐT</span>
             </button>
         </div>
 
@@ -12081,7 +12081,31 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const tbody = document.getElementById('fb-table-body');
             if (!tbody) return;
             let html = '';
-            fbTaskList.forEach(task => {
+
+            const filteredTasks = fbTaskList.filter(task => {
+                const nameLow = (task.task_name || '').toLowerCase();
+                const descLow = (task.description || '').toLowerCase();
+                const isTmdt = nameLow.includes('tmđt') || nameLow.includes('vật liệu') || nameLow.includes('làm mô hình') || descLow.includes('tmđt') || descLow.includes('vật liệu');
+                const isGolf = nameLow.includes('golf') || descLow.includes('golf');
+
+                if (currentDomain === 'mo-hinh') {
+                    return !isTmdt && !isGolf;
+                } else if (currentDomain === 'tmdt') {
+                    return isTmdt;
+                } else if (currentDomain === 'golf') {
+                    return isGolf;
+                }
+                return true;
+            });
+
+            if (filteredTasks.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 text-xs font-bold">Không có task nào thuộc lĩnh vực này.</td></tr>`;
+                const badge = document.getElementById('fb-tasks-count-badge');
+                if (badge) badge.textContent = `0 Tasks Active`;
+                return;
+            }
+
+            filteredTasks.forEach(task => {
                 const color = task.color_class || 'blue';
                 const barColor = color === 'emerald' ? 'bg-emerald-500' : (color === 'blue' ? 'bg-blue-600' : (color === 'purple' ? 'bg-purple-600' : 'bg-amber-500'));
                 const textColor = color === 'emerald' ? 'text-emerald-600' : (color === 'blue' ? 'text-blue-600' : (color === 'purple' ? 'text-purple-600' : 'text-amber-600'));
@@ -12113,7 +12137,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             tbody.innerHTML = html;
             const badge = document.getElementById('fb-tasks-count-badge');
             if (badge) {
-                badge.textContent = `${fbTaskList.length} Tasks Active`;
+                badge.textContent = `${filteredTasks.length} Tasks Active`;
             }
         }
 
@@ -12265,9 +12289,52 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             showToast("🌐 Đã lọc dữ liệu từ khóa cho Website: " + siteDomain);
         }
 
+        // -------------------------------------------------------------
+        // 🏢 DOMAIN SCOPE FILTER CONTROLLER (MÔ HÌNH | GOLF | TMĐT)
+        // -------------------------------------------------------------
+        let currentDomain = 'mo-hinh';
+
         function switchDomain(domainKey) {
-            showToast("🏢 Đã chọn Lĩnh vực Mô Hình Kiến Trúc!");
+            if (domainKey === 'thuong-mai') domainKey = 'tmdt';
+            currentDomain = domainKey;
+
+            // 1. Update Domain Tab Buttons UI
+            const tabMoHinh = document.getElementById('domain-tab-mo-hinh');
+            const tabGolf = document.getElementById('domain-tab-golf');
+            const tabTmdt = document.getElementById('domain-tab-tmdt') || document.getElementById('domain-tab-thuong-mai');
+
+            const resetTab = (btn) => {
+                if (btn) btn.className = "domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5";
+            };
+            const activeTab = (btn, colorClass) => {
+                if (btn) btn.className = `domain-tab active px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-black transition flex items-center gap-1.5 ${colorClass} text-white shadow-xs`;
+            };
+
+            resetTab(tabMoHinh);
+            resetTab(tabGolf);
+            resetTab(tabTmdt);
+
+            if (domainKey === 'mo-hinh') {
+                activeTab(tabMoHinh, "bg-brand-navy");
+                showToast("🏢 Đã chuyển sang Lĩnh vực: MÔ HÌNH KIẾN TRÚC & SA BÀN");
+            } else if (domainKey === 'golf') {
+                activeTab(tabGolf, "bg-emerald-700");
+                showToast("⛳ Đã chuyển sang Lĩnh vực: SÂN GOLF & NGHỈ DƯỠNG GOLF");
+            } else if (domainKey === 'tmdt') {
+                activeTab(tabTmdt, "bg-sky-700");
+                showToast("🛒 Đã chuyển sang Lĩnh vực: THƯƠNG MẠI ĐIỆN TỬ (TMĐT) & VẬT LIỆU");
+            }
+
+            // 2. Trigger Re-render for all active panels with domain filter
+            try {
+                if (typeof renderSocialChannels === 'function') renderSocialChannels();
+                if (typeof renderAudienceCards === 'function') renderAudienceCards();
+                if (typeof renderFbTable === 'function') renderFbTable();
+                if (typeof renderKeywordTable === 'function') renderKeywordTable();
+                if (typeof renderOnpageTable === 'function') renderOnpageTable();
+            } catch(e) { console.error("Error re-rendering on domain switch:", e); }
         }
+
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
@@ -12595,12 +12662,30 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const segmentVal = document.getElementById('audience-segment-filter')?.value || 'all';
 
             const filtered = targetAudiencesData.filter(item => {
+                const seg = item.segment || '';
+                const nameLow = (item.name || '').toLowerCase();
+
+                // 1. Domain Filtering
+                let matchDomain = true;
+                if (currentDomain === 'mo-hinh') {
+                    // Mo Hinh includes all B2B personas except pure material e-commerce retail
+                    matchDomain = (seg !== 'khac' || !nameLow.includes('tmđt vật liệu'));
+                } else if (currentDomain === 'tmdt') {
+                    // TMDT includes material buyers, students, young architects
+                    matchDomain = (seg === 'khac' || nameLow.includes('tmđt') || nameLow.includes('vật liệu'));
+                } else if (currentDomain === 'golf') {
+                    // Golf domain
+                    matchDomain = nameLow.includes('golf') || (seg === 'bds' && nameLow.includes('golf'));
+                }
+
+                // 2. Search & Segment Filtering
                 const matchSearch = (item.name || '').toLowerCase().includes(searchVal) || 
                                     (item.painPoints || '').toLowerCase().includes(searchVal) ||
                                     (item.triggers || '').toLowerCase().includes(searchVal) ||
                                     (item.desc || '').toLowerCase().includes(searchVal);
                 const matchSegment = (segmentVal === 'all') || (item.segment === segmentVal);
-                return matchSearch && matchSegment;
+
+                return matchDomain && matchSearch && matchSegment;
             });
 
             if (navBadge) navBadge.innerText = targetAudiencesData.length;
@@ -12998,17 +13083,42 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const platformVal = document.getElementById('social-platform-filter')?.value || 'all';
 
             const filtered = socialChannelsData.filter(ch => {
+                const nameLow = (ch.name || '').toLowerCase();
+                const typeLow = (ch.type || '').toLowerCase();
+                const descLow = (ch.desc || '').toLowerCase();
+                const platLow = (ch.platform || '').toLowerCase();
+
+                // 1. Domain Filtering
+                let matchDomain = true;
+                const isTmdtChannel = nameLow.includes('làm mô hình') || nameLow.includes('vật liệu') || nameLow.includes('ánh dương') || nameLow.includes('shop') || descLow.includes('tmđt') || typeLow.includes('tmđt');
+                const isGolfChannel = nameLow.includes('golf') || descLow.includes('golf');
+
+                if (currentDomain === 'mo-hinh') {
+                    // In Mo Hinh: Only show architectural models & sa ban channels (Hide pure TMDT & Golf)
+                    matchDomain = !isTmdtChannel && !isGolfChannel;
+                } else if (currentDomain === 'tmdt') {
+                    // In TMDT: Only show E-Commerce / Shop / Material channels
+                    matchDomain = isTmdtChannel;
+                } else if (currentDomain === 'golf') {
+                    // In Golf: Show Golf specific channels
+                    matchDomain = isGolfChannel;
+                }
+
+                // 2. Search & Platform Filtering
                 const matchSearch = (ch.name || '').toLowerCase().includes(searchVal) || 
                                     (ch.platform || '').toLowerCase().includes(searchVal) ||
                                     (ch.type || '').toLowerCase().includes(searchVal) ||
-                                    (ch.desc || '').toLowerCase().includes(searchVal);
+                                    (ch.desc || '').toLowerCase().includes(searchVal) ||
+                                    (ch.gioithieu || '').toLowerCase().includes(searchVal) ||
+                                    (ch.vaitro || '').toLowerCase().includes(searchVal) ||
+                                    (ch.mucdich || '').toLowerCase().includes(searchVal);
                 
                 let matchPlatform = true;
                 if (platformVal !== 'all') {
                     matchPlatform = (ch.category === platformVal);
                 }
 
-                return matchSearch && matchPlatform;
+                return matchDomain && matchSearch && matchPlatform;
             });
 
             if (navBadge) navBadge.innerText = socialChannelsData.length + " Kênh";
@@ -13779,19 +13889,19 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             </div>
         </div>
 
-        <!-- Center: 3 TAB LĨNH VỰC KINH DOANH (Ultra-Compact Responsive) -->
-        <div class="flex items-center gap-0.5 sm:gap-1 bg-slate-100 p-0.5 sm:p-1 rounded-xl border border-slate-200 shrink-0">
-            <button onclick="switchDomain('mo-hinh')" id="domain-tab-mo-hinh" class="domain-tab active px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-city text-amber-500 text-[9px] sm:text-[11px]"></i>
-                <span class="text-[10px] sm:text-xs">MÔ HÌNH</span>
+        <!-- Center: 3 TAB LĨNH VỰC KINH DOANH (Interactive Domain Filter) -->
+        <div class="flex items-center gap-0.5 sm:gap-1 bg-slate-100 p-0.5 sm:p-1 rounded-xl border border-slate-200 shrink-0 shadow-2xs">
+            <button onclick="switchDomain('mo-hinh')" id="domain-tab-mo-hinh" class="domain-tab active px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-black transition flex items-center gap-1.5 bg-brand-navy text-white shadow-xs">
+                <i class="fa-solid fa-city text-amber-400 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">MÔ HÌNH</span>
             </button>
-            <button onclick="switchDomain('golf')" id="domain-tab-golf" class="domain-tab px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-golf-ball-tee text-emerald-600 text-[9px] sm:text-[11px]"></i>
-                <span class="inline">GOLF</span>
+            <button onclick="switchDomain('golf')" id="domain-tab-golf" class="domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5">
+                <i class="fa-solid fa-golf-ball-tee text-emerald-600 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">GOLF</span>
             </button>
-            <button onclick="switchDomain('thuong-mai')" id="domain-tab-thuong-mai" class="domain-tab px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1 border border-transparent">
-                <i class="fa-solid fa-cart-shopping text-sky-600 text-[9px] sm:text-[11px]"></i>
-                <span class="inline">TMĐT</span>
+            <button onclick="switchDomain('tmdt')" id="domain-tab-tmdt" class="domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5">
+                <i class="fa-solid fa-cart-shopping text-sky-600 text-[10px] sm:text-xs"></i>
+                <span class="tracking-tight">TMĐT</span>
             </button>
         </div>
 
@@ -25188,7 +25298,31 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const tbody = document.getElementById('fb-table-body');
             if (!tbody) return;
             let html = '';
-            fbTaskList.forEach(task => {
+
+            const filteredTasks = fbTaskList.filter(task => {
+                const nameLow = (task.task_name || '').toLowerCase();
+                const descLow = (task.description || '').toLowerCase();
+                const isTmdt = nameLow.includes('tmđt') || nameLow.includes('vật liệu') || nameLow.includes('làm mô hình') || descLow.includes('tmđt') || descLow.includes('vật liệu');
+                const isGolf = nameLow.includes('golf') || descLow.includes('golf');
+
+                if (currentDomain === 'mo-hinh') {
+                    return !isTmdt && !isGolf;
+                } else if (currentDomain === 'tmdt') {
+                    return isTmdt;
+                } else if (currentDomain === 'golf') {
+                    return isGolf;
+                }
+                return true;
+            });
+
+            if (filteredTasks.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 text-xs font-bold">Không có task nào thuộc lĩnh vực này.</td></tr>`;
+                const badge = document.getElementById('fb-tasks-count-badge');
+                if (badge) badge.textContent = `0 Tasks Active`;
+                return;
+            }
+
+            filteredTasks.forEach(task => {
                 const color = task.color_class || 'blue';
                 const barColor = color === 'emerald' ? 'bg-emerald-500' : (color === 'blue' ? 'bg-blue-600' : (color === 'purple' ? 'bg-purple-600' : 'bg-amber-500'));
                 const textColor = color === 'emerald' ? 'text-emerald-600' : (color === 'blue' ? 'text-blue-600' : (color === 'purple' ? 'text-purple-600' : 'text-amber-600'));
@@ -25220,7 +25354,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             tbody.innerHTML = html;
             const badge = document.getElementById('fb-tasks-count-badge');
             if (badge) {
-                badge.textContent = `${fbTaskList.length} Tasks Active`;
+                badge.textContent = `${filteredTasks.length} Tasks Active`;
             }
         }
 
@@ -25372,9 +25506,52 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             showToast("🌐 Đã lọc dữ liệu từ khóa cho Website: " + siteDomain);
         }
 
+        // -------------------------------------------------------------
+        // 🏢 DOMAIN SCOPE FILTER CONTROLLER (MÔ HÌNH | GOLF | TMĐT)
+        // -------------------------------------------------------------
+        let currentDomain = 'mo-hinh';
+
         function switchDomain(domainKey) {
-            showToast("🏢 Đã chọn Lĩnh vực Mô Hình Kiến Trúc!");
+            if (domainKey === 'thuong-mai') domainKey = 'tmdt';
+            currentDomain = domainKey;
+
+            // 1. Update Domain Tab Buttons UI
+            const tabMoHinh = document.getElementById('domain-tab-mo-hinh');
+            const tabGolf = document.getElementById('domain-tab-golf');
+            const tabTmdt = document.getElementById('domain-tab-tmdt') || document.getElementById('domain-tab-thuong-mai');
+
+            const resetTab = (btn) => {
+                if (btn) btn.className = "domain-tab px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-bold text-slate-600 hover:text-brand-navy transition flex items-center gap-1.5";
+            };
+            const activeTab = (btn, colorClass) => {
+                if (btn) btn.className = `domain-tab active px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-black transition flex items-center gap-1.5 ${colorClass} text-white shadow-xs`;
+            };
+
+            resetTab(tabMoHinh);
+            resetTab(tabGolf);
+            resetTab(tabTmdt);
+
+            if (domainKey === 'mo-hinh') {
+                activeTab(tabMoHinh, "bg-brand-navy");
+                showToast("🏢 Đã chuyển sang Lĩnh vực: MÔ HÌNH KIẾN TRÚC & SA BÀN");
+            } else if (domainKey === 'golf') {
+                activeTab(tabGolf, "bg-emerald-700");
+                showToast("⛳ Đã chuyển sang Lĩnh vực: SÂN GOLF & NGHỈ DƯỠNG GOLF");
+            } else if (domainKey === 'tmdt') {
+                activeTab(tabTmdt, "bg-sky-700");
+                showToast("🛒 Đã chuyển sang Lĩnh vực: THƯƠNG MẠI ĐIỆN TỬ (TMĐT) & VẬT LIỆU");
+            }
+
+            // 2. Trigger Re-render for all active panels with domain filter
+            try {
+                if (typeof renderSocialChannels === 'function') renderSocialChannels();
+                if (typeof renderAudienceCards === 'function') renderAudienceCards();
+                if (typeof renderFbTable === 'function') renderFbTable();
+                if (typeof renderKeywordTable === 'function') renderKeywordTable();
+                if (typeof renderOnpageTable === 'function') renderOnpageTable();
+            } catch(e) { console.error("Error re-rendering on domain switch:", e); }
         }
+
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
@@ -25702,12 +25879,30 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const segmentVal = document.getElementById('audience-segment-filter')?.value || 'all';
 
             const filtered = targetAudiencesData.filter(item => {
+                const seg = item.segment || '';
+                const nameLow = (item.name || '').toLowerCase();
+
+                // 1. Domain Filtering
+                let matchDomain = true;
+                if (currentDomain === 'mo-hinh') {
+                    // Mo Hinh includes all B2B personas except pure material e-commerce retail
+                    matchDomain = (seg !== 'khac' || !nameLow.includes('tmđt vật liệu'));
+                } else if (currentDomain === 'tmdt') {
+                    // TMDT includes material buyers, students, young architects
+                    matchDomain = (seg === 'khac' || nameLow.includes('tmđt') || nameLow.includes('vật liệu'));
+                } else if (currentDomain === 'golf') {
+                    // Golf domain
+                    matchDomain = nameLow.includes('golf') || (seg === 'bds' && nameLow.includes('golf'));
+                }
+
+                // 2. Search & Segment Filtering
                 const matchSearch = (item.name || '').toLowerCase().includes(searchVal) || 
                                     (item.painPoints || '').toLowerCase().includes(searchVal) ||
                                     (item.triggers || '').toLowerCase().includes(searchVal) ||
                                     (item.desc || '').toLowerCase().includes(searchVal);
                 const matchSegment = (segmentVal === 'all') || (item.segment === segmentVal);
-                return matchSearch && matchSegment;
+
+                return matchDomain && matchSearch && matchSegment;
             });
 
             if (navBadge) navBadge.innerText = targetAudiencesData.length;
@@ -26105,17 +26300,42 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const platformVal = document.getElementById('social-platform-filter')?.value || 'all';
 
             const filtered = socialChannelsData.filter(ch => {
+                const nameLow = (ch.name || '').toLowerCase();
+                const typeLow = (ch.type || '').toLowerCase();
+                const descLow = (ch.desc || '').toLowerCase();
+                const platLow = (ch.platform || '').toLowerCase();
+
+                // 1. Domain Filtering
+                let matchDomain = true;
+                const isTmdtChannel = nameLow.includes('làm mô hình') || nameLow.includes('vật liệu') || nameLow.includes('ánh dương') || nameLow.includes('shop') || descLow.includes('tmđt') || typeLow.includes('tmđt');
+                const isGolfChannel = nameLow.includes('golf') || descLow.includes('golf');
+
+                if (currentDomain === 'mo-hinh') {
+                    // In Mo Hinh: Only show architectural models & sa ban channels (Hide pure TMDT & Golf)
+                    matchDomain = !isTmdtChannel && !isGolfChannel;
+                } else if (currentDomain === 'tmdt') {
+                    // In TMDT: Only show E-Commerce / Shop / Material channels
+                    matchDomain = isTmdtChannel;
+                } else if (currentDomain === 'golf') {
+                    // In Golf: Show Golf specific channels
+                    matchDomain = isGolfChannel;
+                }
+
+                // 2. Search & Platform Filtering
                 const matchSearch = (ch.name || '').toLowerCase().includes(searchVal) || 
                                     (ch.platform || '').toLowerCase().includes(searchVal) ||
                                     (ch.type || '').toLowerCase().includes(searchVal) ||
-                                    (ch.desc || '').toLowerCase().includes(searchVal);
+                                    (ch.desc || '').toLowerCase().includes(searchVal) ||
+                                    (ch.gioithieu || '').toLowerCase().includes(searchVal) ||
+                                    (ch.vaitro || '').toLowerCase().includes(searchVal) ||
+                                    (ch.mucdich || '').toLowerCase().includes(searchVal);
                 
                 let matchPlatform = true;
                 if (platformVal !== 'all') {
                     matchPlatform = (ch.category === platformVal);
                 }
 
-                return matchSearch && matchPlatform;
+                return matchDomain && matchSearch && matchPlatform;
             });
 
             if (navBadge) navBadge.innerText = socialChannelsData.length + " Kênh";
@@ -26539,17 +26759,42 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const platformVal = document.getElementById('social-platform-filter')?.value || 'all';
 
             const filtered = socialChannelsData.filter(ch => {
+                const nameLow = (ch.name || '').toLowerCase();
+                const typeLow = (ch.type || '').toLowerCase();
+                const descLow = (ch.desc || '').toLowerCase();
+                const platLow = (ch.platform || '').toLowerCase();
+
+                // 1. Domain Filtering
+                let matchDomain = true;
+                const isTmdtChannel = nameLow.includes('làm mô hình') || nameLow.includes('vật liệu') || nameLow.includes('ánh dương') || nameLow.includes('shop') || descLow.includes('tmđt') || typeLow.includes('tmđt');
+                const isGolfChannel = nameLow.includes('golf') || descLow.includes('golf');
+
+                if (currentDomain === 'mo-hinh') {
+                    // In Mo Hinh: Only show architectural models & sa ban channels (Hide pure TMDT & Golf)
+                    matchDomain = !isTmdtChannel && !isGolfChannel;
+                } else if (currentDomain === 'tmdt') {
+                    // In TMDT: Only show E-Commerce / Shop / Material channels
+                    matchDomain = isTmdtChannel;
+                } else if (currentDomain === 'golf') {
+                    // In Golf: Show Golf specific channels
+                    matchDomain = isGolfChannel;
+                }
+
+                // 2. Search & Platform Filtering
                 const matchSearch = (ch.name || '').toLowerCase().includes(searchVal) || 
                                     (ch.platform || '').toLowerCase().includes(searchVal) ||
                                     (ch.type || '').toLowerCase().includes(searchVal) ||
-                                    (ch.desc || '').toLowerCase().includes(searchVal);
+                                    (ch.desc || '').toLowerCase().includes(searchVal) ||
+                                    (ch.gioithieu || '').toLowerCase().includes(searchVal) ||
+                                    (ch.vaitro || '').toLowerCase().includes(searchVal) ||
+                                    (ch.mucdich || '').toLowerCase().includes(searchVal);
                 
                 let matchPlatform = true;
                 if (platformVal !== 'all') {
                     matchPlatform = (ch.category === platformVal);
                 }
 
-                return matchSearch && matchPlatform;
+                return matchDomain && matchSearch && matchPlatform;
             });
 
             if (navBadge) navBadge.innerText = socialChannelsData.length + " Kênh";
