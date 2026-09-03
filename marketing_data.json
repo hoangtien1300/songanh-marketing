@@ -16156,6 +16156,15 @@
   },
   "marketing_activity_log": [
     {
+      "timestamp": "2026-09-03 08:32:39",
+      "date": "03/09/2026",
+      "time": "08:32:26",
+      "module": "Notion Content",
+      "action": "Đã xóa (Archived) hoàn tất 40 bản ghi bài viết Fanpage Architectural Model Org đã chuyển khỏi bảng DS Post Facebook (LƯU TRỮ - KHÔNG DÙNG).",
+      "operator": "Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn Thành"
+    },
+    {
       "timestamp": "2026-09-03 08:27:14",
       "date": "03/09/2026",
       "time": "08:27:07",
