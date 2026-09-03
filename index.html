@@ -2510,6 +2510,22 @@
                             <tbody id="fb-table-body" class="divide-y divide-slate-200"></tbody>
                         </table>
                     </div>
+
+                    <!-- 🌟 PHÂN TRANG BẢNG FACEBOOK TASKS (10 CÔNG VIỆC / TRANG) -->
+                    <div id="fb-tasks-pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-200 text-xs">
+                        <span id="fb-tasks-page-info" class="text-slate-500 font-medium">Đang tải phân trang...</span>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="changeFbTasksPage(-1)" id="btn-fb-page-prev" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold transition shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                                <span>Trang Trước</span>
+                            </button>
+                            <span id="fb-tasks-page-current" class="px-3 py-1.5 rounded-xl bg-blue-50 text-blue-800 font-extrabold border border-blue-200">Trang 1 / 1</span>
+                            <button onclick="changeFbTasksPage(1)" id="btn-fb-page-next" class="px-3 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold transition shadow-2xs disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1">
+                                <span>Trang Sau</span>
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 🌟 BẢNG DANH SÁCH FACEBOOK GROUPS ĐÃ THAM GIA (FANPAGE MÔ HÌNH KIẾN TRÚC SONG ANH & PROFILE SONG ANH) -->
@@ -13112,6 +13128,14 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             renderFbJoinedGroupsTable(filtered);
         }
 
+        let fbTasksCurrentPage = 1;
+        const fbTasksPageSize = 10;
+
+        function changeFbTasksPage(delta) {
+            fbTasksCurrentPage += delta;
+            renderFbTable();
+        }
+
         function renderFbTable() {
             const tbody = document.getElementById('fb-table-body');
             if (!tbody) return;
@@ -13133,14 +13157,43 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 return true;
             });
 
-            if (filteredTasks.length === 0) {
+            const totalTasks = filteredTasks.length;
+            const badge = document.getElementById('fb-tasks-count-badge');
+            if (badge) badge.textContent = `${totalTasks} Tasks Active`;
+
+            if (totalTasks === 0) {
                 tbody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 text-xs font-bold">Không có task nào thuộc lĩnh vực này.</td></tr>`;
-                const badge = document.getElementById('fb-tasks-count-badge');
-                if (badge) badge.textContent = `0 Tasks Active`;
+                const pageInfo = document.getElementById('fb-tasks-page-info');
+                if (pageInfo) pageInfo.innerText = "Không có công việc";
+                const pageCurr = document.getElementById('fb-tasks-page-current');
+                if (pageCurr) pageCurr.innerText = "Trang 0 / 0";
+                const btnPrev = document.getElementById('btn-fb-page-prev');
+                const btnNext = document.getElementById('btn-fb-page-next');
+                if (btnPrev) btnPrev.disabled = true;
+                if (btnNext) btnNext.disabled = true;
                 return;
             }
 
-            filteredTasks.forEach(task => {
+            // Pagination Calculations
+            const totalPages = Math.ceil(totalTasks / fbTasksPageSize);
+            if (fbTasksCurrentPage > totalPages) fbTasksCurrentPage = totalPages;
+            if (fbTasksCurrentPage < 1) fbTasksCurrentPage = 1;
+
+            const startIndex = (fbTasksCurrentPage - 1) * fbTasksPageSize;
+            const endIndex = Math.min(startIndex + fbTasksPageSize, totalTasks);
+            const pagedTasks = filteredTasks.slice(startIndex, endIndex);
+
+            // Update Pagination Bar UI
+            const pageInfo = document.getElementById('fb-tasks-page-info');
+            if (pageInfo) pageInfo.innerText = `Hiển thị ${startIndex + 1} - ${endIndex} trên tổng số ${totalTasks} công việc`;
+            const pageCurr = document.getElementById('fb-tasks-page-current');
+            if (pageCurr) pageCurr.innerText = `Trang ${fbTasksCurrentPage} / ${totalPages}`;
+            const btnPrev = document.getElementById('btn-fb-page-prev');
+            const btnNext = document.getElementById('btn-fb-page-next');
+            if (btnPrev) btnPrev.disabled = (fbTasksCurrentPage === 1);
+            if (btnNext) btnNext.disabled = (fbTasksCurrentPage === totalPages);
+
+            pagedTasks.forEach(task => {
                 const color = task.color_class || 'blue';
                 const barColor = color === 'emerald' ? 'bg-emerald-500' : (color === 'blue' ? 'bg-blue-600' : (color === 'purple' ? 'bg-purple-600' : 'bg-amber-500'));
                 const textColor = color === 'emerald' ? 'text-emerald-600' : (color === 'blue' ? 'text-blue-600' : (color === 'purple' ? 'text-purple-600' : 'text-amber-600'));
@@ -13152,218 +13205,36 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     <tr class="hover:bg-slate-50 transition font-medium">
                         <td class="p-3 font-bold text-brand-navy text-xs">
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid ${task.icon_class || 'fa-square-check text-blue-600'} text-sm shrink-0"></i>
-                                <span class="font-bold text-slate-900">${task.task_name}</span>
+                                <i class="fa-solid ${task.icon_class || 'fa-square-check text-blue-600'}"></i>
+                                <span>${task.task_name}</span>
+                            </div>
+                            ${task.description ? `<p class="text-[11px] text-slate-500 font-normal leading-relaxed pl-6 mt-0.5">${task.description}</p>` : ''}
+                        </td>
+                        <td class="p-3 text-xs">
+                            <div class="flex items-center gap-1.5 font-bold text-slate-700">
+                                <i class="fa-solid ${iconRole}"></i>
+                                <span>${task.assignee || 'Trợ Lý AI'}</span>
                             </div>
                         </td>
-                        <td class="p-3.5 text-slate-800 font-bold"><i class="fa-solid ${iconRole}"></i> ${task.assignee}</td>
-                        <td class="p-3.5 text-slate-600"><span class="px-2 py-0.5 bg-slate-100 text-slate-700 rounded font-semibold">${task.frequency}</span></td>
-                        <td class="p-3.5 font-bold text-slate-800">${task.kpi_weekly}</td>
-                        <td class="p-3.5 font-extrabold ${textColor}">${task.completed}</td>
-                        <td class="p-3.5">
+                        <td class="p-3 text-slate-600 font-bold text-xs">${task.repeat_schedule || 'Hàng ngày'}</td>
+                        <td class="p-3 font-mono font-bold text-slate-900 text-xs">${task.kpi_weekly || '---'}</td>
+                        <td class="p-3 font-mono font-extrabold ${textColor} text-xs">${task.completed || '0'}</td>
+                        <td class="p-3">
                             <div class="space-y-1">
-                                <div class="flex items-center justify-between text-[11px] font-bold"><span class="${textColor}">${task.status_text}</span><span class="text-slate-400">${completedCount}/${kpiCount}</span></div>
-                                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden"><div class="${barColor} h-full rounded-full" style="width: ${task.progress_percent}%;"></div></div>
+                                <div class="flex justify-between text-[11px] font-bold">
+                                    <span class="text-slate-500">${completedCount}/${kpiCount}</span>
+                                    <span class="${textColor}">${task.percent || 0}%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                    <div class="${barColor} h-full rounded-full transition-all duration-500" style="width: ${task.percent || 0}%"></div>
+                                </div>
                             </div>
                         </td>
                     </tr>
                 `;
             });
             tbody.innerHTML = html;
-            const badge = document.getElementById('fb-tasks-count-badge');
-            if (badge) {
-                badge.textContent = `${filteredTasks.length} Tasks Active`;
-            }
         }
-
-        function renderMarketingActivityLogTable(items) {
-            return renderActivityLogTable(items);
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('collapsed');
-        }
-
-        function toggleAccordion(accId) {
-            const accContent = document.getElementById(accId);
-            const icon = document.getElementById('icon-' + accId);
-            if (accContent) {
-                accContent.classList.toggle('open');
-                if (icon) {
-                    if (accContent.classList.contains('open')) {
-                        icon.classList.add('rotate-180');
-                    } else {
-                        icon.classList.remove('rotate-180');
-                    }
-                }
-            }
-        }
-
-        function toggleKwDetail(detailRowId) {
-            document.querySelectorAll('.kw-detail-row').forEach(row => {
-                if (row.id !== detailRowId) row.classList.add('hidden');
-            });
-            const detailRow = document.getElementById(detailRowId);
-            if (detailRow) {
-                detailRow.classList.toggle('hidden');
-                if (!detailRow.classList.contains('hidden')) {
-                    const kwId = parseInt(detailRowId.replace('kw-detail-', ''));
-                    const mode = kwFilterState[kwId] || '7d';
-                    switchKwTimeFilter(kwId, mode);
-                }
-            }
-        }
-
-        function toggleOnpageDetail(detailRowId) {
-            document.querySelectorAll('.onpage-detail-row').forEach(row => {
-                if (row.id !== detailRowId) row.classList.add('hidden');
-            });
-            const detailRow = document.getElementById(detailRowId);
-            if (detailRow) detailRow.classList.toggle('hidden');
-        }
-
-        function runGbpAutoPostAction() {
-            showToast("🚀 Đang khởi chạy Tool Automation Đăng Bài GBP 'auto_post_gbp_song_anh.py'...");
-        }
-
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
-            const mainContent = document.getElementById('main-content') || document.querySelector('main');
-            if (mainContent) {
-                mainContent.scrollTop = 0;
-            }
-        }
-
-        function selectModule(moduleId, updateHash = true) {
-            if (!moduleId) moduleId = 'home';
-            moduleId = moduleId.replace(/^panel-/, '').trim();
-            
-            // Auto close sidebar drawer upon selecting module
-            closeSidebarMenu();
-            console.log("Switching to module:", moduleId);
-            
-            // 1. Save state in localStorage & URL hash so Reload (F5) stays on current page
-            try {
-                localStorage.setItem('songanh_active_module', moduleId);
-                if (updateHash && window.location.hash !== '#' + moduleId) {
-                    history.replaceState(null, null, '#' + moduleId);
-                }
-            } catch(e) {}
-
-            // 2. Hide all module panels explicitly via class AND inline style
-            const panels = document.querySelectorAll('.module-panel');
-            panels.forEach(p => {
-                p.classList.add('hidden');
-                p.style.display = 'none';
-            });
-
-            // 3. Reset all sidebar link active states
-            const sidebarLinks = document.querySelectorAll('.sidebar-link, .sub-link');
-            sidebarLinks.forEach(link => {
-                link.classList.remove('active', 'bg-purple-50', 'text-brand-navy', 'font-bold', 'bg-blue-100');
-                link.classList.add('text-slate-600');
-            });
-
-            // 4. Handle tool-facebook default redirection
-            if (moduleId === 'tool-facebook') {
-                moduleId = 'fb-auto-friend';
-            }
-
-            // 5. Sync sidebar active state
-            const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId);
-            if (targetLink) {
-                targetLink.classList.add('active', 'font-bold');
-                targetLink.classList.remove('text-slate-600');
-            }
-
-            // 6. Open parent accordion if it is a sub-link
-            if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
-                const acc = document.getElementById('acc-settings');
-                const icon = document.getElementById('icon-acc-settings');
-                if (acc && !acc.classList.contains('open')) {
-                    acc.classList.add('open');
-                    if (icon) icon.classList.add('rotate-180');
-                }
-            } else if (moduleId.startsWith('fb-')) {
-                const acc = document.getElementById('acc-tool-facebook');
-                const icon = document.getElementById('icon-acc-tool-facebook');
-                if (acc && !acc.classList.contains('open')) {
-                    acc.classList.add('open');
-                    if (icon) icon.classList.add('rotate-180');
-                }
-            } else if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
-                const acc = document.getElementById('acc-seo');
-                const icon = document.getElementById('icon-acc-seo');
-                if (acc && !acc.classList.contains('open')) {
-                    acc.classList.add('open');
-                    if (icon) icon.classList.add('rotate-180');
-                }
-            }
-
-            // 7. Show target panel
-            let activePanelId = 'panel-' + moduleId;
-            if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
-                activePanelId = 'panel-updating';
-                const titleText = document.getElementById('updating-title-text');
-                if (titleText) titleText.innerText = "Hạng Mục: " + (moduleId || '').toUpperCase();
-            }
-
-            const activePanel = document.getElementById(activePanelId);
-            if (activePanel) {
-                activePanel.classList.remove('hidden');
-                activePanel.style.display = 'block';
-            } else {
-                console.warn("Panel not found:", activePanelId);
-                // Fallback to home if not found
-                const homePanel = document.getElementById('panel-home');
-                if (homePanel) {
-                    homePanel.classList.remove('hidden');
-                    homePanel.style.display = 'block';
-                }
-            }
-
-            // Sub-render triggers
-            if (moduleId === 'writing-formulas') {
-                if (typeof renderWritingFormulas === 'function') renderWritingFormulas();
-            } else if (moduleId === 'tool-content-generator') {
-                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
-            } else if (moduleId === 'target-audience') {
-                if (typeof initTargetAudiencesData === 'function') initTargetAudiencesData();
-                if (typeof renderAudienceCards === 'function') renderAudienceCards();
-            } else if (moduleId === 'content-goals') {
-                if (typeof renderContentGoalsCards === 'function') renderContentGoalsCards();
-            } else if (moduleId === 'social-channels') {
-                if (typeof renderSocialChannels === 'function') renderSocialChannels();
-                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
-            } else if (moduleId === 'content-link') {
-                if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
-                if (typeof renderContentNewTable === 'function') renderContentNewTable();
-            } else if (moduleId === 'competitor') {
-                if (typeof renderCompetitorTable === 'function') renderCompetitorTable();
-            } else if (moduleId === 'keywords') {
-                if (typeof renderKeywordTable === 'function') renderKeywordTable();
-            }
-
-            if (typeof showToast === 'function') {
-                showToast("👉 Đã mở Hạng mục: " + moduleId.toUpperCase());
-            }
-
-            // ALWAYS reset scroll to very top (both window and main scroll container)
-            scrollToTop();
-            setTimeout(scrollToTop, 50);
-        }
-
-        function filterSiteDropdown(siteDomain) {
-            showToast("🌐 Đã lọc dữ liệu từ khóa cho Website: " + siteDomain);
-        }
-
-        // -------------------------------------------------------------
-        // 🏢 DOMAIN SCOPE FILTER CONTROLLER (MÔ HÌNH | GOLF | TMĐT)
-        // -------------------------------------------------------------
-        let currentDomain = 'mo-hinh';
 
         function switchDomain(domainKey) {
             if (domainKey === 'thuong-mai') domainKey = 'tmdt';
