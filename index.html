@@ -21,17 +21,25 @@
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
-                function toggleSidebarMenu() {
+                // =============================================================
+        // 🌟 UNIFIED SIDEBAR DRAWER & COLLAPSE CONTROLLER (DESKTOP & MOBILE)
+        // =============================================================
+        function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
 
             if (window.innerWidth >= 768) {
-                // Desktop: Toggle collapsed state
-                sidebar.classList.toggle('sidebar-collapsed');
+                // Desktop / Tablet (>= 768px): Toggle Collapsed State
+                const isCollapsed = sidebar.classList.contains('collapsed') || sidebar.classList.contains('sidebar-collapsed');
+                if (isCollapsed) {
+                    sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+                } else {
+                    sidebar.classList.add('collapsed', 'sidebar-collapsed');
+                }
             } else {
-                // Mobile: Toggle open drawer
-                const isOpen = sidebar.classList.contains('mobile-open');
+                // Mobile (< 768px): Toggle Off-canvas Drawer
+                const isOpen = sidebar.classList.contains('mobile-open') || sidebar.classList.contains('sidebar-open');
                 if (isOpen) {
                     sidebar.classList.remove('mobile-open', 'sidebar-open');
                     if (backdrop) backdrop.classList.remove('active');
@@ -46,18 +54,28 @@
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (sidebar) {
-                if (window.innerWidth >= 768) {
-                    sidebar.classList.add('sidebar-collapsed');
-                } else {
+                // On mobile, always close drawer on item selection
+                if (window.innerWidth < 768) {
                     sidebar.classList.remove('mobile-open', 'sidebar-open');
                 }
             }
             if (backdrop) backdrop.classList.remove('active');
         }
 
-        function closeMobileSidebar() {
-            closeSidebarMenu();
+        function openSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+            } else {
+                sidebar.classList.add('mobile-open', 'sidebar-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
         }
+
+        function toggleMobileSidebar() { toggleSidebarMenu(); }
+        function closeMobileSidebar() { closeSidebarMenu(); }
 
         function selectMobileBottomNav(moduleId) {
             selectModule(moduleId);
@@ -803,9 +821,21 @@
         .submenu-container { max-height: 0; overflow: hidden; transition: max-height 0.25s ease-in-out; }
         .submenu-container.open { max-height: 500px; }
 
-        /* Sidebar toggle transition */
-        #sidebar { transition: all 0.3s ease-in-out; }
-        #sidebar.collapsed { width: 0; padding: 0; margin: 0; overflow: hidden; opacity: 0; border: none; }
+        /* Sidebar toggle transition Desktop & Mobile */
+        #sidebar {
+            transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), min-width 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, padding 0.25s ease !important;
+        }
+        #sidebar.collapsed, #sidebar.sidebar-collapsed {
+            width: 0 !important;
+            min-width: 0 !important;
+            max-width: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            border: none !important;
+            pointer-events: none !important;
+        }
 
         /* Custom Tooltip Styling */
         .has-tooltip {
@@ -974,28 +1004,59 @@
     </style>
     <script>
         // Early global definition for Instant Menu Toggle
+        // =============================================================
+        // 🌟 UNIFIED SIDEBAR DRAWER & COLLAPSE CONTROLLER (DESKTOP & MOBILE)
+        // =============================================================
         function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
-            if (isOpen) {
-                closeSidebarMenu();
+
+            if (window.innerWidth >= 768) {
+                // Desktop / Tablet (>= 768px): Toggle Collapsed State
+                const isCollapsed = sidebar.classList.contains('collapsed') || sidebar.classList.contains('sidebar-collapsed');
+                if (isCollapsed) {
+                    sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+                } else {
+                    sidebar.classList.add('collapsed', 'sidebar-collapsed');
+                }
             } else {
-                sidebar.classList.add('sidebar-open');
-                sidebar.classList.add('mobile-open');
-                if (backdrop) backdrop.classList.add('active');
+                // Mobile (< 768px): Toggle Off-canvas Drawer
+                const isOpen = sidebar.classList.contains('mobile-open') || sidebar.classList.contains('sidebar-open');
+                if (isOpen) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.remove('active');
+                } else {
+                    sidebar.classList.add('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.add('active');
+                }
             }
         }
+
         function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (sidebar) {
-                sidebar.classList.remove('sidebar-open');
-                sidebar.classList.remove('mobile-open');
+                // On mobile, always close drawer on item selection
+                if (window.innerWidth < 768) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                }
             }
             if (backdrop) backdrop.classList.remove('active');
         }
+
+        function openSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+            } else {
+                sidebar.classList.add('mobile-open', 'sidebar-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
         function toggleMobileSidebar() { toggleSidebarMenu(); }
         function closeMobileSidebar() { closeSidebarMenu(); }
     </script>
@@ -5053,28 +5114,59 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
+        // =============================================================
+        // 🌟 UNIFIED SIDEBAR DRAWER & COLLAPSE CONTROLLER (DESKTOP & MOBILE)
+        // =============================================================
         function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
-            if (isOpen) {
-                closeSidebarMenu();
+
+            if (window.innerWidth >= 768) {
+                // Desktop / Tablet (>= 768px): Toggle Collapsed State
+                const isCollapsed = sidebar.classList.contains('collapsed') || sidebar.classList.contains('sidebar-collapsed');
+                if (isCollapsed) {
+                    sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+                } else {
+                    sidebar.classList.add('collapsed', 'sidebar-collapsed');
+                }
             } else {
-                sidebar.classList.add('sidebar-open');
-                sidebar.classList.add('mobile-open');
-                if (backdrop) backdrop.classList.add('active');
+                // Mobile (< 768px): Toggle Off-canvas Drawer
+                const isOpen = sidebar.classList.contains('mobile-open') || sidebar.classList.contains('sidebar-open');
+                if (isOpen) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.remove('active');
+                } else {
+                    sidebar.classList.add('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.add('active');
+                }
             }
         }
+
         function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (sidebar) {
-                sidebar.classList.remove('sidebar-open');
-                sidebar.classList.remove('mobile-open');
+                // On mobile, always close drawer on item selection
+                if (window.innerWidth < 768) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                }
             }
             if (backdrop) backdrop.classList.remove('active');
         }
+
+        function openSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+            } else {
+                sidebar.classList.add('mobile-open', 'sidebar-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
         function toggleMobileSidebar() { toggleSidebarMenu(); }
         function closeMobileSidebar() { closeSidebarMenu(); }
 
@@ -14896,28 +14988,59 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         // ==========================================
         // 🌐 GLOBAL CORE CONTROLLER & MOBILE HELPERS
         // ==========================================
+        // =============================================================
+        // 🌟 UNIFIED SIDEBAR DRAWER & COLLAPSE CONTROLLER (DESKTOP & MOBILE)
+        // =============================================================
         function toggleSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (!sidebar) return;
-            const isOpen = sidebar.classList.contains('sidebar-open') || sidebar.classList.contains('mobile-open');
-            if (isOpen) {
-                closeSidebarMenu();
+
+            if (window.innerWidth >= 768) {
+                // Desktop / Tablet (>= 768px): Toggle Collapsed State
+                const isCollapsed = sidebar.classList.contains('collapsed') || sidebar.classList.contains('sidebar-collapsed');
+                if (isCollapsed) {
+                    sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+                } else {
+                    sidebar.classList.add('collapsed', 'sidebar-collapsed');
+                }
             } else {
-                sidebar.classList.add('sidebar-open');
-                sidebar.classList.add('mobile-open');
-                if (backdrop) backdrop.classList.add('active');
+                // Mobile (< 768px): Toggle Off-canvas Drawer
+                const isOpen = sidebar.classList.contains('mobile-open') || sidebar.classList.contains('sidebar-open');
+                if (isOpen) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.remove('active');
+                } else {
+                    sidebar.classList.add('mobile-open', 'sidebar-open');
+                    if (backdrop) backdrop.classList.add('active');
+                }
             }
         }
+
         function closeSidebarMenu() {
             const sidebar = document.getElementById('sidebar');
             const backdrop = document.getElementById('mobile-drawer-backdrop');
             if (sidebar) {
-                sidebar.classList.remove('sidebar-open');
-                sidebar.classList.remove('mobile-open');
+                // On mobile, always close drawer on item selection
+                if (window.innerWidth < 768) {
+                    sidebar.classList.remove('mobile-open', 'sidebar-open');
+                }
             }
             if (backdrop) backdrop.classList.remove('active');
         }
+
+        function openSidebarMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('mobile-drawer-backdrop');
+            if (!sidebar) return;
+            if (window.innerWidth >= 768) {
+                sidebar.classList.remove('collapsed', 'sidebar-collapsed');
+            } else {
+                sidebar.classList.add('mobile-open', 'sidebar-open');
+                if (backdrop) backdrop.classList.add('active');
+            }
+        }
+
         function toggleMobileSidebar() { toggleSidebarMenu(); }
         function closeMobileSidebar() { closeSidebarMenu(); }
 
