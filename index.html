@@ -11498,28 +11498,42 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 }
             }
 
+            // 2. Sort Keywords: Followed Keywords FIRST, then remaining by Priority & Rank
+            const pinnedKeywords = [
+                'mô hình quy hoạch',
+                'mô hình kiến trúc',
+                'mô hình nhà máy',
+                'sa bàn kiến trúc',
+                'sa bàn quy hoạch',
+                'sa bàn nhà máy',
+                'công ty mô hình kiến trúc',
+                'làm sa bàn'
+            ];
+
+            const sortedList = [...keywordList].sort((a, b) => {
+                const nameA = (a.name || '').trim().toLowerCase();
+                const nameB = (b.name || '').trim().toLowerCase();
+                
+                const idxA = pinnedKeywords.indexOf(nameA);
+                const idxB = pinnedKeywords.indexOf(nameB);
+                
+                if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+                if (idxA !== -1) return -1;
+                if (idxB !== -1) return 1;
+                
+                const prioMap = { 'P1 (Cao Nhất)': 1, 'P2 (Trung Bình)': 2, 'P3 (Thấp)': 3 };
+                const pA = prioMap[a.priority] || 9;
+                const pB = prioMap[b.priority] || 9;
+                if (pA !== pB) return pA - pB;
+                
+                return (parseFloat(a.gscPos) || 99) - (parseFloat(b.gscPos) || 99);
+            });
+
             let html = '';
-            keywordList.forEach((kw) => {
+            sortedList.forEach((kw) => {
                 const impVal = (kw.impressions !== undefined && kw.impressions !== null) ? Number(kw.impressions) : 0;
                 const clickVal = (kw.clicks !== undefined && kw.clicks !== null) ? Number(kw.clicks) : 0;
-                const impressions = `${impVal.toLocaleString()} Imp`;
-                const clicks = `${clickVal.toLocaleString()} Clicks`;
                 
-                let ctrStr = kw.ctr;
-                if (!ctrStr || ctrStr === '---') {
-                    const calculated = impVal > 0 ? ((clickVal / impVal) * 100).toFixed(2) : '0.00';
-                    ctrStr = `${calculated}% CTR`;
-                } else {
-                    ctrStr = ctrStr.toString().trim();
-                    if (!ctrStr.includes('CTR')) {
-                        if (!ctrStr.includes('%')) {
-                            ctrStr = `${parseFloat(ctrStr).toFixed(2)}% CTR`;
-                        } else {
-                            ctrStr = `${ctrStr} CTR`;
-                        }
-                    }
-                }
-
                 const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
                 const gscPosNumStr = gscPosNum.toFixed(1);
                 
@@ -11543,16 +11557,20 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     fullUrl = rawUrl.startsWith('/') ? `https://mohinhkientruc.org${rawUrl}` : `https://${rawUrl}`;
                 }
 
+                const isPinned = pinnedKeywords.includes((kw.name || '').trim().toLowerCase());
+                const pinBadge = isPinned ? `<span class="inline-flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300" title="Từ khóa trọng tâm đang Follow"><i class="fa-solid fa-star text-amber-500 text-[9px]"></i> Follow</span>` : '';
+
                 html += `
-                    <tr onclick="toggleKwDetail('kw-detail-${kw.id}')" class="hover:bg-slate-100 font-medium cursor-pointer transition">
+                    <tr onclick="toggleKwDetail('kw-detail-${kw.id}')" class="hover:bg-slate-100 font-medium cursor-pointer transition ${isPinned ? 'bg-amber-50/20' : ''}">
                         <td class="p-3 font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-chevron-down text-amber-500 text-[10px]"></i>
+                            <i class="fa-solid fa-chevron-down text-slate-400 hover:text-amber-500 text-[10px]"></i>
                             <span>${kw.name}</span>
+                            ${pinBadge}
                         </td>
                         <td class="p-3 text-slate-700 font-extrabold font-mono bg-slate-50/50">${initRankNumStr}</td>
                         <td class="p-3 font-extrabold text-emerald-600 font-mono">${gscPosNumStr}</td>
                         <td class="p-3 ${changeObj.color}">${changeObj.text}</td>
-                        <td class="p-3 font-bold"><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-sm">${searchFeature}</span></td>
+                        <td class="p-3 font-bold"><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-xs">${searchFeature}</span></td>
                         <td class="p-3 font-mono text-[11px] text-slate-600 break-all leading-relaxed" onclick="event.stopPropagation()">
                             <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-blue-600 hover:text-blue-800 hover:underline font-bold flex items-center gap-1">
                                 <span>${kw.url}</span>
@@ -11560,7 +11578,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             </a>
                         </td>
                     </tr>
-                    <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 ${kw.id === 1 ? '' : 'hidden'}">
+                    <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 hidden">
                         <td colspan="6" class="p-4 border-t border-b border-slate-200 space-y-3">
                             
                             <!-- 1. Metadata Attribute Grid (Đưa lên trên đầu) -->
@@ -11599,7 +11617,6 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             });
             tbody.innerHTML = html;
             updateSeoKpiCards();
-            setTimeout(() => { if (typeof switchKwTimeFilter === 'function') switchKwTimeFilter(1, timeFrame); }, 50);
         }
 
         function switchKwTimeFilter(kwId, timeFrame) {
