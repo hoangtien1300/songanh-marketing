@@ -1307,7 +1307,7 @@
         </aside>
 
         <!-- Main Workspace Area -->
-        <main class="flex-1 overflow-y-auto p-6 space-y-5">
+        <main id="main-content" class="flex-1 overflow-y-auto p-6 space-y-5">
 
             <!-- 🌟 MODULE 1: THEO DÕI TỪ KHÓA (FULL 100% COMPLETE HTML CODE & 14 KEYWORDS & LINE CHART) -->
                         <!-- 0. MASTER HOME DASHBOARD PANEL (#panel-home) -->
@@ -12972,38 +12972,59 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             showToast("🚀 Đang khởi chạy Tool Automation Đăng Bài GBP 'auto_post_gbp_song_anh.py'...");
         }
 
-        function selectModule(moduleId) {
-            // Auto close sidebar drawer upon selecting module for clean executive view
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            const mainContent = document.getElementById('main-content') || document.querySelector('main');
+            if (mainContent) {
+                mainContent.scrollTop = 0;
+            }
+        }
+
+        function selectModule(moduleId, updateHash = true) {
+            if (!moduleId) moduleId = 'home';
+            moduleId = moduleId.replace(/^panel-/, '').trim();
+            
+            // Auto close sidebar drawer upon selecting module
             closeSidebarMenu();
             console.log("Switching to module:", moduleId);
             
-            // 1. Hide all module panels explicitly via class AND inline style
+            // 1. Save state in localStorage & URL hash so Reload (F5) stays on current page
+            try {
+                localStorage.setItem('songanh_active_module', moduleId);
+                if (updateHash && window.location.hash !== '#' + moduleId) {
+                    history.replaceState(null, null, '#' + moduleId);
+                }
+            } catch(e) {}
+
+            // 2. Hide all module panels explicitly via class AND inline style
             const panels = document.querySelectorAll('.module-panel');
             panels.forEach(p => {
                 p.classList.add('hidden');
                 p.style.display = 'none';
             });
 
-            // 2. Reset all sidebar link active states
+            // 3. Reset all sidebar link active states
             const sidebarLinks = document.querySelectorAll('.sidebar-link, .sub-link');
             sidebarLinks.forEach(link => {
                 link.classList.remove('active', 'bg-purple-50', 'text-brand-navy', 'font-bold', 'bg-blue-100');
                 link.classList.add('text-slate-600');
             });
 
-            // 3. Handle tool-facebook default redirection
+            // 4. Handle tool-facebook default redirection
             if (moduleId === 'tool-facebook') {
                 moduleId = 'fb-auto-friend';
             }
 
-            // 4. Sync sidebar active state
+            // 5. Sync sidebar active state
             const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId);
             if (targetLink) {
                 targetLink.classList.add('active', 'font-bold');
                 targetLink.classList.remove('text-slate-600');
             }
 
-            // 5. Open parent accordion if it is a sub-link
+            // 6. Open parent accordion if it is a sub-link
             if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
                 const acc = document.getElementById('acc-settings');
                 const icon = document.getElementById('icon-acc-settings');
@@ -13027,7 +13048,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 }
             }
 
-            // 6. Show target panel
+            // 7. Show target panel
             let activePanelId = 'panel-' + moduleId;
             if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
                 activePanelId = 'panel-updating';
@@ -13041,6 +13062,12 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 activePanel.style.display = 'block';
             } else {
                 console.warn("Panel not found:", activePanelId);
+                // Fallback to home if not found
+                const homePanel = document.getElementById('panel-home');
+                if (homePanel) {
+                    homePanel.classList.remove('hidden');
+                    homePanel.style.display = 'block';
+                }
             }
 
             // Sub-render triggers
@@ -13061,13 +13088,17 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 if (typeof renderContentNewTable === 'function') renderContentNewTable();
             } else if (moduleId === 'competitor') {
                 if (typeof renderCompetitorTable === 'function') renderCompetitorTable();
+            } else if (moduleId === 'keywords') {
+                if (typeof renderKeywordTable === 'function') renderKeywordTable();
             }
 
             if (typeof showToast === 'function') {
                 showToast("👉 Đã mở Hạng mục: " + moduleId.toUpperCase());
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // ALWAYS reset scroll to very top (both window and main scroll container)
+            scrollToTop();
+            setTimeout(scrollToTop, 50);
         }
 
         function filterSiteDropdown(siteDomain) {
@@ -14495,8 +14526,31 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             safeCall(renderMarketingActivityLogTable, 'renderMarketingActivityLogTable');
             safeCall(updateFbStatsDisplay, 'updateFbStatsDisplay');
             safeCall(updateGbpStatsDisplay, 'updateGbpStatsDisplay');
-            try { setTimeout(() => { if (typeof switchKwTimeFilter === 'function') switchKwTimeFilter(1, '7d'); }, 100); } catch(e) {}
             safeCall(fetchData, 'fetchData');
+
+            // 🚀 PERSISTENT RELOAD (F5) ROUTING & SCROLL TO TOP:
+            let targetMod = 'home';
+            const hashMod = window.location.hash.replace(/^#/, '').replace(/^panel-/, '').trim();
+            const savedMod = localStorage.getItem('songanh_active_module');
+            
+            if (hashMod && document.getElementById('panel-' + hashMod)) {
+                targetMod = hashMod;
+            } else if (savedMod && document.getElementById('panel-' + savedMod)) {
+                targetMod = savedMod;
+            }
+            
+            selectModule(targetMod, false);
+            scrollToTop();
+            setTimeout(scrollToTop, 100);
+            setTimeout(scrollToTop, 300);
+        });
+
+        // Listen for browser back/forward buttons
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.replace(/^#/, '').replace(/^panel-/, '').trim();
+            if (hash && document.getElementById('panel-' + hash)) {
+                selectModule(hash, false);
+            }
         });
 
         
