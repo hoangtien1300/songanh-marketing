@@ -2236,7 +2236,7 @@
                     <div id="cal-view-week" class="w-full overflow-x-auto border border-slate-200 rounded-xl bg-slate-50/50">
                         <div class="min-w-[960px]">
                             <!-- Days Header Row -->
-                            <div id="cal-week-grid-header" class="grid grid-cols-8 border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
+                            <div id="cal-week-grid-header" class="grid grid-cols-8 border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center sticky top-0 z-20 shadow-2xs">
                                 <!-- Col 0: Time Axis Header -->
                                 <div class="p-2.5 border-r border-slate-200 bg-slate-200/70 text-slate-600 flex items-center justify-center gap-1 font-extrabold text-[11px]">
                                     <i class="fa-solid fa-clock text-slate-500"></i> Khung Giờ
@@ -2252,7 +2252,7 @@
                             </div>
 
                             <!-- Time Axis Rows Body -->
-                            <div id="cal-week-grid-body" class="divide-y divide-slate-200 bg-white">
+                            <div id="cal-week-grid-body" class="divide-y divide-slate-200 bg-white max-h-[540px] overflow-y-auto">
                                 <!-- Rendered dynamically by renderFbWeekCalendar() -->
                             </div>
                         </div>
@@ -15103,13 +15103,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             4: { label: "Tuần 4: 21/09 - 30/09", days: ["21/09", "22/09", "23/09", "24/09", "25/09", "26/09", "27/09"] }
         };
 
-        const timeSlotRows = [
-            { id: "morning", label: "08:00 - 09:30", sub: "🌅 Ca Sáng", times: ["08:30", "09:00", "09:30"] },
-            { id: "noon", label: "11:00 - 12:30", sub: "☀️ Ca Trưa", times: ["11:30", "12:00"] },
-            { id: "afternoon", label: "14:00 - 15:30", sub: "🌤️ Ca Chiều", times: ["14:00", "14:30", "15:00", "15:30"] },
-            { id: "late_afternoon", label: "16:00 - 17:30", sub: "🌇 Cuối Chiều", times: ["16:00", "17:00"] },
-            { id: "evening", label: "20:00 - 21:30", sub: "🌙 Ca Tối", times: ["20:00", "20:30"] }
-        ];
+        const fbCalendar30MinSlots = ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"];
 
         function switchFbCalendarMode(mode) {
             currentFbCalMode = mode;
@@ -15164,10 +15158,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         }
 
         function getChannelBadge(channel) {
-            if (channel === 'fanpage') return { name: '🚩 Fanpage', bg: 'bg-blue-50 text-blue-800 border-blue-200' };
-            if (channel === 'profile') return { name: '👤 Profile', bg: 'bg-purple-50 text-purple-800 border-purple-200' };
-            if (channel === 'global') return { name: '🌐 Global', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200' };
-            return { name: '👥 Groups', bg: 'bg-amber-50 text-amber-800 border-amber-200' };
+            if (channel === 'fanpage') return { name: '🚩 Fanpage', dot: 'bg-blue-500', bg: 'bg-blue-50 text-blue-800 border-blue-200' };
+            if (channel === 'profile') return { name: '👤 Profile', dot: 'bg-purple-500', bg: 'bg-purple-50 text-purple-800 border-purple-200' };
+            if (channel === 'global') return { name: '🌐 Global', dot: 'bg-emerald-500', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200' };
+            return { name: '👥 Groups', dot: 'bg-amber-500', bg: 'bg-amber-50 text-amber-800 border-amber-200' };
         }
 
         function getStatusBadge(status) {
@@ -15205,39 +15199,50 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             });
 
             let rowsHtml = '';
-            timeSlotRows.forEach(slot => {
+            fbCalendar30MinSlots.forEach(timeStr => {
                 rowsHtml += `
-                    <div class="grid grid-cols-8 min-h-[95px] items-stretch">
-                        <!-- Left Time Axis Cell -->
-                        <div class="p-2 border-r border-slate-200 bg-slate-50 flex flex-col justify-center items-center text-center">
-                            <span class="text-[11px] font-extrabold text-brand-navy font-mono">${slot.label}</span>
-                            <span class="text-[10px] text-slate-500 font-medium">${slot.sub}</span>
+                    <div class="grid grid-cols-8 min-h-[44px] items-stretch border-b border-slate-100 hover:bg-slate-50/40 transition">
+                        <!-- Left Time Axis Cell (Only shows clean 06:00, 06:30...) -->
+                        <div class="p-1.5 border-r border-slate-200 bg-slate-50/80 flex items-center justify-center text-center select-none sticky left-0 z-10">
+                            <span class="text-[11px] font-extrabold text-slate-700 font-mono tracking-tight">${timeStr}</span>
                         </div>
                 `;
 
                 // 7 Day Cells
                 for (let d = 1; d <= 7; d++) {
                     const borderClass = d < 7 ? 'border-r border-slate-200' : '';
-                    // Find posts in this day & slotGroup
-                    const postsInCell = weekPosts.filter(p => p.dayIndex === d && p.slotGroup === slot.id);
+                    // Match posts falling exactly on this 30-minute time slot
+                    const postsInCell = weekPosts.filter(p => p.dayIndex === d && p.timeSlot === timeStr);
 
-                    rowsHtml += `<div class="p-1.5 ${borderClass} bg-white hover:bg-slate-50/70 transition space-y-1.5">`;
-                    if (postsInCell.length === 0) {
-                        rowsHtml += `<div class="h-full flex items-center justify-center text-[10px] text-slate-300 font-mono select-none">---</div>`;
-                    } else {
+                    rowsHtml += `<div class="p-1 ${borderClass} flex flex-col justify-center gap-1 min-h-[44px]">`;
+                    if (postsInCell.length > 0) {
                         postsInCell.forEach(post => {
                             const chBadge = getChannelBadge(post.channel);
                             const stBadge = getStatusBadge(post.status);
+                            
                             rowsHtml += `
-                                <div onclick="openFbPostModal(${post.id})" class="p-2 rounded-xl border border-slate-200 bg-white hover:border-blue-400 hover:shadow-md cursor-pointer transition space-y-1 group">
-                                    <div class="flex items-center justify-between gap-1">
-                                        <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded ${chBadge.bg}">${chBadge.name}</span>
-                                        <span class="text-[9px] font-bold font-mono text-slate-500">⏰ ${post.timeSlot}</span>
+                                <div onclick="openFbPostModal(${post.id})" class="relative group/cal-card px-2 py-1.5 rounded-lg border border-slate-200 bg-white hover:border-blue-500 hover:shadow-md cursor-pointer transition">
+                                    <!-- Chỉ hiển thị Tiêu Đề Bài Viết -->
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-2 h-2 rounded-full ${chBadge.dot} shrink-0"></span>
+                                        <p class="text-[11px] font-bold text-slate-800 leading-snug line-clamp-1 group-hover/cal-card:text-blue-600 transition truncate">${post.title}</p>
                                     </div>
-                                    <p class="text-[10.5px] font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-blue-600 transition">${post.title}</p>
-                                    <div class="flex items-center justify-between text-[9px] pt-1 border-t border-slate-100">
-                                        <span class="text-slate-500 truncate max-w-[80px]">${post.type}</span>
-                                        <span class="font-bold ${stBadge.bg} px-1 rounded text-[8.5px]">${stBadge.icon} ${post.status}</span>
+
+                                    <!-- Hover Tooltip Hiển Thị Toàn Bộ Chi Tiết Bài Viết -->
+                                    <div class="invisible opacity-0 group-hover/cal-card:visible group-hover/cal-card:opacity-100 transition-all duration-200 absolute z-50 left-1/2 -translate-x-1/2 bottom-full mb-2 w-72 p-3 bg-slate-900/95 text-white rounded-xl shadow-2xl pointer-events-none backdrop-blur-xs text-xs space-y-1.5 border border-slate-700">
+                                        <div class="flex items-center justify-between gap-1 border-b border-slate-700/80 pb-1.5">
+                                            <span class="font-extrabold text-[10px] px-1.5 py-0.5 rounded ${chBadge.bg}">${chBadge.name}</span>
+                                            <span class="font-mono text-[10px] text-amber-300 font-bold">⏰ ${post.timeSlot}</span>
+                                        </div>
+                                        <p class="font-extrabold text-white text-[11px] leading-snug">${post.title}</p>
+                                        <p class="text-[10px] text-slate-300 leading-relaxed">${post.summary}</p>
+                                        <div class="flex items-center justify-between text-[9.5px] pt-1.5 border-t border-slate-800 text-slate-400">
+                                            <span class="truncate max-w-[140px]">🖼️ ${post.media}</span>
+                                            <span class="font-bold text-emerald-400">${stBadge.icon} ${post.status}</span>
+                                        </div>
+                                        <div class="text-[9px] text-sky-400 truncate pt-0.5 font-mono">
+                                            🔗 ${post.link}
+                                        </div>
                                     </div>
                                 </div>
                             `;
