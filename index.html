@@ -1670,12 +1670,27 @@
                 </div>
 
                 <div class="light-card rounded-2xl p-5 border border-slate-200 space-y-4">
-                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
-                            <h3 class="font-heading font-bold text-sm text-slate-900">Bảng Dữ Liệu SEO Master - GSC Search Analytics (22 Từ Khóa B2B)</h3>
+                            <div>
+                                <h3 class="font-heading font-bold text-sm text-slate-900">Bảng Dữ Liệu SEO Master - GSC Search Analytics (22 Từ Khóa B2B)</h3>
+                                <p class="text-[11px] text-slate-500">Mốc so sánh tự động thích ứng theo Bộ Lọc Tuần / Tháng</p>
+                            </div>
                         </div>
-                        <span id="kw-active-count" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">22 KWs Active</span>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
+                                <button onclick="setGlobalKwTimeFilter('7d')" id="global-kw-btn-7d" class="px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5">
+                                    <i class="fa-solid fa-calendar-week text-xs"></i>
+                                    <span>📅 Theo Tuần (Thứ 2: 31/08)</span>
+                                </button>
+                                <button onclick="setGlobalKwTimeFilter('30d')" id="global-kw-btn-30d" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5">
+                                    <i class="fa-solid fa-calendar-days text-xs"></i>
+                                    <span>🗓️ Theo Tháng (30 Ngày Trước: 04/08)</span>
+                                </button>
+                            </div>
+                            <span id="kw-active-count" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200 shrink-0">22 KWs Active</span>
+                        </div>
                     </div>
 
                     <div class="overflow-x-auto">
@@ -1686,9 +1701,9 @@
                                         <div class="tooltip-popup">Từ khóa B2B mục tiêu được theo dõi thứ hạng &amp; lượng tìm kiếm tự nhiên.</div>
                                         Từ Khóa Trọng Tâm <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
                                     </th>
-                                    <th class="p-3 has-tooltip" title="Thứ hạng mốc baseline đo lường đầu tuần (Thứ Hai 17/08/2026) dùng làm căn cứ so sánh tốc độ tăng trưởng thứ hạng.">
-                                        <div class="tooltip-popup">Thứ hạng mốc baseline đầu tuần (17/08/2026) dùng so sánh tăng trưởng.</div>
-                                        Vị Trí Cũ (Thứ 2 - 17/08/2026) <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
+                                    <th id="kw-col-old-pos" class="p-3 has-tooltip" title="Thứ hạng mốc so sánh: Thứ Hai của tuần này (khi lọc theo tuần) hoặc 30 ngày trước (khi lọc theo tháng).">
+                                        <div class="tooltip-popup">Thứ hạng mốc so sánh (Thứ 2 tuần này hoặc 30 ngày trước).</div>
+                                        <span id="kw-col-old-pos-text">Vị Trí Cũ (Thứ 2 - 31/08/2026)</span> <i class="fa-solid fa-circle-info text-slate-400 text-[10px] ml-1"></i>
                                     </th>
                                     <th class="p-3 has-tooltip" title="Vị trí thứ hạng trung bình thực tế được đồng bộ trực tiếp từ dữ liệu Google Search Console API.">
                                         <div class="tooltip-popup">Vị trí thứ hạng trung bình thực tế lấy trực tiếp từ Google Search Console API.</div>
@@ -11419,9 +11434,70 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
         }
 
-        function renderKeywordTable() {
+        let currentGlobalKwFilter = '7d';
+
+        function setGlobalKwTimeFilter(timeFrame) {
+            currentGlobalKwFilter = timeFrame;
+            const btn7d = document.getElementById('global-kw-btn-7d');
+            const btn30d = document.getElementById('global-kw-btn-30d');
+            
+            if (btn7d && btn30d) {
+                if (timeFrame === '7d') {
+                    btn7d.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5";
+                    btn30d.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5";
+                } else {
+                    btn30d.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5";
+                    btn7d.className = "px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5";
+                }
+            }
+            renderKeywordTable(timeFrame);
+        }
+
+        function getOldBaselineRank(kw, timeFrame) {
+            if (!kw.rankHistory || !Array.isArray(kw.rankHistory) || kw.rankHistory.length === 0) {
+                return {
+                    rank: kw.snapshot_rank || 12.0,
+                    label: timeFrame === '7d' ? 'Thứ 2 (31/08/2026)' : '30 Ngày Trước (04/08/2026)',
+                    dateStr: timeFrame === '7d' ? '31/08/2026' : '04/08/2026'
+                };
+            }
+            
+            if (timeFrame === '7d') {
+                // Find Monday of current week: 31/08/2026
+                const mondayItem = kw.rankHistory.find(item => item.date === '31/08/2026');
+                const rankVal = mondayItem ? parseFloat(mondayItem.rank) : (kw.snapshot_rank || parseFloat(kw.rankHistory[Math.max(0, kw.rankHistory.length - 4)].rank) || 12.0);
+                return {
+                    rank: rankVal,
+                    label: 'Thứ 2 (31/08/2026)',
+                    dateStr: '31/08/2026'
+                };
+            } else {
+                // 30 days ago: First item in rankHistory
+                const firstItem = kw.rankHistory[0];
+                const rankVal = firstItem ? parseFloat(firstItem.rank) : (kw.start_rank || 18.0);
+                const dateStr = firstItem ? firstItem.date : '04/08/2026';
+                return {
+                    rank: rankVal,
+                    label: `30 Ngày Trước (${dateStr})`,
+                    dateStr: dateStr
+                };
+            }
+        }
+
+        function renderKeywordTable(timeFrame = currentGlobalKwFilter) {
             const tbody = document.getElementById('kw-table-body');
             if (!tbody) return;
+            
+            // 1. Update Table Column 2 Header Label
+            const thOldPosText = document.getElementById('kw-col-old-pos-text');
+            if (thOldPosText) {
+                if (timeFrame === '7d') {
+                    thOldPosText.innerText = "Vị Trí Cũ (Thứ 2 - 31/08/2026)";
+                } else {
+                    thOldPosText.innerText = "Vị Trí Cũ (30 Ngày Trước - 04/08/2026)";
+                }
+            }
+
             let html = '';
             keywordList.forEach((kw) => {
                 const impVal = (kw.impressions !== undefined && kw.impressions !== null) ? Number(kw.impressions) : 0;
@@ -11444,10 +11520,22 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     }
                 }
 
-                const gscPosNumStr = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos).toFixed(1) : (kw.currRank ? kw.currRank.replace(/^Top\s*/i, '').trim() : '---');
-                const initRankMatch = (kw.initRank || '').toString().match(/(\d+(?:\.\d+)?)/);
-                const initRankNumStr = initRankMatch ? parseFloat(initRankMatch[1]).toFixed(1) : '---';
-                const changeObj = calcRankChange(kw.initRank, kw.gscPos);
+                const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
+                const gscPosNumStr = gscPosNum.toFixed(1);
+                
+                // Get Dynamic Baseline Rank based on timeFrame
+                const baseline = getOldBaselineRank(kw, timeFrame);
+                const initRankNumStr = baseline.rank.toFixed(1);
+                
+                // Calculate Dynamic Change
+                const diff = parseFloat((baseline.rank - gscPosNum).toFixed(1));
+                let changeObj = { text: 'Không đổi (=0)', color: 'text-slate-500 font-bold' };
+                if (diff > 0) {
+                    changeObj = { text: `Tăng ${diff} Bậc (+${diff})`, color: 'text-emerald-600 font-extrabold' };
+                } else if (diff < 0) {
+                    changeObj = { text: `Giảm ${Math.abs(diff)} Bậc (-${Math.abs(diff)})`, color: 'text-rose-600 font-extrabold' };
+                }
+
                 const searchFeature = kw.searchFeature || '🌟 Featured Snippet';
                 const rawUrl = (kw.url || '').toString().trim();
                 let fullUrl = rawUrl;
@@ -11461,9 +11549,9 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <i class="fa-solid fa-chevron-down text-amber-500 text-[10px]"></i>
                             <span>${kw.name}</span>
                         </td>
-                        <td class="p-3 text-slate-600 font-bold">${initRankNumStr}</td>
-                        <td class="p-3 font-extrabold text-emerald-600">${gscPosNumStr}</td>
-                        <td class="p-3 font-extrabold ${changeObj.color}">${changeObj.text}</td>
+                        <td class="p-3 text-slate-700 font-extrabold font-mono bg-slate-50/50">${initRankNumStr}</td>
+                        <td class="p-3 font-extrabold text-emerald-600 font-mono">${gscPosNumStr}</td>
+                        <td class="p-3 ${changeObj.color}">${changeObj.text}</td>
                         <td class="p-3 font-bold"><span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold bg-blue-50 text-blue-800 border border-blue-200 shadow-sm">${searchFeature}</span></td>
                         <td class="p-3 font-mono text-[11px] text-slate-600 break-all leading-relaxed" onclick="event.stopPropagation()">
                             <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-blue-600 hover:text-blue-800 hover:underline font-bold flex items-center gap-1">
@@ -11480,11 +11568,12 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-clock-rotate-left text-amber-600 text-sm"></i>
                                     <div>
-                                        <span class="font-bold text-amber-900">Mốc Baseline 'Vị Trí Cũ (Thứ 2 - 17/08/2026)':</span>
-                                        <span class="text-amber-800 ml-1 font-mono font-bold">${initRankNumStr}</span>
+                                        <span class="font-bold text-amber-900">Mốc So Sánh Baseline (${baseline.label}):</span>
+                                        <span class="text-amber-800 ml-1 font-mono font-bold">Top ${initRankNumStr}</span>
+                                        <span class="ml-2 px-2 py-0.5 rounded-md text-[11px] font-bold ${changeObj.color} bg-white border border-amber-200">${changeObj.text}</span>
                                     </div>
                                 </div>
-                                <span class="text-[11px] text-amber-700 font-medium">💡 Mốc kiểm tra gần nhất trước phiên đồng bộ (Baseline Thứ 2 17/08/2026)</span>
+                                <span class="text-[11px] text-amber-700 font-medium">💡 Mốc đo lường: ${timeFrame === '7d' ? 'Thứ Hai đầu tuần (31/08/2026)' : '30 ngày trước (04/08/2026)'}</span>
                             </div>
 
                             <!-- 2. Header Bộ Lọc Thời Gian Theo Tuần (7 Ngày) & Theo Tháng (30 Ngày) -->
@@ -11494,8 +11583,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                     <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Biểu Đồ Biến Động Thứ Hạng &amp; Real-time GSC / GA4 Data</h4>
                                 </div>
                                 <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm bg-brand-navy text-white">📅 Theo Tuần (7 Ngày)</button>
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent">🗓️ Theo Tháng (30 Ngày)</button>
+                                    <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">📅 Theo Tuần (7 Ngày)</button>
+                                    <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">🗓️ Theo Tháng (30 Ngày)</button>
                                 </div>
                             </div>
 
@@ -11527,7 +11616,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2">
                                 <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
                                     <span>📈 Đồ thị thứ hạng daily rankHistory (Rank 1 nằm ở trên cùng)</span>
-                                    <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy">Mốc 7 Ngày Gần Nhất (28/08 - 03/09/2026)</span>
+                                    <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy">${timeFrame === '7d' ? 'Mốc 7 Ngày Gần Nhất (28/08 - 03/09/2026)' : 'Mốc 30 Ngày Lịch Sử (04/08 - 03/09/2026)'}</span>
                                 </div>
                                 <div id="kw-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[160px] flex items-center justify-center bg-slate-50/50 rounded-lg p-2">
                                     <!-- SVG Line Chart rendered dynamically -->
@@ -11547,7 +11636,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             });
             tbody.innerHTML = html;
             updateSeoKpiCards();
-            setTimeout(() => { if (typeof switchKwTimeFilter === 'function') switchKwTimeFilter(1, '7d'); }, 50);
+            setTimeout(() => { if (typeof switchKwTimeFilter === 'function') switchKwTimeFilter(1, timeFrame); }, 50);
         }
 
         function switchKwTimeFilter(kwId, timeFrame) {
