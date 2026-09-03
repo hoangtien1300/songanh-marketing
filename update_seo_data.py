@@ -370,3 +370,74 @@ print("Successfully updated song_anh_seo_keywords_master_dataset.csv!")
 df = pd.DataFrame(csv_rows[1:], columns=csv_rows[0])
 df.to_excel(XLSX_PATH, index=False)
 print("Successfully updated song_anh_seo_keywords_master_dataset.xlsx!")
+
+# ==============================================================================
+# 🌐 AUTOMATIC ZERO-TOUCH GOOGLE SHEETS KEYWORDS & HISTORY SYNC
+# ==============================================================================
+try:
+    KEY_FILE = os.path.join(APP_DIR, "service_account.json")
+    SPREADSHEET_ID = "1XZ5FrAkH17v8v8WajjH1hbw6h207P6fxH-qZJHlvMXI"
+    
+    if os.path.exists(KEY_FILE):
+        import google.auth
+        from googleapiclient.discovery import build
+        
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_FILE
+        credentials, _ = google.auth.default(scopes=["https://www.googleapis.com/auth/spreadsheets"])
+        service = build("sheets", "v4", credentials=credentials)
+        
+        today_sync_str = base_date.strftime("%d/%m/%Y")
+        
+        # 1. Update Tab 'Danh sách từ khóa mô hình'
+        tab_main = "Danh sách từ khóa mô hình"
+        res_main = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID, range=f"'{tab_main}'!A1:Z150").execute()
+        rows_main = res_main.get("values", [])
+        
+        if rows_main:
+            kw_map = {k["name"].strip().lower(): k for k in seo_keywords}
+            for row in rows_main[1:]:
+                if not row or len(row) == 0: continue
+                kw_name = row[0].strip().lower()
+                if kw_name in kw_map:
+                    kw_obj = kw_map[kw_name]
+                    curr_pos = kw_obj.get("gscPos") or kw_obj.get("curr_rank_num") or 3.0
+                    while len(row) <= 16: row.append("")
+                    row[12] = str(curr_pos)
+                    row[13] = today_sync_str
+            
+            service.spreadsheets().values().update(
+                spreadsheetId=SPREADSHEET_ID,
+                range=f"'{tab_main}'!A1:Z{len(rows_main)}",
+                valueInputOption="USER_ENTERED",
+                body={"values": rows_main}
+            ).execute()
+            print(f"✅ Auto-updated Tab '{tab_main}' on Google Sheets!")
+            
+        # 2. Append Today's Rows to Tab 'Lịch sử từ khóa'
+        tab_hist = "Lịch sử từ khóa"
+        today_hist_rows = []
+        for kw in seo_keywords:
+            url_str = kw["url"]
+            if not url_str.startswith("http"):
+                url_str = "https://" + url_str
+            init_match = re.search(r'(\d+(?:\.\d+)?)', str(kw.get("initRank", "12.0")))
+            prev_num = init_match.group(1) if init_match else "12.0"
+            today_hist_rows.append([
+                kw["name"],
+                str(kw["gscPos"]),
+                today_sync_str,
+                url_str,
+                "mohinhkientruc.org",
+                prev_num
+            ])
+            
+        service.spreadsheets().values().append(
+            spreadsheetId=SPREADSHEET_ID,
+            range=f"'{tab_hist}'!A1:F1",
+            valueInputOption="USER_ENTERED",
+            insertDataOption="INSERT_ROWS",
+            body={"values": today_hist_rows}
+        ).execute()
+        print(f"✅ Auto-appended {len(today_hist_rows)} records to Tab '{tab_hist}' on Google Sheets!")
+except Exception as e:
+    print(f"[-] Google Sheets auto-sync notice: {e}")
