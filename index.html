@@ -1688,150 +1688,7 @@
                     </div>
                 </div>
 
-                <!-- 📅 LỊCH BIÊN SOẠN & ĐĂNG BÀI FACEBOOK MARKETING (CALENDAR VIEW: TUẦN & THÁNG) -->
-                <div class="light-card p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4 bg-white shadow-xs">
-                    <!-- Calendar Header Controls -->
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-slate-200 pb-3">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-200 flex items-center justify-center text-sm shadow-2xs font-black">
-                                <i class="fa-solid fa-calendar-days"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-heading font-black text-sm text-slate-900 flex items-center gap-2">
-                                    <span>Lịch Kế Hoạch Đăng Bài Facebook Tháng 09/2026</span>
-                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">B2B Strategy</span>
-                                </h3>
-                                <p class="text-[11px] text-slate-500">Kế hoạch đăng bài 4 kênh: Fanpage Song Anh, Profile, Architectural Model Org & Groups</p>
-                            </div>
-                        </div>
-
-                        <!-- Mode Switcher (Tuần / Tháng) & Week Navigator -->
-                        <div class="flex flex-wrap items-center gap-2">
-                            <!-- View Mode: Week vs Month -->
-                            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
-                                <button onclick="switchFbCalendarMode('week')" id="btn-cal-week" class="px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5">
-                                    <i class="fa-solid fa-table-columns text-xs"></i>
-                                    <span>📅 Xem Theo Tuần</span>
-                                </button>
-                                <button onclick="switchFbCalendarMode('month')" id="btn-cal-month" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5">
-                                    <i class="fa-solid fa-calendar text-xs"></i>
-                                    <span>🗓️ Xem Theo Tháng</span>
-                                </button>
-                            </div>
-
-                            <!-- Week Selector (Only visible in Week mode) -->
-                            <div id="cal-week-nav" class="flex items-center gap-1 bg-slate-50 px-2 py-1 rounded-xl border border-slate-200">
-                                <button onclick="navigateFbCalendarWeek(-1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-300 text-slate-700 flex items-center justify-center transition text-xs font-bold shadow-2xs" title="Tuần trước">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </button>
-                                <span id="cal-week-label" class="text-xs font-bold text-slate-800 px-2 min-w-[170px] text-center">Tuần 1: 01/09 - 06/09</span>
-                                <button onclick="navigateFbCalendarWeek(1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-300 text-slate-700 flex items-center justify-center transition text-xs font-bold shadow-2xs" title="Tuần sau">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Filter by Channel Tags -->
-                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
-                        <div class="flex flex-wrap items-center gap-1.5">
-                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">Kênh:</span>
-                            <button onclick="filterFbCalendarChannel('all')" class="cal-ch-filter active px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-white shadow-2xs text-[11px]" data-ch="all">Tất Cả (4 Kênh)</button>
-                            <button onclick="filterFbCalendarChannel('fanpage')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-blue-50 text-blue-800 border border-blue-200 hover:bg-blue-100 text-[11px]" data-ch="fanpage">🚩 Fanpage Song Anh</button>
-                            <button onclick="filterFbCalendarChannel('profile')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100 text-[11px]" data-ch="profile">👤 Profile Song Anh</button>
-                            <button onclick="filterFbCalendarChannel('global')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 text-[11px]" data-ch="global">🌐 Architectural Model</button>
-                            <button onclick="filterFbCalendarChannel('groups')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 text-[11px]" data-ch="groups">👥 Top 5 FB Groups</button>
-                        </div>
-                        <div class="flex items-center gap-2 text-[10.5px] text-slate-500 font-medium">
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Đã đăng</span>
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Sẵn sàng duyệt</span>
-                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Đã lên lịch</span>
-                        </div>
-                    </div>
-
-                    <!-- WEEKLY VIEW CONTAINER (WITH LEFT TIME AXIS) -->
-                    <div id="cal-view-week" class="w-full overflow-x-auto border border-slate-200 rounded-xl bg-slate-50/50">
-                        <div class="min-w-[960px]">
-                            <!-- Days Header Row -->
-                            <div id="cal-week-grid-header" class="grid grid-cols-8 border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
-                                <!-- Col 0: Time Axis Header -->
-                                <div class="p-2.5 border-r border-slate-200 bg-slate-200/70 text-slate-600 flex items-center justify-center gap-1 font-extrabold text-[11px]">
-                                    <i class="fa-solid fa-clock text-slate-500"></i> Khung Giờ
-                                </div>
-                                <!-- Cols 1-7: Mon to Sun -->
-                                <div id="th-day-1" class="p-2.5 border-r border-slate-200">Thứ 2</div>
-                                <div id="th-day-2" class="p-2.5 border-r border-slate-200">Thứ 3</div>
-                                <div id="th-day-3" class="p-2.5 border-r border-slate-200">Thứ 4</div>
-                                <div id="th-day-4" class="p-2.5 border-r border-slate-200">Thứ 5</div>
-                                <div id="th-day-5" class="p-2.5 border-r border-slate-200">Thứ 6</div>
-                                <div id="th-day-6" class="p-2.5 border-r border-slate-200">Thứ 7</div>
-                                <div id="th-day-7" class="p-2.5">Chủ Nhật</div>
-                            </div>
-
-                            <!-- Time Axis Rows Body -->
-                            <div id="cal-week-grid-body" class="divide-y divide-slate-200 bg-white">
-                                <!-- Rendered dynamically by renderFbWeekCalendar() -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MONTHLY VIEW CONTAINER -->
-                    <div id="cal-view-month" class="w-full overflow-x-auto border border-slate-200 rounded-xl bg-white hidden">
-                        <div class="min-w-[880px] p-3 space-y-3">
-                            <div class="grid grid-cols-7 border-b border-slate-200 pb-2 text-center text-xs font-extrabold text-slate-700">
-                                <div>Thứ 2</div>
-                                <div>Thứ 3</div>
-                                <div>Thứ 4</div>
-                                <div>Thứ 5</div>
-                                <div>Thứ 6</div>
-                                <div class="text-blue-600">Thứ 7</div>
-                                <div class="text-rose-600">Chủ Nhật</div>
-                            </div>
-                            <div id="cal-month-grid-cells" class="grid grid-cols-7 gap-2">
-                                <!-- Rendered dynamically by renderFbMonthCalendar() -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST DETAIL MODAL -->
-                <div id="fbPostDetailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-                    <div class="bg-white rounded-2xl max-w-xl w-full border border-slate-200 shadow-2xl overflow-hidden animate-fade-in space-y-4 p-5">
-                        <div class="flex items-start justify-between border-b border-slate-200 pb-3">
-                            <div class="flex items-center gap-2">
-                                <span id="modal-post-ch-badge" class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-200">Fanpage Song Anh</span>
-                                <span id="modal-post-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">✅ Đã Đăng</span>
-                            </div>
-                            <button onclick="closeFbPostModal()" class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                        <div class="space-y-3">
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tiêu Đề & Chủ Đề Bài Viết:</span>
-                                <h4 id="modal-post-title" class="font-heading font-extrabold text-slate-900 text-sm mt-0.5">Tiêu đề bài viết</h4>
-                            </div>
-                            <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">⏰ Thời Gian Đăng:</span><p id="modal-post-time" class="font-bold text-brand-navy">08:30 - Thứ 5 (05/09/2026)</p></div>
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">🖼️ Định Dạng Media:</span><p id="modal-post-media" class="font-bold text-emerald-700">Bộ 4 Ảnh sa bàn trường học</p></div>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📝 Tóm Tắt Định Hướng Nội Dung:</span>
-                                <p id="modal-post-summary" class="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-200 font-medium">Nội dung tóm tắt...</p>
-                            </div>
-                            <div>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🔗 Điều Hướng First Comment:</span>
-                                <a id="modal-post-link" href="#" target="_blank" class="text-xs text-blue-600 hover:underline font-mono font-bold flex items-center gap-1 break-all">
-                                    <span>https://mohinhkientruc.org/...</span>
-                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-slate-200 flex justify-end">
-                            <button onclick="closeFbPostModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition shadow-xs">Đóng</button>
-                        </div>
-                    </div>
-                </div>
+                
 
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -2311,6 +2168,151 @@
                             <option value="fanpage-en">🌐 Fanpage Architectural Model Org</option>
                             <option value="profile-songanh">👤 Facebook Profile Song Anh</option>
                         </select>
+                    </div>
+                </div>
+
+<!-- 📅 LỊCH BIÊN SOẠN & ĐĂNG BÀI FACEBOOK MARKETING (CALENDAR VIEW: TUẦN & THÁNG) -->
+                <div class="light-card p-4 sm:p-5 rounded-2xl border border-slate-200 space-y-4 bg-white shadow-xs">
+                    <!-- Calendar Header Controls -->
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 border border-blue-200 flex items-center justify-center text-sm shadow-2xs font-black">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-black text-sm text-slate-900 flex items-center gap-2">
+                                    <span>Lịch Kế Hoạch Đăng Bài Facebook Tháng 09/2026</span>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">B2B Strategy</span>
+                                </h3>
+                                <p class="text-[11px] text-slate-500">Kế hoạch đăng bài 4 kênh: Fanpage Song Anh, Profile, Architectural Model Org & Groups</p>
+                            </div>
+                        </div>
+
+                        <!-- Mode Switcher (Tuần / Tháng) & Week Navigator -->
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- View Mode: Week vs Month -->
+                            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
+                                <button onclick="switchFbCalendarMode('week')" id="btn-cal-week" class="px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5">
+                                    <i class="fa-solid fa-table-columns text-xs"></i>
+                                    <span>📅 Xem Theo Tuần</span>
+                                </button>
+                                <button onclick="switchFbCalendarMode('month')" id="btn-cal-month" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5">
+                                    <i class="fa-solid fa-calendar text-xs"></i>
+                                    <span>🗓️ Xem Theo Tháng</span>
+                                </button>
+                            </div>
+
+                            <!-- Week Selector (Only visible in Week mode) -->
+                            <div id="cal-week-nav" class="flex items-center gap-1 bg-slate-50 px-2 py-1 rounded-xl border border-slate-200">
+                                <button onclick="navigateFbCalendarWeek(-1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-300 text-slate-700 flex items-center justify-center transition text-xs font-bold shadow-2xs" title="Tuần trước">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <span id="cal-week-label" class="text-xs font-bold text-slate-800 px-2 min-w-[170px] text-center">Tuần 1: 01/09 - 06/09</span>
+                                <button onclick="navigateFbCalendarWeek(1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 border border-slate-300 text-slate-700 flex items-center justify-center transition text-xs font-bold shadow-2xs" title="Tuần sau">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter by Channel Tags -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <div class="flex flex-wrap items-center gap-1.5">
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">Kênh:</span>
+                            <button onclick="filterFbCalendarChannel('all')" class="cal-ch-filter active px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-white shadow-2xs text-[11px]" data-ch="all">Tất Cả (4 Kênh)</button>
+                            <button onclick="filterFbCalendarChannel('fanpage')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-blue-50 text-blue-800 border border-blue-200 hover:bg-blue-100 text-[11px]" data-ch="fanpage">🚩 Fanpage Song Anh</button>
+                            <button onclick="filterFbCalendarChannel('profile')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-purple-50 text-purple-800 border border-purple-200 hover:bg-purple-100 text-[11px]" data-ch="profile">👤 Profile Song Anh</button>
+                            <button onclick="filterFbCalendarChannel('global')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 text-[11px]" data-ch="global">🌐 Architectural Model</button>
+                            <button onclick="filterFbCalendarChannel('groups')" class="cal-ch-filter px-2.5 py-1 rounded-lg font-semibold bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 text-[11px]" data-ch="groups">👥 Top 5 FB Groups</button>
+                        </div>
+                        <div class="flex items-center gap-2 text-[10.5px] text-slate-500 font-medium">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Đã đăng</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span> Sẵn sàng duyệt</span>
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Đã lên lịch</span>
+                        </div>
+                    </div>
+
+                    <!-- WEEKLY VIEW CONTAINER (WITH LEFT TIME AXIS) -->
+                    <div id="cal-view-week" class="w-full overflow-x-auto border border-slate-200 rounded-xl bg-slate-50/50">
+                        <div class="min-w-[960px]">
+                            <!-- Days Header Row -->
+                            <div id="cal-week-grid-header" class="grid grid-cols-8 border-b border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold text-center">
+                                <!-- Col 0: Time Axis Header -->
+                                <div class="p-2.5 border-r border-slate-200 bg-slate-200/70 text-slate-600 flex items-center justify-center gap-1 font-extrabold text-[11px]">
+                                    <i class="fa-solid fa-clock text-slate-500"></i> Khung Giờ
+                                </div>
+                                <!-- Cols 1-7: Mon to Sun -->
+                                <div id="th-day-1" class="p-2.5 border-r border-slate-200">Thứ 2</div>
+                                <div id="th-day-2" class="p-2.5 border-r border-slate-200">Thứ 3</div>
+                                <div id="th-day-3" class="p-2.5 border-r border-slate-200">Thứ 4</div>
+                                <div id="th-day-4" class="p-2.5 border-r border-slate-200">Thứ 5</div>
+                                <div id="th-day-5" class="p-2.5 border-r border-slate-200">Thứ 6</div>
+                                <div id="th-day-6" class="p-2.5 border-r border-slate-200">Thứ 7</div>
+                                <div id="th-day-7" class="p-2.5">Chủ Nhật</div>
+                            </div>
+
+                            <!-- Time Axis Rows Body -->
+                            <div id="cal-week-grid-body" class="divide-y divide-slate-200 bg-white">
+                                <!-- Rendered dynamically by renderFbWeekCalendar() -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MONTHLY VIEW CONTAINER -->
+                    <div id="cal-view-month" class="w-full overflow-x-auto border border-slate-200 rounded-xl bg-white hidden">
+                        <div class="min-w-[880px] p-3 space-y-3">
+                            <div class="grid grid-cols-7 border-b border-slate-200 pb-2 text-center text-xs font-extrabold text-slate-700">
+                                <div>Thứ 2</div>
+                                <div>Thứ 3</div>
+                                <div>Thứ 4</div>
+                                <div>Thứ 5</div>
+                                <div>Thứ 6</div>
+                                <div class="text-blue-600">Thứ 7</div>
+                                <div class="text-rose-600">Chủ Nhật</div>
+                            </div>
+                            <div id="cal-month-grid-cells" class="grid grid-cols-7 gap-2">
+                                <!-- Rendered dynamically by renderFbMonthCalendar() -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POST DETAIL MODAL -->
+                <div id="fbPostDetailModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+                    <div class="bg-white rounded-2xl max-w-xl w-full border border-slate-200 shadow-2xl overflow-hidden animate-fade-in space-y-4 p-5">
+                        <div class="flex items-start justify-between border-b border-slate-200 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span id="modal-post-ch-badge" class="px-2.5 py-1 rounded-lg text-xs font-extrabold bg-blue-50 text-blue-800 border border-blue-200">Fanpage Song Anh</span>
+                                <span id="modal-post-status-badge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">✅ Đã Đăng</span>
+                            </div>
+                            <button onclick="closeFbPostModal()" class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 flex items-center justify-center transition">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Tiêu Đề & Chủ Đề Bài Viết:</span>
+                                <h4 id="modal-post-title" class="font-heading font-extrabold text-slate-900 text-sm mt-0.5">Tiêu đề bài viết</h4>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">⏰ Thời Gian Đăng:</span><p id="modal-post-time" class="font-bold text-brand-navy">08:30 - Thứ 5 (05/09/2026)</p></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">🖼️ Định Dạng Media:</span><p id="modal-post-media" class="font-bold text-emerald-700">Bộ 4 Ảnh sa bàn trường học</p></div>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">📝 Tóm Tắt Định Hướng Nội Dung:</span>
+                                <p id="modal-post-summary" class="text-xs text-slate-700 leading-relaxed bg-white p-3 rounded-xl border border-slate-200 font-medium">Nội dung tóm tắt...</p>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">🔗 Điều Hướng First Comment:</span>
+                                <a id="modal-post-link" href="#" target="_blank" class="text-xs text-blue-600 hover:underline font-mono font-bold flex items-center gap-1 break-all">
+                                    <span>https://mohinhkientruc.org/...</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-200 flex justify-end">
+                            <button onclick="closeFbPostModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition shadow-xs">Đóng</button>
+                        </div>
                     </div>
                 </div>
 
@@ -13174,7 +13176,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 return;
             }
 
-            // Pagination Calculations
+            // Pagination Calculations (10 items / page)
             const totalPages = Math.ceil(totalTasks / fbTasksPageSize);
             if (fbTasksCurrentPage > totalPages) fbTasksCurrentPage = totalPages;
             if (fbTasksCurrentPage < 1) fbTasksCurrentPage = 1;
@@ -13235,6 +13237,200 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             });
             tbody.innerHTML = html;
         }
+
+        
+
+        function renderMarketingActivityLogTable(items) {
+            return renderActivityLogTable(items);
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        function toggleAccordion(accId) {
+            const accContent = document.getElementById(accId);
+            const icon = document.getElementById('icon-' + accId);
+            if (accContent) {
+                accContent.classList.toggle('open');
+                if (icon) {
+                    if (accContent.classList.contains('open')) {
+                        icon.classList.add('rotate-180');
+                    } else {
+                        icon.classList.remove('rotate-180');
+                    }
+                }
+            }
+        }
+
+        function toggleKwDetail(detailRowId) {
+            document.querySelectorAll('.kw-detail-row').forEach(row => {
+                if (row.id !== detailRowId) row.classList.add('hidden');
+            });
+            const detailRow = document.getElementById(detailRowId);
+            if (detailRow) {
+                detailRow.classList.toggle('hidden');
+                if (!detailRow.classList.contains('hidden')) {
+                    const kwId = parseInt(detailRowId.replace('kw-detail-', ''));
+                    const mode = kwFilterState[kwId] || '7d';
+                    switchKwTimeFilter(kwId, mode);
+                }
+            }
+        }
+
+        function toggleOnpageDetail(detailRowId) {
+            document.querySelectorAll('.onpage-detail-row').forEach(row => {
+                if (row.id !== detailRowId) row.classList.add('hidden');
+            });
+            const detailRow = document.getElementById(detailRowId);
+            if (detailRow) detailRow.classList.toggle('hidden');
+        }
+
+        function runGbpAutoPostAction() {
+            showToast("🚀 Đang khởi chạy Tool Automation Đăng Bài GBP 'auto_post_gbp_song_anh.py'...");
+        }
+
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            const mainContent = document.getElementById('main-content') || document.querySelector('main');
+            if (mainContent) {
+                mainContent.scrollTop = 0;
+            }
+        }
+
+        function selectModule(moduleId, updateHash = true) {
+            if (!moduleId) moduleId = 'home';
+            moduleId = moduleId.replace(/^panel-/, '').trim();
+            
+            // Auto close sidebar drawer upon selecting module
+            closeSidebarMenu();
+            console.log("Switching to module:", moduleId);
+            
+            // 1. Save state in localStorage & URL hash so Reload (F5) stays on current page
+            try {
+                localStorage.setItem('songanh_active_module', moduleId);
+                if (updateHash && window.location.hash !== '#' + moduleId) {
+                    history.replaceState(null, null, '#' + moduleId);
+                }
+            } catch(e) {}
+
+            // 2. Hide all module panels explicitly via class AND inline style
+            const panels = document.querySelectorAll('.module-panel');
+            panels.forEach(p => {
+                p.classList.add('hidden');
+                p.style.display = 'none';
+            });
+
+            // 3. Reset all sidebar link active states
+            const sidebarLinks = document.querySelectorAll('.sidebar-link, .sub-link');
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active', 'bg-purple-50', 'text-brand-navy', 'font-bold', 'bg-blue-100');
+                link.classList.add('text-slate-600');
+            });
+
+            // 4. Handle tool-facebook default redirection
+            if (moduleId === 'tool-facebook') {
+                moduleId = 'fb-auto-friend';
+            }
+
+            // 5. Sync sidebar active state
+            const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId);
+            if (targetLink) {
+                targetLink.classList.add('active', 'font-bold');
+                targetLink.classList.remove('text-slate-600');
+            }
+
+            // 6. Open parent accordion if it is a sub-link
+            if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
+                const acc = document.getElementById('acc-settings');
+                const icon = document.getElementById('icon-acc-settings');
+                if (acc && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            } else if (moduleId.startsWith('fb-')) {
+                const acc = document.getElementById('acc-tool-facebook');
+                const icon = document.getElementById('icon-acc-tool-facebook');
+                if (acc && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            } else if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
+                const acc = document.getElementById('acc-seo');
+                const icon = document.getElementById('icon-acc-seo');
+                if (acc && !acc.classList.contains('open')) {
+                    acc.classList.add('open');
+                    if (icon) icon.classList.add('rotate-180');
+                }
+            }
+
+            // 7. Show target panel
+            let activePanelId = 'panel-' + moduleId;
+            if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
+                activePanelId = 'panel-updating';
+                const titleText = document.getElementById('updating-title-text');
+                if (titleText) titleText.innerText = "Hạng Mục: " + (moduleId || '').toUpperCase();
+            }
+
+            const activePanel = document.getElementById(activePanelId);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+                activePanel.style.display = 'block';
+            } else {
+                console.warn("Panel not found:", activePanelId);
+                // Fallback to home if not found
+                const homePanel = document.getElementById('panel-home');
+                if (homePanel) {
+                    homePanel.classList.remove('hidden');
+                    homePanel.style.display = 'block';
+                }
+            }
+
+            // Sub-render triggers
+            if (moduleId === 'writing-formulas') {
+                if (typeof renderWritingFormulas === 'function') renderWritingFormulas();
+            } else if (moduleId === 'tool-content-generator') {
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
+            } else if (moduleId === 'target-audience') {
+                if (typeof initTargetAudiencesData === 'function') initTargetAudiencesData();
+                if (typeof renderAudienceCards === 'function') renderAudienceCards();
+            } else if (moduleId === 'content-goals') {
+                if (typeof renderContentGoalsCards === 'function') renderContentGoalsCards();
+            } else if (moduleId === 'social-channels') {
+                if (typeof renderSocialChannels === 'function') renderSocialChannels();
+                if (typeof populateAiContentStudioDropdowns === 'function') populateAiContentStudioDropdowns();
+            } else if (moduleId === 'content-link') {
+                if (typeof renderContentUpgradeTable === 'function') renderContentUpgradeTable();
+                if (typeof renderContentNewTable === 'function') renderContentNewTable();
+            } else if (moduleId === 'competitor') {
+                if (typeof renderCompetitorTable === 'function') renderCompetitorTable();
+            } else if (moduleId === 'facebook') {
+                if (typeof renderFbWeekCalendar === 'function') renderFbWeekCalendar();
+                if (typeof renderFbTable === 'function') renderFbTable();
+            } else if (moduleId === 'keywords') {
+                if (typeof renderKeywordTable === 'function') renderKeywordTable();
+            }
+
+            if (typeof showToast === 'function') {
+                showToast("👉 Đã mở Hạng mục: " + moduleId.toUpperCase());
+            }
+
+            // ALWAYS reset scroll to very top (both window and main scroll container)
+            scrollToTop();
+            setTimeout(scrollToTop, 50);
+        }
+
+        function filterSiteDropdown(siteDomain) {
+            showToast("🌐 Đã lọc dữ liệu từ khóa cho Website: " + siteDomain);
+        }
+
+        // -------------------------------------------------------------
+        // 🏢 DOMAIN SCOPE FILTER CONTROLLER (MÔ HÌNH | GOLF | TMĐT)
+        // -------------------------------------------------------------
+        let currentDomain = 'mo-hinh';
 
         function switchDomain(domainKey) {
             if (domainKey === 'thuong-mai') domainKey = 'tmdt';
