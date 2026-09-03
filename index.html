@@ -11561,74 +11561,37 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </td>
                     </tr>
                     <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 ${kw.id === 1 ? '' : 'hidden'}">
-                        <td colspan="6" class="p-4 border-t border-b border-amber-200 space-y-3">
+                        <td colspan="6" class="p-4 border-t border-b border-slate-200 space-y-3">
                             
-                            <!-- 1. Banner giải thích & Chuẩn hóa Snapshot 'Vị Trí Trước Đây' -->
-                            <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-clock-rotate-left text-amber-600 text-sm"></i>
-                                    <div>
-                                        <span class="font-bold text-amber-900">Mốc So Sánh Baseline (${baseline.label}):</span>
-                                        <span class="text-amber-800 ml-1 font-mono font-bold">Top ${initRankNumStr}</span>
-                                        <span class="ml-2 px-2 py-0.5 rounded-md text-[11px] font-bold ${changeObj.color} bg-white border border-amber-200">${changeObj.text}</span>
-                                    </div>
-                                </div>
-                                <span class="text-[11px] text-amber-700 font-medium">💡 Mốc đo lường: ${timeFrame === '7d' ? 'Thứ Hai đầu tuần (31/08/2026)' : '30 ngày trước (04/08/2026)'}</span>
-                            </div>
-
-                            <!-- 2. Header Bộ Lọc Thời Gian Theo Tuần (7 Ngày) & Theo Tháng (30 Ngày) -->
-                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
-                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Biểu Đồ Biến Động Thứ Hạng &amp; Real-time GSC / GA4 Data</h4>
-                                </div>
-                                <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">📅 Theo Tuần (7 Ngày)</button>
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-sm ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">🗓️ Theo Tháng (30 Ngày)</button>
-                                </div>
-                            </div>
-
-                            <!-- 3. Real-time GSC Metrics Cards Theo Bộ Lọc -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Thứ hạng Google Search Console thực tế theo thời gian thực (7 ngày / 30 ngày).">
-                                    <div class="tooltip-popup">Thứ hạng GSC thực tế theo thời gian thực (7 ngày / 30 ngày).</div>
-                                    <span class="text-[10px] text-slate-400 font-bold uppercase block">Vị Trí GSC (TB) (Check: 03/09/2026)</span>
-                                    <span id="kw-gsc-pos-${kw.id}" class="text-base font-heading font-extrabold text-emerald-600">${gscPosNumStr}</span>
-                                </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Tổng số lần website hiển thị trước mắt người dùng trên trang kết quả tìm kiếm Google.">
-                                    <div class="tooltip-popup">Tổng số lần website hiển thị trên trang kết quả Google SERP.</div>
-                                    <span class="text-[10px] text-slate-400 font-bold uppercase block">GSC Impressions</span>
-                                    <span id="kw-gsc-imp-${kw.id}" class="text-base font-heading font-extrabold text-sky-700">${impressions}</span>
-                                </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Số lượt người dùng nhấp chuột trực tiếp vào kết quả tìm kiếm để truy cập mohinhkientruc.org.">
-                                    <div class="tooltip-popup">Số lượt nhấp chuột trực tiếp vào trang web từ kết quả Google Search.</div>
-                                    <span class="text-[10px] text-slate-400 font-bold uppercase block">GSC Clicks</span>
-                                    <span id="kw-gsc-clk-${kw.id}" class="text-base font-heading font-extrabold text-emerald-600">${clicks}</span>
-                                </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200 has-tooltip" title="Tỷ lệ nhấp chuột CTR % (Clicks / Impressions * 100%), đánh giá sức thu hút của Meta Title & Snippet.">
-                                    <div class="tooltip-popup">Tỷ lệ nhấp chuột CTR % (Clicks / Impressions * 100%).</div>
-                                    <span class="text-[10px] text-slate-400 font-bold uppercase block">Tỷ Lệ CTR %</span>
-                                    <span id="kw-gsc-ctr-${kw.id}" class="text-base font-heading font-extrabold text-purple-700">${ctrStr}</span>
-                                </div>
-                            </div>
-
-                            <!-- 4. Khung Biểu Đồ Đường SVG Line Chart -->
-                            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2">
-                                <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                                    <span>📈 Đồ thị thứ hạng daily rankHistory (Rank 1 nằm ở trên cùng)</span>
-                                    <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy">${timeFrame === '7d' ? 'Mốc 7 Ngày Gần Nhất (28/08 - 03/09/2026)' : 'Mốc 30 Ngày Lịch Sử (04/08 - 03/09/2026)'}</span>
-                                </div>
-                                <div id="kw-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[160px] flex items-center justify-center bg-slate-50/50 rounded-lg p-2">
-                                    <!-- SVG Line Chart rendered dynamically -->
-                                </div>
-                            </div>
-
-                            <!-- 5. Metadata Attribute Grid -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white p-3 rounded-xl border border-slate-200 text-xs">
+                            <!-- 1. Metadata Attribute Grid (Đưa lên trên đầu) -->
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white p-3.5 rounded-xl border border-slate-200 text-xs shadow-2xs">
                                 <div><span class="text-[10px] font-bold text-slate-400 uppercase">1. Loại Từ Khóa:</span><p class="font-bold text-brand-navy">${kw.type}</p></div>
                                 <div><span class="text-[10px] font-bold text-slate-400 uppercase">2. Search Intent:</span><p class="font-bold text-blue-700">${kw.intent}</p></div>
                                 <div><span class="text-[10px] font-bold text-slate-400 uppercase">3. Độ Ưu Tiên:</span><p class="font-bold text-rose-600">${kw.priority}</p></div>
                                 <div><span class="text-[10px] font-bold text-slate-400 uppercase">4. Cụm Silo:</span><p class="font-bold text-purple-700">${kw.silo}</p></div>
+                            </div>
+
+                            <!-- 2. Header Biểu Đồ Biến Động -->
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
+                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Biểu đồ biến động</h4>
+                                </div>
+                                <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+                                    <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">📅 Theo Tuần (7 Ngày)</button>
+                                    <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">🗓️ Theo Tháng (30 Ngày)</button>
+                                </div>
+                            </div>
+
+                            <!-- 3. Khung Biểu Đồ Đường SVG Line Chart -->
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+                                <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                                    <span class="font-bold text-slate-700">📈 Biểu đồ thứ hạng</span>
+                                    <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy font-mono">${timeFrame === '7d' ? 'Từ 28/08/2026 đến 03/09/2026' : 'Từ 04/08/2026 đến 03/09/2026'}</span>
+                                </div>
+                                <div id="kw-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[160px] flex items-center justify-center bg-slate-50/50 rounded-lg p-2">
+                                    <!-- SVG Line Chart rendered dynamically -->
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -11688,9 +11651,9 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             
             if (labelElem) {
                 if (timeFrame === '7d') {
-                    labelElem.innerText = "Mốc 7 Ngày Gần Nhất (28/08/2026 - 03/09/2026)";
+                    labelElem.innerText = "Từ 28/08/2026 đến 03/09/2026";
                 } else {
-                    labelElem.innerText = "Mốc 30 Ngày Lịch Sử (04/08/2026 - 03/09/2026)";
+                    labelElem.innerText = "Từ 04/08/2026 đến 03/09/2026";
                 }
             }
             
