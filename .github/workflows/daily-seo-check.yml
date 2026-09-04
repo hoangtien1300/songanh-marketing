@@ -1,0 +1,40 @@
+name: Daily Cloud SEO Rank Check (06:30 AM VN)
+
+on:
+  schedule:
+    # Chạy lúc 06:30 sáng giờ Việt Nam hàng ngày (UTC+7 -> UTC 23:30 hôm trước)
+    - cron: '30 23 * * *'
+  workflow_dispatch: # Cho phép bấm Run workflow thủ công bất kỳ lúc nào trên GitHub
+
+jobs:
+  seo-rank-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas openpyxl google-auth google-api-python-client
+
+      - name: Run Daily Cloud SEO Check & Telegram Notification
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/cron_daily_seo_check.py
+
+      - name: Commit and Push Changes to Deploy Live WebApp
+        run: |
+          git config --global user.name "Song Anh AI Agent"
+          git config --global user.email "agent@songanhmodel.vn"
+          git add marketing_data.json update_seo_data.py index.html song_anh_seo_keywords_master_dataset.csv song_anh_seo_keywords_master_dataset.xlsx daily_sync_log.txt
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto(seo): 06:30 AM daily rank check & data sync [skip ci]" && git push origin main)
