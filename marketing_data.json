@@ -16408,6 +16408,15 @@
   },
   "marketing_activity_log": [
     {
+      "id": 52,
+      "timestamp": "05/09/2026 10:33:49",
+      "module": "Facebook Fanpage",
+      "action": "Thực thi Re-comment Fanpage Mô hình kiến trúc Song Anh (Bài Sa bàn tuyến Metro - Option 1)",
+      "description": "Sếp Tiến duyệt và đăng Option 1 Re-comment giải pháp kỹ thuật tỷ lệ kép & LED vi mạch vào bài viết Sa bàn tuyến Metro; đồng bộ Ngày Re-comment 05/09/2026, Lượt Re-cmt 1 trên BẢNG CONTENT Notion và lên lịch nhắc hẹn tiếp theo 08/09/2026.",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Hoàn Thành"
+    },
+    {
       "id": 51,
       "timestamp": "05/09/2026 09:40:35",
       "module": "Pinterest",
