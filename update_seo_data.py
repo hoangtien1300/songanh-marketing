@@ -199,6 +199,14 @@ raw_keywords_info = [
         "start_rank": 18.5, "snapshot_rank": 13.8, "curr_rank_num": 4.6,
         "gsc_7d": {"gscPos": 4.6, "impressions": 1620, "clicks": 104, "ctr": "6.42%"},
         "gsc_30d": {"gscPos": 9.1, "impressions": 6100, "clicks": 372, "ctr": "6.10%"}
+    },
+    {
+        "id": 23, "name": "mô hình chung cư", "searchFeature": "🖼️ Image Pack", "initRank": "Top 1.0 (17/08/2026)", "initDate": "17/08/2026", "currRank": "⭐ Top 1.0 (Ẩn Danh)", "gscPos": 1.0,
+        "url": "mohinhkientruc.org/mo-hinh-chung-cu/", "type": "Từ Khóa Chính (Core Focus)", "intent": "Transactional B2B",
+        "priority": "Ưu Tiên 1 (P1 - Top 1-3)", "silo": "Cụm 3: Mô Hình Cao Tầng & Chung Cư", "highlight": True,
+        "start_rank": 2.5, "snapshot_rank": 1.0, "curr_rank_num": 1.0,
+        "gsc_7d": {"gscPos": 1.0, "impressions": 1820, "clicks": 156, "ctr": "8.57%"},
+        "gsc_30d": {"gscPos": 1.2, "impressions": 6850, "clicks": 548, "ctr": "8.00%"}
     }
 ]
 
@@ -408,6 +416,9 @@ try:
                     while len(row) <= 16: row.append("")
                     row[12] = str(curr_pos)
                     row[13] = today_sync_str
+                    if kw_name == "mô hình chung cư":
+                        row[8] = "Làm Mô Hình Chung Cư Cao Tầng, Bóc Mái Căn Hộ 2026 | Song Anh"
+                        row[11] = "88"
             
             service.spreadsheets().values().update(
                 spreadsheetId=SPREADSHEET_ID,
