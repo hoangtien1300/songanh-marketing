@@ -16408,6 +16408,15 @@
   },
   "marketing_activity_log": [
     {
+      "id": 54,
+      "timestamp": "05/09/2026 11:02:43",
+      "module": "Facebook Group",
+      "action": "Đăng bài Group Chia Sẻ Dự Án Đầu Tư & Xây Dựng (Profile Song Anh - Chờ duyệt)",
+      "description": "Sếp Tiến đã đăng bài (Dạng 3: Năng lực bàn giao cấp tốc phục vụ sự kiện Sales Gallery) vào Group CHIA SẺ THÔNG TIN DỰ ÁN ĐẦU TƯ VÀ XÂY DỰNG; link chờ duyệt: https://www.facebook.com/groups/1018858983450852/pending_posts/1328036282533119; ghi nhận vào Notion DB LỊCH SỬ ĐĂNG BÀI GROUP (trạng thái: Đang chờ duyệt).",
+      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "status": "Chờ Duyệt"
+    },
+    {
       "id": 53,
       "timestamp": "05/09/2026 10:58:39",
       "module": "Facebook Group",
