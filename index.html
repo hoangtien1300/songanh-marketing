@@ -1738,7 +1738,7 @@
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
                             <div>
-                                <h3 class="font-heading font-bold text-sm text-slate-900">Bảng Dữ Liệu SEO Master - GSC Search Analytics (22 Từ Khóa B2B)</h3>
+                                <h3 class="font-heading font-bold text-sm text-slate-900">Bảng Dữ Liệu SEO Master - GSC Search Analytics (23 Từ Khóa B2B)</h3>
                                 <p class="text-[11px] text-slate-500">Mốc so sánh tự động thích ứng theo Bộ Lọc Tuần / Tháng</p>
                             </div>
                         </div>
@@ -1753,7 +1753,63 @@
                                     <span>🗓️ Theo Tháng (30 Ngày Trước: 04/08)</span>
                                 </button>
                             </div>
-                            <span id="kw-active-count" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200 shrink-0">22 KWs Active</span>
+                            <span id="kw-active-count" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200 shrink-0">23 KWs Active</span>
+                        </div>
+                    </div>
+
+                    <!-- 🔍 THANH BỘ LỌC TÌM KIẾM & PHÂN LOẠI TỪ KHÓA NHANH (KEYWORD FILTER BAR) -->
+                    <div class="bg-slate-50/90 p-3 rounded-xl border border-slate-200/80 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5">
+                        <div class="flex flex-wrap items-center gap-2 flex-1">
+                            <!-- 1. Ô Tìm Kiếm Từ Khóa -->
+                            <div class="relative flex-1 min-w-[200px] max-w-full sm:max-w-xs">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm nhanh từ khóa, URL..." class="w-full pl-8 pr-7 py-1.5 text-xs bg-white border border-slate-200 rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy transition">
+                                <button type="button" id="kw-search-clear" onclick="clearKwSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs" title="Xóa tìm kiếm">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+
+                            <!-- 2. Lọc Thứ Hạng (Rank Tier) -->
+                            <div class="relative">
+                                <select id="kw-rank-filter" onchange="filterKeywords()" class="px-2.5 py-1.5 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 focus:outline-none focus:border-brand-navy cursor-pointer">
+                                    <option value="all">🏆 Tất cả thứ hạng</option>
+                                    <option value="top1-3">🥇 Top 1 - 3 (Thống trị)</option>
+                                    <option value="top4-10">🥈 Top 4 - 10 (Trang 1)</option>
+                                    <option value="top11-20">🥉 Top 11 - 20 (Trang 2)</option>
+                                    <option value="top20plus">📉 Top 20+ (Cần tối ưu)</option>
+                                </select>
+                            </div>
+
+                            <!-- 3. Lọc Biến Động Thứ Hạng (Movement) -->
+                            <div class="relative">
+                                <select id="kw-change-filter" onchange="filterKeywords()" class="px-2.5 py-1.5 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 focus:outline-none focus:border-brand-navy cursor-pointer">
+                                    <option value="all">📊 Tất cả xu hướng</option>
+                                    <option value="up">🟢 Tăng bậc (▲)</option>
+                                    <option value="down">🔴 Giảm bậc (▼)</option>
+                                    <option value="same">🟡 Giữ nguyên (━)</option>
+                                </select>
+                            </div>
+
+                            <!-- 4. Lọc Nhóm Ghim / Độ Ưu Tiên -->
+                            <div class="relative">
+                                <select id="kw-priority-filter" onchange="filterKeywords()" class="px-2.5 py-1.5 text-xs font-semibold bg-white border border-slate-200 rounded-lg text-slate-700 focus:outline-none focus:border-brand-navy cursor-pointer">
+                                    <option value="all">🎯 Tất cả nhóm từ khóa</option>
+                                    <option value="pinned">⭐ Từ khóa ghim ưu tiên</option>
+                                    <option value="p1">🔥 Mức độ P1 (Cao Nhất)</option>
+                                    <option value="p2_p3">📌 Mức độ P2 &amp; P3</option>
+                                </select>
+                            </div>
+
+                            <!-- 5. Nút Đặt Lại Bộ Lọc -->
+                            <button onclick="resetKeywordFilters()" class="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-500 hover:text-rose-600 hover:border-rose-200 bg-white hover:bg-rose-50/50 transition flex items-center gap-1 shrink-0" title="Đặt lại toàn bộ bộ lọc">
+                                <i class="fa-solid fa-arrow-rotate-left text-[11px]"></i>
+                                <span>Đặt lại</span>
+                            </button>
+                        </div>
+
+                        <!-- 6. Số lượng kết quả đếm Real-time -->
+                        <div class="flex items-center gap-2 shrink-0 self-end lg:self-center">
+                            <span id="kw-filtered-count-text" class="text-[11px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">Hiển thị: 23 / 23 KWs</span>
                         </div>
                     </div>
 
@@ -12042,9 +12098,78 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 return (parseFloat(a.gscPos) || 99) - (parseFloat(b.gscPos) || 99);
             });
 
+            // 3. Read Filter Bar Values
+            const searchKeyword = (document.getElementById('kw-search-input')?.value || '').trim().toLowerCase();
+            const rankFilter = document.getElementById('kw-rank-filter')?.value || 'all';
+            const changeFilter = document.getElementById('kw-change-filter')?.value || 'all';
+            const priorityFilter = document.getElementById('kw-priority-filter')?.value || 'all';
+
+            const clearBtn = document.getElementById('kw-search-clear');
+            if (clearBtn) {
+                if (searchKeyword.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+            }
+
+            // 4. Filter List by User Selection
+            const filteredList = sortedList.filter((kw) => {
+                const kwName = (kw.name || '').trim().toLowerCase();
+                const kwUrl = (kw.url || '').trim().toLowerCase();
+                
+                // Search filter
+                if (searchKeyword) {
+                    if (!kwName.includes(searchKeyword) && !kwUrl.includes(searchKeyword)) {
+                        return false;
+                    }
+                }
+                
+                // Rank tier filter
+                const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
+                if (rankFilter === 'top1-3' && !(gscPosNum <= 3.0)) return false;
+                if (rankFilter === 'top4-10' && !(gscPosNum > 3.0 && gscPosNum <= 10.0)) return false;
+                if (rankFilter === 'top11-20' && !(gscPosNum > 10.0 && gscPosNum <= 20.0)) return false;
+                if (rankFilter === 'top20plus' && !(gscPosNum > 20.0)) return false;
+                
+                // Movement / Change filter
+                const baseline = getOldBaselineRank(kw, timeFrame);
+                const diff = parseFloat((baseline.rank - gscPosNum).toFixed(1));
+                if (changeFilter === 'up' && !(diff > 0)) return false;
+                if (changeFilter === 'down' && !(diff < 0)) return false;
+                if (changeFilter === 'same' && !(diff === 0)) return false;
+                
+                // Priority / Pinned filter
+                const isPinned = pinnedKeywords.includes(kwName);
+                if (priorityFilter === 'pinned' && !isPinned) return false;
+                if (priorityFilter === 'p1' && kw.priority !== 'P1 (Cao Nhất)') return false;
+                if (priorityFilter === 'p2_p3' && (kw.priority === 'P1 (Cao Nhất)' || !kw.priority)) return false;
+                
+                return true;
+            });
+
+            // Update result counter badge
+            const countText = document.getElementById('kw-filtered-count-text');
+            if (countText) {
+                countText.innerText = `Hiển thị: ${filteredList.length} / ${keywordList.length} KWs`;
+            }
+
             let html = '';
-            sortedList.forEach((kw) => {
-                const impVal = (kw.impressions !== undefined && kw.impressions !== null) ? Number(kw.impressions) : 0;
+            if (filteredList.length === 0) {
+                html = `
+                    <tr>
+                        <td colspan="6" class="p-8 text-center text-slate-500">
+                            <div class="flex flex-col items-center justify-center gap-2">
+                                <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
+                                <p class="font-bold text-xs text-slate-700">Không tìm thấy từ khóa nào phù hợp với bộ lọc hiện tại</p>
+                                <p class="text-[11px] text-slate-400">Vui lòng thử từ khóa khác hoặc bấm <button type="button" onclick="resetKeywordFilters()" class="text-brand-navy font-bold hover:underline">Đặt lại bộ lọc</button></p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                filteredList.forEach((kw) => {
+                    const impVal = (kw.impressions !== undefined && kw.impressions !== null) ? Number(kw.impressions) : 0;
                 const clickVal = (kw.clicks !== undefined && kw.clicks !== null) ? Number(kw.clicks) : 0;
                 
                 const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
@@ -12146,10 +12271,41 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </td>
                     </tr>
                 `;
-            });
+                });
+            }
             tbody.innerHTML = html;
             updateSeoKpiCards();
         }
+
+        
+        function filterKeywords() {
+            renderKeywordTable();
+        }
+
+        function clearKwSearch() {
+            const input = document.getElementById('kw-search-input');
+            if (input) {
+                input.value = '';
+                renderKeywordTable();
+                input.focus();
+            }
+        }
+
+        function resetKeywordFilters() {
+            const searchInput = document.getElementById('kw-search-input');
+            if (searchInput) searchInput.value = '';
+            const rankFilter = document.getElementById('kw-rank-filter');
+            if (rankFilter) rankFilter.value = 'all';
+            const changeFilter = document.getElementById('kw-change-filter');
+            if (changeFilter) changeFilter.value = 'all';
+            const priorityFilter = document.getElementById('kw-priority-filter');
+            if (priorityFilter) priorityFilter.value = 'all';
+            renderKeywordTable();
+        }
+
+        window.filterKeywords = filterKeywords;
+        window.clearKwSearch = clearKwSearch;
+        window.resetKeywordFilters = resetKeywordFilters;
 
         function switchKwTimeFilter(kwId, timeFrame) {
             kwId = parseInt(kwId);
