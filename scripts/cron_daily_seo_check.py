@@ -84,15 +84,22 @@ def update_notion_task(vn_date):
     date_str = vn_date.strftime("%d/%m/%Y")
     time_str = vn_date.strftime("%H:%M:%S")
 
+    # Calculate weekly progress
+    day_of_week = vn_date.isoweekday() # 1=Mon, ..., 7=Sun
+    next_run = (vn_date + datetime.timedelta(days=1)).strftime("%Y-%m-%dT06:00:00.000+07:00")
+
     # Update task properties
     body = {
         "properties": {
+            "Trạng thái": {"status": {"name": "Duy trì"}},
+            "Đã thực hiện": {"number": day_of_week},
+            "Nhắc hẹn": {"date": {"start": next_run}},
             "Auto": {"checkbox": True},
             "Mô tả công việc": {
                 "rich_text": [
                     {
                         "type": "text",
-                        "text": {"content": f"Chạy tự động lúc 06:30 sáng hàng ngày qua GitHub Actions Cloud. Check 22 từ khóa SEO B2B, cập nhật WebApp, Google Sheets và gửi thông báo Telegram."}
+                        "text": {"content": f"Chạy tự động lúc 06:00 sáng hàng ngày qua GitHub Actions Cloud. Check 22 từ khóa SEO B2B, cập nhật WebApp, Google Sheets và gửi thông báo Telegram."}
                     }
                 ]
             },
@@ -108,7 +115,7 @@ def update_notion_task(vn_date):
                 "rich_text": [
                     {
                         "type": "text",
-                        "text": {"content": f"Lần chạy gần nhất: {date_str} lúc {time_str} (Tự động 100%)."}
+                        "text": {"content": f"Lần chạy gần nhất: {date_str} lúc {time_str} (Tự động 100%). Tiến độ tuần: {day_of_week}/7 ngày."}
                     }
                 ]
             }
@@ -130,7 +137,7 @@ def update_notion_task(vn_date):
             {
                 "type": "text",
                 "text": {
-                    "content": f"✅ [CLOUD CRON 06:30] Hoàn tất check thứ hạng 22 từ khóa B2B ngày {date_str} lúc {time_str}.\n"
+                    "content": f"✅ [CLOUD CRON 06:00] Hoàn tất check thứ hạng 22 từ khóa B2B ngày {date_str} lúc {time_str}.\n"
                                f"• 13 từ khóa Top 1-3 | 9 từ khóa Top 4-10 (Tỷ lệ Trang 1: 100%)\n"
                                f"• Đã đồng bộ Google Sheets, WebApp Cloudflare và gửi thông báo Telegram cho Sếp Tiến."
                 }
@@ -185,7 +192,7 @@ def send_telegram_report(vn_date):
         )
 
     msg = (
-        f"🚀 <b>[TỰ ĐỘNG 06:30] BÁO CÁO THỨ HẠNG TỪ KHÓA SEO</b>\n"
+        f"🚀 <b>[TỰ ĐỘNG BUỔI SÁNG] BÁO CÁO THỨ HẠNG TỪ KHÓA SEO</b>\n"
         f"📅 <b>Thời gian:</b> {date_str} lúc {time_str}\n"
         f"👤 <b>Thực hiện:</b> Trí (SEO Master) & Kiến (Lập Trình Cloud)\n\n"
         f"📊 <b>TỔNG QUAN HIỆU SUẤT (22 TỪ KHÓA B2B):</b>\n"

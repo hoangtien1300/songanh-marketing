@@ -1,14 +1,20 @@
-name: Daily Cloud SEO Rank Check (06:30 AM VN)
+name: Daily Cloud SEO Rank Check (06:00 AM VN)
 
 on:
   schedule:
-    # Chạy lúc 06:30 sáng giờ Việt Nam hàng ngày (UTC+7 -> UTC 23:30 hôm trước)
-    - cron: '30 23 * * *'
+    # Chạy lúc 06:00 sáng giờ Việt Nam hàng ngày (UTC+7 -> UTC 23:00 hôm trước)
+    # Đặt chạy sớm 06:00 VN để trừ hao hàng đợi GitHub Actions, đảm bảo có báo cáo trước 06:30
+    - cron: '00 23 * * *'
   workflow_dispatch: # Cho phép bấm Run workflow thủ công bất kỳ lúc nào trên GitHub
+
+permissions:
+  contents: write
 
 jobs:
   seo-rank-check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
