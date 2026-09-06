@@ -101,7 +101,7 @@
             if (!toast) {
                 toast = document.createElement('div');
                 toast.id = 'global-toast';
-                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
                 document.body.appendChild(toast);
             }
             const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
@@ -118,7 +118,7 @@
                 icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
             }
 
-            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
             toast.innerHTML = `${icon} <span>${message}</span>`;
             toast.style.display = 'flex';
             
@@ -1075,7 +1075,7 @@
 <body class="min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-white">
 
     <!-- Header Navigation Bar -->
-    <header class="bg-white border-b border-slate-200 px-3 sm:px-5 py-2.5 sm:py-3 flex items-center justify-between sticky top-0 z-50 shadow-xs gap-2">
+    <header class="bg-white border-b border-slate-200 px-3 sm:px-5 pt-4 pb-2.5 sm:py-3 flex items-center justify-between sticky top-0 z-50 shadow-xs gap-2" style="padding-top: max(1.1rem, env(safe-area-inset-top));">
         
         <!-- Left: Hamburger Menu (Mobile & Desktop) + Logo + Title -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
@@ -5636,7 +5636,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             if (!toast) {
                 toast = document.createElement('div');
                 toast.id = 'global-toast';
-                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
                 document.body.appendChild(toast);
             }
             const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
@@ -5653,7 +5653,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
             }
 
-            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
             toast.innerHTML = `${icon} <span>${message}</span>`;
             toast.style.display = 'flex';
             
@@ -14570,9 +14570,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
             }
 
-            if (typeof showToast === 'function') {
-                showToast("👉 Đã mở Hạng mục: " + moduleId.toUpperCase());
-            }
+            // Module switch completed smoothly without blocking header
 
             // ALWAYS reset scroll to very top (both window and main scroll container)
             scrollToTop();
@@ -16965,7 +16963,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             if (!toast) {
                 toast = document.createElement('div');
                 toast.id = 'global-toast';
-                toast.className = 'fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
+                toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white';
                 document.body.appendChild(toast);
             }
             const isSuccess = (type === 'success' || message.includes('thành công') || message.includes('✅') || message.includes('🎉'));
@@ -16982,7 +16980,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 icon = '<i class="fa-solid fa-triangle-exclamation text-white"></i>';
             }
 
-            toast.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] px-4 py-3 rounded-2xl shadow-xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
+            toast.className = `fixed bottom-24 left-1/2 -translate-x-1/2 z-[9999] px-4 py-2.5 rounded-2xl shadow-2xl font-bold text-xs flex items-center gap-2 transition-all duration-300 max-w-[90vw] text-white ${bgClass}`;
             toast.innerHTML = `${icon} <span>${message}</span>`;
             toast.style.display = 'flex';
             
@@ -17757,30 +17755,17 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
     </script>
 
     <!-- 📱 MOBILE BOTTOM NAVIGATION BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH CHO ĐIỆN THOẠI) -->
-    <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 px-2 py-1.5 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
-        <button onclick="selectMobileBottomNav('home')" id="bnav-home" class="bottom-nav-item active flex-1 py-1 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition">
-            <i class="fa-solid fa-house text-base transition-transform"></i>
-            <span class="text-[10px] font-bold mt-0.5">Tổng Quan</span>
+    <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 px-8 py-2 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <button onclick="selectMobileBottomNav('home')" id="bnav-home" class="bottom-nav-item active flex-1 py-1.5 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition active:scale-95">
+            <i class="fa-solid fa-house text-lg transition-transform"></i>
+            <span class="text-[11px] font-bold mt-1">Trang chủ</span>
         </button>
         
-        <button onclick="selectMobileBottomNav('gbp')" id="bnav-gbp" class="bottom-nav-item flex-1 py-1 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition">
-            <i class="fa-solid fa-location-dot text-base text-rose-500 transition-transform"></i>
-            <span class="text-[10px] font-bold mt-0.5">GBP Maps</span>
-        </button>
+        <div class="h-6 w-px bg-slate-200"></div>
 
-        <button onclick="selectMobileBottomNav('facebook')" id="bnav-facebook" class="bottom-nav-item flex-1 py-1 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition">
-            <i class="fa-brands fa-facebook text-base text-blue-600 transition-transform"></i>
-            <span class="text-[10px] font-bold mt-0.5">Facebook</span>
-        </button>
-
-        <button onclick="showAgentModal('minh')" id="bnav-agents" class="bottom-nav-item flex-1 py-1 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition">
-            <i class="fa-solid fa-robot text-base text-purple-600 transition-transform"></i>
-            <span class="text-[10px] font-bold mt-0.5">Trợ Lý AI</span>
-        </button>
-
-        <button onclick="toggleMobileSidebar()" id="bnav-menu" class="bottom-nav-item flex-1 py-1 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition">
-            <i class="fa-solid fa-bars text-base transition-transform"></i>
-            <span class="text-[10px] font-bold mt-0.5">Menu Mục</span>
+        <button onclick="toggleMobileSidebar()" id="bnav-menu" class="bottom-nav-item flex-1 py-1.5 flex flex-col items-center justify-center text-slate-500 hover:text-brand-navy transition active:scale-95">
+            <i class="fa-solid fa-bars text-lg text-brand-gold transition-transform"></i>
+            <span class="text-[11px] font-bold mt-1 text-slate-800">Menu</span>
         </button>
     </nav>
 
