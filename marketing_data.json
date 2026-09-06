@@ -16385,7 +16385,7 @@
   },
   "marketing_activity_log": [
     {
-      "id": 71,
+      "id": 75,
       "timestamp": "06/09/2026 10:15:00",
       "module": "Hệ thống",
       "action": "Tổng hợp & Đồng bộ 24 công việc duy trì marketing trong tuần (31/08 - 06/09) vào Notion BÁO CÁO CÔNG VIỆC TUẦN & Central Data",
@@ -16393,7 +16393,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 70,
+      "id": 74,
       "timestamp": "06/09/2026 09:22:24",
       "module": "Hệ thống",
       "action": "Tối giản Dashboard (Gỡ cụm 1-Click Mobile & 4 Thẻ KPI) và Ban hành Rule 12 Chuẩn hóa Nhật ký Hoạt động",
@@ -16401,7 +16401,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 69,
+      "id": 73,
       "timestamp": "06/09/2026 07:27:28",
       "module": "SEO Website",
       "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 06/09/2026 & đồng bộ Google Sheets",
@@ -16409,7 +16409,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 68,
+      "id": 72,
       "timestamp": "05/09/2026 11:29:50",
       "module": "Hệ thống",
       "action": "Nâng cấp Thanh Bộ Lọc Nhanh Từ Khóa (Live Search & Multi-Filter) cho Bảng Dữ Liệu SEO Master",
@@ -16418,7 +16418,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 67,
+      "id": 71,
       "timestamp": "05/09/2026 11:15:00",
       "module": "Zalo Marketing",
       "action": "[Post Zalo] Profile 0981169200 | Mô hình: Đăng bài '𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚'",
@@ -16426,7 +16426,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 66,
+      "id": 70,
       "timestamp": "05/09/2026 11:10:00",
       "module": "Facebook Profile",
       "action": "[Post Profile] Song Anh: Đăng bài 'Chúc mừng Lễ Khai Giảng năm học mới 2026' (Option 1 ngắn gọn)",
@@ -16434,7 +16434,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 65,
+      "id": 69,
       "timestamp": "05/09/2026 11:02:43",
       "module": "Facebook Group",
       "action": "Đăng bài Dạng 3 (Năng lực bàn giao cấp tốc) vào Group Chia Sẻ Dự Án Đầu Tư & Xây Dựng (Profile Song Anh - Chờ duyệt)",
@@ -16443,7 +16443,7 @@
       "status": "Chờ Duyệt"
     },
     {
-      "id": 64,
+      "id": 68,
       "timestamp": "05/09/2026 10:58:39",
       "module": "Facebook Group",
       "action": "Đăng bài Group M&A BĐS & KCN thành công (Profile Song Anh - Dạng 3)",
@@ -16452,7 +16452,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 63,
+      "id": 67,
       "timestamp": "05/09/2026 10:33:49",
       "module": "Facebook Fanpage",
       "action": "Thực thi Re-comment Fanpage Mô hình kiến trúc Song Anh (Bài Sa bàn tuyến Metro - Option 1)",
@@ -16461,7 +16461,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 62,
+      "id": 66,
       "timestamp": "05/09/2026 09:40:35",
       "module": "Pinterest",
       "action": "Tối ưu 4 Ghim Bảng 4 \"Mô hình trường học & Bệnh viện\" (Quân Y 175, Truyền Máu Huyết Học CS2, Nhi Đồng 1)",
@@ -16469,7 +16469,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 61,
+      "id": 65,
       "timestamp": "05/09/2026 09:30:00",
       "module": "Facebook Group",
       "action": "[Joint FB Group] | Fanpage Vật liệu mô hình: Đã tự động tham gia 6 Facebook Groups trong tuần",
@@ -16477,7 +16477,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 60,
+      "id": 64,
       "timestamp": "05/09/2026 09:16:50",
       "module": "Pinterest",
       "action": "Tối ưu 4 Ghim Bảng 4 'Mô hình trường học & Bệnh viện' (UTS Nam Sài Gòn, PennSchool, RMIT Hà Nội)",
@@ -16485,7 +16485,15 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 59,
+      "id": 63,
+      "timestamp": "04/09/2026 16:30:00",
+      "module": "Google Business",
+      "action": "[Post GBP] Dịch vụ làm mô hình kiến trúc Song Anh: Đăng bài 'Một góc sân trường RMIT'",
+      "performer": "Phạm Hoàng Tiến (Agent Minh)",
+      "status": "Hoàn Thành"
+    },
+    {
+      "id": 62,
       "timestamp": "04/09/2026 15:20:00",
       "module": "Zalo Marketing",
       "action": "[Post Zalo] Profile 0981169200 | Mô hình: Đăng bài 'GIẢI PHÁP SA BÀN QUY HOẠCH CHO SỰ KIỆN XÚC TIẾN ĐẦU TƯ & HỘI NGHỊ THƯƠNG MẠI'",
@@ -16493,7 +16501,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 58,
+      "id": 61,
       "timestamp": "04/09/2026 14:15:00",
       "module": "Facebook Profile",
       "action": "[Post Profile] Song Anh: Đăng bài 'BỘ SƯU TẬP SA BÀN QUY HOẠCH ĐẠI ĐÔ THỊ & CĂN HỘ TỶ LỆ 1/500 SALES GALLERY'",
@@ -16501,15 +16509,15 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 57,
+      "id": 60,
       "timestamp": "04/09/2026 10:45:00",
       "module": "Zalo Marketing",
       "action": "[Post Zalo] Profile 0988 080 440 | CSKH: Đăng bài 'Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm'",
-      "performer": "Phạm Hoàng Tiến",
+      "performer": "Nguyễn Thị Kim Thủy (Phạm Hoàng Tiến)",
       "status": "Hoàn Thành"
     },
     {
-      "id": 56,
+      "id": 59,
       "timestamp": "04/09/2026 08:16:58",
       "module": "SEO Website",
       "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 04/09/2026 & đồng bộ Google Sheets",
@@ -16517,7 +16525,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 55,
+      "id": 58,
       "timestamp": "04/09/2026 08:05:00",
       "module": "SEO Website",
       "action": "Cập nhật thứ hạng 22 từ khóa B2B ngày 04/09/2026 & nạp lịch sử Google Sheets",
@@ -16525,7 +16533,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 54,
+      "id": 57,
       "timestamp": "03/09/2026 16:10:00",
       "module": "Zalo Marketing",
       "action": "[Post Zalo] Profile 0981169200 | Mô hình: Đăng bài '[BÀI TOÁN TỐI ƯU CHI PHÍ] CHI PHÍ LÀM MÔ HÌNH LÀ ĐẮT HAY RẺ?'",
@@ -16533,7 +16541,15 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 53,
+      "id": 56,
+      "timestamp": "03/09/2026 14:00:00",
+      "module": "Google Business",
+      "action": "[Post GBP] Mô hình kiến trúc Song Anh: Đăng bài 'SA BÀN DỰ ÁN BĐS CỦ BỊ HỎNG ĐÈN LED HOẶC BỤI BẨN? ĐẦU TƯ CẢI TẠO MỚI HAY SỬA CHỮA? 🛠️✨'",
+      "performer": "Phạm Hoàng Tiến (Agent Minh)",
+      "status": "Hoàn Thành"
+    },
+    {
+      "id": 55,
       "timestamp": "03/09/2026 11:43:00",
       "module": "Pinterest",
       "action": "Xuất bản bộ 4 Ghim Pinterest Dự án Cao Tầng chuẩn 2:3 (1000x1500px) dán Logo & Metadata SEO",
@@ -16541,7 +16557,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 52,
+      "id": 54,
       "timestamp": "03/09/2026 10:30:00",
       "module": "Facebook Fanpage",
       "action": "[Re-Cmt Fb] Fanpage Architectural Model Org: Re-comment kéo tương tác bài quốc tế 'M Riverside Project'",
@@ -16556,7 +16572,7 @@
       "action": "Đã xóa (Archived) hoàn tất 40 bản ghi bài viết Fanpage Architectural Model Org đã chuyển khỏi bảng DS Post Facebook (LƯU TRỮ - KHÔNG DÙNG).",
       "operator": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 51,
+      "id": 53,
       "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
@@ -16567,7 +16583,7 @@
       "action": "Đồng bộ thành công 40 bài viết Fanpage Architectural Model Org từ bảng DS Post Facebook (Lưu Trữ) sang BẢNG CONTENT Notion DB.",
       "operator": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 50,
+      "id": 52,
       "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
@@ -16578,11 +16594,19 @@
       "action": "Cập nhật bảng thứ hạng 22 từ khóa SEO B2B cốt lõi ngày 03/09/2026 (13 KWs Top 1-3, 9 KWs Top 4-10, 0 KW Ngoài Top 10).",
       "operator": "Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành",
-      "id": 49,
+      "id": 51,
       "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master"
     },
     {
-      "id": 48,
+      "id": 50,
+      "timestamp": "02/09/2026 15:10:00",
+      "module": "Google Business",
+      "action": "[Post GBP] Dịch vụ làm mô hình kiến trúc Song Anh: Đăng bài '𝐃Ị𝐂𝐇 𝐕Ụ 𝐋À𝐌 𝐌Ô 𝐇Ì𝐍𝐇 𝐍𝐇À 𝐌Á𝐘 & 𝐒𝐀 𝐁À𝐍 𝐍𝐇À 𝐗ƯỞ𝐍𝐆 𝐓𝐑Ọ𝐍 𝐆Ó𝐈 𝟐𝟎𝟐𝟔 🏭⚡'",
+      "performer": "Phạm Hoàng Tiến (Agent Minh)",
+      "status": "Hoàn Thành"
+    },
+    {
+      "id": 49,
       "timestamp": "02/09/2026 11:20:00",
       "module": "Facebook Fanpage",
       "action": "[Post FB] Fanpage Mô hình kiến trúc Song Anh: Đăng bài 'Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm tại Sales Gallery?'",
@@ -16590,7 +16614,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 47,
+      "id": 48,
       "timestamp": "01/09/2026 15:40:00",
       "module": "Facebook Fanpage",
       "action": "[Post FB] Fanpage Mô hình kiến trúc Song Anh: Đăng bài 'Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại'",
@@ -16605,7 +16629,7 @@
       "action": "Re-comment bài đăng Profile Song Anh (Option 2 - Sa bàn Trang trại nuôi tôm) thành công 100%.",
       "operator": "Phạm Hoàng Tiến",
       "status": "Hoàn Thành",
-      "id": 46,
+      "id": 47,
       "performer": "Phạm Hoàng Tiến"
     },
     {
@@ -16614,7 +16638,7 @@
       "action": "Sếp Tiến duyệt và đăng Option 3 Re-comment cho bài viết sa bàn RMIT trên Fanpage Mô hình kiến trúc Song Anh; đồng bộ ngày 01/09/2026 trên Notion BẢNG CONTENT.",
       "actor": "Phạm Hoàng Tiến",
       "status": "✅ Hoàn thành",
-      "id": 45,
+      "id": 46,
       "performer": "Phạm Hoàng Tiến"
     },
     {
@@ -16623,8 +16647,16 @@
       "action": "Sếp Tiến duyệt & đăng Option 1 bài đăng Sa bàn Triển lãm B2B vào Group M&A (https://www.facebook.com/groups/152692778620733/posts/2232329680657022); tự động hẹn lịch Re-comment ngày 03/09/2026.",
       "actor": "Phạm Hoàng Tiến",
       "status": "✅ Hoàn thành",
-      "id": 44,
+      "id": 45,
       "performer": "Phạm Hoàng Tiến"
+    },
+    {
+      "id": 44,
+      "timestamp": "31/08/2026 16:00:00",
+      "module": "Google Business",
+      "action": "[Post GBP] Mô hình kiến trúc Song Anh: Đăng video 'THI CÔNG SA BÀN MÔ HÌNH TRƯỜNG HỌC UTS NAM SÀI GÒN'",
+      "performer": "Phạm Hoàng Tiến (Agent Minh)",
+      "status": "Hoàn Thành"
     },
     {
       "timestamp": "31/08/2026 15:59:13",
@@ -18462,133 +18494,189 @@
   ],
   "weekly_maintenance_report": {
     "week_period": "31/08/2026 - 06/09/2026",
-    "total_actions": 26,
+    "total_actions": 31,
     "notion_report_url": "https://app.notion.com/p/B-O-C-O-C-NG-VI-C-TU-N-22e4b5e73d90805b82dfd221bc077348",
     "summary_by_channel": {
+      "google_business_profile": 5,
       "zalo_hotline_0981169200": 4,
       "facebook_profile_song_anh": 4,
-      "facebook_groups": 3,
       "facebook_fanpage_song_anh": 3,
-      "facebook_fanpage_architectural_model_org": 1,
-      "google_business_profile": 1,
-      "zalo_cskh_technical_0988_0386_0376": 6,
+      "facebook_groups": 3,
       "pinterest_mo_hinh_song_anh": 3,
+      "zalo_cskh_0988080440_chi_thuy": 3,
+      "zalo_tu_van_0386989087_sang": 2,
+      "zalo_ky_thuat_0376415131_sang": 1,
+      "facebook_fanpage_architectural_model_org": 1,
       "joint_fb_group_vat_lieu_mo_hinh": 1
     },
     "detailed_actions": [
       {
         "date": "05/09/2026",
-        "channel": "Zalo 0981169200",
+        "channel": "Zalo 0981 169 200",
         "task": "[Post Zalo]",
         "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp trực & đăng bài"
       },
       {
         "date": "05/09/2026",
-        "channel": "Zalo 0386989087",
+        "channel": "Zalo 0988 080 440 (CSKH & Kế toán)",
         "task": "[Post Zalo]",
         "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Nguyễn Thị Kim Thủy",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Chị Thủy trực, Sếp Tiến gửi bài qua Zalo để đăng"
       },
       {
         "date": "05/09/2026",
-        "channel": "Zalo 0376415131",
+        "channel": "Zalo 0386 989 087 (Tư vấn)",
         "task": "[Post Zalo]",
         "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Võ Minh Sang",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Võ Minh Sang trực, Sếp Tiến gửi bài qua Zalo để đăng"
       },
       {
         "date": "05/09/2026",
-        "channel": "Zalo 0988080440",
+        "channel": "Zalo 0376 415 131 (Kỹ thuật)",
         "task": "[Post Zalo]",
         "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Võ Minh Sang",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Võ Minh Sang trực, Sếp Tiến gửi bài qua Zalo để đăng"
       },
       {
         "date": "05/09/2026",
         "channel": "Facebook Profile Song Anh",
         "task": "[Post FB Profile]",
         "post_title": "Chúc mừng Lễ Khai Giảng năm học mới 2026 (Option 1 ngắn gọn)",
-        "performer": "Phạm Hoàng Tiến (Agent Văn)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Văn",
+        "note": "Sếp Tiến đăng, Trợ lý Văn soạn Option"
       },
       {
         "date": "05/09/2026",
         "channel": "Facebook Group M&A BĐS & KCN",
         "task": "[Post FB Group]",
-        "post_title": "Bài đăng Dạng 3 (Năng lực bàn giao cấp tốc) Sa bàn Quy hoạch 1/500",
+        "post_title": "Bài Dạng 3 (Bàn giao cấp tốc) Sa bàn 1/500 Sales Gallery",
         "link": "https://www.facebook.com/groups/152692778620733/posts/2236516053571718",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Sếp Tiến đăng công khai, Trợ lý Minh hỗ trợ"
       },
       {
         "date": "05/09/2026",
         "channel": "Facebook Group Chia Sẻ Dự Án Đầu Tư",
         "task": "[Post FB Group]",
-        "post_title": "Bài đăng Dạng 3 (Năng lực bàn giao cấp tốc) Sa bàn Quy hoạch 1/500",
+        "post_title": "Bài Dạng 3 (Bàn giao cấp tốc) Sa bàn 1/500 Sales Gallery",
         "link": "https://www.facebook.com/groups/1018858983450852/pending_posts/1328036282533119",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Sếp Tiến đăng (Đang chờ duyệt), Trợ lý Minh hỗ trợ"
       },
       {
         "date": "05/09/2026",
         "channel": "Fanpage Mô hình kiến trúc Song Anh",
         "task": "[Re-Cmt FB]",
         "post_title": "Re-comment duy trì hiển thị (Bump Top) bài Sa bàn tuyến Metro",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Trợ lý Minh soạn, Sếp Tiến duyệt đăng"
       },
       {
         "date": "05/09/2026",
         "channel": "Fanpage Vật liệu mô hình",
         "task": "[Joint FB Group]",
         "post_title": "Tự động tham gia 6 Facebook Groups ngành vật liệu mô hình trong tuần",
-        "performer": "Tự động"
+        "performer": "Tự động",
+        "note": "Hệ thống tự động tham gia nhóm định kỳ"
       },
       {
         "date": "05/09/2026",
         "channel": "Pinterest @mo_hinh_song_anh",
         "task": "[Post Pinterest]",
         "post_title": "Xuất bản 4 Ghim Bảng 4 'Mô hình trường học & Bệnh viện' (Bệnh viện Quân y 175)",
-        "performer": "Phạm Hoàng Tiến (Agent Mỹ)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Mỹ",
+        "note": "Trợ lý Mỹ thiết kế ảnh 2:3 dán Logo, Sếp Tiến chỉ đạo"
       },
       {
         "date": "04/09/2026",
-        "channel": "Zalo 0981169200",
+        "channel": "Google Business (Dịch vụ làm mô hình)",
+        "task": "[Post GBP]",
+        "post_title": "Một góc sân trường RMIT",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Đăng bài chi nhánh Dịch vụ làm mô hình Song Anh"
+      },
+      {
+        "date": "04/09/2026",
+        "channel": "Zalo 0981 169 200",
         "task": "[Post Zalo]",
         "post_title": "GIẢI PHÁP SA BÀN QUY HOẠCH CHO SỰ KIỆN XÚC TIẾN ĐẦU TƯ & HỘI NGHỊ THƯƠNG MẠI",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng"
       },
       {
         "date": "04/09/2026",
-        "channel": "Zalo 0988080440",
+        "channel": "Zalo 0988 080 440 (CSKH)",
         "task": "[Post Zalo]",
         "post_title": "Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Nguyễn Thị Kim Thủy",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Chị Thủy đăng qua bài Sếp gửi"
       },
       {
         "date": "04/09/2026",
         "channel": "Facebook Profile Song Anh",
         "task": "[Post FB Profile]",
         "post_title": "BỘ SƯU TẬP SA BÀN QUY HOẠCH ĐẠI ĐÔ THỊ & CĂN HỘ TỶ LỆ 1/500 SALES GALLERY",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng"
       },
       {
         "date": "03/09/2026",
-        "channel": "Zalo 0981169200",
+        "channel": "Google Business (Mô hình kiến trúc)",
+        "task": "[Post GBP]",
+        "post_title": "SA BÀN DỰ ÁN BĐS CỦ BỊ HỎNG ĐÈN LED HOẶC BỤI BẨN? ĐẦU TƯ CẢI TẠO MỚI HAY SỬA CHỮA? 🛠️✨",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Đăng bài chi nhánh Trụ sở Mô hình kiến trúc Song Anh"
+      },
+      {
+        "date": "03/09/2026",
+        "channel": "Zalo 0981 169 200",
         "task": "[Post Zalo]",
         "post_title": "[BÀI TOÁN TỐI ƯU CHI PHÍ] CHI PHÍ LÀM MÔ HÌNH LÀ ĐẮT HAY RẺ?",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng"
       },
       {
         "date": "03/09/2026",
         "channel": "Fanpage Architectural Model Org",
         "task": "[Re-Cmt FB]",
         "post_title": "Re-comment bài dự án quốc tế M Riverside Project",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Kênh tiếng Anh B2B quốc tế"
       },
       {
         "date": "03/09/2026",
         "channel": "Pinterest @mo_hinh_song_anh",
         "task": "[Post Pinterest]",
         "post_title": "Xuất bản bộ 4 Ghim Bảng Mô hình chung cư & Cao tầng",
-        "performer": "Phạm Hoàng Tiến (Agent Mỹ)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Mỹ",
+        "note": "Trợ lý Mỹ crop ảnh 1000x1500 dán Logo"
+      },
+      {
+        "date": "02/09/2026",
+        "channel": "Google Business (Dịch vụ làm mô hình)",
+        "task": "[Post GBP]",
+        "post_title": "𝐃Ị𝐂𝐇 𝐕Ụ 𝐋À𝐌 𝐌Ô 𝐇Ì𝐍𝐇 𝐍𝐇À 𝐌Á𝐘 & 𝐒𝐀 𝐁À𝐍 𝐍𝐇À 𝐗ƯỞ𝐍𝐆 𝐓𝐑Ọ𝐍 𝐆Ó𝐈 𝟐𝟎𝟐𝟔 🏭⚡",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Đăng bài chi nhánh Dịch vụ làm mô hình Song Anh"
       },
       {
         "date": "02/09/2026",
@@ -18596,56 +18684,87 @@
         "task": "[Post FB Fanpage]",
         "post_title": "Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm tại Sales Gallery?",
         "link": "https://www.facebook.com/congtymohinhkientrucsonganh/",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến duyệt và đăng"
       },
       {
         "date": "01/09/2026",
         "channel": "Fanpage Mô hình kiến trúc Song Anh",
         "task": "[Post FB Fanpage]",
         "post_title": "Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến duyệt và đăng"
       },
       {
         "date": "01/09/2026",
         "channel": "Fanpage Mô hình kiến trúc Song Anh",
         "task": "[Re-Cmt FB]",
         "post_title": "Re-comment duy trì bài Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Bump Top tương tác bài viết"
       },
       {
         "date": "01/09/2026",
         "channel": "Facebook Profile Song Anh",
         "task": "[Re-Cmt FB]",
         "post_title": "Re-comment kéo Top bài Sa bàn Trang trại Nuôi tôm Công nghệ cao",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp comment"
       },
       {
         "date": "01/09/2026",
-        "channel": "Zalo 0988080440",
+        "channel": "Zalo 0988 080 440 (CSKH)",
         "task": "[Post Zalo]",
         "post_title": "Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Nguyễn Thị Kim Thủy",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Chị Thủy đăng qua bài Sếp gửi"
       },
       {
         "date": "01/09/2026",
-        "channel": "Zalo 0386989087",
+        "channel": "Zalo 0386 989 087 (Tư vấn)",
         "task": "[Post Zalo]",
         "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Võ Minh Sang",
+        "sub_performer": "Phạm Hoàng Tiến",
+        "note": "Võ Minh Sang đăng qua bài Sếp gửi"
       },
       {
         "date": "31/08/2026",
-        "channel": "Zalo 0981169200",
+        "channel": "Google Business (Mô hình kiến trúc)",
+        "task": "[Post GBP]",
+        "post_title": "[Video] THI CÔNG SA BÀN MÔ HÌNH TRƯỜNG HỌC UTS NAM SÀI GÒN",
+        "link": "https://share.google/SbwREXBL3vaBpeh7n",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Đăng video lên GBP chi nhánh Trụ sở"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "Google Business (Dịch vụ làm mô hình)",
+        "task": "[Post GBP]",
+        "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
+        "link": "https://share.google/CM2kagvsxYvUT1",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Minh",
+        "note": "Đăng bài chi nhánh Dịch vụ làm mô hình"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "Zalo 0981 169 200",
         "task": "[Post Zalo]",
         "post_title": "𝗦𝗔 𝗕𝗔̀𝗡 𝗧𝗥𝗔𝗡𝗚 𝗧𝗥𝗔̣𝗜 𝗡𝗨𝗢̂𝗜 𝗧𝗢̂𝗠 𝗖𝗢̂𝗡𝗚 𝗡𝗚𝗛𝗘̣̂ 𝗖𝗔𝗢 🦐⚡",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng"
       },
       {
         "date": "31/08/2026",
         "channel": "Facebook Profile Song Anh",
         "task": "[Post FB Profile]",
         "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng"
       },
       {
         "date": "31/08/2026",
@@ -18653,14 +18772,17 @@
         "task": "[Post FB Group]",
         "post_title": "Bài đăng Sa bàn Triển Lãm B2B Thủy Sản",
         "link": "https://www.facebook.com/groups/152692778620733/posts/2232329680657022",
-        "performer": "Phạm Hoàng Tiến"
+        "performer": "Phạm Hoàng Tiến",
+        "note": "Sếp Tiến trực tiếp đăng vào Group M&A"
       },
       {
         "date": "31/08/2026",
-        "channel": "GBP Dịch vụ làm mô hình Song Anh",
-        "task": "[Post GBP]",
-        "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
-        "performer": "Phạm Hoàng Tiến (Agent Minh)"
+        "channel": "Pinterest @mo_hinh_song_anh",
+        "task": "[Post Pinterest]",
+        "post_title": "Lên lịch 4 Ghim Ngày 2 (Bảng: Mô hình nhà máy & Sản xuất)",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Mỹ",
+        "note": "Trợ lý Mỹ lên lịch ghim chuẩn SEO"
       }
     ]
   }
