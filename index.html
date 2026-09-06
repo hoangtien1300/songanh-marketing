@@ -12748,6 +12748,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             if (thCurrPosText) {
                 thCurrPosText.innerText = "Vị trí hiện tại (05/09/2026)";
             }
+            
+            // Dates for Mobile Card Labels
+            const oldDateShort = (timeFrame === '7d') ? "31/08" : "05/08";
+            const currDateShort = "05/09";
 
             // 2. Sort Keywords: Followed Keywords FIRST, then remaining by Priority & Rank
             const pinnedKeywords = [
@@ -12956,16 +12960,19 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                         </p>
                                     </div>
                                     <div class="flex flex-col items-end gap-1 shrink-0">
-                                        <span class="px-2.5 py-0.5 text-xs font-black rounded-lg bg-blue-50 text-brand-navy border border-blue-200 shadow-2xs font-mono">
-                                            Top ${gscPosNumStr}
-                                        </span>
+                                        <div class="text-right">
+                                            <span class="text-[9px] font-bold text-slate-500 block leading-none mb-1">MỚI (${currDateShort})</span>
+                                            <span class="px-2.5 py-0.5 text-xs font-black rounded-lg bg-blue-50 text-brand-navy border border-blue-200 shadow-2xs font-mono inline-block">
+                                                Top ${gscPosNumStr}
+                                            </span>
+                                        </div>
                                         ${changeHtml}
                                     </div>
                                 </div>
 
                                 <div class="grid grid-cols-3 gap-1.5 p-2 bg-slate-50/80 rounded-lg text-center text-[11px] border border-slate-100">
                                     <div>
-                                        <span class="text-[9.5px] text-slate-400 font-bold block">VỊ TRÍ CŨ</span>
+                                        <span class="text-[9.5px] text-slate-400 font-bold block">CŨ (${oldDateShort})</span>
                                         <span class="font-mono font-bold text-slate-700">Top ${initRankNumStr}</span>
                                     </div>
                                     <div>
