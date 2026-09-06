@@ -1,5 +1,5 @@
 {
-  "last_synced": "2026-09-05 09:06:37",
+  "last_synced": "2026-09-06 10:10:43",
   "system_info": {
     "app_name": "Song Anh Group - Ultimate Multi-Channel AI Marketing Suite",
     "version": "21.0",
@@ -6097,76 +6097,53 @@
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4, Thứ 6",
       "kpi_weekly": "3 Bài / Tuần",
-      "completed": "3 Bài",
-      "progress_percent": 100,
-      "status_text": "100% Hoàn Thành",
-      "color_class": "emerald",
-      "icon_class": "fa-square-check text-emerald-600"
+      "completed": "4 Bài",
+      "progress_percent": 1.3,
+      "status_text": "1.3% Đạt KPI",
+      "color_class": "amber",
+      "icon_class": "fa-square-check text-amber-500"
     },
     {
       "id": 2,
       "task_name": "[Re-Cmt FB] Fanpage Mô hình kiến trúc Song Anh",
-      "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+      "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Fanpage để duy trì hiển thị B2B và kéo dài vòng đời bài viết 10-14 ngày.",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 3, Thứ 5, Thứ 7",
       "kpi_weekly": "3 Lần / Tuần",
-      "completed": "1 Lượt",
-      "progress_percent": 33,
-      "status_text": "1/3 Lượt (Đang Thực Hiện)",
-      "color_class": "emerald",
-      "icon_class": "fa-square-check text-emerald-600",
-      "sop_5_steps": {
-        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
-        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
-        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
-        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
-        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
-      },
-      "last_run": "25/08/2026 14:30",
-      "next_run": "27/08/2026"
+      "completed": "4 Lần",
+      "progress_percent": 1.3,
+      "status_text": "1.3% Đạt KPI",
+      "color_class": "amber",
+      "icon_class": "fa-square-check text-amber-500"
     },
     {
       "id": 3,
       "task_name": "[Re-Cmt FB] Profile Song Anh",
-      "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+      "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Profile Song Anh để duy trì tương tác cá nhân B2B và mở rộng kết nối KTS/Chủ đầu tư 10-14 ngày.",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 3, Thứ 5, Thứ 7",
       "kpi_weekly": "3 Lần / Tuần",
-      "completed": "0 Lần",
-      "progress_percent": 0,
-      "status_text": "Duy trì",
+      "completed": "1 Lần",
+      "progress_percent": 33.3,
+      "status_text": "33.3% Đạt KPI",
       "color_class": "amber",
-      "icon_class": "fa-square-check text-amber-500",
-      "sop_5_steps": {
-        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
-        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
-        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
-        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
-        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
-      }
+      "icon_class": "fa-square-check text-amber-500"
     },
     {
       "id": 4,
       "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
-      "description": "SOP 5 Bước Re-Comment B2B: 1. Trigger: Cú pháp [Re-Cmt FB] [Tên Kênh]. 2. Nguồn Data: Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài gần nhất 1-3 ngày. 3. Xoay vòng 3 Option (60% Kỹ thuật 3D/LED/Mica - 20% Xưởng Nguyễn Xiển 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán 30p). 4. Báo cáo 3 phần: Link FB + 3 Option + Link Notion DB chuyển ngày. 5. Tần suất: 3 lượt/tuần (T3-T5-T7), tối đa 3 lần/bài (kéo dài 10-14 ngày).",
+      "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org để duy trì tương tác B2B quốc tế 10-14 ngày.",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 3, Thứ 5, Thứ 7",
       "kpi_weekly": "3 Lần / Tuần",
-      "completed": "0 Lần",
-      "progress_percent": 0,
-      "status_text": "Duy trì",
-      "color_class": "amber",
-      "icon_class": "fa-square-check text-amber-500",
-      "sop_5_steps": {
-        "step_1_trigger": "Nhận diện cú pháp task '[Re-Cmt FB] [Tên Kênh]' (Lấy tên Fanpage làm bộ lọc tài khoản).",
-        "step_2_data_source": "Kết nối Notion DB 'BẢNG CONTENT' (ID: 33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e) lấy bài đã xuất bản gần nhất 1-3 ngày.",
-        "step_3_options_rotation": "Xoay vòng 3 Option: 60% Kỹ thuật in 3D SLA/LED/Mica - 20% Năng lực xưởng Thủ Đức 7-15 ngày - 20% CTA Zalo 0929 22 4444 nhận dự toán trong 30p.",
-        "step_4_report_format": "Mẫu Báo Cáo 3 Phần: Link bài viết FB + 3 Option nội dung + Link trực tiếp bài viết trên Notion DB 'BẢNG CONTENT' để chuyển ngày.",
-        "step_5_frequency_limit": "3 Lượt/Tuần (Thứ 3 - Thứ 5 - Thứ 7), tối đa 3 lần/bài (kéo dài hiển thị 10 - 14 ngày)."
-      }
+      "completed": "2 Lần",
+      "progress_percent": 66.7,
+      "status_text": "66.7% Đạt KPI",
+      "color_class": "purple",
+      "icon_class": "fa-square-check text-purple-600"
     },
     {
       "id": 5,
@@ -6176,9 +6153,9 @@
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7",
       "kpi_weekly": "6 Group / Tuần",
-      "completed": "1 Group",
-      "progress_percent": 16.7,
-      "status_text": "16.7% Đạt KPI",
+      "completed": "2 Group",
+      "progress_percent": 33.3,
+      "status_text": "33.3% Đạt KPI",
       "color_class": "amber",
       "icon_class": "fa-square-check text-amber-500"
     },
@@ -6202,9 +6179,9 @@
       "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân. \\n ⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile). \\n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \\n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè'). \\n 🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
-      "frequency": "Thứ 2",
-      "kpi_weekly": "1 Bài / Tuần",
-      "completed": "1 Bài",
+      "frequency": "Thứ 2, Thứ 4, Thứ 6",
+      "kpi_weekly": "3 Bài / Tuần",
+      "completed": "3 Bài",
       "progress_percent": 100,
       "status_text": "100% Hoàn Thành",
       "color_class": "emerald",
@@ -6218,9 +6195,9 @@
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4",
       "kpi_weekly": "6 Group / Tuần",
-      "completed": "35 Group",
-      "progress_percent": 5.8,
-      "status_text": "5.8% Đạt KPI",
+      "completed": "0 Group",
+      "progress_percent": 0,
+      "status_text": "Duy trì",
       "color_class": "amber",
       "icon_class": "fa-square-check text-amber-500"
     },
@@ -6301,8 +6278,8 @@
       "assignee": "Phạm Hoàng Tiến",
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4, Thứ 6",
-      "kpi_weekly": "9 Bài / Tuần",
-      "completed": "9 Bài",
+      "kpi_weekly": "3 Bài / Tuần",
+      "completed": "3 Bài",
       "progress_percent": 100,
       "status_text": "100% Hoàn Thành",
       "color_class": "emerald",
@@ -16408,6 +16385,14 @@
   },
   "marketing_activity_log": [
     {
+      "id": 58,
+      "timestamp": "06/09/2026 10:15:00",
+      "module": "Hệ thống",
+      "action": "Tổng hợp & Đồng bộ 24 công việc duy trì marketing trong tuần (31/08 - 06/09) vào Notion BÁO CÁO CÔNG VIỆC TUẦN & Central Data",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
+      "status": "Hoàn Thành"
+    },
+    {
       "id": 57,
       "timestamp": "06/09/2026 09:22:24",
       "module": "Hệ thống",
@@ -18370,5 +18355,194 @@
       "example": "Nỗi lo sa bàn bị méo mó tỷ lệ ➔ Ảnh hưởng uy tín Chủ đầu tư ➔ Trải nghiệm chọn xưởng Song Anh ➔ Doanh số bùng nổ ngày mở bán ➔ Trọn gói thi công bảo hành trọn đời ➔ Đặt lịch khảo sát mặt bằng.",
       "bestFor": "Trang đích dịch vụ (Landing Page), Hồ sơ năng lực (Profile Doanh Nghiệp), Bài viết Website chuyên sâu."
     }
-  ]
+  ],
+  "weekly_maintenance_report": {
+    "week_period": "31/08/2026 - 06/09/2026",
+    "total_actions": 24,
+    "notion_report_url": "https://app.notion.com/p/B-O-C-O-C-NG-VI-C-TU-N-22e4b5e73d90805b82dfd221bc077348",
+    "summary_by_channel": {
+      "zalo_hotline_0981169200": 3,
+      "facebook_profile_song_anh": 4,
+      "facebook_groups": 3,
+      "facebook_fanpage_song_anh": 3,
+      "facebook_fanpage_architectural_model_org": 1,
+      "google_business_profile": 1,
+      "zalo_cskh_technical_0988_0386_0376": 6,
+      "pinterest_mo_hinh_song_anh": 3
+    },
+    "detailed_actions": [
+      {
+        "date": "05/09/2026",
+        "channel": "Zalo 0981169200",
+        "task": "[Post Zalo]",
+        "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Zalo 0386989087",
+        "task": "[Post Zalo]",
+        "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Zalo 0376415131",
+        "task": "[Post Zalo]",
+        "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Zalo 0988080440",
+        "task": "[Post Zalo]",
+        "post_title": "𝗖𝗛𝗨́𝗖 𝗠𝗨̛̀𝗡𝗚 𝗟𝗘̂̃ 𝗞𝗛𝗔𝗜 𝗚𝗜𝗔̉𝗡𝗚 𝗡𝗔̆𝗠 𝗛𝗢̣𝗖 𝗠𝗢̛́𝗜 𝟮𝟬𝟮𝟲 🎓📚",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Facebook Profile Song Anh",
+        "task": "[Post FB Profile]",
+        "post_title": "Chúc mừng Lễ Khai Giảng năm học mới 2026 (Option 1 ngắn gọn)",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Facebook Group M&A BĐS & KCN",
+        "task": "[Post FB Group]",
+        "post_title": "Bài đăng Dạng 3 (Năng lực bàn giao cấp tốc) Sa bàn Quy hoạch 1/500",
+        "link": "https://www.facebook.com/groups/152692778620733/posts/2236516053571718",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Facebook Group Chia Sẻ Dự Án Đầu Tư",
+        "task": "[Post FB Group]",
+        "post_title": "Bài đăng Dạng 3 (Năng lực bàn giao cấp tốc) Sa bàn Quy hoạch 1/500",
+        "link": "https://www.facebook.com/groups/1018858983450852/pending_posts/1328036282533119",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Fanpage Mô hình kiến trúc Song Anh",
+        "task": "[Re-Cmt FB]",
+        "post_title": "Re-comment duy trì hiển thị (Bump Top) bài Sa bàn tuyến Metro",
+        "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Pinterest @mo_hinh_song_anh",
+        "task": "[Post Pinterest]",
+        "post_title": "Xuất bản 4 Ghim Bảng 4 'Mô hình trường học & Bệnh viện' (Bệnh viện Quân y 175)",
+        "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế"
+      },
+      {
+        "date": "04/09/2026",
+        "channel": "Zalo 0981169200",
+        "task": "[Post Zalo]",
+        "post_title": "Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "04/09/2026",
+        "channel": "Zalo 0988080440",
+        "task": "[Post Zalo]",
+        "post_title": "Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "04/09/2026",
+        "channel": "Facebook Profile Song Anh",
+        "task": "[Post FB Profile]",
+        "post_title": "BỘ SƯU TẬP SA BÀN QUY HOẠCH ĐẠI ĐÔ THỊ & CĂN HỘ TỶ LỆ 1/500 SALES GALLERY",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "03/09/2026",
+        "channel": "Fanpage Architectural Model Org",
+        "task": "[Re-Cmt FB]",
+        "post_title": "Re-comment bài dự án quốc tế M Riverside Project",
+        "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
+      },
+      {
+        "date": "03/09/2026",
+        "channel": "Pinterest @mo_hinh_song_anh",
+        "task": "[Post Pinterest]",
+        "post_title": "Xuất bản bộ 4 Ghim Bảng Mô hình chung cư & Cao tầng",
+        "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế"
+      },
+      {
+        "date": "02/09/2026",
+        "channel": "Fanpage Mô hình kiến trúc Song Anh",
+        "task": "[Post FB Fanpage]",
+        "post_title": "Làm sa bàn dự án dọc tuyến Metro: Chọn sai tỷ lệ là hỏng toàn bộ trải nghiệm tại Sales Gallery?",
+        "link": "https://www.facebook.com/congtymohinhkientrucsonganh/",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "01/09/2026",
+        "channel": "Fanpage Mô hình kiến trúc Song Anh",
+        "task": "[Post FB Fanpage]",
+        "post_title": "Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "01/09/2026",
+        "channel": "Fanpage Mô hình kiến trúc Song Anh",
+        "task": "[Re-Cmt FB]",
+        "post_title": "Re-comment duy trì bài Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện",
+        "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
+      },
+      {
+        "date": "01/09/2026",
+        "channel": "Facebook Profile Song Anh",
+        "task": "[Re-Cmt FB]",
+        "post_title": "Re-comment kéo Top bài Sa bàn Trang trại Nuôi tôm Công nghệ cao",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "01/09/2026",
+        "channel": "Zalo 0988080440",
+        "task": "[Post Zalo]",
+        "post_title": "Công tác giao lắp và căn chỉnh sa bàn phục vụ sự kiện xúc tiến thương mại",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "01/09/2026",
+        "channel": "Zalo 0386989087",
+        "task": "[Post Zalo]",
+        "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "Zalo 0981169200",
+        "task": "[Post Zalo]",
+        "post_title": "𝗦𝗔 𝗕𝗔̀𝗡 𝗧𝗥𝗔𝗡𝗚 𝗧𝗥𝗔̣𝗜 𝗡𝗨𝗢̂𝗜 𝗧𝗢̂𝗠 𝗖𝗢̂𝗡𝗚 𝗡𝗚𝗛𝗘̣̂ 𝗖𝗔𝗢 🦐⚡",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "Facebook Profile Song Anh",
+        "task": "[Post FB Profile]",
+        "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "Facebook Group M&A BĐS",
+        "task": "[Post FB Group]",
+        "post_title": "Bài đăng Sa bàn Triển Lãm B2B Thủy Sản",
+        "link": "https://www.facebook.com/groups/152692778620733/posts/2232329680657022",
+        "performer": "Phạm Hoàng Tiến"
+      },
+      {
+        "date": "31/08/2026",
+        "channel": "GBP Dịch vụ làm mô hình Song Anh",
+        "task": "[Post GBP]",
+        "post_title": "🎯 ĐIỂM NHẤN THU HÚT KHÁCH THAM QUAN TẠI GIAN HÀNG TRIỂN LÃM & SỰ KIỆN",
+        "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
+      }
+    ]
+  }
 }
