@@ -16408,20 +16408,28 @@
   },
   "marketing_activity_log": [
     {
+      "id": 57,
+      "timestamp": "06/09/2026 09:22:24",
+      "module": "Hệ thống",
+      "action": "Tối giản Dashboard (Gỡ cụm 1-Click Mobile & 4 Thẻ KPI) và Ban hành Rule 12 Chuẩn hóa Nhật ký Hoạt động",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn Thành"
+    },
+    {
       "id": 56,
       "timestamp": "06/09/2026 07:27:28",
       "module": "SEO Website",
       "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 06/09/2026 & đồng bộ Google Sheets",
-      "performer": "Trí - Trợ lý SEO Master (Cloud Cron)",
+      "performer": "Tự động (Trí - Trợ lý SEO Master)",
       "status": "Hoàn Thành"
     },
     {
       "id": 55,
       "timestamp": "05/09/2026 11:29:50",
-      "module": "SEO Website",
+      "module": "Hệ thống",
       "action": "Nâng cấp Thanh Bộ Lọc Nhanh Từ Khóa (Live Search & Multi-Filter) cho Bảng Dữ Liệu SEO Master",
       "description": "Tích hợp thanh bộ lọc đa năng gồm: Ô tìm kiếm trực tiếp, Bộ lọc nhóm thứ hạng (Top 1-3, Top 4-10, Top 11-20, Top 20+), Bộ lọc xu hướng (Tăng/Giảm/Đứng yên), Bộ lọc nhóm ưu tiên (Ghim/P1/P2-P3), Nút Đặt lại và Bộ đếm kết quả thời gian thực.",
-      "performer": "Kiến - Trợ lý Lập Trình",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành"
     },
     {
@@ -16430,7 +16438,7 @@
       "module": "Facebook Group",
       "action": "Đăng bài Group Chia Sẻ Dự Án Đầu Tư & Xây Dựng (Profile Song Anh - Chờ duyệt)",
       "description": "Sếp Tiến đã đăng bài (Dạng 3: Năng lực bàn giao cấp tốc phục vụ sự kiện Sales Gallery) vào Group CHIA SẺ THÔNG TIN DỰ ÁN ĐẦU TƯ VÀ XÂY DỰNG; link chờ duyệt: https://www.facebook.com/groups/1018858983450852/pending_posts/1328036282533119; ghi nhận vào Notion DB LỊCH SỬ ĐĂNG BÀI GROUP (trạng thái: Đang chờ duyệt).",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến",
       "status": "Chờ Duyệt"
     },
     {
@@ -16439,7 +16447,7 @@
       "module": "Facebook Group",
       "action": "Đăng bài Group M&A BĐS & KCN thành công (Profile Song Anh - Dạng 3)",
       "description": "Sếp Tiến đã đăng bài công khai thành công vào Group M&A BĐS & KCN (Dạng 3: Năng lực bàn giao cấp tốc phục vụ sự kiện Sales Gallery); link: https://www.facebook.com/groups/152692778620733/posts/2236516053571718; đồng bộ Notion DB LỊCH SỬ ĐĂNG BÀI & RE-COMMENT GROUP và tự động lên lịch Re-comment 08/09/2026.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến",
       "status": "Hoàn Thành"
     },
     {
@@ -16448,7 +16456,7 @@
       "module": "Facebook Fanpage",
       "action": "Thực thi Re-comment Fanpage Mô hình kiến trúc Song Anh (Bài Sa bàn tuyến Metro - Option 1)",
       "description": "Sếp Tiến duyệt và đăng Option 1 Re-comment giải pháp kỹ thuật tỷ lệ kép & LED vi mạch vào bài viết Sa bàn tuyến Metro; đồng bộ Ngày Re-comment 05/09/2026, Lượt Re-cmt 1 trên BẢNG CONTENT Notion và lên lịch nhắc hẹn tiếp theo 08/09/2026.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành"
     },
     {
@@ -16456,7 +16464,7 @@
       "timestamp": "05/09/2026 09:40:35",
       "module": "Pinterest",
       "action": "Tối ưu 4 Ghim Bảng 4 \"Mô hình trường học & Bệnh viện\" (Quân Y 175, Truyền Máu Huyết Học CS2, Nhi Đồng 1)",
-      "performer": "Mỹ - Trợ Lý Design & Văn - Trợ Lý Nội Dung",
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
       "status": "Hoàn Thành"
     },
     {
@@ -16464,7 +16472,7 @@
       "timestamp": "05/09/2026 09:16:50",
       "module": "Pinterest",
       "action": "Tối ưu 4 Ghim Bảng 4 'Mô hình trường học & Bệnh viện' (UTS Nam Sài Gòn, PennSchool, RMIT Hà Nội)",
-      "performer": "Mỹ - Trợ Lý Design & Văn - Trợ Lý Nội Dung",
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
       "status": "Hoàn Thành"
     },
     {
@@ -16472,7 +16480,7 @@
       "timestamp": "04/09/2026 08:16:58",
       "module": "SEO Website",
       "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 04/09/2026 & đồng bộ Google Sheets",
-      "performer": "Trí - Trợ lý SEO Master (Cloud Cron)",
+      "performer": "Tự động (Trí - Trợ lý SEO Master)",
       "status": "Hoàn Thành"
     },
     {
@@ -16480,7 +16488,7 @@
       "timestamp": "04/09/2026 08:05:00",
       "module": "SEO Website",
       "action": "Cập nhật thứ hạng 22 từ khóa B2B ngày 04/09/2026 & nạp lịch sử Google Sheets",
-      "performer": "Trí - Trợ lý SEO Master",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành"
     },
     {
@@ -16488,28 +16496,30 @@
       "timestamp": "03/09/2026 11:43:00",
       "module": "Pinterest",
       "action": "Xuất bản bộ 4 Ghim Pinterest Dự án Cao Tầng chuẩn 2:3 (1000x1500px) dán Logo & Metadata SEO",
-      "performer": "Mỹ - Trợ Lý Design",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành"
     },
     {
       "timestamp": "2026-09-03 08:32:39",
       "date": "03/09/2026",
       "time": "08:32:26",
-      "module": "Notion Content",
+      "module": "Hệ thống",
       "action": "Đã xóa (Archived) hoàn tất 40 bản ghi bài viết Fanpage Architectural Model Org đã chuyển khỏi bảng DS Post Facebook (LƯU TRỮ - KHÔNG DÙNG).",
       "operator": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 46
+      "id": 46,
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "timestamp": "2026-09-03 08:27:14",
       "date": "03/09/2026",
       "time": "08:27:07",
-      "module": "Notion Content",
+      "module": "Hệ thống",
       "action": "Đồng bộ thành công 40 bài viết Fanpage Architectural Model Org từ bảng DS Post Facebook (Lưu Trữ) sang BẢNG CONTENT Notion DB.",
       "operator": "Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 45
+      "id": 45,
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "timestamp": "2026-09-03 08:23:24",
@@ -16519,7 +16529,8 @@
       "action": "Cập nhật bảng thứ hạng 22 từ khóa SEO B2B cốt lõi ngày 03/09/2026 (13 KWs Top 1-3, 9 KWs Top 4-10, 0 KW Ngoài Top 10).",
       "operator": "Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành",
-      "id": 44
+      "id": 44,
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master"
     },
     {
       "timestamp": "2026-09-01 13:29:17",
@@ -16529,23 +16540,26 @@
       "action": "Re-comment bài đăng Profile Song Anh (Option 2 - Sa bàn Trang trại nuôi tôm) thành công 100%.",
       "operator": "Phạm Hoàng Tiến",
       "status": "Hoàn Thành",
-      "id": 43
+      "id": 43,
+      "performer": "Phạm Hoàng Tiến"
     },
     {
       "timestamp": "01/09/2026 08:58:00",
-      "module": "Facebook",
+      "module": "Hệ thống",
       "action": "Sếp Tiến duyệt và đăng Option 3 Re-comment cho bài viết sa bàn RMIT trên Fanpage Mô hình kiến trúc Song Anh; đồng bộ ngày 01/09/2026 trên Notion BẢNG CONTENT.",
       "actor": "Phạm Hoàng Tiến",
       "status": "✅ Hoàn thành",
-      "id": 42
+      "id": 42,
+      "performer": "Phạm Hoàng Tiến"
     },
     {
       "timestamp": "31/08/2026 16:50:00",
-      "module": "Facebook",
+      "module": "Facebook Group",
       "action": "Sếp Tiến duyệt & đăng Option 1 bài đăng Sa bàn Triển lãm B2B vào Group M&A (https://www.facebook.com/groups/152692778620733/posts/2232329680657022); tự động hẹn lịch Re-comment ngày 03/09/2026.",
       "actor": "Phạm Hoàng Tiến",
       "status": "✅ Hoàn thành",
-      "id": 41
+      "id": 41,
+      "performer": "Phạm Hoàng Tiến"
     },
     {
       "timestamp": "31/08/2026 15:59:13",
@@ -16553,76 +16567,84 @@
       "action": "Lên lịch thành công 4 Ghim Ngày 2 (Bảng: Mô hình nhà máy & Sa bàn xưởng sản xuất - Song Anh). Tích lũy đạt 8/50 Ghim (16%)",
       "actor": "Phạm Hoàng Tiến & Minh Trợ Lý",
       "status": "✅ Hoàn Thành",
-      "id": 40
+      "id": 40,
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế"
     },
     {
       "timestamp": "31/08/2026 14:54:34",
-      "module": "Pinterest",
+      "module": "Hệ thống",
       "action": "Tạo Task Notion '[Post Pinterest] Chiến Dịch Kick-Off 50 Ghim (Tháng 09/2026)' kèm SOP chi tiết 14 ngày",
       "actor": "Minh - Trợ lý Điều Phối",
       "status": "✅ Hoàn Thành",
-      "id": 39
+      "id": 39,
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế"
     },
     {
       "timestamp": "31/08/2026 10:08",
       "category": "SEO Keyword Strategy",
       "action": "Ghi nhận chỉ đạo Sếp Thiện: Triển khai đánh từ khóa 'mô hình lịch sử'",
       "description": "Lên kế hoạch Silo SEO, bài viết E-E-A-T 3,200 từ và bộ ảnh phục dựng sa bàn di tích lịch sử / bảo tàng.",
-      "performer": "Sếp Thiện & Minh",
+      "performer": "Ban Giám Đốc (Sếp Thiện) & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 38
+      "id": 38,
+      "module": "SEO Website"
     },
     {
       "timestamp": "31/08/2026 08:30",
       "category": "Notion Task Management",
       "action": "Hoàn tất gom nhóm 89 tasks vào 7 Mục Tiêu Công Việc chuẩn trên Notion DB",
       "description": "Gán thành công thuộc tính 'MỤC TIÊU CÔNG VIỆC' cho 89 tasks: SEO Website (20), Facebook (19), GBP (9), Zalo (11), Visual Media (13), Tuyển dụng (6), Tự động hóa (11).",
-      "performer": "Kiến - Trợ lý Lập Trình & Minh",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 37
+      "id": 37,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "31/08/2026 07:15",
       "category": "SEO Website",
       "action": "Cập nhật dữ liệu thứ hạng 22 Từ Khóa B2B Real-time GSC đầu tuần",
       "description": "Đồng bộ snapshot thứ hạng 22 KWs ngày 31/08/2026: 7 Từ Khóa Top 1-3, 13 Từ Khóa Top 4-10. Tổng Organic Impressions đạt 24,750+, Clicks đạt 1,600+.",
-      "performer": "Trí - Trợ lý SEO Master & Minh",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành",
-      "id": 36
+      "id": 36,
+      "module": "SEO Website"
     },
     {
       "timestamp": "30/08/2026 19:18",
       "category": "SEO Google",
       "action": "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC ngày 30/08/2026",
       "description": "Đồng bộ thứ hạng Google Search Console 22 từ khóa: 20 KWs Top 3 - 10, tổng 22,972 Impressions, 1,113 Clicks.",
-      "performer": "Trí - Trợ lý SEO Master",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
       "status": "Hoàn Thành",
-      "id": 35
+      "id": 35,
+      "module": "SEO Website"
     },
     {
       "timestamp": "29/08/2026 09:55",
       "category": "Facebook",
       "action": "Thực thi Re-comment Fanpage: Sa bàn Trang trại Nuôi tôm Công nghệ cao",
       "description": "Sếp Tiến duyệt và cmt Option 2 (Tư vấn tỷ lệ 1/100 - 1/200 chia module tham gia hội chợ quốc tế); Đã cập nhật Ngày Re-cmt 29/08/2026 và Lượt Re-cmt 1 trên Notion DB.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 34
+      "id": 34,
+      "module": "Facebook Fanpage"
     },
     {
       "timestamp": "29/08/2026 09:12",
       "category": "Hệ Thống",
       "action": "Thiết lập & Kích hoạt thành công Song Anh Telegram Alert Bot",
       "description": "Kết nối thành công Telegram Bot @songanh_alert_bot với tài khoản Sếp Tiến (Chat ID: 1730306144); Đã bắn tin nhắn chào mừng và bản tin nhắc việc tự động từ Notion DB.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 33
+      "id": 33,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "28/08/2026 09:26",
       "category": "Web App",
       "action": "Phê duyệt & Khởi công xây dựng Tool AI Content Studio (Từ Ý Tưởng Đến Bài Đăng)",
       "description": "Sếp Tiến phê duyệt kế hoạch công cụ AI Content Studio biến ý tưởng thô thành bài viết đa kênh chuẩn B2B (Facebook, GBP, Web, Video, English); Minh đã giao đặc tả cho Kiến bắt tay lập trình Frontend & Engine.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
       "id": 32
     },
@@ -16631,54 +16653,60 @@
       "category": "Facebook",
       "action": "Thực thi Re-comment Group Bất Động Sản Long Thành - Nhơn Trạch",
       "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment (Tư vấn quy hoạch tỷ lệ 1/500 - 1/1000) vào Group Long Thành - Nhơn Trạch; cập nhật Ngày Re-comment 27/08/2026 và Lượt Re-cmt 1 (Lịch tiếp theo tự động 03/09/2026) trên Notion DB.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 31
+      "id": 31,
+      "module": "Facebook Group"
     },
     {
       "timestamp": "27/08/2026 09:36",
       "category": "Facebook",
       "action": "Thực thi Re-comment Fanpage Mô hình Song Anh (Bài M Riverside Đà Nẵng)",
       "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment tự nhiên chuẩn B2B vào bài viết M Riverside Đà Nẵng trên Fanpage; cập nhật Ngày Re-comment 27/08/2026 và Lượt Re-cmt 1 trên BẢNG CONTENT Notion.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 30
+      "id": 30,
+      "module": "Facebook Fanpage"
     },
     {
       "timestamp": "26/08/2026 14:26",
       "category": "Facebook",
       "action": "Thực thi Re-comment Group Bất Động Sản Long An (Fanpage Song Anh)",
       "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment vào bài đăng Group Bất Động Sản Long An; cập nhật ngày 26/08/2026 trên Notion DB LỊCH SỬ ĐĂNG BÀI GROUP (tự động lên lịch tiếp theo 02/09/2026).",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 29
+      "id": 29,
+      "module": "Facebook Group"
     },
     {
       "timestamp": "26/08/2026 11:58",
       "category": "GBP",
       "action": "Đăng bài GBP Dịch vụ làm mô hình kiến trúc Song Anh (Dự án Khải Hoàn Prime)",
       "description": "Sếp Tiến đã đăng bài Sa bàn Chung cư Khải Hoàn Prime lên GBP Dịch vụ kèm 05 ảnh thực tế xưởng Thủ Đức; cập nhật link thật https://share.google/RNRHomXeBSKhHXLGG và ngày 26/08/2026 trên Notion BẢNG CONTENT.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 28
+      "id": 28,
+      "module": "Google Business"
     },
     {
       "timestamp": "25/08/2026 16:35",
       "category": "Facebook",
       "action": "Thực thi Re-comment 3 Kênh Facebook và cập nhật ngày báo cáo Notion DB",
       "description": "Sếp Tiến duyệt và đăng Option 2 Re-comment cho Fanpage Song Anh (Sửa chữa sa bàn), Profile (Mô hình thiết bị 3D) và Fanpage English (World-class scale model); đồng bộ ngày 25/08/2026 trên Notion BẢNG CONTENT.",
-      "performer": "Phạm Hoàng Tiến & Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 27
+      "id": 27,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "25/08/2026 16:25",
       "category": "Facebook",
       "action": "Đóng gói 3 Quy trình Tiêu chuẩn (SOP) Re-Comment Fanpage, Profile & Fanpage Quốc Tế",
       "description": "Đóng gói SOP 5 bước kết nối BẢNG CONTENT Notion DB, tạo 3 Option nội dung B2B xoay vòng và mẫu báo cáo 3 phần kèm link Notion cho Sếp duyệt và chuyển ngày.",
-      "performer": "Minh - Marketing Manager",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 26
+      "id": 26,
+      "module": "Facebook Fanpage"
     },
     {
       "timestamp": "25/08/2026 16:00",
@@ -16694,7 +16722,7 @@
       "category": "SEO Website",
       "action": "Hoàn thiện Khung On-Page & Xuất bản Trang Báo Giá Cốt Lõi mohinhkientruc.org/mo-hinh-kien-truc/",
       "description": "Sếp Tiến trực tiếp đăng tải và định dạng bài viết 2.500+ từ chuẩn E-E-A-T, tích hợp khối CTA chuẩn B2B và gói Schema JSON-LD 5 thực thể (Article, Service, FAQ, ProfessionalService, Breadcrumb).",
-      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+      "performer": "Phạm Hoàng Tiến & Thắng - Trợ lý Kinh Doanh",
       "status": "Hoàn Thành",
       "id": 24
     },
@@ -16703,7 +16731,7 @@
       "category": "SEO Website",
       "action": "Sản xuất trọn bộ 06 ấn phẩm Media WebP độc bản cho Trang Báo Giá Cốt Lõi",
       "description": "Thiết kế 01 Thumbnail 1200x628px, 01 Hero Banner, 01 Infographic 4 Yếu tố định giá và 03 ảnh thực tế xưởng Thủ Đức & dự án Kỳ Anh, Trà Vinh gắn Watermark Logo Song Anh chuẩn.",
-      "performer": "Mỹ - Trợ lý Design",
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
       "status": "Hoàn Thành",
       "id": 23
     },
@@ -16712,7 +16740,7 @@
       "category": "Hệ Thống",
       "action": "Nâng cấp Logo Vector 4K khử răng cưa và ban hành Quy chuẩn thiết kế V3.1",
       "description": "Khử sạch 100% răng cưa logo, bổ sung stroke viền #141414 hiển thị sắc nét trên mọi nền, xuất bản file .svg và PNG Master 4K UHD (3388x952px); ban hành Unique Media Policy.",
-      "performer": "Mỹ - Trợ lý Design",
+      "performer": "Phạm Hoàng Tiến & Mỹ - Trợ lý Thiết Kế",
       "status": "Hoàn Thành",
       "id": 22
     },
@@ -16721,35 +16749,39 @@
       "category": "Web App",
       "action": "Tối giản hóa giao diện Web App Dashboard (#panel-home) phong cách Minimalist UI",
       "description": "Tinh gọn 4 Thẻ Hero KPIs số liệu lớn, chuyển 6 Trợ lý AI thành Grid Compact chống rối mắt, tối ưu bảng Lịch Sử Hoạt Động & Thao Tác Hệ Thống.",
-      "performer": "Kiến - Trợ lý Lập Trình",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
       "status": "Hoàn Thành",
-      "id": 21
+      "id": 21,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "25/08/2026 13:30",
       "category": "Facebook",
       "action": "Nâng cấp Modal 6 Trợ lý AI, Live Execution Tracker và kiểm thử Playwright 100% pass",
       "description": "Xây dựng interactive modal 3 mục (Nhiệm vụ - Skills - Live Tracker) cho 6 Trợ lý AI, tích hợp SOP [RE-CMT FB] vào Web App, kiểm thử 21 modules điều hướng 0 lỗi Console.",
-      "performer": "Kiến - Trợ lý Lập Trình",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 20
+      "id": 20,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "25/08/2026 12:00",
       "category": "SEO Website",
       "action": "Thiết lập cấu trúc thư mục lưu trữ riêng cho từng Trợ lý AI trên Google Drive",
       "description": "Khởi tạo và đồng bộ 100% tài liệu, bài viết, SOPs, script và kho ảnh vào các thư mục Drive riêng: Minh - Marketing Manager, Trí - Trợ lý SEO Master, Mỹ - Trợ Lý Design.",
-      "performer": "Minh - Marketing Manager & Toàn Đội AI",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối",
       "status": "Hoàn Thành",
-      "id": 19
+      "id": 19,
+      "module": "Hệ thống"
     },
     {
       "timestamp": "24/08/2026 17:17:14",
       "category": "GBP",
       "action": "Xuất bản bài đăng B2B tự động lên 2 địa điểm GBP (Thủ Đức & Q.1) kèm ảnh Thumbnail sa bàn nhà máy & Nút CTA 'Tìm hiểu thêm' dẫn về https://mohinhkientruc.org/mo-hinh-nha-may/",
-      "performer": "Kiến - Trợ lý Lập Trình & Minh - Trợ lý Điều Phối",
+      "performer": "Tự động",
       "status": "Hoàn Thành",
-      "id": 18
+      "id": 18,
+      "module": "Google Business"
     },
     {
       "timestamp": "24/08/2026 17:13:39",
@@ -16762,55 +16794,61 @@
     {
       "id": 16,
       "timestamp": "21/08/2026 08:45:00",
-      "module": "Facebook",
+      "module": "Facebook Group",
       "action": "Vận hành thực tế đăng bài Mô hình TOD 1/500 trên 5 Groups Facebook & đồng bộ kết quả duyệt bài",
       "executor": "Phạm Hoàng Tiến & Trợ lý Kiến",
       "status": "✅ Hoàn Thành",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến"
     },
     {
       "id": 15,
       "timestamp": "16/08/2026 08:30:00",
-      "module": "Web App Core System",
+      "module": "Hệ thống",
       "action": "Nâng cấp giao diện Web App Dashboard ver 21.0 đáp ứng responsive mượt mà 100%",
       "executor": "Kiến - Trợ lý Lập Trình",
       "status": "⚡ Real-time Auto Sync",
-      "category": "Web App"
+      "category": "Web App",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình"
     },
     {
       "id": 14,
       "timestamp": "16/08/2026 14:00:00",
-      "module": "SEO Off-Page & Entity",
+      "module": "SEO Website",
       "action": "Đồng bộ Social Entity & Rải link chia sẻ đa kênh Facebook, Zalo, LinkedIn",
       "executor": "Trí - Trợ lý SEO Master",
       "status": "✅ Hoàn Thành",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến & Thắng - Trợ lý Kinh Doanh"
     },
     {
       "id": 13,
       "timestamp": "17/08/2026 09:45:00",
-      "module": "Meta API & FB Groups",
+      "module": "Facebook Group",
       "action": "Quét tự động & lọc 35 Facebook Groups Kiến trúc BĐS tiềm năng mới",
       "executor": "Kiến - Trợ lý Lập Trình",
       "status": "⚡ Real-time Auto Sync",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Tự động"
     },
     {
       "id": 12,
       "timestamp": "17/08/2026 15:10:00",
-      "module": "Google Business Profile",
+      "module": "Facebook Profile",
       "action": "Phản hồi 100% đánh giá khách hàng B2B & Cập nhật bài đăng ưu đãi sa bàn KCN",
       "executor": "Phạm Hoàng Tiến",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "id": 11,
       "timestamp": "18/08/2026 11:30:00",
-      "module": "Zalo Marketing",
+      "module": "Facebook Profile",
       "action": "Đăng bài nhật ký thi công mô hình nhà máy tỷ lệ 1/500 lên 4 Zalo Profiles",
       "executor": "Văn - Trợ lý Nội Dung",
       "status": "✅ Hoàn Thành",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến & Thắng - Trợ lý Kinh Doanh"
     },
     {
       "id": 10,
@@ -16818,7 +16856,8 @@
       "module": "SEO Website",
       "action": "Kiểm tra Cannibalization & Tối ưu 5 URL Core B2B Sa Bàn Đô Thị",
       "executor": "Trí - Trợ lý SEO Master",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master"
     },
     {
       "id": 9,
@@ -16827,16 +16866,18 @@
       "action": "Đăng bài Re-comment kéo bài viết sa bàn quy hoạch lên Top Feeds Facebook Profile",
       "executor": "Phạm Hoàng Tiến",
       "status": "✅ Hoàn Thành",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "id": 8,
       "timestamp": "19/08/2026 14:30:00",
-      "module": "SEO On-Page",
+      "module": "Hệ thống",
       "action": "Tối ưu Schema JSON-LD Product & LocalBusiness cho website mohinhkientruc.org",
       "executor": "Thông - Trợ lý Website",
       "status": "✅ Hoàn Thành",
-      "category": "SEO Website"
+      "category": "SEO Website",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình"
     },
     {
       "id": 7,
@@ -16844,57 +16885,64 @@
       "module": "Facebook Fanpage",
       "action": "Thu thập Insights Meta API: 1,128 Followers Live, 10 Views, 86 Leads Inbox",
       "executor": "Kiến - Trợ lý Lập Trình",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "id": 6,
       "timestamp": "20/08/2026 09:00:00",
-      "module": "Notion Task Management",
+      "module": "Hệ thống",
       "action": "Khởi tạo & Phân công 15 Active Tasks Marketing Mô hình Kiến trúc Tuần 34",
       "executor": "Minh - Trợ lý Điều Phối",
-      "status": "⚡ Real-time Auto Sync"
+      "status": "⚡ Real-time Auto Sync",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "id": 5,
       "timestamp": "20/08/2026 11:15:00",
-      "module": "Zalo OA & Zalo Personal",
+      "module": "Zalo Marketing",
       "action": "Gửi báo giá sa bàn quy hoạch KCN cho 8 Khách hàng B2B Inbox",
       "executor": "Phạm Hoàng Tiến",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Thắng - Trợ lý Kinh Doanh"
     },
     {
       "id": 4,
       "timestamp": "20/08/2026 14:20:00",
-      "module": "Google Business Profile",
+      "module": "Facebook Profile",
       "action": "Cập nhật hình ảnh dự án mới & Đồng bộ đánh giá 4.9⭐ trên 3 Chi nhánh (TP.HCM, Hà Nội, Cần Thơ)",
       "executor": "Phạm Hoàng Tiến",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     },
     {
       "id": 3,
       "timestamp": "20/08/2026 15:36:07",
-      "module": "Facebook",
+      "module": "Facebook Group",
       "action": "Đăng bài viết dự án Sa Bàn Cao Tầng vào 15 Groups M&A Kiến Trúc & BĐS",
       "executor": "Văn - Trợ lý Nội Dung",
       "status": "✅ Hoàn Thành",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến"
     },
     {
       "id": 2,
       "timestamp": "20/08/2026 16:09:28",
-      "module": "SEO Google (GSC & GA4)",
+      "module": "SEO Website",
       "action": "Cập nhật thứ hạng 22 Từ Khóa B2B Real-time GSC (Top 1-3: 13 KWs, Top 4-10: 9 KWs)",
       "executor": "Trí - Trợ lý SEO Master",
-      "status": "✅ Hoàn Thành"
+      "status": "✅ Hoàn Thành",
+      "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master"
     },
     {
       "id": 1,
       "timestamp": "20/08/2026 16:10:00",
-      "module": "Meta API & FB Groups",
+      "module": "Hệ thống",
       "action": "Đồng bộ 259 Facebook Groups Profile & Fanpage sang Notion Database thành công",
       "executor": "Kiến - Trợ lý Lập Trình",
       "status": "⚡ Real-time Auto Sync",
-      "category": "Facebook"
+      "category": "Facebook",
+      "performer": "Phạm Hoàng Tiến & Minh - Trợ lý Điều Phối"
     }
   ],
   "ai_agents_info": [
