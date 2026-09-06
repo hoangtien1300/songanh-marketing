@@ -1,0 +1,12 @@
+{
+  "bot_token": "8852452435:AAE9UYCPdCECPDfiV8M3cq2oycFqXV_wMpg",
+  "chat_id": 1730306144,
+  "user_name": "Steven",
+  "bot_username": "songanh_alert_bot",
+  "is_active": true,
+  "alert_times": [
+    "08:30",
+    "14:00",
+    "20:00"
+  ]
+}
