@@ -1144,6 +1144,18 @@
                             <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
                         </button>
                     </div>
+
+                    <!-- 👥 NHÂN SỰ SONG ANH -->
+                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-2 shadow-2xs">
+                        <button onclick="selectModule('nhan-su')" id="sub-nhan-su" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-indigo-100/70 transition">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-users-gear text-indigo-600 w-4"></i>
+                                <span class="font-extrabold text-slate-900">👥 Nhân Sự</span>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">18 NS</span>
+                        </button>
+                    </div>
+
                     
                     <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
                     <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
@@ -5204,7 +5216,346 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             </div>
         </div>
 
-        </main>
+        
+            <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
+            <div id="panel-nhan-su" class="module-panel space-y-5 hidden" style="display: none;">
+                <!-- Header Banner -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 px-5 py-4 rounded-2xl text-white shadow-md border border-indigo-800/40">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 flex items-center justify-center text-lg shadow-inner">
+                            <i class="fa-solid fa-users-gear"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-sm sm:text-base font-heading font-black text-white flex items-center gap-2">
+                                <span>Báo Cáo & Quản Trị Nhân Sự Song Anh</span>
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Notion Live Sync
+                                </span>
+                            </h2>
+                            <p class="text-[11px] text-indigo-200/80 font-medium">Báo cáo tuần chuẩn hóa (Đã loại trừ Part-time & Sếp) | Cập nhật định kỳ</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[11px] font-bold px-3 py-1.5 rounded-xl bg-white/10 border border-white/15 text-white flex items-center gap-1.5">
+                            <i class="fa-solid fa-calendar-week text-indigo-400"></i> Tuần 31/08 – 06/09/2026
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 4 KPI Header Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tổng Quân Số</span>
+                            <div class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-id-card"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span class="text-2xl font-black text-slate-900">18</span>
+                            <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">100% Đi làm</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">16 Chính thức + 02 Thử việc</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Khối Văn Phòng</span>
+                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span class="text-2xl font-black text-slate-900">03</span>
+                            <span class="text-[10px] text-slate-500 font-semibold">Hành chính</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Marketing, Kế toán & Kho, Sales</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Khối Kỹ Thuật</span>
+                            <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-cubes-stacked"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span class="text-2xl font-black text-slate-900">15</span>
+                            <span class="text-[10px] text-indigo-600 font-bold bg-indigo-50 px-1.5 py-0.5 rounded">3 Nhóm Xưởng</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thế Anh (5) + Huynh (5) + Hiển (5)</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Đang Thử Việc</span>
+                            <div class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-xs font-bold">
+                                <i class="fa-solid fa-user-clock"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span class="text-2xl font-black text-slate-900">02</span>
+                            <span class="text-[10px] text-rose-600 font-bold bg-rose-50 px-1.5 py-0.5 rounded">Kỹ thuật xưởng</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thành (31/8) & Luân (07/9)</p>
+                    </div>
+                </div>
+
+                <!-- Bảng Ma Trận Tổng Hợp Quân Số -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                    <div class="px-5 py-3.5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-table-cells text-indigo-600"></i>
+                            <h3 class="text-xs font-heading font-black text-slate-800 uppercase tracking-wider">Ma Trận Phân Bổ Quân Số Theo Phòng Ban & Hình Thức Làm Việc</h3>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2.5 py-1 rounded-lg">Không bao gồm Part-time</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100/70 border-b border-slate-200 text-slate-700 text-[11px] font-black uppercase">
+                                    <th class="py-3 px-4">Phòng Ban / Nhóm Kỹ Thuật</th>
+                                    <th class="py-3 px-4 text-center">Hành Chính</th>
+                                    <th class="py-3 px-4 text-center">Cơ Bản + Khoán Việc</th>
+                                    <th class="py-3 px-4 text-center">Thử Việc</th>
+                                    <th class="py-3 px-4 text-right font-black text-brand-navy">Tổng Sĩ Số</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-800 font-medium">
+                                <tr class="hover:bg-slate-50/80 font-bold bg-amber-50/30">
+                                    <td class="py-2.5 px-4 flex items-center gap-2">
+                                        <i class="fa-solid fa-briefcase text-amber-600"></i> Khối Văn Phòng
+                                    </td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-amber-700">03</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 font-bold bg-indigo-50/30">
+                                    <td class="py-2.5 px-4 flex items-center gap-2">
+                                        <i class="fa-solid fa-cubes text-indigo-600"></i> Khối Kỹ Thuật (Tổng)
+                                    </td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">10</td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-rose-600">02</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-indigo-700">15</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 text-slate-700">
+                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Nhóm Thế Anh
+                                    </td>
+                                    <td class="py-2 px-4 text-center">01</td>
+                                    <td class="py-2 px-4 text-center font-semibold">04</td>
+                                    <td class="py-2 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 text-slate-700">
+                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Nhóm Huynh
+                                    </td>
+                                    <td class="py-2 px-4 text-center">01</td>
+                                    <td class="py-2 px-4 text-center font-semibold">04</td>
+                                    <td class="py-2 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80 text-slate-700">
+                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Nhóm Hiển
+                                    </td>
+                                    <td class="py-2 px-4 text-center">01</td>
+                                    <td class="py-2 px-4 text-center font-semibold">02</td>
+                                    <td class="py-2 px-4 text-center font-bold text-rose-600">02</td>
+                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="bg-slate-900 text-white font-black text-xs">
+                                    <td class="py-3 px-4 uppercase tracking-wider">TỔNG SĨ SỐ NHÂN SỰ CÔNG TY</td>
+                                    <td class="py-3 px-4 text-center text-emerald-400 text-sm">06</td>
+                                    <td class="py-3 px-4 text-center text-blue-400 text-sm">10</td>
+                                    <td class="py-3 px-4 text-center text-rose-400 text-sm">02</td>
+                                    <td class="py-3 px-4 text-right text-amber-300 text-base font-extrabold">18</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Danh Sách Chi Tiết 18 Nhân Sự Đang Làm -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                    <!-- Khối Văn Phòng -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                        <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-building-user text-amber-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900">Khối Văn Phòng (03 Nhân sự)</h4>
+                            </div>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Hành chính 100%</span>
+                        </div>
+                        <div class="divide-y divide-slate-100 p-2 space-y-1">
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">PHẠM HOÀNG TIẾN</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-indigo-700">Marketing</span> | Vị trí: Marketing</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">NGUYỄN THỊ KIM THỦY</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-amber-700">Kế toán & Kho</span> | Vị trí: Kế toán & Thủ kho</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">VÕ MINH SANG</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-blue-700">Kinh doanh</span> | Vị trí: Nhân viên Sales</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Kỹ Thuật: Nhóm Thế Anh -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                        <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-draw-polygon text-blue-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900">Nhóm Thế Anh (05 Nhân sự)</h4>
+                            </div>
+                            <span class="text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Quy hoạch & Laser/CNC</span>
+                        </div>
+                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">HOÀNG THẾ ANH</span>
+                                    <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                </div>
+                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
+                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật thiết kế bóc tách)</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">NGUYỄN HỒNG ĐẠT</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">PHẠM THẾ SƠN</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">MAI HOÀNG PHÚC</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Kỹ Thuật: Nhóm Huynh -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                        <div class="px-4 py-3 bg-purple-50/70 border-b border-purple-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-city text-purple-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900">Nhóm Huynh (05 Nhân sự)</h4>
+                            </div>
+                            <span class="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">Cao tầng & Kết cấu LED</span>
+                        </div>
+                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">MAI XUÂN HUYNH</span>
+                                    <span class="text-[10px] text-purple-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                </div>
+                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
+                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">TRẦN VĂN HÙNG</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">NGUYỄN TRỌNG ÂN</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">DIÊM THỊ DIỄM QUỲNH</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Khối Kỹ Thuật: Nhóm Hiển -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                        <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-tree text-emerald-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900">Nhóm Hiển (05 Nhân sự)</h4>
+                            </div>
+                            <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Cảnh quan & Hoàn thiện</span>
+                        </div>
+                        <div class="divide-y divide-slate-100 p-2 space-y-0.5 text-xs">
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">PHAN MINH HIỂN</span>
+                                    <span class="text-[10px] text-emerald-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                </div>
+                                <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <div>
+                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
+                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">LA NHẬT NAM</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between bg-rose-50/40 border border-rose-100 rounded-lg">
+                                <div>
+                                    <span class="font-bold text-slate-900">Hoàng Lê Công Thành</span>
+                                    <span class="text-[10px] text-rose-600 font-extrabold ml-1.5">(Thử việc - Hết hạn 31/8)</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">Thử việc</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between bg-rose-50/40 border border-rose-100 rounded-lg">
+                                <div>
+                                    <span class="font-bold text-slate-900">Phạm Vũ Luân</span>
+                                    <span class="text-[10px] text-rose-600 font-extrabold ml-1.5">(Thử việc - Hết hạn 07/9)</span>
+                                </div>
+                                <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded">Thử việc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Section: Tuyển Dụng & Onboarding -->
+                <div class="bg-gradient-to-br from-indigo-50/80 via-white to-blue-50/80 p-4 rounded-2xl border border-indigo-100 text-xs space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-slate-900 flex items-center gap-1.5 text-xs">
+                            <i class="fa-solid fa-bullhorn text-indigo-600"></i> Tiến Độ Tuyển Dụng Kỹ Thuật Viên Mô Hình Mới
+                        </span>
+                        <span class="text-[10px] font-bold bg-indigo-600 text-white px-2 py-0.5 rounded-full">Tiếp nhận 08/09/2026</span>
+                    </div>
+                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
+                        Đã tiếp nhận <strong>04 hồ sơ ứng viên</strong>, phỏng vấn nhanh và tuyển chọn <strong>02 ứng viên Kỹ thuật Mô hình đạt chuẩn</strong> (KTS ĐH Kiến Trúc TP.HCM và Kỹ thuật viên bóc tách Laser/CNC). Lộ trình thử việc 15 ngày tại xưởng sẽ bắt đầu từ <strong>Thứ Ba (08/09/2026)</strong>.
+                    </p>
+                </div>
+            </div>
+
+</main>
     </div>
 
     <!-- Notification Toast -->
@@ -11147,7 +11498,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
         let marketingActivityLog = [
     {
-        "id": 75,
+        "id": 76,
         "timestamp": "06/09/2026 10:15:00",
         "module": "Hệ thống",
         "action": "Tổng hợp & Đồng bộ 24 công việc duy trì marketing trong tuần (31/08 - 06/09) vào Notion BÁO CÁO CÔNG VIỆC TUẦN & Central Data",
@@ -11155,7 +11506,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         "status": "Hoàn Thành"
     },
     {
-        "id": 74,
+        "id": 75,
         "timestamp": "06/09/2026 09:22:24",
         "module": "Hệ thống",
         "action": "Tối giản Dashboard (Gỡ cụm 1-Click Mobile & 4 Thẻ KPI) và Ban hành Rule 12 Chuẩn hóa Nhật ký Hoạt động",
@@ -11163,11 +11514,19 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         "status": "Hoàn Thành"
     },
     {
-        "id": 73,
+        "id": 74,
         "timestamp": "06/09/2026 07:27:28",
         "module": "SEO Website",
         "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 06/09/2026 & đồng bộ Google Sheets",
         "performer": "Tự động (Trí - Trợ lý SEO Master)",
+        "status": "Hoàn Thành"
+    },
+    {
+        "id": 73,
+        "timestamp": "05/09/2026 17:00:00",
+        "module": "SEO Website",
+        "action": "[SEO Website] Cập nhật bài viết & On-Page SEO: 'Mô hình chung cư' (mohinhkientruc.org) tối ưu Content Freshness & RankMath",
+        "performer": "Phạm Hoàng Tiến (Agent Trí)",
         "status": "Hoàn Thành"
     },
     {

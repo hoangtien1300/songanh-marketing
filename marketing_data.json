@@ -16385,7 +16385,7 @@
   },
   "marketing_activity_log": [
     {
-      "id": 75,
+      "id": 76,
       "timestamp": "06/09/2026 10:15:00",
       "module": "Hệ thống",
       "action": "Tổng hợp & Đồng bộ 24 công việc duy trì marketing trong tuần (31/08 - 06/09) vào Notion BÁO CÁO CÔNG VIỆC TUẦN & Central Data",
@@ -16393,7 +16393,7 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 74,
+      "id": 75,
       "timestamp": "06/09/2026 09:22:24",
       "module": "Hệ thống",
       "action": "Tối giản Dashboard (Gỡ cụm 1-Click Mobile & 4 Thẻ KPI) và Ban hành Rule 12 Chuẩn hóa Nhật ký Hoạt động",
@@ -16401,11 +16401,19 @@
       "status": "Hoàn Thành"
     },
     {
-      "id": 73,
+      "id": 74,
       "timestamp": "06/09/2026 07:27:28",
       "module": "SEO Website",
       "action": "Tự động 06:30: Check thứ hạng 22 từ khóa B2B ngày 06/09/2026 & đồng bộ Google Sheets",
       "performer": "Tự động (Trí - Trợ lý SEO Master)",
+      "status": "Hoàn Thành"
+    },
+    {
+      "id": 73,
+      "timestamp": "05/09/2026 17:00:00",
+      "module": "SEO Website",
+      "action": "[SEO Website] Cập nhật bài viết & On-Page SEO: 'Mô hình chung cư' (mohinhkientruc.org) tối ưu Content Freshness & RankMath",
+      "performer": "Phạm Hoàng Tiến (Agent Trí)",
       "status": "Hoàn Thành"
     },
     {
@@ -18494,7 +18502,7 @@
   ],
   "weekly_maintenance_report": {
     "week_period": "31/08/2026 - 06/09/2026",
-    "total_actions": 31,
+    "total_actions": 32,
     "notion_report_url": "https://app.notion.com/p/B-O-C-O-C-NG-VI-C-TU-N-22e4b5e73d90805b82dfd221bc077348",
     "summary_by_channel": {
       "google_business_profile": 5,
@@ -18507,7 +18515,8 @@
       "zalo_tu_van_0386989087_sang": 2,
       "zalo_ky_thuat_0376415131_sang": 1,
       "facebook_fanpage_architectural_model_org": 1,
-      "joint_fb_group_vat_lieu_mo_hinh": 1
+      "joint_fb_group_vat_lieu_mo_hinh": 1,
+      "seo_website_mohinhkientruc": 1
     },
     "detailed_actions": [
       {
@@ -18783,6 +18792,15 @@
         "performer": "Phạm Hoàng Tiến",
         "sub_performer": "Agent Mỹ",
         "note": "Trợ lý Mỹ lên lịch ghim chuẩn SEO"
+      },
+      {
+        "date": "05/09/2026",
+        "channel": "Website mohinhkientruc.org",
+        "task": "[SEO Website | Update Post]",
+        "post_title": "Cập nhật bài viết Master SEO: 'Mô hình chung cư' (Tối ưu On-Page, hình ảnh xưởng & RankMath)",
+        "performer": "Phạm Hoàng Tiến",
+        "sub_performer": "Agent Trí",
+        "note": "Sếp Tiến cập nhật nội dung & SEO On-Page, Trợ lý Trí hỗ trợ audit từ khóa"
       }
     ]
   }
