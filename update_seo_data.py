@@ -18,7 +18,7 @@ JSON_PATH = os.path.join(APP_DIR, "marketing_data.json")
 CSV_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.csv")
 XLSX_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.xlsx")
 
-base_date = datetime.date(2026, 9, 4)
+base_date = datetime.date(2026, 9, 6)
 dates = [(base_date - datetime.timedelta(days=i)).strftime("%d/%m/%Y") for i in range(30, -1, -1)]
 
 
@@ -269,7 +269,7 @@ for item in raw_keywords_info:
         "intent": item["intent"],
         "priority": item["priority"],
         "silo": item["silo"],
-        "last_updated": "04/09/2026 (Mới Nhất Real-time)",
+        "last_updated": "06/09/2026 (Mới Nhất Real-time)",
         "highlight": item["highlight"],
         "gsc_7d": item["gsc_7d"],
         "gsc_30d": item["gsc_30d"],
