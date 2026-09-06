@@ -819,7 +819,7 @@
 
         /* Collapsible accordion transition */
         .submenu-container { max-height: 0; overflow: hidden; transition: max-height 0.25s ease-in-out; }
-        .submenu-container.open { max-height: 500px; }
+        .submenu-container.open { max-height: 2500px; }
 
         /* Sidebar toggle transition Desktop & Mobile */
         #sidebar {
@@ -1145,110 +1145,125 @@
                         </button>
                     </div>
 
-                    <!-- 👥 NHÂN SỰ SONG ANH -->
+                    <!-- 📢 MỤC MARKETING (ACCORDION CHA) -->
+                    <div class="accordion-group rounded-xl border border-sky-200 bg-sky-50/60 overflow-hidden mb-2 shadow-2xs">
+                        <button onclick="toggleAccordion('acc-marketing')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-sky-100/80 transition">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-bullhorn text-sky-600 w-4"></i>
+                                <span class="font-extrabold text-slate-900">📢 Marketing</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-sky-100 text-sky-700 font-bold">7 Kênh</span>
+                                <i id="icon-acc-marketing" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-300 rotate-180"></i>
+                            </div>
+                        </button>
+                        
+                        <div id="acc-marketing" class="submenu-container open bg-white border-t border-sky-100 p-1 space-y-1">
+                            <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-globe text-sky-600 w-4"></i>
+                                        <span class="text-[11.5px]">SEO Website</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                        <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                                    </div>
+                                </button>
+                                
+                                <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
+                                    <div class="py-1 px-1 space-y-0.5">
+                                        <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🔍 Kiểm Tra Audit</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🔑 Theo Dõi Từ Khóa</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">📄 On-Page &amp; Schema</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🛡️ Ăn Thịt Từ Khóa</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🔗 Nội Dung &amp; Link</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🌐 Off-Page &amp; Entity</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between gap-1">
+                                            <span class="truncate">🏆 Đối Thủ Top 1</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. GOOGLE BUSINESS -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span class="text-[11.5px]">Google Business</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                            </div>
+
+                            <!-- 3. FACEBOOK -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span class="text-[11.5px]">Facebook</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                            </div>
+
+                            <!-- 4. ZALO MARKETING -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span class="text-[11.5px]">Zalo Marketing</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                </button>
+                            </div>
+
+                            <!-- 5. X.COM -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span class="text-[11.5px]">X.com</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                            </div>
+
+                            <!-- 6. TIKTOK -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span class="text-[11.5px]">TikTok</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                            </div>
+
+                            <!-- 7. YOUTUBE -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/70 overflow-hidden">
+                                <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span class="text-[11.5px]">YouTube</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 👥 NHÂN SỰ SONG ANH (ĐẶT SAU YOUTUBE / KHỐI MARKETING) -->
                     <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-2 shadow-2xs">
                         <button onclick="selectModule('nhan-su')" id="sub-nhan-su" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-indigo-100/70 transition">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-users-gear text-indigo-600 w-4"></i>
                                 <span class="font-extrabold text-slate-900">👥 Nhân Sự</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">18 NS</span>
-                        </button>
-                    </div>
-
-                    
-                    <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-globe text-sky-600 w-4"></i>
-                                <span>SEO Website</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
-                            </div>
-                        </button>
-                        
-                        <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
-                            <div class="py-1 pl-2">
-                                <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔍 Kiểm Tra Audit</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                                <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔑 Theo Dõi Từ Khóa</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                                <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>📄 On-Page &amp; Schema</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                                <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🛡️ Ăn Thịt Từ Khóa</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                                <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔗 Nội Dung &amp; Link</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                                <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🌐 Off-Page &amp; Entity</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                                </button>
-                                <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🏆 Đối Thủ Top 1</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. GOOGLE BUSINESS -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span>Google Business</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 3. FACEBOOK -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span>Facebook</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 4. ZALO MARKETING -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span>Zalo Marketing</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 5. X.COM -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                        </button>
-                    </div>
-
-                    <!-- 6. TIKTOK -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                        </button>
-                    </div>
-
-                    <!-- 7. YOUTUBE -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">20 NS</span>
                         </button>
                     </div>
 
@@ -5217,6 +5232,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
 
         
+            
             <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
             <div id="panel-nhan-su" class="module-panel space-y-5 hidden" style="display: none;">
                 <!-- Header Banner -->
@@ -5232,7 +5248,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Notion Live Sync
                                 </span>
                             </h2>
-                            <p class="text-[11px] text-indigo-200/80 font-medium">Báo cáo tuần chuẩn hóa (Đã loại trừ Part-time & Sếp) | Cập nhật định kỳ</p>
+                            <p class="text-[11px] text-indigo-200/80 font-medium">Tuần 31/08 – 06/09/2026 | Chuẩn hóa 4 Khối / Nhóm (Đã loại Part-time & Sếp)</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -5252,10 +5268,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             </div>
                         </div>
                         <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">18</span>
-                            <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">100% Đi làm</span>
+                            <span class="text-2xl font-black text-slate-900">20</span>
+                            <span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">100% Hoạt động</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">16 Chính thức + 02 Thử việc</p>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">16 Chính thức + 02 CTV + 02 Thử việc</p>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
@@ -5266,10 +5282,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             </div>
                         </div>
                         <div class="mt-2 flex items-baseline gap-2">
-                            <span class="text-2xl font-black text-slate-900">03</span>
-                            <span class="text-[10px] text-slate-500 font-semibold">Hành chính</span>
+                            <span class="text-2xl font-black text-slate-900">05</span>
+                            <span class="text-[10px] text-slate-500 font-semibold">03 CT + 02 CTV</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Marketing, Kế toán & Kho, Sales</p>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Marketing, Kế toán & Kho, Sales, CTV</p>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
@@ -5283,7 +5299,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <span class="text-2xl font-black text-slate-900">15</span>
                             <span class="text-[10px] text-indigo-600 font-bold bg-indigo-50 px-1.5 py-0.5 rounded">3 Nhóm Xưởng</span>
                         </div>
-                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thế Anh (5) + Huynh (5) + Hiển (5)</p>
+                        <p class="text-[10px] text-slate-400 mt-1 font-medium">Thế Anh (4) + Huynh (5) + Hiển (6)</p>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-md transition">
@@ -5295,18 +5311,18 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </div>
                         <div class="mt-2 flex items-baseline gap-2">
                             <span class="text-2xl font-black text-slate-900">02</span>
-                            <span class="text-[10px] text-rose-600 font-bold bg-rose-50 px-1.5 py-0.5 rounded">Kỹ thuật xưởng</span>
+                            <span class="text-[10px] text-rose-600 font-bold bg-rose-50 px-1.5 py-0.5 rounded">Nhóm Hiển</span>
                         </div>
                         <p class="text-[10px] text-slate-400 mt-1 font-medium">Thành (31/8) & Luân (07/9)</p>
                     </div>
                 </div>
 
-                <!-- Bảng Ma Trận Tổng Hợp Quân Số -->
+                <!-- Bảng Ma Trận Tổng Hợp Quân Số (Có Cột CTV và Không Đếm Trùng) -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
                     <div class="px-5 py-3.5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-table-cells text-indigo-600"></i>
-                            <h3 class="text-xs font-heading font-black text-slate-800 uppercase tracking-wider">Ma Trận Phân Bổ Quân Số Theo Phòng Ban & Hình Thức Làm Việc</h3>
+                            <h3 class="text-xs font-heading font-black text-slate-800 uppercase tracking-wider">Ma Trận Phân Bổ Quân Số Theo Phòng Ban / Nhóm & Hình Thức Làm Việc</h3>
                         </div>
                         <span class="text-[10px] font-bold text-slate-500 bg-white border border-slate-200 px-2.5 py-1 rounded-lg">Không bao gồm Part-time</span>
                     </div>
@@ -5314,58 +5330,54 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         <table class="w-full text-left text-xs border-collapse">
                             <thead>
                                 <tr class="bg-slate-100/70 border-b border-slate-200 text-slate-700 text-[11px] font-black uppercase">
-                                    <th class="py-3 px-4">Phòng Ban / Nhóm Kỹ Thuật</th>
+                                    <th class="py-3 px-4">Phòng Ban / Nhóm</th>
                                     <th class="py-3 px-4 text-center">Hành Chính</th>
                                     <th class="py-3 px-4 text-center">Cơ Bản + Khoán Việc</th>
                                     <th class="py-3 px-4 text-center">Thử Việc</th>
-                                    <th class="py-3 px-4 text-right font-black text-brand-navy">Tổng Sĩ Số</th>
+                                    <th class="py-3 px-4 text-center">Cộng Tác Viên</th>
+                                    <th class="py-3 px-4 text-right font-black text-brand-navy">TỔNG SĨ SỐ</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100 text-slate-800 font-medium">
-                                <tr class="hover:bg-slate-50/80 font-bold bg-amber-50/30">
-                                    <td class="py-2.5 px-4 flex items-center gap-2">
-                                        <i class="fa-solid fa-briefcase text-amber-600"></i> Khối Văn Phòng
+                                <tr class="hover:bg-slate-50/80">
+                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
+                                        <i class="fa-solid fa-building text-amber-600"></i> Khối Văn Phòng
                                     </td>
                                     <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
                                     <td class="py-2.5 px-4 text-center text-slate-400">00</td>
                                     <td class="py-2.5 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-amber-700">03</td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-amber-700">02</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-amber-700">05</td>
                                 </tr>
-                                <tr class="hover:bg-slate-50/80 font-bold bg-indigo-50/30">
-                                    <td class="py-2.5 px-4 flex items-center gap-2">
-                                        <i class="fa-solid fa-cubes text-indigo-600"></i> Khối Kỹ Thuật (Tổng)
+                                <tr class="hover:bg-slate-50/80">
+                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
+                                        <span class="w-2 h-2 rounded-full bg-blue-500"></span> Nhóm Thế Anh
                                     </td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
                                     <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
-                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">10</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-blue-700">04</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80">
+                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
+                                        <span class="w-2 h-2 rounded-full bg-purple-500"></span> Nhóm Huynh
+                                    </td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">04</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-purple-700">05</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50/80">
+                                    <td class="py-2.5 px-4 flex items-center gap-2 font-bold text-slate-900">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Nhóm Hiển
+                                    </td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">01</td>
+                                    <td class="py-2.5 px-4 text-center font-bold text-slate-900">03</td>
                                     <td class="py-2.5 px-4 text-center font-bold text-rose-600">02</td>
-                                    <td class="py-2.5 px-4 text-right font-black text-indigo-700">15</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50/80 text-slate-700">
-                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Nhóm Thế Anh
-                                    </td>
-                                    <td class="py-2 px-4 text-center">01</td>
-                                    <td class="py-2 px-4 text-center font-semibold">04</td>
-                                    <td class="py-2 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50/80 text-slate-700">
-                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Nhóm Huynh
-                                    </td>
-                                    <td class="py-2 px-4 text-center">01</td>
-                                    <td class="py-2 px-4 text-center font-semibold">04</td>
-                                    <td class="py-2 px-4 text-center text-slate-400">00</td>
-                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50/80 text-slate-700">
-                                    <td class="py-2 px-4 pl-8 flex items-center gap-2 text-[11.5px]">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Nhóm Hiển
-                                    </td>
-                                    <td class="py-2 px-4 text-center">01</td>
-                                    <td class="py-2 px-4 text-center font-semibold">02</td>
-                                    <td class="py-2 px-4 text-center font-bold text-rose-600">02</td>
-                                    <td class="py-2 px-4 text-right font-bold text-slate-900">05</td>
+                                    <td class="py-2.5 px-4 text-center text-slate-400">00</td>
+                                    <td class="py-2.5 px-4 text-right font-black text-emerald-700">06</td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -5374,23 +5386,24 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                     <td class="py-3 px-4 text-center text-emerald-400 text-sm">06</td>
                                     <td class="py-3 px-4 text-center text-blue-400 text-sm">10</td>
                                     <td class="py-3 px-4 text-center text-rose-400 text-sm">02</td>
-                                    <td class="py-3 px-4 text-right text-amber-300 text-base font-extrabold">18</td>
+                                    <td class="py-3 px-4 text-center text-amber-400 text-sm">02</td>
+                                    <td class="py-3 px-4 text-right text-amber-300 text-base font-extrabold">20</td>
                                 </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
 
-                <!-- Danh Sách Chi Tiết 18 Nhân Sự Đang Làm -->
+                <!-- Danh Sách Chi Tiết 20 Nhân Sự Đang Làm -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                     <!-- Khối Văn Phòng -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
                         <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-building-user text-amber-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Khối Văn Phòng (03 Nhân sự)</h4>
+                                <h4 class="text-xs font-bold text-slate-900">Khối Văn Phòng (05 Nhân sự)</h4>
                             </div>
-                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Hành chính 100%</span>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">03 CT + 02 CTV</span>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
                             <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
@@ -5414,6 +5427,20 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">Hà Văn Thắng</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Văn phòng</span> | Vị trí: Cộng tác viên</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Cộng tác viên</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900">NGUYỄN THỊ HOA</p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Văn phòng</span> | Vị trí: Cộng tác viên</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">Cộng tác viên</span>
+                            </div>
                         </div>
                     </div>
 
@@ -5422,7 +5449,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-draw-polygon text-blue-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Nhóm Thế Anh (05 Nhân sự)</h4>
+                                <h4 class="text-xs font-bold text-slate-900">Nhóm Thế Anh (04 Nhân sự)</h4>
                             </div>
                             <span class="text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Quy hoạch & Laser/CNC</span>
                         </div>
@@ -5435,10 +5462,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật thiết kế bóc tách)</span>
-                                </div>
+                                <span class="font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
@@ -5447,10 +5471,6 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
                                 <span class="font-semibold text-slate-800">PHẠM THẾ SƠN</span>
-                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
-                            </div>
-                            <div class="p-2 rounded-lg flex items-center justify-between">
-                                <span class="font-semibold text-slate-800">MAI HOÀNG PHÚC</span>
                                 <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
                             </div>
                         </div>
@@ -5474,10 +5494,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
-                                </div>
+                                <span class="font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
@@ -5500,7 +5517,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center justify-between">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-tree text-emerald-600"></i>
-                                <h4 class="text-xs font-bold text-slate-900">Nhóm Hiển (05 Nhân sự)</h4>
+                                <h4 class="text-xs font-bold text-slate-900">Nhóm Hiển (06 Nhân sự)</h4>
                             </div>
                             <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Cảnh quan & Hoàn thiện</span>
                         </div>
@@ -5513,14 +5530,15 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
-                                </div>
+                                <span class="font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
                                 <span class="font-semibold text-slate-800">LA NHẬT NAM</span>
+                                <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
+                            </div>
+                            <div class="p-2 rounded-lg flex items-center justify-between">
+                                <span class="font-semibold text-slate-800">MAI HOÀNG PHÚC</span>
                                 <span class="text-[10px] text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between bg-rose-50/40 border border-rose-100 rounded-lg">
@@ -14472,6 +14490,16 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // 6. Open parent accordion if it is a sub-link
+            const marketingModules = ['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
+            if (marketingModules.includes(moduleId)) {
+                const accMkt = document.getElementById('acc-marketing');
+                const iconMkt = document.getElementById('icon-acc-marketing');
+                if (accMkt && !accMkt.classList.contains('open')) {
+                    accMkt.classList.add('open');
+                    if (iconMkt) iconMkt.classList.add('rotate-180');
+                }
+            }
+
             if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
                 const acc = document.getElementById('acc-settings');
                 const icon = document.getElementById('icon-acc-settings');
