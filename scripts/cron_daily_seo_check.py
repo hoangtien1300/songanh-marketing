@@ -74,6 +74,35 @@ def run_seo_updater(vn_date):
         except Exception as e:
             print("[-] Lỗi ghi log activity:", e)
 
+    # 4. Sync index.html with new keywords and header date
+    index_html_path = os.path.join(BASE_DIR, "index.html")
+    if os.path.exists(index_html_path) and os.path.exists(JSON_PATH):
+        try:
+            with open(JSON_PATH, "r", encoding="utf-8") as f:
+                d = json.load(f)
+            seo_kws = d.get("seo_keywords", [])
+            if seo_kws:
+                with open(index_html_path, "r", encoding="utf-8") as f:
+                    html_content = f.read()
+                
+                # Update HTML span
+                html_content = re.sub(
+                    r'<span id="kw-col-curr-pos-text">Vị trí hiện tại \([^)]+\)</span>',
+                    f'<span id="kw-col-curr-pos-text">Vị trí hiện tại ({vn_date.strftime("%d/%m/%Y")})</span>',
+                    html_content
+                )
+                
+                # Update keywordList JSON array
+                kw_json = json.dumps(seo_kws, ensure_ascii=False, indent=8)
+                kw_pat = r"(let keywordList = )\[[\s\S]*?\n        \];"
+                html_content = re.sub(kw_pat, f"let keywordList = {kw_json};", html_content, count=1)
+                
+                with open(index_html_path, "w", encoding="utf-8") as f:
+                    f.write(html_content)
+                print("✅ Đã đồng bộ keywordList và ngày mới vào index.html!")
+        except Exception as e:
+            print("[-] Lỗi đồng bộ index.html:", e)
+
 def update_notion_task(vn_date):
     print("📡 Đang cập nhật Notion Task 'Check thứ hạng từ khóa SEO'...")
     headers = {
