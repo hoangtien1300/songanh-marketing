@@ -1012,6 +1012,17 @@
             #activity-log-mobile-cards { display: none !important; }
         }
 
+    
+        /* Responsive Keywords: Mobile Card View (<640px) vs Desktop Table (>=640px) */
+        @media (max-width: 639px) {
+            #kw-table-container { display: none !important; }
+            #kw-mobile-cards { display: block !important; }
+        }
+        @media (min-width: 640px) {
+            #kw-table-container { display: block !important; }
+            #kw-mobile-cards { display: none !important; }
+        }
+
     </style>
     <script>
         // Early global definition for Instant Menu Toggle
@@ -1603,42 +1614,42 @@
                 
 
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 space-y-1 has-tooltip" title="Tổng số từ khóa SEO B2B cốt lõi đang được theo dõi real-time qua GSC & Search API nhằm đo lường diện rộng thứ hạng ngành sa bàn kiến trúc.">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+                    <div class="light-card p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200 space-y-1 has-tooltip" title="Tổng số từ khóa SEO B2B cốt lõi đang được theo dõi real-time qua GSC & Search API nhằm đo lường diện rộng thứ hạng ngành sa bàn kiến trúc.">
                         <div class="tooltip-popup">Tổng số từ khóa SEO B2B cốt lõi đang được theo dõi real-time qua GSC &amp; Google Search API.</div>
                         <span class="text-xs text-slate-500 font-medium">TỔNG TỪ KHÓA THEO DÕI</span>
                         <div class="flex items-baseline gap-2">
-                            <span id="kpi-total-keywords" class="text-2xl font-heading font-extrabold text-slate-900">0</span>
+                            <span id="kpi-total-keywords" class="text-xl sm:text-2xl font-heading font-extrabold text-slate-900">0</span>
                             <span class="text-xs font-bold text-slate-500">Từ Khóa B2B</span>
                         </div>
                         <p class="text-[10px] text-slate-400" id="kpi-total-subtext">Tự Động Tính Theo Data SEO</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-emerald-200 bg-emerald-50/30 space-y-1 has-tooltip" title="Các từ khóa đạt vị trí Top 1 đến Top 3 (nhóm xuất sắc nhất), mang lại 80%+ lưu lượng truy cập và Lead Zalo/Call báo giá sa bàn.">
+                    <div class="light-card p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-emerald-200 bg-emerald-50/30 space-y-1 has-tooltip" title="Các từ khóa đạt vị trí Top 1 đến Top 3 (nhóm xuất sắc nhất), mang lại 80%+ lưu lượng truy cập và Lead Zalo/Call báo giá sa bàn.">
                         <div class="tooltip-popup">Các từ khóa đạt vị trí Top 1 - 3, mang lại 80%+ traffic &amp; Lead Zalo/Call báo giá sa bàn.</div>
                         <span class="text-xs text-emerald-800 font-bold">TOP 1 - TOP 3 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
-                            <span id="kpi-top1-3" class="text-2xl font-heading font-extrabold text-emerald-600">0</span>
+                            <span id="kpi-top1-3" class="text-xl sm:text-2xl font-heading font-extrabold text-emerald-600">0</span>
                             <span class="text-xs font-bold text-emerald-600">Từ Khóa (⭐ Top 3.0)</span>
                         </div>
                         <p class="text-[10px] text-emerald-700 font-medium" id="kpi-top1-3-subtext">Bao gồm từ khóa thứ hạng &le; 3.0</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-blue-200 bg-blue-50/30 space-y-1 has-tooltip" title="Các từ khóa nằm trong Trang 1 Google (vị trí 4-10), có tiềm năng cao để đẩy bứt phá lên Top 1-3 bằng On-page & Internal Link.">
+                    <div class="light-card p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-blue-200 bg-blue-50/30 space-y-1 has-tooltip" title="Các từ khóa nằm trong Trang 1 Google (vị trí 4-10), có tiềm năng cao để đẩy bứt phá lên Top 1-3 bằng On-page & Internal Link.">
                         <div class="tooltip-popup">Từ khóa nằm Trang 1 Google (Top 4-10), tiềm năng cao cần đẩy bứt phá lên Top 1-3.</div>
                         <span class="text-xs text-blue-800 font-bold">TOP 4 - TOP 10 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
-                            <span id="kpi-top4-10" class="text-2xl font-heading font-extrabold text-blue-700">0</span>
+                            <span id="kpi-top4-10" class="text-xl sm:text-2xl font-heading font-extrabold text-blue-700">0</span>
                             <span class="text-xs font-bold text-blue-700">Từ Khóa (Trang 1)</span>
                         </div>
                         <p class="text-[10px] text-blue-700 font-medium" id="kpi-top4-10-subtext">Bao gồm từ khóa thứ hạng 3.1 - 10.0</p>
                     </div>
 
-                    <div class="light-card p-4 rounded-2xl border border-amber-200 bg-amber-50/30 space-y-1 has-tooltip" title="Các từ khóa ở Trang 2 & Trang 3 Google, đang trong chiến dịch tối ưu nội dung và cấu trúc Silo để tiến vào Trang 1.">
+                    <div class="light-card p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-amber-200 bg-amber-50/30 space-y-1 has-tooltip" title="Các từ khóa ở Trang 2 & Trang 3 Google, đang trong chiến dịch tối ưu nội dung và cấu trúc Silo để tiến vào Trang 1.">
                         <div class="tooltip-popup">Từ khóa Trang 2 &amp; 3 Google (Top 11-30), đang trong chiến dịch tối ưu đẩy vào Trang 1.</div>
                         <span class="text-xs text-amber-800 font-bold">TOP 11 - TOP 30 GOOGLE</span>
                         <div class="flex items-baseline gap-2">
-                            <span id="kpi-top11-30" class="text-2xl font-heading font-extrabold text-amber-700">0</span>
+                            <span id="kpi-top11-30" class="text-xl sm:text-2xl font-heading font-extrabold text-amber-700">0</span>
                             <span class="text-xs font-bold text-amber-700">Từ Khóa (Đang Đẩy)</span>
                         </div>
                         <p class="text-[10px] text-amber-700 font-medium" id="kpi-top11-30-subtext">Bao gồm từ khóa thứ hạng 10.1 - 30.0</p>
@@ -1658,11 +1669,11 @@
                             <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 shadow-2xs">
                                 <button onclick="setGlobalKwTimeFilter('7d')" id="global-kw-btn-7d" class="px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-xs bg-brand-navy text-white flex items-center gap-1.5">
                                     <i class="fa-solid fa-calendar-week text-xs"></i>
-                                    <span>📅 Theo Tuần (Thứ 2: 31/08)</span>
+                                    <span class="hidden sm:inline">📅 Theo Tuần (Thứ 2: 31/08)</span><span class="sm:hidden">📅 Tuần (31/08)</span>
                                 </button>
                                 <button onclick="setGlobalKwTimeFilter('30d')" id="global-kw-btn-30d" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-brand-navy transition bg-transparent flex items-center gap-1.5">
                                     <i class="fa-solid fa-calendar-days text-xs"></i>
-                                    <span>🗓️ Theo Tháng (30 Ngày Trước: 04/08)</span>
+                                    <span class="hidden sm:inline">🗓️ Theo Tháng (30 Ngày Trước: 04/08)</span><span class="sm:hidden">🗓️ Tháng (04/08)</span>
                                 </button>
                             </div>
                             <span id="kw-active-count" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-200 shrink-0">23 KWs Active</span>
@@ -1725,8 +1736,14 @@
                         </div>
                     </div>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs border-collapse">
+                    <!-- 📱 MOBILE KEYWORD CARDS VIEW (Hiển thị mượt mà dạng Thẻ Card trên điện thoại < sm) -->
+                    <div id="kw-mobile-cards" class="space-y-3">
+                        <!-- Dynamic Mobile Cards rendered via JS -->
+                    </div>
+
+                    <!-- 💻 DESKTOP & TABLET TABLE VIEW (Bảng dữ liệu nhiều cột chuẩn Desktop >= sm) -->
+                    <div id="kw-table-container" class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-left text-xs border-collapse min-w-[720px]">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 text-xs">
                                     <th class="p-3.5 text-left w-3/12 has-tooltip" title="Cụm từ tìm kiếm B2B mục tiêu của khách hàng/chủ đầu tư khi tìm kiếm nhà thầu sản xuất sa bàn kiến trúc.">
@@ -12715,7 +12732,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
         function renderKeywordTable(timeFrame = currentGlobalKwFilter) {
             const tbody = document.getElementById('kw-table-body');
-            if (!tbody) return;
+            const mobileCardsContainer = document.getElementById('kw-mobile-cards');
+            if (!tbody && !mobileCardsContainer) return;
             
             // 1. Update Table Column 2 & 3 Header Labels (DD/MM/YYYY)
             const thOldPosText = document.getElementById('kw-col-old-pos-text');
@@ -12819,126 +12837,187 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 countText.innerText = `Hiển thị: ${filteredList.length} / ${keywordList.length} KWs`;
             }
 
-            let html = '';
+            let tableHtml = '';
+            let cardsHtml = '';
+
             if (filteredList.length === 0) {
-                html = `
-                    <tr>
-                        <td colspan="6" class="p-8 text-center text-slate-500">
-                            <div class="flex flex-col items-center justify-center gap-2">
-                                <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
-                                <p class="font-bold text-xs text-slate-700">Không tìm thấy từ khóa nào phù hợp với bộ lọc hiện tại</p>
-                                <p class="text-[11px] text-slate-400">Vui lòng thử từ khóa khác hoặc bấm <button type="button" onclick="resetKeywordFilters()" class="text-brand-navy font-bold hover:underline">Đặt lại bộ lọc</button></p>
-                            </div>
-                        </td>
-                    </tr>
+                const emptyMsg = `
+                    <div class="p-8 text-center text-slate-500 bg-white rounded-xl border border-slate-200">
+                        <div class="flex flex-col items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
+                            <p class="font-bold text-xs text-slate-700">Không tìm thấy từ khóa nào phù hợp với bộ lọc hiện tại</p>
+                            <p class="text-[11px] text-slate-400">Vui lòng thử từ khóa khác hoặc bấm <button type="button" onclick="resetKeywordFilters()" class="text-brand-navy font-bold hover:underline">Đặt lại bộ lọc</button></p>
+                        </div>
+                    </div>
                 `;
+                tableHtml = `<tr><td colspan="6">${emptyMsg}</td></tr>`;
+                cardsHtml = emptyMsg;
             } else {
                 filteredList.forEach((kw) => {
                     const impVal = (kw.impressions !== undefined && kw.impressions !== null) ? Number(kw.impressions) : 0;
-                const clickVal = (kw.clicks !== undefined && kw.clicks !== null) ? Number(kw.clicks) : 0;
-                
-                const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
-                const gscPosNumStr = gscPosNum.toFixed(1);
-                
-                // Get Dynamic Baseline Rank based on timeFrame
-                const baseline = getOldBaselineRank(kw, timeFrame);
-                const initRankNumStr = baseline.rank.toFixed(1);
-                
-                // Calculate Dynamic Change (Xanh = Tăng, Đỏ = Giảm, Vàng = Giữ nguyên)
-                const diff = parseFloat((baseline.rank - gscPosNum).toFixed(1));
-                let changeHtml = '';
-                if (diff > 0) {
-                    changeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-black bg-emerald-50 text-emerald-700 border border-emerald-300 shadow-2xs">▲ +${diff.toFixed(1)}</span>`;
-                } else if (diff < 0) {
-                    changeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-black bg-rose-50 text-rose-700 border border-rose-300 shadow-2xs">▼ -${Math.abs(diff).toFixed(1)}</span>`;
-                } else {
-                    changeHtml = `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-50 text-amber-700 border border-amber-300 shadow-2xs">━ 0.0</span>`;
-                }
+                    const clickVal = (kw.clicks !== undefined && kw.clicks !== null) ? Number(kw.clicks) : 0;
+                    
+                    const gscPosNum = (kw.gscPos !== undefined && kw.gscPos !== null) ? parseFloat(kw.gscPos) : 3.0;
+                    const gscPosNumStr = gscPosNum.toFixed(1);
+                    
+                    // Get Dynamic Baseline Rank based on timeFrame
+                    const baseline = getOldBaselineRank(kw, timeFrame);
+                    const initRankNumStr = baseline.rank.toFixed(1);
+                    
+                    // Calculate Dynamic Change (Xanh = Tăng, Đỏ = Giảm, Vàng = Giữ nguyên)
+                    const diff = parseFloat((baseline.rank - gscPosNum).toFixed(1));
+                    let changeHtml = '';
+                    if (diff > 0) {
+                        changeHtml = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-black bg-emerald-50 text-emerald-700 border border-emerald-300 shadow-2xs">▲ +${diff.toFixed(1)}</span>`;
+                    } else if (diff < 0) {
+                        changeHtml = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-black bg-rose-50 text-rose-700 border border-rose-300 shadow-2xs">▼ -${Math.abs(diff).toFixed(1)}</span>`;
+                    } else {
+                        changeHtml = `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-300 shadow-2xs">━ 0.0</span>`;
+                    }
 
-                const searchFeature = kw.searchFeature || '🌟 Featured Snippet';
-                const rawUrl = (kw.url || '').toString().trim();
-                let fullUrl = rawUrl;
-                if (rawUrl && !rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
-                    fullUrl = rawUrl.startsWith('/') ? `https://mohinhkientruc.org${rawUrl}` : `https://${rawUrl}`;
-                }
+                    const searchFeature = kw.searchFeature || '🌟 Featured Snippet';
+                    const rawUrl = (kw.url || '').toString().trim();
+                    let fullUrl = rawUrl;
+                    if (rawUrl && !rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+                        fullUrl = rawUrl.startsWith('/') ? `https://mohinhkientruc.org${rawUrl}` : `https://${rawUrl}`;
+                    }
 
-                const isPinned = pinnedKeywords.includes((kw.name || '').trim().toLowerCase());
+                    const isPinned = pinnedKeywords.includes((kw.name || '').trim().toLowerCase());
 
-                html += `
-                    <tr onclick="toggleKwDetail('kw-detail-${kw.id}')" class="hover:bg-slate-50 font-medium cursor-pointer transition border-b border-slate-100 ${isPinned ? 'bg-amber-50/20' : ''}">
-                        <!-- 1. CỘT TỪ KHÓA: CHỈ SHOW TEXT THUẦN TÚY KHÔNG TAG FOLLOW -->
-                        <td class="p-3.5 text-left font-extrabold text-slate-900 text-xs flex items-center gap-2">
-                            <i class="fa-solid fa-chevron-down text-slate-400 hover:text-amber-500 text-[10px] shrink-0"></i>
-                            <span class="hover:text-blue-600 transition leading-snug">${kw.name}</span>
-                        </td>
+                    // 1. Desktop & Tablet Table Row
+                    tableHtml += `
+                        <tr onclick="toggleKwDetail('kw-detail-${kw.id}')" class="hover:bg-slate-50 font-medium cursor-pointer transition border-b border-slate-100 ${isPinned ? 'bg-amber-50/20' : ''}">
+                            <td class="p-3.5 text-left font-extrabold text-slate-900 text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-chevron-down text-slate-400 hover:text-amber-500 text-[10px] shrink-0"></i>
+                                <span class="hover:text-blue-600 transition leading-snug">${kw.name}</span>
+                            </td>
+                            <td class="p-3.5 text-center font-bold text-slate-700 font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-800 border border-slate-200">Top ${initRankNumStr}</span>
+                            </td>
+                            <td class="p-3.5 text-center font-black font-mono text-xs">
+                                <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-brand-navy border border-blue-200 shadow-2xs">Top ${gscPosNumStr}</span>
+                            </td>
+                            <td class="p-3.5 text-center">
+                                ${changeHtml}
+                            </td>
+                            <td class="p-3.5 text-center">
+                                <span class="inline-flex items-center px-2 py-1 rounded-lg text-[11px] font-bold bg-slate-100 text-slate-800 border border-slate-200 shadow-2xs truncate max-w-[150px]">${searchFeature}</span>
+                            </td>
+                            <td class="p-3.5 text-left font-mono text-[11px] text-slate-600 truncate max-w-[200px]" onclick="event.stopPropagation()">
+                                <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-blue-600 hover:text-blue-800 hover:underline font-bold inline-flex items-center gap-1 truncate max-w-full">
+                                    <span class="truncate">${kw.url}</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[9px] shrink-0"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 hidden">
+                            <td colspan="6" class="p-4 border-t border-b border-slate-200 space-y-3">
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white p-3.5 rounded-xl border border-slate-200 text-xs shadow-2xs">
+                                    <div><span class="text-[10px] font-bold text-slate-400 uppercase">1. Loại Từ Khóa:</span><p class="font-bold text-brand-navy">${kw.type || 'N/A'}</p></div>
+                                    <div><span class="text-[10px] font-bold text-slate-400 uppercase">2. Search Intent:</span><p class="font-bold text-blue-700">${kw.intent || 'N/A'}</p></div>
+                                    <div><span class="text-[10px] font-bold text-slate-400 uppercase">3. Độ Ưu Tiên:</span><p class="font-bold text-rose-600">${kw.priority || 'N/A'}</p></div>
+                                    <div><span class="text-[10px] font-bold text-slate-400 uppercase">4. Cụm Silo:</span><p class="font-bold text-purple-700">${kw.silo || 'N/A'}</p></div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
+                                        <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Biểu đồ biến động</h4>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+                                        <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">📅 Theo Tuần (7 Ngày)</button>
+                                        <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">🗓️ Theo Tháng (30 Ngày)</button>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+                                    <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                                        <span class="font-bold text-slate-700">📈 Biểu đồ thứ hạng</span>
+                                        <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy font-mono">${timeFrame === '7d' ? 'Từ 28/08/2026 đến 03/09/2026' : 'Từ 04/08/2026 đến 03/09/2026'}</span>
+                                    </div>
+                                    <div id="kw-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[160px] flex items-center justify-center bg-slate-50/50 rounded-lg p-2"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
 
-                        <!-- 2. CỘT VỊ TRÍ CŨ (DD/MM/YYYY) -->
-                        <td class="p-3.5 text-center font-bold text-slate-700 font-mono text-xs">
-                            <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-800 border border-slate-200">Top ${initRankNumStr}</span>
-                        </td>
+                    // 2. Mobile Responsive Card
+                    cardsHtml += `
+                        <div class="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden transition">
+                            <div class="p-3.5 space-y-2.5">
+                                <div class="flex items-start justify-between gap-2">
+                                    <div class="space-y-0.5 flex-1 min-w-0">
+                                        <div class="flex items-center gap-1.5 flex-wrap">
+                                            ${isPinned ? '<span class="text-amber-500 text-xs">⭐</span>' : ''}
+                                            <h4 class="font-extrabold text-slate-900 text-sm leading-snug">${kw.name}</h4>
+                                        </div>
+                                        <p class="text-[10px] text-slate-400 font-mono truncate">
+                                            <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 hover:underline">
+                                                ${kw.url}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="flex flex-col items-end gap-1 shrink-0">
+                                        <span class="px-2.5 py-0.5 text-xs font-black rounded-lg bg-blue-50 text-brand-navy border border-blue-200 shadow-2xs font-mono">
+                                            Top ${gscPosNumStr}
+                                        </span>
+                                        ${changeHtml}
+                                    </div>
+                                </div>
 
-                        <!-- 3. CỘT VỊ TRÍ HIỆN TẠI (DD/MM/YYYY) -->
-                        <td class="p-3.5 text-center font-black font-mono text-xs">
-                            <span class="px-2.5 py-1 rounded-lg bg-blue-50 text-brand-navy border border-blue-200 shadow-2xs">Top ${gscPosNumStr}</span>
-                        </td>
+                                <div class="grid grid-cols-3 gap-1.5 p-2 bg-slate-50/80 rounded-lg text-center text-[11px] border border-slate-100">
+                                    <div>
+                                        <span class="text-[9.5px] text-slate-400 font-bold block">VỊ TRÍ CŨ</span>
+                                        <span class="font-mono font-bold text-slate-700">Top ${initRankNumStr}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[9.5px] text-slate-400 font-bold block">HIỂN THỊ</span>
+                                        <span class="font-mono font-bold text-slate-700">${impVal.toLocaleString()}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-[9.5px] text-slate-400 font-bold block">FEATURE</span>
+                                        <span class="font-bold text-slate-700 text-[10px] truncate block" title="${searchFeature}">${searchFeature.replace(/^[^\s]+\s/, '')}</span>
+                                    </div>
+                                </div>
 
-                        <!-- 4. CỘT THAY ĐỔI THỨ HẠNG (XANH / ĐỎ / VÀNG) -->
-                        <td class="p-3.5 text-center">
-                            ${changeHtml}
-                        </td>
-
-                        <!-- 5. SEARCH FEATURE -->
-                        <td class="p-3.5 text-center">
-                            <span class="inline-flex items-center px-2 py-1 rounded-lg text-[11px] font-bold bg-slate-100 text-slate-800 border border-slate-200 shadow-2xs truncate max-w-[150px]">${searchFeature}</span>
-                        </td>
-
-                        <!-- 6. URL ĐÍCH -->
-                        <td class="p-3.5 text-left font-mono text-[11px] text-slate-600 truncate max-w-[200px]" onclick="event.stopPropagation()">
-                            <a href="${fullUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-blue-600 hover:text-blue-800 hover:underline font-bold inline-flex items-center gap-1 truncate max-w-full">
-                                <span class="truncate">${kw.url}</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] shrink-0"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr id="kw-detail-${kw.id}" class="kw-detail-row bg-slate-50/90 hidden">
-                        <td colspan="6" class="p-4 border-t border-b border-slate-200 space-y-3">
-                            
-                            <!-- 1. Metadata Attribute Grid (Đưa lên trên đầu) -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-white p-3.5 rounded-xl border border-slate-200 text-xs shadow-2xs">
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">1. Loại Từ Khóa:</span><p class="font-bold text-brand-navy">${kw.type}</p></div>
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">2. Search Intent:</span><p class="font-bold text-blue-700">${kw.intent}</p></div>
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">3. Độ Ưu Tiên:</span><p class="font-bold text-rose-600">${kw.priority}</p></div>
-                                <div><span class="text-[10px] font-bold text-slate-400 uppercase">4. Cụm Silo:</span><p class="font-bold text-purple-700">${kw.silo}</p></div>
+                                <button type="button" onclick="toggleKwDetailMobile(${kw.id})" class="w-full py-1.5 px-2.5 text-center text-[11px] font-bold text-brand-navy hover:text-blue-700 bg-slate-100 hover:bg-slate-200/80 rounded-lg transition flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5">
+                                        <i class="fa-solid fa-chart-line text-[10px] text-emerald-600"></i>
+                                        <span>Biểu đồ thứ hạng & Chi tiết</span>
+                                    </span>
+                                    <i id="kw-mob-chevron-${kw.id}" class="fa-solid fa-chevron-down text-[10px] transition-transform"></i>
+                                </button>
                             </div>
 
-                            <!-- 2. Header Biểu Đồ Biến Động -->
-                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-white p-3 rounded-xl border border-slate-200 shadow-2xs">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-chart-line text-emerald-600 text-sm"></i>
-                                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wide">Biểu đồ biến động</h4>
+                            <div id="kw-mob-detail-${kw.id}" class="hidden p-3.5 bg-slate-50 border-t border-slate-200 space-y-3 text-xs">
+                                <div class="grid grid-cols-2 gap-2 bg-white p-2.5 rounded-lg border border-slate-200 text-[11px]">
+                                    <div><span class="text-[9.5px] font-bold text-slate-400 uppercase">Loại Từ Khóa:</span><p class="font-bold text-brand-navy">${kw.type || 'N/A'}</p></div>
+                                    <div><span class="text-[9.5px] font-bold text-slate-400 uppercase">Search Intent:</span><p class="font-bold text-blue-700">${kw.intent || 'N/A'}</p></div>
+                                    <div><span class="text-[9.5px] font-bold text-slate-400 uppercase">Độ Ưu Tiên:</span><p class="font-bold text-rose-600">${kw.priority || 'N/A'}</p></div>
+                                    <div><span class="text-[9.5px] font-bold text-slate-400 uppercase">Cụm Silo:</span><p class="font-bold text-purple-700">${kw.silo || 'N/A'}</p></div>
                                 </div>
-                                <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-btn-7d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">📅 Theo Tuần (7 Ngày)</button>
-                                    <button onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-btn-30d-${kw.id}" class="px-3 py-1 rounded-lg text-xs font-bold transition shadow-xs ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-transparent text-slate-600 hover:text-brand-navy'}">🗓️ Theo Tháng (30 Ngày)</button>
-                                </div>
-                            </div>
 
-                            <!-- 3. Khung Biểu Đồ Đường SVG Line Chart -->
-                            <div class="bg-white p-3.5 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
-                                <div class="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                                    <span class="font-bold text-slate-700">📈 Biểu đồ thứ hạng</span>
-                                    <span id="kw-chart-time-label-${kw.id}" class="font-bold text-brand-navy font-mono">${timeFrame === '7d' ? 'Từ 28/08/2026 đến 03/09/2026' : 'Từ 04/08/2026 đến 03/09/2026'}</span>
+                                <div class="flex items-center justify-between gap-1.5 bg-white p-2 rounded-lg border border-slate-200">
+                                    <span class="text-[10px] font-bold text-slate-500">Khung thời gian:</span>
+                                    <div class="flex items-center gap-1">
+                                        <button type="button" onclick="switchKwTimeFilter(${kw.id}, '7d')" id="kw-mob-btn-7d-${kw.id}" class="px-2 py-0.5 rounded text-[10.5px] font-bold transition ${timeFrame === '7d' ? 'bg-brand-navy text-white' : 'bg-slate-100 text-slate-600'}">7 Ngày</button>
+                                        <button type="button" onclick="switchKwTimeFilter(${kw.id}, '30d')" id="kw-mob-btn-30d-${kw.id}" class="px-2 py-0.5 rounded text-[10.5px] font-bold transition ${timeFrame === '30d' ? 'bg-brand-navy text-white' : 'bg-slate-100 text-slate-600'}">30 Ngày</button>
+                                    </div>
                                 </div>
-                                <div id="kw-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[160px] flex items-center justify-center bg-slate-50/50 rounded-lg p-2">
-                                    <!-- SVG Line Chart rendered dynamically -->
+
+                                <div class="bg-white p-2.5 rounded-lg border border-slate-200 space-y-1">
+                                    <div class="flex items-center justify-between text-[10px] text-slate-500">
+                                        <span class="font-bold text-slate-700">📈 Xu hướng thứ hạng</span>
+                                        <span id="kw-mob-chart-time-label-${kw.id}" class="font-bold text-brand-navy font-mono">${timeFrame === '7d' ? '28/08 - 03/09' : '04/08 - 03/09'}</span>
+                                    </div>
+                                    <div id="kw-mob-svg-container-${kw.id}" class="w-full overflow-x-auto min-h-[140px] flex items-center justify-center bg-slate-50/50 rounded p-1"></div>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                `;
+                        </div>
+                    `;
                 });
             }
-            tbody.innerHTML = html;
+
+            if (tbody) tbody.innerHTML = tableHtml;
+            if (mobileCardsContainer) mobileCardsContainer.innerHTML = cardsHtml;
             updateSeoKpiCards();
         }
 
@@ -12979,6 +13058,17 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             
             const btn7d = document.getElementById(`kw-btn-7d-${kwId}`);
             const btn30d = document.getElementById(`kw-btn-30d-${kwId}`);
+            const mobBtn7d = document.getElementById(`kw-mob-btn-7d-${kwId}`);
+            const mobBtn30d = document.getElementById(`kw-mob-btn-30d-${kwId}`);
+            if (mobBtn7d && mobBtn30d) {
+                if (timeFrame === '7d') {
+                    mobBtn7d.className = "px-2 py-0.5 rounded text-[10.5px] font-bold transition bg-brand-navy text-white";
+                    mobBtn30d.className = "px-2 py-0.5 rounded text-[10.5px] font-bold transition bg-slate-100 text-slate-600";
+                } else {
+                    mobBtn30d.className = "px-2 py-0.5 rounded text-[10.5px] font-bold transition bg-brand-navy text-white";
+                    mobBtn7d.className = "px-2 py-0.5 rounded text-[10.5px] font-bold transition bg-slate-100 text-slate-600";
+                }
+            }
             
             if (btn7d && btn30d) {
                 if (timeFrame === '7d') {
@@ -13005,6 +13095,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             const clkElem = document.getElementById(`kw-gsc-clk-${kwId}`);
             const ctrElem = document.getElementById(`kw-gsc-ctr-${kwId}`);
             const labelElem = document.getElementById(`kw-chart-time-label-${kwId}`);
+            const mobLabelElem = document.getElementById(`kw-mob-chart-time-label-${kwId}`);
             
             const posVal = gscData.gscPos !== undefined ? parseFloat(gscData.gscPos) : (kw.gscPos || 3.0);
             const impVal = gscData.impressions !== undefined ? Number(gscData.impressions) : (kw.impressions || 0);
@@ -13022,8 +13113,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             if (labelElem) {
                 if (timeFrame === '7d') {
                     labelElem.innerText = "Từ 28/08/2026 đến 03/09/2026";
+                if (mobLabelElem) mobLabelElem.innerText = "28/08 - 03/09";
                 } else {
                     labelElem.innerText = "Từ 04/08/2026 đến 03/09/2026";
+                if (mobLabelElem) mobLabelElem.innerText = "04/08 - 03/09";
                 }
             }
             
@@ -13082,7 +13175,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         function renderSvgLineChart(kwId, timeFrame) {
             kwId = parseInt(kwId);
             const container = document.getElementById(`kw-svg-container-${kwId}`);
-            if (!container) return;
+            const mobContainer = document.getElementById(`kw-mob-svg-container-${kwId}`);
+            if (!container && !mobContainer) return;
             
             const kw = keywordList.find(k => k.id === kwId);
             if (!kw) return;
@@ -13197,7 +13291,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </svg>
             `;
             
-            container.innerHTML = svgCode;
+            if (container) container.innerHTML = svgCode;
+            if (mobContainer) mobContainer.innerHTML = svgCode;
         }
 
         // ==========================================
@@ -14420,6 +14515,23 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
         }
 
+        
+        function toggleKwDetailMobile(kwId) {
+            const detailEl = document.getElementById(`kw-mob-detail-${kwId}`);
+            const chevron = document.getElementById(`kw-mob-chevron-${kwId}`);
+            if (detailEl) {
+                detailEl.classList.toggle('hidden');
+                const isOpened = !detailEl.classList.contains('hidden');
+                if (chevron) {
+                    chevron.style.transform = isOpened ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+                if (isOpened) {
+                    const mode = (window.kwFilterState && window.kwFilterState[kwId]) || '7d';
+                    switchKwTimeFilter(kwId, mode);
+                }
+            }
+        }
+    
         function toggleKwDetail(detailRowId) {
             document.querySelectorAll('.kw-detail-row').forEach(row => {
                 if (row.id !== detailRowId) row.classList.add('hidden');
