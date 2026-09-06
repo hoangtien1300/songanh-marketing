@@ -5217,7 +5217,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
 
         
-                        <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
+                                    <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
             <div id="panel-nhan-su" class="module-panel space-y-5 hidden" style="display: none;">
                 <!-- Module Header / Banner -->
                 <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 border border-indigo-500/20">
@@ -5254,7 +5254,10 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col justify-between">
-                        <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">HÀNH CHÍNH</span>
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">HÀNH CHÍNH</span>
+                            <span class="text-[9px] font-bold text-slate-400" title="Lương cố định, không theo thầu">(Lương CĐ)</span>
+                        </div>
                         <div class="flex items-baseline justify-between mt-2">
                             <span class="text-2xl font-black text-emerald-600">06</span>
                             <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">Chính thức</span>
@@ -5290,7 +5293,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             <i class="fa-solid fa-table-cells text-indigo-600"></i>
                             <h3 class="text-xs font-black text-slate-900 uppercase tracking-wide">MA TRẬN SĨ SỐ THEO PHÒNG BAN & HÌNH THỨC LÀM VIỆC</h3>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-600 bg-slate-200/60 px-2.5 py-0.5 rounded-full">Không trùng lặp • Khớp 100% Notion</span>
+                        <span class="text-[10px] font-bold text-slate-600 bg-slate-200/60 px-2.5 py-0.5 rounded-full">Hành chính = Lương cố định • Không trùng lặp</span>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-xs text-left">
@@ -5432,10 +5435,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
-                                </div>
+                                <span class="font-semibold text-slate-800">NGUYỄN HOÀNG TRUNG HẢI</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
@@ -5471,10 +5471,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
-                                </div>
+                                <span class="font-semibold text-slate-800">TRỊNH BÍCH VÂN</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
@@ -5506,10 +5503,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[10px] font-semibold text-slate-600">Cơ bản + Khoán</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
-                                <div>
-                                    <span class="font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
-                                    <span class="text-[10px] text-slate-500 ml-1.5">(Kỹ thuật bóc tách file)</span>
-                                </div>
+                                <span class="font-semibold text-slate-800">NGUYỄN HOÀNG THIÊN VY</span>
                                 <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Hành chính</span>
                             </div>
                             <div class="p-2 rounded-lg flex items-center justify-between">
@@ -5539,8 +5533,8 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         </span>
                         <span class="text-[10px] font-bold bg-rose-100 text-rose-700 px-2 py-0.5 rounded-full">01 Nghỉ việc</span>
                     </div>
-                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
-                        • <strong>Hoàng Lê Công Thành</strong> (Kỹ thuật thi công thử việc - Nhóm Huynh): Đã xin nghỉ việc từ ngày <strong>02/09/2026</strong> sau kỳ nghỉ lễ Quốc khánh 2/9. Hệ thống đã cập nhật trạng thái <code>Đã nghỉ</code> trên cơ sở dữ liệu Notion.
+                    <p class="text-slate-700 text-[11.5px] leading-relaxed">
+                        • <strong>Hoàng Lê Công Thành</strong> (Nhóm Huynh): Đã xin nghỉ việc từ ngày <strong>02/09/2026</strong> sau kỳ nghỉ lễ Quốc khánh 2/9.
                     </p>
                 </div>
             </div>
