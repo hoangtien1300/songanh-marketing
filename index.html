@@ -5384,7 +5384,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle-check text-[9px]"></i> Đồng bộ trực tiếp Notion DB</span>
                             </div>
                             <h2 class="text-lg font-black tracking-tight text-white mt-0.5">BÁO CÁO & QUẢN TRỊ NHÂN SỰ SONG ANH</h2>
-                            <p class="text-xs text-slate-300">Tổng quân số thực tế: <strong class="text-amber-300">19 Nhân sự</strong> (Bấm vào tên nhân sự để xem chi tiết & mở Notion)</p>
+                            <p class="text-xs text-slate-300">Tổng quân số thực tế: <strong class="text-amber-300">19 Nhân sự</strong> (Bấm vào tên nhân sự để xem chi tiết & mở Form Hồ Sơ)</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap items-center gap-2 text-xs">
@@ -6039,15 +6039,21 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </div>
             </div>
 
-            <!-- Modal Footer: Link to Notion -->
+            <!-- Modal Footer: Link to Employee Profile Form & Notion -->
             <div class="p-4 bg-white border-t border-slate-200/80 flex items-center justify-between gap-3">
                 <button onclick="closeMemberModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">
                     Đóng
                 </button>
-                <a id="modal-member-notion-link" href="#" target="_blank" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                    <span>Mở Dữ Liệu Trên Notion</span>
-                </a>
+                <div class="flex items-center gap-2">
+                    <a id="modal-member-notion-link" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold transition flex items-center gap-1.5 text-xs" title="Mở bản ghi gốc trên Notion">
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        <span>Notion gốc</span>
+                    </a>
+                    <a id="modal-member-profile-link" href="ho_so_nhan_vien.html" target="_blank" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition flex items-center gap-2 shadow-sm text-xs">
+                        <i class="fa-solid fa-id-card"></i>
+                        <span>Xem Hồ Sơ Nhân Viên ↗</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -20048,9 +20054,17 @@ let marketingActivityLog = [
             // Note
             document.getElementById('modal-member-note').textContent = member.note || 'Không có ghi chú thêm.';
 
+            // Profile Form Link
+            const profileBtn = document.getElementById('modal-member-profile-link');
+            if (profileBtn) {
+                profileBtn.href = `ho_so_nhan_vien.html?id=${member.id}`;
+            }
+
             // Notion Link
             const notionBtn = document.getElementById('modal-member-notion-link');
-            notionBtn.href = member.notion_url || 'https://notion.so/19b4b5e73d90803abda4dff1da951ef6';
+            if (notionBtn) {
+                notionBtn.href = member.notion_url || 'https://notion.so/19b4b5e73d90803abda4dff1da951ef6';
+            }
 
             // Show modal
             modal.style.display = 'flex';
