@@ -16400,6 +16400,15 @@
     },
     "marketing_activity_log": [
         {
+            "id": 86,
+            "timestamp": "07/09/2026 17:15:00",
+            "category": "Hệ thống",
+            "action": "Nâng cấp Giao diện & Điều hướng Trung tâm Quản trị SEO Website (Sidebar độc lập, Quick Banner Trang chủ)",
+            "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+            "status": "✅ Hoàn Thành",
+            "notes": "Đưa mục SEO Website lên thành Accordion chính độc lập trên Sidebar (2 Sites • 17 Tasks), bổ sung Quick Access Banner trực quan ngay trên Trang chủ, tích hợp nút điều hướng trong Modal Trí - SEO Master, sửa lỗi routing hash #seo và #seo-arch."
+        },
+        {
             "id": 85,
             "timestamp": "07/09/2026 17:05:00",
             "category": "Hệ thống",
