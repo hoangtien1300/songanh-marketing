@@ -16400,6 +16400,15 @@
     },
     "marketing_activity_log": [
         {
+            "id": 83,
+            "timestamp": "07/09/2026 16:07:00",
+            "category": "Hệ thống",
+            "action": "Sắp xếp 100% công việc theo trình tự thời gian từ trên xuống dưới & Khắc phục bộ lọc Hôm Nay",
+            "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+            "status": "✅ Hoàn Thành",
+            "notes": "Chuẩn hóa sort chronologically theo time_str (06:00 -> 16:30) cho tất cả các view (Tuần, Ngày, 3 Ngày) và phân loại Sáng/Chiều cho chế độ xem Hôm Nay"
+        },
+        {
             "id": 82,
             "timestamp": "07/09/2026 16:00:12",
             "category": "Hệ thống",
@@ -18890,7 +18899,7 @@
                 "Thứ 7",
                 "Chủ Nhật"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "06:00",
             "kpi_weekly": 7,
             "completed": true,
@@ -18919,7 +18928,7 @@
                 "Thứ 7",
                 "Chủ Nhật"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "09:00",
             "kpi_weekly": 7,
             "completed": true,
@@ -18944,7 +18953,7 @@
                 "Thứ 4",
                 "Thứ 6"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "09:15",
             "kpi_weekly": 3,
             "completed": true,
@@ -18969,7 +18978,7 @@
                 "Thứ 4",
                 "Thứ 6"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "15:00",
             "kpi_weekly": 3,
             "completed": true,
@@ -18994,7 +19003,7 @@
                 "Thứ 4",
                 "Thứ 6"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "15:30",
             "kpi_weekly": 3,
             "completed": true,
@@ -19019,7 +19028,7 @@
                 "Thứ 5",
                 "Thứ 7"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "09:00",
             "kpi_weekly": 3,
             "completed": 0,
@@ -19042,7 +19051,7 @@
                 "Thứ 2",
                 "Thứ 5"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "09:15",
             "kpi_weekly": 2,
             "completed": true,
@@ -19070,7 +19079,7 @@
                 "Thứ 6",
                 "Thứ 7"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "16:00",
             "kpi_weekly": 6,
             "completed": true,
@@ -19095,7 +19104,7 @@
                 "Thứ 5",
                 "Thứ 7"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "14:00",
             "kpi_weekly": 3,
             "completed": true,
@@ -19119,7 +19128,7 @@
                 "Thứ 4",
                 "Thứ 7"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "16:30",
             "kpi_weekly": 2,
             "completed": true,
@@ -19144,7 +19153,7 @@
                 "Thứ 4",
                 "Thứ 6"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "10:00",
             "kpi_weekly": 3,
             "completed": true,
@@ -19173,7 +19182,7 @@
                 "Thứ 7",
                 "Chủ Nhật"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "10:30",
             "kpi_weekly": 7,
             "completed": true,
@@ -19198,7 +19207,7 @@
                 "Thứ 5",
                 "Thứ 7"
             ],
-            "slot": "morning",
+            "slot": "Sáng",
             "time_str": "10:45",
             "kpi_weekly": 3,
             "completed": true,
@@ -19223,7 +19232,7 @@
                 "Thứ 5",
                 "Thứ 7"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "15:30",
             "kpi_weekly": 6,
             "completed": 0,
@@ -19245,7 +19254,7 @@
             "repeat_days": [
                 "Thứ 6"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "15:00",
             "kpi_weekly": 1,
             "completed": true,
@@ -19268,7 +19277,7 @@
             "repeat_days": [
                 "Chủ Nhật"
             ],
-            "slot": "afternoon",
+            "slot": "Chiều",
             "time_str": "16:00",
             "kpi_weekly": 1,
             "completed": true,
