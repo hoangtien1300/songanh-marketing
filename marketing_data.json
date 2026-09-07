@@ -16385,6 +16385,14 @@
   },
   "marketing_activity_log": [
     {
+      "id": 78,
+      "timestamp": "07/09/2026 09:10:00",
+      "module": "Zalo Marketing",
+      "action": "[Post Zalo] Profile 0981169200 | Mô hình: Đăng bài \"𝗧𝗔̣𝗜 𝗦𝗔𝗢 𝟴𝟱% 𝗞𝗛𝗔́𝗖𝗛 𝗠𝗨𝗔 𝗖𝗛𝗨𝗡𝗚 𝗖Ư 𝗤𝗨𝗬𝗘̂́𝗧 Đ𝗜̣𝗡𝗛 𝗫𝗨𝗢̂́𝗡𝗚 𝗧𝗜𝗘̂̀𝗡 𝗦𝗔𝗨 𝗞𝗛𝗜 𝗤𝗨𝗔𝗡 𝗦𝗔́𝗧 𝗦𝗔 𝗕𝗔̀𝗡?\"",
+      "performer": "Phạm Hoàng Tiến",
+      "status": "Hoàn Thành"
+    },
+    {
       "id": 77,
       "timestamp": "07/09/2026 07:34:38",
       "module": "SEO Website",
