@@ -1184,18 +1184,20 @@
                         </div>
                         
                         <div id="acc-marketing" class="submenu-container open bg-white border-t border-slate-200 p-1.5 space-y-1">
-                            <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
+                            <!-- 1. SEO WEBSITE (TRANG CHỦ ĐIỀU HÀNH & CÁC MODULE CON) -->
                             <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
-                                <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fa-solid fa-globe text-sky-600 w-4"></i>
-                                        <span>SEO Website</span>
-                                    </div>
-                                    <div class="flex items-center gap-1.5 shrink-0">
+                                <div class="flex items-center justify-between gap-1">
+                                    <button onclick="selectModule('seo')" id="sub-seo" class="sub-link flex-1 flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition rounded-lg" title="Mở Trang Quản Trị SEO Website">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid fa-globe text-sky-600 w-4"></i>
+                                            <span>SEO Website</span>
+                                        </div>
                                         <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                    </button>
+                                    <button onclick="toggleAccordion('acc-seo')" class="p-2 hover:bg-slate-200 rounded transition" title="Mở rộng / Thu gọn danh mục con">
                                         <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
-                                    </div>
-                                </button>
+                                    </button>
+                                </div>
                                 
                                 <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
                                     <div class="py-1 pl-2">
@@ -1843,32 +1845,38 @@
                 </div>
             </div>
 
-            <!-- 🌟 MODULE: KẾ HOẠCH & DANH SÁCH CÔNG VIỆC SEO ARCHITECTURALMODEL.ORG -->
-            <div id="panel-seo-arch" class="module-panel hidden space-y-5">
-                <!-- 1. Header Banner -->
-                <div class="light-card p-5 rounded-2xl border border-slate-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white shadow-md">
+                        <!-- ======================================================= -->
+            <!-- 🌐 MODULE: TRUNG TÂM QUẢN TRỊ & KẾ HOẠCH SEO WEBSITE   -->
+            <!-- ======================================================= -->
+            <div id="panel-seo" class="module-panel hidden space-y-5">
+                <!-- 1. Header Banner (Quy chuẩn Bố cục Rule 1) -->
+                <div class="light-card p-5 rounded-2xl border border-slate-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 text-white shadow-md">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-xl shadow-lg flex-shrink-0">
-                            <i class="fa-solid fa-list-check"></i>
+                            <i class="fa-solid fa-globe"></i>
                         </div>
                         <div>
                             <div class="flex flex-wrap items-center gap-2">
-                                <h2 class="font-heading font-extrabold text-base lg:text-lg text-white">KẾ HOẠCH &amp; DANH SÁCH CÔNG VIỆC SEO ARCHITECTURALMODEL.ORG</h2>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-400 text-slate-950 uppercase tracking-wider">6 Module | 17 Subtasks</span>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">Đang làm</span>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400 text-slate-950 uppercase tracking-wider">Song ngữ VI/EN</span>
+                                <h2 class="font-heading font-extrabold text-base lg:text-lg text-white">TRUNG TÂM QUẢN TRỊ &amp; KẾ HOẠCH SEO WEBSITE SONG ANH</h2>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-400 text-slate-950 uppercase tracking-wider">2 Website Chiến Lược</span>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400 text-slate-950 uppercase tracking-wider">Trí - SEO Master</span>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">Song Ngữ VI / EN</span>
                             </div>
-                            <p class="text-xs text-slate-300 font-normal mt-1">Bản đồ triển khai SEO Website Xuất Khẩu &amp; Quốc Tế Song Ngữ — Kiến trúc Silo, Audit Kỹ thuật, Content E-E-A-T, Media Xưởng &amp; Schema JSON-LD</p>
+                            <p class="text-xs text-slate-300 font-normal mt-1">Điều phối &amp; Giám sát toàn diện chiến lược SEO đa website: <strong class="text-white">mohinhkientruc.org</strong> (Việt Nam) &amp; <strong class="text-sky-300">architecturalmodel.org</strong> (Quốc Tế &amp; Xuất Khẩu).</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap items-center gap-2">
                         <a href="https://architecturalmodel.org" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 min-h-[40px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 border border-white/20 transition">
                             <i class="fa-solid fa-arrow-up-right-from-square text-sky-400"></i>
-                            <span>Xem Website Live</span>
+                            <span>architecturalmodel.org</span>
+                        </a>
+                        <a href="https://mohinhkientruc.org" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 min-h-[40px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 border border-white/20 transition">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-emerald-400"></i>
+                            <span>mohinhkientruc.org</span>
                         </a>
                         <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 min-h-[40px] rounded-xl bg-sky-500 hover:bg-sky-600 text-slate-950 font-bold text-xs flex items-center gap-1.5 transition shadow-sm">
                             <i class="fa-solid fa-database text-xs"></i>
-                            <span>Mở Notion Task DB</span>
+                            <span>Notion SEO DB</span>
                         </a>
                     </div>
                 </div>
@@ -1878,89 +1886,241 @@
                     <!-- Thẻ 1 -->
                     <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
                         <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>MODULE TRỌNG TÂM</span>
-                            <i class="fa-solid fa-cubes text-blue-600 text-sm"></i>
+                            <span>WEBSITE CHIẾN LƯỢC</span>
+                            <i class="fa-solid fa-globe text-sky-600 text-sm"></i>
                         </div>
-                        <p id="kpi-seo-arch-modules" class="text-2xl sm:text-3xl font-heading font-extrabold text-blue-600">6</p>
+                        <p class="text-2xl sm:text-3xl font-heading font-extrabold text-sky-600">2</p>
                     </div>
 
                     <!-- Thẻ 2 -->
                     <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
                         <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>MỤC PHỤ CHI TIẾT</span>
-                            <i class="fa-solid fa-tasks text-emerald-600 text-sm"></i>
+                            <span>TASK ARCHITECTURALMODEL</span>
+                            <i class="fa-solid fa-tasks text-indigo-600 text-sm"></i>
                         </div>
-                        <p id="kpi-seo-arch-subtasks" class="text-2xl sm:text-3xl font-heading font-extrabold text-emerald-600">17</p>
+                        <p id="kpi-seo-arch-subtasks" class="text-2xl sm:text-3xl font-heading font-extrabold text-indigo-600">17 Tasks</p>
                     </div>
 
                     <!-- Thẻ 3 -->
                     <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
                         <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>TIẾN ĐỘ HOÀN THÀNH</span>
-                            <i id="kpi-seo-arch-progress-icon" class="fa-solid fa-spinner text-amber-600 text-sm"></i>
+                            <span>TỪ KHÓA B2B TOP GOOGLE</span>
+                            <i class="fa-solid fa-key text-amber-600 text-sm"></i>
                         </div>
-                        <p id="kpi-seo-arch-progress" class="text-2xl sm:text-3xl font-heading font-extrabold text-amber-600">0%</p>
+                        <p class="text-2xl sm:text-3xl font-heading font-extrabold text-amber-600">23</p>
                     </div>
 
                     <!-- Thẻ 4 -->
                     <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
                         <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>NGƯỜI THEO DÕI</span>
+                            <span>TRỢ LÝ CHUYÊN TRÁCH</span>
                             <i class="fa-solid fa-user-check text-purple-600 text-sm"></i>
                         </div>
-                        <p class="text-base sm:text-xl font-heading font-extrabold text-purple-600 truncate">Phạm Hoàng Tiến</p>
+                        <p class="text-base sm:text-xl font-heading font-extrabold text-purple-600 truncate">Trí - SEO Master</p>
                     </div>
                 </div>
 
-                <!-- 3. Bộ lọc & Tìm kiếm (Filter Bar) -->
-                <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-2xs">
-                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                        <!-- Search input realtime -->
-                        <div class="relative flex-1">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                            <input type="text" id="seo-arch-search" oninput="filterSeoArchTasks()" placeholder="Tìm kiếm nhanh tên task, mã task, tag [Tech], [Keyword], [Content]..." class="w-full pl-9 pr-4 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 min-h-[40px]">
+                <!-- 3. Bộ Tabs Chuyển Đổi Trên Trang SEO Website -->
+                <div class="flex items-center gap-1.5 p-1.5 bg-slate-100/80 rounded-2xl border border-slate-200/80 overflow-x-auto flex-nowrap custom-scrollbar">
+                    <button onclick="switchSeoTab('arch')" id="tab-seo-btn-arch" class="seo-tab-btn flex-1 min-h-[42px] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap bg-white text-sky-700 shadow-xs border border-sky-300">
+                        <i class="fa-solid fa-list-check text-sky-600"></i>
+                        <span>Task architecturalmodel.org (17 Tasks)</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 font-extrabold">Tuần này</span>
+                    </button>
+                    <button onclick="switchSeoTab('mohinh')" id="tab-seo-btn-mohinh" class="seo-tab-btn flex-1 min-h-[42px] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap text-slate-600 hover:text-slate-900 border border-transparent">
+                        <i class="fa-solid fa-flag text-rose-500"></i>
+                        <span>Lộ Trình mohinhkientruc.org (Tháng 9)</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-extrabold">Pillar VI</span>
+                    </button>
+                    <button onclick="switchSeoTab('tools')" id="tab-seo-btn-tools" class="seo-tab-btn flex-1 min-h-[42px] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap text-slate-600 hover:text-slate-900 border border-transparent">
+                        <i class="fa-solid fa-screwdriver-wrench text-amber-500"></i>
+                        <span>Bộ Công Cụ &amp; Báo Cáo SEO</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-extrabold">4 Tools</span>
+                    </button>
+                </div>
+
+                <!-- 4. NỘI DUNG TAB 1: TASK ARCHITECTURALMODEL.ORG (17 SUBTASKS) -->
+                <div id="tab-seo-content-arch" class="space-y-4">
+                    <!-- Progress & Summary Card -->
+                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900">Tiến Độ Kế Hoạch architecturalmodel.org</h4>
+                                <p class="text-[11px] text-slate-500">6 Module Trọng Tâm • 17 Mục Phụ Chi Tiết • Xuất Khẩu &amp; Song Ngữ VI/EN</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                            <div class="text-right">
+                                <span id="kpi-seo-arch-progress" class="text-base font-black text-sky-600">0%</span>
+                                <span class="text-[10px] text-slate-400 block">Hoàn thành</span>
+                            </div>
+                            <span id="kpi-seo-arch-modules" class="hidden">6</span>
+                        </div>
+                    </div>
+
+                    <!-- Filter bar for architecturalmodel.org tasks -->
+                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-2xs">
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                            <div class="relative flex-1">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                <input type="text" id="seo-arch-search" oninput="filterSeoArchTasks()" placeholder="Tìm kiếm nhanh tên task, mã task, tag [Tech], [Keyword], [Content]..." class="w-full pl-9 pr-4 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 min-h-[40px]">
+                            </div>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <select id="seo-arch-filter-module" onchange="filterSeoArchTasks()" class="px-3 py-2 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer min-h-[40px]">
+                                    <option value="all">Tất cả Module (6)</option>
+                                    <option value="1">Module 1: Audit Kỹ Thuật</option>
+                                    <option value="2">Module 2: Nghiên Cứu Từ Khóa</option>
+                                    <option value="3">Module 3: Sản Xuất Nội Dung</option>
+                                    <option value="4">Module 4: Thiết Kế Media Xưởng</option>
+                                    <option value="5">Module 5: Cấu Hình Schema</option>
+                                    <option value="6">Module 6: Lập Chỉ Mục GSC</option>
+                                </select>
+                                <select id="seo-arch-filter-status" onchange="filterSeoArchTasks()" class="px-3 py-2 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer min-h-[40px]">
+                                    <option value="all">Tất cả Trạng thái</option>
+                                    <option value="Đang làm">Đang làm</option>
+                                    <option value="Hoàn thành">Hoàn thành</option>
+                                </select>
+                                <button onclick="toggleAllSeoArchModules(true)" class="px-3 py-2 min-h-[40px] rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-angles-down text-slate-500"></i>
+                                    <span class="hidden sm:inline">Mở tất cả</span>
+                                </button>
+                                <button onclick="toggleAllSeoArchModules(false)" class="px-3 py-2 min-h-[40px] rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
+                                    <i class="fa-solid fa-angles-up text-slate-500"></i>
+                                    <span class="hidden sm:inline">Thu gọn</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Container 6 Module con -->
+                    <div id="seo-arch-modules-container" class="space-y-4">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- 5. NỘI DUNG TAB 2: LỘ TRÌNH MOHINHKIENTRUC.ORG (THÁNG 9) -->
+                <div id="tab-seo-content-mohinh" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Trụ cột 1 -->
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-2xs hover:border-sky-300 transition">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-sm">01</div>
+                                    <h3 class="text-sm font-heading font-extrabold text-slate-900">Technical Audit &amp; On-Page RankMath</h3>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold">Điểm ≥ 90/100</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Chuẩn hóa danh xưng thương hiệu 100% là <strong>Mô Hình Song Anh</strong> (hoặc Mô Hình Kiến Trúc Song Anh). Rà soát và sửa lỗi thẻ H1/H2, làm sạch XML Sitemap (loại bỏ media attachment URL), nhúng Schema LocalBusiness chuẩn xưởng Thủ Đức.
+                            </p>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[11px] text-slate-500 font-medium">Tuần 1 - Tuần 2 (Tháng 9)</span>
+                                <button onclick="selectModule('onpage')" class="text-xs font-bold text-sky-600 hover:text-sky-800 flex items-center gap-1">
+                                    <span>Xem On-Page</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Controls: Module Filter + Status Filter + Expand/Collapse Buttons -->
-                        <div class="flex flex-wrap items-center gap-2">
-                            <!-- Module Select -->
-                            <select id="seo-arch-filter-module" onchange="filterSeoArchTasks()" class="px-3 py-2 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer min-h-[40px]">
-                                <option value="all">Tất cả Module (6)</option>
-                                <option value="1">Module 1: Audit Kỹ Thuật</option>
-                                <option value="2">Module 2: Nghiên Cứu Từ Khóa</option>
-                                <option value="3">Module 3: Sản Xuất Nội Dung</option>
-                                <option value="4">Module 4: Thiết Kế Media Xưởng</option>
-                                <option value="5">Module 5: Cấu Hình Schema</option>
-                                <option value="6">Module 6: Lập Chỉ Mục GSC</option>
-                            </select>
+                        <!-- Trụ cột 2 -->
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-2xs hover:border-amber-300 transition">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">02</div>
+                                    <h3 class="text-sm font-heading font-extrabold text-slate-900">Bứt Phá 23 Từ Khóa B2B Top Google</h3>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-700 text-[10px] font-bold">23 Từ Khóa</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Theo dõi thứ hạng tự động mỗi sáng lúc 06:00 qua Cloud Bot. Đẩy mạnh các nhóm từ khóa chuyển đổi cao: <em>Làm mô hình kiến trúc, Làm sa bàn kiến trúc TPHCM, Báo giá mô hình quy hoạch, Sa bàn nhà máy công nghiệp</em>.
+                            </p>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[11px] text-slate-500 font-medium">Duy trì hàng ngày</span>
+                                <button onclick="selectModule('keywords')" class="text-xs font-bold text-amber-600 hover:text-amber-800 flex items-center gap-1">
+                                    <span>Xem Bảng Từ Khóa</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
 
-                            <!-- Status Select -->
-                            <select id="seo-arch-filter-status" onchange="filterSeoArchTasks()" class="px-3 py-2 text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer min-h-[40px]">
-                                <option value="all">Tất cả Trạng thái</option>
-                                <option value="Đang làm">Đang làm</option>
-                                <option value="Hoàn thành">Hoàn thành</option>
-                            </select>
+                        <!-- Trụ cột 3 -->
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-2xs hover:border-indigo-300 transition">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">03</div>
+                                    <h3 class="text-sm font-heading font-extrabold text-slate-900">Sản Xuất Bài Viết Pillar &amp; Silo</h3>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-700 text-[10px] font-bold">E-E-A-T Chuẩn</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Xây dựng bài viết trụ cột chuyên sâu dựa trên dự án thực tế xưởng Thủ Đức, kèm hình ảnh chụp thật, video chế tác vi mô. Định dạng chuẩn B2B điềm tĩnh, không dùng từ sáo rỗng hay phóng đại, CTA chuẩn Hotline 0929 22 4444.
+                            </p>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[11px] text-slate-500 font-medium">Tuần 2 - Tuần 3 (Tháng 9)</span>
+                                <button onclick="selectModule('content-link')" class="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                                    <span>Xem Nội Dung &amp; Link</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
 
-                            <!-- Expand/Collapse Buttons -->
-                            <button onclick="toggleAllSeoArchModules(true)" class="px-3 py-2 min-h-[40px] rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
-                                <i class="fa-solid fa-angles-down text-slate-500"></i>
-                                <span class="hidden sm:inline">Mở tất cả</span>
-                            </button>
-                            <button onclick="toggleAllSeoArchModules(false)" class="px-3 py-2 min-h-[40px] rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition">
-                                <i class="fa-solid fa-angles-up text-slate-500"></i>
-                                <span class="hidden sm:inline">Thu gọn</span>
-                            </button>
+                        <!-- Trụ cột 4 -->
+                        <div class="p-5 rounded-2xl bg-white border border-slate-200 space-y-3 shadow-2xs hover:border-emerald-300 transition">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">04</div>
+                                    <h3 class="text-sm font-heading font-extrabold text-slate-900">Entity Đa Kênh &amp; Internal Links</h3>
+                                </div>
+                                <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold">Liên Kết Đa Kênh</span>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Đồng bộ tín hiệu mạng xã hội (Facebook Profile, Fanpage, Zalo, GBP 3 Chi Nhánh, Pinterest). Ma trận Internal link trỏ bài viết vệ tinh về trang chủ và các trang dịch vụ cốt lõi, tránh hoàn toàn lỗi cannibalization.
+                            </p>
+                            <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-[11px] text-slate-500 font-medium">Tuần 3 - Tuần 4 (Tháng 9)</span>
+                                <button onclick="selectModule('competitor')" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1">
+                                    <span>Xem Đối Thủ Top 1</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. Accordion Tree Container -->
-                <div id="seo-arch-modules-container" class="space-y-4">
-                    <!-- Danh sách 6 Module và 17 Tasks con được tự động render realtime bằng JavaScript -->
+                <!-- 6. NỘI DUNG TAB 3: BỘ CÔNG CỤ & BÁO CÁO SEO -->
+                <div id="tab-seo-content-tools" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                        <div onclick="selectModule('keywords')" class="p-4 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-md transition cursor-pointer space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-key"></i>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-xs text-slate-900">Theo Dõi 23 Từ Khóa B2B</h4>
+                            <p class="text-[11px] text-slate-500">Biến động thứ hạng Top 1-10 Google theo thời gian thực.</p>
+                        </div>
+                        <div onclick="selectModule('onpage')" class="p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md transition cursor-pointer space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-file-code"></i>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-xs text-slate-900">On-Page &amp; Schema</h4>
+                            <p class="text-[11px] text-slate-500">Kiểm tra điểm RankMath, Title, Meta Description và Schema JSON-LD.</p>
+                        </div>
+                        <div onclick="selectModule('competitor')" class="p-4 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 hover:shadow-md transition cursor-pointer space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-xs text-slate-900">Phân Tích Đối Thủ Top 1</h4>
+                            <p class="text-[11px] text-slate-500">So sánh chỉ số DR, Backlinks và lưu lượng tìm kiếm đối thủ.</p>
+                        </div>
+                        <div onclick="selectModule('content-link')" class="p-4 rounded-2xl bg-white border border-slate-200 hover:border-cyan-400 hover:shadow-md transition cursor-pointer space-y-2">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-link"></i>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-xs text-slate-900">Nội Dung &amp; Liên Kết Silo</h4>
+                            <p class="text-[11px] text-slate-500">Quản lý bài viết Pillar, Internal Link và kế hoạch sản xuất.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            
             <!-- 🌟 MODULE 2.5: ĐỐI THỦ TOP 1 & COMPETITOR INTELLIGENCE (FULL 100% COMPLETE HTML CODE) -->
             <div id="panel-competitor" class="module-panel hidden space-y-6">
                 <!-- Header Banner -->
@@ -5874,7 +6034,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                             </button>
                             <button onclick="switchMktView('today')" id="btn-mkt-view-today" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
                                 <i class="fa-solid fa-calendar-day"></i>
-                                <span>Hôm Nay (07/09)</span>
+                                <span>Hôm Nay (07/09/2026)</span>
                             </button>
                             <button onclick="switchMktView('week')" id="btn-mkt-view-week" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
                                 <i class="fa-solid fa-calendar-week"></i>
@@ -5889,7 +6049,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                         <!-- Week / Date Navigator -->
                         <div class="flex items-center gap-2">
                             <span id="mkt-current-period-text" class="text-xs font-black text-slate-800 px-3 py-1.5 rounded-lg bg-blue-50/80 border border-blue-200">
-                                ⚡ 3 Ngày: 07/09 - 09/09/2026
+                                ⚡ 3 Ngày: 07/09/2026 - 09/09/2026
                             </span>
                         </div>
                     </div>
@@ -14962,7 +15122,7 @@ let marketingActivityLog = [
                                 <i class="fa-solid fa-circle-check text-emerald-600 text-[10px]"></i>
                                 <span>${g.join_status || 'Đã Tham Gia'}</span>
                             </span>
-                            ${g.joined_date ? `<span class="text-[10px] text-slate-500 font-semibold block mt-1">📅 ${g.joined_date}</span>` : ''}
+                            ${g.joined_date ? `<span class="text-[10px] text-slate-500 font-semibold block mt-1">📅 ${formatDateVN(g.joined_date)}</span>` : ''}
                         </td>
                     </tr>
                 `;
@@ -15235,14 +15395,14 @@ let marketingActivityLog = [
             }
 
             // 5. Sync sidebar active state
-            const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId);
+            const targetLink = document.getElementById('link-' + moduleId) || document.getElementById('sub-' + moduleId) || (moduleId === 'seo-arch' ? document.getElementById('sub-seo') : null);
             if (targetLink) {
                 targetLink.classList.add('active', 'font-bold');
                 targetLink.classList.remove('text-slate-600');
             }
 
             // 6. Open parent accordion if it is a sub-link
-            const marketingModules = ['marketing', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'seo-arch', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
+            const marketingModules = ['marketing', 'seo', 'seo-arch', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
             if (marketingModules.includes(moduleId)) {
                 const accMkt = document.getElementById('acc-marketing');
                 const iconMkt = document.getElementById('icon-acc-marketing');
@@ -15250,7 +15410,7 @@ let marketingActivityLog = [
                     accMkt.classList.add('open');
                     if (iconMkt) iconMkt.classList.add('rotate-180');
                 }
-                if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'seo-arch'].includes(moduleId)) {
+                if (['seo', 'seo-arch', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
                     const accSeo = document.getElementById('acc-seo');
                     const iconSeo = document.getElementById('icon-acc-seo');
                     if (accSeo && !accSeo.classList.contains('open')) {
@@ -15276,6 +15436,10 @@ let marketingActivityLog = [
 
             // 7. Show target panel
             let activePanelId = 'panel-' + moduleId;
+            if (moduleId === 'seo' || moduleId === 'seo-arch') {
+                activePanelId = 'panel-seo';
+                if (typeof switchSeoTab === 'function') switchSeoTab('arch');
+            }
             if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
                 activePanelId = 'panel-updating';
                 const titleText = document.getElementById('updating-title-text');
@@ -15321,7 +15485,7 @@ let marketingActivityLog = [
                 if (typeof renderMarketingCalendar === 'function') renderMarketingCalendar();
             } else if (moduleId === 'keywords') {
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
-            } else if (moduleId === 'seo-arch') {
+            } else if (moduleId === 'seo' || moduleId === 'seo-arch') {
                 if (typeof renderSeoArchTasks === 'function') renderSeoArchTasks();
             }
 
@@ -18942,15 +19106,34 @@ let marketingActivityLog = [
         let currentMktSearch = '';
 
         const mktWeekDays = [
-            { day: 'Thứ 2', date: '07/09', isToday: true, isFuture: false },
-            { day: 'Thứ 3', date: '08/09', isToday: false, isFuture: true },
-            { day: 'Thứ 4', date: '09/09', isToday: false, isFuture: true },
-            { day: 'Thứ 5', date: '10/09', isToday: false, isFuture: true },
-            { day: 'Thứ 6', date: '11/09', isToday: false, isFuture: true },
-            { day: 'Thứ 7', date: '12/09', isToday: false, isFuture: true },
-            { day: 'Chủ Nhật', date: '13/09', isToday: false, isFuture: true }
+            { day: 'Thứ 2', date: '07/09/2026', isToday: true, isFuture: false },
+            { day: 'Thứ 3', date: '08/09/2026', isToday: false, isFuture: true },
+            { day: 'Thứ 4', date: '09/09/2026', isToday: false, isFuture: true },
+            { day: 'Thứ 5', date: '10/09/2026', isToday: false, isFuture: true },
+            { day: 'Thứ 6', date: '11/09/2026', isToday: false, isFuture: true },
+            { day: 'Thứ 7', date: '12/09/2026', isToday: false, isFuture: true },
+            { day: 'Chủ Nhật', date: '13/09/2026', isToday: false, isFuture: true }
         ];
 
+        
+        // =======================================================
+        // 📅 GLOBAL HELPER: ĐỒNG BỘ ĐỊNH DẠNG NGÀY DD/MM/YYYY
+        // =======================================================
+        function formatDateVN(dateStr) {
+            if (!dateStr) return '';
+            dateStr = String(dateStr).trim();
+            // Nếu đã là DD/MM/YYYY hoặc DD/MM/YYYY HH:MM:SS
+            if (/^\d{2}\/\d{2}\/\d{4}/.test(dateStr)) return dateStr;
+            // Nếu là YYYY-MM-DD hoặc YYYY-MM-DD HH:MM:SS
+            const m = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}:\d{2}(?::\d{2})?))?/);
+            if (m) {
+                const d = m[3], mo = m[2], y = m[1];
+                const time = m[4] ? ' ' + m[4] : '';
+                return `${d}/${mo}/${y}${time}`;
+            }
+            return dateStr;
+        }
+    
         function switchMktView(viewMode) {
             currentMktView = viewMode;
             const views = ['week', 'today', '3days', 'month'];
@@ -18967,9 +19150,9 @@ let marketingActivityLog = [
 
             const periodText = document.getElementById('mkt-current-period-text');
             if (periodText) {
-                if (viewMode === 'week') periodText.innerHTML = '📅 Tuần: 07/09 - 13/09/2026';
+                if (viewMode === 'week') periodText.innerHTML = '📅 Tuần: 07/09/2026 - 13/09/2026';
                 else if (viewMode === 'today') periodText.innerHTML = '🎯 Hôm Nay: Thứ 2, 07/09/2026';
-                else if (viewMode === '3days') periodText.innerHTML = '⚡ 3 Ngày: 07/09 - 09/09/2026';
+                else if (viewMode === '3days') periodText.innerHTML = '⚡ 3 Ngày: 07/09/2026 - 09/09/2026';
                 else if (viewMode === 'month') periodText.innerHTML = '🗓️ Tháng 09/2026';
             }
 
@@ -19146,7 +19329,7 @@ let marketingActivityLog = [
                         <div class="p-3 ${headerClass} flex items-center justify-between">
                             <div>
                                 <span class="text-xs font-extrabold block">${dayInfo.day} ${todayTag}</span>
-                                <span class="text-[10px] opacity-80">${dayInfo.date}/2026</span>
+                                <span class="text-[10px] opacity-80">${dayInfo.date}</span>
                             </div>
                             <span class="text-[11px] font-black px-2 py-0.5 rounded-full ${isToday ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-800'}">
                                 ${tasks.length}
@@ -19230,9 +19413,9 @@ let marketingActivityLog = [
 
         function renderMkt3DaysView(container) {
             const threeDays = [
-                { day: 'Thứ 2', date: '07/09', isToday: true, isFuture: false },
-                { day: 'Thứ 3', date: '08/09', isToday: false, isFuture: true },
-                { day: 'Thứ 4', date: '09/09', isToday: false, isFuture: true }
+                { day: 'Thứ 2', date: '07/09/2026', isToday: true, isFuture: false },
+                { day: 'Thứ 3', date: '08/09/2026', isToday: false, isFuture: true },
+                { day: 'Thứ 4', date: '09/09/2026', isToday: false, isFuture: true }
             ];
             let colsHtml = '';
             threeDays.forEach(dayInfo => {
@@ -19245,7 +19428,7 @@ let marketingActivityLog = [
                         <div class="p-4 ${headerClass} flex items-center justify-between">
                             <div>
                                 <span class="text-sm font-black">${dayInfo.day}</span>
-                                <span class="text-xs opacity-90 block">${dayInfo.date}/2026 ${isToday ? '• HÔM NAY' : '• NGÀY MAI'}</span>
+                                <span class="text-xs opacity-90 block">${dayInfo.date} ${isToday ? '• HÔM NAY' : '• NGÀY MAI'}</span>
                             </div>
                             <span class="text-sm font-extrabold px-2.5 py-1 rounded-full ${isToday ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-800'}">
                                 ${tasks.length} tasks
@@ -19277,7 +19460,7 @@ let marketingActivityLog = [
             }
 
             for (let d = 1; d <= totalDays; d++) {
-                const dateStr = (d < 10 ? '0' : '') + d + '/09';
+                const dateStr = (d < 10 ? '0' : '') + d + '/09/2026';
                 const dayOfWeekIndex = (d - 1 + startDayOffset) % 7;
                 const dayName = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'][dayOfWeekIndex];
                 const isToday = (d === 7);
@@ -19794,6 +19977,32 @@ let marketingActivityLog = [
         }
 
         // Core Render Function
+        
+        // ==========================================
+        // 🌐 SEO WEBSITE MODULE & TAB CONTROLLER
+        // ==========================================
+        function switchSeoTab(tabId) {
+            const tabs = ['arch', 'mohinh', 'tools'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-seo-btn-' + t);
+                const content = document.getElementById('tab-seo-content-' + t);
+                if (t === tabId) {
+                    if (btn) {
+                        btn.className = 'seo-tab-btn flex-1 min-h-[42px] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap bg-white text-sky-700 shadow-xs border border-sky-300';
+                    }
+                    if (content) content.classList.remove('hidden');
+                } else {
+                    if (btn) {
+                        btn.className = 'seo-tab-btn flex-1 min-h-[42px] px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 whitespace-nowrap text-slate-600 hover:text-slate-900 border border-transparent';
+                    }
+                    if (content) content.classList.add('hidden');
+                }
+            });
+            if (tabId === 'arch' && typeof renderSeoArchTasks === 'function') {
+                renderSeoArchTasks();
+            }
+        }
+
         function renderSeoArchTasks() {
             const container = document.getElementById('seo-arch-modules-container');
             if (!container) return;
