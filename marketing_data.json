@@ -6092,16 +6092,17 @@
         {
             "id": 1,
             "task_name": "[Post FB] Fanpage Mô hình kiến trúc Song Anh",
-            "description": "🎯 Mục tiêu: Phân phối nội dung B2B chuyên sâu từ Website mohinhkientruc.org lên Fanpage Mô hình kiến trúc Song Anh nhằm tiếp cận Chủ đầu tư, KTS & Tổng thầu. \\n ⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6 lúc 08:30 - 09:30). \\n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \\n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh, chỉn chu (Không dùng từ teen 'nhé/nha/nè'). \\n 🖼️ Hình ảnh/Video: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh hoặc video cận cảnh độ tinh xảo.",
+            "description": "🎯 Mục tiêu: Phân phối nội dung B2B chuyên sâu từ Website mohinhkientruc.org lên Fanpage Mô hình kiến trúc Song Anh nhằm tiếp cận Chủ đầu tư, KTS & Tổng thầu.\n⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6 lúc 08:30 - 09:30).\n📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.\n✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh, chỉn chu (Không dùng từ teen 'nhé/nha/nè').\n🖼️ Hình ảnh/Video: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh hoặc video cận cảnh độ tinh xảo.",
             "assignee": "Phạm Hoàng Tiến",
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4, Thứ 6",
             "kpi_weekly": "3 Bài / Tuần",
-            "completed": "4 Bài",
+            "completed": 4,
             "progress_percent": 1.3,
             "status_text": "1.3% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 2,
@@ -6111,11 +6112,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 3, Thứ 5, Thứ 7",
             "kpi_weekly": "3 Lần / Tuần",
-            "completed": "4 Lần",
+            "completed": 4,
             "progress_percent": 1.3,
             "status_text": "1.3% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 3,
@@ -6125,11 +6127,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 3, Thứ 5, Thứ 7",
             "kpi_weekly": "3 Lần / Tuần",
-            "completed": "1 Lần",
+            "completed": 1,
             "progress_percent": 33.3,
             "status_text": "33.3% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 4,
@@ -6139,11 +6142,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 3, Thứ 5, Thứ 7",
             "kpi_weekly": "3 Lần / Tuần",
-            "completed": "2 Lần",
+            "completed": 2,
             "progress_percent": 66.7,
             "status_text": "66.7% Đạt KPI",
             "color_class": "purple",
-            "icon_class": "fa-square-check text-purple-600"
+            "icon_class": "fa-square-check text-purple-600",
+            "status": "Duy trì"
         },
         {
             "id": 5,
@@ -6153,11 +6157,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 3, Thứ 4, Thứ 5, Thứ 6, Thứ 7",
             "kpi_weekly": "6 Group / Tuần",
-            "completed": "2 Group",
+            "completed": 2,
             "progress_percent": 33.3,
             "status_text": "33.3% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 6,
@@ -6167,25 +6172,27 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4, Thứ 6",
             "kpi_weekly": "3 Bài / Tuần",
-            "completed": "1 Bài",
+            "completed": 1,
             "progress_percent": 33.3,
             "status_text": "33.3% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 7,
             "task_name": "[Post Profile] Song Anh",
-            "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân. \\n ⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile). \\n 📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%. \\n ✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè'). \\n 🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
+            "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân.\n⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile).\n📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.\n✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè').\n🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
             "assignee": "Phạm Hoàng Tiến",
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4, Thứ 6",
             "kpi_weekly": "3 Bài / Tuần",
-            "completed": "1 Bài",
+            "completed": 1,
             "progress_percent": 33.3,
             "status_text": "33.3% Đạt KPI",
             "color_class": "emerald",
-            "icon_class": "fa-square-check text-emerald-600"
+            "icon_class": "fa-square-check text-emerald-600",
+            "status": "Đang làm"
         },
         {
             "id": 8,
@@ -6195,11 +6202,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4",
             "kpi_weekly": "6 Group / Tuần",
-            "completed": "0 Group",
+            "completed": 0,
             "progress_percent": 0,
             "status_text": "Duy trì",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 9,
@@ -6209,11 +6217,12 @@
             "assignee_role": "user-tie",
             "frequency": "Hàng Tuần (Duy trì)",
             "kpi_weekly": "Duy Trì 100%",
-            "completed": "0",
+            "completed": 0,
             "progress_percent": 0.0,
             "status_text": "Đang làm",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Đang làm"
         },
         {
             "id": 10,
@@ -6223,11 +6232,12 @@
             "assignee_role": "user-tie",
             "frequency": "Hàng Tuần (Duy trì)",
             "kpi_weekly": "Duy Trì 100%",
-            "completed": "0",
+            "completed": 0,
             "progress_percent": 0.0,
             "status_text": "Đang làm",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Đang làm"
         },
         {
             "id": 11,
@@ -6237,11 +6247,12 @@
             "assignee_role": "user-tie",
             "frequency": "Hàng Tuần (Duy trì)",
             "kpi_weekly": "Duy Trì 100%",
-            "completed": "0",
+            "completed": 0,
             "progress_percent": 0.0,
             "status_text": "Đang làm",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Đang làm"
         },
         {
             "id": 12,
@@ -6251,11 +6262,12 @@
             "assignee_role": "user-tie",
             "frequency": "Hàng Tuần (Duy trì)",
             "kpi_weekly": "Duy Trì 100%",
-            "completed": "0",
+            "completed": 0,
             "progress_percent": 0,
             "status_text": "Đang làm",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Đang làm"
         },
         {
             "id": 13,
@@ -6265,11 +6277,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4, Thứ 6",
             "kpi_weekly": "9 Bài / Tuần",
-            "completed": "4 Bài",
+            "completed": 4,
             "progress_percent": 44.4,
             "status_text": "44.4% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         },
         {
             "id": 14,
@@ -6284,7 +6297,7 @@
             "status_text": "100% Hoàn Thành",
             "color_class": "emerald",
             "icon_class": "fa-square-check text-emerald-600",
-            "status": "Đang thực hiện"
+            "status": "Duy trì"
         },
         {
             "id": 15,
@@ -6294,11 +6307,12 @@
             "assignee_role": "user-tie",
             "frequency": "Hàng Ngày",
             "kpi_weekly": "35 Group / Tuần",
-            "completed": "9 Group",
+            "completed": 9,
             "progress_percent": 25.7,
             "status_text": "25.7% Đạt KPI",
             "color_class": "amber",
-            "icon_class": "fa-square-check text-amber-500"
+            "icon_class": "fa-square-check text-amber-500",
+            "status": "Duy trì"
         }
     ],
     "fanpage_joined_groups": [
@@ -16386,6 +16400,15 @@
     },
     "marketing_activity_log": [
         {
+            "id": 82,
+            "timestamp": "07/09/2026 16:00:12",
+            "category": "Hệ thống",
+            "action": "Tối ưu giao diện Lịch Marketing (mặc định 3 ngày, rút gọn tiêu đề banner) & Đồng bộ data BẢNG DANH SÁCH CÔNG VIỆC mới nhất",
+            "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+            "status": "✅ Hoàn Thành",
+            "notes": "Chuyển nút Marketing trên sidebar thành link trực tiếp, đặt view mặc định 3 ngày, đồng bộ toàn bộ tiến độ task từ Notion DB"
+        },
+        {
             "id": 81,
             "timestamp": "07/09/2026 15:46:47",
             "category": "Facebook",
@@ -18870,11 +18893,12 @@
             "slot": "morning",
             "time_str": "06:00",
             "kpi_weekly": 7,
-            "completed": 1,
-            "status": "Hoàn Thành",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": true,
             "notion_task_id": "3d14b5e7-3d90-8087-89f9-f372573908da",
-            "description": "Chạy tự động lúc 06:00 sáng hàng ngày qua GitHub Actions Cloud. Check 23 từ khóa SEO B2B, cập nhật WebApp, Google Sheets và gửi thông báo Telegram."
+            "description": "Chạy tự động lúc 06:00 sáng hàng ngày qua GitHub Actions Cloud. Check 23 từ khóa SEO B2B, cập nhật WebApp, Google Sheets và gửi thông báo Telegram.",
+            "completed_count": 1
         },
         {
             "id": "cal-2",
@@ -18898,11 +18922,12 @@
             "slot": "morning",
             "time_str": "09:00",
             "kpi_weekly": 7,
-            "completed": 1,
-            "status": "Hoàn Thành",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3b24b5e7-3d90-8041-9c3f-c6ad36ef06fa",
-            "description": "Đăng bài Zalo profile 0981169200 trực tiếp bởi Sếp Tiến chia sẻ kinh nghiệm kỹ thuật và dự án sa bàn thực tế tại xưởng."
+            "description": "🎯 Mục tiêu: Tiếp cận trực tiếp tệp khách hàng tiềm năng, Chủ đầu tư, KTS & Đối tác đã lưu số điện thoại 0981169200 của Song Anh qua Nhật ký Zalo (hiển thị 100% không bị bóp reach).\n⏱️ Tần suất chuẩn B2B: 3 Bài / Tuần (Khung ngày vàng: Thứ 2, Thứ 4, Thứ 6) + Bổ trợ 3-5 Zalo Khoảnh Khắc (Story 24h) / Tuần.\n⏰ Khung giờ vàng Zalo: 08:00 - 09:00 (Sáng) | 11:30 - 12:30 (Trưa) | 16:30 - 17:30 (Chiều).\n🖼️ Hình ảnh & Video: 1-4 ảnh thực tế sa bàn sáng đèn lung linh tại xưởng Song Anh, cận cảnh độ tinh xảo vi mô, video thợ thi công hoặc đóng gói xuất xưởng.\n✍️ Định dạng: Ngắn gọn, súc tích, văn phong chuyên gia B2B điềm tĩnh, kèm Hotline/Zalo tư vấn 0981 169 200 - 0929 22 4444.",
+            "completed_count": 1
         },
         {
             "id": "cal-3",
@@ -18922,11 +18947,12 @@
             "slot": "morning",
             "time_str": "09:15",
             "kpi_weekly": 3,
-            "completed": 1,
-            "status": "Hoàn Thành",
+            "completed": true,
+            "status": "Đang làm",
             "is_auto": false,
             "notion_task_id": "3a74b5e7-3d90-8025-a7b2-cae97c9bca40",
-            "description": "Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân Mô hình Song Anh, first comment dán link bài viết."
+            "description": "🎯 Mục tiêu: Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân.\n⏱️ Tần suất: 3 - 5 Bài / Ngày (Profile).\n📌 Quy tắc First Comment: Dán link bài viết website ở First Comment để tránh bị Meta bóp Reach 50-80%.\n✍️ Định dạng: Tiêu đề in đậm Font Unicode YayText, văn phong B2B điềm tĩnh (Không dùng từ teen 'nhé/nha/nè').\n🖼️ Hình ảnh: 1-4 ảnh thực tế sa bàn sáng đèn nét đẹp tại xưởng Song Anh.",
+            "completed_count": 1
         },
         {
             "id": "cal-4",
@@ -18947,7 +18973,7 @@
             "time_str": "15:00",
             "kpi_weekly": 3,
             "completed": true,
-            "status": "Đang thực hiện",
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3bb4b5e7-3d90-8067-85ae-fae9e2b02890",
             "description": "Đăng bài ngắn <80 từ vào Top 5 Groups B2B chất lượng, đính kèm link Profile Song Anh và ảnh sa bàn xưởng.",
@@ -18971,11 +18997,12 @@
             "slot": "afternoon",
             "time_str": "15:30",
             "kpi_weekly": 3,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-804d-b9ae-c6a6de9e0130",
-            "description": "Đăng bài cập nhật B2B lên GBP chi nhánh Dịch vụ làm mô hình kiến trúc Song Anh kèm nút Gọi Ngay / Tìm hiểu thêm."
+            "description": "Đăng bài cập nhật B2B lên GBP chi nhánh Dịch vụ làm mô hình kiến trúc Song Anh kèm nút Gọi Ngay / Tìm hiểu thêm.",
+            "completed_count": 2
         },
         {
             "id": "cal-6",
@@ -19018,11 +19045,12 @@
             "slot": "morning",
             "time_str": "09:15",
             "kpi_weekly": 2,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-8032-9b2f-da5ad9114702",
-            "description": "Đăng bài chuẩn B2B cho Trụ sở chính Google Business Profile Mô hình kiến trúc Song Anh."
+            "description": "🎯 Mục tiêu: Duy trì tần suất đăng bài chuẩn B2B cho Trụ sở chính Google Business Profile \"Mô hình kiến trúc Song Anh\" (230/70/28 Nguyễn Xiển, TP. Thủ Đức).\n⏱️ Tần suất: 2 Bài / Tuần (Thứ 2 & Thứ 5) | Khung giờ vàng: 09:30 - 11:30.\n📐 Quy trình 5 Bước chuẩn:\n1. Rà soát BẢNG CONTENT Notion từ trên xuống theo Ngày viết, chọn bài chưa có Ngày đăng GBP.\n2. Lấy nội dung độc bản từ cột \"Spin - GBP Mô hình kiến trúc Song Anh\".\n3. Xử lý Media (Ảnh Drive/Video) & Cấu hình Nút CTA \"Gọi ngay\" (0929 22 4444) hoặc \"Tìm hiểu thêm\" trỏ Deep-link mohinhkientruc.org.\n4. Xuất bản trực tiếp lên Google Business Profile chi nhánh Mô hình kiến trúc Song Anh.\n5. Lấy đúng link chia sẻ https://share.google/... và cập nhật vào cột \"Link GBP (Mô hình kiến trúc Song Anh)\" & \"Ngày đăng GBP (Mô hình kiến trúc Song Anh)\" trên Notion DB.",
+            "completed_count": 2
         },
         {
             "id": "cal-8",
@@ -19045,11 +19073,12 @@
             "slot": "afternoon",
             "time_str": "16:00",
             "kpi_weekly": 6,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-802c-88e2-ea42bc4910a2",
-            "description": "Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm."
+            "description": "Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm, tiếp cận KTS & Chủ đầu tư mới 10-12 ngày.",
+            "completed_count": 2
         },
         {
             "id": "cal-9",
@@ -19069,11 +19098,12 @@
             "slot": "afternoon",
             "time_str": "14:00",
             "kpi_weekly": 3,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-80ab-8ae4-ca7cde392a80",
-            "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org tiếp cận khách quốc tế."
+            "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org để duy trì tương tác B2B quốc tế 10-14 ngày.",
+            "completed_count": 2
         },
         {
             "id": "cal-10",
@@ -19092,11 +19122,12 @@
             "slot": "afternoon",
             "time_str": "16:30",
             "kpi_weekly": 2,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3ba4b5e7-3d90-8012-b0e2-f709bc841122",
-            "description": "Re-comment kéo tương tác các bài Profile cá nhân đăng từ 1-2 tuần trước bằng chia sẻ kỹ thuật xưởng."
+            "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài đã đăng Profile Song Anh để duy trì tương tác cá nhân B2B và mở rộng kết nối KTS/Chủ đầu tư 10-14 ngày.",
+            "completed_count": 1
         },
         {
             "id": "cal-11",
@@ -19116,11 +19147,12 @@
             "slot": "morning",
             "time_str": "10:00",
             "kpi_weekly": 3,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-80a1-9c3f-c6ad36ef06fb",
-            "description": "Sếp Tiến gửi bài qua Zalo cho Chị Kim Thủy đăng bài chăm sóc khách hàng và đối tác B2B."
+            "description": "🎯 Mục tiêu: Bộ phận Kế toán & CSKH tiếp cận, chăm sóc và duy trì tương tác định kỳ với tệp Chủ đầu tư, Quý Khách hàng, KTS & Đối tác trong danh bạ Zalo 0988080440, xây dựng sự an tâm và gắn kết bền chặt sau bán hàng.\n📱 Nguồn nội dung: Lấy bài viết được biên soạn riêng tại cột 'Spin Zalo 0988080440' trên Notion BẢNG CONTENT (văn phong chăm sóc khách hàng, hậu mãi, bảo trì trọn đời và hợp đồng minh bạch).\n⏱️ Tần suất chuẩn B2B: 2 - 3 Bài / Tuần + Đăng Zalo Khoảnh Khắc (Story 24h) duy trì hiện diện liên tục trên Nhật ký.\n⏰ Khung giờ vàng Zalo: 08:30 - 09:30 (Sáng) | 11:30 - 12:30 (Trưa) | 16:30 - 17:30 (Chiều).\n🖼️ Hình ảnh & Video: 1 - 4 ảnh thực tế bàn giao nghiệm thu, kỹ thuật viên vệ sinh bảo trì sa bàn tại dự án, quy trình đóng gói pallet xuất xưởng an toàn hoặc hình ảnh xưởng Song Anh.\n✍️ Định dạng: Lịch thiệp, ân cần, văn phong CSKH chuyên nghiệp, chu đáo, kèm Zalo CSKH: 0988 080 440 - Hotline: 0929 22 4444.",
+            "completed_count": 3
         },
         {
             "id": "cal-12",
@@ -19144,11 +19176,12 @@
             "slot": "morning",
             "time_str": "10:30",
             "kpi_weekly": 7,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-80a2-9c3f-c6ad36ef06fc",
-            "description": "Anh Minh Sang đăng bài tư vấn kỹ thuật dự án sa bàn kiến trúc theo kịch bản chuẩn."
+            "description": "🎯 Mục tiêu: Chuyên viên Sale 1 tư vấn trực tiếp, tiếp cận tệp khách hàng tiềm năng, Chủ đầu tư, KTS & Đối tác trong danh bạ Zalo 0386989087, tư vấn giải pháp chọn tỷ lệ và báo giá tối ưu.\n📱 Nguồn nội dung: Lấy bài viết được biên soạn riêng tại cột 'Spin Zalo 0386989087' trên Notion BẢNG CONTENT (văn phong tư vấn giải pháp B2B, không trùng lặp tài khoản khác).\n⏱️ Tần suất chuẩn B2B: 2 - 3 Bài / Tuần + Đăng Zalo Khoảnh Khắc (Story 24h) duy trì tương tác danh bạ liên tục.\n⏰ Khung giờ vàng Zalo: 08:30 - 09:30 (Sáng) | 11:30 - 12:30 (Trưa) | 17:00 - 18:00 (Chiều).\n🖼️ Hình ảnh & Video: 1 - 4 ảnh thực tế sa bàn sáng đèn lung linh tại xưởng Song Anh, cận cảnh khối nhà, cảnh quan cây xanh hoặc video thợ lắp ráp.\n✍️ Định dạng: Ngắn gọn, súc tích, văn phong chuyên viên tư vấn nhiệt huyết, thực tế, kèm Zalo tư vấn: 0386 989 087 - Hotline: 0929 22 4444.",
+            "completed_count": 3
         },
         {
             "id": "cal-13",
@@ -19168,11 +19201,12 @@
             "slot": "morning",
             "time_str": "10:45",
             "kpi_weekly": 3,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "3be4b5e7-3d90-80a3-9c3f-c6ad36ef06fd",
-            "description": "Anh Minh Sang đăng bài hỗ trợ kỹ thuật sa bàn cho kênh số hotline kỹ thuật."
+            "description": "Đăng bài/Khoảnh khắc B2B lên Nhật ký Zalo 0376415131 (Sang giữ máy) 2-3 bài/tuần để duy trì tương tác danh bạ KTS & Chủ đầu tư, kéo inbox chốt deal.",
+            "completed_count": 3
         },
         {
             "id": "cal-14",
@@ -19214,11 +19248,12 @@
             "slot": "afternoon",
             "time_str": "15:00",
             "kpi_weekly": 1,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "2644b5e7-3d90-8074-83fa-cd3d23de302c",
-            "description": "Cập nhật bài viết cũ, bổ sung schema FAQ/Article, tối ưu hình ảnh Gutenberg và kiểm tra điểm RankMath 85+."
+            "description": "🎯 MỤC TIÊU:\nĐịnh kỳ audit, làm mới nội dung (Freshness Content) và tối ưu On-Page SEO cho các bài viết cốt lõi/trụ cột trên website mohinhkientruc.org (Mô hình chung cư, Nhà máy, Sa bàn quy hoạch...) nhằm củng cố Top 1-3 Google Search, khắc phục rớt hạng và tăng tỷ lệ chuyển đổi B2B.\n\n📋 QUY TRÌNH THỰC HIỆN CHUẨN (SOP 5 BƯỚC):\n1. Audit Search Intent (Trí - SEO): Kiểm tra thứ hạng GSC, rà soát từ khóa tụt dốc, phân tích intent người tìm kiếm.\n2. Biên tập nội dung (Văn - Content & Sếp Tiến): Bổ sung thông số kỹ thuật sa bàn thực tế (vật liệu mica, in 3D SLA, LED điều khiển, tỷ lệ 1/100, 1/200), văn phong điềm tĩnh B2B, loại bỏ từ ngữ phóng đại sáo rỗng.\n3. Media xưởng thực tế (Mỹ - Design): Bổ sung tối thiểu 3-5 ảnh sa bàn chụp thực tế tại xưởng 230/70/28 Nguyễn Xiển, Thủ Đức; nén WebP chuẩn SEO, dán Logo Song Anh khử răng cưa.\n4. On-Page & RankMath (Thông - Website): Cập nhật trên Gutenberg, tối ưu RankMath > 80 điểm, bảo toàn 100% URL Slug cũ (tránh lỗi 404), cập nhật Schema JSON-LD & Alt text.\n5. Request Index & Đồng bộ (Sếp Tiến & Trí - SEO): Gửi Request Indexing trên Google Search Console, cập nhật trường 'Ngày cập nhật' trên BẢNG CONTENT Notion.\n\n✅ TIÊU CHUẨN HOÀN THÀNH:\n• URL Slug không đổi, giữ nguyên backlink.\n• Điểm RankMath On-Page đạt ≥ 80/100.\n• Đầy đủ ảnh thực tế xưởng Thủ Đức, thông tin Hotline chuẩn không tên riêng.\n• Cập nhật ngày trên BẢNG CONTENT để nhảy số liệu báo cáo tuần.",
+            "completed_count": 1
         },
         {
             "id": "cal-16",
@@ -19236,11 +19271,12 @@
             "slot": "afternoon",
             "time_str": "16:00",
             "kpi_weekly": 1,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Duy trì",
             "is_auto": false,
             "notion_task_id": "22e4b5e7-3d90-805b-82df-d221bc077348",
-            "description": "Tổng hợp toàn bộ 30+ thao tác trong tuần, cập nhật số liệu lên BÁO CÁO CÔNG VIỆC TUẦN Notion DB và lên lịch tuần mới."
+            "description": "Báo cáo chi tiết 31 công việc duy trì marketing tuần 31/08 - 06/09/2026 (5 bài GBP, 4 bài Zalo 0981, 6 bài Zalo Thủy/Sang, 4 bài Profile, 3 bài Fanpage, 3 bài Group, 3 đợt Pinterest, 6 groups vật liệu).",
+            "completed_count": 31
         }
     ]
 }
