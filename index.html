@@ -6242,6 +6242,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         }
 
         let marketingData = {};
+        let onpageLinkList = [];
         let kwFilterState = {};
         let keywordList = [
         {
@@ -17253,43 +17254,54 @@ let marketingActivityLog = [
 
 
         window.addEventListener('DOMContentLoaded', () => {
-            const safeCall = (fn, name) => {
-                try { if (typeof fn === 'function') fn(); }
-                catch(err) { console.error(`[Init Error] in ${name}:`, err); }
-            };
-            safeCall(updateHeaderCurrentDate, 'updateHeaderCurrentDate');
-            safeCall(renderKeywordTable, 'renderKeywordTable');
-            safeCall(initTargetAudiencesData, 'initTargetAudiencesData');
-            safeCall(renderSocialChannels, 'renderSocialChannels');
-            safeCall(renderWritingFormulas, 'renderWritingFormulas');
-            safeCall(updateHeaderRealtimeDate, 'updateHeaderRealtimeDate');
-            safeCall(renderOnpageTable, 'renderOnpageTable');
-            safeCall(renderFbTable, 'renderFbTable');
-            safeCall(renderZaloTable, 'renderZaloTable');
-            safeCall(renderActivityLogTable, 'renderActivityLogTable');
-            safeCall(renderMarketingActivityLogTable, 'renderMarketingActivityLogTable');
-            safeCall(renderMarketingCalendar, 'renderMarketingCalendar');
-            safeCall(updateFbStatsDisplay, 'updateFbStatsDisplay');
-            safeCall(renderFbWeekCalendar, 'renderFbWeekCalendar');
-            safeCall(updateGbpStatsDisplay, 'updateGbpStatsDisplay');
-            safeCall(renderSeoArchTasks, 'renderSeoArchTasks');
-            safeCall(fetchData, 'fetchData');
-
-            // 🚀 PERSISTENT RELOAD (F5) ROUTING & SCROLL TO TOP:
-            let targetMod = 'home';
-            const hashMod = window.location.hash.replace(/^#/, '').replace(/^panel-/, '').trim();
-            const savedMod = localStorage.getItem('songanh_active_module');
-            
-            if (hashMod && document.getElementById('panel-' + hashMod)) {
-                targetMod = hashMod;
-            } else if (savedMod && document.getElementById('panel-' + savedMod)) {
-                targetMod = savedMod;
+            // 🚀 1. PERSISTENT RELOAD (F5) ROUTING (CHẠY NGAY ĐẦU TIÊN ĐỂ KHÔNG BAO GIỜ BỊ TRÔI VỀ TRANG CHỦ):
+            try {
+                let targetMod = 'home';
+                const hashMod = window.location.hash.replace(/^#/, '').replace(/^panel-/, '').trim();
+                const savedMod = localStorage.getItem('songanh_active_module');
+                
+                if (hashMod && document.getElementById('panel-' + hashMod)) {
+                    targetMod = hashMod;
+                } else if (savedMod && document.getElementById('panel-' + savedMod)) {
+                    targetMod = savedMod;
+                }
+                
+                selectModule(targetMod, false);
+                scrollToTop();
+                setTimeout(scrollToTop, 100);
+                setTimeout(scrollToTop, 300);
+            } catch(e) {
+                console.error("[Router Error on Reload]:", e);
             }
-            
-            selectModule(targetMod, false);
-            scrollToTop();
-            setTimeout(scrollToTop, 100);
-            setTimeout(scrollToTop, 300);
+
+            // 🛠️ 2. SAFE CALL TẤT CẢ CÁC HÀM KHỞI TẠO (DÙ BẤT KỲ MODULE NÀO LỖI CŨNG KHÔNG GÂY ẢNH HƯỞNG ĐẾN NHAU)
+            const safeCallByName = (fnName) => {
+                try {
+                    if (typeof window[fnName] === 'function') {
+                        window[fnName]();
+                    }
+                } catch(err) {
+                    console.error(`[Init Error] in ${fnName}:`, err);
+                }
+            };
+
+            safeCallByName('updateHeaderCurrentDate');
+            safeCallByName('renderKeywordTable');
+            safeCallByName('initTargetAudiencesData');
+            safeCallByName('renderSocialChannels');
+            safeCallByName('renderWritingFormulas');
+            safeCallByName('updateHeaderRealtimeDate');
+            safeCallByName('renderOnpageTable');
+            safeCallByName('renderFbTable');
+            safeCallByName('renderZaloTable');
+            safeCallByName('renderActivityLogTable');
+            safeCallByName('renderMarketingActivityLogTable');
+            safeCallByName('renderMarketingCalendar');
+            safeCallByName('updateFbStatsDisplay');
+            safeCallByName('renderFbWeekCalendar');
+            safeCallByName('updateGbpStatsDisplay');
+            safeCallByName('renderSeoArchTasks');
+            safeCallByName('fetchData');
         });
 
         // Listen for browser back/forward buttons
@@ -19306,6 +19318,8 @@ let marketingActivityLog = [
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
+        }
+
         // =========================================================================
         // 🌐 MODULE SEO ARCHITECTURALMODEL.ORG CONTROLLER & TASK MANAGER
         // =========================================================================
