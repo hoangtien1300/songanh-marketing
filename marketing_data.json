@@ -6279,11 +6279,12 @@
             "assignee_role": "user-tie",
             "frequency": "Thứ 2, Thứ 4, Thứ 6",
             "kpi_weekly": "3 Bài / Tuần",
-            "completed": "3 Bài",
+            "completed": 1,
             "progress_percent": 100,
             "status_text": "100% Hoàn Thành",
             "color_class": "emerald",
-            "icon_class": "fa-square-check text-emerald-600"
+            "icon_class": "fa-square-check text-emerald-600",
+            "status": "Đang thực hiện"
         },
         {
             "id": 15,
@@ -16385,6 +16386,15 @@
     },
     "marketing_activity_log": [
         {
+            "id": 81,
+            "timestamp": "07/09/2026 15:46:47",
+            "category": "Facebook",
+            "action": "Đăng bài Option 1 Sa bàn chung cư cao tầng vào Group Facebook (Link: https://www.facebook.com/groups/152692778620733/posts/2238470873376236)",
+            "performer": "Phạm Hoàng Tiến",
+            "status": "✅ Hoàn Thành",
+            "notes": "Đã ghi nhận bản ghi mới vào Notion DB 'LỊCH SỬ ĐĂNG BÀI & RE-COMMENT GROUP' và cập nhật tiến độ tuần BẢNG DANH SÁCH CÔNG VIỆC"
+        },
+        {
             "id": 80,
             "timestamp": "07/09/2026 14:35:00",
             "category": "Hệ thống",
@@ -18936,11 +18946,12 @@
             "slot": "afternoon",
             "time_str": "15:00",
             "kpi_weekly": 3,
-            "completed": 0,
-            "status": "Chờ thực hiện",
+            "completed": true,
+            "status": "Đang thực hiện",
             "is_auto": false,
             "notion_task_id": "3bb4b5e7-3d90-8067-85ae-fae9e2b02890",
-            "description": "Đăng bài ngắn <80 từ vào Top 5 Groups B2B chất lượng, đính kèm link Profile Song Anh và ảnh sa bàn xưởng."
+            "description": "Đăng bài ngắn <80 từ vào Top 5 Groups B2B chất lượng, đính kèm link Profile Song Anh và ảnh sa bàn xưởng.",
+            "completed_count": 1
         },
         {
             "id": "cal-5",
