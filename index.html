@@ -819,7 +819,7 @@
 
         /* Collapsible accordion transition */
         .submenu-container { max-height: 0; overflow: hidden; transition: max-height 0.25s ease-in-out; }
-        .submenu-container.open { max-height: 500px; }
+        .submenu-container.open { max-height: 2500px; }
 
         /* Sidebar toggle transition Desktop & Mobile */
         #sidebar {
@@ -1156,121 +1156,136 @@
 
                 <div class="space-y-1 text-xs">
                     
-                    <!-- 0. TRANG CHỦ -->
+                                                            <!-- 0. TRANG CHỦ -->
                     <div class="accordion-group rounded-xl border border-blue-200 bg-blue-50/70 overflow-hidden mb-2">
                         <button onclick="selectModule('home')" id="sub-home" class="sub-link active w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-blue-100/80 transition">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-house text-blue-600 w-4"></i>
                                 <span>Trang chủ</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                         </button>
                     </div>
 
-                    <!-- 👥 NHÂN SỰ SONG ANH -->
-                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-2 shadow-2xs">
-                        <button onclick="selectModule('nhan-su')" id="sub-nhan-su" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-indigo-100/70 transition">
+                    <!-- 📢 MỤC MARKETING (GOM CÁC HẠNG MỤC MARKETING ĐỒNG CẤP VỚI NHÂN SỰ) -->
+                    <div class="accordion-group rounded-xl border border-blue-200/80 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
+                        <button onclick="toggleAccordion('acc-marketing')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-users-gear text-indigo-600 w-4"></i>
-                                <span class="font-extrabold text-slate-900">👥 Nhân Sự</span>
+                                <i class="fa-solid fa-bullhorn text-blue-600 w-4"></i>
+                                <span class="font-extrabold text-slate-900">Marketing</span>
                             </div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-700 font-bold">19 NS</span>
-                        </button>
-                    </div>
-
-                    
-                    <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2">
-                                <i class="fa-solid fa-globe text-sky-600 w-4"></i>
-                                <span>SEO Website</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                                <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-bold whitespace-nowrap shrink-0">7 Kênh</span>
+                                <i id="icon-acc-marketing" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300 rotate-180"></i>
                             </div>
                         </button>
                         
-                        <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
-                            <div class="py-1 pl-2">
-                                <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔍 Kiểm Tra Audit</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                        <div id="acc-marketing" class="submenu-container open bg-white border-t border-slate-200 p-1.5 space-y-1">
+                            <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-globe text-sky-600 w-4"></i>
+                                        <span>SEO Website</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5 shrink-0">
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                                    </div>
                                 </button>
-                                <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔑 Theo Dõi Từ Khóa</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                
+                                <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200">
+                                    <div class="py-1 pl-2">
+                                        <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🔍 Kiểm Tra Audit</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🔑 Theo Dõi Từ Khóa</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>📄 On-Page &amp; Schema</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🛡️ Ăn Thịt Từ Khóa</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🔗 Nội Dung &amp; Link</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                        <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🌐 Off-Page &amp; Entity</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
+                                        </button>
+                                        <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
+                                            <span>🏆 Đối Thủ Top 1</span>
+                                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. GOOGLE BUSINESS -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span>Google Business</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
-                                <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>📄 On-Page &amp; Schema</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            </div>
+
+                            <!-- 3. FACEBOOK -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span>Facebook</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
-                                <button onclick="selectModule('cannibalization')" id="sub-cannibalization" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🛡️ Ăn Thịt Từ Khóa</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                            </div>
+
+                            <!-- 4. ZALO MARKETING -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span>Zalo Marketing</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
-                                <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🔗 Nội Dung &amp; Link</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            </div>
+
+                            <!-- 5. X.COM -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
                                 </button>
-                                <button onclick="selectModule('offpage')" id="sub-offpage" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🌐 Off-Page &amp; Entity</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                            </div>
+
+                            <!-- 6. TIKTOK -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
                                 </button>
-                                <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy transition flex items-center justify-between">
-                                    <span>🏆 Đối Thủ Top 1</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            </div>
+
+                            <!-- 7. YOUTUBE -->
+                            <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
+                                <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 2. GOOGLE BUSINESS -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-500 w-4"></i><span>Google Business</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 3. FACEBOOK -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('facebook')" id="sub-facebook" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-facebook-f text-blue-600 w-4"></i><span>Facebook</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 4. ZALO MARKETING -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('zalo')" id="sub-zalo" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-solid fa-comment-dots text-blue-500 w-4"></i><span>Zalo Marketing</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
-                        </button>
-                    </div>
-
-                    <!-- 5. X.COM -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('xcom')" id="sub-xcom" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-x-twitter text-slate-900 w-4"></i><span>X.com</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                        </button>
-                    </div>
-
-                    <!-- 6. TIKTOK -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('tiktok')" id="sub-tiktok" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-tiktok text-slate-900 w-4"></i><span>TikTok</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
-                        </button>
-                    </div>
-
-                    <!-- 7. YOUTUBE -->
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/50 overflow-hidden">
-                        <button onclick="selectModule('youtube')" id="sub-youtube" class="sub-link w-full flex items-center justify-between p-2.5 font-semibold text-slate-700 hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2"><i class="fa-brands fa-youtube text-red-600 w-4"></i><span>YouTube</span></div>
-                            <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 text-slate-600 font-bold">Update</span>
+                    <!-- 👥 NHÂN SỰ SONG ANH (ĐỒNG CẤP VỚI MARKETING, NẰM DƯỚI PHẦN YOUTUBE) -->
+                    <div class="accordion-group rounded-xl border border-indigo-200 bg-indigo-50/70 overflow-hidden mb-2 shadow-2xs">
+                        <button onclick="selectModule('nhan-su')" id="sub-nhan-su" class="sub-link w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-indigo-100/70 transition">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-users-gear text-indigo-600 w-4"></i>
+                                <span class="font-extrabold text-slate-900">Nhân Sự</span>
+                            </div>
+                            <span class="text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-700 font-bold whitespace-nowrap shrink-0">19 NS</span>
                         </button>
                     </div>
 
@@ -1353,35 +1368,35 @@
                         </p>
                     </div>
 
-                    <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
+                                        <div class="accordion-group rounded-xl border border-slate-200 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
                         <button onclick="toggleAccordion('acc-settings')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-slate-100 transition">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-gear text-slate-700 w-4"></i>
-                                <span class="font-extrabold text-slate-900">⚙️ Cài Đặt</span>
+                                <span class="font-extrabold text-slate-900">Cài Đặt</span>
                             </div>
-                            <div class="flex items-center gap-1">
-                                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 <i id="icon-acc-settings" class="fa-solid fa-chevron-down text-slate-500 text-[10px] transition-transform duration-300"></i>
                             </div>
                         </button>
                         
-                        <div id="acc-settings" class="submenu-container open bg-white border-t border-slate-100">
+                        <div id="acc-settings" class="submenu-container bg-white border-t border-slate-100">
                             <div class="py-1 pl-2 space-y-0.5">
                                 <button onclick="selectModule('target-audience')" id="sub-target-audience" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-indigo-800 hover:bg-indigo-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Đối tượng khách hàng</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
                                 <button onclick="selectModule('content-goals')" id="sub-content-goals" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-amber-900 hover:bg-amber-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🎯</span> Content Goal</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
                                 <button onclick="selectModule('social-channels')" id="sub-social-channels" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-blue-900 hover:bg-blue-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>🌐</span> Kênh Social</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
                                 <button onclick="selectModule('writing-formulas')" id="sub-writing-formulas" class="sub-link w-full text-left px-3 py-1.5 rounded-r-lg text-[11px] font-bold text-slate-700 hover:text-rose-900 hover:bg-rose-50 transition flex items-center justify-between">
                                     <span class="flex items-center gap-1.5"><span>✍️</span> Công thức viết bài</span>
-                                    <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-700 font-bold">Active</span>
+                                    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                                 </button>
                             </div>
                         </div>
@@ -14615,7 +14630,23 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             }
 
             // 6. Open parent accordion if it is a sub-link
-            if (moduleId === 'target-audience' || moduleId === 'content-goals' || moduleId === 'social-channels') {
+            const marketingModules = ['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
+            if (marketingModules.includes(moduleId)) {
+                const accMkt = document.getElementById('acc-marketing');
+                const iconMkt = document.getElementById('icon-acc-marketing');
+                if (accMkt && !accMkt.classList.contains('open')) {
+                    accMkt.classList.add('open');
+                    if (iconMkt) iconMkt.classList.add('rotate-180');
+                }
+                if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
+                    const accSeo = document.getElementById('acc-seo');
+                    const iconSeo = document.getElementById('icon-acc-seo');
+                    if (accSeo && !accSeo.classList.contains('open')) {
+                        accSeo.classList.add('open');
+                        if (iconSeo) iconSeo.classList.add('rotate-180');
+                    }
+                }
+            } else if (['target-audience', 'content-goals', 'social-channels', 'writing-formulas'].includes(moduleId)) {
                 const acc = document.getElementById('acc-settings');
                 const icon = document.getElementById('icon-acc-settings');
                 if (acc && !acc.classList.contains('open')) {
@@ -14625,13 +14656,6 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             } else if (moduleId.startsWith('fb-')) {
                 const acc = document.getElementById('acc-tool-facebook');
                 const icon = document.getElementById('icon-acc-tool-facebook');
-                if (acc && !acc.classList.contains('open')) {
-                    acc.classList.add('open');
-                    if (icon) icon.classList.add('rotate-180');
-                }
-            } else if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
-                const acc = document.getElementById('acc-seo');
-                const icon = document.getElementById('icon-acc-seo');
                 if (acc && !acc.classList.contains('open')) {
                     acc.classList.add('open');
                     if (icon) icon.classList.add('rotate-180');
