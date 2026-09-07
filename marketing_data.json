@@ -16400,6 +16400,15 @@
     },
     "marketing_activity_log": [
         {
+            "id": 85,
+            "timestamp": "07/09/2026 16:30:00",
+            "category": "Hệ thống",
+            "action": "Khắc phục sự cố hiển thị Bảng Calendar Lịch Marketing & Chuẩn hóa cú pháp dữ liệu WebApp",
+            "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+            "status": "✅ Hoàn Thành",
+            "notes": "Khôi phục container #panel-marketing, modal chi tiết task, chân trang footer toàn cục và xử lý triệt để lỗi cú pháp xuống dòng trong chuỗi JavaScript của mảng dữ liệu dự phòng. Toàn bộ 16 task hiển thị mượt mà trên 4 chế độ xem (3 ngày, Hôm nay, Tuần, Tháng)."
+        },
+        {
             "id": 84,
             "timestamp": "07/09/2026 16:10:00",
             "category": "Hệ thống",
