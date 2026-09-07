@@ -15026,7 +15026,7 @@ let marketingActivityLog = [
             }
 
             // 6. Open parent accordion if it is a sub-link
-            const marketingModules = ['marketing', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
+            const marketingModules = ['marketing', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'seo-arch', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
             if (marketingModules.includes(moduleId)) {
                 const accMkt = document.getElementById('acc-marketing');
                 const iconMkt = document.getElementById('icon-acc-marketing');
@@ -15034,7 +15034,7 @@ let marketingActivityLog = [
                     accMkt.classList.add('open');
                     if (iconMkt) iconMkt.classList.add('rotate-180');
                 }
-                if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor'].includes(moduleId)) {
+                if (['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'seo-arch'].includes(moduleId)) {
                     const accSeo = document.getElementById('acc-seo');
                     const iconSeo = document.getElementById('icon-acc-seo');
                     if (accSeo && !accSeo.classList.contains('open')) {
@@ -15105,6 +15105,8 @@ let marketingActivityLog = [
                 if (typeof renderMarketingCalendar === 'function') renderMarketingCalendar();
             } else if (moduleId === 'keywords') {
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
+            } else if (moduleId === 'seo-arch') {
+                if (typeof renderSeoArchTasks === 'function') renderSeoArchTasks();
             }
 
             // Module switch completed smoothly without blocking header
@@ -17068,6 +17070,7 @@ let marketingActivityLog = [
             safeCall(updateFbStatsDisplay, 'updateFbStatsDisplay');
             safeCall(renderFbWeekCalendar, 'renderFbWeekCalendar');
             safeCall(updateGbpStatsDisplay, 'updateGbpStatsDisplay');
+            safeCall(renderSeoArchTasks, 'renderSeoArchTasks');
             safeCall(fetchData, 'fetchData');
 
             // 🚀 PERSISTENT RELOAD (F5) ROUTING & SCROLL TO TOP:
@@ -19137,6 +19140,688 @@ let marketingActivityLog = [
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
             }
+        // =========================================================================
+        // 🌐 MODULE SEO ARCHITECTURALMODEL.ORG CONTROLLER & TASK MANAGER
+        // =========================================================================
+        const seoArchModulesData = [
+            {
+                id: 1,
+                code: "MODULE 1",
+                title: "Audit Kỹ Thuật & Cấu Hình Song Ngữ",
+                description: "Khắc phục lỗi Technical On-Page, tối ưu thẻ Heading H1/H2 song ngữ, chuẩn hóa URL và sitemap sạch",
+                icon: "fa-screwdriver-wrench",
+                colorClass: "sky",
+                bgGradient: "from-sky-50 to-blue-50/40",
+                borderColor: "border-sky-200",
+                badgeBg: "bg-sky-100 text-sky-800",
+                tasks: [
+                    {
+                        id: "seo-arch-1-1",
+                        code: "1.1",
+                        tag: "Tech",
+                        tagColor: "bg-sky-100 text-sky-700 border-sky-200",
+                        title: "[Tech] Fix lỗi Missing H1 & H2 trên Trang chủ Tiếng Anh (/en/)",
+                        description: "Kiểm tra mã nguồn theme Monolit-child, gán thẻ H1 chuẩn 'Architectural Scale Model Maker' và phân cấp thẻ H2 theo danh mục dịch vụ quốc tế.",
+                        assignee: "Kiến - Lập Trình & Trí - SEO",
+                        priority: "Cao",
+                        lang: "EN"
+                    },
+                    {
+                        id: "seo-arch-1-2",
+                        code: "1.2",
+                        tag: "Tech",
+                        tagColor: "bg-sky-100 text-sky-700 border-sky-200",
+                        title: "[Tech] Chuẩn hóa đuôi Title Trang chủ Tiếng Việt thành 'Mô Hình Song Anh'",
+                        description: "Rà soát RankMath SEO, loại bỏ hoàn toàn 'Song Anh Model' ở bản Tiếng Việt, đổi 100% sang danh xưng 'Mô Hình Song Anh' đúng quy chuẩn thương hiệu.",
+                        assignee: "Thông - Website & Trí - SEO",
+                        priority: "Khẩn",
+                        lang: "VI"
+                    },
+                    {
+                        id: "seo-arch-1-3",
+                        code: "1.3",
+                        tag: "Tech",
+                        tagColor: "bg-sky-100 text-sky-700 border-sky-200",
+                        title: "[Tech] Cấu hình Sitemap XML loại bỏ file ảnh media attachments",
+                        description: "Tắt lập chỉ mục trang đính kèm (Attachment URLs redirect to parent/clean sitemap) trên RankMath để tránh phình sitemap và lãng phí Crawl Budget.",
+                        assignee: "Kiến - Lập Trình",
+                        priority: "Trung bình",
+                        lang: "All"
+                    },
+                    {
+                        id: "seo-arch-1-4",
+                        code: "1.4",
+                        tag: "Tech",
+                        tagColor: "bg-sky-100 text-sky-700 border-sky-200",
+                        title: "[Tech] Kiểm tra liên kết Hreflang Tags (vi, en, x-default) & Menu chuyển ngữ",
+                        description: "Đảm bảo thẻ rel='alternate' hreflang khai báo chuẩn xác giữa / và /en/, kiểm tra bộ chuyển ngôn ngữ (Language Switcher) trên Header & Mobile Drawer.",
+                        assignee: "Kiến - Lập Trình & Trí - SEO",
+                        priority: "Cao",
+                        lang: "Song ngữ"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                code: "MODULE 2",
+                title: "Nghiên Cứu Từ Khóa & Ma Trận Song Ngữ",
+                description: "Bóc tách Search Intent B2B quốc tế và nội địa, thiết kế kiến trúc Topic Cluster và phân bổ internal link",
+                icon: "fa-key",
+                colorClass: "indigo",
+                bgGradient: "from-indigo-50 to-blue-50/40",
+                borderColor: "border-indigo-200",
+                badgeBg: "bg-indigo-100 text-indigo-800",
+                tasks: [
+                    {
+                        id: "seo-arch-2-1",
+                        code: "2.1",
+                        tag: "Keyword",
+                        tagColor: "bg-indigo-100 text-indigo-700 border-indigo-200",
+                        title: "[Keyword] Xây dựng bộ từ khóa xuất khẩu tiếng Anh (Architectural Scale Model Maker)",
+                        description: "Nghiên cứu bộ từ khóa có Buyer Intent cao: architectural scale model maker in Vietnam, scale model builder, industrial model maker, factory scale model.",
+                        assignee: "Trí - SEO Master",
+                        priority: "Khẩn",
+                        lang: "EN"
+                    },
+                    {
+                        id: "seo-arch-2-2",
+                        code: "2.2",
+                        tag: "Keyword",
+                        tagColor: "bg-indigo-100 text-indigo-700 border-indigo-200",
+                        title: "[Keyword] Xây dựng bộ từ khóa Sa bàn tiếng Việt (Làm sa bàn kiến trúc TPHCM)",
+                        description: "Lập bảng đối chiếu từ khóa B2B nội địa: làm sa bàn kiến trúc TPHCM, công ty làm sa bàn uy tín, mô hình kiến trúc quy hoạch, mô hình nhà máy.",
+                        assignee: "Trí - SEO Master",
+                        priority: "Cao",
+                        lang: "VI"
+                    },
+                    {
+                        id: "seo-arch-2-3",
+                        code: "2.3",
+                        tag: "Silo",
+                        tagColor: "bg-purple-100 text-purple-700 border-purple-200",
+                        title: "[Silo] Thiết lập Ma trận Internal Link trỏ về 2 trang chủ song ngữ",
+                        description: "Xây dựng sơ đồ ma trận liên kết nội bộ theo cấu trúc Silo: Pillar Page -> Cluster Subpages -> Anchor Text ngữ cảnh trỏ ngược về Trang chủ tương ứng.",
+                        assignee: "Trí - SEO & Văn - Nội Dung",
+                        priority: "Cao",
+                        lang: "Song ngữ"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                code: "MODULE 3",
+                title: "Sản Xuất Nội Dung E-E-A-T & On-Page Song Ngữ",
+                description: "Biên soạn nội dung chuẩn E-E-A-T ngành kiến trúc sa bàn, tối ưu điểm RankMath On-Page đạt ngưỡng xuất sắc",
+                icon: "fa-newspaper",
+                colorClass: "emerald",
+                bgGradient: "from-emerald-50 to-teal-50/40",
+                borderColor: "border-emerald-200",
+                badgeBg: "bg-emerald-100 text-emerald-800",
+                tasks: [
+                    {
+                        id: "seo-arch-3-1",
+                        code: "3.1",
+                        tag: "Content",
+                        tagColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
+                        title: "[Content] Biên soạn & On-Page bài Pillar Tiếng Anh (Model Making Services for Global Projects)",
+                        description: "Bài trụ cột tiếng Anh chuyên sâu về năng lực xuất khẩu mô hình, vật liệu Acrylic/PMMA/ABS, công nghệ laser/CNC và đóng gói kiện gỗ đạt chuẩn hàng không.",
+                        assignee: "Văn - Nội Dung & Trí - SEO",
+                        priority: "Cao",
+                        lang: "EN"
+                    },
+                    {
+                        id: "seo-arch-3-2",
+                        code: "3.2",
+                        tag: "Content",
+                        tagColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
+                        title: "[Content] Biên soạn & On-Page bài Pillar Tiếng Việt (Dịch vụ thi công sa bàn kiến trúc TPHCM)",
+                        description: "Bài trụ cột tiếng Việt nhấn mạnh xưởng sản xuất thực tế tại Nguyễn Xiển, Thủ Đức; kinh nghiệm 10+ năm thi công dự án quy hoạch, bất động sản và nhà máy.",
+                        assignee: "Văn - Nội Dung & Trí - SEO",
+                        priority: "Cao",
+                        lang: "VI"
+                    },
+                    {
+                        id: "seo-arch-3-3",
+                        code: "3.3",
+                        tag: "On-Page",
+                        tagColor: "bg-teal-100 text-teal-700 border-teal-200",
+                        title: "[On-Page] Tối ưu điểm RankMath On-Page đạt ≥ 90/100 cho 2 bài Pillar",
+                        description: "Kiểm tra mật độ từ khóa, liên kết ngoài uy tín, ảnh có Alt Text chuẩn thương hiệu, mục lục Table of Contents và độ dài nội dung chuyên sâu > 2,000 từ.",
+                        assignee: "Thông - Website & Trí - SEO",
+                        priority: "Khẩn",
+                        lang: "Song ngữ"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                code: "MODULE 4",
+                title: "Thiết Kế Media Xưởng Chuẩn 2 Logo & Geotag",
+                description: "Chụp và tối ưu kho ảnh sa bàn thực tế tại xưởng Nguyễn Xiển, dán logo phân biệt theo ngôn ngữ và định vị Geotag",
+                icon: "fa-camera-retro",
+                colorClass: "rose",
+                bgGradient: "from-rose-50 to-pink-50/40",
+                borderColor: "border-rose-200",
+                badgeBg: "bg-rose-100 text-rose-800",
+                tasks: [
+                    {
+                        id: "seo-arch-4-1",
+                        code: "4.1",
+                        tag: "Media",
+                        tagColor: "bg-rose-100 text-rose-700 border-rose-200",
+                        title: "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Việt (Mô Hình Song Anh)",
+                        description: "Gia công ảnh sa bàn thực tế chụp tại xưởng Nguyễn Xiển, chèn watermark Logo chuẩn Tiếng Việt 'Mô Hình Song Anh' ở góc ảnh theo guideline của Mỹ - Design.",
+                        assignee: "Mỹ - Trợ Lý Design",
+                        priority: "Cao",
+                        lang: "VI"
+                    },
+                    {
+                        id: "seo-arch-4-2",
+                        code: "4.2",
+                        tag: "Media",
+                        tagColor: "bg-rose-100 text-rose-700 border-rose-200",
+                        title: "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Anh (Song Anh Model)",
+                        description: "Bộ ảnh phục vụ trang tiếng Anh /en/ và thị trường quốc tế, dán logo 'Song Anh Model' nhận diện toàn cầu, góc chụp cận cảnh chi tiết sắc nét.",
+                        assignee: "Mỹ - Trợ Lý Design",
+                        priority: "Cao",
+                        lang: "EN"
+                    },
+                    {
+                        id: "seo-arch-4-3",
+                        code: "4.3",
+                        tag: "Media",
+                        tagColor: "bg-rose-100 text-rose-700 border-rose-200",
+                        title: "[Media] Nhúng EXIF Geotagging xưởng Thủ Đức và nén WebP < 150KB",
+                        description: "Gắn tọa độ GPS chính xác xưởng (230/70/28 Nguyễn Xiển, Long Phước, Thủ Đức, TP.HCM), nén WebP nhẹ dưới 150KB giữ nguyên độ sắc nét khi hiển thị.",
+                        assignee: "Mỹ - Design & Kiến - Code",
+                        priority: "Cao",
+                        lang: "All"
+                    }
+                ]
+            },
+            {
+                id: 5,
+                code: "MODULE 5",
+                title: "Cấu Hình Schema JSON-LD Đa Ngôn Ngữ",
+                description: "Thiết lập dữ liệu có cấu trúc Structured Data chuẩn Schema.org cho Google hiểu rõ thực thể doanh nghiệp và dịch vụ",
+                icon: "fa-code",
+                colorClass: "amber",
+                bgGradient: "from-amber-50 to-yellow-50/40",
+                borderColor: "border-amber-200",
+                badgeBg: "bg-amber-100 text-amber-800",
+                tasks: [
+                    {
+                        id: "seo-arch-5-1",
+                        code: "5.1",
+                        tag: "Schema",
+                        tagColor: "bg-amber-100 text-amber-800 border-amber-200",
+                        title: "[Schema] Khai báo Schema Corporation & LocalBusiness song ngữ",
+                        description: "Nhúng mã JSON-LD khai báo Schema Corporation / LocalBusiness với địa chỉ xưởng tại Thủ Đức, Hotline 0929 22 4444, logo và liên kết đa mạng xã hội (sameAs).",
+                        assignee: "Kiến - Lập Trình & Trí - SEO",
+                        priority: "Cao",
+                        lang: "Song ngữ"
+                    },
+                    {
+                        id: "seo-arch-5-2",
+                        code: "5.2",
+                        tag: "Schema",
+                        tagColor: "bg-amber-100 text-amber-800 border-amber-200",
+                        title: "[Schema] Khai báo Schema Service & FAQPage cho các dịch vụ cốt lõi",
+                        description: "Khai báo Schema Service cho các gói gia công sa bàn kiến trúc và Schema FAQPage giải đáp thắc mắc khách hàng B2B nhằm chiếm Rich Snippets trên Google.",
+                        assignee: "Kiến - Lập Trình & Trí - SEO",
+                        priority: "Trung bình",
+                        lang: "Song ngữ"
+                    }
+                ]
+            },
+            {
+                id: 6,
+                code: "MODULE 6",
+                title: "Lập Chỉ Mục GSC & Báo Cáo Hiệu Suất",
+                description: "Gửi URL inspection trên Google Search Console, theo dõi tiến độ thu thập dữ liệu và báo cáo tổng hợp",
+                icon: "fa-chart-line",
+                colorClass: "purple",
+                bgGradient: "from-purple-50 to-indigo-50/40",
+                borderColor: "border-purple-200",
+                badgeBg: "bg-purple-100 text-purple-800",
+                tasks: [
+                    {
+                        id: "seo-arch-6-1",
+                        code: "6.1",
+                        tag: "Index",
+                        tagColor: "bg-purple-100 text-purple-700 border-purple-200",
+                        title: "[Index] Gửi yêu cầu URL Inspection & Request Indexing trên GSC cho 2 bản VI/EN",
+                        description: "Submit sitemap và ping trực tiếp các URL trọng tâm lên Google Search Console để Googlebot thu thập và lập chỉ mục nhanh chóng.",
+                        assignee: "Thông - Website & Trí - SEO",
+                        priority: "Khẩn",
+                        lang: "Song ngữ"
+                    },
+                    {
+                        id: "seo-arch-6-2",
+                        code: "6.2",
+                        tag: "Report",
+                        tagColor: "bg-purple-100 text-purple-700 border-purple-200",
+                        title: "[Report] Tổng hợp báo cáo kỹ thuật & thứ hạng từ khóa tuần trình Ban Giám Đốc",
+                        description: "Đối chiếu dữ liệu GSC/GA4, lập bảng đánh giá tiến độ 17 hạng mục, gửi báo cáo tiến độ tuần lên hệ thống quản trị trình Sếp Thiện & Sếp Tiến.",
+                        assignee: "Trí - SEO Master",
+                        priority: "Cao",
+                        lang: "All"
+                    }
+                ]
+            }
+        ];
+
+        // Accordion open/close state storage
+        let seoArchAccordionState = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true };
+
+        // Helper: Play lightweight native Web Audio sound on status toggle
+        function playSeoArchToggleSound(isCompleted) {
+            try {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContextClass) return;
+                const ctx = new AudioContextClass();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (isCompleted) {
+                    // Cheerful double beep for completion
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+                    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12); // A5
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.12);
+                } else {
+                    // Soft descending tone for reverting to in-progress
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime); // E5
+                    osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.1); // A4
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.1);
+                }
+            } catch (e) {
+                // Ignore audio context errors if blocked by browser policy
+            }
+        }
+
+        // Get saved task statuses from localStorage
+        function getSeoArchTaskStatuses() {
+            try {
+                const raw = localStorage.getItem('songanh_seo_arch_tasks_status');
+                if (raw) return JSON.parse(raw);
+            } catch(e) {}
+            return {};
+        }
+
+        // Save task status to localStorage
+        function setSeoArchTaskStatus(taskId, status) {
+            const current = getSeoArchTaskStatuses();
+            current[taskId] = status;
+            try {
+                localStorage.setItem('songanh_seo_arch_tasks_status', JSON.stringify(current));
+            } catch(e) {}
+        }
+
+        // Toggle task status
+        function toggleSeoArchTaskStatus(taskId) {
+            const statuses = getSeoArchTaskStatuses();
+            const currentStatus = statuses[taskId] || 'Đang làm';
+            const newStatus = (currentStatus === 'Hoàn thành') ? 'Đang làm' : 'Hoàn thành';
+            setSeoArchTaskStatus(taskId, newStatus);
+
+            const isDone = (newStatus === 'Hoàn thành');
+            playSeoArchToggleSound(isDone);
+
+            // Find task title for friendly toast
+            let taskTitle = taskId;
+            seoArchModulesData.forEach(m => {
+                const found = m.tasks.find(t => t.id === taskId);
+                if (found) taskTitle = found.code + ' ' + found.title;
+            });
+
+            if (typeof showToast === 'function') {
+                if (isDone) {
+                    showToast(`✅ Đã hoàn thành: ${taskTitle}`, 'success');
+                } else {
+                    showToast(`🔄 Đang triển khai lại: ${taskTitle}`, 'info');
+                }
+            }
+
+            // Re-render
+            renderSeoArchTasks();
+        }
+
+        // Toggle individual module accordion
+        function toggleSeoArchModule(modId) {
+            seoArchAccordionState[modId] = !seoArchAccordionState[modId];
+            const body = document.getElementById(`seo-arch-module-body-${modId}`);
+            const icon = document.getElementById(`seo-arch-module-icon-${modId}`);
+            if (body) {
+                if (seoArchAccordionState[modId]) {
+                    body.classList.remove('hidden');
+                } else {
+                    body.classList.add('hidden');
+                }
+            }
+            if (icon) {
+                if (seoArchAccordionState[modId]) {
+                    icon.classList.add('rotate-180');
+                } else {
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Toggle all modules open/closed
+        function toggleAllSeoArchModules(expand) {
+            seoArchModulesData.forEach(m => {
+                seoArchAccordionState[m.id] = expand;
+                const body = document.getElementById(`seo-arch-module-body-${m.id}`);
+                const icon = document.getElementById(`seo-arch-module-icon-${m.id}`);
+                if (body) {
+                    if (expand) body.classList.remove('hidden');
+                    else body.classList.add('hidden');
+                }
+                if (icon) {
+                    if (expand) icon.classList.add('rotate-180');
+                    else icon.classList.remove('rotate-180');
+                }
+            });
+        }
+
+        // Main filter trigger
+        function filterSeoArchTasks() {
+            renderSeoArchTasks();
+        }
+
+        // Priority badge generator
+        function getPriorityBadge(priority) {
+            if (priority === 'Khẩn') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-700 border border-rose-200 shrink-0"><i class="fa-solid fa-fire text-rose-500 mr-1"></i>Khẩn</span>`;
+            } else if (priority === 'Cao') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200 shrink-0"><i class="fa-solid fa-arrow-up text-amber-500 mr-1"></i>Cao</span>`;
+            }
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 shrink-0"><i class="fa-solid fa-minus text-slate-400 mr-1"></i>Trung bình</span>`;
+        }
+
+        // Language badge generator
+        function getLangBadge(lang) {
+            if (lang === 'EN') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800 border border-blue-200 shrink-0"><i class="fa-solid fa-flag-usa mr-1"></i>EN</span>`;
+            } else if (lang === 'VI') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0"><i class="fa-solid fa-star mr-1"></i>VI</span>`;
+            } else if (lang === 'Song ngữ') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-purple-100 text-purple-800 border border-purple-200 shrink-0"><i class="fa-solid fa-language mr-1"></i>VI / EN</span>`;
+            }
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-sky-100 text-sky-800 border border-sky-200 shrink-0"><i class="fa-solid fa-globe mr-1"></i>Hệ thống</span>`;
+        }
+
+        // Status badge button generator
+        function getStatusToggleHtml(taskId, status) {
+            const isDone = (status === 'Hoàn thành');
+            if (isDone) {
+                return `
+                    <button onclick="toggleSeoArchTaskStatus('${taskId}')" title="Bấm để chuyển về trạng thái 'Đang làm'" class="px-3 py-1.5 min-h-[38px] rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-xs w-full sm:w-auto">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Hoàn thành</span>
+                    </button>
+                `;
+            }
+            return `
+                <button onclick="toggleSeoArchTaskStatus('${taskId}')" title="Bấm để chuyển sang trạng thái 'Hoàn thành'" class="px-3 py-1.5 min-h-[38px] rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-xs w-full sm:w-auto">
+                    <i class="fa-solid fa-spinner fa-spin text-[10px]"></i>
+                    <span>Đang làm</span>
+                </button>
+            `;
+        }
+
+        // Core Render Function
+        function renderSeoArchTasks() {
+            const container = document.getElementById('seo-arch-modules-container');
+            if (!container) return;
+
+            const savedStatuses = getSeoArchTaskStatuses();
+
+            // Filter states
+            const searchVal = (document.getElementById('seo-arch-search')?.value || '').trim().toLowerCase();
+            const filterMod = document.getElementById('seo-arch-filter-module')?.value || 'all';
+            const filterStatus = document.getElementById('seo-arch-filter-status')?.value || 'all';
+
+            let totalTasksCount = 0;
+            let totalCompletedCount = 0;
+
+            // First calculate global statistics across all 17 tasks
+            seoArchModulesData.forEach(m => {
+                m.tasks.forEach(t => {
+                    totalTasksCount++;
+                    const st = savedStatuses[t.id] || 'Đang làm';
+                    if (st === 'Hoàn thành') totalCompletedCount++;
+                });
+            });
+
+            // Update 4 Summary KPI Cards
+            const kpiModulesEl = document.getElementById('kpi-seo-arch-modules');
+            const kpiTasksEl = document.getElementById('kpi-seo-arch-subtasks');
+            const kpiProgressEl = document.getElementById('kpi-seo-arch-progress');
+            const kpiProgressIcon = document.getElementById('kpi-seo-arch-progress-icon');
+
+            if (kpiModulesEl) kpiModulesEl.innerText = seoArchModulesData.length;
+            if (kpiTasksEl) kpiTasksEl.innerText = totalTasksCount;
+
+            const globalProgressPct = totalTasksCount > 0 ? Math.round((totalCompletedCount / totalTasksCount) * 100) : 0;
+            if (kpiProgressEl) {
+                kpiProgressEl.innerText = `${globalProgressPct}%`;
+                if (globalProgressPct === 100) {
+                    kpiProgressEl.className = "text-2xl sm:text-3xl font-heading font-extrabold text-emerald-600";
+                    if (kpiProgressIcon) kpiProgressIcon.className = "fa-solid fa-circle-check text-emerald-600 text-sm";
+                } else if (globalProgressPct > 0) {
+                    kpiProgressEl.className = "text-2xl sm:text-3xl font-heading font-extrabold text-blue-600";
+                    if (kpiProgressIcon) kpiProgressIcon.className = "fa-solid fa-bars-progress text-blue-600 text-sm";
+                } else {
+                    kpiProgressEl.className = "text-2xl sm:text-3xl font-heading font-extrabold text-amber-600";
+                    if (kpiProgressIcon) kpiProgressIcon.className = "fa-solid fa-spinner text-amber-600 text-sm";
+                }
+            }
+
+            // Build HTML for each module
+            let html = '';
+            let matchedModulesCount = 0;
+
+            seoArchModulesData.forEach(mod => {
+                // Check module filter
+                if (filterMod !== 'all' && String(mod.id) !== String(filterMod)) {
+                    return;
+                }
+
+                // Filter tasks within this module
+                const filteredTasks = mod.tasks.filter(t => {
+                    const currentStatus = savedStatuses[t.id] || 'Đang làm';
+
+                    // Status filter
+                    if (filterStatus !== 'all' && currentStatus !== filterStatus) {
+                        return false;
+                    }
+
+                    // Search filter
+                    if (searchVal) {
+                        const matchText = (t.code + ' ' + t.tag + ' ' + t.title + ' ' + t.description + ' ' + t.assignee + ' ' + t.lang + ' ' + t.priority).toLowerCase();
+                        if (!matchText.includes(searchVal)) return false;
+                    }
+
+                    return true;
+                });
+
+                // Calculate progress within this module
+                const modTotal = mod.tasks.length;
+                const modCompleted = mod.tasks.filter(t => (savedStatuses[t.id] || 'Đang làm') === 'Hoàn thành').length;
+                const modPct = modTotal > 0 ? Math.round((modCompleted / modTotal) * 100) : 0;
+
+                // Skip module if search/filter is active and no tasks match
+                if (filteredTasks.length === 0 && (searchVal || filterStatus !== 'all')) {
+                    return;
+                }
+
+                matchedModulesCount++;
+                const isOpen = seoArchAccordionState[mod.id] !== false;
+
+                html += `
+                    <div class="light-card rounded-2xl border ${mod.borderColor} bg-white overflow-hidden shadow-xs transition duration-200">
+                        <!-- Module Header (Clickable Accordion) -->
+                        <div onclick="toggleSeoArchModule(${mod.id})" class="p-4 sm:p-5 bg-gradient-to-r ${mod.bgGradient} border-b ${mod.borderColor} flex flex-col md:flex-row md:items-center justify-between gap-3 cursor-pointer hover:bg-slate-50 transition select-none">
+                            <div class="flex items-start sm:items-center gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-white border ${mod.borderColor} text-${mod.colorClass}-600 flex items-center justify-center text-base shadow-2xs shrink-0 mt-0.5 sm:mt-0">
+                                    <i class="fa-solid ${mod.icon}"></i>
+                                </div>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2">
+                                        <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full ${mod.badgeBg} uppercase tracking-wider">${mod.code}</span>
+                                        <h3 class="font-heading font-extrabold text-sm sm:text-base text-slate-900">${mod.title}</h3>
+                                    </div>
+                                    <p class="text-xs text-slate-500 mt-0.5">${mod.description}</p>
+                                </div>
+                            </div>
+
+                            <!-- Progress & Controls -->
+                            <div class="flex items-center justify-between md:justify-end gap-3 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-200/60">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-24 sm:w-32 bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
+                                        <div class="bg-${mod.colorClass}-600 h-2 rounded-full transition-all duration-500" style="width: ${modPct}%"></div>
+                                    </div>
+                                    <span class="text-xs font-extrabold text-slate-700 whitespace-nowrap">${modCompleted}/${modTotal} (${modPct}%)</span>
+                                </div>
+                                <button type="button" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center hover:bg-slate-100 transition shrink-0" title="Mở rộng / Thu gọn">
+                                    <i id="seo-arch-module-icon-${mod.id}" class="fa-solid fa-chevron-down text-xs transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Module Body: Accordion Content -->
+                        <div id="seo-arch-module-body-${mod.id}" class="${isOpen ? '' : 'hidden'} p-3 sm:p-4">
+                `;
+
+                if (filteredTasks.length === 0) {
+                    html += `
+                        <div class="p-6 text-center text-slate-400 text-xs">
+                            <i class="fa-solid fa-inbox text-2xl mb-2"></i>
+                            <p>Không có task nào thỏa mãn bộ lọc tìm kiếm trong module này.</p>
+                        </div>
+                    `;
+                } else {
+                    // Mobile Cards (< 640px)
+                    html += `<div class="block sm:hidden space-y-3">`;
+                    filteredTasks.forEach(t => {
+                        const currentStatus = savedStatuses[t.id] || 'Đang làm';
+                        const isDone = (currentStatus === 'Hoàn thành');
+
+                        html += `
+                            <div class="p-3.5 rounded-xl border ${isDone ? 'border-emerald-200 bg-emerald-50/30' : 'border-slate-200 bg-white'} space-y-2.5 shadow-2xs">
+                                <div class="flex items-center justify-between gap-2">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="text-xs font-black text-slate-900">${t.code}</span>
+                                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
+                                    </div>
+                                    <div class="flex items-center gap-1.5">
+                                        ${getPriorityBadge(t.priority)}
+                                        ${getLangBadge(t.lang)}
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-xs font-bold ${isDone ? 'text-slate-600 line-through' : 'text-slate-900'} leading-snug">${t.title}</h4>
+                                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description}</p>
+                                </div>
+
+                                <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
+                                    <div class="flex items-center gap-1.5 text-[11px] text-slate-600 font-medium">
+                                        <i class="fa-solid fa-user-gear text-slate-400"></i>
+                                        <span>Phụ trách: <strong>${t.assignee}</strong></span>
+                                    </div>
+                                    <div class="w-full">
+                                        ${getStatusToggleHtml(t.id, currentStatus)}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div>`;
+
+                    // Desktop Table (>= 640px)
+                    html += `
+                        <div class="hidden sm:block overflow-x-auto rounded-xl border border-slate-200">
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200">
+                                        <th class="p-3 w-16 text-center">Mã</th>
+                                        <th class="p-3 w-24">Phân loại</th>
+                                        <th class="p-3">Hạng mục công việc &amp; Mô tả chi tiết</th>
+                                        <th class="p-3 w-44">Người phụ trách</th>
+                                        <th class="p-3 w-28 text-center">Ưu tiên</th>
+                                        <th class="p-3 w-28 text-center">Ngôn ngữ</th>
+                                        <th class="p-3 w-36 text-center">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                    `;
+
+                    filteredTasks.forEach(t => {
+                        const currentStatus = savedStatuses[t.id] || 'Đang làm';
+                        const isDone = (currentStatus === 'Hoàn thành');
+
+                        html += `
+                            <tr class="hover:bg-slate-50/80 transition ${isDone ? 'bg-emerald-50/20' : ''}">
+                                <td class="p-3 font-extrabold text-slate-800 text-center">${t.code}</td>
+                                <td class="p-3">
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
+                                </td>
+                                <td class="p-3">
+                                    <p class="font-bold ${isDone ? 'text-slate-600 line-through' : 'text-slate-900'} leading-snug">${t.title}</p>
+                                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description}</p>
+                                </td>
+                                <td class="p-3 font-semibold text-slate-700">
+                                    <span class="inline-flex items-center gap-1.5 bg-slate-100 px-2 py-1 rounded-lg text-[11px]">
+                                        <i class="fa-solid fa-user-gear text-slate-500 text-[10px]"></i>
+                                        <span>${t.assignee}</span>
+                                    </span>
+                                </td>
+                                <td class="p-3 text-center">${getPriorityBadge(t.priority)}</td>
+                                <td class="p-3 text-center">${getLangBadge(t.lang)}</td>
+                                <td class="p-3 text-center">${getStatusToggleHtml(t.id, currentStatus)}</td>
+                            </tr>
+                        `;
+                    });
+
+                    html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (matchedModulesCount === 0) {
+                html = `
+                    <div class="light-card p-10 rounded-2xl border border-slate-200 bg-white text-center text-slate-500 space-y-2">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300"></i>
+                        <h4 class="font-bold text-slate-700">Không tìm thấy công việc phù hợp</h4>
+                        <p class="text-xs">Vui lòng thử tìm kiếm với từ khóa khác hoặc thay đổi bộ lọc trạng thái.</p>
+                        <button onclick="document.getElementById('seo-arch-search').value=''; document.getElementById('seo-arch-filter-module').value='all'; document.getElementById('seo-arch-filter-status').value='all'; renderSeoArchTasks();" class="mt-2 px-3 py-1.5 rounded-xl bg-sky-50 text-sky-700 font-bold text-xs border border-sky-200 hover:bg-sky-100 transition">
+                            <i class="fa-solid fa-rotate-left mr-1"></i> Đặt lại bộ lọc
+                        </button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = html;
         }
 
         </script>
