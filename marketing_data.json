@@ -6181,9 +6181,9 @@
       "assignee_role": "user-tie",
       "frequency": "Thứ 2, Thứ 4, Thứ 6",
       "kpi_weekly": "3 Bài / Tuần",
-      "completed": "3 Bài",
-      "progress_percent": 100,
-      "status_text": "100% Hoàn Thành",
+      "completed": "1 Bài",
+      "progress_percent": 33.3,
+      "status_text": "33.3% Đạt KPI",
       "color_class": "emerald",
       "icon_class": "fa-square-check text-emerald-600"
     },
@@ -16384,6 +16384,14 @@
     "total_posts": 50
   },
   "marketing_activity_log": [
+    {
+      "id": 79,
+      "timestamp": "07/09/2026 09:12:00",
+      "module": "Facebook Profile",
+      "action": "[Post Profile] Song Anh: Đăng bài \"𝗧𝗔̣𝗜 𝗦𝗔𝗢 𝟴𝟱% 𝗞𝗛𝗔́𝗖𝗛 𝗠𝗨𝗔 𝗖𝗛𝗨𝗡𝗚 𝗖Ư 𝗤𝗨𝗬𝗘̂́𝗧 Đ𝗜̣𝗡𝗛 𝗫𝗨𝗢̂́𝗡𝗚 𝗧𝗜𝗘̂̀𝗡 𝗦𝗔𝗨 𝗞𝗛𝗜 𝗤𝗨𝗔𝗡 𝗦𝗔́𝗧 𝗦𝗔 𝗕𝗔̀𝗡?\"",
+      "performer": "Phạm Hoàng Tiến",
+      "status": "Hoàn Thành"
+    },
     {
       "id": 78,
       "timestamp": "07/09/2026 09:10:00",
