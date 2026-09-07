@@ -18942,13 +18942,13 @@ let marketingActivityLog = [
         let currentMktSearch = '';
 
         const mktWeekDays = [
-            { day: 'Thứ 2', date: '07/09', isToday: true },
-            { day: 'Thứ 3', date: '08/09', isToday: false },
-            { day: 'Thứ 4', date: '09/09', isToday: false },
-            { day: 'Thứ 5', date: '10/09', isToday: false },
-            { day: 'Thứ 6', date: '11/09', isToday: false },
-            { day: 'Thứ 7', date: '12/09', isToday: false },
-            { day: 'Chủ Nhật', date: '13/09', isToday: false }
+            { day: 'Thứ 2', date: '07/09', isToday: true, isFuture: false },
+            { day: 'Thứ 3', date: '08/09', isToday: false, isFuture: true },
+            { day: 'Thứ 4', date: '09/09', isToday: false, isFuture: true },
+            { day: 'Thứ 5', date: '10/09', isToday: false, isFuture: true },
+            { day: 'Thứ 6', date: '11/09', isToday: false, isFuture: true },
+            { day: 'Thứ 7', date: '12/09', isToday: false, isFuture: true },
+            { day: 'Chủ Nhật', date: '13/09', isToday: false, isFuture: true }
         ];
 
         function switchMktView(viewMode) {
@@ -19065,15 +19065,31 @@ let marketingActivityLog = [
             }
         }
 
-        function buildTaskCardHtml(task) {
+        function buildTaskCardHtml(task, dayInfo) {
             const colors = getChannelColor(task.channel_code);
             const performerBadge = task.is_auto
                 ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-bold flex items-center gap-0.5"><i class="fa-solid fa-robot text-[8px]"></i> Tự động Bot</span>'
                 : '<span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-bold truncate max-w-[120px]">' + (task.performer || '') + '</span>';
 
-            const statusBadge = task.completed
-                ? '<span class="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5"><i class="fa-solid fa-circle-check text-[9px]"></i> Đã xong</span>'
-                : '<span class="text-[9px] text-amber-600 font-bold flex items-center gap-0.5"><i class="fa-regular fa-clock text-[9px]"></i> Cần làm</span>';
+            // XÁC ĐỊNH TRẠNG THÁI THEO NGÀY CỤ THỂ (KHÔNG ĐÁNH ĐỒNG CÁC NGÀY TRONG TUẦN)
+            const isToday = dayInfo ? dayInfo.isToday : true;
+            const isFuture = dayInfo ? dayInfo.isFuture : false;
+
+            let statusBadge = '';
+            if (isFuture) {
+                // Các ngày trong tương lai (Thứ 3, 4, 5, 6, 7, CN): Luôn là Đã lên lịch
+                statusBadge = '<span class="text-[9px] text-blue-600 font-bold flex items-center gap-0.5"><i class="fa-regular fa-calendar-check text-[9px]"></i> Đã lên lịch</span>';
+            } else if (isToday) {
+                // Hôm nay (Thứ 2): Nếu task đã chạy/làm hôm nay thì Đã xong, ngược lại là Cần làm
+                if (task.completed_today) {
+                    statusBadge = '<span class="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5"><i class="fa-solid fa-circle-check text-[9px]"></i> Đã xong</span>';
+                } else {
+                    statusBadge = '<span class="text-[9px] text-amber-600 font-bold flex items-center gap-0.5"><i class="fa-regular fa-clock text-[9px]"></i> Cần làm</span>';
+                }
+            } else {
+                // Quá khứ
+                statusBadge = '<span class="text-[9px] text-slate-500 font-bold flex items-center gap-0.5"><i class="fa-solid fa-clock-rotate-left text-[9px]"></i> Đã qua</span>';
+            }
 
             return `
                 <div onclick="openMktTaskDetail('${task.id}')" class="group bg-white p-2.5 rounded-xl border ${colors.border} hover:border-blue-400 hover:shadow-md transition cursor-pointer space-y-2 relative">
@@ -19122,7 +19138,7 @@ let marketingActivityLog = [
                         </div>
                     `;
                 } else {
-                    taskListHtml = tasks.map(t => buildTaskCardHtml(t)).join('');
+                    taskListHtml = tasks.map(t => buildTaskCardHtml(t, dayInfo)).join('');
                 }
 
                 colsHtml += `
@@ -19188,7 +19204,7 @@ let marketingActivityLog = [
                             </span>
                         </div>
                         <div class="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                            ${tasks.length === 0 ? '<div class="col-span-full py-4 text-center text-slate-400 text-xs">Không có task trong khung giờ này</div>' : tasks.map(t => buildTaskCardHtml(t)).join('')}
+                            ${tasks.length === 0 ? '<div class="col-span-full py-4 text-center text-slate-400 text-xs">Không có task trong khung giờ này</div>' : tasks.map(t => buildTaskCardHtml(t, { day: 'Thứ 2', isToday: true, isFuture: false })).join('')}
                         </div>
                     </div>
                 `;
@@ -19213,26 +19229,30 @@ let marketingActivityLog = [
         }
 
         function renderMkt3DaysView(container) {
-            const threeDays = mktWeekDays.slice(0, 3);
+            const threeDays = [
+                { day: 'Thứ 2', date: '07/09', isToday: true, isFuture: false },
+                { day: 'Thứ 3', date: '08/09', isToday: false, isFuture: true },
+                { day: 'Thứ 4', date: '09/09', isToday: false, isFuture: true }
+            ];
             let colsHtml = '';
             threeDays.forEach(dayInfo => {
                 const tasks = getFilteredMktTasks(dayInfo.day);
                 const isToday = dayInfo.isToday;
-                const headerClass = isToday ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-800';
+                const headerClass = isToday ? 'bg-blue-600 text-white shadow-xs' : 'bg-slate-100 text-slate-800';
 
                 colsHtml += `
                     <div class="bg-white rounded-2xl border ${isToday ? 'border-2 border-blue-400 shadow-md' : 'border border-slate-200'} overflow-hidden flex flex-col">
                         <div class="p-4 ${headerClass} flex items-center justify-between">
                             <div>
                                 <span class="text-sm font-black">${dayInfo.day}</span>
-                                <span class="text-xs opacity-90 block">${dayInfo.date}/2026 ${isToday ? '• HÔM NAY' : ''}</span>
+                                <span class="text-xs opacity-90 block">${dayInfo.date}/2026 ${isToday ? '• HÔM NAY' : '• NGÀY MAI'}</span>
                             </div>
                             <span class="text-sm font-extrabold px-2.5 py-1 rounded-full ${isToday ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-800'}">
                                 ${tasks.length} tasks
                             </span>
                         </div>
                         <div class="p-3 space-y-2.5 flex-1 overflow-y-auto max-h-[600px] bg-slate-50/50">
-                            ${tasks.length === 0 ? '<div class="p-8 text-center text-slate-400 text-xs">Không có task</div>' : tasks.map(t => buildTaskCardHtml(t)).join('')}
+                            ${tasks.length === 0 ? '<div class="p-8 text-center text-slate-400 text-xs">Không có task</div>' : tasks.map(t => buildTaskCardHtml(t, dayInfo)).join('')}
                         </div>
                     </div>
                 `;
