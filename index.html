@@ -5369,7 +5369,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
 
         
-                                    <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
+                                                <!-- 🌟 MODULE NHÂN SỰ SONG ANH (#panel-nhan-su) -->
             <div id="panel-nhan-su" class="module-panel space-y-5 hidden" style="display: none;">
                 <!-- Module Header / Banner -->
                 <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 border border-indigo-500/20">
@@ -5383,7 +5383,7 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle-check text-[9px]"></i> Đồng bộ trực tiếp Notion DB</span>
                             </div>
                             <h2 class="text-lg font-black tracking-tight text-white mt-0.5">BÁO CÁO & QUẢN TRỊ NHÂN SỰ SONG ANH</h2>
-                            <p class="text-xs text-slate-300">Tổng quân số thực tế: <strong class="text-amber-300">19 Nhân sự</strong> (Khối Văn phòng & 3 Nhóm Kỹ thuật Xưởng)</p>
+                            <p class="text-xs text-slate-300">Tổng quân số thực tế: <strong class="text-amber-300">19 Nhân sự</strong> (Bấm vào tên nhân sự để xem chi tiết & mở Notion)</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap items-center gap-2 text-xs">
@@ -5519,47 +5519,70 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     </div>
                 </div>
 
-                                                <!-- Danh Sách Chi Tiết 19 Nhân Sự Đang Làm (4 Nhóm Tinh Gọn - Không Label Thừa) -->
+                <!-- Danh Sách Chi Tiết 19 Nhân Sự (Click để xem Modal & Link Notion) -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                     <!-- KHỐI VĂN PHÒNG -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-                        <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center gap-2">
-                            <i class="fa-solid fa-building-user text-amber-600"></i>
-                            <h4 class="text-xs font-bold text-slate-900 uppercase">KHỐI VĂN PHÒNG (05 NHÂN SỰ)</h4>
+                        <div class="px-4 py-3 bg-amber-50/70 border-b border-amber-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-building-user text-amber-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900 uppercase">KHỐI VĂN PHÒNG (05 NHÂN SỰ)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 italic">Bấm để xem chi tiết</span>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('19d4b5e7-3d90-80ad-8fee-f81c3b11fd69')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <p class="text-xs font-bold text-slate-900">PHẠM HOÀNG TIẾN</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-indigo-700">Marketing & Nhân sự</span> | Vị trí: Marketing & Nhân sự</p>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>PHẠM HOÀNG TIẾN</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Marketing & Nhân sự</span></p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('1a74b5e7-3d90-8003-9780-e2c5303d3619')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <p class="text-xs font-bold text-slate-900">NGUYỄN THỊ KIM THỦY</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-amber-700">Kế toán & Kho</span> | Vị trí: Kế toán & Thủ kho</p>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN THỊ KIM THỦY</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Kế toán & Thủ kho</span></p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('3894b5e7-3d90-8019-ab3e-f390d0d794a1')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <p class="text-xs font-bold text-slate-900">VÕ MINH SANG</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-blue-700">Kinh doanh</span> | Vị trí: Nhân viên Sales</p>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>VÕ MINH SANG</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Nhân viên Sales</span></p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('2304b5e7-3d90-8083-b473-fe899511616f')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <p class="text-xs font-bold text-slate-900">ĐINH VĂN THẮNG</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-purple-700">Văn phòng</span> | Vị trí: Lập trình viên</p>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>ĐINH VĂN THẮNG</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Lập trình viên</span></p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Cộng tác viên</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('1ba4b5e7-3d90-80a1-8d95-ca5f7a8e5332')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <p class="text-xs font-bold text-slate-900">NGUYỄN THỊ HOA</p>
-                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-purple-700">Văn phòng</span> | Vị trí: Kế toán trưởng</p>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN THỊ HOA</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Phòng ban: <span class="font-bold text-slate-700">Kế toán trưởng</span></p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">Cộng tác viên</span>
                             </div>
@@ -5568,32 +5591,67 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
                     <!-- NHÓM THẾ ANH -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-                        <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center gap-2">
-                            <i class="fa-solid fa-draw-polygon text-blue-600"></i>
-                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM THẾ ANH (05 NHÂN SỰ)</h4>
+                        <div class="px-4 py-3 bg-blue-50/70 border-b border-blue-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-draw-polygon text-blue-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM THẾ ANH (05 NHÂN SỰ)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 italic">Bấm để xem chi tiết</span>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('1f14b5e7-3d90-806c-bd02-e848aafa9056')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-900">HOÀNG THẾ ANH</span>
-                                    <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>HOÀNG THẾ ANH</span>
+                                        <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">NGUYỄN HOÀNG TRUNG HẢI</span>
+                            <div onclick="openMemberModal('3ac4b5e7-3d90-80cb-93cd-f9215212457d')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN HOÀNG TRUNG HẢI</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">TRẦN VĂN HÙNG</span>
+                            <div onclick="openMemberModal('3b24b5e7-3d90-8044-bbe8-dfdd9e7f6f0c')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>TRẦN VĂN HÙNG</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">DIÊM THỊ DIỄM QUỲNH</span>
+                            <div onclick="openMemberModal('33d4b5e7-3d90-806d-9578-e34d7237c3ca')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>DIÊM THỊ DIỄM QUỲNH</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">NGUYỄN HỒNG ĐẠT</span>
+                            <div onclick="openMemberModal('1dc4b5e7-3d90-80f1-8490-c142614369ab')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN HỒNG ĐẠT</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
                         </div>
@@ -5601,28 +5659,56 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
                     <!-- NHÓM HUYNH -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-                        <div class="px-4 py-3 bg-purple-50/70 border-b border-purple-200/60 flex items-center gap-2">
-                            <i class="fa-solid fa-city text-purple-600"></i>
-                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HUYNH (04 NHÂN SỰ)</h4>
+                        <div class="px-4 py-3 bg-purple-50/70 border-b border-purple-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-city text-purple-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HUYNH (04 NHÂN SỰ)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 italic">Bấm để xem chi tiết</span>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('1a24b5e7-3d90-80c8-87c6-d1858bdb949d')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-900">MAI XUÂN HUYNH</span>
-                                    <span class="text-[10px] text-purple-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>MAI XUÂN HUYNH</span>
+                                        <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">TRỊNH BÍCH VÂN</span>
+                            <div onclick="openMemberModal('3ae4b5e7-3d90-8017-960e-d931a62aba05')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>TRỊNH BÍCH VÂN</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">NGUYỄN TRỌNG ÂN</span>
+                            <div onclick="openMemberModal('2824b5e7-3d90-80d4-818d-c3cbd845a8c6')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN TRỌNG ÂN</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">PHẠM THẾ SƠN</span>
+                            <div onclick="openMemberModal('31a4b5e7-3d90-8031-86ad-c83102fa61dd')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>PHẠM THẾ SƠN</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
                         </div>
@@ -5630,34 +5716,66 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
 
                     <!-- NHÓM HIỂN -->
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-2xs overflow-hidden">
-                        <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center gap-2">
-                            <i class="fa-solid fa-tree text-emerald-600"></i>
-                            <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HIỂN (05 NHÂN SỰ)</h4>
+                        <div class="px-4 py-3 bg-emerald-50/70 border-b border-emerald-200/60 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-tree text-emerald-600"></i>
+                                <h4 class="text-xs font-bold text-slate-900 uppercase">NHÓM HIỂN (05 NHÂN SỰ)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 italic">Bấm để xem chi tiết</span>
                         </div>
                         <div class="divide-y divide-slate-100 p-2 space-y-1">
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
+                            <div onclick="openMemberModal('3994b5e7-3d90-8014-887c-c33cc47bfedb')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-900">PHAN MINH HIỂN</span>
-                                    <span class="text-[10px] text-emerald-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>PHAN MINH HIỂN</span>
+                                        <span class="text-[10px] text-blue-600 font-extrabold ml-1.5">(Trưởng nhóm)</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">NGUYỄN HOÀNG THIÊN VY</span>
+                            <div onclick="openMemberModal('3ae4b5e7-3d90-802d-9c9e-d8af63cfe98e')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>NGUYỄN HOÀNG THIÊN VY</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">Hành chính</span>
                             </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">LA NHẬT NAM</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
-                            </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-900">MAI HOÀNG PHÚC</span>
-                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
-                            </div>
-                            <div class="p-2.5 rounded-xl hover:bg-slate-50 flex items-center justify-between bg-amber-50/50 border border-amber-200/60 rounded-lg">
+                            <div onclick="openMemberModal('39c4b5e7-3d90-80b0-88c8-c5d113b901c3')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
                                 <div>
-                                    <span class="text-xs font-bold text-slate-900">PHẠM VŨ LUÂN</span>
-                                    <span class="text-[10px] text-amber-700 font-extrabold ml-1.5">(Thử việc - Hết hạn 07/9)</span>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>LA NHẬT NAM</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
+                            </div>
+                            <div onclick="openMemberModal('31a4b5e7-3d90-806f-8e08-c1c128439672')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>MAI HOÀNG PHÚC</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Thành viên Kỹ thuật</p>
+                                </div>
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">Cơ bản + Khoán</span>
+                            </div>
+                            <div onclick="openMemberModal('3bb4b5e7-3d90-8096-ae79-ca1e5e3f9fae')" class="p-2.5 rounded-xl hover:bg-indigo-50/60 transition cursor-pointer flex items-center justify-between group border border-transparent hover:border-indigo-100">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                                        <span>PHẠM VŨ LUÂN</span>
+                                        
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-300 group-hover:text-indigo-400 opacity-0 group-hover:opacity-100 transition"></i>
+                                    </p>
+                                    <p class="text-[11px] text-slate-500">Kỹ thuật thi công (Thử việc)</p>
                                 </div>
                                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-700 border border-amber-200">Thử việc</span>
                             </div>
@@ -5680,242 +5798,87 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
             </div>
 
 
-
-            
-            <!-- ======================================================= -->
-            <!-- 📅 MODULE: LỊCH CÔNG VIỆC MARKETING (CALENDAR & DISPATCH) -->
-            <!-- ======================================================= -->
-            <div id="panel-marketing" class="module-panel space-y-5 hidden" style="display: none;">
-                <!-- Module Header / Banner (Layout Invariant Rule 1) -->
-                <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white p-4 sm:p-5 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 border border-blue-500/20">
-                    <div class="flex items-center gap-3.5">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center text-blue-300 text-xl sm:text-2xl shrink-0">
-                            <i class="fa-solid fa-calendar-days"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-base sm:text-lg font-black tracking-tight text-white uppercase">LỊCH CÔNG VIỆC MARKETING & ĐIỀU PHỐI ĐA KÊNH</h2>
-                        </div>
+    <!-- 🪟 MODAL CHI TIẾT NHÂN SỰ & LIÊN KẾT NOTION DATA (#modal-member-detail) -->
+    <div id="modal-member-detail" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-200">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all duration-300 scale-95" id="modal-member-card">
+            <!-- Modal Header -->
+            <div class="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 pb-5">
+                <button onclick="closeMemberModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+                <div class="flex items-center gap-4">
+                    <div id="modal-member-avatar" class="w-14 h-14 rounded-2xl bg-indigo-600/50 border border-indigo-400/40 flex items-center justify-center text-white text-xl font-black shadow-inner">
+                        SA
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                        <button onclick="fetchData()" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow transition flex items-center gap-1.5 border border-blue-400/40">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            <span>Đồng bộ Real-time</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- KPI Overview Cards -->
-                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-black shrink-0">
-                            <i class="fa-solid fa-list-check"></i>
-                        </div>
-                        <div>
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Tổng Task Định Kỳ</span>
-                            <span id="mkt-stat-total" class="text-xl font-black text-slate-900 leading-tight">16 Tasks</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-black shrink-0">
-                            <i class="fa-solid fa-calendar-day"></i>
-                        </div>
-                        <div>
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Hôm Nay (Thứ 2)</span>
-                            <span id="mkt-stat-today" class="text-xl font-black text-emerald-600 leading-tight">14 Tasks Lên Lịch</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-lg font-black shrink-0">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div>
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Tự Động AI / Bot</span>
-                            <span id="mkt-stat-auto" class="text-xl font-black text-purple-600 leading-tight">8 / 16 (50%)</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-black shrink-0">
-                            <i class="fa-solid fa-bullseye"></i>
-                        </div>
-                        <div>
-                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Mục Tiêu Tuần Này</span>
-                            <span id="mkt-stat-kpi" class="text-xl font-black text-amber-700 leading-tight">38 Lượt Hoàn Thành</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Smart Filter & View Switcher Bar -->
-                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-                        <!-- View Filter Tabs (1 Tuần, Hôm Nay, 3 Ngày, Tháng) -->
-                        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl flex-wrap">
-                            <button onclick="switchMktView('3days')" id="btn-mkt-view-3days" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white text-blue-700 shadow-xs border border-blue-200">
-                                <i class="fa-solid fa-calendar-minus"></i>
-                                <span>3 Ngày (Mặc định)</span>
-                            </button>
-                            <button onclick="switchMktView('today')" id="btn-mkt-view-today" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-calendar-day"></i>
-                                <span>Hôm Nay (07/09)</span>
-                            </button>
-                            <button onclick="switchMktView('week')" id="btn-mkt-view-week" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-calendar-week"></i>
-                                <span>1 Tuần (T2 - CN)</span>
-                            </button>
-                            <button onclick="switchMktView('month')" id="btn-mkt-view-month" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-calendar"></i>
-                                <span>Tháng 09/2026</span>
-                            </button>
-                        </div>
-
-                        <!-- Week / Date Navigator -->
-                        <div class="flex items-center gap-2">
-                            <span id="mkt-current-period-text" class="text-xs font-black text-slate-800 px-3 py-1.5 rounded-lg bg-blue-50/80 border border-blue-200">
-                                ⚡ 3 Ngày: 07/09 - 09/09/2026
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span id="modal-member-group-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-indigo-900/80 border border-indigo-400/30 text-indigo-200">
+                                PHÒNG BAN
+                            </span>
+                            <span id="modal-member-work-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                                Hành chính
                             </span>
                         </div>
-                    </div>
-
-                    <!-- Secondary Filter Controls: Channel, Performer, Search -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5 pt-1 border-t border-slate-100">
-                        <!-- Channel Filter -->
-                        <div class="lg:col-span-4">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Kênh Marketing</label>
-                            <select id="mkt-filter-channel" onchange="filterMktChannel(this.value)" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
-                                <option value="all">🌐 Tất cả Kênh Tiếp Thị (4 Kênh)</option>
-                                <option value="facebook">📘 Facebook (Profile, Fanpage, Group)</option>
-                                <option value="zalo">💬 Zalo OA & 4 Hotline CSKH</option>
-                                <option value="seo">🔍 SEO Website (mohinhkientruc.org)</option>
-                                <option value="gbp">📍 Google Business Profile (3 Chi Nhánh)</option>
-                            </select>
-                        </div>
-
-                        <!-- Performer Filter -->
-                        <div class="lg:col-span-4">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Người Thực Hiện</label>
-                            <select id="mkt-filter-performer" onchange="filterMktPerformer(this.value)" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
-                                <option value="all">👥 Tất cả Người Thực Hiện</option>
-                                <option value="Phạm Hoàng Tiến">👑 Phạm Hoàng Tiến (Sếp Duyệt & Đăng bài)</option>
-                                <option value="Tự động">🤖 Tự động (AI Agent & Cron Bot 24/7)</option>
-                                <option value="Nguyễn Thị Kim Thủy">👩‍💼 Nguyễn Thị Kim Thủy (Trực Zalo 0988 080 440)</option>
-                                <option value="Võ Minh Sang">👨‍🔧 Võ Minh Sang (Trực Zalo 0376415131 / 0386989087)</option>
-                            </select>
-                        </div>
-
-                        <!-- Search Input -->
-                        <div class="lg:col-span-4">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Tìm Kiếm Công Việc</label>
-                            <div class="relative">
-                                <input type="text" id="mkt-filter-search" oninput="filterMktSearch(this.value)" placeholder="Gõ tên task hoặc mã..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
-                                <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
-                            </div>
-                        </div>
+                        <h3 id="modal-member-name" class="text-lg font-black tracking-tight text-white">TÊN NHÂN SỰ</h3>
+                        <p id="modal-member-role" class="text-xs text-indigo-200 font-medium">Chức vụ / Vị trí</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Calendar Content Display Area -->
-                <div id="mkt-calendar-container" class="space-y-4">
-                    <!-- Dynamic view rendered by JS (Week, Day, 3-Day, Month) -->
-                </div>
-
-                <!-- Guide & Legend Note -->
-                <div class="bg-gradient-to-r from-blue-50/70 via-slate-50 to-indigo-50/70 p-4 rounded-xl border border-blue-200/60 text-xs space-y-2">
-                    <div class="flex items-center justify-between flex-wrap gap-2">
-                        <span class="font-extrabold text-slate-800 flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-info text-blue-600"></i> QUY CHUẨN ĐIỀU PHỐI MARKETING SONG ANH
+            <!-- Modal Body Details -->
+            <div class="p-6 space-y-4 text-xs text-slate-700 bg-slate-50/50 max-h-[65vh] overflow-y-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                            <i class="fa-solid fa-phone text-emerald-600 mr-1"></i> Số Điện Thoại
                         </span>
-                        <div class="flex items-center gap-3 text-[11px] font-medium text-slate-600 flex-wrap">
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span> Facebook</span>
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-cyan-500 inline-block"></span> Zalo OA</span>
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> SEO Google</span>
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Google Business</span>
-                        </div>
+                        <a id="modal-member-phone" href="#" class="font-bold text-slate-800 hover:text-indigo-600 transition">Chưa cập nhật</a>
                     </div>
-                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
-                        • Lịch công việc được ánh xạ trực tiếp 100% từ <strong>BẢNG DANH SÁCH CÔNG VIỆC SONG ANH</strong> trên Notion DB.<br>
-                        • Các task Tự động do AI Agents và script tự động vận hành; các task cá nhân do Sếp Phạm Hoàng Tiến và nhân sự phụ trách trực tiếp kiểm duyệt và xuất bản.
-                    </p>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                            <i class="fa-solid fa-envelope text-blue-600 mr-1"></i> Email
+                        </span>
+                        <a id="modal-member-email" href="#" class="font-bold text-slate-800 hover:text-indigo-600 transition break-all">Chưa cập nhật</a>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                            <i class="fa-regular fa-calendar text-indigo-600 mr-1"></i> Ngày Bắt Đầu Làm
+                        </span>
+                        <span id="modal-member-start" class="font-bold text-slate-800">Chưa cập nhật</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                            <i class="fa-solid fa-building-columns text-purple-600 mr-1"></i> Tài Khoản Ngân Hàng
+                        </span>
+                        <span id="modal-member-bank" class="font-bold text-slate-800 block">Chưa cập nhật</span>
+                        <span id="modal-member-bank-acc" class="text-[11px] text-slate-500 font-mono"></span>
+                    </div>
+                </div>
+
+                <!-- Ghi Chú & Thông Tin Bổ Sung -->
+                <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
+                        <i class="fa-regular fa-note-sticky text-amber-500 mr-1"></i> Ghi Chú / Chuyên Cần
+                    </span>
+                    <p id="modal-member-note" class="text-xs text-slate-600 leading-relaxed font-medium">Không có ghi chú</p>
                 </div>
             </div>
 
-            <!-- Modal Task Detail -->
-            <div id="modal-mkt-task-detail" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden items-center justify-center p-4">
-                <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
-                    <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
-                        <div class="flex items-center gap-2.5">
-                            <div id="modal-mkt-icon-box" class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold">
-                                <i class="fa-solid fa-bullhorn"></i>
-                            </div>
-                            <div>
-                                <span id="modal-mkt-channel-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-700">Facebook</span>
-                                <h3 id="modal-mkt-title" class="text-base font-black text-slate-900 mt-0.5">Tên công việc</h3>
-                            </div>
-                        </div>
-                        <button onclick="closeMktTaskDetail()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition">
-                            <i class="fa-solid fa-xmark text-base"></i>
-                        </button>
-                    </div>
-
-                    <div class="space-y-3 text-xs text-slate-700">
-                        <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Thời Gian / Khung Giờ</span>
-                                <span id="modal-mkt-time" class="font-bold text-slate-800">Sáng (08:30 - 11:30)</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Lặp Lại</span>
-                                <span id="modal-mkt-repeat" class="font-bold text-blue-700">Thứ 2, 4, 6</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Người Thực Hiện</span>
-                                <span id="modal-mkt-performer" class="font-bold text-slate-800">Phạm Hoàng Tiến</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">KPI Tuần</span>
-                                <span id="modal-mkt-kpi" class="font-bold text-amber-700">4 lần / tuần</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <span class="text-[10.5px] font-bold text-slate-400 uppercase block mb-1">Mô Tả Chi Tiết Nhiệm Vụ</span>
-                            <div id="modal-mkt-desc" class="p-3 bg-blue-50/50 rounded-xl border border-blue-100 leading-relaxed text-slate-700 whitespace-pre-line">
-                                Mô tả chi tiết của task...
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-                            <span class="text-[11px] text-slate-500 font-medium" id="modal-mkt-type-badge">Tự động AI Bot</span>
-                            <a id="modal-mkt-notion-link" href="https://app.notion.com/p/19a4b5e73d9080f4a51ef769967547a5" target="_blank" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-                                <span>Mở trên Notion</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <button onclick="closeMktTaskDetail()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
-                            Đóng cửa sổ
-                        </button>
-                    </div>
-                </div>
+            <!-- Modal Footer: Link to Notion -->
+            <div class="p-4 bg-white border-t border-slate-200/80 flex items-center justify-between gap-3">
+                <button onclick="closeMemberModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">
+                    Đóng
+                </button>
+                <a id="modal-member-notion-link" href="#" target="_blank" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    <span>Mở Dữ Liệu Trên Notion</span>
+                </a>
             </div>
+        </div>
+    </div>
 
 
-            <!-- Global System Footer -->
-            <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
-                <div class="flex items-center gap-2">
-                    <span class="font-bold text-slate-700">Mô Hình Song Anh © 2026</span>
-                    <span>•</span>
-                    <span class="text-slate-500">Hệ Thống Marketing Automation & AI Agents</span>
-                </div>
-                <div class="flex items-center gap-1.5 flex-wrap text-[11px]">
-                    <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">👑 Minh - Marketing Manager</span>
-                    <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">💻 Kiến - Trợ lý Lập Trình</span>
-                    <span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-bold border border-purple-200">✍️ Văn - Trợ lý Nội Dung</span>
-                    <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-bold border border-amber-200">📈 Trí - Trợ lý SEO Master</span>
-                    <span class="px-2 py-0.5 rounded bg-rose-50 text-rose-700 font-bold border border-rose-200">🎨 Mỹ - Trợ lý Thiết Kế</span>
-                    <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">🌐 Thông - Trợ lý Website</span>
-                </div>
-            </footer>
-        </main>
+</main>
     </div>
 
     <!-- Notification Toast -->
@@ -19824,7 +19787,82 @@ let marketingActivityLog = [
             container.innerHTML = html;
         }
 
-        </script>
+        
+        // =============================================================
+        // 👥 PERSONEL MODAL & NOTION LIVE LINK CONTROLLER
+        // =============================================================
+        const songAnhMembersDB = [{"id": "19d4b5e7-3d90-80ad-8fee-f81c3b11fd69", "name": "PHẠM HOÀNG TIẾN", "group": "Khối Văn Phòng", "role": "Marketing & Nhân sự", "work_type": "Hành chính", "is_lead": false, "phone": "0981169200 - 0333885925", "email": "phamhoangtien0@gmail.com", "gender": "Nam", "bank": "VIB", "bank_acc": "606704060064783", "start_date": "2016-07-01", "status": "Đang làm", "note": "Khối Văn Phòng | Marketing & Nhân sự (Hành chính)", "notion_url": "https://www.notion.so/19d4b5e73d9080ad8feef81c3b11fd69"}, {"id": "1a74b5e7-3d90-8003-9780-e2c5303d3619", "name": "NGUYỄN THỊ KIM THỦY", "group": "Khối Văn Phòng", "role": "Kế toán & Thủ kho", "work_type": "Hành chính", "is_lead": false, "phone": "0988080440 - 0934060993", "email": "Chưa cập nhật", "gender": "N/A", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1a74b5e73d9080039780e2c5303d3619"}, {"id": "3894b5e7-3d90-8019-ab3e-f390d0d794a1", "name": "VÕ MINH SANG", "group": "Khối Văn Phòng", "role": "Nhân viên Sales", "work_type": "Hành chính", "is_lead": false, "phone": "0769766104", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-06-24", "status": "Đang làm", "note": "Nhân viên Sales & Văn phòng (Chính thức)", "notion_url": "https://www.notion.so/3894b5e73d908019ab3ef390d0d794a1"}, {"id": "2304b5e7-3d90-8083-b473-fe899511616f", "name": "ĐINH VĂN THẮNG", "group": "Khối Văn Phòng", "role": "Lập trình viên", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0983262210", "email": "thangdv86@gmail.com", "gender": "Nam", "bank": "Techcombank", "bank_acc": "19124701962011", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/2304b5e73d908083b473fe899511616f"}, {"id": "1ba4b5e7-3d90-80a1-8d95-ca5f7a8e5332", "name": "NGUYỄN THỊ HOA", "group": "Khối Văn Phòng", "role": "Kế toán trưởng", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0398034685", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1ba4b5e73d9080a18d95ca5f7a8e5332"}, {"id": "1f14b5e7-3d90-806c-bd02-e848aafa9056", "name": "HOÀNG THẾ ANH", "group": "Nhóm Thế Anh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966102980", "email": "Chưa cập nhật", "gender": "Nam", "bank": "VietinBank", "bank_acc": "103002551791", "start_date": "2025-05-12", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1f14b5e73d90806cbd02e848aafa9056"}, {"id": "3ac4b5e7-3d90-80cb-93cd-f9215212457d", "name": "NGUYỄN HOÀNG TRUNG HẢI", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0769414678", "email": "Chưa cập nhật", "gender": "Nam", "bank": "MB Bank", "bank_acc": "19034444888889", "start_date": "2026-07-28", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ac4b5e73d9080cb93cdf9215212457d"}, {"id": "3b24b5e7-3d90-8044-bbe8-dfdd9e7f6f0c", "name": "TRẦN VĂN HÙNG", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0778019052", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Vietcombank", "bank_acc": "1035802411 ", "start_date": "2026-08-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3b24b5e73d908044bbe8dfdd9e7f6f0c"}, {"id": "33d4b5e7-3d90-806d-9578-e34d7237c3ca", "name": "DIÊM THỊ DIỄM QUỲNH", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0902 625 485", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-04-07", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/33d4b5e73d90806d9578e34d7237c3ca"}, {"id": "1dc4b5e7-3d90-80f1-8490-c142614369ab", "name": "NGUYỄN HỒNG ĐẠT", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0919259409", "email": "Chưa cập nhật", "gender": "Nam", "bank": "MB Bank", "bank_acc": "0919259409", "start_date": "2025-04-17", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1dc4b5e73d9080f18490c142614369ab"}, {"id": "1a24b5e7-3d90-80c8-87c6-d1858bdb949d", "name": "MAI XUÂN HUYNH", "group": "Nhóm Huynh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0366930090", "email": "19211tt2049@mail.tdc.edu.vn", "gender": "Nam", "bank": "Agribank", "bank_acc": "6100205565299", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1a24b5e73d9080c887c6d1858bdb949d"}, {"id": "3ae4b5e7-3d90-8017-960e-d931a62aba05", "name": "TRỊNH BÍCH VÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0584348350", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "Techcombank", "bank_acc": "19037503205019", "start_date": "2026-07-29", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ae4b5e73d908017960ed931a62aba05"}, {"id": "2824b5e7-3d90-80d4-818d-c3cbd845a8c6", "name": "NGUYỄN TRỌNG ÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0563418246", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-08-06", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/2824b5e73d9080d4818dc3cbd845a8c6"}, {"id": "31a4b5e7-3d90-8031-86ad-c83102fa61dd", "name": "PHẠM THẾ SƠN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0924390007", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-11-03", "status": "Đang làm", "note": "Nhóm Huynh | Kỹ thuật thi công (Cơ bản + Khoán việc)", "notion_url": "https://www.notion.so/31a4b5e73d90803186adc83102fa61dd"}, {"id": "3994b5e7-3d90-8014-887c-c33cc47bfedb", "name": "PHAN MINH HIỂN", "group": "Nhóm Hiển", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966 767 909", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Sacombank", "bank_acc": "060150072347", "start_date": "2026-06-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3994b5e73d908014887cc33cc47bfedb"}, {"id": "3ae4b5e7-3d90-802d-9c9e-d8af63cfe98e", "name": "NGUYỄN HOÀNG THIÊN VY", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0369213551", "email": "thienvy35@gmail.com", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-07-29", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ae4b5e73d90802d9c9ed8af63cfe98e"}, {"id": "39c4b5e7-3d90-80b0-88c8-c5d113b901c3", "name": "LA NHẬT NAM", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0787503071", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Vietcombank", "bank_acc": "1021367367", "start_date": "2026-07-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/39c4b5e73d9080b088c8c5d113b901c3"}, {"id": "31a4b5e7-3d90-806f-8e08-c1c128439672", "name": "MAI HOÀNG PHÚC", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "Chưa cập nhật", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/31a4b5e73d90806f8e08c1c128439672"}, {"id": "3bb4b5e7-3d90-8096-ae79-ca1e5e3f9fae", "name": "PHẠM VŨ LUÂN", "group": "Nhóm Hiển", "role": "Kỹ thuật thi công (Thử việc)", "work_type": "Thử việc", "is_lead": false, "phone": "0384684347", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-08-24", "status": "Thử việc", "note": "Kết thúc thử việc ngày 07/09/2026", "notion_url": "https://www.notion.so/3bb4b5e73d908096ae79ca1e5e3f9fae"}];
+
+        function openMemberModal(memberId) {
+            const member = songAnhMembersDB.find(m => m.id === memberId || m.name === memberId);
+            if (!member) return;
+
+            const modal = document.getElementById('modal-member-detail');
+            const card = document.getElementById('modal-member-card');
+            if (!modal) return;
+
+            // 1. Fill data
+            document.getElementById('modal-member-name').textContent = member.name;
+            document.getElementById('modal-member-role').textContent = member.role + (member.is_lead ? ' • Trưởng nhóm' : '');
+            document.getElementById('modal-member-group-badge').textContent = member.group;
+            document.getElementById('modal-member-work-badge').textContent = member.work_type;
+            
+            // Avatar initials
+            const initials = member.name.split(' ').map(n => n[0]).slice(-2).join('');
+            document.getElementById('modal-member-avatar').textContent = initials;
+
+            // Phone
+            const phoneEl = document.getElementById('modal-member-phone');
+            phoneEl.textContent = member.phone;
+            phoneEl.href = member.phone !== 'Chưa cập nhật' ? 'tel:' + member.phone.split(' - ')[0].replace(/\D/g, '') : '#';
+
+            // Email
+            const emailEl = document.getElementById('modal-member-email');
+            emailEl.textContent = member.email;
+            emailEl.href = member.email !== 'Chưa cập nhật' ? 'mailto:' + member.email : '#';
+
+            // Start Date
+            document.getElementById('modal-member-start').textContent = member.start_date || 'Chưa cập nhật';
+
+            // Bank
+            document.getElementById('modal-member-bank').textContent = member.bank || 'Chưa cập nhật';
+            document.getElementById('modal-member-bank-acc').textContent = member.bank_acc !== 'Chưa cập nhật' ? 'STK: ' + member.bank_acc : '';
+
+            // Note
+            document.getElementById('modal-member-note').textContent = member.note || 'Không có ghi chú thêm.';
+
+            // Notion Link
+            const notionBtn = document.getElementById('modal-member-notion-link');
+            notionBtn.href = member.notion_url || 'https://notion.so/19b4b5e73d90803abda4dff1da951ef6';
+
+            // Show modal
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeMemberModal() {
+            const modal = document.getElementById('modal-member-detail');
+            const card = document.getElementById('modal-member-card');
+            if (!modal) return;
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 150);
+        }
+
+        // Close on backdrop click
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('modal-member-detail');
+            if (e.target === modal) {
+                closeMemberModal();
+            }
+        });
+
+    </script>
 
     <!-- 📱 MOBILE BOTTOM NAVIGATION BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH CHO ĐIỆN THOẠI) -->
     <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 px-8 py-2 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
