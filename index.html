@@ -1169,18 +1169,28 @@
 
                     <!-- 📢 MỤC MARKETING (GOM CÁC HẠNG MỤC MARKETING ĐỒNG CẤP VỚI NHÂN SỰ) -->
                     <div class="accordion-group rounded-xl border border-blue-200/80 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
-                        <button onclick="toggleAccordion('acc-marketing')" class="w-full flex items-center justify-between p-2.5 font-bold text-slate-800 hover:text-brand-navy hover:bg-slate-100 transition">
-                            <div class="flex items-center gap-2">
+                        <div class="flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-slate-100 transition rounded-t-lg">
+                            <button onclick="selectModule('marketing')" class="flex items-center gap-2 flex-1 text-left group">
                                 <i class="fa-solid fa-bullhorn text-blue-600 w-4"></i>
-                                <span class="font-extrabold text-slate-900">Marketing</span>
-                            </div>
+                                <span class="font-extrabold text-slate-900 group-hover:text-blue-700 transition">Marketing</span>
+                            </button>
                             <div class="flex items-center gap-1.5 shrink-0">
                                 <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-bold whitespace-nowrap shrink-0">7 Kênh</span>
-                                <i id="icon-acc-marketing" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300 rotate-180"></i>
+                                <button onclick="toggleAccordion('acc-marketing')" class="p-1 hover:bg-slate-200 rounded transition" title="Mở rộng / Thu gọn">
+                                    <i id="icon-acc-marketing" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300 rotate-180"></i>
+                                </button>
                             </div>
-                        </button>
+                        </div>
                         
                         <div id="acc-marketing" class="submenu-container open bg-white border-t border-slate-200 p-1.5 space-y-1">
+                            <!-- 0. LỊCH CÔNG VIỆC MARKETING -->
+                            <button onclick="selectModule('marketing')" id="sub-marketing" class="sub-link w-full flex items-center justify-between p-2 font-bold text-blue-700 bg-blue-50/70 hover:bg-blue-100 rounded-lg transition border border-blue-200/80 mb-1">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-calendar-check text-blue-600"></i>
+                                    <span>Lịch Công Việc Marketing</span>
+                                </div>
+                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-bold">16 Tasks</span>
+                            </button>
                             <!-- 1. SEO WEBSITE (MẶC ĐỊNH THU GỌN) -->
                             <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
                                 <button onclick="toggleAccordion('acc-seo')" class="w-full flex items-center justify-between p-2 font-bold text-brand-navy hover:bg-slate-100 transition">
@@ -5556,6 +5566,230 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </div>
             </div>
 
+
+
+            
+            <!-- ======================================================= -->
+            <!-- 📅 MODULE: LỊCH CÔNG VIỆC MARKETING (CALENDAR & DISPATCH) -->
+            <!-- ======================================================= -->
+            <div id="panel-marketing" class="module-panel space-y-5 hidden" style="display: none;">
+                <!-- Module Header / Banner (Layout Invariant Rule 1) -->
+                <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 text-white p-5 rounded-2xl shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 border border-blue-500/20">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center text-blue-300 text-2xl shrink-0">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-[11px] font-extrabold uppercase tracking-wider text-blue-300 bg-blue-900/60 px-2 py-0.5 rounded border border-blue-500/30">ĐIỀU PHỐI MARKETING</span>
+                                <span class="text-[11px] text-emerald-400 flex items-center gap-1 font-semibold"><i class="fa-solid fa-circle-check text-[9px]"></i> Đồng bộ Notion DB BẢNG DANH SÁCH CÔNG VIỆC SONG ANH</span>
+                                <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded font-bold">16 Tasks Chu Kỳ</span>
+                            </div>
+                            <h2 class="text-lg font-black tracking-tight text-white mt-1">LỊCH CÔNG VIỆC MARKETING & ĐIỀU PHỐI ĐA KÊNH</h2>
+                            <p class="text-xs text-slate-300 mt-0.5">Theo dõi lịch trình 16 công việc tiếp thị đa kênh (SEO Website, Facebook, Zalo OA, Google Business) linh hoạt theo Ngày, 3 Ngày, Tuần và Tháng.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button onclick="fetchData()" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl shadow transition flex items-center gap-1.5 border border-blue-400/40">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>Đồng bộ Real-time</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- KPI Overview Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-black shrink-0">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Tổng Task Định Kỳ</span>
+                            <span id="mkt-stat-total" class="text-xl font-black text-slate-900 leading-tight">16 Tasks</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg font-black shrink-0">
+                            <i class="fa-solid fa-calendar-day"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Hôm Nay (Thứ 2)</span>
+                            <span id="mkt-stat-today" class="text-xl font-black text-emerald-600 leading-tight">14 Tasks Lên Lịch</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-lg font-black shrink-0">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Tự Động AI / Bot</span>
+                            <span id="mkt-stat-auto" class="text-xl font-black text-purple-600 leading-tight">8 / 16 (50%)</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-lg font-black shrink-0">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">Mục Tiêu Tuần Này</span>
+                            <span id="mkt-stat-kpi" class="text-xl font-black text-amber-700 leading-tight">38 Lượt Hoàn Thành</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Filter & View Switcher Bar -->
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+                        <!-- View Filter Tabs (1 Tuần, Hôm Nay, 3 Ngày, Tháng) -->
+                        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl flex-wrap">
+                            <button onclick="switchMktView('week')" id="btn-mkt-view-week" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white text-blue-700 shadow-xs">
+                                <i class="fa-solid fa-calendar-week"></i>
+                                <span>1 Tuần (T2 - CN)</span>
+                            </button>
+                            <button onclick="switchMktView('today')" id="btn-mkt-view-today" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <i class="fa-solid fa-calendar-day"></i>
+                                <span>Hôm Nay (07/09)</span>
+                            </button>
+                            <button onclick="switchMktView('3days')" id="btn-mkt-view-3days" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <i class="fa-solid fa-calendar-minus"></i>
+                                <span>3 Ngày Tới</span>
+                            </button>
+                            <button onclick="switchMktView('month')" id="btn-mkt-view-month" class="mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
+                                <i class="fa-solid fa-calendar"></i>
+                                <span>Tháng 09/2026</span>
+                            </button>
+                        </div>
+
+                        <!-- Week / Date Navigator -->
+                        <div class="flex items-center gap-2">
+                            <span id="mkt-current-period-text" class="text-xs font-black text-slate-800 px-3 py-1.5 rounded-lg bg-blue-50/80 border border-blue-200">
+                                📅 Tuần: 07/09 - 13/09/2026
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Filter Controls: Channel, Performer, Search -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5 pt-1 border-t border-slate-100">
+                        <!-- Channel Filter -->
+                        <div class="lg:col-span-4">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Kênh Marketing</label>
+                            <select id="mkt-filter-channel" onchange="filterMktChannel(this.value)" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
+                                <option value="all">🌐 Tất cả Kênh Tiếp Thị (4 Kênh)</option>
+                                <option value="facebook">📘 Facebook (Profile, Fanpage, Group)</option>
+                                <option value="zalo">💬 Zalo OA & 4 Hotline CSKH</option>
+                                <option value="seo">🔍 SEO Website (mohinhkientruc.org)</option>
+                                <option value="gbp">📍 Google Business Profile (3 Chi Nhánh)</option>
+                            </select>
+                        </div>
+
+                        <!-- Performer Filter -->
+                        <div class="lg:col-span-4">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Người Thực Hiện</label>
+                            <select id="mkt-filter-performer" onchange="filterMktPerformer(this.value)" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
+                                <option value="all">👥 Tất cả Người Thực Hiện</option>
+                                <option value="Phạm Hoàng Tiến">👑 Phạm Hoàng Tiến (Sếp Duyệt & Đăng bài)</option>
+                                <option value="Tự động">🤖 Tự động (AI Agent & Cron Bot 24/7)</option>
+                                <option value="Nguyễn Thị Kim Thủy">👩‍💼 Nguyễn Thị Kim Thủy (Trực Zalo 0988 080 440)</option>
+                                <option value="Võ Minh Sang">👨‍🔧 Võ Minh Sang (Trực Zalo 0376415131 / 0386989087)</option>
+                            </select>
+                        </div>
+
+                        <!-- Search Input -->
+                        <div class="lg:col-span-4">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Tìm Kiếm Công Việc</label>
+                            <div class="relative">
+                                <input type="text" id="mkt-filter-search" oninput="filterMktSearch(this.value)" placeholder="Gõ tên task hoặc mã..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none">
+                                <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Content Display Area -->
+                <div id="mkt-calendar-container" class="space-y-4">
+                    <!-- Dynamic view rendered by JS (Week, Day, 3-Day, Month) -->
+                </div>
+
+                <!-- Guide & Legend Note -->
+                <div class="bg-gradient-to-r from-blue-50/70 via-slate-50 to-indigo-50/70 p-4 rounded-xl border border-blue-200/60 text-xs space-y-2">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <span class="font-extrabold text-slate-800 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-blue-600"></i> QUY CHUẨN ĐIỀU PHỐI MARKETING SONG ANH
+                        </span>
+                        <div class="flex items-center gap-3 text-[11px] font-medium text-slate-600 flex-wrap">
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span> Facebook</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-cyan-500 inline-block"></span> Zalo OA</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> SEO Google</span>
+                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Google Business</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
+                        • Lịch công việc được ánh xạ trực tiếp 100% từ <strong>BẢNG DANH SÁCH CÔNG VIỆC SONG ANH</strong> trên Notion DB.<br>
+                        • Các task Tự động do AI Agents và script tự động vận hành; các task cá nhân do Sếp Phạm Hoàng Tiến và nhân sự phụ trách trực tiếp kiểm duyệt và xuất bản.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Modal Task Detail -->
+            <div id="modal-mkt-task-detail" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden items-center justify-center p-4">
+                <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
+                    <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+                        <div class="flex items-center gap-2.5">
+                            <div id="modal-mkt-icon-box" class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div>
+                                <span id="modal-mkt-channel-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-700">Facebook</span>
+                                <h3 id="modal-mkt-title" class="text-base font-black text-slate-900 mt-0.5">Tên công việc</h3>
+                            </div>
+                        </div>
+                        <button onclick="closeMktTaskDetail()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition">
+                            <i class="fa-solid fa-xmark text-base"></i>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3 text-xs text-slate-700">
+                        <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <div>
+                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Thời Gian / Khung Giờ</span>
+                                <span id="modal-mkt-time" class="font-bold text-slate-800">Sáng (08:30 - 11:30)</span>
+                            </div>
+                            <div>
+                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Lặp Lại</span>
+                                <span id="modal-mkt-repeat" class="font-bold text-blue-700">Thứ 2, 4, 6</span>
+                            </div>
+                            <div>
+                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Người Thực Hiện</span>
+                                <span id="modal-mkt-performer" class="font-bold text-slate-800">Phạm Hoàng Tiến</span>
+                            </div>
+                            <div>
+                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">KPI Tuần</span>
+                                <span id="modal-mkt-kpi" class="font-bold text-amber-700">4 lần / tuần</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-[10.5px] font-bold text-slate-400 uppercase block mb-1">Mô Tả Chi Tiết Nhiệm Vụ</span>
+                            <div id="modal-mkt-desc" class="p-3 bg-blue-50/50 rounded-xl border border-blue-100 leading-relaxed text-slate-700 whitespace-pre-line">
+                                Mô tả chi tiết của task...
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
+                            <span class="text-[11px] text-slate-500 font-medium" id="modal-mkt-type-badge">Tự động AI Bot</span>
+                            <a id="modal-mkt-notion-link" href="https://app.notion.com/p/19a4b5e73d9080f4a51ef769967547a5" target="_blank" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                                <span>Mở trên Notion</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="closeMktTaskDetail()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
+                            Đóng cửa sổ
+                        </button>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- Global System Footer -->
@@ -11508,7 +11742,17 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         ];
 
 let marketingActivityLog = [
-    {
+
+        {
+        "id": 80,
+        "timestamp": "07/09/2026 14:35:00",
+        "category": "Hệ thống",
+        "action": "Tích hợp trang Lịch Công Việc Marketing (#panel-marketing) với 4 bộ lọc: Hôm Nay, 3 Ngày, 1 Tuần, Tháng 09/2026",
+        "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+        "status": "✅ Hoàn Thành",
+        "notes": "Xây dựng module #panel-marketing, liên kết điều hướng Sidebar Marketing & sub-marketing, bộ lọc kênh và nhân sự"
+},
+            {
         "id": 79,
         "timestamp": "07/09/2026 09:12:00",
         "module": "Facebook Profile",
@@ -12560,6 +12804,10 @@ let marketingActivityLog = [
                     if (typeof renderMarketingActivityLogTable === 'function') {
                         renderMarketingActivityLogTable();
                     }
+                }
+                if (data.marketing_calendar_tasks && data.marketing_calendar_tasks.length > 0) {
+                    marketingCalendarTasks = data.marketing_calendar_tasks;
+                    if (typeof renderMarketingCalendar === 'function') renderMarketingCalendar();
                 }
                 if (data.zalo_data && data.zalo_data.length > 0) {
                     zaloTaskList = data.zalo_data;
@@ -14661,7 +14909,7 @@ let marketingActivityLog = [
             }
 
             // 6. Open parent accordion if it is a sub-link
-            const marketingModules = ['audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
+            const marketingModules = ['marketing', 'audit', 'keywords', 'onpage', 'cannibalization', 'content-link', 'offpage', 'competitor', 'gbp', 'facebook', 'zalo', 'xcom', 'tiktok', 'youtube'];
             if (marketingModules.includes(moduleId)) {
                 const accMkt = document.getElementById('acc-marketing');
                 const iconMkt = document.getElementById('icon-acc-marketing');
@@ -14736,6 +14984,8 @@ let marketingActivityLog = [
             } else if (moduleId === 'facebook') {
                 if (typeof renderFbWeekCalendar === 'function') renderFbWeekCalendar();
                 if (typeof renderFbTable === 'function') renderFbTable();
+                        } else if (moduleId === 'marketing') {
+                if (typeof renderMarketingCalendar === 'function') renderMarketingCalendar();
             } else if (moduleId === 'keywords') {
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
             }
@@ -16697,6 +16947,7 @@ let marketingActivityLog = [
             safeCall(renderZaloTable, 'renderZaloTable');
             safeCall(renderActivityLogTable, 'renderActivityLogTable');
             safeCall(renderMarketingActivityLogTable, 'renderMarketingActivityLogTable');
+            safeCall(renderMarketingCalendar, 'renderMarketingCalendar');
             safeCall(updateFbStatsDisplay, 'updateFbStatsDisplay');
             safeCall(renderFbWeekCalendar, 'renderFbWeekCalendar');
             safeCall(updateGbpStatsDisplay, 'updateGbpStatsDisplay');
@@ -17922,7 +18173,777 @@ let marketingActivityLog = [
             });
         }
 
-    </script>
+    
+        /* ======================================================= */
+        /* 📅 MARKETING CALENDAR & TASK DISPATCH LOGIC            */
+        /* ======================================================= */
+        let marketingCalendarTasks = [
+    {
+        "id": "cal-1",
+        "task_name": "Check thứ hạng 23 từ khóa SEO B2B",
+        "channel": "SEO Website",
+        "channel_code": "seo",
+        "channel_icon": "fa-solid fa-globe",
+        "color_class": "rose",
+        "badge_bg": "bg-rose-50 text-rose-700 border-rose-200",
+        "performer": "Tự động (Cloud AI Bot)",
+        "performer_role": "robot",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 3",
+            "Thứ 4",
+            "Thứ 5",
+            "Thứ 6",
+            "Thứ 7",
+            "Chủ Nhật"
+        ],
+        "slot": "morning",
+        "time_str": "06:00",
+        "kpi_weekly": 7,
+        "completed": 1,
+        "status": "Hoàn Thành",
+        "is_auto": true,
+        "notion_task_id": "3d14b5e7-3d90-8087-89f9-f372573908da",
+        "description": "Chạy tự động lúc 06:00 sáng hàng ngày qua GitHub Actions Cloud. Check 23 từ khóa SEO B2B, cập nhật WebApp, Google Sheets và gửi thông báo Telegram."
+    },
+    {
+        "id": "cal-2",
+        "task_name": "[Post Zalo] Profile 0981169200 | Mô hình",
+        "channel": "Zalo Marketing",
+        "channel_code": "zalo",
+        "channel_icon": "fa-solid fa-comment-dots",
+        "color_class": "emerald",
+        "badge_bg": "bg-emerald-50 text-emerald-700 border-emerald-200",
+        "performer": "Phạm Hoàng Tiến",
+        "performer_role": "user-tie",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 3",
+            "Thứ 4",
+            "Thứ 5",
+            "Thứ 6",
+            "Thứ 7",
+            "Chủ Nhật"
+        ],
+        "slot": "morning",
+        "time_str": "09:00",
+        "kpi_weekly": 7,
+        "completed": 1,
+        "status": "Hoàn Thành",
+        "is_auto": false,
+        "notion_task_id": "3b24b5e7-3d90-8041-9c3f-c6ad36ef06fa",
+        "description": "Đăng bài Zalo profile 0981169200 trực tiếp bởi Sếp Tiến chia sẻ kinh nghiệm kỹ thuật và dự án sa bàn thực tế tại xưởng."
+    },
+    {
+        "id": "cal-3",
+        "task_name": "[Post Profile] Song Anh",
+        "channel": "Facebook Profile",
+        "channel_code": "facebook",
+        "channel_icon": "fa-brands fa-facebook-f",
+        "color_class": "blue",
+        "badge_bg": "bg-blue-50 text-blue-700 border-blue-200",
+        "performer": "Phạm Hoàng Tiến",
+        "performer_role": "user-tie",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 4",
+            "Thứ 6"
+        ],
+        "slot": "morning",
+        "time_str": "09:15",
+        "kpi_weekly": 3,
+        "completed": 1,
+        "status": "Hoàn Thành",
+        "is_auto": false,
+        "notion_task_id": "3a74b5e7-3d90-8025-a7b2-cae97c9bca40",
+        "description": "Phân phối bài viết chuẩn B2B từ Website mohinhkientruc.org lên Profile cá nhân Mô hình Song Anh, first comment dán link bài viết."
+    },
+    {
+        "id": "cal-4",
+        "task_name": "[Post FB Group] Profile Song Anh",
+        "channel": "Facebook Group",
+        "channel_code": "facebook",
+        "channel_icon": "fa-solid fa-users",
+        "color_class": "blue",
+        "badge_bg": "bg-blue-50 text-blue-700 border-blue-200",
+        "performer": "Phạm Hoàng Tiến (Agent Minh)",
+        "performer_role": "user-check",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 4",
+            "Thứ 6"
+        ],
+        "slot": "afternoon",
+        "time_str": "15:00",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3bb4b5e7-3d90-8067-85ae-fae9e2b02890",
+        "description": "Đăng bài ngắn <80 từ vào Top 5 Groups B2B chất lượng, đính kèm link Profile Song Anh và ảnh sa bàn xưởng."
+    },
+    {
+        "id": "cal-5",
+        "task_name": "[Post] GBP | Dịch vụ làm mô hình kiến trúc Song Anh",
+        "channel": "Google Business",
+        "channel_code": "gbp",
+        "channel_icon": "fa-solid fa-location-dot",
+        "color_class": "amber",
+        "badge_bg": "bg-amber-50 text-amber-800 border-amber-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 4",
+            "Thứ 6"
+        ],
+        "slot": "afternoon",
+        "time_str": "15:30",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-804d-b9ae-c6a6de9e0130",
+        "description": "Đăng bài cập nhật B2B lên GBP chi nhánh Dịch vụ làm mô hình kiến trúc Song Anh kèm nút Gọi Ngay / Tìm hiểu thêm."
+    },
+    {
+        "id": "cal-6",
+        "task_name": "[Post] GBP | Sa bàn kiến trúc Song Anh",
+        "channel": "Google Business",
+        "channel_code": "gbp",
+        "channel_icon": "fa-solid fa-location-dot",
+        "color_class": "amber",
+        "badge_bg": "bg-amber-50 text-amber-800 border-amber-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 3",
+            "Thứ 5",
+            "Thứ 7"
+        ],
+        "slot": "morning",
+        "time_str": "09:00",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3b64b5e7-3d90-807c-9bfe-e4a0d9b40552",
+        "description": "Xuất bản bài đăng B2B theo cột Spin Sa bàn kiến trúc lên Google Business Profile chi nhánh Thủ Đức."
+    },
+    {
+        "id": "cal-7",
+        "task_name": "[Post] GBP | Mô hình kiến trúc Song Anh",
+        "channel": "Google Business",
+        "channel_code": "gbp",
+        "channel_icon": "fa-solid fa-location-dot",
+        "color_class": "amber",
+        "badge_bg": "bg-amber-50 text-amber-800 border-amber-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 5"
+        ],
+        "slot": "morning",
+        "time_str": "09:15",
+        "kpi_weekly": 2,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-8032-9b2f-da5ad9114702",
+        "description": "Đăng bài chuẩn B2B cho Trụ sở chính Google Business Profile Mô hình kiến trúc Song Anh."
+    },
+    {
+        "id": "cal-8",
+        "task_name": "[Re-cmt FB Group] | Fanpage Mô hình kiến trúc Song Anh",
+        "channel": "Facebook Group",
+        "channel_code": "facebook",
+        "channel_icon": "fa-solid fa-comments",
+        "color_class": "blue",
+        "badge_bg": "bg-blue-50 text-blue-700 border-blue-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 3",
+            "Thứ 4",
+            "Thứ 5",
+            "Thứ 6",
+            "Thứ 7"
+        ],
+        "slot": "afternoon",
+        "time_str": "16:00",
+        "kpi_weekly": 6,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-802c-88e2-ea42bc4910a2",
+        "description": "Re-comment (Bump Top) 6 lượt/tuần vào các bài đã đăng trong Group B2B để duy trì hiển thị đầu nhóm."
+    },
+    {
+        "id": "cal-9",
+        "task_name": "[Re-Cmt Fb] Fanpage Architectural Model Org",
+        "channel": "Facebook Fanpage",
+        "channel_code": "facebook",
+        "channel_icon": "fa-brands fa-facebook-f",
+        "color_class": "blue",
+        "badge_bg": "bg-blue-50 text-blue-700 border-blue-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 3",
+            "Thứ 5",
+            "Thứ 7"
+        ],
+        "slot": "afternoon",
+        "time_str": "14:00",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-80ab-8ae4-ca7cde392a80",
+        "description": "Re-comment (Bump Top) 3 lượt/tuần lên bài tiếng Anh Fanpage Architectural Model Org tiếp cận khách quốc tế."
+    },
+    {
+        "id": "cal-10",
+        "task_name": "[Re-Cmt FB] Profile Song Anh",
+        "channel": "Facebook Profile",
+        "channel_code": "facebook",
+        "channel_icon": "fa-brands fa-facebook-f",
+        "color_class": "blue",
+        "badge_bg": "bg-blue-50 text-blue-700 border-blue-200",
+        "performer": "Phạm Hoàng Tiến & Trợ lý",
+        "performer_role": "user-gear",
+        "repeat_days": [
+            "Thứ 4",
+            "Thứ 7"
+        ],
+        "slot": "afternoon",
+        "time_str": "16:30",
+        "kpi_weekly": 2,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3ba4b5e7-3d90-8012-b0e2-f709bc841122",
+        "description": "Re-comment kéo tương tác các bài Profile cá nhân đăng từ 1-2 tuần trước bằng chia sẻ kỹ thuật xưởng."
+    },
+    {
+        "id": "cal-11",
+        "task_name": "[Post Zalo] Profile 0988 080 440",
+        "channel": "Zalo Marketing",
+        "channel_code": "zalo",
+        "channel_icon": "fa-solid fa-comment-dots",
+        "color_class": "emerald",
+        "badge_bg": "bg-emerald-50 text-emerald-700 border-emerald-200",
+        "performer": "Nguyễn Thị Kim Thủy (Phạm Hoàng Tiến)",
+        "performer_role": "user-tie",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 4",
+            "Thứ 6"
+        ],
+        "slot": "morning",
+        "time_str": "10:00",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-80a1-9c3f-c6ad36ef06fb",
+        "description": "Sếp Tiến gửi bài qua Zalo cho Chị Kim Thủy đăng bài chăm sóc khách hàng và đối tác B2B."
+    },
+    {
+        "id": "cal-12",
+        "task_name": "[Post Zalo] Profile 0386989087",
+        "channel": "Zalo Marketing",
+        "channel_code": "zalo",
+        "channel_icon": "fa-solid fa-comment-dots",
+        "color_class": "emerald",
+        "badge_bg": "bg-emerald-50 text-emerald-700 border-emerald-200",
+        "performer": "Võ Minh Sang (Phạm Hoàng Tiến)",
+        "performer_role": "user-tie",
+        "repeat_days": [
+            "Thứ 2",
+            "Thứ 3",
+            "Thứ 4",
+            "Thứ 5",
+            "Thứ 6",
+            "Thứ 7",
+            "Chủ Nhật"
+        ],
+        "slot": "morning",
+        "time_str": "10:30",
+        "kpi_weekly": 7,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-80a2-9c3f-c6ad36ef06fc",
+        "description": "Anh Minh Sang đăng bài tư vấn kỹ thuật dự án sa bàn kiến trúc theo kịch bản chuẩn."
+    },
+    {
+        "id": "cal-13",
+        "task_name": "[Post Zalo] Profile 0376415131",
+        "channel": "Zalo Marketing",
+        "channel_code": "zalo",
+        "channel_icon": "fa-solid fa-comment-dots",
+        "color_class": "emerald",
+        "badge_bg": "bg-emerald-50 text-emerald-700 border-emerald-200",
+        "performer": "Võ Minh Sang (Phạm Hoàng Tiến)",
+        "performer_role": "user-tie",
+        "repeat_days": [
+            "Thứ 3",
+            "Thứ 5",
+            "Thứ 7"
+        ],
+        "slot": "morning",
+        "time_str": "10:45",
+        "kpi_weekly": 3,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3be4b5e7-3d90-80a3-9c3f-c6ad36ef06fd",
+        "description": "Anh Minh Sang đăng bài hỗ trợ kỹ thuật sa bàn cho kênh số hotline kỹ thuật."
+    },
+    {
+        "id": "cal-14",
+        "task_name": "[Post Pinterest] Phủ ghim 8 Bảng Ghim B2B",
+        "channel": "Pinterest",
+        "channel_code": "pinterest",
+        "channel_icon": "fa-brands fa-pinterest",
+        "color_class": "purple",
+        "badge_bg": "bg-purple-50 text-purple-700 border-purple-200",
+        "performer": "Mỹ (Thiết Kế) & Văn (Nội Dung)",
+        "performer_role": "users",
+        "repeat_days": [
+            "Thứ 3",
+            "Thứ 5",
+            "Thứ 7"
+        ],
+        "slot": "afternoon",
+        "time_str": "15:30",
+        "kpi_weekly": 6,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "3bc4b5e7-3d90-8022-b0fe-ca42de9e0135",
+        "description": "Đăng ảnh sa bàn chuẩn 2:3 (1000x1500px) dán logo kèm tiêu đề, mô tả và deep link website."
+    },
+    {
+        "id": "cal-15",
+        "task_name": "[SEO Website] Update Post & Tối Ưu RankMath",
+        "channel": "SEO Website",
+        "channel_code": "seo",
+        "channel_icon": "fa-solid fa-file-code",
+        "color_class": "rose",
+        "badge_bg": "bg-rose-50 text-rose-700 border-rose-200",
+        "performer": "Trí (SEO) & Thông (Website)",
+        "performer_role": "users",
+        "repeat_days": [
+            "Thứ 6"
+        ],
+        "slot": "afternoon",
+        "time_str": "15:00",
+        "kpi_weekly": 1,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "2644b5e7-3d90-8074-83fa-cd3d23de302c",
+        "description": "Cập nhật bài viết cũ, bổ sung schema FAQ/Article, tối ưu hình ảnh Gutenberg và kiểm tra điểm RankMath 85+."
+    },
+    {
+        "id": "cal-16",
+        "task_name": "[Tổng Hợp] Báo Cáo Marketing & Duyệt Lịch Tuần Mới",
+        "channel": "Hệ Thống",
+        "channel_code": "system",
+        "channel_icon": "fa-solid fa-chart-line",
+        "color_class": "indigo",
+        "badge_bg": "bg-indigo-50 text-indigo-700 border-indigo-200",
+        "performer": "Minh (Điều Phối) & Tín (Điều Hành)",
+        "performer_role": "crown",
+        "repeat_days": [
+            "Chủ Nhật"
+        ],
+        "slot": "afternoon",
+        "time_str": "16:00",
+        "kpi_weekly": 1,
+        "completed": 0,
+        "status": "Chờ thực hiện",
+        "is_auto": false,
+        "notion_task_id": "22e4b5e7-3d90-805b-82df-d221bc077348",
+        "description": "Tổng hợp toàn bộ 30+ thao tác trong tuần, cập nhật số liệu lên BÁO CÁO CÔNG VIỆC TUẦN Notion DB và lên lịch tuần mới."
+    }
+];
+        let currentMktView = 'week';
+        let currentMktChannel = 'all';
+        let currentMktPerformer = 'all';
+        let currentMktSearch = '';
+
+        const mktWeekDays = [
+            { day: 'Thứ 2', date: '07/09', isToday: true },
+            { day: 'Thứ 3', date: '08/09', isToday: false },
+            { day: 'Thứ 4', date: '09/09', isToday: false },
+            { day: 'Thứ 5', date: '10/09', isToday: false },
+            { day: 'Thứ 6', date: '11/09', isToday: false },
+            { day: 'Thứ 7', date: '12/09', isToday: false },
+            { day: 'Chủ Nhật', date: '13/09', isToday: false }
+        ];
+
+        function switchMktView(viewMode) {
+            currentMktView = viewMode;
+            const views = ['week', 'today', '3days', 'month'];
+            views.forEach(v => {
+                const btn = document.getElementById('btn-mkt-view-' + v);
+                if (btn) {
+                    if (v === viewMode) {
+                        btn.className = 'mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white text-blue-700 shadow-xs border border-blue-200';
+                    } else {
+                        btn.className = 'mkt-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900';
+                    }
+                }
+            });
+
+            const periodText = document.getElementById('mkt-current-period-text');
+            if (periodText) {
+                if (viewMode === 'week') periodText.innerHTML = '📅 Tuần: 07/09 - 13/09/2026';
+                else if (viewMode === 'today') periodText.innerHTML = '🎯 Hôm Nay: Thứ 2, 07/09/2026';
+                else if (viewMode === '3days') periodText.innerHTML = '⚡ 3 Ngày: 07/09 - 09/09/2026';
+                else if (viewMode === 'month') periodText.innerHTML = '🗓️ Tháng 09/2026';
+            }
+
+            renderMarketingCalendar();
+        }
+
+        function filterMktChannel(channel) {
+            currentMktChannel = channel;
+            renderMarketingCalendar();
+        }
+
+        function filterMktPerformer(performer) {
+            currentMktPerformer = performer;
+            renderMarketingCalendar();
+        }
+
+        function filterMktSearch(val) {
+            currentMktSearch = (val || '').trim();
+            renderMarketingCalendar();
+        }
+
+        function getFilteredMktTasks(dayFilter) {
+            return marketingCalendarTasks.filter(task => {
+                // Channel filter
+                if (currentMktChannel !== 'all') {
+                    if (task.channel_code !== currentMktChannel) return false;
+                }
+                // Performer filter
+                if (currentMktPerformer !== 'all') {
+                    if (!task.performer || !task.performer.includes(currentMktPerformer)) return false;
+                }
+                // Search filter
+                if (currentMktSearch) {
+                    const q = currentMktSearch.toLowerCase();
+                    const match = (task.task_name && task.task_name.toLowerCase().includes(q)) ||
+                                  (task.description && task.description.toLowerCase().includes(q)) ||
+                                  (task.performer && task.performer.toLowerCase().includes(q)) ||
+                                  (task.channel && task.channel.toLowerCase().includes(q));
+                    if (!match) return false;
+                }
+                // Day filter
+                if (dayFilter) {
+                    if (!task.repeat_days || !task.repeat_days.includes(dayFilter)) return false;
+                }
+                return true;
+            });
+        }
+
+        function renderMarketingCalendar() {
+            const container = document.getElementById('mkt-calendar-container');
+            if (!container) return;
+
+            // Update stats
+            const totalTasks = marketingCalendarTasks.length;
+            const todayTasks = getFilteredMktTasks('Thứ 2').length;
+            const autoCount = marketingCalendarTasks.filter(t => t.is_auto).length;
+            const totalKpi = marketingCalendarTasks.reduce((sum, t) => sum + (parseInt(t.kpi_weekly) || 0), 0);
+
+            const statTotal = document.getElementById('mkt-stat-total');
+            if (statTotal) statTotal.innerText = totalTasks + ' Tasks';
+            const statToday = document.getElementById('mkt-stat-today');
+            if (statToday) statToday.innerText = todayTasks + ' Tasks Lên Lịch';
+            const statAuto = document.getElementById('mkt-stat-auto');
+            if (statAuto) statAuto.innerText = autoCount + ' / ' + totalTasks + ' (' + Math.round((autoCount / (totalTasks || 1)) * 100) + '%)';
+            const statKpi = document.getElementById('mkt-stat-kpi');
+            if (statKpi) statKpi.innerText = totalKpi + ' Lượt / Tuần';
+
+            if (currentMktView === 'week') {
+                renderMktWeekView(container);
+            } else if (currentMktView === 'today') {
+                renderMktDayView(container);
+            } else if (currentMktView === '3days') {
+                renderMkt3DaysView(container);
+            } else if (currentMktView === 'month') {
+                renderMktMonthView(container);
+            }
+        }
+
+        function getChannelColor(code) {
+            switch(code) {
+                case 'facebook': return { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', tag: 'bg-blue-100 text-blue-800' };
+                case 'zalo': return { bg: 'bg-cyan-50', text: 'text-cyan-700', border: 'border-cyan-200', tag: 'bg-cyan-100 text-cyan-800' };
+                case 'seo': return { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', tag: 'bg-emerald-100 text-emerald-800' };
+                case 'gbp': return { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200', tag: 'bg-amber-100 text-amber-800' };
+                default: return { bg: 'bg-slate-50', text: 'text-slate-700', border: 'border-slate-200', tag: 'bg-slate-100 text-slate-800' };
+            }
+        }
+
+        function buildTaskCardHtml(task) {
+            const colors = getChannelColor(task.channel_code);
+            const performerBadge = task.is_auto
+                ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-bold flex items-center gap-0.5"><i class="fa-solid fa-robot text-[8px]"></i> Tự động Bot</span>'
+                : '<span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-bold truncate max-w-[120px]">' + (task.performer || '') + '</span>';
+
+            const statusBadge = task.completed
+                ? '<span class="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5"><i class="fa-solid fa-circle-check text-[9px]"></i> Đã xong</span>'
+                : '<span class="text-[9px] text-amber-600 font-bold flex items-center gap-0.5"><i class="fa-regular fa-clock text-[9px]"></i> Cần làm</span>';
+
+            return `
+                <div onclick="openMktTaskDetail('${task.id}')" class="group bg-white p-2.5 rounded-xl border ${colors.border} hover:border-blue-400 hover:shadow-md transition cursor-pointer space-y-2 relative">
+                    <div class="flex items-center justify-between gap-1">
+                        <span class="text-[9.5px] font-extrabold px-1.5 py-0.5 rounded ${colors.tag} flex items-center gap-1 shrink-0">
+                            <i class="${task.channel_icon}"></i> ${task.channel}
+                        </span>
+                        <span class="text-[10px] font-bold text-slate-500 shrink-0">
+                            <i class="fa-regular fa-clock text-[9px]"></i> ${task.time_str}
+                        </span>
+                    </div>
+
+                    <h4 class="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition leading-snug line-clamp-2">
+                        ${task.task_name}
+                    </h4>
+
+                    <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10px]">
+                        ${performerBadge}
+                        ${statusBadge}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderMktWeekView(container) {
+            let colsHtml = '';
+            mktWeekDays.forEach(dayInfo => {
+                const tasks = getFilteredMktTasks(dayInfo.day);
+                const isToday = dayInfo.isToday;
+                const headerClass = isToday
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-slate-100 text-slate-700';
+
+                const todayTag = isToday
+                    ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-white text-blue-700 font-black tracking-wider uppercase ml-1 animate-pulse">Hôm nay</span>'
+                    : '';
+
+                const borderClass = isToday ? 'border-2 border-blue-400 shadow-md' : 'border border-slate-200';
+
+                let taskListHtml = '';
+                if (tasks.length === 0) {
+                    taskListHtml = `
+                        <div class="p-6 text-center text-slate-400 text-xs">
+                            <i class="fa-regular fa-calendar-xmark text-lg block mb-1"></i>
+                            Không có task
+                        </div>
+                    `;
+                } else {
+                    taskListHtml = tasks.map(t => buildTaskCardHtml(t)).join('');
+                }
+
+                colsHtml += `
+                    <div class="flex flex-col bg-slate-50/70 rounded-2xl ${borderClass} overflow-hidden min-w-[210px] lg:min-w-0">
+                        <div class="p-3 ${headerClass} flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-extrabold block">${dayInfo.day} ${todayTag}</span>
+                                <span class="text-[10px] opacity-80">${dayInfo.date}/2026</span>
+                            </div>
+                            <span class="text-[11px] font-black px-2 py-0.5 rounded-full ${isToday ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-800'}">
+                                ${tasks.length}
+                            </span>
+                        </div>
+                        <div class="p-2 space-y-2 flex-1 overflow-y-auto max-h-[620px]">
+                            ${taskListHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 overflow-x-auto pb-2">
+                    ${colsHtml}
+                </div>
+            `;
+        }
+
+        function renderMktDayView(container) {
+            const todayTasks = getFilteredMktTasks('Thứ 2');
+
+            // Categorize by slot
+            const sangTasks = todayTasks.filter(t => t.slot === 'Sáng');
+            const chieuTasks = todayTasks.filter(t => t.slot === 'Chiều');
+            const toiTasks = todayTasks.filter(t => t.slot === 'Tối');
+            const allDayTasks = todayTasks.filter(t => t.slot === '24/7' || t.slot === 'Cả ngày');
+
+            function buildSlotBlock(title, icon, timeRange, tasks, badgeColor) {
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+                        <div class="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <span class="w-8 h-8 rounded-lg ${badgeColor} flex items-center justify-center text-sm font-bold">
+                                    <i class="${icon}"></i>
+                                </span>
+                                <div>
+                                    <h3 class="text-xs font-black text-slate-800 uppercase tracking-wide">${title}</h3>
+                                    <span class="text-[10.5px] text-slate-500 font-semibold">${timeRange}</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">
+                                ${tasks.length} tasks
+                            </span>
+                        </div>
+                        <div class="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                            ${tasks.length === 0 ? '<div class="col-span-full py-4 text-center text-slate-400 text-xs">Không có task trong khung giờ này</div>' : tasks.map(t => buildTaskCardHtml(t)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="space-y-4">
+                    ${buildSlotBlock('🌅 BUỔI SÁNG', 'fa-solid fa-sun text-amber-500', '08:00 - 11:30 (Đăng bài Profile, Zalo & Check SEO)', sangTasks, 'bg-amber-50')}
+                    ${buildSlotBlock('☀️ BUỔI CHIỀU', 'fa-solid fa-cloud-sun text-orange-500', '13:30 - 17:30 (Đăng GBP, Re-comment Fanpage & Groups)', chieuTasks, 'bg-orange-50')}
+                    ${buildSlotBlock('🌙 BUỔI TỐI', 'fa-solid fa-moon text-indigo-500', '18:00 - 21:00 (Nghiệm thu tiến độ & Content Video)', toiTasks, 'bg-indigo-50')}
+                    ${buildSlotBlock('⚡ THƯỜNG TRỰC 24/7', 'fa-solid fa-bolt text-cyan-500', 'Xuyên suốt trong tuần (CSKH Zalo Hotline & Giám sát hệ thống)', allDayTasks, 'bg-cyan-50')}
+                </div>
+            `;
+        }
+
+        function renderMkt3DaysView(container) {
+            const threeDays = mktWeekDays.slice(0, 3);
+            let colsHtml = '';
+            threeDays.forEach(dayInfo => {
+                const tasks = getFilteredMktTasks(dayInfo.day);
+                const isToday = dayInfo.isToday;
+                const headerClass = isToday ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-800';
+
+                colsHtml += `
+                    <div class="bg-white rounded-2xl border ${isToday ? 'border-2 border-blue-400 shadow-md' : 'border border-slate-200'} overflow-hidden flex flex-col">
+                        <div class="p-4 ${headerClass} flex items-center justify-between">
+                            <div>
+                                <span class="text-sm font-black">${dayInfo.day}</span>
+                                <span class="text-xs opacity-90 block">${dayInfo.date}/2026 ${isToday ? '• HÔM NAY' : ''}</span>
+                            </div>
+                            <span class="text-sm font-extrabold px-2.5 py-1 rounded-full ${isToday ? 'bg-blue-700 text-white' : 'bg-slate-200 text-slate-800'}">
+                                ${tasks.length} tasks
+                            </span>
+                        </div>
+                        <div class="p-3 space-y-2.5 flex-1 overflow-y-auto max-h-[600px] bg-slate-50/50">
+                            ${tasks.length === 0 ? '<div class="p-8 text-center text-slate-400 text-xs">Không có task</div>' : tasks.map(t => buildTaskCardHtml(t)).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    ${colsHtml}
+                </div>
+            `;
+        }
+
+        function renderMktMonthView(container) {
+            let cellsHtml = '';
+            // September 2026 starts on Tuesday (Thứ 3 = Sept 1). Mon Aug 31 is day 0.
+            const totalDays = 30;
+            const startDayOffset = 1; // Tuesday is index 1 (Monday is 0)
+
+            // Empty cells for Monday Aug 31
+            for (let i = 0; i < startDayOffset; i++) {
+                cellsHtml += `<div class="bg-slate-50/40 p-2 rounded-xl border border-dashed border-slate-200 text-slate-300 text-xs min-h-[90px]"></div>`;
+            }
+
+            for (let d = 1; d <= totalDays; d++) {
+                const dateStr = (d < 10 ? '0' : '') + d + '/09';
+                const dayOfWeekIndex = (d - 1 + startDayOffset) % 7;
+                const dayName = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'][dayOfWeekIndex];
+                const isToday = (d === 7);
+                const dayTasks = getFilteredMktTasks(dayName);
+
+                cellsHtml += `
+                    <div onclick="switchMktView('today')" class="bg-white p-2.5 rounded-xl border ${isToday ? 'border-2 border-blue-500 shadow-sm' : 'border-slate-200'} hover:border-blue-300 hover:shadow-xs transition cursor-pointer min-h-[90px] flex flex-col justify-between">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black ${isToday ? 'text-blue-600' : 'text-slate-700'}">${d}</span>
+                            ${isToday ? '<span class="text-[9px] px-1 rounded bg-blue-600 text-white font-bold">Nay</span>' : ''}
+                        </div>
+                        <div class="mt-1 flex flex-wrap gap-1">
+                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                                ${dayTasks.length} tasks
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="grid grid-cols-7 gap-2 text-center text-xs font-extrabold text-slate-500 border-b border-slate-100 pb-2">
+                        <span>Thứ 2</span>
+                        <span>Thứ 3</span>
+                        <span>Thứ 4</span>
+                        <span>Thứ 5</span>
+                        <span>Thứ 6</span>
+                        <span>Thứ 7</span>
+                        <span class="text-rose-500">Chủ Nhật</span>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2">
+                        ${cellsHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function openMktTaskDetail(taskId) {
+            const task = marketingCalendarTasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            const modal = document.getElementById('modal-mkt-task-detail');
+            if (!modal) return;
+
+            document.getElementById('modal-mkt-title').innerText = task.task_name || '';
+            document.getElementById('modal-mkt-channel-badge').innerText = task.channel || '';
+            document.getElementById('modal-mkt-time').innerText = task.time_str + ' (' + task.slot + ')';
+            document.getElementById('modal-mkt-repeat').innerText = task.repeat_days ? task.repeat_days.join(', ') : 'Hàng ngày';
+            document.getElementById('modal-mkt-performer').innerText = task.performer || '';
+            document.getElementById('modal-mkt-kpi').innerText = (task.kpi_weekly || 0) + ' lượt / tuần';
+            document.getElementById('modal-mkt-desc').innerText = task.description || 'Không có mô tả bổ sung.';
+            document.getElementById('modal-mkt-type-badge').innerText = task.is_auto ? '🤖 Tự động AI Bot 24/7' : '👤 Thực hiện thủ công / Duyệt';
+
+            const notionLink = document.getElementById('modal-mkt-notion-link');
+            if (notionLink) {
+                if (task.notion_task_id) {
+                    notionLink.href = 'https://app.notion.com/p/' + task.notion_task_id.replace(/-/g, '');
+                } else {
+                    notionLink.href = 'https://app.notion.com/p/19a4b5e73d9080f4a51ef769967547a5';
+                }
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeMktTaskDetail() {
+            const modal = document.getElementById('modal-mkt-task-detail');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        </script>
 
     <!-- 📱 MOBILE BOTTOM NAVIGATION BAR (CỐ ĐỊNH ĐÁY MÀN HÌNH CHO ĐIỆN THOẠI) -->
     <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 z-50 px-8 py-2 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
