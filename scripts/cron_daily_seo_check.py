@@ -81,6 +81,7 @@ def run_seo_updater(vn_date):
             with open(JSON_PATH, "r", encoding="utf-8") as f:
                 d = json.load(f)
             seo_kws = d.get("seo_keywords", [])
+            activity_logs = d.get("marketing_activity_log", [])
             if seo_kws:
                 with open(index_html_path, "r", encoding="utf-8") as f:
                     html_content = f.read()
@@ -92,14 +93,22 @@ def run_seo_updater(vn_date):
                     html_content
                 )
                 
-                # Update keywordList JSON array
-                kw_json = json.dumps(seo_kws, ensure_ascii=False, indent=8)
-                kw_pat = r"(let keywordList = )\[[\s\S]*?\n        \];"
-                html_content = re.sub(kw_pat, f"let keywordList = {kw_json};", html_content, count=1)
+                # Update keywordList safely
+                m_kw = re.search(r"let keywordList = \[[\s\S]*?\r?\n\];", html_content)
+                if m_kw:
+                    kw_json = json.dumps(seo_kws, ensure_ascii=False, indent=8)
+                    html_content = html_content[:m_kw.start()] + f"let keywordList = {kw_json};" + html_content[m_kw.end():]
                 
+                # Update marketingActivityLog safely
+                if activity_logs:
+                    m_log = re.search(r"let marketingActivityLog = \[[\s\S]*?\r?\n\];", html_content)
+                    if m_log:
+                        log_json = json.dumps(activity_logs, ensure_ascii=False, indent=4)
+                        html_content = html_content[:m_log.start()] + f"let marketingActivityLog = {log_json};" + html_content[m_log.end():]
+
                 with open(index_html_path, "w", encoding="utf-8") as f:
                     f.write(html_content)
-                print("✅ Đã đồng bộ keywordList và ngày mới vào index.html!")
+                print("✅ Đã đồng bộ keywordList, activity log và ngày mới vào index.html!")
         except Exception as e:
             print("[-] Lỗi đồng bộ index.html:", e)
 

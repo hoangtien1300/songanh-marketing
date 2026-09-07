@@ -13,7 +13,7 @@ import os
 import datetime
 import pandas as pd
 
-APP_DIR = r"d:\Song_Anh\marketing_workflow_app"
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
 JSON_PATH = os.path.join(APP_DIR, "marketing_data.json")
 CSV_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.csv")
 XLSX_PATH = os.path.join(APP_DIR, "song_anh_seo_keywords_master_dataset.xlsx")
