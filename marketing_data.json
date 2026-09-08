@@ -16400,6 +16400,16 @@
   },
   "marketing_activity_log": [
     {
+      "id": 1788852319,
+      "date": "08/09/2026 14:25:00",
+      "time": "08/09/2026 14:25:00",
+      "module": "Hệ thống",
+      "action": "Nâng cấp giao diện SEO Website theo mô hình Mục Marketing: Gỡ bỏ sub 2Site + 17 task khỏi Sidebar, xây dựng Bảng Danh Sách 24 Task SEO Chi Tiết trực tiếp trên trang chính với bộ lọc thông minh (Website, Phân loại, Trạng thái, Người phụ trách, Search), hỗ trợ Responsive Mobile Card & Desktop Table và cập nhật tiến độ realtime",
+      "author": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "✅ Hoàn thành"
+    },
+    {
       "id": 1788835084,
       "date": "08/09/2026 09:38:04",
       "time": "08/09/2026 09:38:04",
