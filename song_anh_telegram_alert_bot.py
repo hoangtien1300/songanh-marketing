@@ -129,6 +129,49 @@ def format_daily_briefing_message(alerts):
     msg += f"\n💡 <i>Mẹo: Nhấp các nút bên dưới để xem chi tiết hoặc mở nhanh Dashboard!</i>\n"
     return msg
 
+
+def format_hr_morning_report():
+    today = datetime.date.today()
+    yesterday = today - datetime.timedelta(days=1)
+    today_str = today.strftime("%d/%m/%Y")
+    yesterday_str = yesterday.strftime("%d/%m/%Y")
+    
+    msg = f"🏢 <b>BÁO CÁO NHANH NHÂN SỰ SÁNG {today_str}</b>\n"
+    msg += f"🏢 <i>Đơn vị: Mô Hình Kiến Trúc Song Anh</i>\n"
+    msg += f"👤 <i>Trợ lý: Vy - Nhân Sự</i>\n"
+    msg += f"──────────────────────\n\n"
+    
+    msg += f"👥 <b>TỔNG QUÂN SỐ CÔNG TY: 19 Nhân sự</b>\n"
+    msg += f"• Khối Văn phòng: 05 | Nhóm Thế Anh: 05\n"
+    msg += f"• Nhóm Huynh: 04 | Nhóm Hiển: 05\n"
+    msg += f"<i>(Hành chính: 06 | Cơ bản + Khoán: 10 | CTV: 02 | Thử việc: 01)</i>\n\n"
+    
+    msg += f"⏪ <b>DIỄN BIẾN HÔM QUA ({yesterday_str}):</b>\n"
+    msg += f"• Ghi nhận thưởng nóng 1 triệu cho 3 nhân sự: Sơn (Nippon), Hiển (Trách nhiệm), Quỳnh (Nỗ lực).\n"
+    msg += f"• Tiếp nhận 02 hồ sơ ứng viên: Nguyen Dat (In 3D) &amp; Trần Quốc Huy (Sale B2B) từ vieclam24h.\n"
+    msg += f"• Đã số hóa và cập nhật dữ liệu 2 ứng viên vào Notion DB Thành viên.\n\n"
+    
+    msg += f"⏩ <b>VIỆC CẦN LÀM HÔM NAY ({today_str}):</b>\n"
+    msg += f"1. Theo dõi phản hồi Zalo/mail của 02 ứng viên Đạt &amp; Huy để xếp lịch trao đổi/phỏng vấn.\n"
+    msg += f"2. Họp giao ban đánh giá kết thúc 02 tuần thử việc của Phạm Vũ Luân (Nhóm Hiển).\n"
+    msg += f"3. Kiểm soát quân số xưởng ca sáng và chuyên cần các nhóm thi công.\n\n"
+    
+    msg += f"🔗 <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/#nhan-su'>Mở WebApp Nhân Sự</a> | <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/ho_so_nhan_vien.html'>Xem Biểu Mẫu Hồ Sơ</a>\n"
+    return msg
+
+def send_daily_hr_morning_alert():
+    cfg = load_telegram_config()
+    bot_token = cfg.get("bot_token")
+    chat_id = cfg.get("chat_id")
+    if not bot_token or not chat_id:
+        print("Lỗi: Chưa cấu hình bot_token hoặc chat_id trong telegram_config.json")
+        return {"ok": False, "error": "Chưa cấu hình bot_token hoặc chat_id"}
+    msg = format_hr_morning_report()
+    res = send_telegram_message(bot_token, chat_id, msg, parse_mode="HTML")
+    print("Kết quả gửi thông báo Nhân Sự qua Telegram:", res)
+    return res
+
+
 if __name__ == "__main__":
     cfg = load_telegram_config()
     print("=== TELEGRAM ALERT BOT ENGINE SẴN SÀNG ===")

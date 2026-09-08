@@ -5,6 +5,7 @@
   "bot_username": "songanh_alert_bot",
   "is_active": true,
   "alert_times": [
+    "06:30",
     "08:30",
     "14:00",
     "20:00"
