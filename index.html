@@ -1858,110 +1858,30 @@
                         <!-- ======================================================= -->
             <!-- 🌐 MODULE: TRUNG TÂM QUẢN TRỊ & KẾ HOẠCH SEO WEBSITE   -->
             <!-- ======================================================= -->
-            <div id="panel-seo" class="module-panel hidden space-y-5">
-                <!-- 1. Header Banner (Quy chuẩn Bố cục Rule 1) -->
-                <div class="light-card p-4 sm:p-5 rounded-2xl border border-slate-200 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 text-white shadow-md">
-                    <div class="flex items-center gap-3.5 sm:gap-4">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-xl shadow-lg shrink-0">
+            <div id="panel-seo" class="module-panel hidden space-y-4">
+                <!-- 1. Header Banner (Quy chuẩn Bố cục Rule 1: Tối giản, gọn gàng theo chỉ đạo) -->
+                <div class="light-card p-3 sm:p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-3 bg-gradient-to-r from-slate-900 via-sky-950 to-indigo-950 text-white shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-500 text-white flex items-center justify-center text-base sm:text-lg shadow-md shrink-0">
                             <i class="fa-solid fa-globe"></i>
                         </div>
-                        <div>
-                            <div class="flex flex-wrap items-center gap-2">
-                                <h2 class="font-heading font-extrabold text-base lg:text-lg text-white uppercase">KẾ HOẠCH &amp; DANH SÁCH CÔNG VIỆC SEO WEBSITE SONG ANH</h2>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-400 text-slate-950 uppercase tracking-wider">2 Website Chiến Lược</span>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400 text-slate-950 uppercase tracking-wider">Trí - SEO Master</span>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">Song Ngữ VI / EN</span>
-                            </div>
-                            <p class="text-xs text-slate-300 font-normal mt-1">Điều phối &amp; Quản trị tập trung danh sách công việc SEO toàn diện: <strong class="text-emerald-300">mohinhkientruc.org</strong> (Thị trường Việt Nam) &amp; <strong class="text-sky-300">architecturalmodel.org</strong> (Thị trường Quốc tế &amp; Xuất khẩu).</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-2 shrink-0">
-                        <button onclick="renderSeoMasterTasks()" class="px-3.5 py-2 min-h-[40px] rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs flex items-center gap-1.5 transition shadow-sm border border-sky-400/40">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            <span>Làm mới Real-time</span>
-                        </button>
-                        <a href="https://architecturalmodel.org" target="_blank" rel="noopener noreferrer" class="px-3 py-2 min-h-[40px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 border border-white/20 transition">
-                            <i class="fa-solid fa-arrow-up-right-from-square text-sky-400"></i>
-                            <span>architecturalmodel.org</span>
-                        </a>
-                        <a href="https://mohinhkientruc.org" target="_blank" rel="noopener noreferrer" class="px-3 py-2 min-h-[40px] rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center gap-1.5 border border-white/20 transition">
-                            <i class="fa-solid fa-arrow-up-right-from-square text-emerald-400"></i>
-                            <span>mohinhkientruc.org</span>
-                        </a>
+                        <h2 class="font-heading font-extrabold text-sm sm:text-base text-white uppercase tracking-tight">Danh sách công việc SEO Website</h2>
                     </div>
                 </div>
 
-                <!-- 2. 4 Thẻ Summary KPI (Tuân thủ Quy chuẩn Báo cáo: Chỉ Tên thẻ + Con số lớn rõ ràng) -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                    <!-- Thẻ 1 -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
-                        <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>TỔNG TASK SEO CẦN LÀM</span>
-                            <i class="fa-solid fa-list-check text-blue-600 text-sm"></i>
+                <!-- 2. Bộ Lọc & Tìm Kiếm Công Việc SEO (Chuyển 2 website vào 1 bộ lọc đồng bộ) -->
+                <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5">
+                        <!-- Website Mục Tiêu Filter -->
+                        <div class="lg:col-span-3">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Website Mục Tiêu</label>
+                            <select id="seo-filter-site" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
+                                <option value="all">🌐 Tất cả Website (24 Tasks)</option>
+                                <option value="architecturalmodel.org">🇺🇸 architecturalmodel.org (17 Tasks)</option>
+                                <option value="mohinhkientruc.org">🇻🇳 mohinhkientruc.org (7 Tasks)</option>
+                            </select>
                         </div>
-                        <p id="kpi-seo-master-total" class="text-2xl sm:text-3xl font-heading font-extrabold text-blue-600">24 Tasks</p>
-                    </div>
 
-                    <!-- Thẻ 2 -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
-                        <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>ĐANG TRIỂN KHAI</span>
-                            <i id="kpi-seo-master-prog-icon" class="fa-solid fa-spinner text-amber-600 text-sm"></i>
-                        </div>
-                        <p id="kpi-seo-master-in-progress" class="text-2xl sm:text-3xl font-heading font-extrabold text-amber-600">18 Tasks</p>
-                    </div>
-
-                    <!-- Thẻ 3 -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
-                        <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>ĐÃ HOÀN THÀNH</span>
-                            <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
-                        </div>
-                        <p id="kpi-seo-master-completed" class="text-2xl sm:text-3xl font-heading font-extrabold text-emerald-600">6 Tasks (25%)</p>
-                    </div>
-
-                    <!-- Thẻ 4 -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white space-y-1 shadow-2xs">
-                        <div class="flex items-center justify-between text-slate-500 text-xs font-bold">
-                            <span>TRỢ LÝ CHUYÊN TRÁCH</span>
-                            <i class="fa-solid fa-user-check text-purple-600 text-sm"></i>
-                        </div>
-                        <p class="text-base sm:text-xl font-heading font-extrabold text-purple-600 truncate">Trí - SEO Master</p>
-                    </div>
-                </div>
-
-                <!-- 3. Smart Filter Bar (Bộ lọc thông minh giống Mục Marketing) -->
-                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-                    <!-- Row 1: View Filter Tabs (Tất cả, architecturalmodel.org, mohinhkientruc.org, Xem Nhóm Module) -->
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl flex-wrap">
-                            <button onclick="setSeoSiteView('all')" id="btn-seo-view-all" class="seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white text-sky-700 shadow-xs border border-sky-200">
-                                <i class="fa-solid fa-layer-group"></i>
-                                <span>Tất cả Website (24 Tasks)</span>
-                            </button>
-                            <button onclick="setSeoSiteView('arch')" id="btn-seo-view-arch" class="seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-flag-usa text-blue-500"></i>
-                                <span>architecturalmodel.org (17 Tasks)</span>
-                            </button>
-                            <button onclick="setSeoSiteView('mhkt')" id="btn-seo-view-mhkt" class="seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-star text-emerald-500"></i>
-                                <span>mohinhkientruc.org (7 Tasks)</span>
-                            </button>
-                            <button onclick="setSeoSiteView('modules')" id="btn-seo-view-modules" class="seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900">
-                                <i class="fa-solid fa-cubes text-purple-500"></i>
-                                <span>Nhóm 6 Module Trọng Tâm</span>
-                            </button>
-                        </div>
-                        
-                        <div class="flex items-center gap-2">
-                            <span id="seo-current-period-text" class="text-xs font-black text-slate-800 px-3 py-1.5 rounded-lg bg-sky-50/80 border border-sky-200">
-                                ⚡ Bảng Công Việc SEO Website Song Anh
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Row 2: Secondary Filter Controls (Phân loại, Người phụ trách, Trạng thái, Search) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5 pt-2 border-t border-slate-100">
                         <!-- Category Filter -->
                         <div class="lg:col-span-3">
                             <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Phân Loại Chuyên Môn</label>
@@ -1977,17 +1897,17 @@
                             </select>
                         </div>
 
-                        <!-- Performer Filter -->
-                        <div class="lg:col-span-3">
+                        <!-- Assignee Filter -->
+                        <div class="lg:col-span-2">
                             <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Người Phụ Trách</label>
                             <select id="seo-filter-assignee" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
-                                <option value="all">👥 Tất cả Người Phụ Trách</option>
-                                <option value="Trí - Trợ lý SEO Master">📈 Trí - Trợ lý SEO Master</option>
-                                <option value="Kiến - Trợ lý Lập Trình">👨‍💻 Kiến - Trợ lý Lập Trình</option>
-                                <option value="Thông - Trợ lý Website">🌐 Thông - Trợ lý Website</option>
-                                <option value="Văn - Trợ lý Nội Dung">✍️ Văn - Trợ lý Nội Dung</option>
-                                <option value="Mỹ - Trợ lý Thiết Kế">🎨 Mỹ - Trợ lý Thiết Kế</option>
-                                <option value="Phạm Hoàng Tiến">👑 Phạm Hoàng Tiến (Sếp duyệt)</option>
+                                <option value="all">👥 Tất cả</option>
+                                <option value="Trí - Trợ lý SEO Master">📈 Trí (SEO)</option>
+                                <option value="Kiến - Trợ lý Lập Trình">👨‍💻 Kiến (Dev)</option>
+                                <option value="Thông - Trợ lý Website">🌐 Thông (Web)</option>
+                                <option value="Văn - Trợ lý Nội Dung">✍️ Văn (Content)</option>
+                                <option value="Mỹ - Trợ lý Thiết Kế">🎨 Mỹ (Design)</option>
+                                <option value="Phạm Hoàng Tiến">👑 Sếp Phạm Hoàng Tiến</option>
                             </select>
                         </div>
 
@@ -2002,17 +1922,17 @@
                         </div>
 
                         <!-- Search Input -->
-                        <div class="lg:col-span-4">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Tìm Kiếm Công Việc</label>
+                        <div class="lg:col-span-2">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Tìm Kiếm</label>
                             <div class="relative">
-                                <input type="text" id="seo-filter-search" oninput="renderSeoMasterTasks()" placeholder="Gõ tên task, mã task hoặc từ khóa..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
+                                <input type="text" id="seo-filter-search" oninput="renderSeoMasterTasks()" placeholder="Tìm task..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-7 pr-2 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
                                 <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 4. Task Content Display Area (Dynamic Table/Card List or 6 Modules) -->
+                <!-- 3. Task Content Display Area (Dynamic Table/Card List) -->
                 <div id="seo-tasks-table-container" class="space-y-4">
                     <!-- Dynamically populated by JS renderSeoMasterTasks() -->
                 </div>
@@ -15606,8 +15526,11 @@ let marketingActivityLog = [
                     accSeo.classList.add('open');
                     if (iconSeo) iconSeo.classList.add('rotate-180');
                 }
-                if (typeof switchSeoTab === 'function') switchSeoTab('arch');
-                if (typeof renderSeoMasterTasks === 'function') renderSeoMasterTasks();
+                if (typeof renderSeoMasterTasks === 'function') {
+                    renderSeoMasterTasks();
+                } else {
+                    setTimeout(() => { if (typeof renderSeoMasterTasks === 'function') renderSeoMasterTasks(); }, 80);
+                }
             }
             if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
                 activePanelId = 'panel-updating';
@@ -20731,104 +20654,71 @@ let marketingActivityLog = [
 
         // View switcher: 'all' | 'arch' | 'mhkt' | 'modules'
         function setSeoSiteView(view) {
-            currentSeoSiteView = view;
-            const views = ['all', 'arch', 'mhkt', 'modules'];
-            views.forEach(v => {
-                const btn = document.getElementById('btn-seo-view-' + v);
-                if (btn) {
-                    if (v === view) {
-                        btn.className = 'seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 bg-white text-sky-700 shadow-xs border border-sky-200';
-                    } else {
-                        btn.className = 'seo-site-view-btn px-3.5 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 text-slate-600 hover:text-slate-900';
-                    }
-                }
-            });
-
-            // Update period label
-            const labelEl = document.getElementById('seo-current-period-text');
-            if (labelEl) {
-                if (view === 'all') labelEl.innerText = "⚡ Tất cả Website (24 Tasks)";
-                else if (view === 'arch') labelEl.innerText = "⚡ architecturalmodel.org (17 Tasks)";
-                else if (view === 'mhkt') labelEl.innerText = "⚡ mohinhkientruc.org (7 Tasks)";
-                else if (view === 'modules') labelEl.innerText = "⚡ Nhóm 6 Module Trọng Tâm";
+            const siteSelect = document.getElementById('seo-filter-site');
+            if (siteSelect) {
+                if (view === 'arch') siteSelect.value = 'architecturalmodel.org';
+                else if (view === 'mhkt') siteSelect.value = 'mohinhkientruc.org';
+                else if (view === 'all') siteSelect.value = 'all';
+                else siteSelect.value = view;
             }
+            renderSeoMasterTasks();
+        }
 
+        function resetSeoFilters() {
+            const siteEl = document.getElementById('seo-filter-site');
+            const searchEl = document.getElementById('seo-filter-search');
+            const catEl = document.getElementById('seo-filter-category');
+            const assEl = document.getElementById('seo-filter-assignee');
+            const statEl = document.getElementById('seo-filter-status');
+            if (siteEl) siteEl.value = 'all';
+            if (searchEl) searchEl.value = '';
+            if (catEl) catEl.value = 'all';
+            if (assEl) assEl.value = 'all';
+            if (statEl) statEl.value = 'all';
             renderSeoMasterTasks();
         }
 
         // Helper badges
         function getSeoPriorityBadge(priority) {
-            if (priority === 'Khẩn') {
-                return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-100 text-rose-700 border border-rose-200 shrink-0"><i class="fa-solid fa-fire text-rose-500 mr-1"></i>Khẩn</span>`;
-            } else if (priority === 'Cao') {
-                return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200 shrink-0"><i class="fa-solid fa-arrow-up text-amber-500 mr-1"></i>Cao</span>`;
+            if (priority === 'P0 - Khẩn cấp' || priority === 'P0') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-100 text-rose-700 border border-rose-200 whitespace-nowrap">P0 Khẩn cấp</span>`;
+            } else if (priority === 'P1 - Cao' || priority === 'P1') {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-700 border border-amber-200 whitespace-nowrap">P1 Cao</span>`;
+            } else {
+                return `<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200 whitespace-nowrap">P2 Thường</span>`;
             }
-            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 shrink-0"><i class="fa-solid fa-minus text-slate-400 mr-1"></i>Trung bình</span>`;
         }
 
         function getSeoLangBadge(lang) {
             if (lang === 'EN') {
-                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800 border border-blue-200 shrink-0"><i class="fa-solid fa-flag-usa mr-1"></i>EN</span>`;
+                return `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-extrabold bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap">🇺🇸 EN</span>`;
             } else if (lang === 'VI') {
-                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0"><i class="fa-solid fa-star mr-1"></i>VI</span>`;
-            } else if (lang === 'Song ngữ') {
-                return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-purple-100 text-purple-800 border border-purple-200 shrink-0"><i class="fa-solid fa-language mr-1"></i>Song ngữ</span>`;
+                return `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200 whitespace-nowrap">🇻🇳 VI</span>`;
+            } else {
+                return `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-extrabold bg-purple-100 text-purple-800 border border-purple-200 whitespace-nowrap">🌐 Song ngữ</span>`;
             }
-            return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-sky-100 text-sky-800 border border-sky-200 shrink-0"><i class="fa-solid fa-gear mr-1"></i>Hệ thống</span>`;
         }
 
         function getSeoStatusToggleBtn(taskId, currentStatus) {
             const isDone = (currentStatus === 'Hoàn thành');
             if (isDone) {
                 return `
-                    <button onclick="toggleSeoMasterTaskStatus('${taskId}')" title="Bấm để chuyển về 'Đang làm'" class="px-3 py-1.5 min-h-[38px] rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-xs w-full sm:w-auto">
-                        <i class="fa-solid fa-circle-check"></i>
+                    <button onclick="toggleSeoMasterTaskStatus('${taskId}')" class="w-full sm:w-auto px-2.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 text-[11px] font-bold transition flex items-center justify-center gap-1.5 shadow-2xs">
+                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
                         <span>Hoàn thành</span>
                     </button>
                 `;
-            }
-            return `
-                <button onclick="toggleSeoMasterTaskStatus('${taskId}')" title="Bấm để đánh dấu 'Hoàn thành'" class="px-3 py-1.5 min-h-[38px] rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-xs w-full sm:w-auto">
-                    <i class="fa-solid fa-spinner fa-spin text-[10px]"></i>
-                    <span>Đang làm</span>
-                </button>
-            `;
-        }
-
-        // Toggle Module Accordion (for Module view)
-        function toggleSeoArchModule(modId) {
-            seoArchAccordionState[modId] = !seoArchAccordionState[modId];
-            const body = document.getElementById(`seo-arch-module-body-${modId}`);
-            const icon = document.getElementById(`seo-arch-module-icon-${modId}`);
-            if (body) {
-                if (seoArchAccordionState[modId]) body.classList.remove('hidden');
-                else body.classList.add('hidden');
-            }
-            if (icon) {
-                if (seoArchAccordionState[modId]) icon.classList.add('rotate-180');
-                else icon.classList.remove('rotate-180');
+            } else {
+                return `
+                    <button onclick="toggleSeoMasterTaskStatus('${taskId}')" class="w-full sm:w-auto px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[11px] font-bold transition flex items-center justify-center gap-1.5 shadow-2xs">
+                        <i class="fa-solid fa-spinner fa-spin text-amber-600 text-[10px]"></i>
+                        <span>Đang làm</span>
+                    </button>
+                `;
             }
         }
 
-        function toggleAllSeoArchModules(expand) {
-            seoArchModulesData.forEach(m => {
-                seoArchAccordionState[m.id] = expand;
-                const body = document.getElementById(`seo-arch-module-body-${m.id}`);
-                const icon = document.getElementById(`seo-arch-module-icon-${m.id}`);
-                if (body) {
-                    if (expand) body.classList.remove('hidden');
-                    else body.classList.add('hidden');
-                }
-                if (icon) {
-                    if (expand) icon.classList.add('rotate-180');
-                    else icon.classList.remove('rotate-180');
-                }
-            });
-        }
-
-        // =========================================================================
-        // CORE RENDER FUNCTION: renderSeoMasterTasks()
-        // =========================================================================
+        // Main Render Function for SEO Website Tasks
         function renderSeoMasterTasks() {
             const container = document.getElementById('seo-tasks-table-container');
             if (!container) return;
@@ -20836,43 +20726,20 @@ let marketingActivityLog = [
             const savedStatuses = getSeoMasterTaskStatuses();
 
             // Filter inputs
+            const filterSite = document.getElementById('seo-filter-site')?.value || 'all';
             const searchVal = (document.getElementById('seo-filter-search')?.value || '').trim().toLowerCase();
             const filterCat = document.getElementById('seo-filter-category')?.value || 'all';
             const filterAssignee = document.getElementById('seo-filter-assignee')?.value || 'all';
             const filterStatus = document.getElementById('seo-filter-status')?.value || 'all';
 
-            // Global counts
-            let totalTasks = seoMasterTasksData.length;
-            let completedTasks = 0;
-            seoMasterTasksData.forEach(t => {
-                const st = savedStatuses[t.id] || t.defaultStatus;
-                if (st === 'Hoàn thành') completedTasks++;
-            });
-            let inProgressTasks = totalTasks - completedTasks;
-            let completedPct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-
-            // Update 4 Summary KPI Cards
-            const kpiTotalEl = document.getElementById('kpi-seo-master-total');
-            const kpiInProgEl = document.getElementById('kpi-seo-master-in-progress');
-            const kpiCompEl = document.getElementById('kpi-seo-master-completed');
-            const kpiProgIcon = document.getElementById('kpi-seo-master-prog-icon');
-
-            if (kpiTotalEl) kpiTotalEl.innerText = `${totalTasks} Tasks`;
-            if (kpiInProgEl) kpiInProgEl.innerText = `${inProgressTasks} Tasks`;
-            if (kpiCompEl) kpiCompEl.innerText = `${completedTasks} Tasks (${completedPct}%)`;
-            if (kpiProgIcon) {
-                if (completedPct === 100) kpiProgIcon.className = "fa-solid fa-circle-check text-emerald-600 text-sm";
-                else if (completedPct > 0) kpiProgIcon.className = "fa-solid fa-bars-progress text-amber-600 text-sm";
-                else kpiProgIcon.className = "fa-solid fa-spinner text-amber-600 text-sm";
-            }
-
             // Filter tasks for display
             const filteredTasks = seoMasterTasksData.filter(t => {
                 const currentStatus = savedStatuses[t.id] || t.defaultStatus;
 
-                // View Filter (Site)
-                if (currentSeoSiteView === 'arch' && t.site !== 'architecturalmodel.org') return false;
-                if (currentSeoSiteView === 'mhkt' && t.site !== 'mohinhkientruc.org') return false;
+                // Website Filter (Sếp yêu cầu chọn website nào thì data bên dưới đổi theo)
+                if (filterSite !== 'all' && t.site !== filterSite) {
+                    return false;
+                }
 
                 // Category Filter
                 if (filterCat !== 'all') {
@@ -20904,21 +20771,16 @@ let marketingActivityLog = [
                 return true;
             });
 
-            // If view mode is 'modules', render 6 Accordion Modules
-            if (currentSeoSiteView === 'modules') {
-                renderSeoModulesAccordion(container, savedStatuses, searchVal, filterStatus);
-                return;
-            }
-
-            // Otherwise, render Unified Task Table & Mobile Cards
+            // If empty
             if (filteredTasks.length === 0) {
                 container.innerHTML = `
-                    <div class="light-card p-10 rounded-2xl border border-slate-200 bg-white text-center text-slate-500 space-y-2">
+                    <div class="light-card p-8 sm:p-10 rounded-2xl border border-slate-200 bg-white text-center text-slate-500 space-y-2 shadow-2xs">
                         <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300"></i>
-                        <h4 class="font-bold text-slate-700">Không tìm thấy công việc SEO phù hợp</h4>
-                        <p class="text-xs">Vui lòng thử tìm kiếm với từ khóa khác hoặc đặt lại bộ lọc.</p>
-                        <button onclick="document.getElementById('seo-filter-search').value=''; document.getElementById('seo-filter-category').value='all'; document.getElementById('seo-filter-assignee').value='all'; document.getElementById('seo-filter-status').value='all'; setSeoSiteView('all');" class="mt-2 px-3 py-1.5 rounded-xl bg-sky-50 text-sky-700 font-bold text-xs border border-sky-200 hover:bg-sky-100 transition">
-                            <i class="fa-solid fa-rotate-left mr-1"></i> Đặt lại tất cả bộ lọc
+                        <h4 class="font-bold text-slate-700 text-sm">Không tìm thấy công việc SEO phù hợp</h4>
+                        <p class="text-xs text-slate-400">Vui lòng thử tìm kiếm với từ khóa khác hoặc đặt lại bộ lọc.</p>
+                        <button onclick="resetSeoFilters()" class="mt-2 px-3.5 py-1.5 rounded-xl bg-sky-50 text-sky-700 font-bold text-xs border border-sky-200 hover:bg-sky-100 transition inline-flex items-center gap-1.5">
+                            <i class="fa-solid fa-rotate-left"></i>
+                            <span>Đặt lại tất cả bộ lọc</span>
                         </button>
                     </div>
                 `;
@@ -20928,10 +20790,12 @@ let marketingActivityLog = [
             let html = '';
 
             // Header summary bar
+            const completedCount = filteredTasks.filter(t => (savedStatuses[t.id] || t.defaultStatus) === 'Hoàn thành').length;
+            const siteLabel = filterSite === 'all' ? 'Tất cả Website' : filterSite;
             html += `
                 <div class="flex items-center justify-between px-1 text-xs text-slate-500">
-                    <span>Đang hiển thị <strong>${filteredTasks.length}</strong> / ${totalTasks} tasks công việc</span>
-                    <span class="font-semibold text-slate-700">Đã hoàn thành: <strong>${filteredTasks.filter(t => (savedStatuses[t.id] || t.defaultStatus) === 'Hoàn thành').length}</strong></span>
+                    <span>Đang hiển thị <strong>${filteredTasks.length}</strong> tasks (<strong class="text-sky-700">${siteLabel}</strong>)</span>
+                    <span class="font-semibold text-slate-700">Đã hoàn thành: <strong class="text-emerald-600">${completedCount}</strong> / ${filteredTasks.length}</span>
                 </div>
             `;
 
@@ -21032,7 +20896,6 @@ let marketingActivityLog = [
             container.innerHTML = html;
         }
 
-        // Module Accordion Render Function
         function renderSeoModulesAccordion(container, savedStatuses, searchVal, filterStatus) {
             let html = `
                 <div class="flex items-center justify-between px-1 pb-1">
@@ -21456,18 +21319,22 @@ let marketingActivityLog = [
             }
         });
 
-        // Auto initialize SEO Master tasks if active on load or if user is on SEO page
+        // Auto initialize SEO Master tasks unconditionally
         try {
             if (typeof renderSeoMasterTasks === 'function') {
-                const currentHash = (window.location.hash || '').replace(/^#/, '').replace(/^panel-/, '');
-                const savedMod = localStorage.getItem('songanh_active_module');
-                if (currentHash === 'seo-arch' || currentHash === 'seo' || savedMod === 'seo-arch' || savedMod === 'seo') {
-                    renderSeoMasterTasks();
-                }
+                renderSeoMasterTasks();
             }
         } catch(e) {
             console.error('[SEO Master Auto-Init Error]:', e);
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (typeof renderSeoMasterTasks === 'function') {
+                    renderSeoMasterTasks();
+                }
+            } catch(e) {}
+        });
 
     </script>
 

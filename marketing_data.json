@@ -16400,6 +16400,18 @@
   },
   "marketing_activity_log": [
     {
+      "id": 95,
+      "date": "08/09/2026",
+      "time": "15:05",
+      "category": "Hệ thống",
+      "module": "SEO Website",
+      "title": "Tối giản Header, chuyển 2 website vào bộ lọc duy nhất & bỏ 4 thẻ KPI mục SEO Website",
+      "description": "Thực thi chỉ đạo Sếp Phạm Hoàng Tiến: 1) Rút gọn tiêu đề thành 'Danh sách công việc SEO Website', loại bỏ toàn bộ badge, mô tả phụ và nút ngoài. 2) Chuyển 2 website vào 1 bộ lọc Website Mục Tiêu (#seo-filter-site), thay đổi danh sách tức thì khi chọn (24 tasks / 17 tasks / 7 tasks). 3) Gỡ bỏ hoàn toàn 4 thẻ KPI summary. 4) Tối ưu hóa renderSeoMasterTasks đồng bộ trên Desktop (Table) và Mobile (Cards), tự động kích hoạt ngay khi mở mục SEO.",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn thành",
+      "target": "Webapp Marketing Suite - Module SEO Website"
+    },
+    {
       "id": 1788852319,
       "date": "08/09/2026 14:25:00",
       "time": "08/09/2026 14:25:00",
