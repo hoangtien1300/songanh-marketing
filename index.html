@@ -6317,6 +6317,172 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
     </div>
 
+    <!-- ========================================================================= -->
+    <!-- 📋 MODAL CHI TIẾT & CẬP NHẬT TASK MARKETING CHUẨN NOTION DB              -->
+    <!-- ========================================================================= -->
+    <div id="modal-mkt-task-detail" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-200">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all max-h-[92vh] flex flex-col my-auto">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-900 p-5 sm:p-6 text-white relative shrink-0">
+                <button type="button" onclick="closeMktTaskDetail()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+                <div class="flex items-center gap-2 flex-wrap mb-2">
+                    <span id="modal-mkt-channel-badge" class="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold bg-blue-500/30 text-blue-200 border border-blue-400/30">
+                        Kênh
+                    </span>
+                    <span id="modal-mkt-type-badge" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-purple-500/30 text-purple-200 border border-purple-400/30">
+                        Loại task
+                    </span>
+                    <span id="modal-mkt-time" class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-white/10 text-slate-200">
+                        06:00 (Sáng)
+                    </span>
+                </div>
+                <h3 id="modal-mkt-title" class="text-base sm:text-lg font-black tracking-tight text-white leading-snug pr-8">
+                    Tên Công Việc
+                </h3>
+            </div>
+
+            <!-- Quick Action Bar: 1-Click Complete Today -->
+            <div class="bg-emerald-50/80 border-b border-emerald-100 px-5 py-3 flex items-center justify-between gap-3 shrink-0 flex-wrap">
+                <div class="flex items-center gap-2 text-emerald-800 text-xs font-bold">
+                    <i class="fa-solid fa-bolt text-emerald-600 text-sm"></i>
+                    <span>Thao tác nhanh hôm nay:</span>
+                </div>
+                <button type="button" id="btn-quick-done-today" onclick="quickMarkTaskDoneToday()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-black transition flex items-center gap-2 shadow-xs text-xs cursor-pointer">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>✅ Đánh dấu hoàn thành hôm nay</span>
+                </button>
+            </div>
+
+            <!-- Modal Body Scrollable -->
+            <div class="p-5 sm:p-6 overflow-y-auto space-y-4 flex-1 text-slate-700 text-xs">
+                <!-- Grid 2 Cột thuộc tính Notion -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Trạng thái (Notion Status) -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-signal text-blue-600"></i>
+                            <span>Trạng thái Notion:</span>
+                        </label>
+                        <select id="modal-mkt-input-status" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            <option value="Duy trì">🔵 Duy trì (Định kỳ hàng tuần)</option>
+                            <option value="Hoàn thành">🟢 Hoàn thành (Đã xong)</option>
+                            <option value="Đang làm">🟡 Đang làm (In Progress)</option>
+                            <option value="Theo dõi">🟣 Theo dõi</option>
+                            <option value="Chưa lên lịch">⚪ Chưa lên lịch</option>
+                            <option value="Tạm hoãn">🔴 Tạm hoãn</option>
+                        </select>
+                    </div>
+
+                    <!-- Tiến độ Đã thực hiện / KPI Tuần -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-chart-pie text-indigo-600"></i>
+                            <span>Đã thực hiện (Lượt / KPI Tuần):</span>
+                        </label>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="changeDoneCount(-1)" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition border border-slate-300 cursor-pointer">
+                                <i class="fa-solid fa-minus text-[10px]"></i>
+                            </button>
+                            <input type="number" id="modal-mkt-input-done" min="0" max="99" class="w-16 text-center font-black text-slate-800 bg-slate-50 border border-slate-300 rounded-xl py-1.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <span class="text-slate-400 font-bold">/</span>
+                            <span id="modal-mkt-kpi" class="text-slate-600 font-extrabold text-xs">6 lượt/tuần</span>
+                            <button type="button" onclick="changeDoneCount(1)" class="w-8 h-8 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-700 font-bold flex items-center justify-center transition border border-blue-300 cursor-pointer">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Người theo / Phụ trách -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-check text-purple-600"></i>
+                            <span>Người theo / Phụ trách:</span>
+                        </label>
+                        <select id="modal-mkt-input-performer" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-semibold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            <option value="Tự động (Cloud AI Bot)">🤖 Tự động (Cloud AI Bot)</option>
+                            <option value="Phạm Hoàng Tiến">👤 Phạm Hoàng Tiến</option>
+                            <option value="Kiến - Trợ lý Lập Trình">👨‍💻 Kiến - Trợ lý Lập Trình</option>
+                            <option value="Trí - Trợ lý SEO Master">🔍 Trí - Trợ lý SEO Master</option>
+                            <option value="Minh - Trợ lý Điều Phối">🏆 Minh - Trợ lý Điều Phối</option>
+                            <option value="Văn - Trợ lý Nội Dung">✍️ Văn - Trợ lý Nội Dung</option>
+                            <option value="Mỹ - Trợ lý Thiết Kế">🎨 Mỹ - Trợ lý Thiết Kế</option>
+                            <option value="Thông - Trợ lý Website">🌐 Thông - Trợ lý Website</option>
+                        </select>
+                    </div>
+
+                    <!-- Nhắc hẹn (Date & Time) -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-regular fa-bell text-amber-500"></i>
+                            <span>Nhắc hẹn Notion:</span>
+                        </label>
+                        <input type="datetime-local" id="modal-mkt-input-remind" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-semibold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                    </div>
+                </div>
+
+                <!-- Lặp lại trong tuần (Interactive Pills) -->
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1.5 flex items-center justify-between">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-calendar-week text-emerald-600"></i>
+                            <span>Lặp lại trong tuần:</span>
+                        </span>
+                        <span id="modal-mkt-repeat" class="text-[11px] text-slate-400 font-normal">Thứ 2, Thứ 4, Thứ 6</span>
+                    </label>
+                    <div id="modal-mkt-days-pills" class="flex flex-wrap gap-1.5">
+                        <!-- Rendered dynamically: Thứ 2 -> Chủ Nhật -->
+                    </div>
+                </div>
+
+                <!-- Ghi chú & Nhật ký công việc -->
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                        <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+                        <span>Ghi chú & Nhật ký thực hiện (Lưu vào Notion):</span>
+                    </label>
+                    <textarea id="modal-mkt-input-note" rows="2" placeholder="Nhập ghi chú cập nhật, ví dụ: Đã check hoàn tất kết quả SEO sáng nay..." class="w-full bg-slate-50 border border-slate-300 text-slate-800 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition leading-relaxed"></textarea>
+                </div>
+
+                <!-- Mô tả SOP Collapsible -->
+                <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
+                    <button type="button" onclick="toggleMktDescCollapse()" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-100/80 hover:bg-slate-200/70 text-slate-700 font-bold transition text-xs cursor-pointer">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-blue-600"></i>
+                            <span>Mô tả công việc & Quy trình SOP</span>
+                        </span>
+                        <i id="mkt-desc-chevron" class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="mkt-desc-collapse-content" class="hidden p-3.5 text-xs text-slate-600 leading-relaxed border-t border-slate-200 bg-white">
+                        <p id="modal-mkt-desc">Chưa có mô tả quy trình.</p>
+                    </div>
+                </div>
+
+                <!-- Status Feedback -->
+                <div id="modal-mkt-sync-status" class="text-xs font-bold text-center min-h-[18px]"></div>
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 sm:p-5 flex items-center justify-between gap-3 shrink-0 flex-wrap">
+                <a id="modal-mkt-notion-link" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition flex items-center gap-1.5 text-xs cursor-pointer">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    <span>Mở Notion ↗</span>
+                </a>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="closeMktTaskDetail()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition text-xs cursor-pointer">
+                        Đóng
+                    </button>
+                    <button type="button" id="btn-save-mkt-task" onclick="saveAndSyncTaskToNotion()" class="px-4 sm:px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black transition flex items-center gap-2 shadow-sm text-xs cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Lưu & Đồng Bộ Notion</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     </main>
     </div>
@@ -19503,14 +19669,14 @@ let marketingActivityLog = [
                         return isLogToday && (act.includes('check thứ hạng') || (tName && act.includes(tName)));
                     });
 
-                    if (nowMinutes >= taskMinutes || hasRunTodayInLog) {
+                    if (task.completed_today || task.status === 'Hoàn thành' || nowMinutes >= taskMinutes || hasRunTodayInLog) {
                         statusBadge = `<span class="text-[9px] text-emerald-600 font-bold flex items-center gap-0.5"><i class="fa-solid fa-circle-check text-[9px]"></i> Đã hoàn thành (${task.time_str || '06:00'})</span>`;
                     } else {
                         statusBadge = `<span class="text-[9px] text-blue-600 font-bold flex items-center gap-0.5"><i class="fa-solid fa-robot text-[9px]"></i> Tự động (${task.time_str || '06:00'})</span>`;
                     }
                 } else {
-                    // Task thủ công: Kiểm tra log hôm nay hoặc completed_today
-                    const isDoneToday = task.completed_today || ((typeof marketingActivityLog !== 'undefined' && Array.isArray(marketingActivityLog)) && marketingActivityLog.some(log => {
+                    // Task thủ công: Kiểm tra status Hoàn thành, completed_today hoặc log hôm nay
+                    const isDoneToday = (task.status === 'Hoàn thành') || task.completed_today || ((typeof marketingActivityLog !== 'undefined' && Array.isArray(marketingActivityLog)) && marketingActivityLog.some(log => {
                         const logTime = log.time || log.date || '';
                         if (!logTime.includes(dayInfo.date)) return false;
                         const logAction = (log.action || '').toLowerCase();
@@ -19778,22 +19944,151 @@ let marketingActivityLog = [
             `;
         }
 
+        // =========================================================================
+        // 📋 MODAL CONTROLLER & NOTION DB REAL-TIME SYNC FOR MARKETING TASKS
+        // =========================================================================
+        let currentMktModalTaskId = null;
+        let currentMktModalSelectedDays = [];
+
+        const ALL_WEEK_DAYS = ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'];
+
+        function renderMktModalDayPills() {
+            const container = document.getElementById('modal-mkt-days-pills');
+            if (!container) return;
+
+            container.innerHTML = ALL_WEEK_DAYS.map(day => {
+                const isSelected = currentMktModalSelectedDays.includes(day);
+                const btnClass = isSelected
+                    ? 'bg-blue-600 text-white font-extrabold shadow-xs border-blue-600'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-600 font-semibold border-slate-200';
+                return `
+                    <button type="button" onclick="toggleMktRepeatDay('${day}')" class="px-2.5 py-1 rounded-lg text-xs border transition cursor-pointer flex items-center gap-1 ${btnClass}">
+                        ${isSelected ? '<i class="fa-solid fa-check text-[10px]"></i>' : ''}
+                        <span>${day}</span>
+                    </button>
+                `;
+            }).join('');
+
+            const repeatText = document.getElementById('modal-mkt-repeat');
+            if (repeatText) {
+                repeatText.innerText = currentMktModalSelectedDays.length > 0
+                    ? currentMktModalSelectedDays.join(', ')
+                    : 'Không lặp lại';
+            }
+        }
+
+        function toggleMktRepeatDay(dayName) {
+            const idx = currentMktModalSelectedDays.indexOf(dayName);
+            if (idx > -1) {
+                currentMktModalSelectedDays.splice(idx, 1);
+            } else {
+                currentMktModalSelectedDays.push(dayName);
+            }
+            renderMktModalDayPills();
+        }
+
+        function changeDoneCount(delta) {
+            const input = document.getElementById('modal-mkt-input-done');
+            if (!input) return;
+            let val = parseInt(input.value) || 0;
+            val = Math.max(0, val + delta);
+            input.value = val;
+        }
+
+        function toggleMktDescCollapse() {
+            const content = document.getElementById('mkt-desc-collapse-content');
+            const chevron = document.getElementById('mkt-desc-chevron');
+            if (!content) return;
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                if (chevron) chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        }
+
         function openMktTaskDetail(taskId) {
             const task = marketingCalendarTasks.find(t => t.id === taskId);
             if (!task) return;
 
+            currentMktModalTaskId = taskId;
             const modal = document.getElementById('modal-mkt-task-detail');
             if (!modal) return;
 
+            // Reset status text
+            const statusSyncEl = document.getElementById('modal-mkt-sync-status');
+            if (statusSyncEl) statusSyncEl.innerHTML = '';
+
+            // Header info
             document.getElementById('modal-mkt-title').innerText = task.task_name || '';
-            document.getElementById('modal-mkt-channel-badge').innerText = task.channel || '';
-            document.getElementById('modal-mkt-time').innerText = task.time_str + ' (' + task.slot + ')';
-            document.getElementById('modal-mkt-repeat').innerText = task.repeat_days ? task.repeat_days.join(', ') : 'Hàng ngày';
-            document.getElementById('modal-mkt-performer').innerText = task.performer || '';
+            document.getElementById('modal-mkt-channel-badge').innerText = task.channel || 'Marketing';
+            document.getElementById('modal-mkt-time').innerText = (task.time_str || '') + ' (' + (task.slot || 'Sáng') + ')';
             document.getElementById('modal-mkt-kpi').innerText = (task.kpi_weekly || 0) + ' lượt / tuần';
             document.getElementById('modal-mkt-desc').innerText = task.description || 'Không có mô tả bổ sung.';
             document.getElementById('modal-mkt-type-badge').innerText = task.is_auto ? '🤖 Tự động AI Bot 24/7' : '👤 Thực hiện thủ công / Duyệt';
 
+            // Status select
+            const statusSelect = document.getElementById('modal-mkt-input-status');
+            if (statusSelect) {
+                statusSelect.value = task.completed_today ? 'Hoàn thành' : (task.status || 'Duy trì');
+            }
+
+            // Done count input
+            const doneInput = document.getElementById('modal-mkt-input-done');
+            if (doneInput) {
+                doneInput.value = (task.completed_count !== undefined && task.completed_count !== null)
+                    ? task.completed_count
+                    : (task.done_count || 0);
+            }
+
+            // Performer select
+            const performerSelect = document.getElementById('modal-mkt-input-performer');
+            if (performerSelect) {
+                const currentPerformer = task.performer || '';
+                let matched = false;
+                for (let i = 0; i < performerSelect.options.length; i++) {
+                    if (currentPerformer.includes(performerSelect.options[i].value) || performerSelect.options[i].value.includes(currentPerformer)) {
+                        performerSelect.selectedIndex = i;
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched && currentPerformer) {
+                    const opt = document.createElement('option');
+                    opt.value = currentPerformer;
+                    opt.text = currentPerformer;
+                    performerSelect.appendChild(opt);
+                    performerSelect.value = currentPerformer;
+                }
+            }
+
+            // Remind date
+            const remindInput = document.getElementById('modal-mkt-input-remind');
+            if (remindInput) {
+                if (task.remind_date) {
+                    try {
+                        const d = new Date(task.remind_date);
+                        remindInput.value = d.toISOString().slice(0, 16);
+                    } catch(e) {
+                        remindInput.value = '';
+                    }
+                } else {
+                    remindInput.value = '';
+                }
+            }
+
+            // Repeat Days pills
+            currentMktModalSelectedDays = Array.isArray(task.repeat_days) ? [...task.repeat_days] : [];
+            renderMktModalDayPills();
+
+            // Note textarea
+            const noteInput = document.getElementById('modal-mkt-input-note');
+            if (noteInput) {
+                noteInput.value = task.note || task.notes || '';
+            }
+
+            // Notion external link
             const notionLink = document.getElementById('modal-mkt-notion-link');
             if (notionLink) {
                 if (task.notion_task_id) {
@@ -19803,6 +20098,14 @@ let marketingActivityLog = [
                 }
             }
 
+            // Reset button state
+            const saveBtn = document.getElementById('btn-save-mkt-task');
+            if (saveBtn) {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Lưu & Đồng Bộ Notion</span>';
+            }
+
+            modal.style.display = 'flex';
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -19810,8 +20113,170 @@ let marketingActivityLog = [
         function closeMktTaskDetail() {
             const modal = document.getElementById('modal-mkt-task-detail');
             if (modal) {
+                modal.style.display = 'none';
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
+            }
+            currentMktModalTaskId = null;
+        }
+
+        // Close on ESC or backdrop click
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('modal-mkt-task-detail');
+                if (modal && !modal.classList.contains('hidden') && modal.style.display !== 'none') {
+                    closeMktTaskDetail();
+                }
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('modal-mkt-task-detail');
+            if (modal && e.target === modal) {
+                closeMktTaskDetail();
+            }
+        });
+
+        function quickMarkTaskDoneToday() {
+            if (!currentMktModalTaskId) return;
+            const statusSelect = document.getElementById('modal-mkt-input-status');
+            if (statusSelect) statusSelect.value = 'Hoàn thành';
+
+            const doneInput = document.getElementById('modal-mkt-input-done');
+            if (doneInput) {
+                let val = parseInt(doneInput.value) || 0;
+                doneInput.value = val + 1;
+            }
+
+            const noteInput = document.getElementById('modal-mkt-input-note');
+            if (noteInput && !noteInput.value.trim()) {
+                const now = new Date();
+                const dayVN = String(now.getDate()).padStart(2, '0') + '/' + String(now.getMonth() + 1).padStart(2, '0') + '/' + now.getFullYear();
+                const timeVN = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+                noteInput.value = `Đã hoàn thành kiểm tra và thực hiện lúc ${timeVN} ngày ${dayVN}`;
+            }
+
+            // Automatically trigger save & sync
+            saveAndSyncTaskToNotion();
+        }
+
+        async function saveAndSyncTaskToNotion() {
+            if (!currentMktModalTaskId) return;
+            const task = marketingCalendarTasks.find(t => t.id === currentMktModalTaskId);
+            if (!task) return;
+
+            const saveBtn = document.getElementById('btn-save-mkt-task');
+            const quickBtn = document.getElementById('btn-quick-done-today');
+            const statusSyncEl = document.getElementById('modal-mkt-sync-status');
+
+            const newStatus = document.getElementById('modal-mkt-input-status').value;
+            const newDoneCount = parseInt(document.getElementById('modal-mkt-input-done').value) || 0;
+            const newPerformer = document.getElementById('modal-mkt-input-performer').value;
+            const newRemind = document.getElementById('modal-mkt-input-remind').value;
+            const newNote = document.getElementById('modal-mkt-input-note').value;
+            const newRepeatDays = [...currentMktModalSelectedDays];
+
+            // Set loading state
+            if (saveBtn) {
+                saveBtn.disabled = true;
+                saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang đồng bộ Notion...</span>';
+            }
+            if (quickBtn) quickBtn.disabled = true;
+            if (statusSyncEl) {
+                statusSyncEl.innerHTML = '<span class="text-blue-600 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-cloud-arrow-up fa-fade"></i> Đang gửi dữ liệu cập nhật lên Notion DB...</span>';
+            }
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? '/api/notion/update-task'
+                : 'https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/update-task';
+
+            const payload = {
+                page_id: task.notion_task_id,
+                status: newStatus,
+                done_count: newDoneCount,
+                note: newNote,
+                remind_date: newRemind ? new Date(newRemind).toISOString() : null,
+                repeat_days: newRepeatDays
+            };
+
+            try {
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await res.json();
+
+                if (result.ok) {
+                    // Update local task object
+                    task.status = newStatus;
+                    task.completed_count = newDoneCount;
+                    task.done_count = newDoneCount;
+                    task.performer = newPerformer;
+                    task.note = newNote;
+                    task.notes = newNote;
+                    task.repeat_days = newRepeatDays;
+                    if (newStatus === 'Hoàn thành') {
+                        task.completed_today = true;
+                    }
+
+                    // Format date VN
+                    const now = new Date();
+                    const dStr = String(now.getDate()).padStart(2, '0');
+                    const moStr = String(now.getMonth() + 1).padStart(2, '0');
+                    const yStr = now.getFullYear();
+                    const hStr = String(now.getHours()).padStart(2, '0');
+                    const miStr = String(now.getMinutes()).padStart(2, '0');
+                    const sStr = String(now.getSeconds()).padStart(2, '0');
+                    const fullDateVN = `${dStr}/${moStr}/${yStr} ${hStr}:${miStr}:${sStr}`;
+
+                    // Add to marketingActivityLog
+                    if (typeof marketingActivityLog !== 'undefined' && Array.isArray(marketingActivityLog)) {
+                        marketingActivityLog.unshift({
+                            id: Date.now(),
+                            date: fullDateVN,
+                            time: fullDateVN,
+                            module: 'Hệ thống',
+                            action: `Cập nhật trạng thái task [${task.task_name}] thành [${newStatus}] & đồng bộ Notion`,
+                            performer: 'Phạm Hoàng Tiến',
+                            status: '✅ Hoàn thành'
+                        });
+                        if (typeof renderActivityLogTable === 'function') {
+                            renderActivityLogTable();
+                        }
+                    }
+
+                    // Re-render marketing calendar immediately
+                    renderMarketingCalendar();
+
+                    if (statusSyncEl) {
+                        statusSyncEl.innerHTML = '<span class="text-emerald-600 font-black flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-check"></i> ✅ Đã lưu và đồng bộ lên Notion thành công!</span>';
+                    }
+
+                    if (typeof showToast === 'function') {
+                        showToast(`✅ Đã cập nhật task [${task.task_name}] lên Notion thành công!`);
+                    }
+
+                    setTimeout(() => {
+                        closeMktTaskDetail();
+                    }, 1200);
+
+                } else {
+                    if (statusSyncEl) {
+                        statusSyncEl.innerHTML = `<span class="text-rose-600 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-circle-exclamation"></i> Lỗi đồng bộ: ${result.error?.message || 'Không thể lưu lên Notion'}</span>`;
+                    }
+                }
+            } catch(err) {
+                console.error('Error syncing task to Notion:', err);
+                if (statusSyncEl) {
+                    statusSyncEl.innerHTML = `<span class="text-rose-600 font-bold flex items-center justify-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> Lỗi kết nối API Notion: ${err.message}</span>`;
+                }
+            } finally {
+                if (saveBtn) {
+                    saveBtn.disabled = false;
+                    saveBtn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Lưu & Đồng Bộ Notion</span>';
+                }
+                if (quickBtn) quickBtn.disabled = false;
             }
         }
 
