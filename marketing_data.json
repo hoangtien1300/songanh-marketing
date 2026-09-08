@@ -16400,6 +16400,13 @@
   },
   "marketing_activity_log": [
     {
+      "time": "08/09/2026 09:35:00",
+      "module": "Hệ thống",
+      "action": "Khắc phục lỗi render hiển thị 17 task con của Task SEO Website architecturalmodel.org: Safe-guard uncaught TypeError do modal cũ gây ngắt luồng thực thi script, tự động render và mở rộng mặc định 100% 6 module trên cả Desktop và Mobile",
+      "author": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "✅ Hoàn thành"
+    },
+    {
       "time": "08/09/2026 09:24:16",
       "module": "Hệ thống",
       "action": "Chuẩn hóa 100% Lịch Marketing: Đồng bộ ngày lặp lại theo Notion DB (sửa Zalo 0981 sang T2-4-6, Zalo 0386 sang T3-4-6) & Tự động nhận diện trạng thái Đã hoàn thành cho task Auto 06:00",

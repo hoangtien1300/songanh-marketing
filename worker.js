@@ -116,6 +116,66 @@ export default {
       }
     }
 
+    // API: POST /api/notion/update-task
+    if (url.pathname === "/api/notion/update-task" && request.method === "POST") {
+      try {
+        const body = await request.json();
+        const { page_id, status, done_count, note, remind_date, repeat_days } = body;
+
+        if (!page_id) {
+          return new Response(
+            JSON.stringify({ ok: false, error: "Thiếu page_id" }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const properties = {};
+        if (status) {
+          properties["Trạng thái"] = { status: { name: status } };
+        }
+        if (done_count !== undefined && done_count !== null && done_count !== "") {
+          properties["Đã thực hiện"] = { number: parseInt(done_count) || 0 };
+        }
+        if (note !== undefined && note !== null) {
+          properties["Ghi chú"] = { rich_text: [{ text: { content: String(note) } }] };
+        }
+        if (remind_date) {
+          properties["Nhắc hẹn"] = { date: { start: remind_date } };
+        }
+        if (Array.isArray(repeat_days) && repeat_days.length > 0) {
+          properties["Lặp lại"] = { multi_select: repeat_days.map(d => ({ name: d })) };
+        }
+
+        const notionResponse = await fetch(`https://api.notion.com/v1/pages/${page_id}`, {
+          method: "PATCH",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Notion-Version": NOTION_API_VERSION,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ properties })
+        });
+
+        const data = await notionResponse.json();
+        if (!notionResponse.ok) {
+          return new Response(
+            JSON.stringify({ ok: false, error: data }),
+            { status: notionResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        return new Response(
+          JSON.stringify({ ok: true, page: data }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ ok: false, error: err.message }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
     // Default: Fallback to Cloudflare Workers Static Assets
     return env.ASSETS.fetch(request);
   }
