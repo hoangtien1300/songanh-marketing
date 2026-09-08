@@ -252,8 +252,8 @@ def format_work_marketing_morning_report():
     msg += f"⏪ <b>CÔNG VIỆC ĐÃ THỰC HIỆN HÔM QUA ({yesterday_day_name}, {yesterday_str}):</b>\n"
     for item in yesterday_items[:3]:
         item_clean = item.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        if len(item_clean) > 85:
-            item_clean = item_clean[:82] + "..."
+        if len(item_clean) > 135:
+            item_clean = item_clean[:132] + "..."
         msg += f"• {item_clean}\n"
     msg += "\n"
 
