@@ -1870,63 +1870,45 @@
                     </div>
                 </div>
 
-                <!-- 2. Bộ Lọc & Tìm Kiếm Công Việc SEO (Chuyển 2 website vào 1 bộ lọc đồng bộ) -->
+                <!-- 2. Bộ Lọc & Tìm Kiếm Công Việc SEO (Website, Trạng Thái, Tìm Kiếm) -->
                 <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-2.5">
-                        <!-- Website Mục Tiêu Filter -->
-                        <div class="lg:col-span-3">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Website Mục Tiêu</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
+                        <!-- 2.1 Website Mục Tiêu Filter -->
+                        <div class="lg:col-span-4 sm:col-span-1">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-globe text-sky-600"></i>
+                                <span>Website Mục Tiêu</span>
+                            </label>
                             <select id="seo-filter-site" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
-                                <option value="all">🌐 Tất cả Website (24 Tasks)</option>
-                                <option value="architecturalmodel.org">🇺🇸 architecturalmodel.org (17 Tasks)</option>
-                                <option value="mohinhkientruc.org">🇻🇳 mohinhkientruc.org (7 Tasks)</option>
+                                <option value="all">🌐 Tất cả Website</option>
                             </select>
                         </div>
 
-                        <!-- Category Filter -->
-                        <div class="lg:col-span-3">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Phân Loại Chuyên Môn</label>
-                            <select id="seo-filter-category" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
-                                <option value="all">📁 Tất cả Phân Loại</option>
-                                <option value="Tech">🛠️ Audit &amp; Kỹ Thuật (Tech)</option>
-                                <option value="Keyword">🔑 Nghiên Cứu Từ Khóa (Keyword)</option>
-                                <option value="Content">✍️ Nội Dung &amp; Pillar (Content)</option>
-                                <option value="Media">🎨 Thiết Kế Media &amp; Geotag</option>
-                                <option value="Schema">📐 Cấu Hình Schema JSON-LD</option>
-                                <option value="Index">🚀 Lập Chỉ Mục &amp; Index (GSC)</option>
-                                <option value="Report">📊 Báo Cáo &amp; Đánh Giá</option>
-                            </select>
-                        </div>
-
-                        <!-- Assignee Filter -->
-                        <div class="lg:col-span-2">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Người Phụ Trách</label>
-                            <select id="seo-filter-assignee" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
-                                <option value="all">👥 Tất cả</option>
-                                <option value="Trí - Trợ lý SEO Master">📈 Trí (SEO)</option>
-                                <option value="Kiến - Trợ lý Lập Trình">👨‍💻 Kiến (Dev)</option>
-                                <option value="Thông - Trợ lý Website">🌐 Thông (Web)</option>
-                                <option value="Văn - Trợ lý Nội Dung">✍️ Văn (Content)</option>
-                                <option value="Mỹ - Trợ lý Thiết Kế">🎨 Mỹ (Design)</option>
-                                <option value="Phạm Hoàng Tiến">👑 Sếp Phạm Hoàng Tiến</option>
-                            </select>
-                        </div>
-
-                        <!-- Status Filter -->
-                        <div class="lg:col-span-2">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Trạng Thái</label>
+                        <!-- 2.2 Trạng Thái Filter -->
+                        <div class="lg:col-span-4 sm:col-span-1">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bars-progress text-indigo-600"></i>
+                                <span>Trạng Thái</span>
+                            </label>
                             <select id="seo-filter-status" onchange="renderSeoMasterTasks()" class="w-full text-xs font-bold bg-slate-50 border border-slate-200 rounded-lg p-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
-                                <option value="all">⚡ Tất cả</option>
+                                <option value="all">⚡ Tất cả Trạng Thái</option>
                                 <option value="Đang làm">🔄 Đang làm</option>
+                                <option value="Duy trì">🔁 Duy trì</option>
                                 <option value="Hoàn thành">✅ Hoàn thành</option>
+                                <option value="Tạm hoãn">⏸️ Tạm hoãn</option>
+                                <option value="Chưa lên lịch">⏳ Chưa lên lịch</option>
+                                <option value="Cần họp">👥 Cần họp</option>
                             </select>
                         </div>
 
-                        <!-- Search Input -->
-                        <div class="lg:col-span-2">
-                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1">Tìm Kiếm</label>
+                        <!-- 2.3 Tìm Kiếm Input -->
+                        <div class="lg:col-span-4 sm:col-span-2">
+                            <label class="block text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-magnifying-glass text-slate-500"></i>
+                                <span>Tìm Kiếm Task</span>
+                            </label>
                             <div class="relative">
-                                <input type="text" id="seo-filter-search" oninput="renderSeoMasterTasks()" placeholder="Tìm task..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-7 pr-2 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
+                                <input type="text" id="seo-filter-search" oninput="renderSeoMasterTasks()" placeholder="Tìm theo tên task, mô tả, từ khóa, người phụ trách..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-2 text-slate-700 focus:bg-white focus:ring-1 focus:ring-sky-500 focus:outline-none min-h-[38px]">
                                 <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
                             </div>
                         </div>
@@ -1936,25 +1918,6 @@
                 <!-- 3. Task Content Display Area (Dynamic Table/Card List) -->
                 <div id="seo-tasks-table-container" class="space-y-4">
                     <!-- Dynamically populated by JS renderSeoMasterTasks() -->
-                </div>
-
-                <!-- 5. Guide & Legend Note (Quy chuẩn SEO Website Song Anh) -->
-                <div class="bg-gradient-to-r from-sky-50/70 via-slate-50 to-indigo-50/70 p-4 rounded-xl border border-sky-200/60 text-xs space-y-2">
-                    <div class="flex items-center justify-between flex-wrap gap-2">
-                        <span class="font-extrabold text-slate-800 flex items-center gap-1.5">
-                            <i class="fa-solid fa-circle-info text-sky-600"></i> QUY CHUẨN THỰC THI SEO WEBSITE SONG ANH
-                        </span>
-                        <div class="flex items-center gap-3 text-[11px] font-medium text-slate-600 flex-wrap">
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span> architecturalmodel.org (Quốc tế)</span>
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> mohinhkientruc.org (Việt Nam)</span>
-                            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span> Schema JSON-LD</span>
-                        </div>
-                    </div>
-                    <p class="text-slate-600 text-[11.5px] leading-relaxed">
-                        • <strong>Quy chuẩn Danh Xưng:</strong> Website tiếng Việt dùng <strong>Mô Hình Song Anh</strong> (hoặc Mô Hình Kiến Trúc Song Anh); Website tiếng Anh dùng <strong>Song Anh Model</strong>.<br>
-                        • <strong>Địa Chỉ Xưởng Sản Xuất:</strong> Duy nhất tại <strong>230/70/28 Nguyễn Xiển, Phường Long Phước, TP. Thủ Đức, TP.HCM</strong>.<br>
-                        • <strong>Phân Quyền Nhiệm Vụ:</strong> 📈 <strong>Trí - SEO Master</strong> (kỹ thuật, từ khóa, audit), 🌐 <strong>Thông - Website</strong> (quản trị WordPress, On-Page), ✍️ <strong>Văn - Nội Dung</strong> (biên soạn bài Pillar, E-E-A-T), 🎨 <strong>Mỹ - Thiết Kế</strong> (ảnh sa bàn xưởng, Geotag, WebP), 👨‍💻 <strong>Kiến - Lập Trình</strong> (code chức năng &amp; kỹ thuật).
-                    </p>
                 </div>
             </div>
 
@@ -15603,6 +15566,8 @@ let marketingActivityLog = [
                 if (typeof renderFbTable === 'function') renderFbTable();
                 if (typeof renderKeywordTable === 'function') renderKeywordTable();
                 if (typeof renderOnpageTable === 'function') renderOnpageTable();
+                if (typeof syncSeoWebsiteOptions === 'function') syncSeoWebsiteOptions(true);
+                if (typeof renderSeoMasterTasks === 'function') renderSeoMasterTasks(true);
             } catch(e) { console.error("Error re-rendering on domain switch:", e); }
         }
 
@@ -20071,484 +20036,1075 @@ let marketingActivityLog = [
         }
 
         // =========================================================================
-        // 🌐 MODULE SEO ARCHITECTURALMODEL.ORG CONTROLLER & TASK MANAGER
+        // 🌐 MODULE SEO WEBSITE UNIFIED TASK MANAGER & NOTION ENGINE
         // =========================================================================
-        // =========================================================================
-        // 🌐 SEO WEBSITE MASTER CONTROLLER & UNIFIED TASK ENGINE (2 WEBSITES)
-        // =========================================================================
-
-        // 1. Danh sách 24 Task SEO Chi Tiết Của Cả 2 Website Chiến Lược
+        // Danh sách 59 Task SEO Chi Tiết Của Toàn Bộ Website Song Anh Từ Notion DB
         const seoMasterTasksData = [
-            // --- WEBSITE 1: ARCHITECTURALMODEL.ORG (17 TASKS) ---
             {
-                id: "seo-arch-1-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 1: Audit Kỹ Thuật",
-                code: "ARCH-1.1",
-                tag: "Tech",
-                tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-                title: "[Tech] Fix lỗi Missing H1 & H2 trên Trang chủ Tiếng Anh (/en/)",
-                description: "Kiểm tra cấu trúc thẻ Heading, bổ sung thẻ H1 chuẩn SEO và các thẻ H2 chứa từ khóa xuất khẩu trọng tâm.",
-                assignee: "Kiến - Trợ lý Lập Trình",
-                priority: "Khẩn",
-                lang: "EN",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81ac-9538-c050266be334",
+                        "code": "REPORT",
+                        "title": "[Report] Tổng hợp báo cáo kỹ thuật & thứ hạng từ khóa tuần trình Ban Giám Đốc",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Xuất dữ liệu đo lường, cập nhật tiến độ hoàn thành các task trên Notion và báo cáo Sếp Tiến.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081ac9538c050266be334"
             },
             {
-                id: "seo-arch-1-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 1: Audit Kỹ Thuật",
-                code: "ARCH-1.2",
-                tag: "Tech",
-                tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-                title: "[Tech] Chuẩn hóa đuôi Title Trang chủ Tiếng Việt thành 'Mô Hình Song Anh'",
-                description: "Loại bỏ từ khóa 'Song Anh Model' trong tiêu đề tiếng Việt, cập nhật đuôi Title chuẩn nhận diện thương hiệu công ty.",
-                assignee: "Thông - Trợ lý Website",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-815c-83de-e969068b96dd",
+                        "code": "INDEX",
+                        "title": "[Index] Gửi yêu cầu URL Inspection & Request Indexing trên GSC cho 2 bản VI/EN",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Index",
+                        "tagColor": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "Gửi URL trang chủ và các bài viết mới lên Google Search Console để bot thu thập dữ liệu mới.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d90815c83dee969068b96dd"
             },
             {
-                id: "seo-arch-1-3",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 1: Audit Kỹ Thuật",
-                code: "ARCH-1.3",
-                tag: "Tech",
-                tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-                title: "[Tech] Cấu hình Sitemap XML loại bỏ file ảnh media attachments",
-                description: "Tinh gọn Sitemap Yoast/RankMath, loại bỏ các URL đính kèm media vô nghĩa làm lãng phí Crawl Budget.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Trung bình",
-                lang: "Hệ thống",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-816b-be55-d15008b410b7",
+                        "code": "MOD-06",
+                        "title": "6. Lập Chỉ Mục GSC & Báo Cáo Hiệu Suất - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Index",
+                        "tagColor": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Module trọng tâm trực thuộc 21f4b5e7-3d90-806e-afe6-f4c4c1d08033",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d90816bbe55d15008b410b7"
             },
             {
-                id: "seo-arch-1-4",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 1: Audit Kỹ Thuật",
-                code: "ARCH-1.4",
-                tag: "Tech",
-                tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-                title: "[Tech] Kiểm tra liên kết Hreflang Tags (vi, en, x-default) & Menu chuyển ngữ",
-                description: "Rà soát thẻ Hreflang song ngữ giữa / và /en/, đảm bảo Google bot nhận diện đúng phân vùng địa lý người dùng.",
-                assignee: "Kiến - Trợ lý Lập Trình",
-                priority: "Cao",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8153-b9af-f83a45fb377c",
+                        "code": "SCHEMA",
+                        "title": "[Schema] Khai báo Schema Service & FAQPage cho các dịch vụ cốt lõi",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Schema",
+                        "tagColor": "bg-indigo-50 text-indigo-700 border-indigo-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Khai báo dịch vụ làm mô hình xuất khẩu và bộ câu hỏi thường gặp FAQ hiển thị rich snippet trên Google.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908153b9aff83a45fb377c"
             },
             {
-                id: "seo-arch-2-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 2: Nghiên Cứu Từ Khóa",
-                code: "ARCH-2.1",
-                tag: "Keyword",
-                tagColor: "bg-amber-50 text-amber-700 border-amber-200",
-                title: "[Keyword] Xây dựng bộ từ khóa xuất khẩu tiếng Anh (Architectural Scale Model Maker)",
-                description: "Nghiên cứu bộ từ khóa xuất khẩu B2B nhắm khách hàng nước ngoài (Mỹ, Úc, Singapore, UAE, Châu Âu).",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Cao",
-                lang: "EN",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81a6-ac2f-e6678c54ec84",
+                        "code": "SCHEMA",
+                        "title": "[Schema] Khai báo Schema Corporation & LocalBusiness song ngữ",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Schema",
+                        "tagColor": "bg-indigo-50 text-indigo-700 border-indigo-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "Nhúng mã JSON-LD chuẩn Schema.org định danh thực thể Song Anh trên Knowledge Graph cho cả 2 ngôn ngữ.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081a6ac2fe6678c54ec84"
             },
             {
-                id: "seo-arch-2-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 2: Nghiên Cứu Từ Khóa",
-                code: "ARCH-2.2",
-                tag: "Keyword",
-                tagColor: "bg-amber-50 text-amber-700 border-amber-200",
-                title: "[Keyword] Xây dựng bộ từ khóa Sa bàn tiếng Việt (Làm sa bàn kiến trúc TPHCM)",
-                description: "Thiết lập danh sách từ khóa ngách chất lượng cao: sa bàn quy hoạch, mô hình nhà máy, sa bàn dự án.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81b9-b540-d396d685979a",
+                        "code": "MOD-05",
+                        "title": "5. Cấu Hình Schema JSON-LD Đa Ngôn Ngữ - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Schema",
+                        "tagColor": "bg-indigo-50 text-indigo-700 border-indigo-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Module trọng tâm trực thuộc 21f4b5e7-3d90-806e-afe6-f4c4c1d08033",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081b9b540d396d685979a"
             },
             {
-                id: "seo-arch-2-3",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 2: Nghiên Cứu Từ Khóa",
-                code: "ARCH-2.3",
-                tag: "Silo",
-                tagColor: "bg-purple-50 text-purple-700 border-purple-200",
-                title: "[Silo] Thiết lập Ma trận Internal Link trỏ về 2 trang chủ song ngữ",
-                description: "Quy hoạch ma trận liên kết nội bộ theo cấu trúc Silo phân tầng chặt chẽ từ bài viết con lên bài Pillar.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Trung bình",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81a8-8cfd-fbec7aacbb64",
+                        "code": "MEDIA",
+                        "title": "[Media] Nhúng EXIF Geotagging xưởng Thủ Đức và nén WebP < 150KB",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Media",
+                        "tagColor": "bg-pink-50 text-pink-700 border-pink-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Nhúng tọa độ 10.8415° N, 106.8432° E xưởng Nguyễn Xiển, Thủ Đức vào toàn bộ ảnh trước khi upload.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081a88cfdfbec7aacbb64"
             },
             {
-                id: "seo-arch-3-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 3: Sản Xuất Nội Dung",
-                code: "ARCH-3.1",
-                tag: "Content",
-                tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-                title: "[Content] Biên soạn & On-Page bài Pillar Tiếng Anh (Model Making Services for Global Projects)",
-                description: "Biên soạn bài viết trụ cột chuẩn E-E-A-T giới thiệu quy trình, máy móc CNC/Laser và năng lực đóng kiện xuất khẩu.",
-                assignee: "Văn - Trợ lý Nội Dung",
-                priority: "Cao",
-                lang: "EN",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-817a-86bd-c29582d6d860",
+                        "code": "MEDIA",
+                        "title": "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Anh (Song Anh Model)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Media",
+                        "tagColor": "bg-pink-50 text-pink-700 border-pink-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Xử lý 3-5 ảnh sa bàn thực tế, dán logo tiếng Anh 'Song Anh Model', tỷ lệ 1200x800 chuẩn WebP.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d90817a86bdc29582d6d860"
             },
             {
-                id: "seo-arch-3-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 3: Sản Xuất Nội Dung",
-                code: "ARCH-3.2",
-                tag: "Content",
-                tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-                title: "[Content] Biên soạn & On-Page bài Pillar Tiếng Việt (Dịch vụ thi công sa bàn kiến trúc TPHCM)",
-                description: "Bài viết dịch vụ toàn diện, minh bạch tiến độ, thể hiện kinh nghiệm thực chiến từ 2016 của xưởng Song Anh.",
-                assignee: "Văn - Trợ lý Nội Dung",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-812f-aa0a-ffff2a93a4db",
+                        "code": "MEDIA",
+                        "title": "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Việt (Mô Hình Song Anh)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Media",
+                        "tagColor": "bg-pink-50 text-pink-700 border-pink-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Xử lý 3-5 ảnh sa bàn thực tế, dán logo 'Mô Hình Kiến Trúc Song Anh', tỷ lệ 1200x800 chuẩn WebP.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d90812faa0affff2a93a4db"
             },
             {
-                id: "seo-arch-3-3",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 3: Sản Xuất Nội Dung",
-                code: "ARCH-3.3",
-                tag: "On-Page",
-                tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-                title: "[On-Page] Tối ưu điểm RankMath On-Page đạt ≥ 90/100 cho 2 bài Pillar",
-                description: "Tối ưu mật độ từ khóa, liên kết nội bộ, thẻ alt ảnh, thẻ meta description và readability đạt điểm xanh tối đa.",
-                assignee: "Thông - Trợ lý Website",
-                priority: "Trung bình",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8180-9bfa-dbae7a4e2c5c",
+                        "code": "MOD-04",
+                        "title": "4. Thiết Kế Media Xưởng Chuẩn 2 Logo & Geotag - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Media",
+                        "tagColor": "bg-pink-50 text-pink-700 border-pink-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Module trọng tâm trực thuộc 21f4b5e7-3d90-806e-afe6-f4c4c1d08033",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081809bfadbae7a4e2c5c"
             },
             {
-                id: "seo-arch-4-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 4: Thiết Kế Media",
-                code: "ARCH-4.1",
-                tag: "Media",
-                tagColor: "bg-rose-50 text-rose-700 border-rose-200",
-                title: "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Việt (Mô Hình Song Anh)",
-                description: "Chụp và chỉnh sửa ảnh sa bàn dự án thật tại xưởng Nguyễn Xiển, dán logo chuẩn 'Mô Hình Song Anh' tỷ lệ 16:9 & 1:1.",
-                assignee: "Mỹ - Trợ lý Thiết Kế",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81b8-9afc-fa93704546ae",
+                        "code": "ON-PAGE",
+                        "title": "[On-Page] Tối ưu điểm RankMath On-Page đạt ≥ 90/100 cho 2 bài Pillar",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Tối ưu Focus Keyword, gán DoFollow link Wikipedia, khai báo Table of Contents và Alt text.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081b89afcfa93704546ae"
             },
             {
-                id: "seo-arch-4-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 4: Thiết Kế Media",
-                code: "ARCH-4.2",
-                tag: "Media",
-                tagColor: "bg-rose-50 text-rose-700 border-rose-200",
-                title: "[Media] Thiết kế bộ ảnh sa bàn xưởng thật dán Logo Tiếng Anh (Song Anh Model)",
-                description: "Dành riêng cho phiên bản tiếng Anh /en/, dán logo nhận diện quốc tế 'Song Anh Model' thể hiện tính chuyên nghiệp.",
-                assignee: "Mỹ - Trợ lý Thiết Kế",
-                priority: "Cao",
-                lang: "EN",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8161-af6d-f87d3649d14e",
+                        "code": "CONTENT",
+                        "title": "[Content] Biên soạn & On-Page bài Pillar Tiếng Việt (Dịch vụ thi công sa bàn kiến trúc TPHCM)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Viết bài chuyên sâu 1.500 từ đánh chiếm cụm từ 'sa bàn kiến trúc', chuẩn hóa thông số kỹ thuật xưởng Thủ Đức.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908161af6df87d3649d14e"
             },
             {
-                id: "seo-arch-4-3",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 4: Thiết Kế Media",
-                code: "ARCH-4.3",
-                tag: "Media",
-                tagColor: "bg-rose-50 text-rose-700 border-rose-200",
-                title: "[Media] Nhúng EXIF Geotagging xưởng Thủ Đức và nén WebP < 150KB",
-                description: "Gắn tọa độ GPS chính xác xưởng 230/70/28 Nguyễn Xiển, P. Long Phước, TP. Thủ Đức và nén WebP siêu nhẹ.",
-                assignee: "Mỹ - Trợ lý Thiết Kế",
-                priority: "Trung bình",
-                lang: "Hệ thống",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-81b6-a863-c012fa8dc1d0",
+                        "code": "CONTENT",
+                        "title": "[Content] Biên soạn & On-Page bài Pillar Tiếng Anh (Model Making Services for Global Projects)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Viết bài chuyên sâu 1.600 từ về năng lực chế tác sa bàn xuất khẩu, đóng kiện gỗ hàng không, nghiệm thu từ xa qua Video 4K.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081b6a863c012fa8dc1d0"
             },
             {
-                id: "seo-arch-5-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 5: Cấu Hình Schema",
-                code: "ARCH-5.1",
-                tag: "Schema",
-                tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-                title: "[Schema] Khai báo Schema Corporation & LocalBusiness song ngữ",
-                description: "Khai báo thực thể doanh nghiệp sản xuất sa bàn kiến trúc chuẩn JSON-LD trên cả 2 phiên bản VI và EN.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Cao",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8138-b5c1-d4c731f98546",
+                        "code": "SILO",
+                        "title": "[Silo] Thiết lập Ma trận Internal Link trỏ về 2 trang chủ song ngữ",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "Xây dựng sơ đồ điều hướng Anchor text từ các bài dự án chi tiết về trang chủ VI và EN.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908138b5c1d4c731f98546"
             },
             {
-                id: "seo-arch-5-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 5: Cấu Hình Schema",
-                code: "ARCH-5.2",
-                tag: "Schema",
-                tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-                title: "[Schema] Khai báo Schema Service & FAQPage cho các dịch vụ cốt lõi",
-                description: "Bổ sung cấu trúc dữ liệu câu hỏi thường gặp về quy trình làm sa bàn, bảo hành LED, đóng kiện gỗ vận chuyển an toàn.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Trung bình",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8129-a342-d42a07b22801",
+                        "code": "KEYWORD",
+                        "title": "[Keyword] Xây dựng bộ từ khóa Sa bàn tiếng Việt (Làm sa bàn kiến trúc TPHCM)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Tổng hợp 25 từ khóa tiếng Việt tập trung vào cụm từ khóa 'sa bàn': làm sa bàn kiến trúc, sa bàn quy hoạch BĐS, thi công sa bàn.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908129a342d42a07b22801"
             },
             {
-                id: "seo-arch-6-1",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 6: Lập Chỉ Mục GSC",
-                code: "ARCH-6.1",
-                tag: "Index",
-                tagColor: "bg-sky-50 text-sky-700 border-sky-200",
-                title: "[Index] Gửi yêu cầu URL Inspection & Request Indexing trên GSC cho 2 bản VI/EN",
-                description: "Kiểm tra trực tiếp URL trên Google Search Console, submit indexing tức thì để Google lập chỉ mục nhanh chóng.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Khẩn",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8181-b7e0-e2d32fb0ed7d",
+                        "code": "KEYWORD",
+                        "title": "[Keyword] Xây dựng bộ từ khóa xuất khẩu tiếng Anh (Architectural Scale Model Maker)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Tổng hợp 25 từ khóa B2B tiếng Anh: scale model maker vietnam, master plan model export, architectural model workshop.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908181b7e0e2d32fb0ed7d"
             },
             {
-                id: "seo-arch-6-2",
-                site: "architecturalmodel.org",
-                siteName: "architecturalmodel.org",
-                siteBadge: "bg-sky-100 text-sky-800 border-sky-200",
-                module: "Module 6: Lập Chỉ Mục GSC",
-                code: "ARCH-6.2",
-                tag: "Report",
-                tagColor: "bg-slate-50 text-slate-700 border-slate-200",
-                title: "[Report] Tổng hợp báo cáo kỹ thuật & thứ hạng từ khóa tuần trình Ban Giám Đốc",
-                description: "Đối chiếu số liệu hiển thị (Impression), click và thứ hạng trung bình các từ khóa trọng điểm trình Sếp Thiện & Sếp Tiến.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Trung bình",
-                lang: "Song ngữ",
-                defaultStatus: "Đang làm"
-            },
-
-            // --- WEBSITE 2: MOHINHKIENTRUC.ORG (7 TASKS) ---
-            {
-                id: "seo-mhkt-1",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Nội Dung & Pillar VI",
-                code: "MHKT-01",
-                tag: "Pillar",
-                tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-                title: "[Pillar] Tối ưu On-Page bài Pillar chính: Dịch Vụ Làm Mô Hình Kiến Trúc TPHCM",
-                description: "Audit nội dung, cập nhật hình ảnh dự án mới nhất 2026, tối ưu cấu trúc H2-H4, thẻ Alt ảnh và CTA xưởng.",
-                assignee: "Thông - Trợ lý Website",
-                priority: "Khẩn",
-                lang: "VI",
-                defaultStatus: "Hoàn thành"
+                        "id": "3d44b5e7-3d90-8190-b560-c1a0647fe1f2",
+                        "code": "MOD-02",
+                        "title": "2. Nghiên Cứu Từ Khóa & Ma Trận Song Ngữ - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "Module trọng tâm trực thuộc 21f4b5e7-3d90-806e-afe6-f4c4c1d08033",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908190b560c1a0647fe1f2"
             },
             {
-                id: "seo-mhkt-2",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Audit & Kỹ Thuật",
-                code: "MHKT-02",
-                tag: "Tech",
-                tagColor: "bg-blue-50 text-blue-700 border-blue-200",
-                title: "[Tech] Khắc phục cảnh báo Canonical URL & Redirect 301 các liên kết cũ",
-                description: "Rà soát Google Search Console, xử lý các URL lỗi 404 và thiết lập chuyển hướng 301 vĩnh viễn về đúng trang danh mục.",
-                assignee: "Kiến - Trợ lý Lập Trình",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Hoàn thành"
+                        "id": "3d44b5e7-3d90-8126-aa9c-e736bc14185e",
+                        "code": "TECH",
+                        "title": "[Tech] Kiểm tra liên kết Hreflang Tags (vi, en, x-default) & Menu chuyển ngữ",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Đảm bảo thẻ hreflang trỏ chính xác chéo giữa VI và EN, không bị lỗi loop hoặc sai protocol HTTP/HTTPS.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d908126aa9ce736bc14185e"
             },
             {
-                id: "seo-mhkt-3",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Từ Khóa Top Google",
-                code: "MHKT-03",
-                tag: "Keyword",
-                tagColor: "bg-amber-50 text-amber-700 border-amber-200",
-                title: "[Keyword] Bám sát theo dõi Top 23 từ khóa cốt lõi trên Google Search Console",
-                description: "Theo dõi biến động vị trí Top 1 - Top 3 các từ khóa: sa bàn quy hoạch, mô hình kiến trúc, sa bàn nhà máy.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-8134-8238-e7db3dab096b",
+                        "code": "TECH",
+                        "title": "[Tech] Cấu hình Sitemap XML loại bỏ file ảnh media attachments",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Tắt tùy chọn đưa link hình ảnh vào post-sitemap và page-sitemap trên Rank Math để tối ưu Crawl Budget.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081348238e7db3dab096b"
             },
             {
-                id: "seo-mhkt-4",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Schema Doanh Nghiệp",
-                code: "MHKT-04",
-                tag: "Schema",
-                tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
-                title: "[Schema] Chuẩn hóa Schema Organization & LocalBusiness xưởng Nguyễn Xiển Thủ Đức",
-                description: "Loại bỏ triệt để địa chỉ cũ Mã Lò, cập nhật địa chỉ chuẩn 230/70/28 Nguyễn Xiển, Thủ Đức trên toàn bộ Schema.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Khẩn",
-                lang: "VI",
-                defaultStatus: "Hoàn thành"
+                        "id": "3d44b5e7-3d90-81e2-89eb-cc8bfd0af044",
+                        "code": "TECH",
+                        "title": "[Tech] Chuẩn hóa đuôi Title Trang chủ Tiếng Việt thành 'Mô Hình Song Anh'",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Đổi đuôi Title từ '| Song Anh Model' thành '| Mô Hình Song Anh' theo đúng quy chuẩn danh xưng tiếng Việt.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d9081e289ebcc8bfd0af044"
             },
             {
-                id: "seo-mhkt-5",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Liên Kết Silo",
-                code: "MHKT-05",
-                tag: "Silo",
-                tagColor: "bg-purple-50 text-purple-700 border-purple-200",
-                title: "[Internal Link] Bổ sung liên kết nội bộ từ 25 bài viết dự án về bài Pillar chính",
-                description: "Đặt anchor text tự nhiên trong nội dung 25 bài viết sa bàn dự án trỏ về trang dịch vụ làm mô hình kiến trúc TPHCM.",
-                assignee: "Văn - Trợ lý Nội Dung",
-                priority: "Trung bình",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3d44b5e7-3d90-815f-89d6-c3b2ec51fb72",
+                        "code": "TECH",
+                        "title": "[Tech] Fix lỗi Missing H1 & H2 trên Trang chủ Tiếng Anh (/en/)",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Bổ sung H1: 'Leading Architectural Scale Model Maker & Exporter in Vietnam' và H2 cho 4 khối dịch vụ để khắc phục tình trạng 0 thẻ H1/H2.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3d44b5e73d90815f89d6c3b2ec51fb72"
             },
             {
-                id: "seo-mhkt-6",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Tối Ưu Media",
-                code: "MHKT-06",
-                tag: "Media",
-                tagColor: "bg-rose-50 text-rose-700 border-rose-200",
-                title: "[Media] Audit thẻ Alt, nén ảnh WebP & dọn dẹp thư viện Media WordPress",
-                description: "Đảm bảo 100% hình ảnh trên website có thẻ Alt chứa từ khóa, dán logo 'Mô Hình Song Anh' và dung lượng nén dưới 150KB.",
-                assignee: "Thông - Trợ lý Website",
-                priority: "Trung bình",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3b24b5e7-3d90-80c7-9e30-d8d9cccfae73",
+                        "code": "TASK-22",
+                        "title": "Fix Thiếu H1 Và Title",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "• Thực trạng: 22 đường link không khai báo thẻ H1 hoặc không có tiêu đề chuẩn.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080c79e30d8d9cccfae73"
             },
             {
-                id: "seo-mhkt-7",
-                site: "mohinhkientruc.org",
-                siteName: "mohinhkientruc.org",
-                siteBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
-                module: "Báo Cáo Hiệu Suất",
-                code: "MHKT-07",
-                tag: "Report",
-                tagColor: "bg-slate-50 text-slate-700 border-slate-200",
-                title: "[Report] Lập báo cáo hiệu suất Click & Impression tuần từ GA4 & Google Search Console",
-                description: "Tổng hợp lưu lượng truy cập tự nhiên, CTR và tỷ lệ chuyển đổi form liên hệ / Hotline Zalo 0929 22 4444.",
-                assignee: "Trí - Trợ lý SEO Master",
-                priority: "Cao",
-                lang: "VI",
-                defaultStatus: "Đang làm"
+                        "id": "3b24b5e7-3d90-80c4-a8a5-edd649afe825",
+                        "code": "TASK-23",
+                        "title": "Fix Nội Dung Mỏng",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "• Thực trạng: 105/188 trang HTML (chiếm 55.8%) có độ dài bài viết dưới 300 từ.\n• Tác hại: Thuật toán Google Helpful Content đánh giá đây là \"Nội dung giá trị thấp\" (Low Value Content), làm kéo tụt điểm uy tín E-E-A-T của toàn bộ trang web.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080c4a8a5edd649afe825"
+            },
+            {
+                        "id": "3b24b5e7-3d90-802b-952e-e45f5b2e5265",
+                        "code": "TASK-24",
+                        "title": "Fix Thiếu Meta Description",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "• Thực trạng: 30 bài viết quan trọng hoàn toàn bỏ trống thẻ Meta Description.\n• Tác hại: Google tự lấy một đoạn văn ngẫu nhiên làm mô tả, làm bài viết hiển thị xấu trên Google và giảm tỉ lệ nhấp CTR.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d90802b952ee45f5b2e5265"
+            },
+            {
+                        "id": "3b24b5e7-3d90-80eb-aa85-e52c2908ce79",
+                        "code": "TASK-25",
+                        "title": "Fix Lỗi Multiple H1",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "• Thực trạng: 67/188 trang HTML (chiếm 35.6%) đang bị dính lỗi có 2 đến 3 thẻ H1 cùng xuất hiện trên 1 bài viết.\n• Nguyên nhân: Do cài đặt của Theme WordPress (Flatsome/Elementor) tự động biến Logo Header hoặc Tiêu đề Widget thành thẻ H1 thứ 2.\n• Tác hại: Google bị bối rối không biết đâu là chủ đề chính của bài viết, kìm hãm thứ hạng SEO của website.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080ebaa85e52c2908ce79"
+            },
+            {
+                        "id": "3b24b5e7-3d90-8061-a69d-f6f1273bad9f",
+                        "code": "TASK-26",
+                        "title": "Xuất báo cáo tuần GS4 và GSC - mohinhkientruc.org",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Index",
+                        "tagColor": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Báo cáo số liệu để đánh giá website",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d908061a69df6f1273bad9f"
+            },
+            {
+                        "id": "3b24b5e7-3d90-8027-a44d-e813bbac7888",
+                        "code": "MOD-06",
+                        "title": "6. Audit Kỹ Thuật, GSC & GA4 Dashboard - mohinhkientruc.org",
+                        "status": "Chưa lên lịch",
+                        "defaultStatus": "Chưa lên lịch",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Giám sát toàn diện sức khỏe website, lưu lượng truy cập và tỷ lệ chuyển đổi.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Script Python tự động quét thứ hạng 55 từ khóa B2B lúc 06:00 sáng hàng ngày.\n• Báo cáo hiệu suất GSC & GA4 tuần: Clicks, Impressions, CTR, vị trí trung bình và số lượng Lead.\n• Quét định kỳ Screaming Frog: phát hiện và xử lý sớm 100% lỗi 404, 301 loop, Broken Images.\n\n✅ TIÊU CHUẨN: Dashboard cập nhật realtime, báo cáo định kỳ gửi Ban Giám Đốc.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d908027a44de813bbac7888"
+            },
+            {
+                        "id": "3b24b5e7-3d90-8031-916f-fab534e620c9",
+                        "code": "MOD-05",
+                        "title": "5. Offpage B2B & Social Authority - mohinhkientruc.org",
+                        "status": "Chưa lên lịch",
+                        "defaultStatus": "Chưa lên lịch",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Gia tăng độ uy tín tên miền (Domain Authority) qua mạng lưới Social Tier 1 & B2B Citations.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Kết nối đồng bộ hồ sơ mạng xã hội: Facebook Fanpage, Pinterest, LinkedIn, YouTube.\n• Trích dẫn nguồn bách khoa uy tín (Wikipedia, Trang kiến trúc học thuật) củng cố TrustRank.\n• Chia sẻ bài viết dự án chất lượng cao lên các diễn đàn kiến trúc/bất động sản uy tín.\n\n✅ TIÊU CHUẨN: Backlink chất lượng cao tự nhiên, không spam link bừa bãi.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d908031916ffab534e620c9"
+            },
+            {
+                        "id": "3b24b5e7-3d90-80a8-8027-df5002bd15a6",
+                        "code": "MOD-04",
+                        "title": "4. Entity Thương Hiệu & Local SEO Google Maps - mohinhkientruc.org",
+                        "status": "Chưa lên lịch",
+                        "defaultStatus": "Chưa lên lịch",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Củng cố tín hiệu thực thể (Entity) và duy trì Top 3 Google Local 3-Pack.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Đồng bộ chuẩn hóa NAP: Mô Hình Kiến Trúc Song Anh - 230/70/28 Nguyễn Xiển, Thủ Đức - 0929 22 4444.\n• Cấu hình Schema JSON-LD đa tầng: LocalBusiness, Organization, Service, PriceSpecification, FAQPage.\n• Đăng bài cập nhật tiến độ công trình thực tế xưởng lên 3 Google Maps hàng tuần.\n\n✅ TIÊU CHUẨN: Khai báo đầy đủ SameAs mạng xã hội, 0 sai lệch thông tin NAP.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080a88027df5002bd15a6"
+            },
+            {
+                        "id": "3b24b5e7-3d90-80f3-a591-cea08ca4ecfe",
+                        "code": "MOD-03",
+                        "title": "3. Content E-E-A-T & On-page Chuyển Đổi - mohinhkientruc.org",
+                        "status": "Chưa lên lịch",
+                        "defaultStatus": "Chưa lên lịch",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Nâng cấp nội dung chất lượng cao, tối ưu On-Page chuẩn RankMath 90+ và E-E-A-T.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Tối ưu chuyển đổi Trang Báo Giá (/bao-gia-mo-hinh-kien-truc/): bảng giá 4 tỷ lệ, cam kết xưởng, form CAD.\n• Biên soạn bài viết chuyên sâu Silo: Quy hoạch KCN, Sa bàn nhà máy, Bóc mái căn hộ.\n• Bộ ảnh xưởng thật chuẩn WebP (Mỹ - Design): gắn Logo Song Anh, Geotag xưởng Thủ Đức.\n• Khai báo đầy đủ DoFollow Wiki Outbound Link + 6 Internal Links.\n\n✅ TIÊU CHUẨN: 100% bài viết RankMath ≥ 90/100, ảnh WebP < 150KB.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080f3a591cea08ca4ecfe"
+            },
+            {
+                        "id": "3b24b5e7-3d90-8039-9d7b-f49a2d866f7f",
+                        "code": "MOD-02",
+                        "title": "2. Từ khóa và Ma trận SILO - mohinhkientruc.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Quản trị bộ 55 từ khóa B2B và thiết lập kiến trúc Silo Clustered.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Nghiên cứu Search Intent & mở rộng từ khóa 5 Topic Clusters (Báo giá, Quy hoạch KCN, Nhà máy, Chung cư, Sửa chữa).\n• Thiết lập Ma trận Internal Link hình tháp trỏ dồn PageRank về Trang Báo Giá.\n• Chống ăn thịt từ khóa (Keyword Cannibalization) giữa Category và Post.\n\n✅ TIÊU CHUẨN: Bộ 55 từ khóa được gán đúng Landing Page, 0 lỗi Cannibalization.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080399d7bf49a2d866f7f"
+            },
+            {
+                        "id": "3b24b5e7-3d90-80d1-9435-cf407c38e0cc",
+                        "code": "MOD-01",
+                        "title": "1. SEO Kỹ Thuật & Core Web Vitals - mohinhkientruc.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU: Đảm bảo nền móng kỹ thuật vững chắc, 0 link chết 404, tối ưu tốc độ tải trang Mobile mượt mà.\n\n📋 NỘI DUNG THỰC HIỆN:\n• Khắc phục triệt để lỗi Thin Content: Bơm nội dung > 800 từ cho 30 bài viết mỏng (< 300 từ).\n• Tối ưu Core Web Vitals (LCP < 2.5s, CLS < 0.1): Bật WebP LazyLoad, nén CSS/JS thừa.\n• Rà soát thu thập dữ liệu (Screaming Frog): Duy trì 0 lỗi 404, xử lý redirect 301.\n• Kiểm soát Canonical URL, Sitemap XML và Robots.txt.\n\n✅ TIÊU CHUẨN: Mobile PageSpeed ≥ 85 điểm, Desktop ≥ 95 điểm, 100% bài viết index ổn định.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3b24b5e73d9080d19435cf407c38e0cc"
+            },
+            {
+                        "id": "3514b5e7-3d90-801a-b0ac-cb2b9265010e",
+                        "code": "TASK-33",
+                        "title": "SEO Website | mohinhkientruc.org | Tối ưu post",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Duy trì cập nhật cho hết",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3514b5e73d90801ab0accb2b9265010e"
+            },
+            {
+                        "id": "3514b5e7-3d90-80bb-b603-d7aa8a54b6cb",
+                        "code": "TASK-34",
+                        "title": "Content Creator | Public Link Website | mohinhkientruc.org",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Content Creator | Public Link Website | mohinhkientruc.org",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3514b5e73d9080bbb603d7aa8a54b6cb"
+            },
+            {
+                        "id": "3504b5e7-3d90-809a-90d0-e494c1f35b2c",
+                        "code": "TASK-35",
+                        "title": "SEO Website | vatlieumohinh.com | Đăng sản phẩm",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "tmdt",
+                        "site": "vatlieumohinh.com",
+                        "siteBadge": "bg-amber-50 text-amber-700 border-amber-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "SEO Website | vatlieumohinh.com | Đăng sản phẩm",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3504b5e73d90809a90d0e494c1f35b2c"
+            },
+            {
+                        "id": "3504b5e7-3d90-8091-b89b-e559747dbf0a",
+                        "code": "TASK-36",
+                        "title": "SEO Website vatlieumohinh.com",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "tmdt",
+                        "site": "vatlieumohinh.com",
+                        "siteBadge": "bg-amber-50 text-amber-700 border-amber-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "SEO Website vatlieumohinh.com",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3504b5e73d908091b89be559747dbf0a"
+            },
+            {
+                        "id": "34f4b5e7-3d90-80f7-9a11-e0af52d12c95",
+                        "code": "TASK-37",
+                        "title": "Website lammohinh.vn | Đăng sản phẩm bán hàng",
+                        "status": "Chưa lên lịch",
+                        "defaultStatus": "Chưa lên lịch",
+                        "domain_key": "tmdt",
+                        "site": "lammohinh.vn",
+                        "siteBadge": "bg-orange-50 text-orange-700 border-orange-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Website lammohinh.vn | Đăng sản phẩm bán hàng",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/34f4b5e73d9080f79a11e0af52d12c95"
+            },
+            {
+                        "id": "34b4b5e7-3d90-805a-a7a8-dfe7a5a05c06",
+                        "code": "TASK-38",
+                        "title": "SEO Website | mohinhkientruc.org | Post website",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "SEO Website | mohinhkientruc.org | Post website",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/34b4b5e73d90805aa7a8dfe7a5a05c06"
+            },
+            {
+                        "id": "3494b5e7-3d90-80c4-a920-d03f3494b61e",
+                        "code": "TASK-39",
+                        "title": "Content Creator | mohinhkientruc.org | New Post",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Content Creator | mohinhkientruc.org | New Post",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3494b5e73d9080c4a920d03f3494b61e"
+            },
+            {
+                        "id": "3144b5e7-3d90-80b1-be68-c9bd0cdbacb2",
+                        "code": "MOD-01",
+                        "title": "1. Audit Kỹ Thuật & Cấu Hình Song Ngữ - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Tech",
+                        "tagColor": "bg-blue-50 text-blue-700 border-blue-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "• Cập nhật Title/Meta Trang chủ VI & EN theo file BANG_TOI_UU_TITLE_META_5_WEBSITE_SONG_ANH.md.\n• Kiểm tra cấu hình Hreflang (vi/en/x-default) và chuyển ngữ đa ngôn ngữ.\n• Rà soát thu thập dữ liệu qua Screaming Frog: 0 lỗi 404, kiểm soát Sitemap XML Song ngữ.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3144b5e73d9080b1be68c9bd0cdbacb2"
+            },
+            {
+                        "id": "3124b5e7-3d90-8068-be22-d7beef986a70",
+                        "code": "TASK-41",
+                        "title": "Audit & Setup | Website mohinhsonganh.com",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhsonganh.com",
+                        "siteBadge": "bg-teal-50 text-teal-700 border-teal-200",
+                        "tag": "Audit",
+                        "tagColor": "bg-cyan-50 text-cyan-700 border-cyan-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Audit & Setup | Website mohinhsonganh.com",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3124b5e73d908068be22d7beef986a70"
+            },
+            {
+                        "id": "3114b5e7-3d90-80d7-a183-d2691f39b0b9",
+                        "code": "TASK-42",
+                        "title": "Audit & Setup | Website mohinhkientruc.org",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Audit",
+                        "tagColor": "bg-cyan-50 text-cyan-700 border-cyan-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Audit & Setup | Website mohinhkientruc.org",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/3114b5e73d9080d7a183d2691f39b0b9"
+            },
+            {
+                        "id": "2ea4b5e7-3d90-80fa-bd77-e2baeb2faacf",
+                        "code": "TASK-43",
+                        "title": "Cập nhật | Post Website | Chưa tối ưu",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "tmdt",
+                        "site": "lammohinh.vn",
+                        "siteBadge": "bg-orange-50 text-orange-700 border-orange-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Cập nhật | Post Website | Chưa tối ưu",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2ea4b5e73d9080fabd77e2baeb2faacf"
+            },
+            {
+                        "id": "2e14b5e7-3d90-80ca-931a-e651e1401e23",
+                        "code": "TASK-44",
+                        "title": "[Post website] Viết bài mới cho website mohinhsonganh.com",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhsonganh.com",
+                        "siteBadge": "bg-teal-50 text-teal-700 border-teal-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "đang audit lại website nên tạm hoãn",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2e14b5e73d9080ca931ae651e1401e23"
+            },
+            {
+                        "id": "2c34b5e7-3d90-8027-ac18-e7b89d5b836d",
+                        "code": "TASK-45",
+                        "title": "X.com | Lammohinh.vn",
+                        "status": "Cần họp",
+                        "defaultStatus": "Cần họp",
+                        "domain_key": "tmdt",
+                        "site": "lammohinh.vn",
+                        "siteBadge": "bg-orange-50 text-orange-700 border-orange-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "X.com | Lammohinh.vn",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2c34b5e73d908027ac18e7b89d5b836d"
+            },
+            {
+                        "id": "2994b5e7-3d90-8026-8d12-c7934138a9bc",
+                        "code": "TASK-46",
+                        "title": "SEO Website lammohinh.vn",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "tmdt",
+                        "site": "lammohinh.vn",
+                        "siteBadge": "bg-orange-50 text-orange-700 border-orange-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Tuần này đang ưu tiên chạy mô hình dự án trước",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2994b5e73d9080268d12c7934138a9bc"
+            },
+            {
+                        "id": "2644b5e7-3d90-8074-83fa-cd3d23de302c",
+                        "code": "TASK-47",
+                        "title": "SEO Website | mohinhkientruc.org | Update Post",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU:\nĐịnh kỳ audit, làm mới nội dung (Freshness Content) và tối ưu On-Page SEO cho các bài viết cốt lõi/trụ cột trên website mohinhkientruc.org (Mô hình chung cư, Nhà máy, Sa bàn quy hoạch...) nhằm củng cố Top 1-3 Google Search, khắc phục rớt hạng và tăng tỷ lệ chuyển đổi B2B.\n\n📋 QUY TRÌNH THỰC HIỆN CHUẨN (SOP 5 BƯỚC):\n1. Audit Search Intent (Trí - SEO): Kiểm tra thứ hạng GSC, rà soát từ khóa tụt dốc, phân tích intent người tìm kiếm.\n2. Biên tập nội dung (Văn - Content & Sếp Tiến): Bổ sung thông số kỹ thuật sa bàn thực tế (vật liệu mica, in 3D SLA, LED điều khiển, tỷ lệ 1/100, 1/200), văn phong điềm tĩnh B2B, loại bỏ từ ngữ phóng đại sáo rỗng.\n3. Media xưởng thực tế (Mỹ - Design): Bổ sung tối thiểu 3-5 ảnh sa bàn chụp thực tế tại xưởng 230/70/28 Nguyễn Xiển, Thủ Đức; nén WebP chuẩn SEO, dán Logo Song Anh khử răng cưa.\n4. On-Page & RankMath (Thông - Website): Cập nhật trên Gutenberg, tối ưu RankMath > 80 điểm, bảo toàn 100% URL Slug cũ (tránh lỗi 404), cập nhật Schema JSON-LD & Alt text.\n5. Request Index & Đồng bộ (Sếp Tiến & Trí - SEO): Gửi Request Indexing trên Google Search Console, cập nhật trường 'Ngày cập nhật' trên BẢNG CONTENT Notion.\n\n✅ TIÊU CHUẨN HOÀN THÀNH:\n• URL Slug không đổi, giữ nguyên backlink.\n• Điểm RankMath On-Page đạt ≥ 80/100.\n• Đầy đủ ảnh thực tế xưởng Thủ Đức, thông tin Hotline chuẩn không tên riêng.\n• Cập nhật ngày trên BẢNG CONTENT để nhảy số liệu báo cáo tuần.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2644b5e73d90807483facd3d23de302c"
+            },
+            {
+                        "id": "25e4b5e7-3d90-8053-b28c-c9e74a9038c6",
+                        "code": "TASK-48",
+                        "title": "SEO Website - Mô hình",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "golf",
+                        "site": "Khác",
+                        "siteBadge": "bg-slate-50 text-slate-700 border-slate-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "SEO Website - Mô hình",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/25e4b5e73d908053b28cc9e74a9038c6"
+            },
+            {
+                        "id": "25e4b5e7-3d90-80a7-9cde-d463ca809955",
+                        "code": "TASK-49",
+                        "title": "Đồng bộ bảng danh sách bài viết và bảng từ khóa mohinhkientruc.org",
+                        "status": "Hoàn thành",
+                        "defaultStatus": "Hoàn thành",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Công việc làm còn chậm quá",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/25e4b5e73d9080a79cded463ca809955"
+            },
+            {
+                        "id": "2334b5e7-3d90-809c-a653-c3c445965096",
+                        "code": "TASK-50",
+                        "title": "SEO Website mohinhsonganh.com",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhsonganh.com",
+                        "siteBadge": "bg-teal-50 text-teal-700 border-teal-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Tạm hoãn tuần này để ưu tiên web mohinhkientruc.org",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2334b5e73d90809ca653c3c445965096"
+            },
+            {
+                        "id": "21f4b5e7-3d90-806e-afe6-f4c4c1d08033",
+                        "code": "TASK-51",
+                        "title": "SEO Website architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "🎯 MỤC TIÊU CHIẾN LƯỢC:\nPhát triển song song 2 thị trường:\n1. Bản Tiếng Việt: Chiếm lĩnh trọn vẹn cụm từ khóa 'SA BÀN' (Làm sa bàn kiến trúc, Sa bàn quy hoạch, Sa bàn BĐS).\n2. Bản Tiếng Anh (/en/): Chiếm lĩnh thị trường khách quốc tế & xuất khẩu sa bàn ('Architectural Scale Model Maker Vietnam').\n\n📋 CÁC HẠNG MỤC TRIỂN KHAI TUẦN NÀY:\n• Cập nhật Title, H1, Meta Description chuẩn Song ngữ (VI/EN).\n• Tối ưu On-Page RankMath > 90 điểm cho Pillar Tiếng Anh & Pillar Tiếng Việt.\n• Cấu hình Schema JSON-LD đa ngôn ngữ + Hreflang Tags chuẩn xác.\n• Bộ Media xưởng thật có Geotagging & Logo Song Anh / Song Anh Model.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/21f4b5e73d90806eafe6f4c4c1d08033"
+            },
+            {
+                        "id": "21e4b5e7-3d90-80b4-afab-f5ddfc355073",
+                        "code": "TASK-52",
+                        "title": "Ads Google | Website mohinhsonganh.com",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhsonganh.com",
+                        "siteBadge": "bg-teal-50 text-teal-700 border-teal-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Ads Google | Website mohinhsonganh.com",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/21e4b5e73d9080b4afabf5ddfc355073"
+            },
+            {
+                        "id": "2104b5e7-3d90-80f9-8819-d3feb93bd64d",
+                        "code": "TASK-53",
+                        "title": "Content Creator | Public Link Website",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "Khác",
+                        "siteBadge": "bg-slate-50 text-slate-700 border-slate-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Content Creator | Public Link Website",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/2104b5e73d9080f98819d3feb93bd64d"
+            },
+            {
+                        "id": "1c34b5e7-3d90-80ae-befc-ddadb633e53d",
+                        "code": "MOD-03",
+                        "title": "3. Sản Xuất Nội Dung E-E-A-T & On-Page Song Ngữ - architecturalmodel.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "architecturalmodel.org",
+                        "siteBadge": "bg-blue-50 text-blue-700 border-blue-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI/EN",
+                        "description": "• Bản Tiếng Anh: Xuất bản bài Pillar 'Architectural Scale Model Maker in Vietnam - High-End Scale Models Export'.\n• Bản Tiếng Việt: Xuất bản/tối ưu bài Pillar 'Công Ty Làm Sa Bàn Kiến Trúc Uy Tín TPHCM'.\n• Tối ưu bộ ảnh xưởng thật dán logo chuẩn theo ngôn ngữ (VI: Mô Hình Song Anh | EN: Song Anh Model) + Geotag xưởng Thủ Đức.\n• Đạt RankMath On-Page ≥ 90/100, submit Google Search Console.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/1c34b5e73d9080aebefcddadb633e53d"
+            },
+            {
+                        "id": "1a94b5e7-3d90-80f2-8224-f616eb9fffab",
+                        "code": "TASK-55",
+                        "title": "CHECK THỨ HẠNG TỪ KHÓA SEO",
+                        "status": "Duy trì",
+                        "defaultStatus": "Duy trì",
+                        "domain_key": "mo-hinh",
+                        "site": "Khác",
+                        "siteBadge": "bg-slate-50 text-slate-700 border-slate-200",
+                        "tag": "Keyword",
+                        "tagColor": "bg-amber-50 text-amber-700 border-amber-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "CHECK THỨ HẠNG TỪ KHÓA SEO",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/1a94b5e73d9080f28224f616eb9fffab"
+            },
+            {
+                        "id": "1a74b5e7-3d90-8010-8bdc-ff4ec4ae0106",
+                        "code": "TASK-56",
+                        "title": "Đăng bài | Dự án mới | mohinhkientruc",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "Duy trì thực hiện",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/1a74b5e73d9080108bdcff4ec4ae0106"
+            },
+            {
+                        "id": "1a44b5e7-3d90-8027-b3c0-e987cbb91fb0",
+                        "code": "TASK-57",
+                        "title": "SEO Website mohinhkientruc.org",
+                        "status": "Đang làm",
+                        "defaultStatus": "Đang làm",
+                        "domain_key": "mo-hinh",
+                        "site": "mohinhkientruc.org",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Tiến Phạm Hoàng",
+                        "priority": "P2 - Thường",
+                        "lang": "EN",
+                        "description": "SEO Website mohinhkientruc.org",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/1a44b5e73d908027b3c0e987cbb91fb0"
+            },
+            {
+                        "id": "1a44b5e7-3d90-80dc-b8a0-efee2db5bbc0",
+                        "code": "TASK-58",
+                        "title": "SEO Website thietkegolf.com",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "golf",
+                        "site": "thietkegolf.com",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "SEO",
+                        "tagColor": "bg-sky-50 text-sky-700 border-sky-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "SEO Website thietkegolf.com",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/1a44b5e73d9080dcb8a0efee2db5bbc0"
+            },
+            {
+                        "id": "19a4b5e7-3d90-80d6-943c-cec33e272666",
+                        "code": "TASK-59",
+                        "title": "Fanpage Thiết kế sân golf Song Anh | Post link thietkegolf.com",
+                        "status": "Tạm hoãn",
+                        "defaultStatus": "Tạm hoãn",
+                        "domain_key": "golf",
+                        "site": "thietkegolf.com",
+                        "siteBadge": "bg-emerald-50 text-emerald-700 border-emerald-200",
+                        "tag": "Content",
+                        "tagColor": "bg-purple-50 text-purple-700 border-purple-200",
+                        "assignee": "Trí - Trợ lý SEO Master",
+                        "priority": "P2 - Thường",
+                        "lang": "VI",
+                        "description": "Post duy trì vào 11:30.",
+                        "link": "",
+                        "notion_url": "https://www.notion.so/19a4b5e73d9080d6943ccec33e272666"
             }
-        ];
+];
 
-        // 2. Định nghĩa Nhóm 6 Module Trọng Tâm (phục vụ view theo nhóm Module)
-        const seoArchModulesData = [
-            {
-                id: 1,
-                code: "MODULE 1",
-                title: "Audit Kỹ Thuật & Cấu Hình Song Ngữ",
-                description: "Khắc phục lỗi thẻ tiêu đề H1/H2, đuôi Title thương hiệu, tinh gọn sitemap và hreflang.",
-                colorClass: "blue",
-                borderColor: "border-blue-200",
-                bgGradient: "from-blue-50/70 to-indigo-50/40",
-                badgeBg: "bg-blue-100 text-blue-800",
-                icon: "fa-screwdriver-wrench",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-1-"))
-            },
-            {
-                id: 2,
-                code: "MODULE 2",
-                title: "Nghiên Cứu Từ Khóa & Ma Trận Song Ngữ",
-                description: "Xây dựng bộ từ khóa xuất khẩu tiếng Anh B2B và bộ từ khóa sa bàn tiếng Việt.",
-                colorClass: "amber",
-                borderColor: "border-amber-200",
-                bgGradient: "from-amber-50/70 to-orange-50/40",
-                badgeBg: "bg-amber-100 text-amber-800",
-                icon: "fa-key",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-2-"))
-            },
-            {
-                id: 3,
-                code: "MODULE 3",
-                title: "Sản Xuất Nội Dung E-E-A-T & On-Page Song Ngữ",
-                description: "Biên soạn 2 bài Pillar chiến lược VI/EN và tối ưu điểm RankMath On-Page ≥ 90/100.",
-                colorClass: "emerald",
-                borderColor: "border-emerald-200",
-                bgGradient: "from-emerald-50/70 to-teal-50/40",
-                badgeBg: "bg-emerald-100 text-emerald-800",
-                icon: "fa-pen-nib",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-3-"))
-            },
-            {
-                id: 4,
-                code: "MODULE 4",
-                title: "Thiết Kế Media Xưởng Chuẩn 2 Logo & Geotag",
-                description: "Chụp ảnh sa bàn xưởng thật, dán logo chuẩn 'Mô Hình Song Anh' (VI) & 'Song Anh Model' (EN).",
-                colorClass: "rose",
-                borderColor: "border-rose-200",
-                bgGradient: "from-rose-50/70 to-pink-50/40",
-                badgeBg: "bg-rose-100 text-rose-800",
-                icon: "fa-image",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-4-"))
-            },
-            {
-                id: 5,
-                code: "MODULE 5",
-                title: "Cấu Hình Schema JSON-LD Đa Ngôn Ngữ",
-                description: "Khai báo Corporation, LocalBusiness xưởng Thủ Đức, Service và FAQPage song ngữ.",
-                colorClass: "indigo",
-                borderColor: "border-indigo-200",
-                bgGradient: "from-indigo-50/70 to-purple-50/40",
-                badgeBg: "bg-indigo-100 text-indigo-800",
-                icon: "fa-code",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-5-"))
-            },
-            {
-                id: 6,
-                code: "MODULE 6",
-                title: "Lập Chỉ Mục GSC & Báo Cáo Hiệu Suất",
-                description: "URL Inspection, Request Indexing trên Google Search Console và báo cáo thứ hạng tuần.",
-                colorClass: "sky",
-                borderColor: "border-sky-200",
-                bgGradient: "from-sky-50/70 to-blue-50/40",
-                badgeBg: "bg-sky-100 text-sky-800",
-                icon: "fa-chart-line",
-                tasks: seoMasterTasksData.filter(t => t.id.startsWith("seo-arch-6-"))
-            }
-        ];
-
-        // View filter state: 'all' | 'arch' | 'mhkt' | 'modules'
-        let currentSeoSiteView = 'all';
-        let seoArchAccordionState = { 1: true, 2: true, 3: true, 4: true, 5: true, 6: true };
-
-        // Helper: Play light sound on status toggle
+        // Helper: Phát âm thanh tương tác khi chuyển đổi trạng thái task
         function playSeoToggleSound(isCompleted) {
             try {
                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -20598,60 +21154,88 @@ let marketingActivityLog = [
             } catch(e) {}
         }
 
-        // Toggle task status
-        function toggleSeoMasterTaskStatus(taskId) {
-            const statuses = getSeoMasterTaskStatuses();
-            const taskObj = seoMasterTasksData.find(t => t.id === taskId);
-            const currentStatus = statuses[taskId] || (taskObj ? taskObj.defaultStatus : 'Đang làm');
-            const newStatus = (currentStatus === 'Hoàn thành') ? 'Đang làm' : 'Hoàn thành';
-            setSeoMasterTaskStatus(taskId, newStatus);
+        // Đồng bộ các option Website mục tiêu theo Lĩnh Vực đang chọn trên Header
+        function syncSeoWebsiteOptions(domainChanged = false) {
+            const siteSelect = document.getElementById('seo-filter-site');
+            if (!siteSelect) return;
 
+            const domainKey = (typeof currentDomain !== 'undefined') ? currentDomain : 'mo-hinh';
+            const existingDomain = siteSelect.getAttribute('data-domain');
+
+            if (!domainChanged && existingDomain === domainKey && siteSelect.options.length > 1) {
+                return;
+            }
+
+            siteSelect.setAttribute('data-domain', domainKey);
+            const currentVal = siteSelect.value || 'all';
+
+            // Lọc các task thuộc domain hiện tại
+            const domainTasks = seoMasterTasksData.filter(t => !t.domain_key || t.domain_key === domainKey);
+
+            // Đếm số lượng task theo từng website
+            const siteCounts = {};
+            domainTasks.forEach(t => {
+                const s = t.site || 'Khác';
+                siteCounts[s] = (siteCounts[s] || 0) + 1;
+            });
+
+            let optionsHtml = `<option value="all">🌐 Tất cả Website (${domainTasks.length} Tasks)</option>`;
+            const sites = Object.keys(siteCounts).sort((a, b) => siteCounts[b] - siteCounts[a]);
+
+            sites.forEach(s => {
+                let flag = '🌐';
+                if (s.includes('architecturalmodel')) flag = '🇺🇸';
+                else if (s.includes('mohinhkientruc') || s.includes('mohinhsonganh')) flag = '🇻🇳';
+                else if (s.includes('golf')) flag = '⛳';
+                else if (s.includes('vatlieu') || s.includes('lammohinh')) flag = '🛒';
+                optionsHtml += `<option value="${s}">${flag} ${s} (${siteCounts[s]} Tasks)</option>`;
+            });
+
+            siteSelect.innerHTML = optionsHtml;
+
+            if (sites.includes(currentVal) && !domainChanged) {
+                siteSelect.value = currentVal;
+            } else {
+                siteSelect.value = 'all';
+            }
+        }
+
+        // Cập nhật trạng thái trực tiếp (Hỗ trợ 6 trạng thái Notion)
+        function updateSeoTaskStatusDirect(taskId, newStatus) {
+            setSeoMasterTaskStatus(taskId, newStatus);
             const isDone = (newStatus === 'Hoàn thành');
             playSeoToggleSound(isDone);
 
+            const taskObj = seoMasterTasksData.find(t => t.id === taskId);
             const taskTitle = taskObj ? `${taskObj.code} ${taskObj.title}` : taskId;
+
             if (typeof showToast === 'function') {
                 if (isDone) {
                     showToast(`✅ Đã hoàn thành: ${taskTitle}`, 'success');
                 } else {
-                    showToast(`🔄 Đang triển khai: ${taskTitle}`, 'info');
+                    showToast(`⚡ Cập nhật: [${newStatus}] - ${taskTitle}`, 'info');
                 }
             }
 
-            renderSeoMasterTasks();
-        }
-
-        // View switcher: 'all' | 'arch' | 'mhkt' | 'modules'
-        function setSeoSiteView(view) {
-            const siteSelect = document.getElementById('seo-filter-site');
-            if (siteSelect) {
-                if (view === 'arch') siteSelect.value = 'architecturalmodel.org';
-                else if (view === 'mhkt') siteSelect.value = 'mohinhkientruc.org';
-                else if (view === 'all') siteSelect.value = 'all';
-                else siteSelect.value = view;
+            // Sync ngầm lên API Notion nếu kết nối sẵn
+            if (taskId && taskId.length > 25) {
+                try {
+                    fetch('/api/notion/update-task', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ page_id: taskId, status: newStatus })
+                    }).catch(e => console.log('Notion background sync notice:', e));
+                } catch(e) {}
             }
-            renderSeoMasterTasks();
-        }
 
-        function resetSeoFilters() {
-            const siteEl = document.getElementById('seo-filter-site');
-            const searchEl = document.getElementById('seo-filter-search');
-            const catEl = document.getElementById('seo-filter-category');
-            const assEl = document.getElementById('seo-filter-assignee');
-            const statEl = document.getElementById('seo-filter-status');
-            if (siteEl) siteEl.value = 'all';
-            if (searchEl) searchEl.value = '';
-            if (catEl) catEl.value = 'all';
-            if (assEl) assEl.value = 'all';
-            if (statEl) statEl.value = 'all';
             renderSeoMasterTasks();
         }
 
         // Helper badges
         function getSeoPriorityBadge(priority) {
-            if (priority === 'P0 - Khẩn cấp' || priority === 'P0') {
+            if (priority && (priority.includes('Khẩn') || priority.includes('P0'))) {
                 return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-100 text-rose-700 border border-rose-200 whitespace-nowrap">P0 Khẩn cấp</span>`;
-            } else if (priority === 'P1 - Cao' || priority === 'P1') {
+            } else if (priority && (priority.includes('Cao') || priority.includes('P1'))) {
                 return `<span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-700 border border-amber-200 whitespace-nowrap">P1 Cao</span>`;
             } else {
                 return `<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600 border border-slate-200 whitespace-nowrap">P2 Thường</span>`;
@@ -20668,89 +21252,120 @@ let marketingActivityLog = [
             }
         }
 
-        function getSeoStatusToggleBtn(taskId, currentStatus) {
-            const isDone = (currentStatus === 'Hoàn thành');
-            if (isDone) {
-                return `
-                    <button onclick="toggleSeoMasterTaskStatus('${taskId}')" class="w-full sm:w-auto px-2.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300 text-[11px] font-bold transition flex items-center justify-center gap-1.5 shadow-2xs">
-                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
-                        <span>Hoàn thành</span>
-                    </button>
-                `;
-            } else {
-                return `
-                    <button onclick="toggleSeoMasterTaskStatus('${taskId}')" class="w-full sm:w-auto px-2.5 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 text-[11px] font-bold transition flex items-center justify-center gap-1.5 shadow-2xs">
-                        <i class="fa-solid fa-spinner fa-spin text-amber-600 text-[10px]"></i>
-                        <span>Đang làm</span>
-                    </button>
-                `;
-            }
+        function getSeoStatusSelectHtml(taskId, currentStatus) {
+            let colorClass = 'bg-amber-50 text-amber-800 border-amber-300';
+            if (currentStatus === 'Hoàn thành') colorClass = 'bg-emerald-50 text-emerald-800 border-emerald-300';
+            else if (currentStatus === 'Duy trì') colorClass = 'bg-sky-50 text-sky-800 border-sky-300';
+            else if (currentStatus === 'Tạm hoãn') colorClass = 'bg-rose-50 text-rose-800 border-rose-300';
+            else if (currentStatus === 'Chưa lên lịch') colorClass = 'bg-slate-100 text-slate-700 border-slate-300';
+            else if (currentStatus === 'Cần họp') colorClass = 'bg-purple-50 text-purple-800 border-purple-300';
+
+            const statuses = [
+                { val: 'Đang làm', label: '🔄 Đang làm' },
+                { val: 'Duy trì', label: '🔁 Duy trì' },
+                { val: 'Hoàn thành', label: '✅ Hoàn thành' },
+                { val: 'Tạm hoãn', label: '⏸️ Tạm hoãn' },
+                { val: 'Chưa lên lịch', label: '⏳ Chưa lên lịch' },
+                { val: 'Cần họp', label: '👥 Cần họp' }
+            ];
+
+            const options = statuses.map(s => `<option value="${s.val}" ${currentStatus === s.val ? 'selected' : ''}>${s.label}</option>`).join('');
+
+            return `
+                <select onchange="updateSeoTaskStatusDirect('${taskId}', this.value)" class="text-[11px] font-bold rounded-xl px-2.5 py-1.5 border ${colorClass} focus:outline-none cursor-pointer transition shadow-2xs">
+                    ${options}
+                </select>
+            `;
         }
 
-        // Main Render Function for SEO Website Tasks
-        function renderSeoMasterTasks() {
+        function resetSeoFilters() {
+            const siteEl = document.getElementById('seo-filter-site');
+            const searchEl = document.getElementById('seo-filter-search');
+            const statEl = document.getElementById('seo-filter-status');
+            if (siteEl) siteEl.value = 'all';
+            if (searchEl) searchEl.value = '';
+            if (statEl) statEl.value = 'all';
+            renderSeoMasterTasks();
+        }
+
+        // Hàm chính Render Danh Sách Công Việc SEO Website
+        function renderSeoMasterTasks(resetDomain = false) {
             const container = document.getElementById('seo-tasks-table-container');
             if (!container) return;
 
+            // 1. Đồng bộ danh sách Website theo Lĩnh Vực hiện tại
+            syncSeoWebsiteOptions(resetDomain);
+
             const savedStatuses = getSeoMasterTaskStatuses();
+            const domainKey = (typeof currentDomain !== 'undefined') ? currentDomain : 'mo-hinh';
 
             // Filter inputs
             const filterSite = document.getElementById('seo-filter-site')?.value || 'all';
-            const searchVal = (document.getElementById('seo-filter-search')?.value || '').trim().toLowerCase();
-            const filterCat = document.getElementById('seo-filter-category')?.value || 'all';
-            const filterAssignee = document.getElementById('seo-filter-assignee')?.value || 'all';
             const filterStatus = document.getElementById('seo-filter-status')?.value || 'all';
+            const searchVal = (document.getElementById('seo-filter-search')?.value || '').trim().toLowerCase();
 
-            // Filter tasks for display
-            const filteredTasks = seoMasterTasksData.filter(t => {
-                const currentStatus = savedStatuses[t.id] || t.defaultStatus;
+            // 2. Lọc tasks theo Domain và 3 Bộ Lọc (Website, Trạng Thái, Tìm Kiếm)
+            const domainTasks = seoMasterTasksData.filter(t => !t.domain_key || t.domain_key === domainKey);
 
-                // Website Filter (Sếp yêu cầu chọn website nào thì data bên dưới đổi theo)
+            const filteredTasks = domainTasks.filter(t => {
+                const currentStatus = savedStatuses[t.id] || t.status || t.defaultStatus || 'Đang làm';
+
+                // Lọc theo Website
                 if (filterSite !== 'all' && t.site !== filterSite) {
                     return false;
                 }
 
-                // Category Filter
-                if (filterCat !== 'all') {
-                    if (filterCat === 'Tech' && t.tag !== 'Tech') return false;
-                    if (filterCat === 'Keyword' && t.tag !== 'Keyword') return false;
-                    if (filterCat === 'Content' && !['Content', 'Pillar', 'On-Page'].includes(t.tag)) return false;
-                    if (filterCat === 'Media' && t.tag !== 'Media') return false;
-                    if (filterCat === 'Schema' && t.tag !== 'Schema') return false;
-                    if (filterCat === 'Index' && t.tag !== 'Index') return false;
-                    if (filterCat === 'Report' && t.tag !== 'Report') return false;
-                }
-
-                // Assignee Filter
-                if (filterAssignee !== 'all' && !t.assignee.includes(filterAssignee) && filterAssignee !== t.assignee) {
-                    return false;
-                }
-
-                // Status Filter
+                // Lọc theo Trạng Thái
                 if (filterStatus !== 'all' && currentStatus !== filterStatus) {
                     return false;
                 }
 
-                // Search Filter
+                // Lọc theo Tìm Kiếm
                 if (searchVal) {
-                    const matchText = (t.code + ' ' + t.site + ' ' + t.tag + ' ' + t.title + ' ' + t.description + ' ' + t.assignee + ' ' + t.priority + ' ' + t.lang).toLowerCase();
+                    const matchText = (
+                        (t.code || '') + ' ' +
+                        (t.site || '') + ' ' +
+                        (t.tag || '') + ' ' +
+                        (t.title || '') + ' ' +
+                        (t.description || '') + ' ' +
+                        (t.assignee || '') + ' ' +
+                        (t.priority || '') + ' ' +
+                        (t.lang || '')
+                    ).toLowerCase();
                     if (!matchText.includes(searchVal)) return false;
                 }
 
                 return true;
             });
 
-            // If empty
+            // Tên hiển thị của Domain
+            let domainTitle = 'MÔ HÌNH KIẾN TRÚC & SA BÀN';
+            let domainBadge = 'bg-brand-navy text-white';
+            if (domainKey === 'golf') {
+                domainTitle = 'SÂN GOLF & NGHỈ DƯỠNG GOLF';
+                domainBadge = 'bg-emerald-700 text-white';
+            } else if (domainKey === 'tmdt') {
+                domainTitle = 'THƯƠNG MẠI ĐIỆN TỬ (TMĐT) & VẬT LIỆU';
+                domainBadge = 'bg-sky-700 text-white';
+            }
+
+            // Nếu không tìm thấy kết quả
             if (filteredTasks.length === 0) {
                 container.innerHTML = `
-                    <div class="light-card p-8 sm:p-10 rounded-2xl border border-slate-200 bg-white text-center text-slate-500 space-y-2 shadow-2xs">
-                        <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300"></i>
-                        <h4 class="font-bold text-slate-700 text-sm">Không tìm thấy công việc SEO phù hợp</h4>
-                        <p class="text-xs text-slate-400">Vui lòng thử tìm kiếm với từ khóa khác hoặc đặt lại bộ lọc.</p>
-                        <button onclick="resetSeoFilters()" class="mt-2 px-3.5 py-1.5 rounded-xl bg-sky-50 text-sky-700 font-bold text-xs border border-sky-200 hover:bg-sky-100 transition inline-flex items-center gap-1.5">
-                            <i class="fa-solid fa-rotate-left"></i>
-                            <span>Đặt lại tất cả bộ lọc</span>
-                        </button>
+                    <div class="light-card p-8 sm:p-10 rounded-2xl border border-slate-200 bg-white text-center text-slate-500 space-y-3 shadow-2xs">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm">Không tìm thấy công việc SEO phù hợp</h4>
+                        <p class="text-xs text-slate-400 max-w-md mx-auto">
+                            Không có task nào trong lĩnh vực <strong>${domainTitle}</strong> khớp với bộ lọc Website / Trạng thái hoặc từ khóa tìm kiếm hiện tại.
+                        </p>
+                        <div>
+                            <button onclick="resetSeoFilters()" class="px-4 py-2 rounded-xl bg-sky-50 text-sky-700 font-bold text-xs border border-sky-200 hover:bg-sky-100 transition inline-flex items-center gap-1.5">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <span>Đặt lại bộ lọc</span>
+                            </button>
+                        </div>
                     </div>
                 `;
                 return;
@@ -20759,19 +21374,27 @@ let marketingActivityLog = [
             let html = '';
 
             // Header summary bar
-            const completedCount = filteredTasks.filter(t => (savedStatuses[t.id] || t.defaultStatus) === 'Hoàn thành').length;
+            const completedCount = filteredTasks.filter(t => (savedStatuses[t.id] || t.status || t.defaultStatus) === 'Hoàn thành').length;
+            const inProgressCount = filteredTasks.filter(t => (savedStatuses[t.id] || t.status || t.defaultStatus) === 'Đang làm').length;
             const siteLabel = filterSite === 'all' ? 'Tất cả Website' : filterSite;
+
             html += `
-                <div class="flex items-center justify-between px-1 text-xs text-slate-500">
-                    <span>Đang hiển thị <strong>${filteredTasks.length}</strong> tasks (<strong class="text-sky-700">${siteLabel}</strong>)</span>
-                    <span class="font-semibold text-slate-700">Đã hoàn thành: <strong class="text-emerald-600">${completedCount}</strong> / ${filteredTasks.length}</span>
+                <div class="flex items-center justify-between px-1 flex-wrap gap-2 text-xs text-slate-500">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-extrabold ${domainBadge}">${domainTitle}</span>
+                        <span>Đang hiển thị <strong>${filteredTasks.length}</strong> tasks (<strong class="text-sky-700">${siteLabel}</strong>)</span>
+                    </div>
+                    <div class="flex items-center gap-3 font-semibold text-slate-700 text-[11.5px]">
+                        <span class="flex items-center gap-1">🔄 Đang làm: <strong class="text-amber-600 font-bold">${inProgressCount}</strong></span>
+                        <span class="flex items-center gap-1">✅ Hoàn thành: <strong class="text-emerald-600 font-bold">${completedCount}</strong> / ${filteredTasks.length}</span>
+                    </div>
                 </div>
             `;
 
-            // Mobile Cards (< 640px)
+            // Mobile Cards View (< 640px)
             html += `<div class="block sm:hidden space-y-3">`;
             filteredTasks.forEach(t => {
-                const currentStatus = savedStatuses[t.id] || t.defaultStatus;
+                const currentStatus = savedStatuses[t.id] || t.status || t.defaultStatus || 'Đang làm';
                 const isDone = (currentStatus === 'Hoàn thành');
 
                 html += `
@@ -20779,8 +21402,8 @@ let marketingActivityLog = [
                         <div class="flex items-center justify-between gap-2">
                             <div class="flex items-center gap-1.5 flex-wrap">
                                 <span class="text-xs font-black text-slate-900">${t.code}</span>
-                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.siteBadge}">${t.site}</span>
-                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
+                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.siteBadge || 'bg-slate-50 text-slate-700 border-slate-200'}">${t.site}</span>
+                                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.tagColor || 'bg-blue-50 text-blue-700 border-blue-200'}">${t.tag}</span>
                             </div>
                             <div class="flex items-center gap-1 shrink-0">
                                 ${getSeoPriorityBadge(t.priority)}
@@ -20790,16 +21413,24 @@ let marketingActivityLog = [
 
                         <div>
                             <h4 class="text-xs font-bold ${isDone ? 'text-slate-500 line-through' : 'text-slate-900'} leading-snug">${t.title}</h4>
-                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description}</p>
+                            <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description || ''}</p>
                         </div>
 
                         <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
-                            <div class="flex items-center gap-1.5 text-[11px] text-slate-600 font-medium">
-                                <i class="fa-solid fa-user-gear text-slate-400"></i>
-                                <span>Phụ trách: <strong>${t.assignee}</strong></span>
+                            <div class="flex items-center justify-between text-[11px] text-slate-600 font-medium">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-solid fa-user-gear text-slate-400"></i>
+                                    <span>${t.assignee}</span>
+                                </span>
+                                ${t.notion_url ? `
+                                    <a href="${t.notion_url}" target="_blank" class="text-slate-400 hover:text-sky-600 transition flex items-center gap-1 text-[10px]" title="Mở task trên Notion">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                        <span>Notion</span>
+                                    </a>
+                                ` : ''}
                             </div>
                             <div class="w-full">
-                                ${getSeoStatusToggleBtn(t.id, currentStatus)}
+                                ${getSeoStatusSelectHtml(t.id, currentStatus)}
                             </div>
                         </div>
                     </div>
@@ -20807,51 +21438,59 @@ let marketingActivityLog = [
             });
             html += `</div>`;
 
-            // Desktop Table (>= 640px)
+            // Desktop Table View (>= 640px)
             html += `
                 <div class="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xs">
                     <table class="w-full text-left text-xs border-collapse">
                         <thead>
                             <tr class="bg-slate-100/90 text-slate-700 font-bold border-b border-slate-200">
                                 <th class="p-3 w-16 text-center">Mã</th>
-                                <th class="p-3 w-40">Website / Dự Án</th>
+                                <th class="p-3 w-44">Website / Dự Án</th>
                                 <th class="p-3 w-24">Phân Loại</th>
                                 <th class="p-3">Hạng Mục Công Việc &amp; Mô Tả Thực Thi</th>
-                                <th class="p-3 w-44">Người Phụ Trách</th>
+                                <th class="p-3 w-40">Người Phụ Trách</th>
                                 <th class="p-3 w-28 text-center">Ưu Tiên</th>
                                 <th class="p-3 w-24 text-center">Ngôn Ngữ</th>
                                 <th class="p-3 w-36 text-center">Trạng Thái</th>
+                                <th class="p-3 w-16 text-center">Notion</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
             `;
 
             filteredTasks.forEach(t => {
-                const currentStatus = savedStatuses[t.id] || t.defaultStatus;
+                const currentStatus = savedStatuses[t.id] || t.status || t.defaultStatus || 'Đang làm';
                 const isDone = (currentStatus === 'Hoàn thành');
 
                 html += `
                     <tr class="hover:bg-slate-50/90 transition ${isDone ? 'bg-emerald-50/20' : ''}">
                         <td class="p-3 font-extrabold text-slate-800 text-center">${t.code}</td>
                         <td class="p-3">
-                            <span class="px-2 py-0.5 rounded text-[10.5px] font-bold border ${t.siteBadge} whitespace-nowrap block truncate max-w-[150px]" title="${t.site}">${t.site}</span>
+                            <span class="px-2 py-0.5 rounded text-[10.5px] font-bold border ${t.siteBadge || 'bg-slate-50 text-slate-700 border-slate-200'} whitespace-nowrap block truncate max-w-[160px]" title="${t.site}">${t.site}</span>
                         </td>
                         <td class="p-3">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${t.tagColor || 'bg-blue-50 text-blue-700 border-blue-200'}">${t.tag}</span>
                         </td>
                         <td class="p-3">
                             <p class="font-bold ${isDone ? 'text-slate-500 line-through' : 'text-slate-900'} leading-snug">${t.title}</p>
-                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">${t.description}</p>
+                            <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">${t.description || ''}</p>
                         </td>
                         <td class="p-3 font-semibold text-slate-700">
                             <span class="inline-flex items-center gap-1.5 bg-slate-100 px-2 py-1 rounded-lg text-[11px]">
                                 <i class="fa-solid fa-user-gear text-slate-500 text-[10px]"></i>
-                                <span class="truncate max-w-[130px]">${t.assignee}</span>
+                                <span class="truncate max-w-[120px]" title="${t.assignee}">${t.assignee}</span>
                             </span>
                         </td>
                         <td class="p-3 text-center">${getSeoPriorityBadge(t.priority)}</td>
                         <td class="p-3 text-center">${getSeoLangBadge(t.lang)}</td>
-                        <td class="p-3 text-center">${getSeoStatusToggleBtn(t.id, currentStatus)}</td>
+                        <td class="p-3 text-center">${getSeoStatusSelectHtml(t.id, currentStatus)}</td>
+                        <td class="p-3 text-center">
+                            ${t.notion_url ? `
+                                <a href="${t.notion_url}" target="_blank" class="w-7 h-7 inline-flex items-center justify-center rounded-lg bg-slate-100 hover:bg-sky-100 text-slate-500 hover:text-sky-700 transition" title="Mở trang Notion chi tiết">
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                                </a>
+                            ` : '-'}
+                        </td>
                     </tr>
                 `;
             });
@@ -20865,164 +21504,7 @@ let marketingActivityLog = [
             container.innerHTML = html;
         }
 
-        function renderSeoModulesAccordion(container, savedStatuses, searchVal, filterStatus) {
-            let html = `
-                <div class="flex items-center justify-between px-1 pb-1">
-                    <span class="text-xs text-slate-500">Hiển thị 6 Module Trọng Tâm (architecturalmodel.org)</span>
-                    <div class="flex items-center gap-2">
-                        <button onclick="toggleAllSeoArchModules(true)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold transition">
-                            <i class="fa-solid fa-angles-down mr-1"></i> Mở tất cả
-                        </button>
-                        <button onclick="toggleAllSeoArchModules(false)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold transition">
-                            <i class="fa-solid fa-angles-up mr-1"></i> Thu gọn
-                        </button>
-                    </div>
-                </div>
-                <div class="space-y-4">
-            `;
-
-            seoArchModulesData.forEach(mod => {
-                const filteredTasks = mod.tasks.filter(t => {
-                    const currentStatus = savedStatuses[t.id] || t.defaultStatus;
-                    if (filterStatus !== 'all' && currentStatus !== filterStatus) return false;
-                    if (searchVal) {
-                        const matchText = (t.code + ' ' + t.tag + ' ' + t.title + ' ' + t.description + ' ' + t.assignee).toLowerCase();
-                        if (!matchText.includes(searchVal)) return false;
-                    }
-                    return true;
-                });
-
-                const modTotal = mod.tasks.length;
-                const modCompleted = mod.tasks.filter(t => (savedStatuses[t.id] || t.defaultStatus) === 'Hoàn thành').length;
-                const modPct = modTotal > 0 ? Math.round((modCompleted / modTotal) * 100) : 0;
-                const isOpen = seoArchAccordionState[mod.id] !== false;
-
-                html += `
-                    <div class="light-card rounded-2xl border ${mod.borderColor} bg-white overflow-hidden shadow-xs transition duration-200">
-                        <!-- Module Header -->
-                        <div onclick="toggleSeoArchModule(${mod.id})" class="p-4 sm:p-5 bg-gradient-to-r ${mod.bgGradient} border-b ${mod.borderColor} flex flex-col md:flex-row md:items-center justify-between gap-3 cursor-pointer hover:bg-slate-50 transition select-none">
-                            <div class="flex items-start sm:items-center gap-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-white border ${mod.borderColor} text-${mod.colorClass}-600 flex items-center justify-center text-base shadow-2xs shrink-0 mt-0.5 sm:mt-0">
-                                    <i class="fa-solid ${mod.icon}"></i>
-                                </div>
-                                <div>
-                                    <div class="flex flex-wrap items-center gap-2">
-                                        <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full ${mod.badgeBg} uppercase tracking-wider">${mod.code}</span>
-                                        <h3 class="font-heading font-extrabold text-sm sm:text-base text-slate-900">${mod.title}</h3>
-                                    </div>
-                                    <p class="text-xs text-slate-500 mt-0.5">${mod.description}</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between md:justify-end gap-3 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-200/60">
-                                <div class="flex items-center gap-2.5">
-                                    <div class="w-24 sm:w-32 bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
-                                        <div class="bg-${mod.colorClass}-600 h-2 rounded-full transition-all duration-500" style="width: ${modPct}%"></div>
-                                    </div>
-                                    <span class="text-xs font-extrabold text-slate-700 whitespace-nowrap">${modCompleted}/${modTotal} (${modPct}%)</span>
-                                </div>
-                                <button type="button" class="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-500 flex items-center justify-center hover:bg-slate-100 transition shrink-0" title="Mở rộng / Thu gọn">
-                                    <i id="seo-arch-module-icon-${mod.id}" class="fa-solid fa-chevron-down text-xs transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Module Body -->
-                        <div id="seo-arch-module-body-${mod.id}" class="${isOpen ? '' : 'hidden'} p-3 sm:p-4">
-                            <!-- Mobile Cards -->
-                            <div class="block sm:hidden space-y-3">
-                `;
-
-                filteredTasks.forEach(t => {
-                    const currentStatus = savedStatuses[t.id] || t.defaultStatus;
-                    const isDone = (currentStatus === 'Hoàn thành');
-                    html += `
-                        <div class="p-3.5 rounded-xl border ${isDone ? 'border-emerald-200 bg-emerald-50/30' : 'border-slate-200 bg-white'} space-y-2 shadow-2xs">
-                            <div class="flex items-center justify-between gap-2">
-                                <div class="flex items-center gap-1.5">
-                                    <span class="text-xs font-black text-slate-900">${t.code}</span>
-                                    <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
-                                </div>
-                                <div class="flex items-center gap-1.5">
-                                    ${getSeoPriorityBadge(t.priority)}
-                                    ${getSeoLangBadge(t.lang)}
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold ${isDone ? 'text-slate-600 line-through' : 'text-slate-900'} leading-snug">${t.title}</h4>
-                                <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description}</p>
-                            </div>
-                            <div class="pt-2 border-t border-slate-100 flex flex-col gap-2">
-                                <div class="flex items-center gap-1.5 text-[11px] text-slate-600 font-medium">
-                                    <i class="fa-solid fa-user-gear text-slate-400"></i>
-                                    <span>Phụ trách: <strong>${t.assignee}</strong></span>
-                                </div>
-                                <div class="w-full">
-                                    ${getSeoStatusToggleBtn(t.id, currentStatus)}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                html += `</div>`;
-
-                // Desktop Table
-                html += `
-                    <div class="hidden sm:block overflow-x-auto rounded-xl border border-slate-200">
-                        <table class="w-full text-left text-xs border-collapse">
-                            <thead>
-                                <tr class="bg-slate-100/80 text-slate-700 font-bold border-b border-slate-200">
-                                    <th class="p-3 w-16 text-center">Mã</th>
-                                    <th class="p-3 w-24">Phân loại</th>
-                                    <th class="p-3">Hạng mục công việc &amp; Mô tả chi tiết</th>
-                                    <th class="p-3 w-44">Người phụ trách</th>
-                                    <th class="p-3 w-28 text-center">Ưu tiên</th>
-                                    <th class="p-3 w-28 text-center">Ngôn ngữ</th>
-                                    <th class="p-3 w-36 text-center">Trạng thái</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 bg-white">
-                `;
-
-                filteredTasks.forEach(t => {
-                    const currentStatus = savedStatuses[t.id] || t.defaultStatus;
-                    const isDone = (currentStatus === 'Hoàn thành');
-                    html += `
-                        <tr class="hover:bg-slate-50/80 transition ${isDone ? 'bg-emerald-50/20' : ''}">
-                            <td class="p-3 font-extrabold text-slate-800 text-center">${t.code}</td>
-                            <td class="p-3">
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${t.tagColor}">${t.tag}</span>
-                            </td>
-                            <td class="p-3">
-                                <p class="font-bold ${isDone ? 'text-slate-600 line-through' : 'text-slate-900'} leading-snug">${t.title}</p>
-                                <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">${t.description}</p>
-                            </td>
-                            <td class="p-3 font-semibold text-slate-700">
-                                <span class="inline-flex items-center gap-1.5 bg-slate-100 px-2 py-1 rounded-lg text-[11px]">
-                                    <i class="fa-solid fa-user-gear text-slate-500 text-[10px]"></i>
-                                    <span>${t.assignee}</span>
-                                </span>
-                            </td>
-                            <td class="p-3 text-center">${getSeoPriorityBadge(t.priority)}</td>
-                            <td class="p-3 text-center">${getSeoLangBadge(t.lang)}</td>
-                            <td class="p-3 text-center">${getSeoStatusToggleBtn(t.id, currentStatus)}</td>
-                        </tr>
-                    `;
-                });
-
-                html += `
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>`;
-            });
-
-            html += `</div>`;
-            container.innerHTML = html;
-        }
-
-        // Backward compatibility alias
+        // Backward compatibility aliases
         function renderSeoArchTasks() {
             renderSeoMasterTasks();
         }
@@ -21030,9 +21512,16 @@ let marketingActivityLog = [
         function filterSeoArchTasks() {
             renderSeoMasterTasks();
         }
-        
-        // =============================================================
-        // =============================================================
+
+        function setSeoSiteView(view) {
+            const siteSelect = document.getElementById('seo-filter-site');
+            if (siteSelect) {
+                if (view === 'all') siteSelect.value = 'all';
+                else siteSelect.value = view;
+            }
+            renderSeoMasterTasks();
+        }
+
         // 👥 PERSONEL MODAL, LIVE NOTION COMMENTS & PROFILE LINK
         // =============================================================
         const songAnhMembersDB = [{"id": "19d4b5e7-3d90-80ad-8fee-f81c3b11fd69", "name": "PHẠM HOÀNG TIẾN", "group": "Khối Văn Phòng", "role": "Marketing & Nhân sự", "work_type": "Hành chính", "is_lead": false, "phone": "0981169200 - 0333885925", "email": "phamhoangtien0@gmail.com", "gender": "Nam", "dob": "1995-03-31", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "VIB", "bank_acc": "606704060064783", "start_date": "2016-07-01", "status": "Đang làm", "hdld_type": "Hợp đồng thời vụ", "facebook": "", "note": "Khối Văn Phòng | Marketing & Nhân sự (Hành chính)", "comments": [], "notion_url": "https://www.notion.so/19d4b5e73d9080ad8feef81c3b11fd69"}, {"id": "1a74b5e7-3d90-8003-9780-e2c5303d3619", "name": "NGUYỄN THỊ KIM THỦY", "group": "Khối Văn Phòng", "role": "Kế toán & Thủ kho", "work_type": "Hành chính", "is_lead": false, "phone": "0988080440 - 0934060993", "email": "Chưa cập nhật", "gender": "N/A", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/1a74b5e73d9080039780e2c5303d3619"}, {"id": "3894b5e7-3d90-8019-ab3e-f390d0d794a1", "name": "VÕ MINH SANG", "group": "Khối Văn Phòng", "role": "Nhân viên Sales", "work_type": "Hành chính", "is_lead": false, "phone": "0769766104", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-06-24", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Nhân viên Sales & Văn phòng (Chính thức)", "comments": [{"text": "Bắt đầu thử việc vào ngày 29/06/2026", "date": "2026-06-29"}], "notion_url": "https://www.notion.so/3894b5e73d908019ab3ef390d0d794a1"}, {"id": "2304b5e7-3d90-8083-b473-fe899511616f", "name": "ĐINH VĂN THẮNG", "group": "Khối Văn Phòng", "role": "Lập trình viên", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0983262210", "email": "thangdv86@gmail.com", "gender": "Nam", "dob": "1986-12-31", "address": "CH 0708 nhà T09 KĐT Times City – 458 Minh Khai – Phường Vĩnh Tuy- Quận Hai Bà Trưng – Thành phố Hà Nội", "mst": "Chưa cập nhật", "bank": "Techcombank", "bank_acc": "19124701962011", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/2304b5e73d908083b473fe899511616f"}, {"id": "1ba4b5e7-3d90-80a1-8d95-ca5f7a8e5332", "name": "NGUYỄN THỊ HOA", "group": "Khối Văn Phòng", "role": "Kế toán trưởng", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0398034685", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "1985-05-25", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/1ba4b5e73d9080a18d95ca5f7a8e5332"}, {"id": "1f14b5e7-3d90-806c-bd02-e848aafa9056", "name": "HOÀNG THẾ ANH", "group": "Nhóm Thế Anh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966102980", "email": "Chưa cập nhật", "gender": "Nam", "dob": "1997-10-27", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "VietinBank", "bank_acc": "103002551791", "start_date": "2025-05-12", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Hôm nay phỏng vấn", "date": "2025-05-12"}, {"text": "Hẹn Bắt đầu thử việc vào ngày 15/05/2025", "date": "2025-05-12"}, {"text": "Nay bắt đầu thử việc ngày đầu tiên", "date": "2025-05-15"}, {"text": "ID chấm công 21", "date": "2025-05-15"}, {"text": "Hết thời gian thử việc. Bắt đai62 làm chính thức từ hôm nay 05/06/2025", "date": "2025-06-05"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ => 4.500.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}, {"text": "Tăng chức lên thành Phó nhóm Kỹ thuật", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1f14b5e73d90806cbd02e848aafa9056"}, {"id": "3ac4b5e7-3d90-80cb-93cd-f9215212457d", "name": "NGUYỄN HOÀNG TRUNG HẢI", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0769414678", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2024-05-23", "address": "Thôn Tân Phú, Tân Hội, Đức Trọng, Lâm Đồng", "mst": "Chưa cập nhật", "bank": "MB Bank", "bank_acc": "19034444888889", "start_date": "2026-07-28", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "30/7 Đã phỏng vấn với Sếp ⇒ Đồng ý ⇒ Xác nhận thời gian có thể thử việc", "date": "2026-07-31"}, {"text": "Hop cty đưa về nhóm của T. Anh", "date": "2026-08-10"}, {"text": "Sếp chuyển về lại nhóm Hiển", "date": "2026-08-11"}, {"text": "13/8 Sếp chuyển về nhóm Thế Anh", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3ac4b5e73d9080cb93cdf9215212457d"}, {"id": "3b24b5e7-3d90-8044-bbe8-dfdd9e7f6f0c", "name": "TRẦN VĂN HÙNG", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0778019052", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2022-09-07", "address": "33, đường 7 Long Trường, TP Thủ Đức, Hồ Chí Minh", "mst": "Chưa cập nhật", "bank": "Vietcombank", "bank_acc": "1035802411 ", "start_date": "2026-08-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Bắt đầu thử việc vào ngày 10/08/2026", "date": "2026-08-08"}, {"text": "Đã đến thử việc, kết thúc thử việc vào hết 24/08", "date": "2026-08-10"}, {"text": "Đưa về nhóm của T. Anh", "date": "2026-08-11"}, {"text": "Hết thời gian thử việc và bắt đầu làm chính thức vào ngày 25/08/2026", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3b24b5e73d908044bbe8dfdd9e7f6f0c"}, {"id": "33d4b5e7-3d90-806d-9578-e34d7237c3ca", "name": "DIÊM THỊ DIỄM QUỲNH", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0902 625 485", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-04-07", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Kết thúc thử việc vào ngày 07/05/2026.\nBắt đầu làm chính thức vào ngày 08/05/2026.\nThuộc nhóm Thế Anh", "date": "2026-05-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Bạn nữ nỗ lực (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Bạn nữ nỗ lực (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/33d4b5e73d90806d9578e34d7237c3ca"}, {"id": "1dc4b5e7-3d90-80f1-8490-c142614369ab", "name": "NGUYỄN HỒNG ĐẠT", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0919259409", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2003-01-01", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "MB Bank", "bank_acc": "0919259409", "start_date": "2025-04-17", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Link hồ sơ: https://drive.google.com/drive/folders/1Kbv9KqJwSVN793SiIr_zQMm8kmzl6Lqi", "date": "2025-04-21"}, {"text": "Bắt đầu thử việc ngày hôm nay: 21/04/2025", "date": "2025-04-21"}, {"text": "ID chấm công: 19", "date": "2025-04-21"}, {"text": "Bắt đầu đưa về nhóm Nhân bắt đầu ngày 13/05/2025", "date": "2025-05-12"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ => 4.000.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1dc4b5e73d9080f18490c142614369ab"}, {"id": "1a24b5e7-3d90-80c8-87c6-d1858bdb949d", "name": "MAI XUÂN HUYNH", "group": "Nhóm Huynh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0366930090", "email": "19211tt2049@mail.tdc.edu.vn", "gender": "Nam", "dob": "1999-01-13", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Agribank", "bank_acc": "6100205565299", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "17/03/2025 Thưởng Huynh tiền sáng tạo ra nắp sơn giúp tiết kiệm sơn", "date": "2025-03-17"}, {"text": "Huynh chuyển lên vai trò là trưởng nhóm kỹ thuật", "date": "2025-10-04"}, {"text": "Lương duyệt tăng từ 4,5 triệu thành 5,5 triệu", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1a24b5e73d9080c887c6d1858bdb949d"}, {"id": "3ae4b5e7-3d90-8017-960e-d931a62aba05", "name": "TRỊNH BÍCH VÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0584348350", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "2002-01-08", "address": "480/58, Nguyễn Tri Phương, P9, Q10, Hồ Chí Minh", "mst": "Chưa cập nhật", "bank": "Techcombank", "bank_acc": "19037503205019", "start_date": "2026-07-29", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Phỏng vấn\n  • Đã làm bên Imodel\n  • Đánh giá bên cty cũ quy trình làm việc ko rõ ràng\n  • Nguyễn Hoàng Thiên Vy giới thiệu qua. Cũng đã từng làm bên Phương Nam\n  • Ở Bùi Đình Túy nên đi hơi xa. Đang cân nhắc\n  • Quê hcm, Q10\n  • Sêps duyêt", "date": "2026-08-04"}, {"text": "Bắt đầu thử việc vào ngày 10/08/2026", "date": "2026-08-08"}, {"text": "Đưa về nhóm Huynh", "date": "2026-08-11"}, {"text": "Hết thời gian thử việc, bắt đầu làm chính thức vào ngày 25/08/2026", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3ae4b5e73d908017960ed931a62aba05"}, {"id": "2824b5e7-3d90-80d4-818d-c3cbd845a8c6", "name": "NGUYỄN TRỌNG ÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0563418246", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2004-01-13", "address": "Cái Răng, Cần Thơ", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-08-06", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "06/08/2025 ứng tuyển vị trí kỹ thuật", "date": "2025-10-04"}, {"text": "Hồ sơ CV https://drive.google.com/file/d/1UCrIduJRjOxzlynDXEacCMkRZo3Aqvk8/view?usp=drive_link", "date": "2025-10-04"}, {"text": "Thời gian bắt đầu thử việc của em bắt đầu từ ngày 03/09/2025. Mức lương 7 triệu. ID chấm công 2508:04/-heart1/-strong/-heart:>:o:-((:-h09:52 04/09/2025", "date": "2025-10-04"}, {"text": "Bắt đầu vào làm chính thức ngày 25/09/2025", "date": "2025-10-04"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ thành 4.000.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}], "notion_url": "https://www.notion.so/2824b5e73d9080d4818dc3cbd845a8c6"}, {"id": "31a4b5e7-3d90-8031-86ad-c83102fa61dd", "name": "PHẠM THẾ SƠN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0924390007", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2001-08-20", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-11-03", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Nhóm Huynh | Kỹ thuật thi công (Cơ bản + Khoán việc)", "comments": [{"text": "", "date": "2026-03-05"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Dự án Nippon (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Dự án Nippon (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/31a4b5e73d90803186adc83102fa61dd"}, {"id": "3994b5e7-3d90-8014-887c-c33cc47bfedb", "name": "PHAN MINH HIỂN", "group": "Nhóm Hiển", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966 767 909", "email": "Chưa cập nhật", "gender": "Nam", "dob": "1992-03-13", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Sacombank", "bank_acc": "060150072347", "start_date": "2026-06-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Thử việc bắt đầu từ ngày: 04/06/2026", "date": "2026-07-10"}, {"text": "Cấp Sim số 0981234290 và điện thoại vào ngày 10/06/2026", "date": "2026-07-13"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Trách nhiệm (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/3994b5e73d908014887cc33cc47bfedb"}, {"id": "3ae4b5e7-3d90-802d-9c9e-d8af63cfe98e", "name": "NGUYỄN HOÀNG THIÊN VY", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0369213551", "email": "thienvy35@gmail.com", "gender": "Nữ", "dob": "2004-02-15", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-07-29", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "30/7 Sếp phỏng vấn và nhận vào làm", "date": "2026-07-31"}, {"text": "Hẹn thứ 2, 3/8 bắt đầu thử việc", "date": "2026-07-31"}, {"text": "Phân về nhóm anh Hiển", "date": "2026-08-03"}, {"text": "NGUYỄN HOÀNG THIÊN VY\n-----------------\n- Kết thúc thử việc vào thứ 2, ngày 17/08/2026.\n- Bắt đầu làm chính thức từ ngày 18/08/2020\n- Mức lương 10 triệu/ tháng. (Làm hành chính)\n- Thuộc nhóm Hiển", "date": "2026-08-22"}], "notion_url": "https://www.notion.so/3ae4b5e73d90802d9c9ed8af63cfe98e"}, {"id": "39c4b5e7-3d90-80b0-88c8-c5d113b901c3", "name": "LA NHẬT NAM", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0787503071", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2001-04-10", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Vietcombank", "bank_acc": "1021367367", "start_date": "2026-07-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Thử việc bắt đầu ngày 1/7/2026", "date": "2026-07-15"}, {"text": "Hết thời gian thử việc bắt đầu vào làm chính thức ngày 15/07/2026. Mức lương 5 triệu. Thuộc nhóm Hiển", "date": "2026-07-15"}], "notion_url": "https://www.notion.so/39c4b5e73d9080b088c8c5d113b901c3"}, {"id": "31a4b5e7-3d90-806f-8e08-c1c128439672", "name": "MAI HOÀNG PHÚC", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "Chưa cập nhật", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/31a4b5e73d90806f8e08c1c128439672"}, {"id": "3bb4b5e7-3d90-8096-ae79-ca1e5e3f9fae", "name": "PHẠM VŨ LUÂN", "group": "Nhóm Hiển", "role": "Kỹ thuật thi công (Thử việc)", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0384684347", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-08-24", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Kết thúc thử việc ngày 07/09/2026", "comments": [{"text": "Đã đến phỏng vấn ⇒ Đợi thông báo ngày thử việc", "date": "2026-08-18"}, {"text": "Bắt đầu thử việc ngày 24/8/2026", "date": "2026-08-26"}, {"text": "Đưa về nhóm Hiển", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3bb4b5e73d908096ae79ca1e5e3f9fae"}, {"id": "3d44b5e7-3d90-81c6-8d19-db938ffa376f", "name": "NGUYEN DAT", "group": "Khối Kỹ Thuật (Ứng viên)", "role": "Kỹ thuật viên In 3D", "work_type": "Phỏng vấn", "is_lead": false, "phone": "0364265798", "email": "datnguyen11101998@gmail.com", "gender": "Nam", "dob": "1998-10-11", "address": "Quận 1, TP.HCM", "mst": "Chưa cập nhật", "bank": "Chưa cập nhật", "bank_acc": "Chưa cập nhật", "start_date": "Chưa cập nhật", "status": "Phỏng vấn", "hdld_type": "Hợp đồng thử việc", "facebook": "", "note": "Ứng tuyển Kỹ thuật viên In 3D (vieclam24h 04/09/2026). Seattle Central College. Đã gửi mail & Zalo.", "comments": [], "notion_url": "https://notion.so/3d44b5e73d9081c68d19db938ffa376f"}, {"id": "3d44b5e7-3d90-810f-b39a-c6c11dba70d6", "name": "TRẦN QUỐC HUY", "group": "Khối Văn Phòng (Ứng viên)", "role": "Nhân viên Kinh doanh", "work_type": "Phỏng vấn", "is_lead": false, "phone": "0569719568", "email": "tranquochuydk2002@gmail.com", "gender": "Nam", "dob": "2002-05-04", "address": "Đường Nguyễn Xiển, Phường Long Bình, TP. Thủ Đức, TP.HCM", "mst": "Chưa cập nhật", "bank": "Chưa cập nhật", "bank_acc": "Chưa cập nhật", "start_date": "Chưa cập nhật", "status": "Phỏng vấn", "hdld_type": "Hợp đồng thử việc", "facebook": "", "note": "Ứng tuyển Nhân viên Kinh doanh (vieclam24h 07/09/2026). HUTECH. Nhà ngay đường Nguyễn Xiển. Đã gửi mail & Zalo.", "comments": [{"id": "c1", "text": "Hẹn phỏng vấn lúc 10:00 sáng ngày 09/09/2026 tại xưởng Nguyễn Xiển", "date": "2026-09-08"}], "notion_url": "https://notion.so/3d44b5e73d90810fb39ac6c11dba70d6"}];
