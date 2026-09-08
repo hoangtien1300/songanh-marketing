@@ -144,7 +144,7 @@ def format_hr_morning_report():
     msg += f"👥 <b>TỔNG QUÂN SỐ CÔNG TY: 19 Nhân sự</b>\n"
     msg += f"• Khối Văn phòng: 05 | Nhóm Thế Anh: 05\n"
     msg += f"• Nhóm Huynh: 04 | Nhóm Hiển: 05\n"
-    msg += f"<i>(Hành chính: 06 | Cơ bản + Khoán: 10 | CTV: 02 | Thử việc: 01)</i>\n\n"
+    msg += f"<i>(Hành chính: 06 | Cơ bản + Khoán: 11 | CTV: 02 | Thử việc: 00)</i>\n\n"
     
     msg += f"⏪ <b>DIỄN BIẾN HÔM QUA ({yesterday_str}):</b>\n"
     msg += f"• Ghi nhận thưởng nóng 1 triệu cho 3 nhân sự: Sơn (Nippon), Hiển (Trách nhiệm), Quỳnh (Nỗ lực).\n"
@@ -153,7 +153,7 @@ def format_hr_morning_report():
     
     msg += f"⏩ <b>VIỆC CẦN LÀM HÔM NAY ({today_str}):</b>\n"
     msg += f"1. Theo dõi phản hồi Zalo/mail của 02 ứng viên Đạt &amp; Huy để xếp lịch trao đổi/phỏng vấn.\n"
-    msg += f"2. Họp giao ban đánh giá kết thúc 02 tuần thử việc của Phạm Vũ Luân (Nhóm Hiển).\n"
+    msg += f"2. Hoàn tất thủ tục tiếp nhận chính thức Phạm Vũ Luân (Nhóm Hiển - Cơ bản + Khoán).\n"
     msg += f"3. Kiểm soát quân số xưởng ca sáng và chuyên cần các nhóm thi công.\n\n"
     
     msg += f"🔗 <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/#nhan-su'>Mở WebApp Nhân Sự</a> | <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/ho_so_nhan_vien.html'>Xem Biểu Mẫu Hồ Sơ</a>\n"
