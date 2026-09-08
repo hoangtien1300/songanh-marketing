@@ -16400,6 +16400,18 @@
   },
   "marketing_activity_log": [
     {
+      "id": 97,
+      "date": "08/09/2026",
+      "time": "15:10",
+      "category": "Hệ thống",
+      "module": "Sidebar Điều Hướng",
+      "title": "Chuyển Mục SEO Website lên vị trí đầu tiên trong accordion Marketing",
+      "description": "Thực hiện theo chỉ đạo của Sếp Phạm Hoàng Tiến: Điều chỉnh cấu trúc Sidebar menu, đưa Mục SEO Website (#sub-seo & #acc-seo) vào bên trong accordion Marketing (#acc-marketing), nằm ở vị trí số 1 trên cùng (ngay trên mục Google Business). Khi click mở mục Marketing, SEO Website luôn hiển thị đầu tiên.",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn thành",
+      "target": "Sidebar Menu - #acc-marketing"
+    },
+    {
       "id": 96,
       "date": "08/09/2026",
       "time": "15:08",

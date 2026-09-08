@@ -1184,6 +1184,45 @@
                         </div>
                         
                         <div id="acc-marketing" class="submenu-container open bg-white border-t border-slate-200 p-1.5 space-y-1">
+                            <!-- 1. SEO WEBSITE (TRUNG TÂM QUẢN TRỊ KẾ HOẠCH SEO SONG ANH) -->
+                            <div class="accordion-group rounded-lg border border-sky-200/80 bg-slate-50/50 overflow-hidden">
+                                <div class="flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
+                                    <button onclick="selectModule('seo')" id="sub-seo" class="sub-link flex items-center gap-2 flex-1 text-left group">
+                                        <i class="fa-solid fa-globe text-sky-600 w-4"></i>
+                                        <span class="font-bold text-slate-800 group-hover:text-sky-700 transition">SEO Website</span>
+                                    </button>
+                                    <div class="flex items-center gap-1.5 shrink-0">
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 font-bold whitespace-nowrap shrink-0">Active</span>
+                                        <button onclick="toggleAccordion('acc-seo')" class="p-1 hover:bg-slate-200 rounded transition" title="Mở rộng / Thu gọn">
+                                            <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200 p-1.5 space-y-0.5">
+                                    <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
+                                        <span class="flex items-center gap-2"><i class="fa-solid fa-key text-amber-500"></i> Theo Dõi 23 Từ Khóa</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">23 Keys</span>
+                                    </button>
+                                    <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
+                                        <span class="flex items-center gap-2"><i class="fa-solid fa-file-code text-emerald-500"></i> On-Page & Schema Link</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">12 URLs</span>
+                                    </button>
+                                    <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
+                                        <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-rose-500"></i> Đối Thủ Top 1 Google</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Top 1</span>
+                                    </button>
+                                    <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
+                                        <span class="flex items-center gap-2"><i class="fa-solid fa-link text-cyan-600"></i> Bài Viết & Internal Link</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">25 Posts</span>
+                                    </button>
+                                    <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
+                                        <span class="flex items-center gap-2"><i class="fa-solid fa-magnifying-glass text-slate-500"></i> Kiểm Tra Audit Kỹ Thuật</span>
+                                        <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Đang làm</span>
+                                    </button>
+                                </div>
+                            </div>
+
                             <!-- 2. GOOGLE BUSINESS -->
                             <div class="accordion-group rounded-lg border border-slate-200 bg-slate-50/50 overflow-hidden">
                                 <button onclick="selectModule('gbp')" id="sub-gbp" class="sub-link w-full flex items-center justify-between p-2 font-semibold text-slate-700 hover:bg-slate-100 transition">
@@ -1231,44 +1270,6 @@
                                     <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Update</span>
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                    <!-- 🌐 2. MỤC SEO WEBSITE (TRUNG TÂM QUẢN TRỊ KẾ HOẠCH SEO SONG ANH) -->
-                    <div class="accordion-group rounded-xl border border-sky-200/80 bg-slate-50/70 overflow-hidden mb-2 shadow-2xs">
-                        <div class="flex items-center justify-between p-2.5 font-bold text-slate-800 hover:bg-slate-100 transition rounded-t-lg">
-                            <button onclick="selectModule('seo')" id="sub-seo" class="sub-link flex items-center gap-2 flex-1 text-left group">
-                                <i class="fa-solid fa-globe text-sky-600 w-4"></i>
-                                <span class="font-extrabold text-slate-900 group-hover:text-sky-700 transition">SEO Website</span>
-                            </button>
-                            <div class="flex items-center gap-1.5 shrink-0">
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 font-bold whitespace-nowrap shrink-0">Active</span>
-                                <button onclick="toggleAccordion('acc-seo')" class="p-1 hover:bg-slate-200 rounded transition" title="Mở rộng / Thu gọn">
-                                    <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 text-[10px] transition-transform duration-300"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="acc-seo" class="submenu-container bg-white border-t border-slate-200 p-1.5 space-y-0.5">
-                            <button onclick="selectModule('keywords')" id="sub-keywords" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-key text-amber-500"></i> Theo Dõi 23 Từ Khóa</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">23 Keys</span>
-                            </button>
-                            <button onclick="selectModule('onpage')" id="sub-onpage" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-file-code text-emerald-500"></i> On-Page & Schema Link</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">12 URLs</span>
-                            </button>
-                            <button onclick="selectModule('competitor')" id="sub-competitor" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-trophy text-rose-500"></i> Đối Thủ Top 1 Google</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Top 1</span>
-                            </button>
-                            <button onclick="selectModule('content-link')" id="sub-content-link" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-link text-cyan-600"></i> Bài Viết & Internal Link</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">25 Posts</span>
-                            </button>
-                            <button onclick="selectModule('audit')" id="sub-audit" class="sub-link w-full text-left px-3 py-1.5 rounded-lg text-[11px] font-medium text-slate-600 hover:text-brand-navy hover:bg-slate-50 transition flex items-center justify-between">
-                                <span class="flex items-center gap-2"><i class="fa-solid fa-magnifying-glass text-slate-500"></i> Kiểm Tra Audit Kỹ Thuật</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-bold whitespace-nowrap shrink-0">Đang làm</span>
-                            </button>
                         </div>
                     </div>
 
