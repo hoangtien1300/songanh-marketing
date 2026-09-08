@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "songanh-marketing",
+  "main": "worker.js",
   "compatibility_date": "2026-08-19",
   "observability": {
     "enabled": true

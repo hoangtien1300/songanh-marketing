@@ -6151,20 +6151,40 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </div>
             </footer>
 
-    <!-- 🪟 MODAL CHI TIẾT NHÂN SỰ & LIÊN KẾT NOTION DATA (#modal-member-detail) -->
-    <div id="modal-member-detail" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-200">
-        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all duration-300 scale-95" id="modal-member-card">
+    
+
+            <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold text-slate-700">Mô Hình Song Anh © 2026</span>
+                    <span>•</span>
+                    <span class="text-slate-500">Hệ Thống Marketing Automation & AI Agents</span>
+                </div>
+                <div class="flex items-center gap-1.5 flex-wrap text-[11px]">
+                    <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200">👑 Minh - Marketing Manager</span>
+                    <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">💻 Kiến - Trợ lý Lập Trình</span>
+                    <span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-bold border border-purple-200">✍️ Văn - Trợ lý Nội Dung</span>
+                    <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-bold border border-amber-200">📈 Trí - Trợ lý SEO Master</span>
+                    <span class="px-2 py-0.5 rounded bg-rose-50 text-rose-700 font-bold border border-rose-200">🎨 Mỹ - Trợ lý Thiết Kế</span>
+                    <span class="px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 font-bold border border-cyan-200">🌐 Thông - Trợ lý Website</span>
+                </div>
+            </footer>
+
+    
+    <!-- 🪟 MODAL CHI TIẾT NHÂN SỰ & BÌNH LUẬN NOTION LIVE (#modal-member-detail) -->
+    <div id="modal-member-detail" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-200">
+        <div class="bg-white w-full max-w-xl rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all duration-300 scale-95 flex flex-col max-h-[92vh]" id="modal-member-card">
+            
             <!-- Modal Header -->
-            <div class="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 pb-5">
+            <div class="relative bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 sm:p-6 pb-4 shrink-0">
                 <button onclick="closeMemberModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
                     <i class="fa-solid fa-xmark text-sm"></i>
                 </button>
-                <div class="flex items-center gap-4">
-                    <div id="modal-member-avatar" class="w-14 h-14 rounded-2xl bg-indigo-600/50 border border-indigo-400/40 flex items-center justify-center text-white text-xl font-black shadow-inner">
+                <div class="flex items-center gap-3.5 sm:gap-4">
+                    <div id="modal-member-avatar" class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-indigo-600/50 border border-indigo-400/40 flex items-center justify-center text-white text-lg sm:text-xl font-black shadow-inner shrink-0">
                         SA
                     </div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-1">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex flex-wrap items-center gap-1.5 mb-1">
                             <span id="modal-member-group-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-indigo-900/80 border border-indigo-400/30 text-indigo-200">
                                 PHÒNG BAN
                             </span>
@@ -6172,35 +6192,37 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                                 Hành chính
                             </span>
                         </div>
-                        <h3 id="modal-member-name" class="text-lg font-black tracking-tight text-white">TÊN NHÂN SỰ</h3>
-                        <p id="modal-member-role" class="text-xs text-indigo-200 font-medium">Chức vụ / Vị trí</p>
+                        <h3 id="modal-member-name" class="text-base sm:text-lg font-black tracking-tight text-white truncate">TÊN NHÂN SỰ</h3>
+                        <p id="modal-member-role" class="text-xs text-indigo-200 font-medium truncate">Chức vụ / Vị trí</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Modal Body Details -->
-            <div class="p-6 space-y-4 text-xs text-slate-700 bg-slate-50/50 max-h-[65vh] overflow-y-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+            <!-- Modal Body Details (Scrollable) -->
+            <div class="p-4 sm:p-6 space-y-4 text-xs text-slate-700 bg-slate-50/50 overflow-y-auto flex-1">
+                
+                <!-- Quick Contact & Work Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div class="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
                             <i class="fa-solid fa-phone text-emerald-600 mr-1"></i> Số Điện Thoại
                         </span>
                         <a id="modal-member-phone" href="#" class="font-bold text-slate-800 hover:text-indigo-600 transition">Chưa cập nhật</a>
                     </div>
-                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    <div class="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
                             <i class="fa-solid fa-envelope text-blue-600 mr-1"></i> Email
                         </span>
-                        <a id="modal-member-email" href="#" class="font-bold text-slate-800 hover:text-indigo-600 transition break-all">Chưa cập nhật</a>
+                        <a id="modal-member-email" href="#" class="font-bold text-slate-800 hover:text-indigo-600 transition truncate block">Chưa cập nhật</a>
                     </div>
-                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    <div class="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
                             <i class="fa-regular fa-calendar text-indigo-600 mr-1"></i> Ngày Bắt Đầu Làm
                         </span>
                         <span id="modal-member-start" class="font-bold text-slate-800">Chưa cập nhật</span>
                     </div>
-                    <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    <div class="bg-white p-2.5 sm:p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
                             <i class="fa-solid fa-building-columns text-purple-600 mr-1"></i> Tài Khoản Ngân Hàng
                         </span>
                         <span id="modal-member-bank" class="font-bold text-slate-800 block">Chưa cập nhật</span>
@@ -6208,99 +6230,95 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     </div>
                 </div>
 
-                <!-- Ghi Chú & Thông Tin Bổ Sung -->
-                <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-2xs">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
-                        <i class="fa-regular fa-note-sticky text-amber-500 mr-1"></i> Ghi Chú / Chuyên Cần
+                <!-- Ghi Chú Hiện Tại -->
+                <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                        <i class="fa-regular fa-note-sticky text-amber-500 mr-1"></i> Ghi Chú Nhân Sự
                     </span>
                     <p id="modal-member-note" class="text-xs text-slate-600 leading-relaxed font-medium">Không có ghi chú</p>
                 </div>
+
+                <!-- 💬 KHUNG BÌNH LUẬN & ĐỒNG BỘ TRỰC TIẾP NOTION -->
+                <div class="bg-white p-3.5 sm:p-4 rounded-2xl border-2 border-indigo-100 shadow-xs space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-indigo-600"></i>
+                            <h4 class="text-xs font-black text-slate-900 uppercase">BÌNH LUẬN & ĐÁNH GIÁ (NOTION LIVE)</h4>
+                        </div>
+                        <span id="modal-member-comment-count" class="text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">
+                            0 bình luận
+                        </span>
+                    </div>
+
+                    <!-- Quick Tag Chips -->
+                    <div class="flex flex-wrap items-center gap-1.5 text-[11px]">
+                        <span class="text-[10px] text-slate-400 font-medium">Mẫu nhanh:</span>
+                        <button type="button" onclick="insertCommentTag('🏆 Thưởng 1.000.000 VNĐ: ')" class="px-2 py-0.5 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 font-bold border border-amber-200 transition">
+                            + Thưởng nóng
+                        </button>
+                        <button type="button" onclick="insertCommentTag('⭐ Đánh giá: ')" class="px-2 py-0.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold border border-blue-200 transition">
+                            + Đánh giá
+                        </button>
+                        <button type="button" onclick="insertCommentTag('⏰ Lịch hẹn PV: ')" class="px-2 py-0.5 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-800 font-bold border border-purple-200 transition">
+                            + Lịch phỏng vấn
+                        </button>
+                        <button type="button" onclick="insertCommentTag('📝 Ghi chú: ')" class="px-2 py-0.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">
+                            + Ghi chú
+                        </button>
+                    </div>
+
+                    <!-- Comment Input Box -->
+                    <div class="space-y-2">
+                        <textarea id="modal-member-comment-input" rows="2" placeholder="Nhập nội dung bình luận / đánh giá (sẽ lưu trực tiếp vào Notion)..." class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 focus:outline-none resize-none transition leading-relaxed"></textarea>
+                        
+                        <div class="flex items-center justify-between gap-2">
+                            <span id="modal-comment-status" class="text-[11px] font-bold text-slate-400 flex items-center gap-1"></span>
+                            <button type="button" id="btn-submit-member-comment" onclick="submitMemberComment()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-paper-plane text-[11px]"></i>
+                                <span>Gửi Bình Luận</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Existing Comments Timeline List -->
+                    <div class="pt-2 border-t border-slate-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10.5px] font-bold text-slate-500 uppercase">Lịch sử bình luận trên Notion:</span>
+                            <button onclick="refreshMemberComments()" class="text-[10.5px] text-indigo-600 hover:underline flex items-center gap-1 font-semibold">
+                                <i class="fa-solid fa-rotate-right text-[9px]"></i> Làm mới
+                            </button>
+                        </div>
+                        <div id="modal-member-comments-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
             <!-- Modal Footer: Link to Employee Profile Form & Notion -->
-            <div class="p-4 bg-white border-t border-slate-200/80 flex items-center justify-between gap-3">
-                <button onclick="closeMemberModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">
+            <div class="p-3.5 sm:p-4 bg-white border-t border-slate-200/80 flex items-center justify-between gap-2 shrink-0">
+                <button onclick="closeMemberModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">
                     Đóng
                 </button>
                 <div class="flex items-center gap-2">
                     <a id="modal-member-notion-link" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold transition flex items-center gap-1.5 text-xs" title="Mở bản ghi gốc trên Notion">
                         <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                        <span>Notion gốc</span>
+                        <span class="hidden sm:inline">Notion gốc</span>
                     </a>
-                    <a id="modal-member-profile-link" href="ho_so_nhan_vien.html" target="_blank" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition flex items-center gap-2 shadow-sm text-xs">
+                    <a id="modal-member-profile-link" href="ho_so_nhan_vien.html" target="_blank" class="px-4 sm:px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black transition flex items-center gap-1.5 shadow-sm text-xs">
                         <i class="fa-solid fa-id-card"></i>
-                        <span>Xem Hồ Sơ Nhân Viên ↗</span>
+                        <span>Xem Hồ Sơ ↗</span>
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 
 
-
-
-            <!-- Modal Task Detail -->
-            <div id="modal-mkt-task-detail" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs hidden items-center justify-center p-4">
-                <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-4 max-h-[90vh] overflow-y-auto">
-                    <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
-                        <div class="flex items-center gap-2.5">
-                            <div id="modal-mkt-icon-box" class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg font-bold">
-                                <i class="fa-solid fa-bullhorn"></i>
-                            </div>
-                            <div>
-                                <span id="modal-mkt-channel-badge" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-blue-100 text-blue-700">Facebook</span>
-                                <h3 id="modal-mkt-title" class="text-base font-black text-slate-900 mt-0.5">Tên công việc</h3>
-                            </div>
-                        </div>
-                        <button onclick="closeMktTaskDetail()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition">
-                            <i class="fa-solid fa-xmark text-base"></i>
-                        </button>
-                    </div>
-
-                    <div class="space-y-3 text-xs text-slate-700">
-                        <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Thời Gian / Khung Giờ</span>
-                                <span id="modal-mkt-time" class="font-bold text-slate-800">Sáng (08:30 - 11:30)</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Lặp Lại</span>
-                                <span id="modal-mkt-repeat" class="font-bold text-blue-700">Thứ 2, 4, 6</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">Người Thực Hiện</span>
-                                <span id="modal-mkt-performer" class="font-bold text-slate-800">Phạm Hoàng Tiến</span>
-                            </div>
-                            <div>
-                                <span class="text-[10.5px] font-bold text-slate-400 uppercase block">KPI Tuần</span>
-                                <span id="modal-mkt-kpi" class="font-bold text-amber-700">4 lần / tuần</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <span class="text-[10.5px] font-bold text-slate-400 uppercase block mb-1">Mô Tả Chi Tiết Nhiệm Vụ</span>
-                            <div id="modal-mkt-desc" class="p-3 bg-blue-50/50 rounded-xl border border-blue-100 leading-relaxed text-slate-700 whitespace-pre-line">
-                                Mô tả chi tiết của task...
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-                            <span class="text-[11px] text-slate-500 font-medium" id="modal-mkt-type-badge">Tự động AI Bot</span>
-                            <a id="modal-mkt-notion-link" href="https://app.notion.com/p/19a4b5e73d9080f4a51ef769967547a5" target="_blank" class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-                                <span>Mở trên Notion</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="pt-2">
-                        <button onclick="closeMktTaskDetail()" class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
-                            Đóng cửa sổ
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-</main>
+    </main>
     </div>
 
     <!-- Notification Toast -->
@@ -18405,11 +18423,14 @@ let marketingActivityLog = [
         }
         
         // Close modal when clicking outside
-        document.getElementById('agentModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeAgentModal();
-            }
-        });
+        const agentModalEl = document.getElementById('agentModal');
+        if (agentModalEl) {
+            agentModalEl.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeAgentModal();
+                }
+            });
+        }
     
         // =========================================================================
         // 📌 PINTEREST STUDIO ENGINE CONTROLLER (3 TEMPLATES & HTML5 CANVAS RENDER)
@@ -20506,19 +20527,23 @@ let marketingActivityLog = [
 
         
         // =============================================================
-        // 👥 PERSONEL MODAL & NOTION LIVE LINK CONTROLLER
+        
         // =============================================================
-        const songAnhMembersDB = [{"id": "19d4b5e7-3d90-80ad-8fee-f81c3b11fd69", "name": "PHẠM HOÀNG TIẾN", "group": "Khối Văn Phòng", "role": "Marketing & Nhân sự", "work_type": "Hành chính", "is_lead": false, "phone": "0981169200 - 0333885925", "email": "phamhoangtien0@gmail.com", "gender": "Nam", "bank": "VIB", "bank_acc": "606704060064783", "start_date": "2016-07-01", "status": "Đang làm", "note": "Khối Văn Phòng | Marketing & Nhân sự (Hành chính)", "notion_url": "https://www.notion.so/19d4b5e73d9080ad8feef81c3b11fd69"}, {"id": "1a74b5e7-3d90-8003-9780-e2c5303d3619", "name": "NGUYỄN THỊ KIM THỦY", "group": "Khối Văn Phòng", "role": "Kế toán & Thủ kho", "work_type": "Hành chính", "is_lead": false, "phone": "0988080440 - 0934060993", "email": "Chưa cập nhật", "gender": "N/A", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1a74b5e73d9080039780e2c5303d3619"}, {"id": "3894b5e7-3d90-8019-ab3e-f390d0d794a1", "name": "VÕ MINH SANG", "group": "Khối Văn Phòng", "role": "Nhân viên Sales", "work_type": "Hành chính", "is_lead": false, "phone": "0769766104", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-06-24", "status": "Đang làm", "note": "Nhân viên Sales & Văn phòng (Chính thức)", "notion_url": "https://www.notion.so/3894b5e73d908019ab3ef390d0d794a1"}, {"id": "2304b5e7-3d90-8083-b473-fe899511616f", "name": "ĐINH VĂN THẮNG", "group": "Khối Văn Phòng", "role": "Lập trình viên", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0983262210", "email": "thangdv86@gmail.com", "gender": "Nam", "bank": "Techcombank", "bank_acc": "19124701962011", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/2304b5e73d908083b473fe899511616f"}, {"id": "1ba4b5e7-3d90-80a1-8d95-ca5f7a8e5332", "name": "NGUYỄN THỊ HOA", "group": "Khối Văn Phòng", "role": "Kế toán trưởng", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0398034685", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1ba4b5e73d9080a18d95ca5f7a8e5332"}, {"id": "1f14b5e7-3d90-806c-bd02-e848aafa9056", "name": "HOÀNG THẾ ANH", "group": "Nhóm Thế Anh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966102980", "email": "Chưa cập nhật", "gender": "Nam", "bank": "VietinBank", "bank_acc": "103002551791", "start_date": "2025-05-12", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1f14b5e73d90806cbd02e848aafa9056"}, {"id": "3ac4b5e7-3d90-80cb-93cd-f9215212457d", "name": "NGUYỄN HOÀNG TRUNG HẢI", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0769414678", "email": "Chưa cập nhật", "gender": "Nam", "bank": "MB Bank", "bank_acc": "19034444888889", "start_date": "2026-07-28", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ac4b5e73d9080cb93cdf9215212457d"}, {"id": "3b24b5e7-3d90-8044-bbe8-dfdd9e7f6f0c", "name": "TRẦN VĂN HÙNG", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0778019052", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Vietcombank", "bank_acc": "1035802411 ", "start_date": "2026-08-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3b24b5e73d908044bbe8dfdd9e7f6f0c"}, {"id": "33d4b5e7-3d90-806d-9578-e34d7237c3ca", "name": "DIÊM THỊ DIỄM QUỲNH", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0902 625 485", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-04-07", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/33d4b5e73d90806d9578e34d7237c3ca"}, {"id": "1dc4b5e7-3d90-80f1-8490-c142614369ab", "name": "NGUYỄN HỒNG ĐẠT", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0919259409", "email": "Chưa cập nhật", "gender": "Nam", "bank": "MB Bank", "bank_acc": "0919259409", "start_date": "2025-04-17", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1dc4b5e73d9080f18490c142614369ab"}, {"id": "1a24b5e7-3d90-80c8-87c6-d1858bdb949d", "name": "MAI XUÂN HUYNH", "group": "Nhóm Huynh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0366930090", "email": "19211tt2049@mail.tdc.edu.vn", "gender": "Nam", "bank": "Agribank", "bank_acc": "6100205565299", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/1a24b5e73d9080c887c6d1858bdb949d"}, {"id": "3ae4b5e7-3d90-8017-960e-d931a62aba05", "name": "TRỊNH BÍCH VÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0584348350", "email": "Chưa cập nhật", "gender": "Nữ", "bank": "Techcombank", "bank_acc": "19037503205019", "start_date": "2026-07-29", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ae4b5e73d908017960ed931a62aba05"}, {"id": "2824b5e7-3d90-80d4-818d-c3cbd845a8c6", "name": "NGUYỄN TRỌNG ÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0563418246", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-08-06", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/2824b5e73d9080d4818dc3cbd845a8c6"}, {"id": "31a4b5e7-3d90-8031-86ad-c83102fa61dd", "name": "PHẠM THẾ SƠN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0924390007", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-11-03", "status": "Đang làm", "note": "Nhóm Huynh | Kỹ thuật thi công (Cơ bản + Khoán việc)", "notion_url": "https://www.notion.so/31a4b5e73d90803186adc83102fa61dd"}, {"id": "3994b5e7-3d90-8014-887c-c33cc47bfedb", "name": "PHAN MINH HIỂN", "group": "Nhóm Hiển", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966 767 909", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Sacombank", "bank_acc": "060150072347", "start_date": "2026-06-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3994b5e73d908014887cc33cc47bfedb"}, {"id": "3ae4b5e7-3d90-802d-9c9e-d8af63cfe98e", "name": "NGUYỄN HOÀNG THIÊN VY", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0369213551", "email": "thienvy35@gmail.com", "gender": "Nữ", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-07-29", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/3ae4b5e73d90802d9c9ed8af63cfe98e"}, {"id": "39c4b5e7-3d90-80b0-88c8-c5d113b901c3", "name": "LA NHẬT NAM", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0787503071", "email": "Chưa cập nhật", "gender": "Nam", "bank": "Vietcombank", "bank_acc": "1021367367", "start_date": "2026-07-01", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/39c4b5e73d9080b088c8c5d113b901c3"}, {"id": "31a4b5e7-3d90-806f-8e08-c1c128439672", "name": "MAI HOÀNG PHÚC", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "Chưa cập nhật", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "note": "Không có ghi chú", "notion_url": "https://www.notion.so/31a4b5e73d90806f8e08c1c128439672"}, {"id": "3bb4b5e7-3d90-8096-ae79-ca1e5e3f9fae", "name": "PHẠM VŨ LUÂN", "group": "Nhóm Hiển", "role": "Kỹ thuật thi công (Thử việc)", "work_type": "Thử việc", "is_lead": false, "phone": "0384684347", "email": "Chưa cập nhật", "gender": "Nam", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-08-24", "status": "Thử việc", "note": "Kết thúc thử việc ngày 07/09/2026", "notion_url": "https://www.notion.so/3bb4b5e73d908096ae79ca1e5e3f9fae"}];
+        // 👥 PERSONEL MODAL, LIVE NOTION COMMENTS & PROFILE LINK
+        // =============================================================
+        const songAnhMembersDB = [{"id": "19d4b5e7-3d90-80ad-8fee-f81c3b11fd69", "name": "PHẠM HOÀNG TIẾN", "group": "Khối Văn Phòng", "role": "Marketing & Nhân sự", "work_type": "Hành chính", "is_lead": false, "phone": "0981169200 - 0333885925", "email": "phamhoangtien0@gmail.com", "gender": "Nam", "dob": "1995-03-31", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "VIB", "bank_acc": "606704060064783", "start_date": "2016-07-01", "status": "Đang làm", "hdld_type": "Hợp đồng thời vụ", "facebook": "", "note": "Khối Văn Phòng | Marketing & Nhân sự (Hành chính)", "comments": [], "notion_url": "https://www.notion.so/19d4b5e73d9080ad8feef81c3b11fd69"}, {"id": "1a74b5e7-3d90-8003-9780-e2c5303d3619", "name": "NGUYỄN THỊ KIM THỦY", "group": "Khối Văn Phòng", "role": "Kế toán & Thủ kho", "work_type": "Hành chính", "is_lead": false, "phone": "0988080440 - 0934060993", "email": "Chưa cập nhật", "gender": "N/A", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/1a74b5e73d9080039780e2c5303d3619"}, {"id": "3894b5e7-3d90-8019-ab3e-f390d0d794a1", "name": "VÕ MINH SANG", "group": "Khối Văn Phòng", "role": "Nhân viên Sales", "work_type": "Hành chính", "is_lead": false, "phone": "0769766104", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-06-24", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Nhân viên Sales & Văn phòng (Chính thức)", "comments": [{"text": "Bắt đầu thử việc vào ngày 29/06/2026", "date": "2026-06-29"}], "notion_url": "https://www.notion.so/3894b5e73d908019ab3ef390d0d794a1"}, {"id": "2304b5e7-3d90-8083-b473-fe899511616f", "name": "ĐINH VĂN THẮNG", "group": "Khối Văn Phòng", "role": "Lập trình viên", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0983262210", "email": "thangdv86@gmail.com", "gender": "Nam", "dob": "1986-12-31", "address": "CH 0708 nhà T09 KĐT Times City – 458 Minh Khai – Phường Vĩnh Tuy- Quận Hai Bà Trưng – Thành phố Hà Nội", "mst": "Chưa cập nhật", "bank": "Techcombank", "bank_acc": "19124701962011", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/2304b5e73d908083b473fe899511616f"}, {"id": "1ba4b5e7-3d90-80a1-8d95-ca5f7a8e5332", "name": "NGUYỄN THỊ HOA", "group": "Khối Văn Phòng", "role": "Kế toán trưởng", "work_type": "Cộng tác viên", "is_lead": false, "phone": "0398034685", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "1985-05-25", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [], "notion_url": "https://www.notion.so/1ba4b5e73d9080a18d95ca5f7a8e5332"}, {"id": "1f14b5e7-3d90-806c-bd02-e848aafa9056", "name": "HOÀNG THẾ ANH", "group": "Nhóm Thế Anh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966102980", "email": "Chưa cập nhật", "gender": "Nam", "dob": "1997-10-27", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "VietinBank", "bank_acc": "103002551791", "start_date": "2025-05-12", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Hôm nay phỏng vấn", "date": "2025-05-12"}, {"text": "Hẹn Bắt đầu thử việc vào ngày 15/05/2025", "date": "2025-05-12"}, {"text": "Nay bắt đầu thử việc ngày đầu tiên", "date": "2025-05-15"}, {"text": "ID chấm công 21", "date": "2025-05-15"}, {"text": "Hết thời gian thử việc. Bắt đai62 làm chính thức từ hôm nay 05/06/2025", "date": "2025-06-05"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ => 4.500.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}, {"text": "Tăng chức lên thành Phó nhóm Kỹ thuật", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1f14b5e73d90806cbd02e848aafa9056"}, {"id": "3ac4b5e7-3d90-80cb-93cd-f9215212457d", "name": "NGUYỄN HOÀNG TRUNG HẢI", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0769414678", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2024-05-23", "address": "Thôn Tân Phú, Tân Hội, Đức Trọng, Lâm Đồng", "mst": "Chưa cập nhật", "bank": "MB Bank", "bank_acc": "19034444888889", "start_date": "2026-07-28", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "30/7 Đã phỏng vấn với Sếp ⇒ Đồng ý ⇒ Xác nhận thời gian có thể thử việc", "date": "2026-07-31"}, {"text": "Hop cty đưa về nhóm của T. Anh", "date": "2026-08-10"}, {"text": "Sếp chuyển về lại nhóm Hiển", "date": "2026-08-11"}, {"text": "13/8 Sếp chuyển về nhóm Thế Anh", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3ac4b5e73d9080cb93cdf9215212457d"}, {"id": "3b24b5e7-3d90-8044-bbe8-dfdd9e7f6f0c", "name": "TRẦN VĂN HÙNG", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0778019052", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2022-09-07", "address": "33, đường 7 Long Trường, TP Thủ Đức, Hồ Chí Minh", "mst": "Chưa cập nhật", "bank": "Vietcombank", "bank_acc": "1035802411 ", "start_date": "2026-08-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Bắt đầu thử việc vào ngày 10/08/2026", "date": "2026-08-08"}, {"text": "Đã đến thử việc, kết thúc thử việc vào hết 24/08", "date": "2026-08-10"}, {"text": "Đưa về nhóm của T. Anh", "date": "2026-08-11"}, {"text": "Hết thời gian thử việc và bắt đầu làm chính thức vào ngày 25/08/2026", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3b24b5e73d908044bbe8dfdd9e7f6f0c"}, {"id": "33d4b5e7-3d90-806d-9578-e34d7237c3ca", "name": "DIÊM THỊ DIỄM QUỲNH", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0902 625 485", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-04-07", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Kết thúc thử việc vào ngày 07/05/2026.\nBắt đầu làm chính thức vào ngày 08/05/2026.\nThuộc nhóm Thế Anh", "date": "2026-05-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Bạn nữ nỗ lực (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Bạn nữ nỗ lực (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/33d4b5e73d90806d9578e34d7237c3ca"}, {"id": "1dc4b5e7-3d90-80f1-8490-c142614369ab", "name": "NGUYỄN HỒNG ĐẠT", "group": "Nhóm Thế Anh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0919259409", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2003-01-01", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "MB Bank", "bank_acc": "0919259409", "start_date": "2025-04-17", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Link hồ sơ: https://drive.google.com/drive/folders/1Kbv9KqJwSVN793SiIr_zQMm8kmzl6Lqi", "date": "2025-04-21"}, {"text": "Bắt đầu thử việc ngày hôm nay: 21/04/2025", "date": "2025-04-21"}, {"text": "ID chấm công: 19", "date": "2025-04-21"}, {"text": "Bắt đầu đưa về nhóm Nhân bắt đầu ngày 13/05/2025", "date": "2025-05-12"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ => 4.000.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1dc4b5e73d9080f18490c142614369ab"}, {"id": "1a24b5e7-3d90-80c8-87c6-d1858bdb949d", "name": "MAI XUÂN HUYNH", "group": "Nhóm Huynh", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0366930090", "email": "19211tt2049@mail.tdc.edu.vn", "gender": "Nam", "dob": "1999-01-13", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Agribank", "bank_acc": "6100205565299", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "17/03/2025 Thưởng Huynh tiền sáng tạo ra nắp sơn giúp tiết kiệm sơn", "date": "2025-03-17"}, {"text": "Huynh chuyển lên vai trò là trưởng nhóm kỹ thuật", "date": "2025-10-04"}, {"text": "Lương duyệt tăng từ 4,5 triệu thành 5,5 triệu", "date": "2025-10-04"}, {"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/1a24b5e73d9080c887c6d1858bdb949d"}, {"id": "3ae4b5e7-3d90-8017-960e-d931a62aba05", "name": "TRỊNH BÍCH VÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0584348350", "email": "Chưa cập nhật", "gender": "Nữ", "dob": "2002-01-08", "address": "480/58, Nguyễn Tri Phương, P9, Q10, Hồ Chí Minh", "mst": "Chưa cập nhật", "bank": "Techcombank", "bank_acc": "19037503205019", "start_date": "2026-07-29", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Phỏng vấn\n  • Đã làm bên Imodel\n  • Đánh giá bên cty cũ quy trình làm việc ko rõ ràng\n  • Nguyễn Hoàng Thiên Vy giới thiệu qua. Cũng đã từng làm bên Phương Nam\n  • Ở Bùi Đình Túy nên đi hơi xa. Đang cân nhắc\n  • Quê hcm, Q10\n  • Sêps duyêt", "date": "2026-08-04"}, {"text": "Bắt đầu thử việc vào ngày 10/08/2026", "date": "2026-08-08"}, {"text": "Đưa về nhóm Huynh", "date": "2026-08-11"}, {"text": "Hết thời gian thử việc, bắt đầu làm chính thức vào ngày 25/08/2026", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3ae4b5e73d908017960ed931a62aba05"}, {"id": "2824b5e7-3d90-80d4-818d-c3cbd845a8c6", "name": "NGUYỄN TRỌNG ÂN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0563418246", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2004-01-13", "address": "Cái Răng, Cần Thơ", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-08-06", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "06/08/2025 ứng tuyển vị trí kỹ thuật", "date": "2025-10-04"}, {"text": "Hồ sơ CV https://drive.google.com/file/d/1UCrIduJRjOxzlynDXEacCMkRZo3Aqvk8/view?usp=drive_link", "date": "2025-10-04"}, {"text": "Thời gian bắt đầu thử việc của em bắt đầu từ ngày 03/09/2025. Mức lương 7 triệu. ID chấm công 2508:04/-heart1/-strong/-heart:>:o:-((:-h09:52 04/09/2025", "date": "2025-10-04"}, {"text": "Bắt đầu vào làm chính thức ngày 25/09/2025", "date": "2025-10-04"}, {"text": "Sếp duyệt tăng lương từ 3.500.000đ thành 4.000.000đ bắt đầu từ tháng 10/2025", "date": "2025-10-04"}], "notion_url": "https://www.notion.so/2824b5e73d9080d4818dc3cbd845a8c6"}, {"id": "31a4b5e7-3d90-8031-86ad-c83102fa61dd", "name": "PHẠM THẾ SƠN", "group": "Nhóm Huynh", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0924390007", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2001-08-20", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2025-11-03", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Nhóm Huynh | Kỹ thuật thi công (Cơ bản + Khoán việc)", "comments": [{"text": "", "date": "2026-03-05"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Dự án Nippon (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Dự án Nippon (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/31a4b5e73d90803186adc83102fa61dd"}, {"id": "3994b5e7-3d90-8014-887c-c33cc47bfedb", "name": "PHAN MINH HIỂN", "group": "Nhóm Hiển", "role": "Trưởng nhóm", "work_type": "Cơ bản + Khoán", "is_lead": true, "phone": "0966 767 909", "email": "Chưa cập nhật", "gender": "Nam", "dob": "1992-03-13", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Sacombank", "bank_acc": "060150072347", "start_date": "2026-06-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Thử việc bắt đầu từ ngày: 04/06/2026", "date": "2026-07-10"}, {"text": "Cấp Sim số 0981234290 và điện thoại vào ngày 10/06/2026", "date": "2026-07-13"}, {"text": "🎉 Thưởng 1.000.000 VNĐ - Trách nhiệm (Theo quyết định họp công ty đầu tuần ngày 07/09/2026)", "date": "2026-09-07"}], "notion_url": "https://www.notion.so/3994b5e73d908014887cc33cc47bfedb"}, {"id": "3ae4b5e7-3d90-802d-9c9e-d8af63cfe98e", "name": "NGUYỄN HOÀNG THIÊN VY", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Hành chính", "is_lead": false, "phone": "0369213551", "email": "thienvy35@gmail.com", "gender": "Nữ", "dob": "2004-02-15", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-07-29", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "30/7 Sếp phỏng vấn và nhận vào làm", "date": "2026-07-31"}, {"text": "Hẹn thứ 2, 3/8 bắt đầu thử việc", "date": "2026-07-31"}, {"text": "Phân về nhóm anh Hiển", "date": "2026-08-03"}, {"text": "NGUYỄN HOÀNG THIÊN VY\n-----------------\n- Kết thúc thử việc vào thứ 2, ngày 17/08/2026.\n- Bắt đầu làm chính thức từ ngày 18/08/2020\n- Mức lương 10 triệu/ tháng. (Làm hành chính)\n- Thuộc nhóm Hiển", "date": "2026-08-22"}], "notion_url": "https://www.notion.so/3ae4b5e73d90802d9c9ed8af63cfe98e"}, {"id": "39c4b5e7-3d90-80b0-88c8-c5d113b901c3", "name": "LA NHẬT NAM", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "0787503071", "email": "Chưa cập nhật", "gender": "Nam", "dob": "2001-04-10", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "Vietcombank", "bank_acc": "1021367367", "start_date": "2026-07-01", "status": "Đang làm", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "Thử việc bắt đầu ngày 1/7/2026", "date": "2026-07-15"}, {"text": "Hết thời gian thử việc bắt đầu vào làm chính thức ngày 15/07/2026. Mức lương 5 triệu. Thuộc nhóm Hiển", "date": "2026-07-15"}], "notion_url": "https://www.notion.so/39c4b5e73d9080b088c8c5d113b901c3"}, {"id": "31a4b5e7-3d90-806f-8e08-c1c128439672", "name": "MAI HOÀNG PHÚC", "group": "Nhóm Hiển", "role": "Thành viên Kỹ thuật", "work_type": "Cơ bản + Khoán", "is_lead": false, "phone": "Chưa cập nhật", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "N/A", "status": "Đang làm", "hdld_type": "Hợp đồng khoán việc", "facebook": "", "note": "Không có ghi chú", "comments": [{"text": "", "date": "2026-03-05"}], "notion_url": "https://www.notion.so/31a4b5e73d90806f8e08c1c128439672"}, {"id": "3bb4b5e7-3d90-8096-ae79-ca1e5e3f9fae", "name": "PHẠM VŨ LUÂN", "group": "Nhóm Hiển", "role": "Kỹ thuật thi công (Thử việc)", "work_type": "Thử việc", "is_lead": false, "phone": "0384684347", "email": "Chưa cập nhật", "gender": "Nam", "dob": "Chưa cập nhật", "address": "Chưa cập nhật", "mst": "Chưa cập nhật", "bank": "N/A", "bank_acc": "Chưa cập nhật", "start_date": "2026-08-24", "status": "Thử việc", "hdld_type": "Hợp đồng lao động", "facebook": "", "note": "Kết thúc thử việc ngày 07/09/2026", "comments": [{"text": "Đã đến phỏng vấn ⇒ Đợi thông báo ngày thử việc", "date": "2026-08-18"}, {"text": "Bắt đầu thử việc ngày 24/8/2026", "date": "2026-08-26"}, {"text": "Đưa về nhóm Hiển", "date": "2026-08-26"}], "notion_url": "https://www.notion.so/3bb4b5e73d908096ae79ca1e5e3f9fae"}, {"id": "3d44b5e7-3d90-81c6-8d19-db938ffa376f", "name": "NGUYEN DAT", "group": "Khối Kỹ Thuật (Ứng viên)", "role": "Kỹ thuật viên In 3D", "work_type": "Phỏng vấn", "is_lead": false, "phone": "0364265798", "email": "datnguyen11101998@gmail.com", "gender": "Nam", "dob": "1998-10-11", "address": "Quận 1, TP.HCM", "mst": "Chưa cập nhật", "bank": "Chưa cập nhật", "bank_acc": "Chưa cập nhật", "start_date": "Chưa cập nhật", "status": "Phỏng vấn", "hdld_type": "Hợp đồng thử việc", "facebook": "", "note": "Ứng tuyển Kỹ thuật viên In 3D (vieclam24h 04/09/2026). Seattle Central College. Đã gửi mail & Zalo.", "comments": [], "notion_url": "https://notion.so/3d44b5e73d9081c68d19db938ffa376f"}, {"id": "3d44b5e7-3d90-810f-b39a-c6c11dba70d6", "name": "TRẦN QUỐC HUY", "group": "Khối Văn Phòng (Ứng viên)", "role": "Nhân viên Kinh doanh", "work_type": "Phỏng vấn", "is_lead": false, "phone": "0569719568", "email": "tranquochuydk2002@gmail.com", "gender": "Nam", "dob": "2002-05-04", "address": "Đường Nguyễn Xiển, Phường Long Bình, TP. Thủ Đức, TP.HCM", "mst": "Chưa cập nhật", "bank": "Chưa cập nhật", "bank_acc": "Chưa cập nhật", "start_date": "Chưa cập nhật", "status": "Phỏng vấn", "hdld_type": "Hợp đồng thử việc", "facebook": "", "note": "Ứng tuyển Nhân viên Kinh doanh (vieclam24h 07/09/2026). HUTECH. Nhà ngay đường Nguyễn Xiển. Đã gửi mail & Zalo.", "comments": [{"id": "c1", "text": "Hẹn phỏng vấn lúc 10:00 sáng ngày 09/09/2026 tại xưởng Nguyễn Xiển", "date": "2026-09-08"}], "notion_url": "https://notion.so/3d44b5e73d90810fb39ac6c11dba70d6"}];
+        let currentModalMemberId = null;
 
         function openMemberModal(memberId) {
             const member = songAnhMembersDB.find(m => m.id === memberId || m.name === memberId);
             if (!member) return;
 
+            currentModalMemberId = member.id;
             const modal = document.getElementById('modal-member-detail');
             const card = document.getElementById('modal-member-card');
             if (!modal) return;
 
-            // 1. Fill data
+            // 1. Fill basic data
             document.getElementById('modal-member-name').textContent = member.name;
             document.getElementById('modal-member-role').textContent = member.role + (member.is_lead ? ' • Trưởng nhóm' : '');
             document.getElementById('modal-member-group-badge').textContent = member.group;
@@ -20530,23 +20555,35 @@ let marketingActivityLog = [
 
             // Phone
             const phoneEl = document.getElementById('modal-member-phone');
-            phoneEl.textContent = member.phone;
-            phoneEl.href = member.phone !== 'Chưa cập nhật' ? 'tel:' + member.phone.split(' - ')[0].replace(/\D/g, '') : '#';
+            phoneEl.textContent = member.phone || 'Chưa cập nhật';
+            phoneEl.href = member.phone && member.phone !== 'Chưa cập nhật' ? 'tel:' + member.phone.split(' - ')[0].replace(/\D/g, '') : '#';
 
             // Email
             const emailEl = document.getElementById('modal-member-email');
-            emailEl.textContent = member.email;
-            emailEl.href = member.email !== 'Chưa cập nhật' ? 'mailto:' + member.email : '#';
+            emailEl.textContent = member.email || 'Chưa cập nhật';
+            emailEl.href = member.email && member.email !== 'Chưa cập nhật' ? 'mailto:' + member.email : '#';
 
             // Start Date
             document.getElementById('modal-member-start').textContent = member.start_date || 'Chưa cập nhật';
 
             // Bank
             document.getElementById('modal-member-bank').textContent = member.bank || 'Chưa cập nhật';
-            document.getElementById('modal-member-bank-acc').textContent = member.bank_acc !== 'Chưa cập nhật' ? 'STK: ' + member.bank_acc : '';
+            document.getElementById('modal-member-bank-acc').textContent = member.bank_acc && member.bank_acc !== 'Chưa cập nhật' ? 'STK: ' + member.bank_acc : '';
 
             // Note
             document.getElementById('modal-member-note').textContent = member.note || 'Không có ghi chú thêm.';
+
+            // Reset comment input & status
+            const commentInput = document.getElementById('modal-member-comment-input');
+            if (commentInput) commentInput.value = '';
+            const statusEl = document.getElementById('modal-comment-status');
+            if (statusEl) statusEl.innerHTML = '';
+
+            // Render existing cached comments
+            renderModalCommentsList(member.comments || []);
+
+            // Asynchronously fetch fresh comments from Notion
+            fetchFreshMemberComments(member.id);
 
             // Profile Form Link
             const profileBtn = document.getElementById('modal-member-profile-link');
@@ -20576,7 +20613,167 @@ let marketingActivityLog = [
             card.classList.add('scale-95');
             setTimeout(() => {
                 modal.style.display = 'none';
+                currentModalMemberId = null;
             }, 150);
+        }
+
+        function renderModalCommentsList(comments) {
+            const container = document.getElementById('modal-member-comments-list');
+            const countBadge = document.getElementById('modal-member-comment-count');
+            if (!container) return;
+
+            countBadge.textContent = `${comments.length} bình luận`;
+
+            if (comments.length === 0) {
+                container.innerHTML = `
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/60 text-center text-slate-400 text-xs italic">
+                        Chưa có bình luận nào trên Notion. Nhập nội dung ở trên để thêm bình luận mới!
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            comments.forEach(c => {
+                const isReward = (c.text || '').toLowerCase().includes('thưởng');
+                const isInterview = (c.text || '').toLowerCase().includes('phỏng vấn') || (c.text || '').toLowerCase().includes('lịch hẹn');
+                
+                let icon = 'fa-comment text-indigo-500';
+                let cardClass = 'bg-white border-slate-200/80 text-slate-800';
+                let tagTitle = 'Ghi chú / Bình luận';
+                
+                if (isReward) {
+                    icon = 'fa-award text-amber-500';
+                    cardClass = 'bg-amber-50/70 border-amber-200/80 text-amber-900';
+                    tagTitle = 'Khen thưởng';
+                } else if (isInterview) {
+                    icon = 'fa-calendar-check text-purple-500';
+                    cardClass = 'bg-purple-50/70 border-purple-200/80 text-purple-900';
+                    tagTitle = 'Lịch hẹn / Phỏng vấn';
+                }
+
+                const item = document.createElement('div');
+                item.className = `p-2.5 rounded-xl border ${cardClass} text-xs space-y-1 shadow-2xs`;
+                item.innerHTML = `
+                    <div class="flex items-center justify-between text-[10.5px] font-bold">
+                        <span class="flex items-center gap-1.5">
+                            <i class="fa-solid ${icon}"></i>
+                            <span>${tagTitle}</span>
+                        </span>
+                        <span class="text-slate-400 font-mono text-[10px]">${c.date || ''}</span>
+                    </div>
+                    <p class="font-medium leading-relaxed pl-3.5 text-slate-700">${c.text}</p>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function insertCommentTag(tag) {
+            const input = document.getElementById('modal-member-comment-input');
+            if (!input) return;
+            input.value = tag + input.value;
+            input.focus();
+        }
+
+        async function fetchFreshMemberComments(memberId) {
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? `/api/notion/get-comments?page_id=${memberId}`
+                : `https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/get-comments?page_id=${memberId}`;
+            
+            try {
+                const res = await fetch(apiUrl);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.ok && data.comments) {
+                        const member = songAnhMembersDB.find(m => m.id === memberId);
+                        if (member) {
+                            member.comments = data.comments;
+                        }
+                        if (currentModalMemberId === memberId) {
+                            renderModalCommentsList(data.comments);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('Cannot fetch fresh comments live:', err);
+            }
+        }
+
+        function refreshMemberComments() {
+            if (currentModalMemberId) {
+                const statusEl = document.getElementById('modal-comment-status');
+                statusEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-indigo-600"></i> Đang tải từ Notion...';
+                fetchFreshMemberComments(currentModalMemberId).then(() => {
+                    statusEl.innerHTML = '<span class="text-emerald-600 font-bold">Đã làm mới!</span>';
+                    setTimeout(() => { statusEl.innerHTML = ''; }, 2000);
+                });
+            }
+        }
+
+        async function submitMemberComment() {
+            if (!currentModalMemberId) return;
+            const input = document.getElementById('modal-member-comment-input');
+            const text = input ? input.value.trim() : '';
+            if (!text) {
+                alert('Vui lòng nhập nội dung bình luận!');
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit-member-comment');
+            const statusEl = document.getElementById('modal-comment-status');
+            
+            // Disable button
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang lưu...</span>';
+            statusEl.innerHTML = '<span class="text-indigo-600">Đang gửi lên Notion...</span>';
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? '/api/notion/add-comment'
+                : 'https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/add-comment';
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        page_id: currentModalMemberId,
+                        comment_text: text,
+                        author: 'Sếp Phạm Hoàng Tiến'
+                    })
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    statusEl.innerHTML = '<span class="text-emerald-600 font-bold">✅ Đã lưu vào Notion thành công!</span>';
+                    input.value = '';
+
+                    // Add to local dataset
+                    const member = songAnhMembersDB.find(m => m.id === currentModalMemberId);
+                    const nowStr = new Date().toISOString().substring(0, 10);
+                    if (member) {
+                        if (!member.comments) member.comments = [];
+                        member.comments.unshift({
+                            id: result.comment ? result.comment.id : Date.now().toString(),
+                            text: `[Sếp Phạm Hoàng Tiến]: ${text}`,
+                            date: nowStr
+                        });
+                        renderModalCommentsList(member.comments);
+                    }
+
+                    setTimeout(() => {
+                        statusEl.innerHTML = '';
+                    }, 3000);
+                } else {
+                    statusEl.innerHTML = `<span class="text-rose-600 font-bold">Lỗi: ${result.error || 'Không thể lưu'}</span>`;
+                }
+            } catch (err) {
+                statusEl.innerHTML = `<span class="text-rose-600 font-bold">Lỗi kết nối: ${err.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane text-[11px]"></i> <span>Gửi Bình Luận</span>';
+            }
         }
 
         // Close on backdrop click
@@ -20586,6 +20783,19 @@ let marketingActivityLog = [
                 closeMemberModal();
             }
         });
+
+        // Auto initialize SEO Arch tasks if active on load or if user is on SEO page
+        try {
+            if (typeof renderSeoArchTasks === 'function') {
+                const currentHash = (window.location.hash || '').replace(/^#/, '').replace(/^panel-/, '');
+                const savedMod = localStorage.getItem('songanh_active_module');
+                if (currentHash === 'seo-arch' || currentHash === 'seo' || savedMod === 'seo-arch' || savedMod === 'seo') {
+                    renderSeoArchTasks();
+                }
+            }
+        } catch(e) {
+            console.error('[SEO Arch Auto-Init Error]:', e);
+        }
 
     </script>
 

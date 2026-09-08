@@ -283,18 +283,41 @@
 
         </div>
 
-        <!-- KHUNG 5: LỊCH SỬ KHEN THƯỞNG, ĐÁNH GIÁ & QUYẾT ĐỊNH CÔNG TÁC -->
+        <!-- KHUNG 5: LỊCH SỬ KHEN THƯỞNG, ĐÁNH GIÁ & BÌNH LUẬN NOTION -->
         <div class="bg-slate-50/70 rounded-2xl border border-slate-200/80 p-5 space-y-4 print-break-inside-avoid">
             <div class="flex items-center justify-between pb-2 border-b border-slate-200">
                 <div class="flex items-center gap-2">
                     <div class="w-7 h-7 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center text-xs font-bold">
                         <i class="fa-solid fa-award"></i>
                     </div>
-                    <h3 class="text-xs font-black text-slate-900 uppercase tracking-wide">5. LỊCH SỬ KHEN THƯỞNG & ĐÁNH GIÁ CÔNG TÁC</h3>
+                    <h3 class="text-xs font-black text-slate-900 uppercase tracking-wide">5. LỊCH SỬ KHEN THƯỞNG & BÌNH LUẬN NOTION LIVE</h3>
                 </div>
                 <span id="commentCountBadge" class="text-[10px] font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">0 Ghi nhận</span>
             </div>
             
+            
+            <!-- Khung Thêm Bình Luận Trực Tiếp Lên Notion (Non-print) -->
+            <div class="no-print bg-white p-3.5 rounded-xl border border-indigo-100 shadow-2xs space-y-2.5">
+                <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-black text-indigo-900 flex items-center gap-1.5 uppercase">
+                        <i class="fa-solid fa-comment-medical text-indigo-600"></i> Thêm Bình Luận / Ghi Chú Lên Notion
+                    </span>
+                    <div class="flex items-center gap-1 text-[10.5px]">
+                        <button type="button" onclick="insertFormCommentTag('🏆 Thưởng: ')" class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-bold border border-amber-200 hover:bg-amber-100 transition">+ Thưởng</button>
+                        <button type="button" onclick="insertFormCommentTag('⭐ Đánh giá: ')" class="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-bold border border-blue-200 hover:bg-blue-100 transition">+ Đánh giá</button>
+                        <button type="button" onclick="insertFormCommentTag('📝 Ghi chú: ')" class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">+ Ghi chú</button>
+                    </div>
+                </div>
+                <textarea id="form-member-comment-input" rows="2" placeholder="Nhập nội dung bình luận công tác, quyết định khen thưởng... (lưu trực tiếp vào Notion của nhân sự này)" class="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 focus:outline-none resize-none transition leading-relaxed"></textarea>
+                <div class="flex items-center justify-between">
+                    <span id="form-comment-status" class="text-[11px] font-bold text-slate-400"></span>
+                    <button type="button" id="btn-submit-form-comment" onclick="submitFormComment()" class="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-paper-plane text-[10px]"></i>
+                        <span>Lưu Lên Notion</span>
+                    </button>
+                </div>
+            </div>
+
             <div id="commentsContainer" class="space-y-2.5">
                 <div class="p-3 rounded-xl bg-white border border-slate-200/60 text-xs text-slate-400 italic text-center">
                     Chưa có lịch sử khen thưởng hoặc quyết định điều hành đặc biệt nào được ghi nhận trên Notion.
@@ -488,6 +511,75 @@
             const targetId = params.get('id') || params.get('name') || membersData[0].id;
             renderProfile(targetId);
         });
+    
+        function insertFormCommentTag(tag) {
+            const input = document.getElementById('form-member-comment-input');
+            if (!input) return;
+            input.value = tag + input.value;
+            input.focus();
+        }
+
+        async function submitFormComment() {
+            const currentMemberId = document.getElementById('memberSelector').value;
+            const input = document.getElementById('form-member-comment-input');
+            const text = input ? input.value.trim() : '';
+            if (!text) {
+                alert('Vui lòng nhập nội dung bình luận!');
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit-form-comment');
+            const statusEl = document.getElementById('form-comment-status');
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang lưu...</span>';
+            statusEl.innerHTML = '<span class="text-indigo-600">Đang gửi lên Notion...</span>';
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? '/api/notion/add-comment'
+                : 'https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/add-comment';
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        page_id: currentMemberId,
+                        comment_text: text,
+                        author: 'Sếp Phạm Hoàng Tiến'
+                    })
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    statusEl.innerHTML = '<span class="text-emerald-600 font-bold">✅ Đã lưu vào Notion thành công!</span>';
+                    input.value = '';
+
+                    // Prepend to current comments view
+                    const member = membersData.find(m => m.id === currentMemberId);
+                    const nowStr = new Date().toISOString().substring(0, 10);
+                    if (member) {
+                        if (!member.comments) member.comments = [];
+                        member.comments.unshift({
+                            id: result.comment ? result.comment.id : Date.now().toString(),
+                            text: `[Sếp Phạm Hoàng Tiến]: ${text}`,
+                            date: nowStr
+                        });
+                        renderProfile(currentMemberId);
+                    }
+
+                    setTimeout(() => { statusEl.innerHTML = ''; }, 3000);
+                } else {
+                    statusEl.innerHTML = `<span class="text-rose-600 font-bold">Lỗi: ${result.error || 'Không thể lưu'}</span>`;
+                }
+            } catch (err) {
+                statusEl.innerHTML = `<span class="text-rose-600 font-bold">Lỗi kết nối: ${err.message}</span>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-paper-plane text-[10px]"></i> <span>Lưu Lên Notion</span>';
+            }
+        }
+    
     </script>
 </body>
 </html>
