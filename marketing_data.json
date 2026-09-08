@@ -16400,6 +16400,18 @@
   },
   "marketing_activity_log": [
     {
+      "id": 96,
+      "date": "08/09/2026",
+      "time": "15:08",
+      "category": "Hệ thống",
+      "module": "Giao diện Toàn cục (Global UI)",
+      "title": "Xử lý triệt để lỗi hiển thị 2 lần Footer trên giao diện WebApp",
+      "description": "Thực hiện theo phản hồi của Sếp Phạm Hoàng Tiến: Rà soát cấu trúc DOM toàn cục trong <main>, phát hiện và gỡ bỏ 1 thẻ <footer> bị trùng lặp ở cuối danh sách module panels. Đảm bảo toàn bộ hệ thống WebApp chỉ duy nhất 1 thẻ footer toàn cục chuẩn mực.",
+      "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+      "status": "Hoàn thành",
+      "target": "Webapp Marketing Suite - Cấu trúc DOM Footer toàn cục"
+    },
+    {
       "id": 95,
       "date": "08/09/2026",
       "time": "15:05",
