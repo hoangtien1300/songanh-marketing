@@ -139,10 +139,10 @@ def main():
         cat_ids = [r["id"] for r in props.get("Hạng mục", {}).get("relation", [])]
         cat_names = [cats_map.get(cid, cid) for cid in cat_ids]
 
-        ch_prop = props.get("Kênh", {})
+        ch_prop = props.get("Kênh Social") or props.get("Kênh")
         if not ch_prop:
             for k, v in props.items():
-                if "5744922d" in v.get("id", "") or "kênh" in k.lower() or "kenh" in k.lower():
+                if "kênh" in k.lower() or "kenh" in k.lower():
                     ch_prop = v
                     break
         ch_ids = [r["id"] for r in ch_prop.get("relation", [])] if ch_prop else []

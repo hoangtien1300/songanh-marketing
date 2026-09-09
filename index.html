@@ -6102,14 +6102,14 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                     <div class="task-desktop-table-container overflow-x-auto">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
-                                <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-extrabold uppercase tracking-wider text-[11px]">
-                                    <th class="py-3.5 px-4 w-12 text-center">#</th>
-                                    <th class="py-3.5 px-4 min-w-[280px]">Tiêu đề công việc</th>
-                                    <th class="py-3.5 px-4 min-w-[130px]">Vai trò</th>
-                                    <th class="py-3.5 px-4 min-w-[170px]">Kênh / Hạng mục</th>
-                                    <th class="py-3.5 px-4 min-w-[140px]">Nhắc hẹn (DD/MM/YYYY)</th>
-                                    <th class="py-3.5 px-4 min-w-[120px]">Trạng thái</th>
-                                    <th class="py-3.5 px-4 w-28 text-center">Thao tác</th>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-extrabold uppercase tracking-wider text-[10.5px]">
+                                    <th class="py-2.5 px-3 w-12 text-center">#</th>
+                                    <th class="py-2.5 px-3 min-w-[260px]">Tiêu đề công việc</th>
+                                    <th class="py-2.5 px-3 min-w-[120px]">Vai trò</th>
+                                    <th class="py-2.5 px-3 min-w-[160px]">Kênh / Hạng mục</th>
+                                    <th class="py-2.5 px-3 min-w-[130px]">Nhắc hẹn (DD/MM/YYYY)</th>
+                                    <th class="py-2.5 px-3 min-w-[110px]">Trạng thái</th>
+                                    <th class="py-2.5 px-3 w-24 text-center">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody id="task-table-body" class="divide-y divide-slate-100 font-normal">
@@ -22309,75 +22309,96 @@ let marketingActivityLog = [
 
         function populateTaskFilterDropdowns() {
             const roleSelect = document.getElementById('task-filter-role');
-            if (roleSelect && roleSelect.options.length <= 1 && taskFilterOptions.roles) {
+            if (roleSelect && taskFilterOptions.roles) {
+                const cur = roleSelect.value;
+                roleSelect.innerHTML = '<option value="">-- Tất cả vai trò --</option>';
                 taskFilterOptions.roles.forEach(r => {
                     const opt = document.createElement('option');
                     opt.value = r.id;
                     opt.innerText = r.name;
                     roleSelect.appendChild(opt);
                 });
+                roleSelect.value = cur;
             }
 
             const channelSelect = document.getElementById('task-filter-channel');
-            if (channelSelect && channelSelect.options.length <= 1 && taskFilterOptions.channels) {
+            if (channelSelect && taskFilterOptions.channels) {
+                const cur = channelSelect.value;
+                channelSelect.innerHTML = '<option value="">-- Tất cả kênh --</option>';
                 taskFilterOptions.channels.forEach(ch => {
                     const opt = document.createElement('option');
                     opt.value = ch.id;
                     opt.innerText = ch.name;
                     channelSelect.appendChild(opt);
                 });
+                channelSelect.value = cur;
             }
 
             const catSelect = document.getElementById('task-filter-category');
-            if (catSelect && catSelect.options.length <= 1 && taskFilterOptions.categories) {
+            if (catSelect && taskFilterOptions.categories) {
+                const cur = catSelect.value;
+                catSelect.innerHTML = '<option value="">-- Tất cả hạng mục --</option>';
                 taskFilterOptions.categories.forEach(c => {
                     const opt = document.createElement('option');
                     opt.value = c.id;
                     opt.innerText = c.name;
                     catSelect.appendChild(opt);
                 });
+                catSelect.value = cur;
             }
 
             const statusSelect = document.getElementById('task-filter-status');
-            if (statusSelect && statusSelect.options.length <= 1 && taskFilterOptions.statuses) {
+            if (statusSelect && taskFilterOptions.statuses) {
+                const cur = statusSelect.value;
+                statusSelect.innerHTML = '<option value="">-- Tất cả trạng thái --</option>';
                 taskFilterOptions.statuses.forEach(st => {
                     const opt = document.createElement('option');
                     opt.value = st;
                     opt.innerText = st;
                     statusSelect.appendChild(opt);
                 });
+                statusSelect.value = cur;
             }
         }
 
         function populateModalDropdowns() {
             const modalRole = document.getElementById('modal-task-input-role');
-            if (modalRole && modalRole.options.length <= 1 && taskFilterOptions.roles) {
+            if (modalRole && taskFilterOptions.roles) {
+                const cur = modalRole.value;
+                modalRole.innerHTML = '<option value="">-- Không chọn --</option>';
                 taskFilterOptions.roles.forEach(r => {
                     const opt = document.createElement('option');
                     opt.value = r.id;
                     opt.innerText = r.name;
                     modalRole.appendChild(opt);
                 });
+                modalRole.value = cur;
             }
 
             const modalChannel = document.getElementById('modal-task-input-channel');
-            if (modalChannel && modalChannel.options.length <= 1 && taskFilterOptions.channels) {
+            if (modalChannel && taskFilterOptions.channels) {
+                const cur = modalChannel.value;
+                modalChannel.innerHTML = '<option value="">-- Không chọn --</option>';
                 taskFilterOptions.channels.forEach(ch => {
                     const opt = document.createElement('option');
                     opt.value = ch.id;
                     opt.innerText = ch.name;
                     modalChannel.appendChild(opt);
                 });
+                modalChannel.value = cur;
             }
 
             const modalCat = document.getElementById('modal-task-input-category');
-            if (modalCat && modalCat.options.length <= 1 && taskFilterOptions.categories) {
+            if (modalCat && taskFilterOptions.categories) {
+                const cur = modalCat.value;
+                modalCat.innerHTML = '<option value="">-- Không chọn --</option>';
                 taskFilterOptions.categories.forEach(c => {
                     const opt = document.createElement('option');
                     opt.value = c.id;
                     opt.innerText = c.name;
                     modalCat.appendChild(opt);
                 });
+                modalCat.value = cur;
             }
         }
 
@@ -22454,7 +22475,7 @@ let marketingActivityLog = [
                 colorClasses = 'bg-rose-50 text-rose-700 border-rose-200';
                 dotColor = 'bg-rose-500';
             }
-            return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold border ${colorClasses} shadow-2xs whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>${status || 'Chưa lên lịch'}</span>`;
+            return `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${colorClasses} shadow-2xs whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>${status || 'Chưa lên lịch'}</span>`;
         }
 
         function filterAndRenderTasks() {
@@ -22519,40 +22540,40 @@ let marketingActivityLog = [
                 tableBody.innerHTML = pageTasks.map((t, idx) => {
                     const stt = startIndex + idx + 1;
                     const roleTags = (t.role_names && t.role_names.length > 0)
-                        ? t.role_names.map(r => `<span class="px-2 py-0.5 rounded-md text-[10.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
-                        : '<span class="text-slate-300 text-[11px]">-</span>';
+                        ? t.role_names.map(r => `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
+                        : '<span class="text-slate-300 text-[10.5px]">-</span>';
 
                     const channelTags = (t.channel_names && t.channel_names.length > 0)
-                        ? t.channel_names.map(ch => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
+                        ? t.channel_names.map(ch => `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
                         : '';
                     const catTags = (t.category_names && t.category_names.length > 0)
-                        ? t.category_names.map(c => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
+                        ? t.category_names.map(c => `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
                         : '';
-                    const metaTags = (channelTags || catTags) ? `${channelTags} ${catTags}` : '<span class="text-slate-300 text-[11px]">-</span>';
+                    const metaTags = (channelTags || catTags) ? `${channelTags} ${catTags}` : '<span class="text-slate-300 text-[10.5px]">-</span>';
 
                     const remindDisplay = t.remind_date_vn
-                        ? `<span class="font-extrabold text-slate-800 text-[11.5px] flex items-center gap-1.5"><i class="fa-regular fa-clock text-amber-500 text-[10.5px]"></i>${t.remind_date_vn}</span>`
-                        : '<span class="text-slate-300 text-[11px] font-normal">-</span>';
+                        ? `<span class="font-bold text-slate-700 text-[11px] flex items-center gap-1 whitespace-nowrap"><i class="fa-regular fa-clock text-amber-500 text-[9.5px]"></i>${t.remind_date_vn}</span>`
+                        : '<span class="text-slate-300 text-[10.5px] font-normal">-</span>';
 
                     const statusBadge = getTaskStatusBadgeHtml(t.status);
 
                     return `
-                        <tr class="hover:bg-blue-50/50 transition cursor-pointer group" onclick="openSongAnhTaskDetail('${t.id}')">
-                            <td class="py-3 px-4 text-center font-bold text-slate-400 group-hover:text-blue-600">${stt}</td>
-                            <td class="py-3 px-4">
-                                <div class="font-bold text-slate-800 group-hover:text-blue-700 transition leading-snug">
+                        <tr class="hover:bg-blue-50/40 transition cursor-pointer group" onclick="openSongAnhTaskDetail('${t.id}')">
+                            <td class="py-1.5 px-3 text-center font-bold text-slate-400 group-hover:text-blue-600 text-[11px]">${stt}</td>
+                            <td class="py-1.5 px-3">
+                                <div class="font-semibold text-slate-800 group-hover:text-blue-700 transition leading-tight text-[12px]">
                                     ${t.title}
                                 </div>
-                                ${t.note ? `<div class="text-[11px] text-slate-400 truncate max-w-md mt-0.5 italic flex items-center gap-1"><i class="fa-solid fa-note-sticky text-[10px]"></i> ${t.note}</div>` : ''}
+                                ${t.note ? `<div class="text-[10px] text-slate-400 truncate max-w-sm mt-0.5 italic flex items-center gap-1"><i class="fa-solid fa-note-sticky text-[9px]"></i> ${t.note}</div>` : ''}
                             </td>
-                            <td class="py-3 px-4">${roleTags}</td>
-                            <td class="py-3 px-4"><div class="flex flex-wrap gap-1">${metaTags}</div></td>
-                            <td class="py-3 px-4">${remindDisplay}</td>
-                            <td class="py-3 px-4">${statusBadge}</td>
-                            <td class="py-3 px-4 text-center">
-                                <button type="button" onclick="event.stopPropagation(); openSongAnhTaskDetail('${t.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 group-hover:bg-blue-600 text-slate-600 group-hover:text-white text-[11px] font-bold transition shadow-2xs flex items-center gap-1 mx-auto">
-                                    <i class="fa-solid fa-pen-to-square text-[10px]"></i>
-                                    <span>Xem & Sửa</span>
+                            <td class="py-1.5 px-3">${roleTags}</td>
+                            <td class="py-1.5 px-3"><div class="flex flex-wrap gap-1">${metaTags}</div></td>
+                            <td class="py-1.5 px-3">${remindDisplay}</td>
+                            <td class="py-1.5 px-3">${statusBadge}</td>
+                            <td class="py-1.5 px-3 text-center">
+                                <button type="button" onclick="event.stopPropagation(); openSongAnhTaskDetail('${t.id}')" class="px-2 py-0.5 rounded-md bg-slate-100 group-hover:bg-blue-600 text-slate-600 group-hover:text-white text-[10px] font-bold transition shadow-2xs flex items-center gap-1 mx-auto">
+                                    <i class="fa-solid fa-pen-to-square text-[9px]"></i>
+                                    <span>Sửa</span>
                                 </button>
                             </td>
                         </tr>
@@ -22565,42 +22586,42 @@ let marketingActivityLog = [
                 cardList.innerHTML = pageTasks.map((t, idx) => {
                     const stt = startIndex + idx + 1;
                     const roleTags = (t.role_names && t.role_names.length > 0)
-                        ? t.role_names.map(r => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
+                        ? t.role_names.map(r => `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
                         : '';
                     const channelTags = (t.channel_names && t.channel_names.length > 0)
-                        ? t.channel_names.map(ch => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
+                        ? t.channel_names.map(ch => `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
                         : '';
                     const catTags = (t.category_names && t.category_names.length > 0)
-                        ? t.category_names.map(c => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
+                        ? t.category_names.map(c => `<span class="px-1.5 py-0.5 rounded text-[9.5px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
                         : '';
 
                     const remindDisplay = t.remind_date_vn
-                        ? `<span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200 flex items-center gap-1"><i class="fa-regular fa-clock text-[10px]"></i> ${t.remind_date_vn}</span>`
+                        ? `<span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded border border-amber-200 flex items-center gap-1"><i class="fa-regular fa-clock text-[9px]"></i> ${t.remind_date_vn}</span>`
                         : '';
 
                     const statusBadge = getTaskStatusBadgeHtml(t.status);
 
                     return `
-                        <div onclick="openSongAnhTaskDetail('${t.id}')" class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs hover:border-blue-300 hover:shadow-md transition cursor-pointer space-y-2.5">
+                        <div onclick="openSongAnhTaskDetail('${t.id}')" class="bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs hover:border-blue-300 transition cursor-pointer space-y-2">
                             <div class="flex items-start justify-between gap-2">
-                                <span class="text-[10px] font-black text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">#${stt}</span>
+                                <span class="text-[9.5px] font-black text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">#${stt}</span>
                                 <div class="flex items-center gap-1.5 flex-wrap justify-end">
                                     ${statusBadge}
                                 </div>
                             </div>
-                            <h4 class="font-extrabold text-slate-800 text-xs leading-snug">
+                            <h4 class="font-bold text-slate-800 text-[12px] leading-snug">
                                 ${t.title}
                             </h4>
-                            <div class="flex items-center gap-1.5 flex-wrap">
+                            <div class="flex items-center gap-1 flex-wrap">
                                 ${remindDisplay}
                                 ${roleTags}
                                 ${channelTags}
                                 ${catTags}
                             </div>
-                            ${t.note ? `<div class="text-[11px] text-slate-500 bg-slate-50 p-2 rounded-xl border border-slate-100 italic line-clamp-2"><i class="fa-solid fa-pen text-[9px] text-slate-400"></i> ${t.note}</div>` : ''}
-                            <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10.5px] text-blue-600 font-bold">
+                            ${t.note ? `<div class="text-[10.5px] text-slate-500 bg-slate-50 p-1.5 rounded-lg border border-slate-100 italic line-clamp-2"><i class="fa-solid fa-pen text-[9px] text-slate-400"></i> ${t.note}</div>` : ''}
+                            <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10px] text-blue-600 font-bold">
                                 <span>Chạm để tùy chỉnh & bình luận Notion</span>
-                                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                                <i class="fa-solid fa-chevron-right text-[8.5px]"></i>
                             </div>
                         </div>
                     `;

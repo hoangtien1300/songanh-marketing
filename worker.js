@@ -159,7 +159,7 @@ export default {
           properties["Hạng mục"] = { relation: category_id ? [{ id: category_id }] : [] };
         }
         if (channel_id !== undefined) {
-          properties["Kênh"] = { relation: channel_id ? [{ id: channel_id }] : [] };
+          properties["Kênh Social"] = { relation: channel_id ? [{ id: channel_id }] : [] };
         }
         if (Array.isArray(repeat_days) && repeat_days.length > 0) {
           properties["Lặp lại"] = { multi_select: repeat_days.map(d => ({ name: d })) };
