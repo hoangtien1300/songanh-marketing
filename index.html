@@ -1157,7 +1157,7 @@
 
                 <div class="space-y-1 text-xs">
                     
-                                                            <!-- 0. TRANG CHỦ -->
+                    <!-- 0. TRANG CHỦ & DANH SÁCH CÔNG VIỆC -->
                     <div class="accordion-group rounded-xl border border-blue-200 bg-blue-50/70 overflow-hidden mb-2">
                         <button onclick="selectModule('home')" id="sub-home" class="sub-link active w-full flex items-center justify-between p-2.5 font-bold text-brand-navy hover:bg-blue-100/80 transition">
                             <div class="flex items-center gap-2">
@@ -1166,6 +1166,15 @@
                             </div>
                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 font-bold whitespace-nowrap shrink-0">Active</span>
                         </button>
+                        <div class="bg-white/90 border-t border-blue-100 p-1">
+                            <button onclick="selectModule('tasks')" id="sub-tasks" class="sub-link w-full text-left px-2.5 py-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition flex items-center justify-between">
+                                <span class="flex items-center gap-2">
+                                    <i class="fa-solid fa-list-check text-blue-600 w-4 text-center"></i>
+                                    <span>Danh sách công việc</span>
+                                </span>
+                                <span id="sidebar-badge-total-tasks" class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold whitespace-nowrap shrink-0">154</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- 📢 MỤC MARKETING (GOM CÁC HẠNG MỤC MARKETING ĐỒNG CẤP VỚI NHÂN SỰ) -->
@@ -5916,6 +5925,224 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
                 </div>
             </div>
 
+            
+            <!-- ========================================================================= -->
+            <!-- 📋 MODULE DANH SÁCH CÔNG VIỆC SONG ANH (#panel-tasks)                     -->
+            <!-- Đồng bộ 100% từ Notion Database: 19a4b5e7-3d90-80f4-a51e-f769967547a5    -->
+            <!-- ========================================================================= -->
+            <div id="panel-tasks" class="module-panel space-y-5 hidden" style="display: none;">
+                <!-- 1. MODULE HEADER -->
+                <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-900 text-white p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4 border border-blue-900/50">
+                    <div class="space-y-1.5">
+                        <div class="flex items-center gap-2.5 flex-wrap">
+                            <span class="w-9 h-9 rounded-xl bg-blue-500/30 border border-blue-400/40 flex items-center justify-center text-blue-300 text-lg shadow-inner">
+                                <i class="fa-solid fa-list-check"></i>
+                            </span>
+                            <h2 class="text-xl sm:text-2xl font-black tracking-tight text-white">
+                                DANH SÁCH CÔNG VIỆC SONG ANH
+                            </h2>
+                            <span id="tasks-badge-total-header" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-500/30 text-blue-200 border border-blue-400/40">
+                                154 Tasks
+                            </span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Notion Live DB
+                            </span>
+                        </div>
+                        <p class="text-slate-300 text-xs sm:text-sm font-medium">
+                            Quản trị toàn bộ danh mục công việc Song Anh bóc tách trực tiếp từ Notion • Lọc linh hoạt theo Vai trò, Kênh, Hạng mục và trao đổi bình luận 2 chiều
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0 flex-wrap">
+                        <button type="button" onclick="refreshTasksData(true)" id="btn-refresh-tasks" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-white font-bold text-xs transition flex items-center gap-2 border border-white/20 cursor-pointer shadow-xs">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span>Đồng bộ Notion</span>
+                        </button>
+                        <a href="https://www.notion.so/19a4b5e73d9080f4a51ef769967547a5" target="_blank" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-bold text-xs transition flex items-center gap-1.5 shadow-md cursor-pointer">
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                            <span>Mở Notion DB ↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. QUICK STATS CARDS -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Tổng Công Việc</span>
+                            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-layer-group text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span id="kpi-task-total" class="text-2xl font-black text-slate-900">154</span>
+                            <span class="text-[11px] text-slate-400 font-medium">nhiệm vụ</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-blue-200/80 shadow-2xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wider">Đang Làm & Duy Trì</span>
+                            <div class="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-spinner text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span id="kpi-task-in-progress" class="text-2xl font-black text-blue-700">0</span>
+                            <span class="text-[11px] text-blue-500 font-medium">in-progress</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-200/80 shadow-2xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-amber-700 uppercase tracking-wider">Có Nhắc Hẹn</span>
+                            <div class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                                <i class="fa-regular fa-bell text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span id="kpi-task-remind" class="text-2xl font-black text-amber-700">0</span>
+                            <span class="text-[11px] text-amber-600 font-medium">cần theo dõi</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-emerald-200/80 shadow-2xs hover:shadow-md transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">Hoàn Thành</span>
+                            <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-circle-check text-xs"></i>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-baseline gap-2">
+                            <span id="kpi-task-done" class="text-2xl font-black text-emerald-700">0</span>
+                            <span class="text-[11px] text-emerald-600 font-medium">tasks xong</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. MULTI-FILTER TOOLBAR -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-2xs space-y-3">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div class="relative w-full sm:w-80">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="task-filter-search" oninput="debounceTaskFilter()" placeholder="Tìm kiếm tiêu đề, ghi chú công việc..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition">
+                            <button type="button" onclick="clearTaskSearch()" id="btn-clear-task-search" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+                            <span id="task-filter-count-badge" class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                                Hiển thị: <strong id="task-filtered-count" class="text-blue-600 font-black">0</strong> / <span id="task-total-count">0</span>
+                            </span>
+                            <button type="button" onclick="resetTaskFilters()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer">
+                                <i class="fa-solid fa-rotate-left text-[11px]"></i>
+                                <span>Đặt lại</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2 border-t border-slate-100">
+                        <!-- Vai trò -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-user-tag text-purple-600"></i>
+                                <span>Vai trò:</span>
+                            </label>
+                            <select id="task-filter-role" onchange="filterAndRenderTasks()" class="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Tất cả vai trò --</option>
+                            </select>
+                        </div>
+
+                        <!-- Kênh -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-share-nodes text-blue-600"></i>
+                                <span>Kênh:</span>
+                            </label>
+                            <select id="task-filter-channel" onchange="filterAndRenderTasks()" class="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Tất cả kênh --</option>
+                            </select>
+                        </div>
+
+                        <!-- Hạng mục -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-folder-tree text-emerald-600"></i>
+                                <span>Hạng mục:</span>
+                            </label>
+                            <select id="task-filter-category" onchange="filterAndRenderTasks()" class="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Tất cả hạng mục --</option>
+                            </select>
+                        </div>
+
+                        <!-- Trạng thái -->
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-signal text-amber-600"></i>
+                                <span>Trạng thái:</span>
+                            </label>
+                            <select id="task-filter-status" onchange="filterAndRenderTasks()" class="w-full bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Tất cả trạng thái --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. RESPONSIVE DATA TABLE & CARD LIST -->
+                <div class="bg-white rounded-2xl border border-slate-200/80 shadow-2xs overflow-hidden">
+                    <!-- Desktop Table (>= 640px) -->
+                    <div class="hidden sm:block overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-200 text-slate-600 font-extrabold uppercase tracking-wider text-[11px]">
+                                    <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                    <th class="py-3.5 px-4 min-w-[280px]">Tiêu đề công việc</th>
+                                    <th class="py-3.5 px-4 min-w-[130px]">Vai trò</th>
+                                    <th class="py-3.5 px-4 min-w-[170px]">Kênh / Hạng mục</th>
+                                    <th class="py-3.5 px-4 min-w-[140px]">Nhắc hẹn (DD/MM/YYYY)</th>
+                                    <th class="py-3.5 px-4 min-w-[120px]">Trạng thái</th>
+                                    <th class="py-3.5 px-4 w-28 text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="task-table-body" class="divide-y divide-slate-100 font-normal">
+                                <!-- Rendered dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Card List (< 640px) -->
+                    <div id="task-card-list" class="sm:hidden p-3 space-y-3">
+                        <!-- Rendered dynamically -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="task-empty-state" class="hidden p-10 text-center space-y-2">
+                        <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-xl">
+                            <i class="fa-solid fa-inbox"></i>
+                        </div>
+                        <p class="text-sm font-bold text-slate-700">Không tìm thấy công việc phù hợp</p>
+                        <p class="text-xs text-slate-400">Thử thay đổi từ khóa tìm kiếm hoặc chọn lại các bộ lọc bên trên.</p>
+                        <button type="button" onclick="resetTaskFilters()" class="mt-2 px-3.5 py-1.5 bg-blue-50 text-blue-700 font-bold rounded-xl text-xs hover:bg-blue-100 transition cursor-pointer">
+                            Xóa toàn bộ bộ lọc
+                        </button>
+                    </div>
+
+                    <!-- Pagination Toolbar -->
+                    <div id="task-pagination-toolbar" class="bg-slate-50/80 px-4 py-3 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                        <div class="flex items-center gap-2 text-slate-500 font-medium">
+                            <span>Hiển thị:</span>
+                            <select id="task-page-size" onchange="changeTaskPageSize(this.value)" class="bg-white border border-slate-200 text-slate-700 rounded-lg px-2 py-1 text-xs focus:ring-1 focus:ring-blue-500">
+                                <option value="15">15 dòng/trang</option>
+                                <option value="25" selected>25 dòng/trang</option>
+                                <option value="50">50 dòng/trang</option>
+                                <option value="100">100 dòng/trang</option>
+                            </select>
+                            <span id="task-pagination-info" class="text-slate-600 font-bold ml-1">Trang 1 / 1</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 flex-wrap" id="task-pagination-buttons">
+                            <!-- Rendered dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Global System Footer -->
             <footer class="mt-8 pt-4 border-t border-slate-200 text-slate-500 text-xs flex flex-col md:flex-row items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
@@ -6246,6 +6473,218 @@ Ultra-realistic architectural scale model of Khai Hoan Prime high-rise residenti
         </div>
     </div>
 
+
+
+    
+    <!-- ========================================================================= -->
+    <!-- 📋 MODAL CHI TIẾT & TÙY CHỈNH THUỘC TÍNH + BÌNH LUẬN TASK SONG ANH       -->
+    <!-- ========================================================================= -->
+    <div id="modal-songanh-task-detail" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs transition-opacity duration-200">
+        <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all max-h-[92vh] flex flex-col my-auto">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-900 p-5 sm:p-6 text-white relative shrink-0">
+                <button type="button" onclick="closeSongAnhTaskDetail()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+                <div class="flex items-center gap-2 flex-wrap mb-2">
+                    <span id="modal-task-badge-role" class="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold bg-purple-500/30 text-purple-200 border border-purple-400/30">
+                        Vai trò
+                    </span>
+                    <span id="modal-task-badge-channel" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-500/30 text-blue-200 border border-blue-400/30">
+                        Kênh
+                    </span>
+                    <span id="modal-task-badge-category" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-500/30 text-emerald-200 border border-emerald-400/30">
+                        Hạng mục
+                    </span>
+                </div>
+                <h3 id="modal-task-header-title" class="text-base sm:text-lg font-black tracking-tight text-white leading-snug pr-8">
+                    Tên Công Việc
+                </h3>
+            </div>
+
+            <!-- Tab Navigation (Thuộc tính & Bình luận) -->
+            <div class="bg-slate-50 border-b border-slate-200 px-5 flex items-center gap-2 shrink-0">
+                <button type="button" onclick="switchTaskModalTab('props')" id="tab-btn-task-props" class="py-3 px-3 font-bold text-xs border-b-2 border-blue-600 text-blue-700 flex items-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Tùy Chỉnh Thuộc Tính</span>
+                </button>
+                <button type="button" onclick="switchTaskModalTab('comments')" id="tab-btn-task-comments" class="py-3 px-3 font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition cursor-pointer">
+                    <i class="fa-regular fa-comments"></i>
+                    <span>Bình Luận Notion</span>
+                    <span id="modal-task-comments-count-badge" class="px-1.5 py-0.2 rounded-full bg-slate-200 text-slate-700 text-[10px] font-bold">0</span>
+                </button>
+            </div>
+
+            <!-- Modal Body Scrollable -->
+            <div class="p-5 sm:p-6 overflow-y-auto flex-1 text-slate-700 text-xs">
+                <!-- TAB 1: THUỘC TÍNH TASK -->
+                <div id="modal-task-tab-props" class="space-y-4">
+                    <!-- Tiêu đề công việc -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-heading text-blue-600"></i>
+                            <span>Tiêu đề công việc:</span>
+                        </label>
+                        <input type="text" id="modal-task-input-title" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition">
+                    </div>
+
+                    <!-- 2 Cột: Trạng thái & Ngày nhắc hẹn -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Trạng thái -->
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-signal text-amber-500"></i>
+                                <span>Trạng thái Notion:</span>
+                            </label>
+                            <select id="modal-task-input-status" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="Đang làm">🟡 Đang làm (In Progress)</option>
+                                <option value="Duy trì">🔵 Duy trì (Định kỳ)</option>
+                                <option value="Hoàn thành">🟢 Hoàn thành (Đã xong)</option>
+                                <option value="Chưa lên lịch">⚪ Chưa lên lịch</option>
+                                <option value="Giao việc">🟣 Giao việc</option>
+                                <option value="Theo dõi">🟢 Theo dõi</option>
+                                <option value="Cần họp">🔵 Cần họp</option>
+                                <option value="Tạm hoãn">🔴 Tạm hoãn</option>
+                                <option value="Hủy">⚫ Hủy</option>
+                            </select>
+                        </div>
+
+                        <!-- Ngày nhắc hẹn -->
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1.5 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5">
+                                    <i class="fa-regular fa-bell text-rose-500"></i>
+                                    <span>Nhắc hẹn:</span>
+                                </span>
+                                <div class="flex items-center gap-1">
+                                    <button type="button" onclick="setTaskRemindToday()" class="text-[10px] text-blue-600 hover:underline font-bold">Hôm nay</button>
+                                    <span class="text-slate-300">•</span>
+                                    <button type="button" onclick="clearTaskRemind()" class="text-[10px] text-slate-400 hover:text-rose-600 font-medium">Xóa</button>
+                                </div>
+                            </label>
+                            <input type="datetime-local" id="modal-task-input-remind" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-semibold rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            <span id="modal-task-remind-display-vn" class="text-[10.5px] text-slate-500 mt-1 block font-medium"></span>
+                        </div>
+                    </div>
+
+                    <!-- 3 Cột: Vai trò, Kênh, Hạng mục -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-user-tag text-purple-600"></i>
+                                <span>Vai trò:</span>
+                            </label>
+                            <select id="modal-task-input-role" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-medium rounded-xl px-2.5 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Không chọn --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-share-nodes text-blue-600"></i>
+                                <span>Kênh:</span>
+                            </label>
+                            <select id="modal-task-input-channel" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-medium rounded-xl px-2.5 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Không chọn --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                                <i class="fa-solid fa-folder-tree text-emerald-600"></i>
+                                <span>Hạng mục:</span>
+                            </label>
+                            <select id="modal-task-input-category" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-medium rounded-xl px-2.5 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <option value="">-- Không chọn --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Ghi chú thực hiện -->
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-pen-to-square text-blue-600"></i>
+                            <span>Ghi chú & Cập nhật tiến độ (Lưu Notion):</span>
+                        </label>
+                        <textarea id="modal-task-input-note" rows="2" placeholder="Ghi chú chi tiết về tình hình thực hiện công việc..." class="w-full bg-slate-50 border border-slate-300 text-slate-800 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:bg-white focus:outline-none transition leading-relaxed"></textarea>
+                    </div>
+
+                    <!-- Mô tả công việc Collapsible -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
+                        <button type="button" onclick="toggleTaskDescCollapse()" class="w-full px-3.5 py-2.5 flex items-center justify-between bg-slate-100/80 hover:bg-slate-200/70 text-slate-700 font-bold transition text-xs cursor-pointer">
+                            <span class="flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-info text-blue-600"></i>
+                                <span>Mô tả công việc & Quy trình SOP</span>
+                            </span>
+                            <i id="task-desc-chevron" class="fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform"></i>
+                        </button>
+                        <div id="task-desc-collapse-content" class="hidden p-3 border-t border-slate-200 bg-white">
+                            <textarea id="modal-task-input-description" rows="3" placeholder="Mô tả chi tiết nội dung công việc..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Status Notification Feedback -->
+                    <div id="modal-task-sync-feedback" class="text-xs font-bold text-center min-h-[18px]"></div>
+                </div>
+
+                <!-- TAB 2: BÌNH LUẬN NOTION LIVE -->
+                <div id="modal-task-tab-comments" class="space-y-4 hidden">
+                    <!-- Form thêm bình luận mới -->
+                    <div class="bg-blue-50/70 p-4 rounded-2xl border border-blue-200/80 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <span class="font-extrabold text-slate-800 flex items-center gap-1.5 text-xs">
+                                <i class="fa-solid fa-comment-dots text-blue-600"></i> Thêm Bình Luận Mới Lên Notion
+                            </span>
+                            <span class="text-[11px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md">
+                                Tác giả: Sếp Phạm Hoàng Tiến
+                            </span>
+                        </div>
+                        <textarea id="modal-task-comment-input" rows="2" placeholder="Nhập ý kiến chỉ đạo, nhận xét hoặc cập nhật công việc..." class="w-full bg-white border border-slate-300 text-slate-800 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition leading-relaxed"></textarea>
+                        <div class="flex items-center justify-between gap-2">
+                            <span id="modal-task-comment-status" class="text-[11px] font-bold text-slate-500"></span>
+                            <button type="button" id="btn-submit-task-comment" onclick="submitTaskComment()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold rounded-xl text-xs transition flex items-center gap-1.5 shadow-xs cursor-pointer">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Gửi Bình Luận</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lịch sử bình luận -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="font-extrabold text-slate-700 flex items-center gap-1.5 text-xs">
+                                <i class="fa-solid fa-clock-rotate-left text-slate-400"></i> Lịch Sử Bình Luận Trên Notion
+                            </span>
+                            <button type="button" onclick="fetchTaskCommentsLive(currentModalTaskId)" class="text-[11px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 cursor-pointer">
+                                <i class="fa-solid fa-rotate text-[10px]"></i> Làm mới
+                            </button>
+                        </div>
+                        <div id="modal-task-comments-list" class="space-y-2 max-h-72 overflow-y-auto pr-1">
+                            <div class="text-center py-6 text-slate-400 text-xs">
+                                <i class="fa-solid fa-spinner fa-spin text-lg mb-2 text-blue-500 block"></i>
+                                Đang tải bình luận từ Notion...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div class="bg-slate-50 border-t border-slate-100 p-4 sm:p-5 flex items-center justify-between gap-3 shrink-0 flex-wrap">
+                <a id="modal-task-notion-link" href="#" target="_blank" class="px-3 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition flex items-center gap-1.5 text-xs cursor-pointer">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                    <span>Mở Trên Notion ↗</span>
+                </a>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="closeSongAnhTaskDetail()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition text-xs cursor-pointer">
+                        Đóng
+                    </button>
+                    <button type="button" id="btn-save-task-detail" onclick="saveSongAnhTaskNotion()" class="px-4 sm:px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-black transition flex items-center gap-2 shadow-sm text-xs cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Lưu & Đồng Bộ Notion</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     </main>
@@ -13311,6 +13750,16 @@ let marketingActivityLog = [
                         renderMarketingActivityLogTable();
                     }
                 }
+                                if (data.songanh_tasks_db && data.songanh_tasks_db.length > 0) {
+                    songAnhTasksDB = data.songanh_tasks_db;
+                    taskFilterOptions = data.task_filter_options || { roles: [], categories: [], channels: [], statuses: [] };
+                    if (typeof updateTasksHeaderBadges === 'function') {
+                        updateTasksHeaderBadges();
+                    }
+                    if (window.location.hash === '#tasks' && typeof renderTasksPanel === 'function') {
+                        renderTasksPanel();
+                    }
+                }
                 if (data.marketing_calendar_tasks && data.marketing_calendar_tasks.length > 0) {
                     window.marketingCalendarTasks = data.marketing_calendar_tasks;
                     marketingCalendarTasks = data.marketing_calendar_tasks;
@@ -15462,6 +15911,12 @@ let marketingActivityLog = [
                     renderSeoMasterTasks();
                 } else {
                     setTimeout(() => { if (typeof renderSeoMasterTasks === 'function') renderSeoMasterTasks(); }, 80);
+                }
+            }
+                        if (moduleId === 'tasks') {
+                activePanelId = 'panel-tasks';
+                if (typeof renderTasksPanel === 'function') {
+                    renderTasksPanel();
                 }
             }
             if (['audit', 'cannibalization', 'offpage', 'tiktok', 'youtube', 'xcom'].includes(moduleId)) {
@@ -21793,6 +22248,830 @@ let marketingActivityLog = [
                 }
             } catch(e) {}
         });
+
+    
+        // =========================================================================
+        // 📋 MODULE DANH SÁCH CÔNG VIỆC SONG ANH (NOTION DATABASE CONTROLLER)
+        // =========================================================================
+        var songAnhTasksDB = [];
+        var taskFilterOptions = { roles: [], categories: [], channels: [], statuses: [] };
+        var taskCurrentPage = 1;
+        var taskPageSize = 25;
+        var currentModalTaskId = null;
+        var currentModalTaskComments = [];
+        var taskSearchDebounceTimer = null;
+
+        function updateTasksHeaderBadges() {
+            const total = songAnhTasksDB.length;
+            const sidebarBadge = document.getElementById('sidebar-badge-total-tasks');
+            if (sidebarBadge) sidebarBadge.innerText = total;
+
+            const headerBadge = document.getElementById('tasks-badge-total-header');
+            if (headerBadge) headerBadge.innerText = total + ' Tasks';
+
+            const kpiTotal = document.getElementById('kpi-task-total');
+            if (kpiTotal) kpiTotal.innerText = total;
+
+            const totalCountEl = document.getElementById('task-total-count');
+            if (totalCountEl) totalCountEl.innerText = total;
+
+            let inProgressCount = 0;
+            let remindCount = 0;
+            let doneCount = 0;
+
+            songAnhTasksDB.forEach(t => {
+                if (['Đang làm', 'Duy trì', 'Giao việc', 'In progress'].includes(t.status)) inProgressCount++;
+                if (t.remind_date) remindCount++;
+                if (['Hoàn thành', 'Complete'].includes(t.status)) doneCount++;
+            });
+
+            const kpiInProgress = document.getElementById('kpi-task-in-progress');
+            if (kpiInProgress) kpiInProgress.innerText = inProgressCount;
+
+            const kpiRemind = document.getElementById('kpi-task-remind');
+            if (kpiRemind) kpiRemind.innerText = remindCount;
+
+            const kpiDone = document.getElementById('kpi-task-done');
+            if (kpiDone) kpiDone.innerText = doneCount;
+        }
+
+        function populateTaskFilterDropdowns() {
+            const roleSelect = document.getElementById('task-filter-role');
+            if (roleSelect && roleSelect.options.length <= 1 && taskFilterOptions.roles) {
+                taskFilterOptions.roles.forEach(r => {
+                    const opt = document.createElement('option');
+                    opt.value = r.id;
+                    opt.innerText = r.name;
+                    roleSelect.appendChild(opt);
+                });
+            }
+
+            const channelSelect = document.getElementById('task-filter-channel');
+            if (channelSelect && channelSelect.options.length <= 1 && taskFilterOptions.channels) {
+                taskFilterOptions.channels.forEach(ch => {
+                    const opt = document.createElement('option');
+                    opt.value = ch.id;
+                    opt.innerText = ch.name;
+                    channelSelect.appendChild(opt);
+                });
+            }
+
+            const catSelect = document.getElementById('task-filter-category');
+            if (catSelect && catSelect.options.length <= 1 && taskFilterOptions.categories) {
+                taskFilterOptions.categories.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.innerText = c.name;
+                    catSelect.appendChild(opt);
+                });
+            }
+
+            const statusSelect = document.getElementById('task-filter-status');
+            if (statusSelect && statusSelect.options.length <= 1 && taskFilterOptions.statuses) {
+                taskFilterOptions.statuses.forEach(st => {
+                    const opt = document.createElement('option');
+                    opt.value = st;
+                    opt.innerText = st;
+                    statusSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function populateModalDropdowns() {
+            const modalRole = document.getElementById('modal-task-input-role');
+            if (modalRole && modalRole.options.length <= 1 && taskFilterOptions.roles) {
+                taskFilterOptions.roles.forEach(r => {
+                    const opt = document.createElement('option');
+                    opt.value = r.id;
+                    opt.innerText = r.name;
+                    modalRole.appendChild(opt);
+                });
+            }
+
+            const modalChannel = document.getElementById('modal-task-input-channel');
+            if (modalChannel && modalChannel.options.length <= 1 && taskFilterOptions.channels) {
+                taskFilterOptions.channels.forEach(ch => {
+                    const opt = document.createElement('option');
+                    opt.value = ch.id;
+                    opt.innerText = ch.name;
+                    modalChannel.appendChild(opt);
+                });
+            }
+
+            const modalCat = document.getElementById('modal-task-input-category');
+            if (modalCat && modalCat.options.length <= 1 && taskFilterOptions.categories) {
+                taskFilterOptions.categories.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id;
+                    opt.innerText = c.name;
+                    modalCat.appendChild(opt);
+                });
+            }
+        }
+
+        function renderTasksPanel() {
+            updateTasksHeaderBadges();
+            populateTaskFilterDropdowns();
+            populateModalDropdowns();
+            filterAndRenderTasks();
+        }
+
+        function debounceTaskFilter() {
+            const clearBtn = document.getElementById('btn-clear-task-search');
+            const val = document.getElementById('task-filter-search')?.value || '';
+            if (clearBtn) {
+                if (val.trim()) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+            }
+            clearTimeout(taskSearchDebounceTimer);
+            taskSearchDebounceTimer = setTimeout(() => {
+                taskCurrentPage = 1;
+                filterAndRenderTasks();
+            }, 250);
+        }
+
+        function clearTaskSearch() {
+            const input = document.getElementById('task-filter-search');
+            if (input) input.value = '';
+            const clearBtn = document.getElementById('btn-clear-task-search');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            taskCurrentPage = 1;
+            filterAndRenderTasks();
+        }
+
+        function resetTaskFilters() {
+            const sInput = document.getElementById('task-filter-search');
+            if (sInput) sInput.value = '';
+            const rSelect = document.getElementById('task-filter-role');
+            if (rSelect) rSelect.value = '';
+            const chSelect = document.getElementById('task-filter-channel');
+            if (chSelect) chSelect.value = '';
+            const catSelect = document.getElementById('task-filter-category');
+            if (catSelect) catSelect.value = '';
+            const stSelect = document.getElementById('task-filter-status');
+            if (stSelect) stSelect.value = '';
+            const clearBtn = document.getElementById('btn-clear-task-search');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            taskCurrentPage = 1;
+            filterAndRenderTasks();
+            if (typeof showToast === 'function') showToast('🔄 Đã đặt lại toàn bộ bộ lọc công việc!');
+        }
+
+        function getTaskStatusBadgeHtml(status) {
+            let colorClasses = 'bg-slate-100 text-slate-700 border-slate-200';
+            let dotColor = 'bg-slate-400';
+            if (['Đang làm', 'In progress'].includes(status)) {
+                colorClasses = 'bg-blue-50 text-blue-700 border-blue-200';
+                dotColor = 'bg-blue-500 animate-pulse';
+            } else if (['Duy trì'].includes(status)) {
+                colorClasses = 'bg-sky-50 text-sky-700 border-sky-200';
+                dotColor = 'bg-sky-500';
+            } else if (['Hoàn thành', 'Complete'].includes(status)) {
+                colorClasses = 'bg-emerald-50 text-emerald-700 border-emerald-200';
+                dotColor = 'bg-emerald-500';
+            } else if (['Giao việc'].includes(status)) {
+                colorClasses = 'bg-purple-50 text-purple-700 border-purple-200';
+                dotColor = 'bg-purple-500';
+            } else if (['Theo dõi'].includes(status)) {
+                colorClasses = 'bg-indigo-50 text-indigo-700 border-indigo-200';
+                dotColor = 'bg-indigo-500';
+            } else if (['Cần họp'].includes(status)) {
+                colorClasses = 'bg-amber-50 text-amber-800 border-amber-200';
+                dotColor = 'bg-amber-500';
+            } else if (['Tạm hoãn', 'Hủy'].includes(status)) {
+                colorClasses = 'bg-rose-50 text-rose-700 border-rose-200';
+                dotColor = 'bg-rose-500';
+            }
+            return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold border ${colorClasses} shadow-2xs whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>${status || 'Chưa lên lịch'}</span>`;
+        }
+
+        function filterAndRenderTasks() {
+            const keyword = (document.getElementById('task-filter-search')?.value || '').trim().toLowerCase();
+            const roleId = document.getElementById('task-filter-role')?.value || '';
+            const channelId = document.getElementById('task-filter-channel')?.value || '';
+            const catId = document.getElementById('task-filter-category')?.value || '';
+            const statusVal = document.getElementById('task-filter-status')?.value || '';
+
+            const filtered = songAnhTasksDB.filter(task => {
+                if (keyword) {
+                    const matchTitle = (task.title || '').toLowerCase().includes(keyword);
+                    const matchNote = (task.note || '').toLowerCase().includes(keyword);
+                    const matchDesc = (task.description || '').toLowerCase().includes(keyword);
+                    if (!matchTitle && !matchNote && !matchDesc) return false;
+                }
+                if (roleId) {
+                    if (!task.role_ids || !task.role_ids.includes(roleId)) return false;
+                }
+                if (channelId) {
+                    if (!task.channel_ids || !task.channel_ids.includes(channelId)) return false;
+                }
+                if (catId) {
+                    if (!task.category_ids || !task.category_ids.includes(catId)) return false;
+                }
+                if (statusVal) {
+                    if (task.status !== statusVal) return false;
+                }
+                return true;
+            });
+
+            // Update badge count
+            const filteredCountEl = document.getElementById('task-filtered-count');
+            if (filteredCountEl) filteredCountEl.innerText = filtered.length;
+
+            const emptyState = document.getElementById('task-empty-state');
+            const tableBody = document.getElementById('task-table-body');
+            const cardList = document.getElementById('task-card-list');
+            const paginationToolbar = document.getElementById('task-pagination-toolbar');
+
+            if (filtered.length === 0) {
+                if (tableBody) tableBody.innerHTML = '';
+                if (cardList) cardList.innerHTML = '';
+                if (emptyState) emptyState.classList.remove('hidden');
+                if (paginationToolbar) paginationToolbar.classList.add('hidden');
+                return;
+            } else {
+                if (emptyState) emptyState.classList.add('hidden');
+                if (paginationToolbar) paginationToolbar.classList.remove('hidden');
+            }
+
+            // Pagination calculation
+            const totalPages = Math.ceil(filtered.length / taskPageSize) || 1;
+            if (taskCurrentPage > totalPages) taskCurrentPage = 1;
+            if (taskCurrentPage < 1) taskCurrentPage = 1;
+
+            const startIndex = (taskCurrentPage - 1) * taskPageSize;
+            const pageTasks = filtered.slice(startIndex, startIndex + taskPageSize);
+
+            // Render Table Body (Desktop)
+            if (tableBody) {
+                tableBody.innerHTML = pageTasks.map((t, idx) => {
+                    const stt = startIndex + idx + 1;
+                    const roleTags = (t.role_names && t.role_names.length > 0)
+                        ? t.role_names.map(r => `<span class="px-2 py-0.5 rounded-md text-[10.5px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
+                        : '<span class="text-slate-300 text-[11px]">-</span>';
+
+                    const channelTags = (t.channel_names && t.channel_names.length > 0)
+                        ? t.channel_names.map(ch => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
+                        : '';
+                    const catTags = (t.category_names && t.category_names.length > 0)
+                        ? t.category_names.map(c => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
+                        : '';
+                    const metaTags = (channelTags || catTags) ? `${channelTags} ${catTags}` : '<span class="text-slate-300 text-[11px]">-</span>';
+
+                    const remindDisplay = t.remind_date_vn
+                        ? `<span class="font-extrabold text-slate-800 text-[11.5px] flex items-center gap-1.5"><i class="fa-regular fa-clock text-amber-500 text-[10.5px]"></i>${t.remind_date_vn}</span>`
+                        : '<span class="text-slate-300 text-[11px] font-normal">-</span>';
+
+                    const statusBadge = getTaskStatusBadgeHtml(t.status);
+
+                    return `
+                        <tr class="hover:bg-blue-50/50 transition cursor-pointer group" onclick="openSongAnhTaskDetail('${t.id}')">
+                            <td class="py-3 px-4 text-center font-bold text-slate-400 group-hover:text-blue-600">${stt}</td>
+                            <td class="py-3 px-4">
+                                <div class="font-bold text-slate-800 group-hover:text-blue-700 transition leading-snug">
+                                    ${t.title}
+                                </div>
+                                ${t.note ? `<div class="text-[11px] text-slate-400 truncate max-w-md mt-0.5 italic flex items-center gap-1"><i class="fa-solid fa-note-sticky text-[10px]"></i> ${t.note}</div>` : ''}
+                            </td>
+                            <td class="py-3 px-4">${roleTags}</td>
+                            <td class="py-3 px-4"><div class="flex flex-wrap gap-1">${metaTags}</div></td>
+                            <td class="py-3 px-4">${remindDisplay}</td>
+                            <td class="py-3 px-4">${statusBadge}</td>
+                            <td class="py-3 px-4 text-center">
+                                <button type="button" onclick="event.stopPropagation(); openSongAnhTaskDetail('${t.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 group-hover:bg-blue-600 text-slate-600 group-hover:text-white text-[11px] font-bold transition shadow-2xs flex items-center gap-1 mx-auto">
+                                    <i class="fa-solid fa-pen-to-square text-[10px]"></i>
+                                    <span>Xem & Sửa</span>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            // Render Card List (Mobile < 640px)
+            if (cardList) {
+                cardList.innerHTML = pageTasks.map((t, idx) => {
+                    const stt = startIndex + idx + 1;
+                    const roleTags = (t.role_names && t.role_names.length > 0)
+                        ? t.role_names.map(r => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">${r}</span>`).join(' ')
+                        : '';
+                    const channelTags = (t.channel_names && t.channel_names.length > 0)
+                        ? t.channel_names.map(ch => `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">${ch}</span>`).join(' ')
+                        : '';
+                    const catTags = (t.category_names && t.category_names.length > 0)
+                        ? t.category_names.map(c => `<span class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">${c}</span>`).join(' ')
+                        : '';
+
+                    const remindDisplay = t.remind_date_vn
+                        ? `<span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200 flex items-center gap-1"><i class="fa-regular fa-clock text-[10px]"></i> ${t.remind_date_vn}</span>`
+                        : '';
+
+                    const statusBadge = getTaskStatusBadgeHtml(t.status);
+
+                    return `
+                        <div onclick="openSongAnhTaskDetail('${t.id}')" class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-2xs hover:border-blue-300 hover:shadow-md transition cursor-pointer space-y-2.5">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="text-[10px] font-black text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">#${stt}</span>
+                                <div class="flex items-center gap-1.5 flex-wrap justify-end">
+                                    ${statusBadge}
+                                </div>
+                            </div>
+                            <h4 class="font-extrabold text-slate-800 text-xs leading-snug">
+                                ${t.title}
+                            </h4>
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                ${remindDisplay}
+                                ${roleTags}
+                                ${channelTags}
+                                ${catTags}
+                            </div>
+                            ${t.note ? `<div class="text-[11px] text-slate-500 bg-slate-50 p-2 rounded-xl border border-slate-100 italic line-clamp-2"><i class="fa-solid fa-pen text-[9px] text-slate-400"></i> ${t.note}</div>` : ''}
+                            <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[10.5px] text-blue-600 font-bold">
+                                <span>Chạm để tùy chỉnh & bình luận Notion</span>
+                                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Render Pagination Info & Buttons
+            const pagInfo = document.getElementById('task-pagination-info');
+            if (pagInfo) pagInfo.innerText = `Trang ${taskCurrentPage} / ${totalPages} (${filtered.length} việc)`;
+
+            const pagButtons = document.getElementById('task-pagination-buttons');
+            if (pagButtons) {
+                let btnsHtml = `
+                    <button type="button" onclick="goToTaskPage(${taskCurrentPage - 1})" ${taskCurrentPage <= 1 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-bold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition cursor-pointer">
+                        <i class="fa-solid fa-chevron-left text-[10px]"></i> Trước
+                    </button>
+                `;
+
+                const startP = Math.max(1, taskCurrentPage - 2);
+                const endP = Math.min(totalPages, taskCurrentPage + 2);
+
+                for (let p = startP; p <= endP; p++) {
+                    const isActive = (p === taskCurrentPage);
+                    btnsHtml += `
+                        <button type="button" onclick="goToTaskPage(${p})" class="w-7 h-7 rounded-lg text-xs font-bold transition cursor-pointer ${isActive ? 'bg-blue-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'}">
+                            ${p}
+                        </button>
+                    `;
+                }
+
+                btnsHtml += `
+                    <button type="button" onclick="goToTaskPage(${taskCurrentPage + 1})" ${taskCurrentPage >= totalPages ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-bold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-slate-50 transition cursor-pointer">
+                        Sau <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                `;
+                pagButtons.innerHTML = btnsHtml;
+            }
+        }
+
+        function goToTaskPage(page) {
+            taskCurrentPage = page;
+            filterAndRenderTasks();
+            const mainContent = document.getElementById('main-content') || document.querySelector('main');
+            if (mainContent) mainContent.scrollTop = 0;
+        }
+
+        function changeTaskPageSize(size) {
+            taskPageSize = parseInt(size) || 25;
+            taskCurrentPage = 1;
+            filterAndRenderTasks();
+        }
+
+        // =========================================================================
+        // 🌟 MODAL TASK DETAIL & COMMENTS CONTROLLER
+        // =========================================================================
+        function openSongAnhTaskDetail(taskId) {
+            const task = songAnhTasksDB.find(t => t.id === taskId);
+            if (!task) return;
+
+            currentModalTaskId = taskId;
+            populateModalDropdowns();
+
+            // Header Elements
+            const titleHeader = document.getElementById('modal-task-header-title');
+            if (titleHeader) titleHeader.innerText = task.title;
+
+            const inputTitle = document.getElementById('modal-task-input-title');
+            if (inputTitle) inputTitle.value = task.title;
+
+            const inputStatus = document.getElementById('modal-task-input-status');
+            if (inputStatus) inputStatus.value = task.status || 'Chưa lên lịch';
+
+            const roleBadge = document.getElementById('modal-task-badge-role');
+            if (roleBadge) roleBadge.innerText = (task.role_names && task.role_names[0]) ? task.role_names[0] : 'Vai trò';
+
+            const channelBadge = document.getElementById('modal-task-badge-channel');
+            if (channelBadge) channelBadge.innerText = (task.channel_names && task.channel_names[0]) ? task.channel_names[0] : 'Kênh';
+
+            const catBadge = document.getElementById('modal-task-badge-category');
+            if (catBadge) catBadge.innerText = (task.category_names && task.category_names[0]) ? task.category_names[0] : 'Hạng mục';
+
+            // Select elements
+            const inputRole = document.getElementById('modal-task-input-role');
+            if (inputRole) inputRole.value = (task.role_ids && task.role_ids[0]) ? task.role_ids[0] : '';
+
+            const inputChannel = document.getElementById('modal-task-input-channel');
+            if (inputChannel) inputChannel.value = (task.channel_ids && task.channel_ids[0]) ? task.channel_ids[0] : '';
+
+            const inputCat = document.getElementById('modal-task-input-category');
+            if (inputCat) inputCat.value = (task.category_ids && task.category_ids[0]) ? task.category_ids[0] : '';
+
+            // Datetime Remind
+            const inputRemind = document.getElementById('modal-task-input-remind');
+            const remindVnDisplay = document.getElementById('modal-task-remind-display-vn');
+            if (inputRemind) {
+                if (task.remind_date) {
+                    // Convert to YYYY-MM-DDTHH:MM
+                    if (task.remind_date.includes('T')) {
+                        inputRemind.value = task.remind_date.substring(0, 16);
+                    } else {
+                        inputRemind.value = task.remind_date + 'T09:00';
+                    }
+                } else {
+                    inputRemind.value = '';
+                }
+            }
+            if (remindVnDisplay) {
+                remindVnDisplay.innerText = task.remind_date_vn ? `Định dạng chuẩn VN: ${task.remind_date_vn}` : 'Chưa thiết lập ngày nhắc hẹn';
+            }
+
+            // Note & Description
+            const inputNote = document.getElementById('modal-task-input-note');
+            if (inputNote) inputNote.value = task.note || '';
+
+            const inputDesc = document.getElementById('modal-task-input-description');
+            if (inputDesc) inputDesc.value = task.description || '';
+
+            // Notion Link
+            const notionLink = document.getElementById('modal-task-notion-link');
+            if (notionLink) {
+                notionLink.href = task.notion_url || `https://notion.so/${task.id.replace(/-/g, '')}`;
+            }
+
+            // Feedback status reset
+            const feedback = document.getElementById('modal-task-sync-feedback');
+            if (feedback) feedback.innerHTML = '';
+
+            // Tab props active
+            switchTaskModalTab('props');
+
+            // Open modal
+            const modal = document.getElementById('modal-songanh-task-detail');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+
+            // Auto fetch comments from Notion
+            fetchTaskCommentsLive(taskId);
+        }
+
+        function closeSongAnhTaskDetail() {
+            const modal = document.getElementById('modal-songanh-task-detail');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            currentModalTaskId = null;
+        }
+
+        function switchTaskModalTab(tab) {
+            const tabProps = document.getElementById('modal-task-tab-props');
+            const tabComments = document.getElementById('modal-task-tab-comments');
+            const btnProps = document.getElementById('tab-btn-task-props');
+            const btnComments = document.getElementById('tab-btn-task-comments');
+
+            if (tab === 'props') {
+                if (tabProps) tabProps.classList.remove('hidden');
+                if (tabComments) tabComments.classList.add('hidden');
+                if (btnProps) {
+                    btnProps.className = "py-3 px-3 font-bold text-xs border-b-2 border-blue-600 text-blue-700 flex items-center gap-1.5 transition cursor-pointer";
+                }
+                if (btnComments) {
+                    btnComments.className = "py-3 px-3 font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition cursor-pointer";
+                }
+            } else {
+                if (tabProps) tabProps.classList.add('hidden');
+                if (tabComments) tabComments.classList.remove('hidden');
+                if (btnComments) {
+                    btnComments.className = "py-3 px-3 font-bold text-xs border-b-2 border-blue-600 text-blue-700 flex items-center gap-1.5 transition cursor-pointer";
+                }
+                if (btnProps) {
+                    btnProps.className = "py-3 px-3 font-bold text-xs border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition cursor-pointer";
+                }
+            }
+        }
+
+        function setTaskRemindToday() {
+            const input = document.getElementById('modal-task-input-remind');
+            if (!input) return;
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const d = String(now.getDate()).padStart(2, '0');
+            input.value = `${y}-${m}-${d}T09:00`;
+            const displayVn = document.getElementById('modal-task-remind-display-vn');
+            if (displayVn) displayVn.innerText = `Định dạng chuẩn VN: ${d}/${m}/${y} 09:00`;
+        }
+
+        function clearTaskRemind() {
+            const input = document.getElementById('modal-task-input-remind');
+            if (input) input.value = '';
+            const displayVn = document.getElementById('modal-task-remind-display-vn');
+            if (displayVn) displayVn.innerText = 'Đã xóa ngày nhắc hẹn';
+        }
+
+        function toggleTaskDescCollapse() {
+            const content = document.getElementById('task-desc-collapse-content');
+            const chevron = document.getElementById('task-desc-chevron');
+            if (!content) return;
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                if (chevron) chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                if (chevron) chevron.classList.remove('rotate-180');
+            }
+        }
+
+        function formatIsoToVn(dateStr) {
+            if (!dateStr) return '';
+            try {
+                if (dateStr.includes('T')) {
+                    const [partDate, partTime] = dateStr.split('T');
+                    const [y, m, d] = partDate.split('-');
+                    const t = partTime.substring(0, 5);
+                    return `${d}/${m}/${y} ${t}`;
+                } else {
+                    const [y, m, d] = dateStr.split('-');
+                    return `${d}/${m}/${y}`;
+                }
+            } catch(e) {
+                return dateStr;
+            }
+        }
+
+        async function saveSongAnhTaskNotion() {
+            if (!currentModalTaskId) return;
+            const task = songAnhTasksDB.find(t => t.id === currentModalTaskId);
+            if (!task) return;
+
+            const btn = document.getElementById('btn-save-task-detail');
+            const feedback = document.getElementById('modal-task-sync-feedback');
+
+            const titleVal = (document.getElementById('modal-task-input-title')?.value || '').trim();
+            const statusVal = document.getElementById('modal-task-input-status')?.value || 'Đang làm';
+            const remindVal = document.getElementById('modal-task-input-remind')?.value || '';
+            const roleIdVal = document.getElementById('modal-task-input-role')?.value || '';
+            const channelIdVal = document.getElementById('modal-task-input-channel')?.value || '';
+            const catIdVal = document.getElementById('modal-task-input-category')?.value || '';
+            const noteVal = document.getElementById('modal-task-input-note')?.value || '';
+            const descVal = document.getElementById('modal-task-input-description')?.value || '';
+
+            if (!titleVal) {
+                alert('Vui lòng không để trống Tiêu đề công việc!');
+                return;
+            }
+
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang lưu Notion...</span>';
+            }
+            if (feedback) {
+                feedback.innerHTML = '<span class="text-blue-600"><i class="fa-solid fa-spinner fa-spin"></i> Đang đồng bộ thuộc tính lên Notion Database...</span>';
+            }
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? '/api/notion/update-task'
+                : 'https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/update-task';
+
+            try {
+                const payload = {
+                    page_id: currentModalTaskId,
+                    title: titleVal,
+                    status: statusVal,
+                    remind_date: remindVal ? (remindVal.includes('T') ? `${remindVal}:00.000+07:00` : remindVal) : '',
+                    role_id: roleIdVal,
+                    channel_id: channelIdVal,
+                    category_id: catIdVal,
+                    note: noteVal,
+                    description: descVal
+                };
+
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                if (data.ok) {
+                    // Update local task
+                    task.title = titleVal;
+                    task.status = statusVal;
+                    task.remind_date = payload.remind_date;
+                    task.remind_date_vn = formatIsoToVn(payload.remind_date);
+                    task.note = noteVal;
+                    task.description = descVal;
+
+                    task.role_ids = roleIdVal ? [roleIdVal] : [];
+                    const foundRole = taskFilterOptions.roles.find(r => r.id === roleIdVal);
+                    task.role_names = foundRole ? [foundRole.name] : [];
+
+                    task.channel_ids = channelIdVal ? [channelIdVal] : [];
+                    const foundCh = taskFilterOptions.channels.find(ch => ch.id === channelIdVal);
+                    task.channel_names = foundCh ? [foundCh.name] : [];
+
+                    task.category_ids = catIdVal ? [catIdVal] : [];
+                    const foundCat = taskFilterOptions.categories.find(c => c.id === catIdVal);
+                    task.category_names = foundCat ? [foundCat.name] : [];
+
+                    if (feedback) {
+                        feedback.innerHTML = '<span class="text-emerald-600 font-bold">✅ Đã lưu và đồng bộ thành công lên Notion Database!</span>';
+                    }
+                    if (typeof showToast === 'function') {
+                        showToast('✅ Đã cập nhật thuộc tính task lên Notion!');
+                    }
+
+                    // Update UI table & badges
+                    filterAndRenderTasks();
+                    updateTasksHeaderBadges();
+
+                    setTimeout(() => {
+                        if (feedback) feedback.innerHTML = '';
+                    }, 3500);
+                } else {
+                    if (feedback) {
+                        feedback.innerHTML = `<span class="text-rose-600 font-bold">❌ Lỗi từ Notion: ${JSON.stringify(data.error || data)}</span>`;
+                    }
+                }
+            } catch (err) {
+                console.error('Lỗi khi lưu task Notion:', err);
+                if (feedback) {
+                    feedback.innerHTML = `<span class="text-rose-600 font-bold">❌ Lỗi kết nối: ${err.message}</span>`;
+                }
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> <span>Lưu & Đồng Bộ Notion</span>';
+                }
+            }
+        }
+
+        // =========================================================================
+        // 💬 NOTION COMMENTS LIVE CONTROLLER
+        // =========================================================================
+        async function fetchTaskCommentsLive(taskId) {
+            const listEl = document.getElementById('modal-task-comments-list');
+            const countBadge = document.getElementById('modal-task-comments-count-badge');
+            if (!listEl) return;
+
+            listEl.innerHTML = `
+                <div class="text-center py-6 text-slate-400 text-xs">
+                    <i class="fa-solid fa-spinner fa-spin text-lg mb-2 text-blue-500 block"></i>
+                    Đang tải bình luận từ Notion...
+                </div>
+            `;
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? `/api/notion/get-comments?page_id=${taskId}`
+                : `https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/get-comments?page_id=${taskId}`;
+
+            try {
+                const res = await fetch(apiUrl);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.ok && Array.isArray(data.comments)) {
+                        currentModalTaskComments = data.comments;
+                        if (countBadge) countBadge.innerText = data.comments.length;
+
+                        if (data.comments.length === 0) {
+                            listEl.innerHTML = `
+                                <div class="text-center py-6 text-slate-400 text-xs bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                                    <i class="fa-regular fa-message text-2xl mb-2 text-slate-300 block"></i>
+                                    Chưa có bình luận nào trên trang Notion này. Hãy gửi phản hồi đầu tiên bên trên!
+                                </div>
+                            `;
+                        } else {
+                            listEl.innerHTML = data.comments.map(c => {
+                                const vnDate = formatIsoToVn(c.date) || c.date;
+                                return `
+                                    <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-2xs space-y-1">
+                                        <div class="flex items-center justify-between text-[11px]">
+                                            <span class="font-extrabold text-blue-700 flex items-center gap-1">
+                                                <i class="fa-solid fa-circle-user text-blue-500"></i> Notion Comment
+                                            </span>
+                                            <span class="text-slate-400 font-medium text-[10.5px]">${vnDate}</span>
+                                        </div>
+                                        <p class="text-slate-700 text-xs leading-relaxed whitespace-pre-wrap font-normal">${c.text}</p>
+                                    </div>
+                                `;
+                            }).join('');
+                        }
+                    }
+                }
+            } catch (err) {
+                console.warn('Lỗi khi tải comments Notion:', err);
+                if (listEl) {
+                    listEl.innerHTML = `
+                        <div class="text-center py-4 text-rose-500 text-xs">
+                            <i class="fa-solid fa-triangle-exclamation mb-1 block"></i>
+                            Không thể tải bình luận live lúc này: ${err.message}
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        async function submitTaskComment() {
+            if (!currentModalTaskId) return;
+            const input = document.getElementById('modal-task-comment-input');
+            const text = input ? input.value.trim() : '';
+            if (!text) {
+                alert('Vui lòng nhập nội dung bình luận trước khi gửi!');
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit-task-comment');
+            const statusEl = document.getElementById('modal-task-comment-status');
+
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang gửi...</span>';
+            }
+            if (statusEl) {
+                statusEl.innerHTML = '<span class="text-blue-600">Đang lưu vào Notion...</span>';
+            }
+
+            const apiUrl = window.location.origin.includes('workers.dev')
+                ? '/api/notion/add-comment'
+                : 'https://songanh-marketing.phamhoangtien1300.workers.dev/api/notion/add-comment';
+
+            try {
+                const res = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        page_id: currentModalTaskId,
+                        comment_text: text,
+                        author: 'Sếp Phạm Hoàng Tiến'
+                    })
+                });
+
+                const data = await res.json();
+                if (data.ok) {
+                    if (statusEl) statusEl.innerHTML = '<span class="text-emerald-600 font-bold">✅ Đã gửi bình luận lên Notion!</span>';
+                    if (input) input.value = '';
+                    if (typeof showToast === 'function') showToast('💬 Đã gửi bình luận Notion thành công!');
+                    
+                    // Reload fresh comments
+                    fetchTaskCommentsLive(currentModalTaskId);
+
+                    setTimeout(() => {
+                        if (statusEl) statusEl.innerHTML = '';
+                    }, 3000);
+                } else {
+                    if (statusEl) statusEl.innerHTML = `<span class="text-rose-600 font-bold">❌ Lỗi: ${JSON.stringify(data.error || data)}</span>`;
+                }
+            } catch (err) {
+                console.error('Lỗi gửi comment Notion:', err);
+                if (statusEl) statusEl.innerHTML = `<span class="text-rose-600 font-bold">❌ Lỗi kết nối: ${err.message}</span>`;
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span>Gửi Bình Luận</span>';
+                }
+            }
+        }
+
+        async function refreshTasksData(force) {
+            const btn = document.getElementById('btn-refresh-tasks');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang đồng bộ...</span>';
+            }
+            try {
+                const res = await fetch('marketing_data.json?t=' + new Date().getTime());
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.songanh_tasks_db) {
+                        songAnhTasksDB = data.songanh_tasks_db;
+                        taskFilterOptions = data.task_filter_options || taskFilterOptions;
+                        renderTasksPanel();
+                        if (typeof showToast === 'function') showToast('✅ Đã đồng bộ dữ liệu Tasks Notion mới nhất!');
+                    }
+                }
+            } catch (err) {
+                console.error('Lỗi khi refresh tasks data:', err);
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> <span>Đồng bộ Notion</span>';
+                }
+            }
+        }
 
     </script>
 

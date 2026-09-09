@@ -120,7 +120,7 @@ export default {
     if (url.pathname === "/api/notion/update-task" && request.method === "POST") {
       try {
         const body = await request.json();
-        const { page_id, status, done_count, note, remind_date, repeat_days } = body;
+        const { page_id, title, status, done_count, note, description, remind_date, repeat_days, role_id, category_id, channel_id } = body;
 
         if (!page_id) {
           return new Response(
@@ -130,6 +130,9 @@ export default {
         }
 
         const properties = {};
+        if (title !== undefined && title !== null && title.trim() !== "") {
+          properties["Tên công việc"] = { title: [{ text: { content: title.trim() } }] };
+        }
         if (status) {
           properties["Trạng thái"] = { status: { name: status } };
         }
@@ -139,8 +142,24 @@ export default {
         if (note !== undefined && note !== null) {
           properties["Ghi chú"] = { rich_text: [{ text: { content: String(note) } }] };
         }
-        if (remind_date) {
-          properties["Nhắc hẹn"] = { date: { start: remind_date } };
+        if (description !== undefined && description !== null) {
+          properties["Mô tả công việc"] = { rich_text: [{ text: { content: String(description) } }] };
+        }
+        if (remind_date !== undefined) {
+          if (remind_date && remind_date.trim() !== "") {
+            properties["Nhắc hẹn"] = { date: { start: remind_date } };
+          } else {
+            properties["Nhắc hẹn"] = { date: null };
+          }
+        }
+        if (role_id !== undefined) {
+          properties["Vai trò"] = { relation: role_id ? [{ id: role_id }] : [] };
+        }
+        if (category_id !== undefined) {
+          properties["Hạng mục"] = { relation: category_id ? [{ id: category_id }] : [] };
+        }
+        if (channel_id !== undefined) {
+          properties["Kênh"] = { relation: channel_id ? [{ id: channel_id }] : [] };
         }
         if (Array.isArray(repeat_days) && repeat_days.length > 0) {
           properties["Lặp lại"] = { multi_select: repeat_days.map(d => ({ name: d })) };
