@@ -42,6 +42,26 @@
             .card-white { box-shadow: none !important; border: 1px solid #CBD5E1 !important; }
         }
     </style>
+
+    <style>
+        .report-editing-active [contenteditable="true"] {
+            outline: 1px dashed #3B82F6 !important;
+            background: rgba(59, 130, 246, 0.04) !important;
+            cursor: text !important;
+            border-radius: 4px;
+            padding: 1px 4px;
+            transition: all 0.15s ease;
+        }
+        .report-editing-active [contenteditable="true"]:hover {
+            background: rgba(59, 130, 246, 0.08) !important;
+            outline: 1px solid #2563EB !important;
+        }
+        .report-editing-active [contenteditable="true"]:focus {
+            outline: 2px solid #2563EB !important;
+            background: rgba(59, 130, 246, 0.12) !important;
+        }
+    </style>
+
 </head>
 <body class="min-h-screen p-3 sm:p-5 lg:p-7">
 
@@ -73,8 +93,24 @@
                     </p>
                 </div>
 
-                <div class="flex items-center gap-2.5 no-print shrink-0 w-full md:w-auto justify-between md:justify-end">
-                    <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition flex items-center gap-1.5 cursor-pointer">
+                <div class="flex items-center gap-2.5 no-print shrink-0 w-full md:w-auto justify-between md:justify-end flex-wrap">
+                    <!-- Admin Edit Controls -->
+                    <div id="standalone-admin-controls" class="flex items-center gap-1.5">
+                        <button id="btn-edit-standalone" onclick="toggleStandaloneEditMode()" class="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-sm" title="Chỉnh sửa trực tiếp (Dành cho Admin)">
+                            <i class="fa-solid fa-pen-to-square"></i> <span id="btn-edit-standalone-text">Chỉnh Sửa Báo Cáo</span>
+                        </button>
+                        <button id="btn-save-standalone" onclick="saveStandaloneEdits()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition hidden items-center gap-1.5 cursor-pointer shadow-sm">
+                            <i class="fa-solid fa-floppy-disk"></i> <span>Lưu Thay Đổi</span>
+                        </button>
+                        <button id="btn-cancel-standalone" onclick="cancelStandaloneEdits()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition hidden items-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-xmark"></i> <span>Hủy</span>
+                        </button>
+                        <button id="btn-reset-standalone" onclick="resetStandaloneToDefault()" class="px-2.5 py-2 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-rose-300 text-xs font-semibold transition hidden items-center gap-1 cursor-pointer" title="Khôi phục báo cáo gốc">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </button>
+                    </div>
+
+                    <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition flex items-center gap-1.5 cursor-pointer shadow-sm">
                         <i class="fa-solid fa-print"></i> In / Xuất PDF
                     </button>
                     <a href="https://songanh-marketing.phamhoangtien1300.workers.dev/#panel-reports" target="_blank" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
@@ -83,6 +119,32 @@
                 </div>
             </div>
         </header>
+
+        <!-- Banner thông báo chế độ chỉnh sửa -->
+        <div id="standalone-edit-banner" class="hidden p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/40 text-amber-900 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+            <div class="flex items-center gap-2.5">
+                <span class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-bold shrink-0">
+                    <i class="fa-solid fa-pen-nib text-xs"></i>
+                </span>
+                <div>
+                    <div class="font-extrabold text-amber-900 flex items-center gap-1.5">
+                        <span>CHẾ ĐỘ CHỈNH SỬA TRỰC TIẾP (QUYỀN ADMIN)</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] bg-amber-200 text-amber-900 font-black">ADMIN ACTIVE</span>
+                    </div>
+                    <div class="text-amber-800 text-[11.5px] mt-0.5">Sếp có thể bấm trực tiếp vào bất kỳ con số, thẻ chỉ số, nội dung kênh, bảng từ khóa SEO hay kế hoạch tuần tới để sửa chữ.</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <button onclick="saveStandaloneEdits()" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 cursor-pointer shadow-xs">
+                    <i class="fa-solid fa-floppy-disk"></i> <span>Lưu Thay Đổi</span>
+                </button>
+                <button onclick="cancelStandaloneEdits()" class="px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs cursor-pointer">
+                    Hủy
+                </button>
+            </div>
+        </div>
+
+        <div id="standalone-editable-content" class="space-y-5">
 
         <!-- 2. CÁC CHỈ SỐ HOẠT ĐỘNG CHÍNH (KEY METRICS) -->
         <section class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
@@ -478,6 +540,8 @@
             </div>
         </section>
 
+        </div> <!-- Đóng #standalone-editable-content -->
+
         <!-- FOOTER -->
         <footer class="text-center text-xs text-slate-400 py-2">
             Mô Hình Kiến Trúc Song Anh • Báo cáo định kỳ Ban Giám Đốc • Hotline: 0929 22 4444
@@ -528,5 +592,202 @@
             }
         });
     </script>
+
+    <script>
+        // Check Admin permission from WebApp session in localStorage
+        function getAuthSession() {
+            try {
+                let raw = localStorage.getItem('songanh_marketing_auth_session') || sessionStorage.getItem('songanh_marketing_auth_session');
+                if (!raw) return null;
+                const sess = JSON.parse(raw);
+                if (!sess || !sess.expiresAt || Date.now() > sess.expiresAt) return null;
+                return sess;
+            } catch(e) { return null; }
+        }
+
+        function isUserAdmin() {
+            const sess = getAuthSession();
+            return !!(sess && (sess.permission === 'admin' || sess.roleCode === 'admin'));
+        }
+
+        var isStandaloneEditing = false;
+        var originalStandaloneBackup = null;
+
+        function syncStandaloneControls() {
+            const btn = document.getElementById('btn-edit-standalone');
+            if (!btn) return;
+
+            if (isUserAdmin()) {
+                btn.classList.remove('opacity-60', 'cursor-not-allowed', 'bg-slate-700', 'text-slate-300');
+                btn.classList.add('bg-amber-500', 'text-slate-950');
+                btn.setAttribute('title', 'Chỉnh sửa nội dung báo cáo trực tiếp (Tài khoản Admin)');
+                const btnText = document.getElementById('btn-edit-standalone-text');
+                if (btnText) btnText.innerText = isStandaloneEditing ? 'Đang Chỉnh Sửa...' : 'Chỉnh Sửa Báo Cáo';
+            } else {
+                btn.classList.remove('bg-amber-500', 'text-slate-950');
+                btn.classList.add('bg-slate-700', 'text-slate-300', 'opacity-60');
+                const sess = getAuthSession();
+                const perm = sess ? (sess.permission || 'member') : 'khách';
+                btn.setAttribute('title', 'Chỉ tài khoản Admin mới có quyền chỉnh sửa báo cáo (Quyền hiện tại: ' + perm.toUpperCase() + ')');
+                const btnText = document.getElementById('btn-edit-standalone-text');
+                if (btnText) btnText.innerText = 'Chỉ Xem (' + perm.toUpperCase() + ')';
+            }
+        }
+
+        function toggleStandaloneEditMode() {
+            if (!isUserAdmin()) {
+                const sess = getAuthSession();
+                const perm = sess ? (sess.permission || 'member') : 'chưa đăng nhập';
+                alert('⚠️ CẢNH BÁO QUYỀN HẠN:\nChỉ tài khoản có quyền ADMIN trên Bảng Thành Viên Notion mới được phép chỉnh sửa báo cáo.\n\nTài khoản hiện tại của bạn là: ' + perm.toUpperCase() + ' (Chỉ xem).\n\nVui lòng đăng nhập tài khoản Admin trên WebApp để kích hoạt quyền chỉnh sửa.');
+                return;
+            }
+
+            if (isStandaloneEditing) {
+                saveStandaloneEdits();
+            } else {
+                startStandaloneEditing();
+            }
+        }
+
+        function startStandaloneEditing() {
+            if (!isUserAdmin()) return;
+            isStandaloneEditing = true;
+
+            const container = document.getElementById('standalone-editable-content');
+            if (!container) return;
+
+            if (!originalStandaloneBackup) {
+                originalStandaloneBackup = container.innerHTML;
+            }
+
+            document.getElementById('standalone-edit-banner')?.classList.remove('hidden');
+            const saveBtn = document.getElementById('btn-save-standalone');
+            if (saveBtn) { saveBtn.classList.remove('hidden'); saveBtn.classList.add('flex'); }
+            const cancelBtn = document.getElementById('btn-cancel-standalone');
+            if (cancelBtn) { cancelBtn.classList.remove('hidden'); cancelBtn.classList.add('flex'); }
+            const resetBtn = document.getElementById('btn-reset-standalone');
+            if (resetBtn) { resetBtn.classList.remove('hidden'); resetBtn.classList.add('flex'); }
+
+            const btnText = document.getElementById('btn-edit-standalone-text');
+            if (btnText) btnText.innerText = 'Đang Chỉnh Sửa...';
+
+            container.classList.add('report-editing-active');
+
+            const targets = container.querySelectorAll('h1, h2, h3, h4, p, span, td, th, li, .text-2xl, .text-3xl');
+            targets.forEach(el => {
+                if (el.tagName === 'CANVAS' || el.tagName === 'I' || el.classList.contains('fa-solid') || el.classList.contains('fa-brands')) return;
+                el.setAttribute('contenteditable', 'true');
+                el.setAttribute('spellcheck', 'false');
+            });
+        }
+
+        function saveStandaloneEdits() {
+            if (!isUserAdmin()) {
+                alert('Lỗi: Bạn không có quyền Admin để lưu báo cáo!');
+                return;
+            }
+
+            const container = document.getElementById('standalone-editable-content');
+            if (!container) return;
+
+            const targets = container.querySelectorAll('[contenteditable="true"]');
+            targets.forEach(el => el.removeAttribute('contenteditable'));
+            container.classList.remove('report-editing-active');
+
+            const savedHtml = container.innerHTML;
+            localStorage.setItem('songanh_marketing_saved_report_html', savedHtml);
+            localStorage.setItem('songanh_marketing_saved_report_meta', JSON.stringify({
+                updatedAt: new Date().toISOString(),
+                author: getAuthSession()?.fullName || 'Admin'
+            }));
+
+            isStandaloneEditing = false;
+
+            document.getElementById('standalone-edit-banner')?.classList.add('hidden');
+            const saveBtn = document.getElementById('btn-save-standalone');
+            if (saveBtn) { saveBtn.classList.add('hidden'); saveBtn.classList.remove('flex'); }
+            const cancelBtn = document.getElementById('btn-cancel-standalone');
+            if (cancelBtn) { cancelBtn.classList.add('hidden'); cancelBtn.classList.remove('flex'); }
+            const resetBtn = document.getElementById('btn-reset-standalone');
+            if (resetBtn) { resetBtn.classList.remove('hidden'); resetBtn.classList.add('flex'); }
+
+            syncStandaloneControls();
+            alert('✅ ĐÃ LƯU BÁO CÁO THÀNH CÔNG!\nNội dung tùy chỉnh của Sếp đã được lưu và sẽ tự động đồng bộ trên cả WebApp và file báo cáo.');
+        }
+
+        function cancelStandaloneEdits(forceQuiet) {
+            if (!forceQuiet && !confirm('Hủy bỏ các thay đổi đang chỉnh sửa và quay lại nội dung trước đó?')) {
+                return;
+            }
+
+            const container = document.getElementById('standalone-editable-content');
+            if (container) {
+                const savedHtml = localStorage.getItem('songanh_marketing_saved_report_html');
+                if (savedHtml) {
+                    container.innerHTML = savedHtml;
+                } else if (originalStandaloneBackup) {
+                    container.innerHTML = originalStandaloneBackup;
+                }
+                container.classList.remove('report-editing-active');
+                const targets = container.querySelectorAll('[contenteditable="true"]');
+                targets.forEach(el => el.removeAttribute('contenteditable'));
+            }
+
+            isStandaloneEditing = false;
+            document.getElementById('standalone-edit-banner')?.classList.add('hidden');
+            const saveBtn = document.getElementById('btn-save-standalone');
+            if (saveBtn) { saveBtn.classList.add('hidden'); saveBtn.classList.remove('flex'); }
+            const cancelBtn = document.getElementById('btn-cancel-standalone');
+            if (cancelBtn) { cancelBtn.classList.add('hidden'); cancelBtn.classList.remove('flex'); }
+
+            syncStandaloneControls();
+        }
+
+        function resetStandaloneToDefault() {
+            if (!isUserAdmin()) return;
+            if (!confirm('Sếp có chắc chắn muốn xóa toàn bộ nội dung đã chỉnh sửa và khôi phục báo cáo gốc ban đầu không?')) {
+                return;
+            }
+
+            localStorage.removeItem('songanh_marketing_saved_report_html');
+            localStorage.removeItem('songanh_marketing_saved_report_meta');
+
+            const container = document.getElementById('standalone-editable-content');
+            if (container && originalStandaloneBackup) {
+                container.innerHTML = originalStandaloneBackup;
+                container.classList.remove('report-editing-active');
+            }
+
+            isStandaloneEditing = false;
+            document.getElementById('standalone-edit-banner')?.classList.add('hidden');
+            const saveBtn = document.getElementById('btn-save-standalone');
+            if (saveBtn) { saveBtn.classList.add('hidden'); saveBtn.classList.remove('flex'); }
+            const cancelBtn = document.getElementById('btn-cancel-standalone');
+            if (cancelBtn) { cancelBtn.classList.add('hidden'); cancelBtn.classList.remove('flex'); }
+            const resetBtn = document.getElementById('btn-reset-standalone');
+            if (resetBtn) { resetBtn.classList.add('hidden'); resetBtn.classList.remove('flex'); }
+
+            syncStandaloneControls();
+            alert('✅ Đã khôi phục nội dung báo cáo gốc thành công!');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('standalone-editable-content');
+            if (container) {
+                originalStandaloneBackup = container.innerHTML;
+                const savedHtml = localStorage.getItem('songanh_marketing_saved_report_html');
+                if (savedHtml) {
+                    container.innerHTML = savedHtml;
+                    const resetBtn = document.getElementById('btn-reset-standalone');
+                    if (resetBtn && isUserAdmin()) {
+                        resetBtn.classList.remove('hidden');
+                        resetBtn.classList.add('flex');
+                    }
+                }
+            }
+            syncStandaloneControls();
+        });
+    </script>
+
 </body>
 </html>
