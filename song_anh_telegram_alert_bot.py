@@ -141,20 +141,20 @@ def format_hr_morning_report():
     msg += f"👤 <i>Trợ lý: Vy - Nhân Sự</i>\n"
     msg += f"──────────────────────\n\n"
     
-    msg += f"👥 <b>TỔNG QUÂN SỐ CÔNG TY: 19 Nhân sự</b>\n"
+    msg += f"👥 <b>TỔNG QUÂN SỐ CÔNG TY: 20 Nhân sự</b>\n"
     msg += f"• Khối Văn phòng: 05 | Nhóm Thế Anh: 05\n"
-    msg += f"• Nhóm Huynh: 04 | Nhóm Hiển: 05\n"
-    msg += f"<i>(Hành chính: 06 | Cơ bản + Khoán: 11 | CTV: 02 | Thử việc: 00)</i>\n\n"
+    msg += f"• Nhóm Huynh: 05 (04 CT + 01 Thử việc) | Nhóm Hiển: 05\n"
+    msg += f"<i>(Hành chính: 06 | Cơ bản + Khoán: 11 | CTV: 02 | Thử việc: 01)</i>\n\n"
     
-    msg += f"⏪ <b>DIỄN BIẾN HÔM QUA ({yesterday_str}):</b>\n"
-    msg += f"• Ghi nhận thưởng nóng 1 triệu cho 3 nhân sự: Sơn (Nippon), Hiển (Trách nhiệm), Quỳnh (Nỗ lực).\n"
-    msg += f"• Tiếp nhận 02 hồ sơ ứng viên: Nguyen Dat (In 3D) &amp; Trần Quốc Huy (Sale B2B) từ vieclam24h.\n"
-    msg += f"• Đã số hóa và cập nhật dữ liệu 2 ứng viên vào Notion DB Thành viên.\n\n"
+    msg += f"⏪ <b>DIỄN BIẾN MỚI NHẤT ({today_str}):</b>\n"
+    msg += f"• <b>Trần Quốc Huy</b> chính thức bắt đầu ngày thử việc đầu tiên tại xưởng Nguyễn Xiển.\n"
+    msg += f"• Sếp phân công bạn Huy về <b>Nhóm Huynh</b> (Trưởng nhóm Mai Xuân Huynh) phụ trách kèm cặp, theo dõi kỹ thuật.\n"
+    msg += f"• Thời gian thử việc: 15 ngày (từ 14/09/2026 đến hết 28/09/2026).\n\n"
     
     msg += f"⏩ <b>VIỆC CẦN LÀM HÔM NAY ({today_str}):</b>\n"
-    msg += f"1. Theo dõi phản hồi Zalo/mail của 02 ứng viên Đạt &amp; Huy để xếp lịch trao đổi/phỏng vấn.\n"
-    msg += f"2. Hoàn tất thủ tục tiếp nhận chính thức Phạm Vũ Luân (Nhóm Hiển - Cơ bản + Khoán).\n"
-    msg += f"3. Kiểm soát quân số xưởng ca sáng và chuyên cần các nhóm thi công.\n\n"
+    msg += f"1. Hướng dẫn Trần Quốc Huy hoàn thiện hồ sơ nhân sự, ký cam kết an toàn &amp; bảo mật xưởng.\n"
+    msg += f"2. Trưởng nhóm Mai Xuân Huynh tiếp nhận, bố trí vị trí làm việc &amp; phân công đầu việc sa bàn thực tế.\n"
+    msg += f"3. Kiểm soát quân số xưởng ca sáng và chấm công các nhóm thi công.\n\n"
     
     msg += f"🔗 <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/#nhan-su'>Mở WebApp Nhân Sự</a> | <a href='https://songanh-marketing.phamhoangtien1300.workers.dev/ho_so_nhan_vien.html'>Xem Biểu Mẫu Hồ Sơ</a>\n"
     return msg
@@ -199,7 +199,7 @@ def format_work_marketing_morning_report():
     # Extract yesterday's highlights
     yesterday_items = []
     for l in logs:
-        time_str = l.get("time") or ""
+        time_str = l.get("time") or l.get("timestamp") or l.get("date") or ""
         if yesterday_str in time_str:
             action = l.get("action", "").strip()
             module = l.get("module") or "Marketing"

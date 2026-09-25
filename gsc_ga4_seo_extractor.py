@@ -965,21 +965,27 @@ def update_marketing_json(keywords_data):
     """
     Updates marketing_data.json with GSC enriched keywords & summary KPI while 100% preserving rankHistory.
     """
-    existing_kw_map = {}
+    existing_kw_list = []
+    existing_kw_map_by_name = {}
+    existing_kw_map_by_id = {}
     if os.path.exists(JSON_DATA_PATH):
         with open(JSON_DATA_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            for item in data.get("seo_keywords", []):
-                existing_kw_map[item.get("id")] = item
+            existing_kw_list = data.get("seo_keywords", [])
+            for item in existing_kw_list:
+                if item.get("id"):
+                    existing_kw_map_by_id[item.get("id")] = item
+                if item.get("name"):
+                    existing_kw_map_by_name[item.get("name").strip().lower()] = item
     else:
         data = {}
         
-    json_seo_keywords = []
     top1_3_count = 0
     top4_10_count = 0
     top11_30_count = 0
     total_impressions = 0
     total_clicks = 0
+    today_str = datetime.now().strftime('%d/%m/%Y')
     
     for kw in keywords_data:
         pos = kw['gscPos']
@@ -993,38 +999,100 @@ def update_marketing_json(keywords_data):
         total_impressions += kw['impressions']
         total_clicks += kw['clicks']
         
-        old_kw = existing_kw_map.get(kw["id"], {})
+        name_clean = kw["name"].strip().lower()
+        target_item = existing_kw_map_by_name.get(name_clean) or existing_kw_map_by_id.get(kw["id"])
+
+        ctr_str = f"{kw['ctr']:.2f}% CTR" if isinstance(kw['ctr'], (int, float)) else (f"{kw['ctr']} CTR" if not str(kw['ctr']).endswith("CTR") else kw['ctr'])
+        ctr_pct = f"{kw['ctr']:.2f}%" if isinstance(kw['ctr'], (int, float)) else (kw['ctr'].replace(" CTR", "") if " CTR" in str(kw['ctr']) else str(kw['ctr']))
+
+        if target_item:
+            # Update live stats on existing item
+            target_item["currRank"] = kw["currRank"]
+            target_item["gscPos"] = kw["gscPos"]
+            target_item["impressions"] = kw["impressions"]
+            target_item["clicks"] = kw["clicks"]
+            target_item["ctr"] = ctr_str
+            target_item["change"] = kw["change"]
+            target_item["last_updated"] = f"{today_str} (Mới Nhất Real-time GSC & GA4)"
+            if not target_item.get("website"):
+                target_item["website"] = "mohinhkientruc.org"
+            if not target_item.get("domain"):
+                target_item["domain"] = "mohinhkientruc.org"
+            if "kientruc" not in target_item or not isinstance(target_item.get("kientruc"), dict):
+                target_item["kientruc"] = {}
+            target_item["kientruc"]["rank"] = kw["gscPos"]
+            target_item["kientruc"]["clicks"] = kw["clicks"]
+            target_item["kientruc"]["impressions"] = kw["impressions"]
+            target_item["kientruc"]["ctr"] = ctr_pct
+            target_item["kientruc"]["slug"] = kw["url"]
+            for d_field in ["model", "songanh", "mohinh3d", "vatlieu"]:
+                if d_field not in target_item or not isinstance(target_item.get(d_field), dict):
+                    target_item[d_field] = {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"}
+            if "features" not in target_item:
+                target_item["features"] = ["organic"]
+            if "volume" not in target_item:
+                target_item["volume"] = 1200
+            if "kd" not in target_item:
+                target_item["kd"] = 25
+        else:
+            new_entry = {
+                "id": kw["id"],
+                "name": kw["name"],
+                "website": "mohinhkientruc.org",
+                "domain": "mohinhkientruc.org",
+                "initRank": kw["initRank"],
+                "initDate": kw["initDate"],
+                "prevRankNote": f"Mốc đầu tuần (17/08/2026): {kw['initRank']}",
+                "currRank": kw["currRank"],
+                "gscPos": kw["gscPos"],
+                "impressions": kw["impressions"],
+                "clicks": kw["clicks"],
+                "ctr": ctr_str,
+                "searchFeature": "Standard Snippet",
+                "url": kw["url"],
+                "change": kw["change"],
+                "type": kw["type"],
+                "intent": kw["intent"],
+                "priority": kw["priority"],
+                "silo": kw["silo"],
+                "volume": 1200,
+                "kd": 25,
+                "features": ["organic"],
+                "last_updated": f"{today_str} (Mới Nhất Real-time GSC & GA4)",
+                "highlight": kw.get("highlight", False),
+                "rankHistory": [],
+                "kientruc": {"rank": kw["gscPos"], "change": 0, "slug": kw["url"], "clicks": kw["clicks"], "impressions": kw["impressions"], "ctr": ctr_pct},
+                "model": {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"},
+                "songanh": {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"},
+                "mohinh3d": {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"},
+                "vatlieu": {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"}
+            }
+            existing_kw_list.append(new_entry)
+            existing_kw_map_by_name[name_clean] = new_entry
+            existing_kw_map_by_id[kw["id"]] = new_entry
         
-        kw_entry = {
-            "id": kw["id"],
-            "name": kw["name"],
-            "initRank": kw["initRank"],
-            "initDate": kw["initDate"],
-            "prevRankNote": old_kw.get("prevRankNote", f"Mốc đầu tuần (17/08/2026): {kw['initRank']}"),
-            "currRank": kw["currRank"],
-            "gscPos": kw["gscPos"],
-            "impressions": kw["impressions"],
-            "clicks": kw["clicks"],
-            "ctr": f"{kw['ctr']:.2f}% CTR" if isinstance(kw['ctr'], (int, float)) else (f"{kw['ctr']} CTR" if not str(kw['ctr']).endswith("CTR") else kw['ctr']),
-            "searchFeature": old_kw.get("searchFeature", "🖼️ Image Pack" if kw.get("highlight") else "Standard Snippet"),
-            "url": kw["url"],
-            "change": kw["change"],
-            "type": kw["type"],
-            "intent": kw["intent"],
-            "priority": kw["priority"],
-            "silo": kw["silo"],
-            "last_updated": f"{datetime.now().strftime('%d/%m/%Y')} (Mới Nhất Real-time GSC & GA4)",
-            "highlight": kw.get("highlight", False),
-            "rankHistory": old_kw.get("rankHistory", [])
-        }
-        json_seo_keywords.append(kw_entry)
-        
-    data["seo_keywords"] = json_seo_keywords
+    # Ensure every single keyword has required multi-domain keys
+    for item in existing_kw_list:
+        if not item.get("website"):
+            item["website"] = "mohinhkientruc.org"
+        if not item.get("domain"):
+            item["domain"] = item["website"]
+        for d_field in ["kientruc", "model", "songanh", "mohinh3d", "vatlieu"]:
+            if d_field not in item or not isinstance(item.get(d_field), dict):
+                item[d_field] = {"rank": "-", "change": 0, "slug": "-", "clicks": 0, "impressions": 0, "ctr": "0.0%"}
+        if "features" not in item:
+            item["features"] = ["organic"]
+        if "volume" not in item:
+            item["volume"] = 1200
+        if "kd" not in item:
+            item["kd"] = 25
+
+    data["seo_keywords"] = existing_kw_list
     data["last_synced"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     avg_ctr = (total_clicks / total_impressions * 100) if total_impressions > 0 else 0.0
     data["seo_summary_kpi"] = {
-        "total_keywords": len(json_seo_keywords),
+        "total_keywords": len(existing_kw_list),
         "top1_3": top1_3_count,
         "top4_10": top4_10_count,
         "top11_30": top11_30_count,

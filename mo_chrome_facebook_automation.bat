@@ -1,23 +1,26 @@
 @echo off
-chcp 65001 > nul
+title DANG NHAP FACEBOOK AUTOMATION CHROME - MO HINH SONG ANH
+
 echo ======================================================================
-echo   🚀 KHỞI ĐỘNG CHROME CHUYÊN DỤNG CHO TOOL AUTOMATION FACEBOOK 🚀
-echo   Port: 9222 | Profile: D:\Song_Anh\_Shared_Core\Credentials\facebook_chrome_profile
+echo   MO CHROME LUU SESSION FACEBOOK AUTOMATION (PORT 9222)
 echo ======================================================================
 echo.
 
-set CHROME_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe"
-if not exist %CHROME_PATH% set CHROME_PATH="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-if not exist %CHROME_PATH% set CHROME_PATH="%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe"
-
-set PROFILE_DIR=D:\Song_Anh\_Shared_Core\Credentials\facebook_chrome_profile
-
+set "PROFILE_DIR=D:\Song_Anh\_Shared_Core\Credentials\facebook_chrome_profile"
 if not exist "%PROFILE_DIR%" mkdir "%PROFILE_DIR%"
 
-start "" %CHROME_PATH% --remote-debugging-port=9222 --user-data-dir="%PROFILE_DIR%" --disable-notifications https://www.facebook.com
+if exist "%PROFILE_DIR%\SingletonLock" del /f /q "%PROFILE_DIR%\SingletonLock" >nul 2>&1
+if exist "%PROFILE_DIR%\SingletonCookie" del /f /q "%PROFILE_DIR%\SingletonCookie" >nul 2>&1
+if exist "%PROFILE_DIR%\SingletonSocket" del /f /q "%PROFILE_DIR%\SingletonSocket" >nul 2>&1
+if exist "%PROFILE_DIR%\DevToolsActivePort" del /f /q "%PROFILE_DIR%\DevToolsActivePort" >nul 2>&1
 
-echo ✅ Đã khởi động Chrome thành công!
-echo 💡 Sếp chỉ cần đăng nhập Facebook trên cửa sổ này một lần đầu tiên.
-echo 🤖 Các Tool Python (Re-comment, Đăng bài) sẽ tự động kết nối qua Port 9222.
+start "" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir="D:\Song_Anh\_Shared_Core\Credentials\facebook_chrome_profile" "https://www.facebook.com"
+
 echo.
+echo ======================================================================
+echo Sep hay dang nhap Facebook tren cua so Chrome vua mo.
+echo Khi dang nhap xong, Sep co the dong Chrome hoac de nguyen.
+echo Session se duoc luu vinh vien tai:
+echo D:\Song_Anh\_Shared_Core\Credentials\facebook_chrome_profile
+echo ======================================================================
 pause

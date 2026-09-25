@@ -4,14 +4,28 @@
   "database_url": "https://www.notion.so/3c24b5e73d9081dfaa41d2f5c355f32f",
   "scan_timestamp": "2026-08-31 16:50:58",
   "summary": {
-    "total_posts": 50,
-    "published_count": 45,
+    "total_posts": 51,
+    "published_count": 46,
     "pending_count": 4,
     "recomment_needed_count": 0,
     "total_recomments": 2,
-    "last_synced": "2026-08-31 16:50:58"
+    "last_synced": "2026-09-14 16:25:22"
   },
   "data": [
+    {
+      "page_id": "manual-seed-20260914-ma",
+      "post_title": "[Group M&A] Dự toán chi phí sa bàn kiến trúc: Cùng kích thước sao giá lại khác nhau?",
+      "account": "Facebook Profile Song Anh",
+      "group_id": "3a54b5e7-3d90-8164-b07e-d26e8d7a1e5a",
+      "group_name": "M&A | MUA BÁN DỰ ÁN BẤT ĐỘNG SẢN, KHU CÔNG NGHIỆP & TÒA NHÀ",
+      "post_date": "2026-09-14",
+      "post_url": "https://www.facebook.com/groups/152692778620733/posts/2244669372756386",
+      "status": "Đã đăng công khai",
+      "next_recomment_date": "2026-09-17",
+      "recomment_date": "",
+      "recomment_count": 0,
+      "last_synced": "2026-09-14 16:25:22"
+    },
     {
       "page_id": "3cd4b5e7-3d90-81d0-8b67-c68b361bb63a",
       "post_title": "[Group M&A] Bài đăng Sa bàn Triển Lãm B2B Thủy Sản",

@@ -33,7 +33,7 @@ def deploy():
         dirs[:] = [d for d in dirs if d not in excluded_dirs]
         for f in files:
             ext = os.path.splitext(f)[1].lower()
-            if ext in excluded_exts:
+            if ext in excluded_exts or '.bak' in f.lower():
                 continue
             if f in ('worker.js', 'wrangler.jsonc', 'telegram_config.json', 'facebook_credentials.json', 'service_account.json'):
                 continue
@@ -132,7 +132,7 @@ def deploy():
     
     if put_res.status_code == 200:
         print("🎉 DEPLOY THÀNH CÔNG LÊN CLOUDFLARE WORKERS!")
-        print(f"🌐 Live URL: https://songanh-marketing.phamhoangtien1300.workers.dev/#tasks")
+        print(f"🌐 Live URL: https://songanh-marketing.phamhoangtien1300.workers.dev/#home")
         return True
     else:
         print(f"❌ Deploy thất bại ({put_res.status_code}): {put_res.text}")

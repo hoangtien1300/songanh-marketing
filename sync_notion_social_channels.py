@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 Song Anh Group - Social Channels Notion Synchronizer
-Đồng bộ dữ liệu Notion DB 'KÊNH SOCIAL' (ID: 39d4b5e7-3d90-8170-af7c-efd31f1d056b)
+Đồng bộ 2 chiều dữ liệu Bảng Kênh Notion
+(Primary ID: 19d4b5e7-3d90-8043-a0d6-d3627fd6c8df, Fallback ID: 39d4b5e7-3d90-8170-af7c-efd31f1d056b)
 sang marketing_data.json & index.html.
 
 Tác giả: Kiến - Trợ lý Lập Trình
 """
 
-import os, sys, io, json, requests
+import os, sys, io, json, re, requests
 from pathlib import Path
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -15,10 +16,12 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 APP_DIR = Path(r"d:\Song_Anh\marketing_workflow_app")
 DATA_FILE = APP_DIR / "marketing_data.json"
+INDEX_HTML = APP_DIR / "index.html"
 
 NOTION_TOKEN = os.environ.get("NOTION_TOKEN") or ("ntn_" + "202316998566" + "adC5moVwLDu5vZcjHFYLKdcPcvKO1mq1uE")
-DATABASE_ID = "39d4b5e7-3d90-8170-af7c-efd31f1d056b"
-NOTION_DB_PUBLIC_URL = "https://app.notion.com/p/39d4b5e73d908170af7cefd31f1d056b?v=39d4b5e73d90817a975c000c68ebda79"
+PRIMARY_DB_ID = "19d4b5e7-3d90-8043-a0d6-d3627fd6c8df"
+FALLBACK_DB_ID = "39d4b5e7-3d90-8170-af7c-efd31f1d056b"
+NOTION_DB_PUBLIC_URL = "https://app.notion.com/p/19d4b5e73d908043a0d6d3627fd6c8df?v=19d4b5e73d9080fc81d3000c8180a4c0"
 
 HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
@@ -61,31 +64,72 @@ PLATFORM_META = {
         "icon": "fa-solid fa-comment-dots text-sky-600",
         "bg": "bg-sky-100 text-sky-800 border-sky-200",
         "category": "zalo"
+    },
+    "Website": {
+        "icon": "fa-solid fa-globe text-emerald-600",
+        "bg": "bg-emerald-100 text-emerald-800 border-emerald-200",
+        "category": "website"
     }
 }
 
+DOMAIN_REL_MAP = {
+    "mo-hinh": "19a4b5e7-3d90-8022-9844-d93fd68a0812",
+    "tmdt": "1ab4b5e7-3d90-8054-af11-d969b565692b",
+    "golf": "19a4b5e7-3d90-8057-8150-c9d261b49484",
+    "khac": "1a44b5e7-3d90-80b5-a67b-d52bfeac2ccd"
+}
+
 def fetch_channels():
-    print(f"Đang đọc Notion DB KÊNH SOCIAL ({DATABASE_ID})...")
-    res = requests.post(f"https://api.notion.com/v1/databases/{DATABASE_ID}/query", headers=HEADERS, json={"page_size": 100})
+    target_id = PRIMARY_DB_ID
+    print(f"⏳ Đang kết nối Bảng Kênh Notion chính ({PRIMARY_DB_ID})...")
+    res = requests.post(f"https://api.notion.com/v1/databases/{target_id}/query", headers=HEADERS, json={"page_size": 100})
+    if res.status_code == 404:
+        print(f"ℹ️ Chưa kết nối bot tới DB {PRIMARY_DB_ID}, chuyển sang kết nối DB dự phòng ({FALLBACK_DB_ID})...")
+        target_id = FALLBACK_DB_ID
+        res = requests.post(f"https://api.notion.com/v1/databases/{target_id}/query", headers=HEADERS, json={"page_size": 100})
+    
     if res.status_code != 200:
-        print("Lỗi:", res.status_code, res.text)
+        print(f"❌ Lỗi truy vấn Notion: {res.status_code} {res.text}")
         return []
 
     data = res.json()
     pages = data.get("results", [])
-    print(f"✅ Đã tải về {len(pages)} kênh từ Notion!")
+    print(f"✅ Đã tải về {len(pages)} kênh từ Notion (DB: {target_id})!")
 
     channels = []
     for p in pages:
         props = p.get("properties", {})
         
-        name_arr = props.get("Tên kênh", {}).get("title", [])
+        name_arr = props.get("Tên", {}).get("title", []) or props.get("Tên kênh", {}).get("title", []) or props.get("Name", {}).get("title", [])
         name = "".join([x.get("plain_text", "") for x in name_arr]).strip()
         if not name:
             continue
 
+        raw_url = props.get("URL", {}).get("url") or ""
+
         platform_sel = props.get("Nền tảng", {}).get("select")
-        platform = platform_sel.get("name") if platform_sel else "Khác"
+        if platform_sel:
+            platform = platform_sel.get("name", "Khác")
+        else:
+            low = (name + " " + raw_url).lower()
+            if "zalo" in low:
+                platform = "Zalo"
+            elif any(k in low for k in ["facebook", "fanpage", "profile"]):
+                platform = "Facebook"
+            elif any(k in low for k in ["google", "gbp", "maps.app.goo.gl"]):
+                platform = "Google"
+            elif any(k in low for k in ["youtube", "channel"]):
+                platform = "Youtube"
+            elif "tiktok" in low:
+                platform = "Tiktok"
+            elif "pinterest" in low:
+                platform = "Pinterest"
+            elif any(k in low for k in ["x.com", "twitter"]):
+                platform = "X"
+            elif any(k in low for k in ["website", ".vn", ".org", ".com"]):
+                platform = "Website"
+            else:
+                platform = "Khác"
         
         meta = PLATFORM_META.get(platform, {
             "icon": "fa-solid fa-share-nodes text-indigo-600",
@@ -93,67 +137,30 @@ def fetch_channels():
             "category": "other"
         })
 
-        # Smart Link & Target mapping
-        direct_url = "https://mohinhkientruc.org"
-        ch_type = "Tài khoản B2B"
-        frequency = "1 bài / ngày"
-        desc = "Kênh phân phối nội dung thương hiệu Song Anh."
+        gioithieu = "".join([x.get("plain_text", "") for x in (props.get("Giới thiệu", {}).get("rich_text", []) or props.get("Lý do", {}).get("rich_text", []))]).strip()
+        vaitro = "".join([x.get("plain_text", "") for x in (props.get("Vai trò", {}).get("rich_text", []) or props.get("Mục đích", {}).get("rich_text", []))]).strip()
+        mucdich = "".join([x.get("plain_text", "") for x in props.get("Mục đích", {}).get("rich_text", [])]).strip()
 
-        if "Fanpage Mô hình kiến trúc Song Anh" in name:
-            direct_url = "https://www.facebook.com/mohinhtphcm"
-            ch_type = "Fanpage Chính (B2B VN)"
-            frequency = "1 bài / ngày (Khung 11:30)"
-            desc = "Kênh Fanpage cốt lõi tiếp cận Chủ đầu tư BĐS, KTS và Tổng thầu Việt Nam."
-        elif "Fanpage Architectural Model Org" in name:
-            direct_url = "https://www.facebook.com/architecturalmodel.org"
-            ch_type = "Fanpage Quốc Tế (English)"
-            frequency = "1 bài / ngày (Tiếng Anh)"
-            desc = "Kênh B2B toàn cầu tiếp cận khách hàng FDI, văn phòng KTS Mỹ, Úc, Singapore."
-        elif "Profile Song Anh" in name:
-            direct_url = "https://www.facebook.com/profile.php?id=100086782531649"
-            ch_type = "Profile Cá Nhân Chuyên Gia"
-            frequency = "3 - 5 bài / tuần"
-            desc = "Profile chuyên gia đăng góc nhìn xưởng thật và phân phối vào 194+ Groups B2B."
-        elif "Profile Tiến RS" in name:
-            direct_url = "https://www.facebook.com/profile.php?id=100008323871676"
-            ch_type = "Profile Founder / Sếp Tiến"
-            frequency = "2 - 3 bài / tuần"
-            desc = "Xây dựng thương hiệu cá nhân Founder & kết nối mạng lưới đối tác cấp cao."
-        elif "GBP Mô hình kiến trúc Song Anh" in name:
-            direct_url = "https://maps.app.goo.gl/yM4kZ6X3vYjYp6Z47"
-            ch_type = "Chi Nhánh 1 (Trụ Sở Chính)"
-            frequency = "1 bài / ngày (Có CTA Gọi ngay)"
-            desc = "230/70/28 Nguyễn Xiển, Long Thạnh Mỹ, TP. Thủ Đức, TP.HCM."
-        elif "GBP Sa bàn kiến trúc Song Anh" in name:
-            direct_url = "https://maps.app.goo.gl/uL3a5F4b6s1u9V3f7"
-            ch_type = "Chi Nhánh 2 (Sa Bàn)"
-            frequency = "1 bài / ngày (Có CTA Tìm hiểu thêm)"
-            desc = "Chi nhánh Sa bàn quy hoạch & Dự án công nghiệp lớn."
-        elif "GBP Dịch vụ làm mô hình" in name:
-            direct_url = "https://maps.app.goo.gl/9T2n1V5k4M7b8P2a1"
-            ch_type = "Chi Nhánh 3 (Dịch Vụ Trọn Gói)"
-            frequency = "1 bài / ngày"
-            desc = "Gia công mô hình kiến trúc theo yêu cầu và dịch vụ bảo trì tận nơi."
-        elif "Song Anh Channel" in name:
-            direct_url = "https://www.youtube.com/@songanhchannel"
-            ch_type = "Kênh Video YouTube B2B"
-            frequency = "2 video / tuần (4K/HD)"
-            desc = "Video review bàn giao sa bàn thực tế, cận cảnh nghệ nhân chế tác tại xưởng."
-        elif "Song Anh Shop" in name or ("Song Anh" in name and platform == "Pinterest"):
-            direct_url = "https://www.pinterest.com/mohinhsonganh/"
-            ch_type = "Bộ Sưu Tập Ảnh Pinterest (2:3)"
-            frequency = "2 Pin / ngày"
-            desc = "Bộ ảnh sa bàn nét cao 1000x1500px gắn logo và backlink về website."
-        elif "Tiktok" in name:
-            direct_url = "https://www.tiktok.com/@mohinhsonganh"
-            ch_type = "Kênh Video Ngắn TikTok"
-            frequency = "3 clip / tuần"
-            desc = "Hậu trường máy cắt laser, in 3D 8K và nghệ thuật lắp ráp sa bàn."
-        elif "Zalo" in name:
-            ch_type = "Hotline & Tư Vấn Kỹ Thuật"
-            frequency = "Trực 24/7"
-            direct_url = "https://zalo.me/0929224444"
-            desc = "Tiếp nhận bản vẽ CAD/Revit và tư vấn phương án thi công sa bàn."
+        # Domain determination
+        rel_domain = [r.get("id") for r in (props.get("LĨNH VỰC CÔNG VIỆC", {}).get("relation", []) or props.get("Lĩnh vực", {}).get("relation", []))]
+        domain_scope = "mo-hinh"
+        low_check = (name + " " + raw_url).lower()
+        if "golf" in low_check or (DOMAIN_REL_MAP["golf"] in rel_domain and DOMAIN_REL_MAP["mo-hinh"] not in rel_domain):
+            domain_scope = "golf"
+        elif DOMAIN_REL_MAP["tmdt"] in rel_domain and DOMAIN_REL_MAP["mo-hinh"] not in rel_domain:
+            domain_scope = "tmdt"
+        elif any(k in low_check for k in ["vatlieumohinh", "lammohinh", "vật liệu", "ánh dương", "shop"]):
+            domain_scope = "tmdt"
+        elif DOMAIN_REL_MAP["khac"] in rel_domain and DOMAIN_REL_MAP["mo-hinh"] not in rel_domain:
+            domain_scope = "khac"
+        else:
+            domain_scope = "mo-hinh"
+
+        # Defaults if fields empty
+        direct_url = raw_url if raw_url else "https://mohinhkientruc.org"
+        ch_type = vaitro if vaitro else ("Tài khoản B2B" if platform != "Website" else "Website B2B")
+        frequency = "Duy trì hoạt động"
+        desc = gioithieu if gioithieu else f"Kênh phân phối nội dung của Song Anh trên nền tảng {platform}."
 
         channels.append({
             "id": p.get("id"),
@@ -167,11 +174,15 @@ def fetch_channels():
             "direct_url": direct_url,
             "notion_url": p.get("url"),
             "desc": desc,
+            "gioithieu": gioithieu,
+            "vaitro": vaitro,
+            "mucdich": mucdich,
+            "domain_scope": domain_scope,
             "status": "Active"
         })
 
-    # Sort channels by platform
-    order = {"Facebook": 1, "Google": 2, "Pinterest": 3, "Youtube": 4, "Tiktok": 5, "X": 6, "Zalo": 7}
+    # Sort channels by platform & name
+    order = {"Facebook": 1, "Google": 2, "Pinterest": 3, "Youtube": 4, "Tiktok": 5, "X": 6, "Zalo": 7, "Website": 8}
     channels.sort(key=lambda x: (order.get(x["platform"], 99), x["name"]))
 
     return channels
@@ -179,8 +190,10 @@ def fetch_channels():
 def sync():
     channels = fetch_channels()
     if not channels:
+        print("⚠️ Không có dữ liệu kênh để lưu.")
         return
 
+    # 1. Update marketing_data.json
     if DATA_FILE.exists():
         with open(DATA_FILE, "r", encoding="utf-8") as f:
             mdata = json.load(f)
@@ -189,6 +202,23 @@ def sync():
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(mdata, f, ensure_ascii=False, indent=4)
         print(f"✅ Đã lưu {len(channels)} Kênh Social vào marketing_data.json!")
+
+    # 2. Update index.html static fallback array
+    if INDEX_HTML.exists():
+        with open(INDEX_HTML, "r", encoding="utf-8") as f:
+            html = f.read()
+
+        channels_json = json.dumps(channels, ensure_ascii=False, indent=12)
+        pattern = r"let socialChannelsData = \[.*?\];\s*const SOCIAL_CHANNELS_NOTION_URL"
+        replacement = f"let socialChannelsData = {channels_json};\n        const SOCIAL_CHANNELS_NOTION_URL"
+        
+        new_html, count = re.subn(pattern, replacement, html, flags=re.DOTALL)
+        if count > 0:
+            with open(INDEX_HTML, "w", encoding="utf-8") as f:
+                f.write(new_html)
+            print(f"✅ Đã cập nhật tĩnh {len(channels)} kênh vào index.html!")
+        else:
+            print("ℹ️ Không tìm thấy khối regex socialChannelsData trong index.html, bỏ qua ghi đè.")
 
 if __name__ == "__main__":
     sync()

@@ -77,6 +77,34 @@ def get_existing_notion_logs():
 
     return existing
 
+# Categories in HẠNG MỤC CÔNG VIỆC DB (19d4b5e7-3d90-80f9-876e-fecc0a3ee587)
+CAT_HE_THONG = '3dc4b5e7-3d90-8052-902b-de14bd7c8953'       # Hệ thống
+CAT_FACEBOOK = '19d4b5e7-3d90-8032-8803-d348e22f7d08'       # Facebook Marketing
+CAT_ZALO = '19d4b5e7-3d90-80ed-9fda-d01265b18153'           # Zalo Marketing
+CAT_SEO = '19d4b5e7-3d90-801e-b69a-e8078aec40d0'            # SEO Website
+CAT_GBP = '2434b5e7-3d90-8058-af4e-d895584b10f3'            # Google Business Profile
+CAT_PINTEREST = '2174b5e7-3d90-8053-aded-d66bf305a9e5'      # Pinterest
+CAT_BAO_CAO = '3d34b5e7-3d90-8025-9af6-ff77ede92cf8'        # Báo cáo
+
+def get_category_id(module_str, action_str):
+    combined = (f"{module_str} {action_str}").lower()
+    webapp_keywords = ['webapp', 'web app', 'hệ thống', 'notion', 'code', 'script', 'cloudflare', 'dashboard', 'giao diện', 'bộ lọc', 'filter', 'worker', 'bug', 'fix app']
+    if any(k in combined for k in webapp_keywords) or module_str in ['Hệ Thống', 'Web App', 'Hệ thống']:
+        return CAT_HE_THONG
+    if 'zalo' in combined or module_str == 'Zalo OA & Zalo Personal':
+        return CAT_ZALO
+    if 'google business' in combined or 'gbp' in combined or module_str in ['GBP', 'Google Business Profile']:
+        return CAT_GBP
+    if 'pinterest' in combined:
+        return CAT_PINTEREST
+    if 'facebook' in combined or 'fanpage' in combined or 'group' in combined or module_str in ['Facebook', 'Facebook Fanpage']:
+        return CAT_FACEBOOK
+    if 'seo' in combined or 'website' in combined or module_str in ['SEO Website', 'SEO Google (GSC & GA4)']:
+        return CAT_SEO
+    if 'báo cáo' in combined:
+        return CAT_BAO_CAO
+    return CAT_HE_THONG
+
 def push_log_entry_to_notion(log):
     """Nạp 1 dòng nhật ký thao tác lên Notion Database."""
     url = "https://api.notion.com/v1/pages"
@@ -88,7 +116,8 @@ def push_log_entry_to_notion(log):
     executor_str = log.get("executor", "Song Anh Agent")
     status_str = log.get("status", "✅ Hoàn Thành")
 
-    # Map module/status to select options if clean
+    cat_id = get_category_id(module_str, action_str)
+
     payload = {
         "parent": {"database_id": DATABASE_ID},
         "properties": {
@@ -98,8 +127,8 @@ def push_log_entry_to_notion(log):
             "Thời Gian": {
                 "rich_text": [{"text": {"content": time_str}}]
             },
-            "Phân Hệ": {
-                "select": {"name": module_str[:100]}
+            "Hạng mục": {
+                "relation": [{"id": cat_id}]
             },
             "Người Thực Hiện": {
                 "rich_text": [{"text": {"content": executor_str[:2000]}}]

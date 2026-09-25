@@ -422,3 +422,422 @@ KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP T
 
 [SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
 [04/09/2026  6:00:11,22] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[09/09/2026  6:00:02,55] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 09/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '09/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (946 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (946 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 09/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 09/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[09/09/2026  6:00:18,16] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[10/09/2026  6:00:02,17] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 10/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '10/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (968 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (968 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 10/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 10/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[10/09/2026  6:00:12,23] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[12/09/2026  6:00:01,89] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 12/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '12/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (990 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (990 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 12/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 12/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[12/09/2026  6:00:08,43] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[14/09/2026  6:00:02,02] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 14/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '14/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1012 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1012 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 14/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 14/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[14/09/2026  6:00:08,87] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[15/09/2026  6:00:02,04] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 15/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '15/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1034 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1034 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 15/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 15/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[15/09/2026  6:00:09,00] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[16/09/2026  6:00:02,34] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 16/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '16/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1056 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1056 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 16/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 16/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[16/09/2026  6:00:12,09] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[17/09/2026  6:00:02,30] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 17/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '17/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1078 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1078 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 17/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 17/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[17/09/2026  6:00:12,21] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[18/09/2026  6:00:02,33] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 18/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '18/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1100 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1100 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 18/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 18/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[18/09/2026  6:00:10,66] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[19/09/2026  6:00:01,72] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 19/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '19/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1122 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1122 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 19/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 19/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[19/09/2026  6:00:08,27] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[23/09/2026  6:00:01,84] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 23/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '23/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1144 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1144 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 23/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 23/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[23/09/2026  6:00:08,63] SUCCESS: Daily SEO Sync Completed Cleanly. 
+[25/09/2026  6:00:01,84] Starting Automatic Daily SEO Sync Engine... 
+[START] Running Song Anh GSC & GA4 SEO Data Extractor Engine (Zero-Touch Edition)...
+[GSC & GA4 API] Connected & fetched live data directly from Google Search Console & GA4 APIs.
+[Export CSV] Created Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.csv
+[Export XLSX] Created Master Excel: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_master_dataset.xlsx
+[Update JSON] Updated Central JSON Data File with preserved rankHistory: d:\Song_Anh\marketing_workflow_app\marketing_data.json
+[INCREMENTAL APPEND ENGINE] Kiểm tra mốc ngày sync: 25/09/2026...
+[INCREMENTAL APPEND ENGINE] Mốc ngày '25/09/2026' CHƯA CÓ. Tiến hành NẠP NỐI TIẾP (APPEND)...
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master CSV: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.csv (1166 dòng)
+[HISTORICAL DB] Đã tạo/cập nhật Sổ Cái Master XLSX: d:\Song_Anh\marketing_workflow_app\song_anh_seo_keywords_historical_database.xlsx (1166 dòng)
+[HISTORICAL DB] Đã đồng bộ 22 dòng ngày 25/09/2026 vào mảng rankHistory của marketing_data.json.
+[SUCCESS] Đã nạp nối tiếp thành công 22 dòng của ngày 25/09/2026 vào Sổ Cái Lịch Sử Database!
+[Google Sheets API Info] Engine fully equipped for direct API push. Local CSV/Excel & JSON auto-updated seamlessly.
+[Export Apps Script] Created Google Apps Script Auto Sync File: d:\Song_Anh\marketing_workflow_app\song_anh_gsc_ga4_auto_fetcher.gs
+
+================================================================================
+KHAN G DINH 100% TU DONG HOA ZERO-TOUCH & HISTORICAL LOG DATABASE (CHI DAO SEP TIEN)
+================================================================================
+1. Permanent Historical Log Database (Sổ Cái Append-Only):
+   - song_anh_seo_keywords_historical_database.csv & .xlsx active.
+   - Daily Incremental Append Engine: Kiểm tra mốc ngày, nạp nối tiếp 22 dòng, giữ 100% data cũ.
+2. Connection Engine:
+   - Google Search Console API & GA4 Data API auto-connect enabled.
+   - Google Sheets API (gspread / googleapiclient) integrated for direct cloud sync.
+3. Google Apps Script Cloud Engine:
+   - Built song_anh_gsc_ga4_auto_fetcher.gs for native cloud auto-sync inside Google Sheets.
+4. Scheduled Background Sync Engine:
+   - Batch file run_daily_seo_sync.bat configured for Windows Task Scheduler daily at 06:00 AM.
+5. Real-time Dashboard:
+   - Web App (index.html) auto-loads marketing_data.json on every launch!
+================================================================================
+
+[SUCCESS] SEO Data Extraction & Multi-Channel Sync Completed Successfully!
+[25/09/2026  6:00:09,16] Syncing Multilingual Language Links (WPML)... 
+======================================================================
+🚀 BẮT ĐẦU CẬP NHẬT CỘT LIÊN KẾT NGÔN NGỮ CHO ARCHITECTURALMODEL.ORG
+======================================================================
+[*] Đang đọc dữ liệu hiện tại từ Google Sheet...
+[+] Tổng số dòng dữ liệu: 147 dòng. Cột hiện tại (26 cột): ['Mã URL', 'Tiêu Đề Trang (Page Title)', 'Đường Dẫn URL', 'Ngôn Ngữ', 'Liên Kết Ngôn Ngữ', 'Phân Loại Trang']
+[+] Đã tìm thấy cột liên kết ngôn ngữ tại index 4.
+[*] Đang crawl song song kiểm tra hreflang cho 147 URLs...
+[+] Đã hoàn thành crawl 147 URLs.
+[*] Đang cập nhật dữ liệu Cột E (E1:E148)...
+[*] Đang định dạng thẩm mỹ Header Cột E và độ rộng cột 300px...
+
+======================================================================
+🎉 HOÀN THÀNH CẬP NHẬT CỘT LIÊN KẾT NGÔN NGỮ!
+📊 TỔNG KẾT:
+  - Tổng số URL xử lý: 147
+  - Bài Tiếng Việt (VI): 81
+    + Đã có bài Tiếng Anh tương ứng: 55 URLs
+    + Chưa có bài Tiếng Anh (cần viết bổ sung): 26 URLs
+  - Bài Tiếng Anh (EN): 66
+    + Có bài Tiếng Việt tương ứng: 61 URLs
+    + Bài độc lập / Gốc tiếng Anh: 5 URLs
+🔗 Xem trực tiếp Google Sheet: https://docs.google.com/spreadsheets/d/15Ju555vjMbR_d8vg97THuJxdrUrSP1TJyTzq0ENshqI/edit
+======================================================================
+[25/09/2026  6:01:01,45] Syncing Translation Pairing Tab... 
+======================================================================
+🚀 BẮT ĐẦU ĐỒNG BỘ DỮ LIỆU ĐỐI SOÁT DỊCH THUẬT (VI - EN)
+======================================================================
+[*] Đang đọc dữ liệu từ tab nguồn 'Url'...
+[+] Đã đọc được 147 dòng dữ liệu từ tab 'Url'.
+[+] Tổng số cặp bài đối soát: 97
+    - Chưa có bài tiếng Anh (Cần làm): 26 bài
+    - Đã có bản tiếng Anh hoàn chỉnh: 55 bài
+    - Bài gốc tiếng Anh độc lập: 16 bài
+[*] Đang ghi 98 dòng dữ liệu vào tab 'Đối Soát Dịch Thuật (VI - EN)'...
+[*] Đang thiết lập định dạng thẩm mỹ, độ rộng cột và luật màu...
+
+======================================================================
+🎉 HOÀN THÀNH TẠO & ĐỒNG BỘ TAB ĐỐI SOÁT DỊCH THUẬT (VI - EN)!
+📊 TỔNG KẾT:
+  - Tổng số cặp chủ đề: 97
+  - Bài chưa có bản tiếng Anh (CẦN DỊCH): 26 bài (đã xếp lên đầu theo thứ tự P1 ➔ P2 ➔ P3)
+  - Bài đã hoàn thành dịch song ngữ: 55 bài
+  - Bài gốc tiếng Anh độc lập: 16 bài
+🔗 Xem trực tiếp Google Sheet: https://docs.google.com/spreadsheets/d/15Ju555vjMbR_d8vg97THuJxdrUrSP1TJyTzq0ENshqI/edit
+======================================================================
