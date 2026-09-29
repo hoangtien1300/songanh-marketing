@@ -1,0 +1,36 @@
+name: Daily Recruitment Telegram Alert (08:00 AM VN)
+
+on:
+  schedule:
+    # 08:00 AM Vietnam Time (UTC+7) = 01:00 AM UTC
+    # Chạy trên GitHub Cloud độc lập mỗi ngày, máy tính tắt vẫn nhận tin
+    - cron: '0 1 * * *'
+  workflow_dispatch: # Cho phép bấm Run workflow thủ công bất kỳ lúc nào trên GitHub
+
+permissions:
+  contents: read
+
+jobs:
+  send-recruitment-alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run Daily 08:00 Recruitment Alert
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8852452435:AAE9UYCPdCECPDfiV8M3cq2oycFqXV_wMpg' }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '1730306144' }}
+        run: |
+          python daily_recruitment_telegram_alert_0800.py

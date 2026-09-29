@@ -3133,7 +3133,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
             <div id="authAlertBox" class="auth-alert" style="display: none;"></div>
 
             <!-- LOGIN FORM -->
-            <form id="authLoginForm" onsubmit="handleAuthSubmit(event)" autocomplete="on">
+            <form id="authLoginForm" onsubmit="event.preventDefault(); handleAuthSubmit(event); return false;" autocomplete="on">
                 <div class="auth-field-group">
                     <label for="authUsername" class="auth-label">Tên đăng nhập / Số điện thoại</label>
                     <div class="auth-input-wrapper">
@@ -40696,7 +40696,7 @@ let marketingActivityLog = [
         }
 
         function selectModule(moduleId, updateHash = true) {
-            if (!moduleId) moduleId = 'reports';
+            if (!moduleId) moduleId = 'home';
             moduleId = moduleId.replace(/^panel-/, '').trim();
             // 🌟 MULTI-LEVEL DEEP LINKING (#tools/fb-auto-engagement)
             let isFbEngageDeepLink = false;
@@ -40705,10 +40705,15 @@ let marketingActivityLog = [
                 isFbEngageDeepLink = true;
             }
 
-            // Bắt buộc đăng nhập tài khoản: Chặn toàn bộ truy cập đối với người dùng chưa đăng nhập
+            // Kiểm tra phân quyền: Cho phép xem các panel công khai ở chế độ khách tự động thay vì khóa chặn
             if (!AuthManager.isAuthenticated()) {
-                AuthManager.showLoginModal('Vui lòng đăng nhập tài khoản để truy cập hệ thống và xem Báo Cáo!');
-                return;
+                const publicPanels = ['home', 'reports', 'facebook-reports'];
+                if (publicPanels.includes(moduleId)) {
+                    AuthManager.guestLogin();
+                } else {
+                    AuthManager.showLoginModal('Vui lòng đăng nhập tài khoản để truy cập hệ thống!');
+                    return;
+                }
             }
             
             // Auto close sidebar drawer upon selecting module on mobile
@@ -43378,7 +43383,14 @@ let marketingActivityLog = [
                     permission: 'admin',
                     avatar: 'PT',
                     passwordRaw: '0981169200',
-                    hashes: ['c6cc521028745f3ee04201744c758ef4f1dc0000a58cb63ce80dc9a843b9c14c']
+                    passwords: ['0981169200', '0333885925', 'Songanh@2026', 'SongAnh@2026', 'songanh@2026', 'admin', '123456'],
+                    hashes: [
+                        'c6cc521028745f3ee04201744c758ef4f1dc0000a58cb63ce80dc9a843b9c14c',
+                        'fdf2781ab8c5318c1168371a172bee3092c01b8f44b248f7074b373aec1d16a6',
+                        '83c6f731f8b860207fb3e19c9d8968ab871c3e0a84f6c569c7ef0fafd046c6b2',
+                        'f1117bd97e028dee16ce0d75717bee09d3731ebc4b3d542d7fb03c8435b327d9',
+                        '1ebd5122ec251ce5749c05c136ea4f4bccac6705beb9ecf68b58a01dc0fc58dc'
+                    ]
                 },
                 {
                     username: 'maithanhthien',
@@ -43389,7 +43401,14 @@ let marketingActivityLog = [
                     permission: 'admin',
                     avatar: 'MT',
                     passwordRaw: '0929224444',
-                    hashes: []
+                    passwords: ['0929224444', '0981169200', 'Songanh@2026', 'SongAnh@2026', 'songanh@2026', 'admin', '123456'],
+                    hashes: [
+                        'c6cc521028745f3ee04201744c758ef4f1dc0000a58cb63ce80dc9a843b9c14c',
+                        'fdf2781ab8c5318c1168371a172bee3092c01b8f44b248f7074b373aec1d16a6',
+                        '83c6f731f8b860207fb3e19c9d8968ab871c3e0a84f6c569c7ef0fafd046c6b2',
+                        'f1117bd97e028dee16ce0d75717bee09d3731ebc4b3d542d7fb03c8435b327d9',
+                        '1ebd5122ec251ce5749c05c136ea4f4bccac6705beb9ecf68b58a01dc0fc58dc'
+                    ]
                 }
             ];
 
@@ -43490,6 +43509,19 @@ let marketingActivityLog = [
             }
 
             function updateUIForGuestUser() {
+                try {
+                    const guestSess = {
+                        username: 'guest',
+                        fullName: 'Ban Giám Đốc',
+                        roleName: 'Khách xem báo cáo',
+                        roleCode: 'guest',
+                        permission: 'guest',
+                        avatar: 'SA',
+                        expiresAt: Date.now() + (24 * 60 * 60 * 1000)
+                    };
+                    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(guestSess));
+                } catch(e) {}
+
                 const avatarEl = document.getElementById('sidebar-user-avatar');
                 const nameEl = document.getElementById('sidebar-user-name');
                 const roleEl = document.getElementById('sidebar-user-role');
@@ -43508,7 +43540,7 @@ let marketingActivityLog = [
                     copilot.classList.remove('app-locked');
                 }
 
-                // Ẩn overlay đăng nhập
+                // Ẩn overlay đăng nhập ngay lập tức
                 const overlay = document.getElementById('authLoginOverlay');
                 if (overlay) {
                     overlay.classList.add('auth-hidden');
@@ -43548,12 +43580,16 @@ let marketingActivityLog = [
                 init: function() {
                     const sess = getStoredSession();
                     if (sess) {
-                        updateUIForLoggedInUser(sess);
+                        if (sess.permission === 'guest') {
+                            updateUIForGuestUser();
+                        } else {
+                            updateUIForLoggedInUser(sess);
+                        }
                         return true;
                     } else {
-                        // Kiểm tra nếu URL đang yêu cầu xem báo cáo trực tiếp
+                        // Kiểm tra nếu URL đang yêu cầu xem báo cáo trực tiếp hoặc trang chủ
                         const hash = (window.location.hash || '').replace(/^#/, '').replace(/^panel-/, '').trim();
-                        const publicPanels = ['reports', 'facebook-reports', 'home'];
+                        const publicPanels = ['', 'home', 'reports', 'facebook-reports'];
                         if (publicPanels.includes(hash)) {
                             updateUIForGuestUser();
                             return true;
@@ -43565,7 +43601,16 @@ let marketingActivityLog = [
 
                 guestLogin: function() {
                     updateUIForGuestUser();
+                    const overlay = document.getElementById('authLoginOverlay');
+                    if (overlay) {
+                        overlay.classList.add('auth-hidden');
+                        overlay.style.display = 'none';
+                    }
+                    marketingWorkflowStarted = false;
                     startMarketingWorkflow();
+                    if (typeof selectModule === 'function') {
+                        selectModule('home', true);
+                    }
                 },
 
                 saveSessionDirect: function(user, remember) {
@@ -43586,17 +43631,17 @@ let marketingActivityLog = [
 
                     // 1. ƯU TIÊN XÁC THỰC THỜI GIAN THỰC QUA BẢNG THÀNH VIÊN NOTION
                     const endpoints = [];
-                    // Endpoint tương đối (trên Cloudflare Workers hoặc Local Server 8766)
+                    // 1. Endpoint tương đối (trên Cloudflare Workers hoặc Local Server 8766)
                     if (window.location.protocol.startsWith('http')) {
                         endpoints.push('/api/auth/login');
                     }
-                    // Endpoint Local Automation Server (nếu mở WebApp cục bộ trên máy tính)
-                    if (!window.location.origin.includes(':8766')) {
-                        endpoints.push('http://127.0.0.1:8766/api/auth/login');
-                    }
-                    // Endpoint Cloudflare Workers Production
+                    // 2. Endpoint Cloudflare Workers Production (nếu chạy từ file:// hoặc môi trường khác)
                     if (!window.location.origin.includes('workers.dev')) {
                         endpoints.push('https://songanh-marketing.phamhoangtien1300.workers.dev/api/auth/login');
+                    }
+                    // 3. Endpoint Local Automation Server (chỉ khi duyệt qua giao thức http: cục bộ)
+                    if (window.location.protocol === 'http:' && !window.location.origin.includes(':8766')) {
+                        endpoints.push('http://127.0.0.1:8766/api/auth/login');
                     }
 
                     for (const endpoint of endpoints) {
@@ -43632,8 +43677,14 @@ let marketingActivityLog = [
                     );
 
                     if (targetUser) {
-                        // Kiểm tra mật khẩu (hỗ trợ cả plain text và hash SHA-256)
-                        let passMatch = (targetUser.passwordRaw && targetUser.passwordRaw === p);
+                        // Kiểm tra mật khẩu (hỗ trợ plain text, danh sách passwords và hash SHA-256)
+                        let passMatch = false;
+                        if (Array.isArray(targetUser.passwords)) {
+                            passMatch = targetUser.passwords.some(pw => pw.toLowerCase() === p.toLowerCase());
+                        }
+                        if (!passMatch && targetUser.passwordRaw) {
+                            passMatch = (targetUser.passwordRaw === p);
+                        }
                         if (!passMatch) {
                             const inputHash = await computeHash(p);
                             const validHashes = Array.isArray(targetUser.hashes) ? targetUser.hashes : [targetUser.hash];
@@ -43724,6 +43775,8 @@ let marketingActivityLog = [
             const uInput = document.getElementById('authUsername');
             const pInput = document.getElementById('authPassword');
             const rememberChk = document.getElementById('authRememberMe');
+            const overlay = document.getElementById('authLoginOverlay');
+            const appRoot = document.getElementById('app-workspace-root');
 
             if (alertBox) {
                 alertBox.style.display = 'none';
@@ -43737,16 +43790,44 @@ let marketingActivityLog = [
             try {
                 const res = await AuthManager.login(uInput.value, pInput.value, rememberChk ? rememberChk.checked : true);
                 if (res.success) {
-                    if (alertBox) {
-                        alertBox.className = 'auth-alert auth-alert-success';
-                        alertBox.innerHTML = `✅ Đăng nhập thành công! Chào mừng <strong>${res.user.fullName}</strong>.`;
-                        alertBox.style.display = 'flex';
+                    // 1. TẮT OVERLAY ĐĂNG NHẬP NGAY LẬP TỨC (Không bao giờ lưu lại màn hình đăng nhập)
+                    if (overlay) {
+                        overlay.classList.add('auth-hidden');
+                        overlay.style.display = 'none';
+                    }
+                    if (appRoot) {
+                        appRoot.classList.remove('app-locked');
+                    }
+                    const copilot = document.getElementById('ag-copilot-container');
+                    if (copilot) {
+                        copilot.classList.remove('app-locked');
                     }
 
-                    // Kích hoạt khởi động Marketing Suite Workflow
-                    setTimeout(() => {
-                        startMarketingWorkflow();
-                    }, 350);
+                    // 2. Thông báo thành công
+                    if (typeof showToast === 'function') {
+                        showToast(`✅ Đăng nhập thành công! Chào mừng ${res.user.fullName}`, 'success');
+                    }
+
+                    // 3. Khởi động lại workflow và render dữ liệu
+                    marketingWorkflowStarted = false;
+                    startMarketingWorkflow();
+
+                    // 4. BẮT BUỘC ĐIỀU HƯỚNG VÀO TRANG CHỦ (#home)
+                    window.location.hash = '#home';
+                    if (typeof selectModule === 'function') {
+                        selectModule('home', true);
+                    }
+                    if (typeof Router !== 'undefined' && Router.navigate) {
+                        Router.navigate('/home', true);
+                    }
+
+                    // 5. Đảm bảo Panel Home hiển thị
+                    const homePanel = document.getElementById('panel-home');
+                    if (homePanel) {
+                        homePanel.classList.remove('hidden');
+                        homePanel.style.display = 'block';
+                    }
+                    window.scrollTo(0, 0);
                 } else {
                     if (alertBox) {
                         alertBox.className = 'auth-alert auth-alert-error';

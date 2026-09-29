@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Nguyễn Minh Đạt",
+    "year": 2002,
+    "phone": "0799903989",
+    "skills": "Đồ họa 3D, Cắt gọt kim loại, In 3D FDM",
+    "note": "Ưu tiên số 1 - Hẹn phỏng vấn"
+  },
+  {
+    "name": "Võ Ngọc Tân",
+    "year": 2002,
+    "phone": "0395004367",
+    "skills": "Gần xưởng (Lê Văn Việt), Vận hành mô hình VinWonders",
+    "note": "Thợ học việc - Hẹn phỏng vấn"
+  },
+  {
+    "name": "Thạch Tuyết Nhi",
+    "year": 2004,
+    "phone": "0357374074",
+    "skills": "Cử nhân Đồ họa, Sketchup, Khéo tay làm đồ thủ công",
+    "note": "Hỏi xe & Hẹn test"
+  }
+]
