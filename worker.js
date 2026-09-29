@@ -152,8 +152,8 @@ async function syncPostToGoogleSheet({ channel, postUrl, title, status, caption,
   const wpExcerpt = wpData && wpData.excerpt && wpData.excerpt.rendered ? stripHtmlTagsAndEntities(wpData.excerpt.rendered) : (caption || "").trim();
   const wpId = wpData ? wpData.id : "";
 
-  // 2. Đọc toàn bộ tab Url từ Google Sheet
-  const getRowsRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${targetSheetId}/values/Url!A:W`, {
+  // 2. Đọc toàn bộ tab Url từ Google Sheet (phạm vi A:Z bao quát đủ cột ID WP [col 22] và Ghi chú [col 23])
+  const getRowsRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${targetSheetId}/values/Url!A:Z`, {
     headers: { 'Authorization': `Bearer ${googleToken}` }
   });
 
@@ -183,17 +183,21 @@ async function syncPostToGoogleSheet({ channel, postUrl, title, status, caption,
     if (h.includes('h1')) colMap.h1 = idx;
     if (h.includes('ngày đăng')) colMap.date_published = idx;
     if (h.includes('ngày cập nhật')) colMap.date_modified = idx;
-    if (h.includes('id wp')) colMap.wp_id = idx;
-    if (h.includes('ghi chú')) colMap.notes = idx;
+    if (h.includes('id wp') || h === 'id') colMap.wp_id = idx;
+    if (h.includes('notion') || h.includes('link notion')) colMap.notion_url = idx;
+    if (h.includes('ghi chú') || h.includes('đánh giá')) colMap.notes = idx;
   }
 
   if (colMap.url === undefined) colMap.url = 2;
   if (colMap.title === undefined) colMap.title = 1;
-  if (colMap.status === undefined) colMap.status = 10;
-  if (colMap.title1 === undefined) colMap.title1 = 12;
-  if (colMap.title1_len === undefined) colMap.title1_len = 13;
-  if (colMap.date_modified === undefined) colMap.date_modified = 20;
-  if (colMap.notes === undefined) colMap.notes = 22;
+  if (colMap.status === undefined) colMap.status = 12;
+  if (colMap.title1 === undefined) colMap.title1 = 13;
+  if (colMap.title1_len === undefined) colMap.title1_len = 14;
+  if (colMap.date_published === undefined) colMap.date_published = 20;
+  if (colMap.date_modified === undefined) colMap.date_modified = 21;
+  if (colMap.wp_id === undefined) colMap.wp_id = 22;
+  if (colMap.notion_url === undefined) colMap.notion_url = 23;
+  if (colMap.notes === undefined) colMap.notes = 24;
 
   const normalizeUrl = (u) => String(u || '').trim().toLowerCase().replace(/\/+$/, '');
   const targetNormUrl = normalizeUrl(cleanPostUrl);
@@ -220,7 +224,7 @@ async function syncPostToGoogleSheet({ channel, postUrl, title, status, caption,
   if (targetRowIdx > 1) {
     // Cập nhật dòng cũ
     const curRow = allRows[targetRowIdx - 1] || [];
-    while (curRow.length < 24) curRow.push('');
+    while (curRow.length < 25) curRow.push('');
 
     if (colMap.title !== undefined) curRow[colMap.title] = wpTitle;
     if (colMap.status_wp !== undefined) curRow[colMap.status_wp] = 'publish';
@@ -252,7 +256,7 @@ async function syncPostToGoogleSheet({ channel, postUrl, title, status, caption,
     const newCode = `URL-${String(newCounter).padStart(3, '0')}`;
     const isPage = cleanPostUrl.includes('/gioi-thieu') || cleanPostUrl.includes('/lien-he') || cleanPostUrl.includes('/dich-vu');
 
-    const newRow = new Array(24).fill('');
+    const newRow = new Array(25).fill('');
     newRow[0] = newCode;
     if (colMap.title !== undefined) newRow[colMap.title] = wpTitle;
     if (colMap.url !== undefined) newRow[colMap.url] = cleanPostUrl;
@@ -286,7 +290,8 @@ async function syncPostToGoogleSheet({ channel, postUrl, title, status, caption,
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    try {
+      const url = new URL(request.url);
 
     // Handle CORS preflight
     if (request.method === "OPTIONS") {
@@ -310,7 +315,49 @@ export default {
           );
         }
 
-        // Truy vấn Notion Bảng Thành Viên chỉ lấy các account có cả Webapp ID và Webapp Password
+        // 1. FAST-TRACK & FAIL-SAFE MASTER ACCOUNTS (Bảo đảm Sếp Tiến & Ban Giám Đốc không bao giờ bị lỗi đăng nhập)
+        const TIEN_ALIASES = ['admin', 'tien', 'phamhoangtien', 'phamhoangtien1300', '0981169200', '0333885925'];
+        const THIEN_ALIASES = ['thien', 'maithanhthien', '0929224444'];
+
+        if (TIEN_ALIASES.includes(inputUser) && (inputPass === '0981169200' || inputPass === '0333885925')) {
+          return new Response(
+            JSON.stringify({
+              success: true,
+              user: {
+                id: "notion-admin-tien",
+                username: "phamhoangtien1300",
+                fullName: "PHẠM HOÀNG TIẾN",
+                roleName: "Quản trị viên / Điều Hành",
+                roleCode: "admin",
+                permission: "admin",
+                avatar: "PT",
+                phone: "0981169200 - 0333885925"
+              }
+            }),
+            { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        if (THIEN_ALIASES.includes(inputUser) && (inputPass === '0929224444' || inputPass === '0981169200')) {
+          return new Response(
+            JSON.stringify({
+              success: true,
+              user: {
+                id: "notion-director-thien",
+                username: "maithanhthien",
+                fullName: "MAI THANH THIỆN",
+                roleName: "Ban Giám Đốc",
+                roleCode: "admin",
+                permission: "admin",
+                avatar: "MT",
+                phone: "0929 22 4444"
+              }
+            }),
+            { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        // 2. Truy vấn Notion Bảng Thành Viên chỉ lấy các account có cả Webapp ID và Webapp Password
         const nRes = await fetch(`https://api.notion.com/v1/databases/${MEMBERS_DB_ID}/query`, {
           method: "POST",
           headers: {
@@ -564,6 +611,238 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
       } catch (err) {
         return new Response(
           JSON.stringify({ success: false, message: "Lỗi máy chủ: " + err.message }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // API: POST /api/ai/gemini-generate hoặc /api/gemini/generate (Proxy Google Gemini API cho AI Content Studio)
+    if ((url.pathname === "/api/ai/gemini-generate" || url.pathname === "/api/gemini/generate") && request.method === "POST") {
+      try {
+        const body = await request.json().catch(() => ({}));
+        let apiKey = (body.apiKey || "").trim();
+        if (!apiKey) {
+          apiKey = env.GEMINI_API_KEY || GEMINI_API_KEY || "";
+        }
+
+        if (!apiKey) {
+          return new Response(
+            JSON.stringify({
+              success: false,
+              message: "Chưa cung cấp Gemini API Key! Vui lòng bấm 'Cài Đặt Gemini API' để nhận key miễn phí từ Google AI Studio (aistudio.google.com/app/apikey)."
+            }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        let model = (body.model || "gemini-flash-latest").trim();
+        if (!model || model === "custom" || model.startsWith("gpt-") || model === "gemini-1.5-flash" || model === "gemini-2.0-flash") {
+          model = "gemini-flash-latest";
+        }
+        const prompt = body.prompt || "";
+        const contents = body.contents || (prompt ? [{ role: "user", parts: [{ text: prompt }] }] : []);
+        const systemInstruction = body.systemInstruction ? { parts: [{ text: body.systemInstruction }] } : undefined;
+        const temperature = typeof body.temperature === "number" ? body.temperature : 0.7;
+        const maxOutputTokens = typeof body.max_tokens === "number" ? Math.max(body.max_tokens, 300) : 2048;
+        const responseMimeType = body.response_format === "json" || body.responseMimeType === "application/json" ? "application/json" : undefined;
+
+        if (!contents || contents.length === 0) {
+          return new Response(
+            JSON.stringify({ success: false, message: "Nội dung yêu cầu (contents) không được để trống!" }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const geminiPayload = {
+          contents: contents,
+          generationConfig: {
+            temperature: temperature,
+            maxOutputTokens: maxOutputTokens
+          }
+        };
+
+        if (systemInstruction) {
+          geminiPayload.systemInstruction = systemInstruction;
+        }
+
+        if (responseMimeType) {
+          geminiPayload.generationConfig.responseMimeType = responseMimeType;
+        }
+
+        // Danh sách model dự phòng tự động vượt lỗi 503 (High Demand) & 404/429
+        const fallbackList = [
+          model,
+          "gemini-flash-lite-latest",
+          "gemini-3.5-flash-lite",
+          "gemini-3.1-flash-lite",
+          "gemini-3.6-flash",
+          "gemini-3.8-flash",
+          "gemini-flash-latest"
+        ];
+        const candidateModels = [...new Set(fallbackList)];
+
+        let lastErr = "";
+        let successfulData = null;
+        let successfulModel = model;
+
+        for (const m of candidateModels) {
+          try {
+            const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(m)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+            const geminiRes = await fetch(geminiUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(geminiPayload)
+            });
+
+            if (geminiRes.ok) {
+              successfulData = await geminiRes.json();
+              successfulModel = m;
+              break;
+            } else {
+              const errData = await geminiRes.text();
+              let parsedErr = errData;
+              try {
+                const ej = JSON.parse(errData);
+                parsedErr = ej.error?.message || errData;
+              } catch(e) {}
+              lastErr = `(${geminiRes.status}): ${parsedErr}`;
+              // Nếu gặp 503 (High demand), 404 (Model unavail), hoặc 429 (Rate limit) -> tự động thử model tiếp theo!
+              if (geminiRes.status === 503 || geminiRes.status === 404 || geminiRes.status === 429) {
+                continue;
+              } else {
+                break; // Lỗi 400 (Invalid key) thì dừng ngay
+              }
+            }
+          } catch(fetchErr) {
+            lastErr = fetchErr.message;
+          }
+        }
+
+        if (!successfulData) {
+          return new Response(
+            JSON.stringify({
+              success: false,
+              message: `Lỗi từ Google Gemini API ${lastErr}`
+            }),
+            { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const parts = successfulData.candidates?.[0]?.content?.parts || [];
+        let outputText = "";
+        for (const p of parts) {
+          if (p.text) outputText += p.text;
+        }
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            content: outputText,
+            usage: successfulData.usageMetadata || null,
+            model: successfulModel
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ success: false, message: "Lỗi xử lý Gemini proxy: " + err.message }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // API: POST /api/ai/chatgpt-generate (Proxy OpenAI ChatGPT API cho AI Content Studio)
+    if (url.pathname === "/api/ai/chatgpt-generate" && request.method === "POST") {
+      try {
+        const authHeader = request.headers.get("Authorization") || "";
+        const body = await request.json().catch(() => ({}));
+        
+        let apiKey = (body.apiKey || "").trim();
+        if (!apiKey && authHeader.startsWith("Bearer ")) {
+          apiKey = authHeader.substring(7).trim();
+        }
+        if (!apiKey) {
+          apiKey = env.OPENAI_API_KEY || "";
+        }
+        
+        if (!apiKey) {
+          return new Response(
+            JSON.stringify({ 
+              success: false, 
+              message: "Chưa cung cấp OpenAI API Key! Vui lòng cài đặt API Key trong bảng Cài Đặt ChatGPT của WebApp." 
+            }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const model = body.model || "gpt-4o";
+        const messages = body.messages || [];
+        const temperature = typeof body.temperature === "number" ? body.temperature : 0.7;
+        const max_tokens = typeof body.max_tokens === "number" ? body.max_tokens : 2000;
+        const response_format = body.response_format || undefined;
+
+        if (!messages || messages.length === 0) {
+          return new Response(
+            JSON.stringify({ success: false, message: "Danh sách messages không được để trống!" }),
+            { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const payload = {
+          model: model,
+          messages: messages,
+          temperature: temperature,
+          max_tokens: max_tokens
+        };
+
+        if (response_format) {
+          payload.response_format = response_format;
+        }
+
+        const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!openaiRes.ok) {
+          const errData = await openaiRes.text();
+          let parsedErr = errData;
+          try {
+            const j = JSON.parse(errData);
+            parsedErr = j.error?.message || errData;
+          } catch(e) {}
+          return new Response(
+            JSON.stringify({ 
+              success: false, 
+              message: "Lỗi phản hồi từ OpenAI API: " + parsedErr,
+              status: openaiRes.status
+            }),
+            { status: openaiRes.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+          );
+        }
+
+        const data = await openaiRes.json();
+        const content = data.choices?.[0]?.message?.content || "";
+        const usage = data.usage || null;
+
+        return new Response(
+          JSON.stringify({
+            success: true,
+            model: data.model || model,
+            content: content,
+            usage: usage
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ success: false, message: "Lỗi xử lý ChatGPT Proxy: " + err.message }),
           { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
@@ -1421,9 +1700,14 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
             tasks.push({
               id: pageId,
               title: title || "(Không có tiêu đề)",
+              name: title || "(Không có tiêu đề)",
               status: statusName,
               done_count: doneCount,
+              done: doneCount,
+              completed_count: doneCount,
               kpi: kpiVal,
+              kpi_target: kpiVal,
+              percent_work: kpiVal > 0 ? Math.round((doneCount / kpiVal) * 1000) / 1000 : 0,
               repeat: repeatList,
               slot: slotList,
               note: note,
@@ -1497,12 +1781,19 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
 
               const pChannelRels = (pProps["Kênh xuất bản"] && pProps["Kênh xuất bản"].relation) || [];
               const chId = pChannelRels.length > 0 ? pChannelRels[0].id : "";
-              const chName = channelNameById[chId] || "";
+              let chName = channelNameById[chId] || "";
+
+              const pUrl = (pProps["Link bài viết"] && pProps["Link bài viết"].url) || "";
+              if (!chName) {
+                if (pUrl.includes("congtymohinhkientrucsonganh")) chName = "Fanpage Mô hình kiến trúc Song Anh";
+                else if (pUrl.includes("congtymohinhkientruc")) chName = "Facebook Profile Song Anh";
+                else if (pUrl.includes("architecturalmodel.org")) chName = "Fanpage Architectural Model Org";
+                else if (pUrl.includes("facebook.com")) chName = "Fanpage Mô hình kiến trúc Song Anh";
+              }
 
               const pTaskRels = (pProps["Liên kết Công việc"] && pProps["Liên kết Công việc"].relation) || [];
               const tId = pTaskRels.length > 0 ? pTaskRels[0].id : "";
 
-              const pUrl = (pProps["Link bài viết"] && pProps["Link bài viết"].url) || "";
               let caption = "";
               if (pProps["Nội dung bài đăng"] && pProps["Nội dung bài đăng"].rich_text) {
                 caption = pProps["Nội dung bài đăng"].rich_text.map(t => t.plain_text || "").join("").trim();
@@ -1513,9 +1804,12 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
                 id: `notion-post-${p.id}`,
                 notion_page_id: p.id,
                 title: pTitle,
+                post_title: pTitle,
                 channel: chName,
+                channel_type: chName.toLowerCase().includes("profile") ? "Facebook Profile" : "Facebook Fanpage",
                 date: dateVn || pDateStart,
                 post_date: dateVn || pDateStart,
+                url: pUrl,
                 post_url: pUrl,
                 content_snippet: caption || pTitle,
                 status: status,
@@ -1527,6 +1821,101 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
           } else {
             pHasMore = false;
           }
+        }
+
+        // Truy vấn thêm các bài viết đã xuất bản từ BẢNG Ý TƯỞNG & CONTENT GỐC (CONTENT PILLARS)
+        const PILLARS_DB_ID = "33d4b5e7-3d90-809f-aebf-d11a9a8b0c0e";
+        try {
+          const pilRes = await fetch(`https://api.notion.com/v1/databases/${PILLARS_DB_ID}/query`, {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Notion-Version": NOTION_API_VERSION,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ page_size: 100 })
+          });
+          if (pilRes.ok) {
+            const pilData = await pilRes.json();
+            const existingUrls = new Set(posts.map(p => (p.post_url || p.url || '').split('?')[0].toLowerCase()).filter(Boolean));
+            for (const p of (pilData.results || [])) {
+              const pProps = p.properties || {};
+              let pTitle = "";
+              if (pProps["Tiêu đề bài viết"] && pProps["Tiêu đề bài viết"].title) {
+                pTitle = pProps["Tiêu đề bài viết"].title.map(t => t.plain_text || "").join("").trim();
+              }
+              const fpUrl = (pProps["Link Fanpage (Mô hình kiến trúc Song Anh)"] && pProps["Link Fanpage (Mô hình kiến trúc Song Anh)"].url) || "";
+              const profUrl = (pProps["Link Post Profile Song Anh"] && pProps["Link Post Profile Song Anh"].url) || "";
+              const intlUrl = (pProps["Link Fanpage (Architectural Model Org)"] && pProps["Link Fanpage (Architectural Model Org)"].url) || "";
+              
+              const fpDateObj = pProps["Ngày đăng Fanpage (Mô hình kiến trúc Song Anh)"] && pProps["Ngày đăng Fanpage (Mô hình kiến trúc Song Anh)"].date;
+              const fpDate = fpDateObj ? (fpDateObj.start || "") : "";
+              let fpDateVn = fpDate;
+              if (fpDate && fpDate.includes("-")) {
+                const parts = fpDate.split("T")[0].split("-");
+                if (parts.length === 3) fpDateVn = `${parts[2]}/${parts[1]}/${parts[0]}`;
+              }
+
+              if (fpUrl && !existingUrls.has(fpUrl.split('?')[0].toLowerCase())) {
+                existingUrls.add(fpUrl.split('?')[0].toLowerCase());
+                posts.push({
+                  id: `notion-pillar-fp-${p.id}`,
+                  notion_page_id: p.id,
+                  title: pTitle,
+                  post_title: pTitle,
+                  channel: "Fanpage Mô hình kiến trúc Song Anh",
+                  channel_type: "Facebook Fanpage",
+                  date: fpDateVn || "01/09/2026",
+                  post_date: fpDateVn || "01/09/2026",
+                  url: fpUrl,
+                  post_url: fpUrl,
+                  content_snippet: pTitle,
+                  status: "Đã xuất bản",
+                  task_id: "1c34b5e7-3d90-80b8-9bd5-f34d0dc1538e"
+                });
+              }
+
+              if (profUrl && !existingUrls.has(profUrl.split('?')[0].toLowerCase())) {
+                existingUrls.add(profUrl.split('?')[0].toLowerCase());
+                posts.push({
+                  id: `notion-pillar-prof-${p.id}`,
+                  notion_page_id: p.id,
+                  title: pTitle,
+                  post_title: pTitle,
+                  channel: "Facebook Profile Song Anh",
+                  channel_type: "Facebook Profile",
+                  date: fpDateVn || "01/09/2026",
+                  post_date: fpDateVn || "01/09/2026",
+                  url: profUrl,
+                  post_url: profUrl,
+                  content_snippet: pTitle,
+                  status: "Đã xuất bản",
+                  task_id: "2694b5e7-3d90-801c-819d-de98869f4d9d"
+                });
+              }
+
+              if (intlUrl && !existingUrls.has(intlUrl.split('?')[0].toLowerCase())) {
+                existingUrls.add(intlUrl.split('?')[0].toLowerCase());
+                posts.push({
+                  id: `notion-pillar-intl-${p.id}`,
+                  notion_page_id: p.id,
+                  title: pTitle,
+                  post_title: pTitle,
+                  channel: "Fanpage Architectural Model Org",
+                  channel_type: "Facebook Fanpage",
+                  date: fpDateVn || "01/09/2026",
+                  post_date: fpDateVn || "01/09/2026",
+                  url: intlUrl,
+                  post_url: intlUrl,
+                  content_snippet: pTitle,
+                  status: "Đã xuất bản",
+                  task_id: "3aa4b5e7-3d90-80f2-b98c-c03c4e6f384c"
+                });
+              }
+            }
+          }
+        } catch (pilErr) {
+          console.warn("Lỗi đọc thêm CONTENT PILLARS:", pilErr);
         }
 
         return new Response(
@@ -1817,7 +2206,8 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
       "mo-hinh": "19a4b5e7-3d90-8022-9844-d93fd68a0812",
       "tmdt": "1ab4b5e7-3d90-8054-af11-d969b565692b",
       "golf": "19a4b5e7-3d90-8057-8150-c9d261b49484",
-      "khac": "1a44b5e7-3d90-80b5-a67b-d52bfeac2ccd"
+      "khac": "1a44b5e7-3d90-80b5-a67b-d52bfeac2ccd",
+      "mo-hinh-3d": "3ea4b5e7-3d90-818f-b1d6-f7cb1e1b4083"
     };
 
     // 1. GET /api/notion/get-social-channels
@@ -1891,6 +2281,8 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
             domain_scope = "tmdt";
           } else if (low.includes("vatlieumohinh") || low.includes("lammohinh") || low.includes("vật liệu") || low.includes("ánh dương") || low.includes("shop")) {
             domain_scope = "tmdt";
+          } else if (relDomain.includes(DOMAIN_REL_MAP["mo-hinh-3d"]) || low.includes("mohinh3d") || low.includes("mô hình 3d") || low.includes("in 3d")) {
+            domain_scope = "mo-hinh-3d";
           } else if (relDomain.includes(DOMAIN_REL_MAP["khac"]) && !relDomain.includes(DOMAIN_REL_MAP["mo-hinh"])) {
             domain_scope = "khac";
           } else {
@@ -2682,16 +3074,16 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
         const googleToken = await getGoogleSheetsToken();
         const sheetId = env.SPREADSHEET_ID || GOOGLE_SPREADSHEET_ID;
 
-        // 1. Quét Cột B (Mã) để xác định chính xác dòng dữ liệu
-        const colBRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!B2:B250`, {
+        // 1. Quét Cột A (Mã) để xác định chính xác dòng dữ liệu
+        const colARes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!A2:A250`, {
           headers: { 'Authorization': `Bearer ${googleToken}` }
         });
-        const colBData = await colBRes.json();
-        const rowsB = colBData.values || [];
+        const colAData = await colARes.json();
+        const rowsA = colAData.values || [];
 
         let targetRow = -1;
-        for (let i = 0; i < rowsB.length; i++) {
-          if (rowsB[i][0] && rowsB[i][0].trim().toUpperCase() === code.trim().toUpperCase()) {
+        for (let i = 0; i < rowsA.length; i++) {
+          if (rowsA[i][0] && rowsA[i][0].trim().toUpperCase() === code.trim().toUpperCase()) {
             targetRow = i + 2;
             break;
           }
@@ -2709,37 +3101,41 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
           }
         }
 
-        // 2. Đọc dòng hiện tại (A:W) để giữ nguyên các cột không chỉnh sửa
-        const curRowRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!A${targetRow}:W${targetRow}`, {
+        // 2. Đọc dòng hiện tại (A:Y) để giữ nguyên các cột không chỉnh sửa
+        const curRowRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!A${targetRow}:Y${targetRow}`, {
           headers: { 'Authorization': `Bearer ${googleToken}` }
         });
         const curRowData = await curRowRes.json();
         const curValues = (curRowData.values && curRowData.values[0]) || [];
 
-        while (curValues.length < 23) {
+        while (curValues.length < 25) {
           curValues.push('');
         }
 
-        // 3. Cập nhật các cột được truyền lên
-        if (title !== undefined) curValues[2] = title;
-        if (pageUrl !== undefined && pageUrl.trim() !== '') curValues[3] = pageUrl;
-        if (category !== undefined) curValues[4] = category;
-        if (silo !== undefined) curValues[5] = silo;
-        if (keyword !== undefined) curValues[6] = keyword;
-        if (related_keywords !== undefined) curValues[7] = related_keywords;
-        if (rankmath !== undefined) curValues[8] = String(rankmath);
+        // 3. Cập nhật các cột theo chuẩn 25 cột ISO
+        if (title !== undefined) curValues[1] = title;
+        if (pageUrl !== undefined && pageUrl.trim() !== '') curValues[2] = pageUrl;
+        if (category !== undefined) curValues[3] = category;
+        if (rankmath !== undefined) curValues[5] = String(rankmath);
+        if (silo !== undefined) curValues[6] = silo;
+        if (keyword !== undefined) curValues[7] = keyword;
+        if (related_keywords !== undefined) curValues[8] = related_keywords;
         if (todo !== undefined) curValues[9] = todo;
-        if (assignee !== undefined) curValues[10] = assignee;
-        if (status !== undefined) curValues[11] = status;
-        if (deadline !== undefined) curValues[12] = deadline;
-        if (title !== undefined) curValues[13] = String(title.length);
-        if (meta_desc !== undefined) curValues[15] = meta_desc;
-        if (meta_desc !== undefined) curValues[16] = String(meta_desc.length);
-        if (h1 !== undefined) curValues[18] = h1;
-        if (h2 !== undefined) curValues[20] = h2;
+        if (assignee !== undefined) curValues[11] = assignee;
+        if (status !== undefined) curValues[12] = status;
+        if (title !== undefined) {
+          curValues[13] = title;
+          curValues[14] = String(title.length);
+        }
+        if (meta_desc !== undefined) {
+          curValues[15] = meta_desc;
+          curValues[16] = String(meta_desc.length);
+        }
+        if (h1 !== undefined) curValues[17] = h1;
+        if (h2 !== undefined) curValues[18] = h2;
 
-        // 4. Ghi đè vào Google Sheet
-        const updateRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!A${targetRow}:W${targetRow}?valueInputOption=USER_ENTERED`, {
+        // 4. Ghi đè vào Google Sheet (A:Y)
+        const updateRes = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Url!A${targetRow}:Y${targetRow}?valueInputOption=USER_ENTERED`, {
           method: 'PUT',
           headers: {
             'Authorization': `Bearer ${googleToken}`,
@@ -2758,9 +3154,9 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
           );
         }
 
-        // 5. Cập nhật đồng bộ Notion nếu có Notion link
+        // 5. Cập nhật đồng bộ Notion nếu có Notion link (Col X - index 23)
         let notionUpdated = false;
-        const notionLink = curValues[22];
+        const notionLink = curValues[23];
         if (notionLink && token) {
           const idMatch = notionLink.match(/([a-f0-9]{32})/i);
           if (idMatch) {
@@ -2829,31 +3225,60 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
       }
     }
 
-    // SPA Fallback: Any non-API route without static file extension rewrites to /index.html
-    let assetReq = request;
-    const isApi = url.pathname.startsWith("/api/");
-    const hasExt = url.pathname.includes(".") && !url.pathname.endsWith(".html");
-    const isSpaPath = !isApi && (!hasExt || url.pathname === "/login");
+    try {
+      // SPA Fallback: Any non-API route without static file extension rewrites to /
+      let assetReq = request;
+      const isApi = url.pathname.startsWith("/api/");
+      const hasExt = url.pathname.includes(".") && !url.pathname.endsWith(".html");
+      const isSpaPath = !isApi && (!hasExt || url.pathname === "/login");
 
-    if (isSpaPath && url.pathname !== "/" && url.pathname !== "/index.html") {
-      const newUrl = new URL(request.url);
-      newUrl.pathname = "/index.html";
-      assetReq = new Request(newUrl, request);
-    }
+      if (isSpaPath && url.pathname !== "/") {
+        const rootUrl = new URL(request.url);
+        rootUrl.pathname = "/";
+        assetReq = new Request(rootUrl, request);
+      }
 
-    // Default: Fallback to Cloudflare Workers Static Assets with no-cache for HTML
-    const assetRes = await env.ASSETS.fetch(assetReq);
-    if (isSpaPath || url.pathname === "/" || url.pathname.endsWith(".html")) {
-      const freshHeaders = new Headers(assetRes.headers);
-      freshHeaders.set("Cache-Control", "no-cache, no-store, must-revalidate");
-      freshHeaders.set("Pragma", "no-cache");
-      freshHeaders.set("Expires", "0");
-      return new Response(assetRes.body, {
-        status: assetRes.status,
-        statusText: assetRes.statusText,
-        headers: freshHeaders
+      // Default: Fallback to Cloudflare Workers Static Assets
+      let assetRes = await env.ASSETS.fetch(assetReq);
+
+      // If asset server attempted to redirect an SPA path, fetch root directly to serve HTML
+      if (isSpaPath && (assetRes.status === 307 || assetRes.status === 308 || assetRes.status === 301 || assetRes.status === 302)) {
+        const rootUrl = new URL(request.url);
+        rootUrl.pathname = "/";
+        assetRes = await env.ASSETS.fetch(new Request(rootUrl, request));
+      }
+
+      // Return 304 Not Modified, 204 No Content, or any non-200 responses directly to avoid TypeError
+      if (assetRes.status !== 200) {
+        return assetRes;
+      }
+
+      // For 200 OK HTML / SPA responses, safely set no-cache headers to ensure fresh content
+      if (isSpaPath || url.pathname === "/" || url.pathname.endsWith(".html")) {
+        const freshHeaders = new Headers(assetRes.headers);
+        freshHeaders.set("Cache-Control", "no-cache, no-store, must-revalidate");
+        freshHeaders.set("Pragma", "no-cache");
+        freshHeaders.set("Expires", "0");
+        return new Response(assetRes.body, {
+          status: 200,
+          statusText: "OK",
+          headers: freshHeaders
+        });
+      }
+      return assetRes;
+    } catch (assetErr) {
+      console.error("[Assets Handler Exception]:", assetErr);
+      return new Response("Application Error: " + (assetErr.message || "Failed to load asset"), {
+        status: 500,
+        headers: { "Content-Type": "text/plain; charset=utf-8" }
       });
     }
-    return assetRes;
+  } catch (globalErr) {
+    console.error("[Global Worker Exception]:", globalErr);
+    return new Response("Global Worker Error: " + (globalErr.message || "Internal Server Error"), {
+      status: 500,
+      headers: { "Content-Type": "text/plain; charset=utf-8", "Access-Control-Allow-Origin": "*" }
+    });
   }
+}
 };
