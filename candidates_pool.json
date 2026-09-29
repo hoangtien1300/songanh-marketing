@@ -3,21 +3,32 @@
     "name": "Nguyễn Minh Đạt",
     "year": 2002,
     "phone": "0799903989",
-    "skills": "Đồ họa 3D, Cắt gọt kim loại, In 3D FDM",
-    "note": "Ưu tiên số 1 - Hẹn phỏng vấn"
+    "skills": "Kỹ thuật 3D & Vận hành máy in 3D FDM",
+    "note": "Ưu tiên số 1 - Hẹn phỏng vấn",
+    "file_name": "Nguyễn Minh Đạt - 2002 - Kỹ thuật 3D & Vận hành máy in 3D FDM.pdf"
   },
   {
     "name": "Võ Ngọc Tân",
     "year": 2002,
     "phone": "0395004367",
-    "skills": "Gần xưởng (Lê Văn Việt), Vận hành mô hình VinWonders",
-    "note": "Thợ học việc - Hẹn phỏng vấn"
+    "skills": "Thợ thi công mô hình học việc gần xưởng",
+    "note": "Thợ học việc - Hẹn phỏng vấn",
+    "file_name": "Võ Ngọc Tân - 2002 - Thợ thi công mô hình học việc gần xưởng.pdf"
   },
   {
     "name": "Thạch Tuyết Nhi",
     "year": 2004,
     "phone": "0357374074",
-    "skills": "Cử nhân Đồ họa, Sketchup, Khéo tay làm đồ thủ công",
-    "note": "Hỏi xe & Hẹn test"
+    "skills": "Thiết kế đồ họa Sketchup & Làm đồ thủ công",
+    "note": "Hỏi xe & Hẹn test",
+    "file_name": "Thạch Tuyết Nhi - 2004 - Thiết kế đồ họa Sketchup & Làm đồ thủ công.pdf"
+  },
+  {
+    "name": "Huỳnh Anh Thư",
+    "year": 1994,
+    "phone": "0775993717",
+    "skills": "Senior Scriptwriter & Content Writer (Nộp nhầm)",
+    "note": "Lưu kho dự phòng / Từ chối lịch sự",
+    "file_name": "Huỳnh Anh Thư - 1994 - Senior Scriptwriter & Content Writer (Nộp nhầm).pdf"
   }
 ]
