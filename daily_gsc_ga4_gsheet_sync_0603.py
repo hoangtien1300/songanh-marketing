@@ -539,7 +539,7 @@ def send_telegram_alert(report_data):
         return False
 
 def run_master_pipeline():
-    """Chạy sync_master_gsc_ga4_pipeline.py và deploy Cloudflare Worker"""
+    """Chạy sync_master_gsc_ga4_pipeline.py, sync_master_seo_live.py và deploy Cloudflare Worker"""
     print("\n========================================================")
     print("🚀 BƯỚC 2: CẬP NHẬT MASTER PIPELINE VÀ DEPLOY CLOUDFLARE")
     print("========================================================")
@@ -550,6 +550,14 @@ def run_master_pipeline():
         print("  [+] Master pipeline executed successfully.")
     except Exception as e:
         print(f"  [-] Lỗi chạy master pipeline: {e}")
+
+    # Đồng bộ Master Keyword Google Sheet (1XZ5...), Notion DB (1a74...) và WebApp JSON
+    seo_live_script = os.path.join(APP_DIR, "sync_master_seo_live.py")
+    try:
+        res_seo = subprocess.run([sys.executable, seo_live_script], check=True, capture_output=True, text=True, encoding='utf-8')
+        print("  [+] Master SEO live keywords pipeline executed successfully.")
+    except Exception as e:
+        print(f"  [-] Lỗi chạy master SEO live pipeline: {e}")
 
     try:
         deploy_script = os.path.join(APP_DIR, "deploy_to_cloudflare.py")

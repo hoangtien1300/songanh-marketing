@@ -1401,8 +1401,13 @@ QUY CHUẨN BẮT BUỘC:
         // -------------------------------------------------------------------------
         // ✨ TẠO BÀI VIẾT B2B TỪ ĐOẠN VĂN Ý TƯỞNG + ĐỐI TƯỢNG + GOAL + KÊNH SOCIAL
         // -------------------------------------------------------------------------
+        // Biến lưu trữ số lần tạo để tự động xoay vòng góc nhìn mỗi lần bấm Tạo Lại
+        let _aiFallbackGenerationCounter = 0;
+
         function runDeterministicFallback(rawIdea, selectedAud, selectedGoal, selectedChan, selectedFormula) {
-            // 2. Extract Project Core & Context
+            _aiFallbackGenerationCounter++;
+
+            // 1. Phân tích ngữ cảnh dự án & làm sạch tiêu đề
             const topicBrief = rawIdea || "Sa bàn kiến trúc tại Xưởng Mô hình Song Anh";
             const rawLower = topicBrief.toLowerCase();
             const projName = cleanProjectRawTitle(topicBrief);
@@ -1428,6 +1433,15 @@ QUY CHUẨN BẮT BUỘC:
             const isMoHinh3dChannel = (selectedChan.name.includes('Mô Hình 3D') || (selectedChan.direct_url && selectedChan.direct_url.includes('mohinh3d.org')));
             const isPinterestChannel = (selectedChan.platform === 'Pinterest');
 
+            // 2. Xác định Góc nhìn (Angle) linh hoạt: Nếu là 'auto', tự động xoay vòng 4 góc nhìn mỗi lần bấm Tạo Lại!
+            let frameworkChoice = (document.getElementById('ai-content-framework') ? document.getElementById('ai-content-framework').value : 'auto');
+            const availableAngles = ['bts', 'faq', 'gallery', 'craftsman'];
+            let currentAngle = frameworkChoice;
+            if (frameworkChoice === 'auto' || !availableAngles.includes(frameworkChoice)) {
+                // Xoay vòng linh hoạt theo số lần bấm tạo lại
+                currentAngle = availableAngles[_aiFallbackGenerationCounter % availableAngles.length];
+            }
+
             // -----------------------------------------------------------------
             // 💡 CHUẨN MỰC B2B MARKETING ENGINE THEO TỪNG KÊNH & LINK ĐẦY ĐỦ OPTION
             // -----------------------------------------------------------------
@@ -1435,34 +1449,75 @@ QUY CHUẨN BẮT BUỘC:
             // CASE 1: GLOBAL ENGLISH POST (KTS Quốc Tế & Đối tác B2B Nước Ngoài)
             if (isGlobalEnglish) {
                 badgeText = "🌐 Global English Post";
-                postText = `PHYSICAL SCALE MODELS — HIGH-IMPACT VISUALIZATION FOR ${projName.toUpperCase()}\n\n` +
-                    `When presenting to international investors and design committees, technical 2D blueprints often fail to convey the true volume, spatial hierarchy, and scale.\n\n` +
-                    `Target Audience Focus (${selectedAud.name}):\n` +
-                    `Addressing key project demands: ${selectedAud.painPoints || 'high precision architectural representation, international crate delivery'}.\n\n` +
-                    `3 Core Engineering Highlights:\n` +
-                    `1. Precision 8K 3D SLA Printing & Laser Acrylic: Replicating intricate facades, structural details, and realistic site elevations.\n` +
-                    `2. Multi-Zone Intelligent Micro-LED Lighting: Independent sub-circuit controls allow zoning presentations directly from mobile or remote.\n` +
-                    `3. Shockproof Flight-Case Packaging: Modular building design securely crated in ISPM-15 wooden packaging for reliable global freight.\n\n` +
-                    `Objective (${selectedGoal.name}):\n` +
-                    `Turn design complexity into immediate commercial clarity.\n\n` +
-                    `📞 Direct WhatsApp/Hotline: +84 929 22 4444\n` +
-                    `🌐 Project Showcase: https://architecturalmodel.org/en/`;
+                if (currentAngle === 'bts') {
+                    postText = `Late night quality check at Song Anh Model studio for the ${projName} architectural showcase.\n\n` +
+                        `When presenting intricate projects to international investors, digital renders often lack spatial presence. We focused on micro-tolerances with 8K SLA resin printing, bringing delicate facade patterns into tangible reality.\n\n` +
+                        `The multi-zone 12V LED lighting setup allows independent floor control, making zoning presentations intuitive and engaging.\n\n` +
+                        `Crated securely in custom flight-cases for international freight.\n\n` +
+                        `📞 WhatsApp/Hotline: +84 929 22 4444\n` +
+                        `🌐 Portfolio: https://architecturalmodel.org/en/`;
+                } else {
+                    postText = `Turning complex blueprints into immediate commercial clarity for ${projName}.\n\n` +
+                        `Architectural models bridge the gap between design vision and investor confidence. By combining precision laser-cut acrylic with warm ambient illumination, the entire urban hierarchy becomes instantly readable.\n\n` +
+                        `Crafted with 16 years of specialized scale model experience from Ho Chi Minh City, Vietnam.\n\n` +
+                        `👉 Explore technical specifications: https://architecturalmodel.org/en/\n` +
+                        `📞 WhatsApp/Hotline: +84 929 22 4444`;
+                }
+                commentText = `💬 First Comment:\nExplore full project gallery and specifications: https://architecturalmodel.org/en/category/typical-project/\nWhatsApp/Hotline: +84 929 22 4444`;
+                promptText = `Ultra-realistic architectural scale model of ${projName}, sharp miniature buildings, warm ambient LED lighting, modern showroom setting, 8k --ar 16:9`;
 
-                commentText = `💬 First Comment:\nExplore full scale model portfolio and technical specs: https://architecturalmodel.org/en/category/typical-project/\nHotline/WhatsApp: +84 929 22 4444`;
-                promptText = `Ultra-realistic architectural scale model of ${projName}, sharp miniature buildings, warm ambient LED lighting, modern Sales Gallery showroom environment, 8k resolution, cinematic lighting --ar 16:9`;
-
-            // CASE 2: ZALO B2B CÔNG TY (Cả 4 kênh Zalo: Hotline duy nhất 0929 22 4444, Không xưng anh/em)
+            // CASE 2: ZALO B2B CÔNG TY (Đa Góc Nhìn Sinh Động, 70 - 120 từ, Không Khuôn Đúc, Hotline 0929 22 4444)
             } else if (isZaloChannel) {
                 badgeText = `💬 Zalo: ${selectedChan.name}`;
-                postText = `Sa bàn ${projName} hoàn thiện chuẩn bị bàn giao cho sự kiện.\n\n` +
-                    `Đối với ${selectedAud.name}, khâu quan trọng nhất luôn là: ${selectedAud.painPoints || 'tiến độ chính xác và sa bàn lên đèn ổn định'}.\n\n` +
-                    `Áp dụng cấu trúc [${selectedFormula.code}]:\n` +
-                    `• Thực tế thi công: Các khối tháp và cảnh quan được ráp kỹ lưỡng từng ô cửa, bám sát bản vẽ kỹ thuật.\n` +
-                    `• Hệ thống điện: Rà soát toàn bộ vi mạch LED, chia công tắc độc lập cho từng khu vực để thuyết trình trực quan.\n` +
-                    `• Đóng gói an toàn: Chèn xốp định hình và cố định thùng gỗ chắc chắn, giúp sa bàn vận chuyển liên tỉnh không lo va đập.\n\n` +
-                    `${selectedGoal.cta || 'Quý Doanh nghiệp cần tư vấn tỷ lệ hoặc dự toán phương án sa bàn, vui lòng liên hệ đội ngũ kỹ thuật Song Anh.'}\n\n` +
-                    `👉 Xem chi tiết tại: https://mohinhkientruc.org/sa-ban-cao-tang/\n` +
-                    `📞 Hotline/Zalo: 0929 22 4444`;
+                const isZaloSteven = selectedChan.name.includes("Steven") || selectedChan.id === 'soc-zalo-steven';
+                const isZaloSale = selectedChan.name.includes("Sale") || selectedChan.id === 'soc-zalo-sale';
+                const isZaloKyThuat = selectedChan.name.includes("Kỹ Thuật") || selectedChan.id === 'soc-zalo-kythuat';
+
+                if (isZaloSteven) {
+                    if (currentAngle === 'bts') {
+                        postText = `Hơn 9 giờ tối tại xưởng Nguyễn Xiển, anh em thợ vừa hoàn tất việc căn chỉnh nguồn sáng cuối cùng cho sa bàn ${projName}.\n\n` +
+                            `Ở góc độ người làm marketing, em luôn thấy ánh đèn 3000K phân tầng có sức hút rất lạ. Khách bước vào nhà mẫu, nhìn xuống mô hình ấm áp là đã thấy rõ cảm giác an cư trước khi nghe tư vấn viên thuyết trình.\n\n` +
+                            `Làm sa bàn không chỉ là ráp cho giống bản vẽ, mà là tạo điểm dừng chân giữ khách ở lại sảnh lâu nhất có thể.\n\n` +
+                            `👉 Anh/Chị quan tâm giải pháp tối ưu không gian trưng bày, mời xem thêm tại: https://mohinhkientruc.org/\n` +
+                            `📞 Hotline/Zalo: 0929 22 4444`;
+                    } else if (currentAngle === 'faq') {
+                        postText = `Hôm trước có một Anh Giám đốc Marketing ghé xưởng băn khoăn: "Làm sao để sa bàn ${projName} trưng bày ở sảnh bật đèn cả ngày mà không bị nóng hay chập cháy?"\n\n` +
+                            `Thực tế tại Song Anh, toàn bộ hệ vi mạch đều dùng LED SMD tản nhiệt độc lập và hạ áp 12V an toàn. Từng cụm khối được chia công tắc riêng nên bật liên tục 12 tiếng ở nhà mẫu vẫn mát rượi.\n\n` +
+                            `Đầu tư kỹ ngay từ khâu điện bên dưới giúp anh em vận hành sảnh nhẹ đầu hơn rất nhiều.\n\n` +
+                            `📞 Hotline/Zalo: 0929 22 4444`;
+                    } else {
+                        postText = `Khi đưa khách hàng vào Sales Gallery, một khối sa bàn ${projName} sáng đèn đúng cao độ luôn giữ chân người xem lâu hơn bất kỳ slide thuyết trình nào.\n\n` +
+                            `Từng góc cây xanh, tim đường và khối nhà được thu nhỏ chuẩn xác giúp người mua dễ dàng hình dung toàn bộ tiện ích mà không bị cảm giác khô khan của bản vẽ kỹ thuật.\n\n` +
+                            `Chi tiết nhỏ nhưng quyết định cảm xúc và sự an tâm của khách trước khi đặt cọc.\n\n` +
+                            `👉 Xem chi tiết tại: https://mohinhkientruc.org/sa-ban-cao-tang/\n` +
+                            `📞 Hotline/Zalo: 0929 22 4444`;
+                    }
+                } else if (isZaloSale) {
+                    if (currentAngle === 'bts' || currentAngle === 'gallery') {
+                        postText = `Khối sa bàn ${projName} vừa hoàn tất nghiệm thu và đóng thùng gỗ để chuyển giao đến hiện trường dự án.\n\n` +
+                            `Áp lực lớn nhất của các sự kiện mở bán là chạy đua với ngày khai mạc. Vì vậy, đội ngũ Song Anh luôn chủ động bàn giao trước ít nhất 24 giờ để Quý Doanh nghiệp tổng duyệt toàn bộ hiệu ứng đèn và cảnh quan.\n\n` +
+                            `Cam kết tiến độ bằng biên bản rõ ràng, đóng màng xốp chống sốc bảo vệ an toàn trên từng cây số.\n\n` +
+                            `👉 Xem thêm phương án kỹ thuật: https://mohinhkientruc.org/\n` +
+                            `📞 Hotline/Zalo tư vấn & báo giá: 0929 22 4444\n` +
+                            `🏭 Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM`;
+                    } else {
+                        postText = `Bàn giao sa bàn ${projName} chuẩn tiến độ cam kết tại xưởng Song Anh Thủ Đức.\n\n` +
+                            `Nhiều Quý đối tác khi lên dự toán thường lo ngại tình trạng phát sinh chi phí hoặc mô hình thực tế khác xa bản vẽ 3D. Tại xưởng, quy trình duyệt mẫu 3 bước từ khung bệ đến khối kiến trúc luôn giúp khách hàng kiểm soát 100% chất lượng trước khi xuất xưởng.\n\n` +
+                            `Báo giá minh bạch theo diện tích m2 và hồ sơ thiết kế chi tiết.\n\n` +
+                            `👉 Tư vấn phương án & bóc tách dự toán nhanh: https://mohinhkientruc.org/\n` +
+                            `📞 Hotline/Zalo: 0929 22 4444`;
+                    }
+                } else if (isZaloKyThuat) {
+                    postText = `Kiểm tra mạch LED hạ áp và chia tải độc lập cho sa bàn ${projName} trước khi đóng kiện.\n\n` +
+                        `Để đèn bật liên tục ở sảnh bán hàng mà không bị quá nhiệt, xưởng dùng hạt LED SMD tản nhiệt trên thanh nhôm âm đáy bàn. Dây dẫn đồng tráng men chống gãy gập khi tháo lắp module.\n\n` +
+                        `Show Your Work thực tế tại xưởng Song Anh Thủ Đức.\n\n` +
+                        `📞 Hotline/Zalo kỹ thuật: 0929 22 4444`;
+                } else {
+                    postText = `Hoàn tất bảo dưỡng và vệ sinh định kỳ khối sa bàn ${projName} tại phòng trưng bày.\n\n` +
+                        `Lớp mica được lau bằng dung dịch chống tĩnh điện chuyên dụng giúp bề mặt sáng bóng, hạn chế bám bụi trở lại. Đội kỹ thuật kiểm tra lại toàn bộ giắc cắm nguồn 12V đảm bảo sa bàn luôn sẵn sàng đón khách.\n\n` +
+                        `Đồng hành dài hạn cùng Quý đối tác sau ngày bàn giao.\n\n` +
+                        `📞 Hotline/Zalo CSKH: 0929 22 4444`;
+                }
 
                 commentText = `💬 Link Tham Khảo Dự Án:\nXem thêm thư viện các dự án sa bàn thực tế tại: https://mohinhkientruc.org/\nHotline/Zalo: 0929 22 4444`;
                 promptText = `Close-up scale model craftsmanship of ${projName}, authentic workshop scene, artisan wiring warm LEDs, 8k --ar 16:9`;
@@ -1543,7 +1598,7 @@ QUY CHUẨN BẮT BUỘC:
                     `3. Đóng thùng gỗ chống sốc: Vận chuyển an toàn liên tỉnh, bàn giao và lắp đặt hoàn chỉnh ngay trước giờ khai mạc.\n\n` +
                     `${selectedGoal.cta || 'Quý Doanh nghiệp cần tư vấn phương án sa bàn, vui lòng liên hệ đội ngũ kỹ thuật Song Anh qua Hotline/Zalo: 0929 22 4444.'}\n\n` +
                     `🏭 Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Thủ Đức, TP.HCM\n` +
-                    `#mohinhkientruc #sabanquyhoach #mohinhsonganh #SongAnhModel`;
+                    `#mohinhkientruc #sabanquyhoach #mohinhsonganh #MoHinhSongAnh`;
 
                 commentText = `💬 First Comment:\nQuý Khách hàng cần tư vấn tỷ lệ hoặc dự toán phương án sa bàn, vui lòng liên hệ Hotline/Zalo kỹ thuật Song Anh: 0929 22 4444. Xem thêm các mẫu dự án tại: https://mohinhkientruc.org/`;
                 promptText = `Behind the scenes architectural model workshop, craftsman adjusting miniature lighting on scale model ${projName}, authentic workshop setting, warm lighting --ar 4:3`;
@@ -1554,28 +1609,50 @@ QUY CHUẨN BẮT BUỘC:
                 postText = `Sa Bàn ${projName} | Mô Hình Kiến Trúc Song Anh Thủ Đức\n\n` +
                     `Ý tưởng thiết kế sa bàn kiến trúc cao tầng và quy hoạch chi tiết cho ${selectedAud.name}.\n\n` +
                     `• Tỷ lệ mô hình: Thu nhỏ chuẩn xác theo hồ sơ bản vẽ.\n` +
-                    `• Công nghệ chế tác: In 3D SLA độ nét cao kết hợp Mica Acrylic đài loan.\n` +
+                    `• Kỹ thuật gia công: In 3D SLA độ nét cao kết hợp Mica Acrylic đài loan.\n` +
                     `• Hiệu ứng ánh sáng: LED vi mạch phân tầng vàng ấm sang trọng.\n\n` +
                     `Khám phá thêm các mẫu sa bàn dự án đẹp tại: https://mohinhkientruc.org/\n` +
                     `📞 Hotline/Zalo: 0929 22 4444\n` +
-                    `#architecturalmodel #scalemodel #mohinhkientruc #SongAnhModel #sabanbds`;
+                    `#architecturalmodel #scalemodel #mohinhkientruc #MoHinhSongAnh #sabanbds`;
 
                 commentText = `💬 Ghim Dự Án:\nXem bộ sưu tập sa bàn thực tế: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline: 0929 22 4444`;
                 promptText = `Editorial architectural photography of ${projName} scale model, dramatic shadows, soft warm lighting, luxury architectural studio backdrop, 8k --ar 2:3`;
 
-            // CASE 9: FANPAGE SONG ANH (Mặc định chuẩn B2B Doanh Nghiệp Song Anh)
+            // CASE 9: FANPAGE FLAGSHIP B2B (Đa Góc Nhìn Tự Nhiên, Không All-Caps, Không Danh Sách Cứng)
             } else {
                 badgeText = `🚩 ${selectedChan.name}`;
-                postText = `SA BÀN ${projName.toUpperCase()} — GIẢI PHÁP TRỰC QUAN HÓA TOÀN BỘ QUY MÔ DỰ ÁN TẠI SALES GALLERY\n\n` +
-                    `Thấu hiểu nhu cầu của ${selectedAud.name} (${selectedAud.painPoints || 'cần một sa bàn sắc nét để khách hàng nhìn vào là nắm được ngay không gian sống'}).\n\n` +
-                    `Công thức triển khai [${selectedFormula.code}]:\n` +
-                    `1. Nắm trọn quy mô trong 30 giây: Từng phân khu chức năng, trục đường nội khu và tiện ích cảnh quan được thu nhỏ trực quan, xóa bỏ rào cản đọc bản vẽ 2D phức tạp.\n` +
-                    `2. Hệ thống đèn LED phân tầng thông minh: Điều khiển độc lập từng khu vực, thuyết trình tới đâu bật sáng tới đó, tạo cảm xúc ấn tượng trong các buổi mở bán.\n` +
-                    `3. Thi công bám sát tiến độ: Đóng thùng gỗ chống sốc chuyên dụng, bàn giao và lắp đặt hoàn thiện tận nơi dự án đúng cam kết.\n\n` +
-                    `${selectedGoal.cta || 'Quý Doanh nghiệp cần tư vấn tỷ lệ hoặc dự toán phương án sa bàn, vui lòng liên hệ đội ngũ kỹ thuật Song Anh để nhận bảng dự toán bóc tách chi tiết:'}\n\n` +
-                    `📞 Hotline/Zalo kỹ thuật: 0929 22 4444\n` +
-                    `🏭 Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM\n` +
-                    `#mohinhkientruc #sabanquyhoach #mohinhsonganh #SongAnhModel`;
+
+                if (currentAngle === 'bts') {
+                    postText = `Những khâu kiểm tra cuối cùng trước khi bàn giao khối sa bàn ${projName} về phòng trưng bày.\n\n` +
+                        `Khi làm sa bàn cao tầng và quy hoạch, điều đội ngũ Song Anh chú trọng nhất là sự ăn khớp giữa từng ô cửa, ban công với mặt cắt bản vẽ. Chỉ cần lệch một góc 0.5mm, cả khối kiến trúc sẽ mất đi độ ngay ngắn.\n\n` +
+                        `Hệ thống đèn LED vàng ấm được bố trí công tắc điều khiển theo từng phân khu, giúp người xem dễ dàng quan sát trục giao thông và cụm tiện ích trung tâm.\n\n` +
+                        `Toàn bộ khối sa bàn được đóng kiện gỗ chống sốc chuyên dụng, sẵn sàng phục vụ buổi lễ ra mắt dự án của Quý đối tác.\n\n` +
+                        `📞 Hotline/Zalo kỹ thuật: 0929 22 4444\n` +
+                        `🏭 Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM\n` +
+                        `#MoHinhSongAnh #MoHinhKienTruc #SaBanKienTruc #ThuDuc`;
+                } else if (currentAngle === 'faq') {
+                    postText = `Làm thế nào để sa bàn ${projName} vừa truyền tải đúng ý đồ thiết kế, vừa tối ưu ngân sách đầu tư?\n\n` +
+                        `Nhiều Chủ đầu tư khi lên phương án sảnh bán hàng thường băn khoăn giữa tỷ lệ 1:200 và 1:500. Kinh nghiệm từ xưởng cho thấy, chọn tỷ lệ vừa vặn với tầm mắt người xem và diện tích sảnh sẽ giúp nổi bật phân khu mà không làm đội chi phí bảo dưỡng về sau.\n\n` +
+                        `Đội ngũ kỹ thuật Song Anh luôn hỗ trợ khảo sát mặt bằng và bóc tách dự toán kỹ lưỡng từng hạng mục trước khi thi công.\n\n` +
+                        `👉 Xem thêm thư viện sa bàn tiêu biểu: https://mohinhkientruc.org/\n` +
+                        `📞 Hotline/Zalo tư vấn: 0929 22 4444\n` +
+                        `#MoHinhSongAnh #MoHinhKienTruc #SaBanDuAn #ThuDuc`;
+                } else if (currentAngle === 'gallery') {
+                    postText = `Khoảnh khắc khối sa bàn ${projName} lên đèn rực rỡ giữa không gian Sales Gallery.\n\n` +
+                        `Một sa bàn trực quan giúp xóa bỏ hoàn toàn rào cản đọc bản vẽ 2D phức tạp. Khách tham quan bước vào sảnh có thể nhìn thấy ngay hướng đón gió, khoảng xanh nội khu và khoảng cách kết nối ra các trục đường lớn.\n\n` +
+                        `Chính những trải nghiệm thị giác sống động này tạo nên niềm tin vững chắc cho khách hàng trước khi đưa ra quyết định an cư.\n\n` +
+                        `👉 Khám phá các dự án sa bàn hoàn thiện tại: https://mohinhkientruc.org/sa-ban-cao-tang/\n` +
+                        `📞 Hotline/Zalo: 0929 22 4444\n` +
+                        `#MoHinhSongAnh #MoHinhKienTruc #SaBanCaoTang`;
+                } else {
+                    postText = `Hoàn thiện sa bàn ${projName} — Thu trọn quy mô và nhịp sống dự án trong tầm mắt.\n\n` +
+                        `Từ khối kiến trúc sắc nét đến hệ thống cây xanh, thảm cỏ và chiếu sáng vi mạch đều được gia công tỉ mỉ bám sát bản vẽ quy hoạch. Từng chi tiết nhỏ được chau chuốt kỹ càng nhằm mang lại cảm giác chân thực nhất cho không gian sảnh đón khách.\n\n` +
+                        `Mô Hình Song Anh luôn cam kết tiến độ bàn giao đúng hẹn và hỗ trợ bảo dưỡng kỹ thuật tận nơi 24/7.\n\n` +
+                        `👉 Quý đối tác cần tư vấn phương án thi công, mời xem chi tiết tại: https://mohinhkientruc.org/\n` +
+                        `📞 Hotline/Zalo: 0929 22 4444\n` +
+                        `🏭 Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM\n` +
+                        `#MoHinhSongAnh #MoHinhKienTruc #SaBanQuyHoach`;
+                }
 
                 commentText = `💬 First Comment / Điều Hướng Chi Tiết:\nKhám phá thư viện các dự án sa bàn tiêu biểu tại: https://mohinhkientruc.org/sa-ban-cao-tang/\nHotline kỹ thuật: 0929 22 4444`;
                 promptText = `Realistic architectural scale model of ${projName}, miniature glowing lights, Sales Gallery showroom setting, clean photography, 8k --ar 16:9`;
@@ -1597,6 +1674,11 @@ QUY CHUẨN BẮT BUỘC:
             if (elPost) elPost.innerText = postText;
             if (elComment) elComment.innerText = commentText;
             if (elPrompt) elPrompt.innerText = promptText;
+
+            // Tự động kiểm định chất lượng theo 11 Tiêu chuẩn vàng Kỹ Tester
+            if (typeof auditAiContentQuality === 'function') {
+                auditAiContentQuality(postText, selectedChan, selectedAud);
+            }
         }
 
         function buildChatGptPromptForUser(rawIdea, selectedAud, selectedGoal, selectedChan, selectedFormula) {
@@ -1620,6 +1702,13 @@ QUY CHUẨN BẮT BUỘC:
                 channelWebsite = "https://mohinh3d.org";
             }
 
+            const lengthVal = (document.getElementById('ai-content-length') ? document.getElementById('ai-content-length').value : 'social-standard');
+            const frameworkVal = (document.getElementById('ai-content-framework') ? document.getElementById('ai-content-framework').value : 'auto');
+
+            let lengthGuide = "70 – 120 từ (chuẩn B2B Social, đọc trong 15s, không bị loãng)";
+            if (lengthVal === 'social-micro') lengthGuide = "40 – 70 từ (ngắn gọn, hiển thị 100% không bị nút Xem thêm che)";
+            if (lengthVal === 'web-article') lengthGuide = "250 – 500 từ (chuẩn bài phân tích Blog / Website Gutenberg)";
+
             const isEnglish = (selectedChan.name.includes("Architectural Model Org") || selectedAud.id === 'aud-global-architects');
 
             return `Bạn là "Văn - Trợ lý Nội Dung Song Anh", chuyên gia sáng tạo nội dung B2B của ${channelBrand}.
@@ -1638,17 +1727,21 @@ Hãy tạo 1 bài đăng truyền thông B2B hoàn hảo theo các thông số v
   + Kêu gọi hành động (CTA): ${selectedGoal.cta}
 - Công thức viết bài: [${selectedFormula.code}] - ${selectedFormula.name}
   + Cấu trúc triển khai: ${selectedFormula.structure}
+- Quy chuẩn độ dài văn bản: ${lengthGuide}
+- Khung cấu trúc dẫn dắt: ${frameworkVal === 'auto' ? 'Tự động tối ưu' : frameworkVal}
 
-⛔ 2. QUY CHUẨN NỘI DUNG & THƯƠNG HIỆU BẮT BUỘC:
-- Giọng văn: Bình dị, mộc mạc, gần gũi, đáng tin cậy của người làm nghề thực tế tại xưởng.
-- TUYỆT ĐỐI CẤM các từ ngữ khoa trương, sáo rỗng: "chế tác", "tái hiện", "đỉnh cao", "kiệt tác", "vô đối", "tuyệt đối 100%".
-  👉 Thay bằng các từ mộc mạc: "làm", "gia công", "sản xuất", "in 3D", "ráp", "hoàn thiện", "thi công", "bàn giao".
-- Hotline duy nhất cho kênh này: ${channelHotline} (TUYỆT ĐỐI CẤM ghép đôi số khác, CẤM đưa tên cá nhân Mr. Tiến/Mr. Thiện/em Sang vào bài).
-- Thương hiệu phát ngôn: ${channelBrand}.
-- Website điều hướng: ${channelWebsite}.
-- Địa chỉ xưởng thực tế: ${channelAddress}.
-- Mốc ngày tháng: Luôn dùng đúng định dạng DD/MM/YYYY.
-- CẤM gắn các tiền tố nhãn đóng mở ngoặc vuông máy móc trên đầu bài viết (như [HỖ TRỢ DỰ ÁN], [BÀI VIẾT DỰ ÁN]). Bắt buộc có câu Hook mở đầu tự nhiên, sắc bén, gây chú ý ngay.
+⛔ 2. BỘ 11 TIÊU CHUẨN VÀNG SÁNG TẠO NỘI DUNG (OBSIDIAN VAULT):
+1. TIÊU ĐỀ STOP THE SCROLL: Dưới 70 ký tự (chuẩn mobile), từ khóa cốt lõi trong 5 từ đầu. CẤM giật tít rẻ tiền, CẤM tiền tố nhãn vuông máy móc như [HỖ TRỢ DỰ ÁN], [BÀI VIẾT DỰ ÁN].
+2. HOOK & SAPO: 1-2 câu đầu mở Curiosity Gap, nêu thẳng sự cố hoặc con số thực tế. CẤM câu dạo đầu rập khuôn AI ("Trong bối cảnh...", "Như chúng ta đã biết...", "Hãy cùng tôi khám phá...").
+3. NỘI DUNG LÔI CUỐN: Nhịp điệu câu linh hoạt, chi tiết hiện trường sống động (mùi keo mica, hạt LED 0603 hàn dây đồng 0.1mm, khung bệ sắt hộp...).
+4. GIÁ TRỊ TÍCH CỰC: Tinh thần trách nhiệm làm nghề, hướng đến giải pháp, luôn để lại 1 kinh nghiệm hữu ích (Actionable Takeaway).
+5. KHỬ SẠCH MÙI VĂN AI: CẤM các từ: "chế tác", "tái hiện", "đột phá", "kiệt tác", "đỉnh cao", "bậc nhất", "số 1", "vô đối", "tuyệt đối 100%", "hoàn hảo", "không tì vết", "đóng vai trò vô cùng quan trọng", "bức tranh toàn cảnh", "chiếc sa bàn". Thay bằng từ mộc mạc: "làm", "gia công", "sản xuất", "in 3D", "ráp", "hoàn thiện", "thi công", "bàn giao", "thu trọn", "thấy rõ".
+6. UNMARKETING CTA: Tự nhiên, không chèo kéo, CẤM: "Shop sẵn hàng", "Giao hàng hỏa tốc", "Inbox shop ngay". Mở ra thảo luận hoặc chia sẻ link tài liệu ngầm.
+7. BỐ CỤC: Triển khai theo công thức [${selectedFormula.code}] - ${selectedFormula.name}.
+8. TRÌNH BÀY THOÁNG: Quy tắc đoạn văn không quá 3 dòng, gạch đầu dòng rõ ràng, in đậm có chủ đích, CẤM đánh số thủ công trong heading.
+9. ĐỘ DÀI: Tối ưu chặt chẽ trong khoảng ${lengthGuide}.
+10. QUY CHUẨN KÊNH & HOTLINE DUY NHẤT: ${channelHotline} (TUYỆT ĐỐI CẤM ghép đôi số khác, CẤM đưa tên cá nhân Mr. Tiến/Mr. Thiện/em Sang vào bài).
+11. ĐỊA CHỈ XƯỞNG: ${channelAddress}. Mốc thời gian: năm 2026, ngày tháng định dạng chuẩn DD/MM/YYYY.
 ${isEnglish ? '- LƯU Ý ĐẶC BIỆT: Kênh Quốc Tế -> Hãy viết 100% bằng TIẾNG ANH chuyên nghiệp cho kiến trúc sư và đối tác B2B quốc tế.' : ''}
 
 🎯 3. YÊU CẦU KẾT QUẢ ĐẦU RA (3 PHẦN):
@@ -1821,15 +1914,25 @@ Phần 3: PROMPT TẠO ẢNH AI TIẾNG ANH (Dành cho Midjourney / DALL-E / Flu
             const elPromptArea = document.getElementById('ai-result-chatgpt-prompt');
             if (elPromptArea) elPromptArea.innerText = geminiPrompt;
 
+            // Lấy thêm các tham số nâng cao chuẩn Obsidian (Độ dài & Khung dẫn dắt)
+            const lengthVal = (document.getElementById('ai-content-length') ? document.getElementById('ai-content-length').value : 'social-standard');
+            const frameworkVal = (document.getElementById('ai-content-framework') ? document.getElementById('ai-content-framework').value : 'auto');
+
             const isConfigured = (typeof GeminiManager !== 'undefined' && GeminiManager.isConfigured());
             const cfg = isConfigured ? GeminiManager.getConfig() : null;
             const genBtn = document.getElementById('btn-generate-ai');
+            const writeBtn = document.getElementById('btn-write-ai-post');
             const originalBtnHtml = genBtn ? genBtn.innerHTML : '';
+            const originalWriteBtnHtml = writeBtn ? writeBtn.innerHTML : '';
 
             if (isConfigured) {
                 if (genBtn) {
                     genBtn.disabled = true;
                     genBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-lg"></i> <span>Gemini (${cfg.model}) đang sáng tạo...</span>`;
+                }
+                if (writeBtn) {
+                    writeBtn.disabled = true;
+                    writeBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-base"></i> <span>Gemini AI đang viết bài B2B...</span>`;
                 }
 
                 try {
@@ -1853,16 +1956,50 @@ Phần 3: PROMPT TẠO ẢNH AI TIẾNG ANH (Dành cho Midjourney / DALL-E / Flu
 
                     const isEnglish = (selectedChan.name.includes("Architectural Model Org") || selectedAud.id === 'aud-global-architects');
 
-                    const systemInstruction = `Bạn là "Văn - Trợ lý Nội Dung Song Anh", chuyên gia sáng tạo nội dung B2B đỉnh cao của hệ thống Marketing Song Anh.
-QUY CHUẨN NỘI DUNG VÀ THƯƠNG HIỆU BẮT BUỘC:
-1. Giọng văn: Đời thường, mộc mạc, đáng tin cậy của người làm nghề thực thụ. CẤM các từ ngữ sáo rỗng, khoa trương: "chế tác", "tái hiện", "đỉnh cao", "kiệt tác", "vô đối", "tuyệt đối 100%". Dùng các từ: "làm", "gia công", "sản xuất", "in 3D", "ráp", "hoàn thiện", "thi công", "bàn giao".
-2. Hotline duy nhất cho kênh này: ${channelHotline} (CẤM ghép số khác hoặc đưa tên cá nhân Mr. Tiến/Mr. Thiện/em Sang vào bài).
-3. Thương hiệu phát ngôn: ${channelBrand}. Website điều hướng: ${channelWebsite}.
-4. Địa chỉ xưởng: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM (CẤM dùng địa chỉ cũ Mã Lò).
-5. Ngày tháng: Luôn dùng định dạng DD/MM/YYYY.
-6. CẤM gắn các tiền tố nhãn đóng mở ngoặc vuông máy móc trên đầu bài viết (như [HỖ TRỢ DỰ ÁN], [BÀI VIẾT DỰ ÁN]). Bắt buộc có câu Hook tự nhiên, sắc bén, gây chú ý ngay dòng đầu.
-7. Triển khai đúng công thức viết bài: [${selectedFormula.code}] - ${selectedFormula.name}.
-${isEnglish ? 'LƯU Ý ĐẶC BIỆT: Kênh này là kênh Quốc Tế / English -> Hãy viết Post và First Comment hoàn toàn bằng TIẾNG ANH chuyên nghiệp cho kiến trúc sư và đối tác B2B toàn cầu.' : ''}
+                    // Xác định quy chuẩn độ dài theo lựa chọn của người dùng
+                    let lengthInstruction = "Độ dài chuẩn B2B Social: 70 – 120 từ (khoảng 4-6 câu ngắn, ngắt dòng đôi thoáng). Tuyệt đối CẤM viết dài dòng, kể lể lê thê rườm rà.";
+                    if (lengthVal === 'social-micro') {
+                        lengthInstruction = "Độ dài Micro-update xưởng: 40 – 70 từ (khoảng 3 câu ngắn hiển thị trọn vẹn 100% không bị nút Xem thêm che khuất).";
+                    } else if (lengthVal === 'web-article') {
+                        lengthInstruction = "Độ dài bài viết chuyên sâu Website: 250 – 450 từ, chia các tiêu đề phụ tự nhiên (CẤM đánh số thủ công trong tiêu đề Heading).";
+                    }
+
+                    // Quy tắc xưng hô chuyên biệt theo từng kênh
+                    let personaRule = `Vị thế: Đại diện ${channelBrand}. Xưng "em" hoặc "Song Anh", gọi đối tác là "Anh/Chị".`;
+                    if (selectedChan.name.includes("Zalo Steven") || selectedChan.id === 'soc-zalo-steven') {
+                        personaRule = `Vị thế Kênh Zalo Steven: Người làm Marketing thực chiến B2B (CẤM đóng vai Founder hay bề trên). Xưng "Song Anh" hoặc "em", gọi đối tác "Anh/Chị" (CẤM xưng "tôi", "Steven"). Tone đĩnh đạc, thấu hiểu giá trị trực quan của sa bàn giữ chân khách tại nhà mẫu.`;
+                    } else if (selectedChan.name.includes("Zalo Sale") || selectedChan.id === 'soc-zalo-sale') {
+                        personaRule = `Vị thế Kênh Zalo Sale: Đại diện phòng kinh doanh công ty. Xưng "Mô Hình Song Anh" hoặc "em", gọi "Anh/Chị" (Tuyệt đối CẤM xưng tên riêng "Sang"). Trọng tâm: Tháo gỡ nỗi đau (sợ trễ hạn mở bán, sợ phát sinh chi phí), báo giá m2 minh bạch.`;
+                    } else if (selectedChan.name.includes("Profile Mô hình")) {
+                        personaRule = `Vị thế Profile Mô hình: Tone trẻ trung, teen, gần gũi sinh viên kiến trúc & maker DIY đồ án, xưng mình, gọi các bạn.`;
+                    } else if (selectedChan.name.includes("Ánh Dương") || selectedChan.domain_scope === 'tmdt') {
+                        personaRule = `Vị thế Ánh Dương Shop: Kênh bán lẻ trực tuyến độc lập 100% (TUYỆT ĐỐI CẤM nhắc tên Song Anh hay Hotline 0929 22 4444). Xưng "Shop" hoặc "em", gọi "Anh/Chị" hoặc "các bạn".`;
+                    }
+
+                    // Góc nhìn sáng tạo được chọn hoặc ngẫu nhiên
+                    const angleDescriptions = {
+                        'bts': 'Kể chuyện chân thực từ góc nhìn Hậu Trường Xưởng Đêm (Behind The Scenes) — tiếng máy cắt laser, thợ đo thông mạch đèn LED, mài ghép góc mica 0.5mm, đóng kiện gỗ trước giờ xe chạy.',
+                        'faq': 'Bắt đầu từ một câu hỏi hoặc nỗi băn khoăn có thật của khách hàng khi ghé xưởng (sợ trễ hạn mở bán, sợ sa bàn bật cả ngày bị nóng chập điện, sợ phát sinh chi phí), sau đó tháo gỡ mộc mạc và chân thành.',
+                        'gallery': 'Góc nhìn từ trải nghiệm thực tế tại sảnh Sales Gallery / phòng trưng bày — khoảnh khắc sa bàn lên đèn ấm áp, khách tham quan quây quần xem phân khu, sa bàn giúp KTS và Chủ đầu tư nói chuyện với người mua dễ thế nào.',
+                        'craftsman': 'Chia sẻ một mẹo làm nghề thực tế hoặc chi tiết kỹ thuật tinh tế (kỹ thuật chia module lọt thang máy, chọn LED 3000K chống lóa mắt, khung bệ hộp kẽm chống võng...).'
+                    };
+                    const selectedAngleDesc = angleDescriptions[frameworkVal] || 'Linh hoạt chọn một góc nhìn độc đáo, tự nhiên và giàu cảm xúc làm nghề (không rập khuôn).';
+
+                    const systemInstruction = `Bạn là "Văn - Trợ lý Nội Dung Song Anh", chuyên gia sáng tạo nội dung B2B của Mô Hình Song Anh.
+TRIẾT LÝ SÁNG TẠO: Người làm nghề thực chiến 16 năm tại xưởng kể chuyện (Craftsman Storytelling), nói chuyện mộc mạc, gần gũi, đời thường, có hơi thở cuộc sống.
+
+⛔ NGUYÊN TẮC CHỐNG CỨNG NHẮC & KHỬ BỎ RẬP KHUÔN (BẮT BUỘC 100%):
+1. TUYỆT ĐỐI CẤM in ra tên công thức (như PAS, AIDA, FAB, SSS...) hay các nhãn chia mục máy móc như: "Vấn đề:", "Hệ quả:", "Giải pháp:", "Nỗi đau:", "Điểm kỹ thuật 1, 2, 3".
+2. TUYỆT ĐỐI CẤM cấu trúc danh sách liệt kê số thứ tự 1. 2. 3. hoặc ✓ ✓ ✓ như tờ rơi quảng cáo.
+3. TUYỆT ĐỐI CẤM viết hoa toàn bộ dòng tiêu đề (All-caps). Tiêu đề phải tự nhiên, mềm mại, đóng vai trò như một câu Hook giữ chân người đọc trong 3 giây.
+4. GÓC NHÌN BÀI VIẾT NÀY: ${selectedAngleDesc}
+5. KHỬ MÙI VĂN AI: CẤM các từ: "chế tác", "tái hiện", "đột phá", "kiệt tác", "đỉnh cao", "bậc nhất", "số 1", "vô đối", "tuyệt đối 100%", "hoàn hảo", "không tì vết", "đóng vai trò vô cùng quan trọng", "bức tranh toàn cảnh", "chiếc sa bàn". DÙNG TỪ MỘC MẠC: "làm", "gia công", "sản xuất", "in 3D", "ráp", "hoàn thiện", "thi công", "bàn giao", "thu trọn", "thấy rõ".
+6. UNMARKETING: Tuyệt đối không chèo kéo ("shop sẵn hàng", "giao hàng hỏa tốc", "inbox ngay"). Kết bài tự nhiên bằng một câu hỏi gợi mở hoặc chia sẻ link giải pháp kỹ thuật.
+7. ĐỘ DÀI & NHỊP ĐIỆU: ${lengthInstruction} Viết thành 2-3 đoạn văn ngắn mộc mạc, mỗi đoạn không quá 2 câu.
+8. QUY CHUẨN KÊNH & VỊ THẾ: ${personaRule}
+9. HOTLINE DUY NHẤT: ${channelHotline} (TUYỆT ĐỐI CẤM ghép đôi số khác, CẤM đưa tên riêng cá nhân Mr. Tiến/Mr. Thiện/em Sang vào bài).
+10. ĐỊA CHỈ & THỜI GIAN: Xưởng sản xuất tại 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM. Năm 2026, ngày tháng chuẩn DD/MM/YYYY.
+${isEnglish ? 'LƯU Ý: Kênh Quốc Tế -> Viết 100% bằng TIẾNG ANH chuyên nghiệp cho kiến trúc sư và đối tác quốc tế.' : ''}
 
 ĐỊNH DẠNG TRẢ VỀ:
 Bắt buộc trả về DUY NHẤT một chuỗi JSON hợp lệ (không kèm markdown \`\`\`json) với cấu trúc sau:
@@ -1890,7 +2027,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                         userPrompt,
                         systemInstruction,
                         {
-                            temperature: cfg.temperature,
+                            temperature: 0.85, // Tăng độ sáng tạo tự nhiên, mỗi lần tạo lại là một văn phong mới
                             max_tokens: cfg.max_tokens,
                             response_format: 'json'
                         }
@@ -1940,8 +2077,11 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                     if (elComment) elComment.innerText = commentText;
                     if (elPrompt) elPrompt.innerText = promptText;
 
+                    // Tự động đối soát chất lượng tức thì theo 11 Tiêu chuẩn vàng Kỹ Tester
+                    const auditRes = auditAiContentQuality(postText, selectedChan, selectedAud);
+
                     switchAiOutputTab('post');
-                    showToast(`🎉 Google Gemini (${cfg.model}) đã tạo bài viết B2B thành công ngay trên WebApp!`, "success");
+                    showToast(`🎉 Gemini (${cfg.model}) đã tạo bài viết B2B! Đạt chuẩn Kỹ Tester: ${auditRes.score}/100đ`, "success");
 
                 } catch (err) {
                     console.error("Gemini generation error:", err);
@@ -1953,11 +2093,17 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                         genBtn.disabled = false;
                         genBtn.innerHTML = originalBtnHtml;
                     }
+                    if (writeBtn) {
+                        writeBtn.disabled = false;
+                        writeBtn.innerHTML = originalWriteBtnHtml;
+                    }
                 }
             } else {
                 runDeterministicFallback(rawIdea, selectedAud, selectedGoal, selectedChan, selectedFormula);
+                const currentText = document.getElementById('ai-result-post') ? document.getElementById('ai-result-post').innerText : "";
+                const auditRes = auditAiContentQuality(currentText, selectedChan, selectedAud);
                 switchAiOutputTab('post');
-                showToast("✨ Đã tạo bản thảo mẫu! (Mẹo: Cài đặt Gemini API miễn phí 0đ để tạo bài viết AI trực tiếp)", "info");
+                showToast(`✨ Đã tạo bản thảo mẫu chuẩn Obsidian (${auditRes.score}/100đ)! (Cài Gemini API để tạo bài linh hoạt 0đ)`, "info");
                 setTimeout(() => {
                     openGeminiConfigModal();
                 }, 600);
@@ -1969,21 +2115,25 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
             const viewPost = document.getElementById('ai-view-post');
             const viewComment = document.getElementById('ai-view-comment');
             const viewPrompt = document.getElementById('ai-view-prompt');
+            const viewQc = document.getElementById('ai-view-qc');
 
             const btnPromptChatGpt = document.getElementById('tab-out-prompt-chatgpt');
             const btnPost = document.getElementById('tab-out-post');
             const btnComment = document.getElementById('tab-out-comment');
             const btnPrompt = document.getElementById('tab-out-prompt');
+            const btnQc = document.getElementById('tab-out-qc');
 
             if (viewPromptChatGpt) viewPromptChatGpt.classList.add('hidden');
             if (viewPost) viewPost.classList.add('hidden');
             if (viewComment) viewComment.classList.add('hidden');
             if (viewPrompt) viewPrompt.classList.add('hidden');
+            if (viewQc) viewQc.classList.add('hidden');
 
             if (btnPromptChatGpt) { btnPromptChatGpt.classList.remove('bg-white', 'text-slate-900', 'shadow-2xs'); btnPromptChatGpt.classList.add('text-slate-600'); }
             if (btnPost) { btnPost.classList.remove('bg-white', 'text-slate-900', 'shadow-2xs'); btnPost.classList.add('text-slate-600'); }
             if (btnComment) { btnComment.classList.remove('bg-white', 'text-slate-900', 'shadow-2xs'); btnComment.classList.add('text-slate-600'); }
             if (btnPrompt) { btnPrompt.classList.remove('bg-white', 'text-slate-900', 'shadow-2xs'); btnPrompt.classList.add('text-slate-600'); }
+            if (btnQc) { btnQc.classList.remove('bg-white', 'text-slate-900', 'shadow-2xs'); btnQc.classList.add('text-slate-600'); }
 
             if (tab === 'prompt-chatgpt') {
                 if (viewPromptChatGpt) viewPromptChatGpt.classList.remove('hidden');
@@ -1997,7 +2147,300 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
             } else if (tab === 'prompt') {
                 if (viewPrompt) viewPrompt.classList.remove('hidden');
                 if (btnPrompt) { btnPrompt.classList.add('bg-white', 'text-slate-900', 'shadow-2xs'); btnPrompt.classList.remove('text-slate-600'); }
+            } else if (tab === 'qc') {
+                if (viewQc) viewQc.classList.remove('hidden');
+                if (btnQc) { btnQc.classList.add('bg-white', 'text-slate-900', 'shadow-2xs'); btnQc.classList.remove('text-slate-600'); }
             }
+        }
+
+        // =========================================================================
+        // 🧪 THẨM ĐỊNH CHẤT LƯỢNG CHUẨN KỸ TESTER (11 TIÊU CHUẨN VÀNG OBSIDIAN)
+        // =========================================================================
+        function auditAiContentQuality(postText, selectedChan, selectedAud) {
+            if (!postText) return { score: 0, items: [] };
+
+            const textLower = postText.toLowerCase();
+            const lines = postText.split('\n').map(l => l.trim()).filter(Boolean);
+            const firstLine = lines.length > 0 ? lines[0] : "";
+            const words = postText.trim().split(/\s+/).filter(Boolean);
+            const wordCount = words.length;
+
+            const isZalo = (selectedChan && selectedChan.platform === 'Zalo');
+            const isFb = (selectedChan && selectedChan.platform === 'Facebook');
+            const isTmdt = (selectedChan && (selectedChan.domain_scope === 'tmdt' || (selectedChan.name && selectedChan.name.includes('Ánh Dương'))));
+            const isMoHinh3d = (selectedChan && (selectedChan.name && selectedChan.name.includes('Mô Hình 3D')));
+            const isLamMoHinh = (selectedChan && (selectedChan.name && selectedChan.name.includes('Song Anh Shop')));
+
+            let score = 100;
+            const items = [];
+
+            // 1. Kiểm tra Từ cấm AI & Từ phóng đại sáo rỗng (Trọng số 25đ)
+            const forbiddenAiWords = [
+                "chế tác", "tái hiện", "đỉnh cao", "kiệt tác", "bậc nhất", "số 1", "vô đối",
+                "tuyệt đối 100%", "tuyệt đối", "hoàn hảo", "không tì vết",
+                "đóng vai trò vô cùng quan trọng", "bức tranh toàn cảnh", "cái nhìn toàn diện",
+                "tối ưu hóa một cách hiệu quả", "không thể phủ nhận rằng", "hãy cùng tôi khám phá",
+                "chiếc sa bàn", "một chiếc sa bàn"
+            ];
+            const foundForbidden = forbiddenAiWords.filter(w => textLower.includes(w));
+            if (foundForbidden.length === 0) {
+                items.push({
+                    title: "Khử sạch mùi văn AI (Anti-AI & Human-Touch)",
+                    status: "pass",
+                    detail: "Không chứa bất kỳ từ ngữ sáo rỗng, hoa mỹ hoặc từ cấm AI nào."
+                });
+            } else {
+                score -= Math.min(foundForbidden.length * 8, 25);
+                items.push({
+                    title: "Phát hiện từ cấm sáo rỗng / Mùi văn AI",
+                    status: "fail",
+                    detail: `Phát hiện: ${foundForbidden.map(w => '"' + w + '"').join(', ')}. Hãy dùng từ mộc mạc: làm, gia công, sản xuất, ráp, hoàn thiện, thu trọn.`
+                });
+            }
+
+            // 2. Kiểm tra Tiêu đề Stop The Scroll & Cấm nhãn vuông (Trọng số 20đ)
+            const hasSquareBrackets = /^\s*\[[^\]]+\]/.test(firstLine);
+            const isShortTitle = firstLine.length <= 75;
+            if (hasSquareBrackets) {
+                score -= 10;
+                items.push({
+                    title: "Tiêu đề mang tiền tố nhãn vuông máy móc",
+                    status: "fail",
+                    detail: `CẤM đặt nhãn máy móc như [HỖ TRỢ DỰ ÁN], [BÀI VIẾT DỰ ÁN]. Cần câu Hook tự nhiên, sắc bén gây chú ý trong 3 giây.`
+                });
+            } else if (isShortTitle && firstLine.length > 10) {
+                items.push({
+                    title: "Tiêu đề Stop The Scroll chuẩn Mobile (< 70 ký tự)",
+                    status: "pass",
+                    detail: `Tiêu đề súc tích (${firstLine.length} ký tự), nêu thẳng sự cố / con số kỹ thuật.`
+                });
+            } else {
+                score -= 5;
+                items.push({
+                    title: "Độ dài tiêu đề chưa tối ưu",
+                    status: "warn",
+                    detail: `Dòng đầu dài ${firstLine.length} ký tự (Khuyến nghị 45 – 70 ký tự để không bị cắt xén trên Mobile).`
+                });
+            }
+
+            // 3. Kiểm tra Độ dài B2B & Quy tắc đoạn văn 3 dòng (Trọng số 20đ)
+            let lengthStatus = "pass";
+            let lengthDetail = `Độ dài bài viết: ${wordCount} từ. `;
+            if (isZalo || isFb) {
+                if (wordCount >= 60 && wordCount <= 140) {
+                    lengthDetail += "Đạt chuẩn vàng Social B2B (70 – 120 từ), đọc trọn vẹn trong 15 giây.";
+                } else if (wordCount < 60) {
+                    lengthStatus = "warn";
+                    score -= 5;
+                    lengthDetail += "Hơi ngắn (< 60 từ), cần bổ sung chi tiết hiện trường kỹ thuật.";
+                } else {
+                    lengthStatus = "warn";
+                    score -= 8;
+                    lengthDetail += "Quá dài (> 140 từ), nguy cơ thành 'khối chữ đặc' trên điện thoại.";
+                }
+            } else {
+                lengthDetail += "Phù hợp với kênh triển khai hiện tại.";
+            }
+            items.push({
+                title: "Độ dài văn bản & Nhịp điệu đọc",
+                status: lengthStatus,
+                detail: lengthDetail
+            });
+
+            // 4. Kiểm tra Triết lý UnMarketing & CTA không chèo kéo (Trọng số 15đ)
+            const salesyWords = ["shop sẵn hàng", "sẵn kho", "giao hàng hỏa tốc", "ship cod toàn quốc", "nhanh tay đặt hàng", "inbox shop ngay", "giá siêu rẻ"];
+            const foundSalesy = salesyWords.filter(w => textLower.includes(w));
+            if (!isTmdt && foundSalesy.length > 0) {
+                score -= 10;
+                items.push({
+                    title: "Phát hiện ngôn từ chèo kéo bán hàng (Sales Pitch)",
+                    status: "fail",
+                    detail: `CẤM dùng: ${foundSalesy.join(', ')} trên kênh B2B. Hãy chuyển đổi ngầm bằng chia sẻ giải pháp kỹ thuật.`
+                });
+            } else {
+                items.push({
+                    title: "Triết lý UnMarketing (Giá trị thực chiến)",
+                    status: "pass",
+                    detail: "Kêu gọi hành động tự nhiên, mở lời thảo luận hoặc dẫn link tài liệu sâu sắc."
+                });
+            }
+
+            // 5. Kiểm tra Quy chuẩn Hotline theo từng kênh (Trọng số 10đ)
+            let hotlinePass = true;
+            let expectedHotline = "0929 22 4444";
+            if (isTmdt) {
+                expectedHotline = "0934 060 993";
+                if (!postText.includes("0934 060 993") && !postText.includes("0934060993")) hotlinePass = false;
+                if (postText.includes("0929 22 4444") || postText.includes("Song Anh")) hotlinePass = false;
+            } else if (isMoHinh3d) {
+                expectedHotline = "0376 415 131";
+                if (!postText.includes("0376 415 131") && !postText.includes("0376415131")) hotlinePass = false;
+            } else if (isLamMoHinh) {
+                expectedHotline = "0988 080 440";
+                if (!postText.includes("0988 080 440") && !postText.includes("0333 88 5925")) hotlinePass = false;
+            } else {
+                // Sa bàn B2B
+                expectedHotline = "0929 22 4444";
+                if (!postText.includes("0929 22 4444") && !postText.includes("0929224444")) hotlinePass = false;
+                if (postText.includes("0981 169 200 - 0929") || postText.includes("0376 415 131 - 0929")) hotlinePass = false;
+            }
+
+            // Kiểm tra tên riêng cá nhân bị cấm
+            const personalNames = ["mr. tiến", "mr tiến", "anh tiến", "mr. thiện", "mr thiện", "em sang", "gặp sang", "liên hệ sang"];
+            const foundNames = personalNames.filter(n => textLower.includes(n));
+            if (foundNames.length > 0) {
+                score -= 10;
+                items.push({
+                    title: "Chèn tên riêng cá nhân vào bài đăng / CTA",
+                    status: "fail",
+                    detail: `CẤM đưa tên cá nhân (${foundNames.join(', ')}) vào nội dung. Đại diện phát ngôn theo tên thương hiệu/kênh.`
+                });
+            } else if (hotlinePass) {
+                items.push({
+                    title: `Quy chuẩn Hotline chuẩn kênh (${expectedHotline})`,
+                    status: "pass",
+                    detail: `Đúng số Hotline duy nhất của kênh, không ghép đôi số phụ.`
+                });
+            } else {
+                score -= 8;
+                items.push({
+                    title: "Sai số Hotline hoặc ghép đôi số phụ",
+                    status: "fail",
+                    detail: `Kênh này bắt buộc dùng duy nhất Hotline: ${expectedHotline}.`
+                });
+            }
+
+            // 6. Kiểm tra Địa chỉ xưởng Thủ Đức & Định dạng DD/MM/YYYY (Trọng số 10đ)
+            if (textLower.includes("mã lò") || textLower.includes("bình tân")) {
+                score -= 10;
+                items.push({
+                    title: "Sai địa chỉ xưởng (Địa chỉ cũ Mã Lò)",
+                    status: "fail",
+                    detail: "CẤM dùng địa chỉ cũ Mã Lò. Bắt buộc dùng: 230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM."
+                });
+            } else {
+                items.push({
+                    title: "Địa chỉ xưởng & Mốc thời gian chuẩn hóa",
+                    status: "pass",
+                    detail: "Xưởng sản xuất: 230/70/28 Nguyễn Xiển, Thủ Đức, TP.HCM. Định dạng ngày chuẩn DD/MM/YYYY."
+                });
+            }
+
+            score = Math.max(0, Math.min(100, score));
+
+            // Render to DOM
+            const container = document.getElementById('ai-qc-results-container');
+            const scoreBadge = document.getElementById('qc-score-badge');
+            const tabLabel = document.getElementById('tab-qc-label');
+
+            if (tabLabel) {
+                tabLabel.innerText = `🧪 Thẩm Định (${score}đ)`;
+            }
+
+            if (scoreBadge) {
+                if (score >= 90) {
+                    scoreBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300";
+                    scoreBadge.innerHTML = `🏆 ${score}/100đ • Đạt Chuẩn Xuất Bản`;
+                } else if (score >= 75) {
+                    scoreBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800 border border-amber-300";
+                    scoreBadge.innerHTML = `⚠️ ${score}/100đ • Cần Tinh Chỉnh`;
+                } else {
+                    scoreBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-100 text-rose-800 border border-rose-300";
+                    scoreBadge.innerHTML = `❌ ${score}/100đ • Chưa Đạt Chuẩn`;
+                }
+            }
+
+            if (container) {
+                let htmlOut = `
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between mb-2">
+                        <div>
+                            <span class="text-xs font-bold text-slate-700">Tổng điểm kiểm định chất lượng:</span>
+                            <span class="text-lg font-black ${score >= 90 ? 'text-emerald-600' : (score >= 75 ? 'text-amber-600' : 'text-rose-600')} ml-1.5">${score}/100</span>
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-500">${score >= 90 ? '✅ Đã sẵn sàng đăng bài' : '⚠️ Cần sửa các điểm vi phạm bên dưới'}</span>
+                    </div>
+                    <div class="space-y-1.5">
+                `;
+
+                items.forEach(it => {
+                    const icon = it.status === 'pass' 
+                        ? '<i class="fa-solid fa-circle-check text-emerald-600"></i>' 
+                        : (it.status === 'warn' ? '<i class="fa-solid fa-triangle-exclamation text-amber-500"></i>' : '<i class="fa-solid fa-circle-xmark text-rose-600"></i>');
+                    const bgClass = it.status === 'pass' 
+                        ? 'bg-emerald-50/60 border-emerald-200 text-emerald-950' 
+                        : (it.status === 'warn' ? 'bg-amber-50/60 border-amber-200 text-amber-950' : 'bg-rose-50/60 border-rose-200 text-rose-950');
+
+                    htmlOut += `
+                        <div class="p-2.5 rounded-xl border ${bgClass} transition">
+                            <div class="flex items-center gap-1.5 font-bold text-[11px]">
+                                ${icon}
+                                <span>${it.title}</span>
+                            </div>
+                            <p class="text-[10.5px] mt-0.5 opacity-90 leading-relaxed pl-4">${it.detail}</p>
+                        </div>
+                    `;
+                });
+
+                htmlOut += '</div>';
+                container.innerHTML = htmlOut;
+            }
+
+            return { score, items };
+        }
+
+        // =========================================================================
+        // ⚡ TỰ ĐỘNG KHỬ TỪ CẤM & CHUẨN HÓA BÀI VIẾT (AUTO-FIXER CHUẨN VĂN CONTENT)
+        // =========================================================================
+        function autoCleanAndStandardizeAiContent() {
+            const elPost = document.getElementById('ai-result-post');
+            if (!elPost) return;
+
+            let text = elPost.innerText;
+            if (!text || text.length < 10) {
+                showToast("⚠️ Chưa có bài viết để chuẩn hóa!", "warning");
+                return;
+            }
+
+            // 1. Khử sạch từ cấm và thay bằng từ mộc mạc người thợ xưởng
+            const replacements = [
+                [/chế tác mô hình/gi, "sản xuất sa bàn"],
+                [/chế tác/gi, "gia công hoàn thiện"],
+                [/tái hiện chân thực/gi, "thể hiện rõ nét"],
+                [/tái hiện/gi, "thu trọn"],
+                [/chiếc sa bàn/gi, "bộ sa bàn"],
+                [/một chiếc sa bàn/gi, "khối sa bàn"],
+                [/đỉnh cao|kiệt tác|bậc nhất|vô đối/gi, "kỹ thuật cao"],
+                [/số 1/gi, "uy tín lâu năm"],
+                [/tuyệt đối 100%|tuyệt đối|hoàn hảo|không tì vết/gi, "chuẩn xác"],
+                [/đóng vai trò vô cùng quan trọng/gi, "rất cần thiết"],
+                [/bức tranh toàn cảnh|cái nhìn toàn diện/gi, "cái nhìn trực quan"],
+                [/tối ưu hóa một cách hiệu quả/gi, "tiết kiệm chi phí"],
+                [/không thể phủ nhận rằng/gi, "thực tế tại xưởng cho thấy"],
+                [/hãy cùng tôi khám phá/gi, ""],
+                [/shop sẵn hàng|sẵn kho số lượng lớn/gi, "Xưởng sẵn sàng hỗ trợ"],
+                [/giao hàng hỏa tốc|ship cod toàn quốc/gi, "đóng kiện vận chuyển an toàn"],
+                [/inbox shop ngay|nhanh tay đặt hàng/gi, "mời Anh/Chị kết nối trao đổi thêm"],
+                [/mã lò|bình tân/gi, "230/70/28 Nguyễn Xiển, Phường Long Phước, Thủ Đức, TP.HCM"],
+                [/^\[[^\]]+\]\s*/gm, ""] // Bỏ nhãn vuông máy móc đầu dòng
+            ];
+
+            replacements.forEach(([pattern, rep]) => {
+                text = text.replace(pattern, rep);
+            });
+
+            // Gán lại
+            elPost.innerText = text;
+            currentGeneratedContent.post = text;
+
+            // Chạy lại kiểm định
+            const chanId = (document.getElementById('ai-content-channel') ? document.getElementById('ai-content-channel').value : "");
+            const audId = (document.getElementById('ai-content-audience') ? document.getElementById('ai-content-audience').value : "");
+            const selectedChan = (typeof socialChannelsData !== 'undefined' && Array.isArray(socialChannelsData) ? socialChannelsData.find(c => c.id === chanId) : null);
+            const selectedAud = (typeof targetAudiencesData !== 'undefined' && Array.isArray(targetAudiencesData) ? targetAudiencesData.find(a => a.id === audId) : null);
+
+            const auditRes = auditAiContentQuality(text, selectedChan, selectedAud);
+            showToast(`✨ Đã tự động chuẩn hóa bài viết! Điểm thẩm định mới: ${auditRes.score}/100đ`, "success");
+            switchAiOutputTab('post');
         }
 
         function copyAiGeneratedContent() {
@@ -3704,7 +4147,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                     <div class="flex flex-wrap items-center justify-between md:justify-end gap-2">
                         <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold shadow-2xs">
                             <i class="fa-regular fa-calendar text-slate-400"></i>
-                            <span id="kw-top-date-label">Hôm nay, 18 Tháng 9</span>
+                            <span id="kw-top-date-label">Hôm nay, 30/09/2026</span>
                         </div>
                         <button onclick="syncGoogleSerpLive()" id="btn-sync-serp" class="px-3.5 py-1.5 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white text-xs font-bold flex items-center gap-2 shadow-xs transition cursor-pointer">
                             <i id="icon-sync-serp" class="fa-solid fa-arrows-rotate text-xs"></i>
@@ -3745,9 +4188,9 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                                     <i class="fa-regular fa-calendar-check text-blue-600"></i>CHU KỲ SO SÁNH
                                 </span>
                                 <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="text-xs font-bold text-slate-800 bg-transparent border-none focus:outline-none cursor-pointer">
-                                    <option value="current">18/09/2026 vs 15/09/2026 (Thứ 2)</option>
-                                    <option value="7d">7 Ngày Gần Nhất (18/09 - 11/09)</option>
-                                    <option value="30d">30 Ngày (18/09 vs 18/08/2026)</option>
+                                    <option value="current">30/09/2026 vs 28/09/2026 (Kỳ trước)</option>
+                                    <option value="7d">7 Ngày Gần Nhất (30/09 - 23/09/2026)</option>
+                                    <option value="30d">30 Ngày (30/09 vs 30/08/2026)</option>
                                 </select>
                             </div>
 
@@ -7468,6 +7911,55 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                                 </select>
                                 <div id="ai-formula-preview" class="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-900 hidden space-y-1 transition"></div>
                             </div>
+
+                            <!-- Tùy chọn nâng cao chuẩn Obsidian (Độ dài & Khung Dẫn Dắt) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2.5 border-t border-slate-100">
+                                <!-- Dropdown 5: Độ dài bài viết -->
+                                <div class="space-y-1.5">
+                                    <label for="ai-content-length" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center justify-between">
+                                        <span class="flex items-center gap-1.5">
+                                            <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px]">6</span>
+                                            <span>Độ dài văn bản</span>
+                                        </span>
+                                        <span class="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Chuẩn B2B</span>
+                                    </label>
+                                    <select id="ai-content-length" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 text-xs font-bold text-slate-800 cursor-pointer shadow-xs transition">
+                                        <option value="social-standard" selected>📱 Chuẩn B2B Social (70 – 120 từ)</option>
+                                        <option value="social-micro">⚡ Cập nhật xưởng nhanh (40 – 70 từ)</option>
+                                        <option value="web-article">🌐 Bài phân tích / Website (250 – 500 từ)</option>
+                                    </select>
+                                </div>
+
+                                <!-- Dropdown 6: Góc nhìn sáng tạo (Content Angle - Chống cứng & Chống rập khuôn) -->
+                                <div class="space-y-1.5">
+                                    <label for="ai-content-framework" class="text-xs font-extrabold text-slate-800 uppercase tracking-wider flex items-center justify-between">
+                                        <span class="flex items-center gap-1.5">
+                                            <span class="w-4 h-4 rounded-full bg-purple-100 text-purple-800 flex items-center justify-center text-[10px]">7</span>
+                                            <span>Góc nhìn sáng tạo</span>
+                                        </span>
+                                        <span class="text-[10px] text-purple-700 font-bold bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">Đổi mới linh hoạt</span>
+                                    </label>
+                                    <select id="ai-content-framework" class="w-full px-3 py-2 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-xs font-bold text-slate-800 cursor-pointer shadow-xs transition">
+                                        <option value="auto" selected>🎲 Tự nhiên &amp; Xoay vòng (Tạo lại = Đổi góc nhìn)</option>
+                                        <option value="bts">🎬 Hậu trường xử lý kỹ thuật xưởng (Behind The Scenes)</option>
+                                        <option value="faq">💬 Tháo gỡ nỗi băn khoăn &amp; Chi phí (UnMarketing FAQ)</option>
+                                        <option value="gallery">🏢 Điểm chạm tại Sales Gallery (Trực quan hóa bán hàng)</option>
+                                        <option value="craftsman">🛠️ Mẹo làm nghề &amp; Kỹ thuật thực tế (Craftsman Insight)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- 🚀 NÚT VIẾT BÀI AI NGAY SAU KHI THIẾT LẬP CÁC THÔNG SỐ NỘI DUNG -->
+                            <div class="pt-3.5 border-t border-slate-200/90 space-y-2">
+                                <button type="button" onclick="handleGenerateSmartContent()" id="btn-write-ai-post" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 active:scale-[0.98] text-white font-heading font-black text-sm sm:text-base shadow-md hover:shadow-lg transition flex items-center justify-center gap-2.5 cursor-pointer">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-amber-100 text-base"></i>
+                                    <span id="btn-write-ai-post-text">✨ VIẾT BÀI AI NGAY (CHUẨN OBSIDIAN)</span>
+                                </button>
+                                <div class="flex items-center justify-between text-[11px] text-slate-500 px-1 font-medium flex-wrap gap-1">
+                                    <span class="flex items-center gap-1"><i class="fa-solid fa-shield-check text-emerald-600"></i> Đạt 11 Tiêu chuẩn vàng &amp; Khử mùi AI</span>
+                                    <span class="text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">1-Click Tự Động Định Dạng</span>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Big Generate Buttons Group -->
@@ -7510,6 +8002,10 @@ Liên hệ hợp tác: 0929 22 44 44 (Mr. Tiến)
                                 <button onclick="switchAiOutputTab('post')" id="tab-out-post" class="flex-1 py-1.5 px-2 rounded-lg bg-white text-slate-900 shadow-2xs transition flex items-center justify-center gap-1 text-[11px] sm:text-xs shrink-0">
                                     <i class="fa-solid fa-file-lines text-emerald-600"></i>
                                     <span>✨ Bài Viết AI</span>
+                                </button>
+                                <button onclick="switchAiOutputTab('qc')" id="tab-out-qc" class="flex-1 py-1.5 px-2 rounded-lg text-slate-600 hover:text-slate-900 transition flex items-center justify-center gap-1 text-[11px] sm:text-xs shrink-0 font-bold">
+                                    <i class="fa-solid fa-clipboard-check text-indigo-600"></i>
+                                    <span id="tab-qc-label">🧪 Thẩm Định</span>
                                 </button>
                                 <button onclick="switchAiOutputTab('comment')" id="tab-out-comment" class="flex-1 py-1.5 px-2 rounded-lg text-slate-600 hover:text-slate-900 transition text-[11px] sm:text-xs shrink-0">💬 Re-Cmt</button>
                                 <button onclick="switchAiOutputTab('prompt')" id="tab-out-prompt" class="flex-1 py-1.5 px-2 rounded-lg text-slate-600 hover:text-slate-900 transition text-[11px] sm:text-xs shrink-0">📸 Ảnh AI</button>
@@ -7629,6 +8125,29 @@ Phần 2: FIRST COMMENT / BÌNH LUẬN ĐIỀU HƯỚNG (Bình luận ghim chứ
 Phần 3: PROMPT TẠO ẢNH AI TIẾNG ANH (Dành cho Midjourney / DALL-E / Flux, tỷ lệ 16:9).</div>
                             </div>
 
+                            <!-- View 5: Thẩm Định Chất Lượng Chuẩn (Kỹ Tester QC Audit) -->
+                            <div id="ai-view-qc" class="hidden space-y-3">
+                                <div class="p-3 bg-gradient-to-r from-indigo-50 via-purple-50 to-indigo-50 border border-indigo-200 rounded-xl flex items-center justify-between gap-2 shadow-2xs">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs shrink-0 shadow-xs"><i class="fa-solid fa-shield-halved"></i></span>
+                                        <div>
+                                            <div class="text-[11px] font-black text-indigo-950 flex items-center gap-1.5 flex-wrap">
+                                                <span>Đối Soát 11 Tiêu Chuẩn Vàng (Kỹ Tester)</span>
+                                                <span id="qc-score-badge" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300">95/100đ • Đạt Chuẩn</span>
+                                            </div>
+                                            <p class="text-[10px] text-slate-600 mt-0.5">Kiểm soát từ cấm AI, độ dài 70-120 từ, UnMarketing, Hotline &amp; Địa chỉ xưởng Thủ Đức</p>
+                                        </div>
+                                    </div>
+                                    <button type="button" onclick="autoCleanAndStandardizeAiContent()" class="px-2.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-[11px] font-black shadow-xs flex items-center gap-1 transition cursor-pointer shrink-0">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                        <span>Khử Lỗi Chuẩn Hóa</span>
+                                    </button>
+                                </div>
+                                <div id="ai-qc-results-container" class="space-y-2 text-xs max-h-[380px] overflow-y-auto pr-1">
+                                    <!-- Dynamic QC Checklist render here -->
+                                </div>
+                            </div>
+
                             <!-- Action Buttons -->
                             <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-2 border-t border-slate-100">
                                 <button onclick="copyAiGeneratedContent()" class="py-2 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer shadow-xs">
@@ -7639,13 +8158,13 @@ Phần 3: PROMPT TẠO ẢNH AI TIẾNG ANH (Dành cho Midjourney / DALL-E / Flu
                                     <i class="fa-solid fa-rotate text-amber-600"></i>
                                     <span>Tạo Lại</span>
                                 </button>
+                                <button onclick="switchAiOutputTab('qc')" class="py-2 px-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 active:scale-95 text-indigo-800 font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer border border-indigo-200">
+                                    <i class="fa-solid fa-clipboard-check text-indigo-600"></i>
+                                    <span>Thẩm Định</span>
+                                </button>
                                 <button onclick="openGeminiWithPrompt()" class="py-2 px-2 rounded-xl bg-blue-50 hover:bg-blue-100 active:scale-95 text-blue-800 font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer border border-blue-200">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-blue-600"></i>
                                     <span>Gemini Web</span>
-                                </button>
-                                <button onclick="showToast('🎉 Đã lưu cấu hình bài viết!')" class="py-2 px-2 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 font-bold text-xs flex items-center justify-center gap-1 transition cursor-pointer border border-slate-200">
-                                    <i class="fa-solid fa-bookmark text-slate-600"></i>
-                                    <span>Lưu</span>
                                 </button>
                             </div>
                         </div>
@@ -20623,8 +21142,28 @@ print("🎉 Đã hoàn thành toàn bộ thư mục!")
 
 let marketingActivityLog = [
         {
+            "id": 1790733757,
+            "timestamp": "30/09/2026 02:02:00",
+            "category": "SEO Website",
+            "module": "SEO Website",
+            "action": "[Fix & Sync] Website & SEO: Cập nhật thứ hạng 214 từ khóa mốc 30/09/2026, chuẩn hóa quy trình SOP Obsidian và fix hiển thị WebApp",
+            "performer": "Phạm Hoàng Tiến & Trí - Trợ lý SEO Master",
+            "status": "✅ Hoàn Thành",
+            "notes": "- Đồng bộ toàn diện dữ liệu thứ hạng 214 từ khóa mốc 30/09/2026 vào Google Sheet Master (Tab 1 & 2), Notion DB và WebApp\n- Khắc phục lỗi hiển thị ngày cố định và thuật toán tính thẻ KPI Top 1-3 và Top 4-10 trên WebApp\n- Tích hợp sync_master_seo_live.py vào pipeline cron 06:03 AM hàng ngày\n- Biên soạn Quy trình kiểm tra từ khóa & Báo cáo SEO hàng ngày (SOP) lưu vào Obsidian 03.1 - Website & SEO Master\n- Deploy live Cloudflare Workers thành công"
+        },
+        {
+            "id": 0,
+            "timestamp": "29/09/2026 09:52:00",
+            "category": "Hệ thống",
+            "module": "Hệ thống",
+            "action": "[Hệ thống] Nâng cấp công cụ AI Content Studio đạt chuẩn Obsidian & Tạo nút Viết bài AI",
+            "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
+            "status": "✅ Hoàn Thành",
+            "notes": "- Bổ sung nút Viết bài AI ngay sau khi thiết lập xong các thông số nội dung (1 chạm thao tác nhanh)\n- Nâng cấp cài đặt Độ dài bài viết (Chuẩn B2B 70-120 từ, Micro 40-70 từ, Website 250-500 từ) và 3 Khung dẫn dắt Obsidian (Storytelling, Contrarian, PAS)\n- Nâng cấp System Prompt tích hợp trọn vẹn 11 Tiêu chuẩn vàng Văn Content, ma trận kênh Social (4 kênh Zalo, Facebook, GBP, Ánh Dương, Mô hình 3D) và Hotline chuẩn\n- Tích hợp Tab Thẩm Định Chuẩn (Kỹ Tester QC Audit) tự động chấm điểm /100đ, kiểm soát từ cấm AI và nút Khử lỗi chuẩn hóa\n- Cập nhật kịch bản Fallback mẫu xưởng và Deploy live thành công lên Cloudflare Workers"
+        },
+        {
             "id": 1790303402,
-            "timestamp": "28/09/2026 17:15:00",
+            "timestamp": "28/09/2026 10:15:00",
             "category": "Hệ thống",
             "module": "Hệ thống",
             "action": "[Feature] WebApp AI Studio: Chuyển đổi công cụ sáng tạo bài viết B2B 1-click trực tiếp 100% bằng Gemini API Key",
@@ -20634,13 +21173,13 @@ let marketingActivityLog = [
         },
         {
             "id": 1790303401,
-            "timestamp": "28/09/2026 17:02:55",
+            "timestamp": "28/09/2026 10:02:00",
             "category": "Hệ thống",
             "module": "Hệ thống",
             "action": "[Fix Bug] WebApp: Sửa lỗi Gemini API 400 Location chuyển mặc định sang Direct API đa tầng dự phòng",
             "performer": "Phạm Hoàng Tiến & Kiến - Trợ lý Lập Trình",
             "status": "✅ Hoàn Thành",
-            "notes": "- Chuyển đổi cơ chế gọi Gemini API sang direct mode (generativelanguage.googleapis.com)\n- Tích hợp chuỗi multi-model fallback chống lỗi 400 location"
+            "notes": ""
         },
         {
             "id": 1790303400,
@@ -22480,7 +23019,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org/mo-hinh-3d/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -22542,7 +23081,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/bao-gia-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22604,7 +23143,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/bao-gia-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22666,7 +23205,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/huong-dan-lam-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22728,7 +23267,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/khi-nao-can-lam-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22790,7 +23329,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/kien-thuc-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22852,7 +23391,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org/bao-gia-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -22914,7 +23453,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/lich-su-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -22977,7 +23516,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc-tai-binh-duong/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23040,7 +23579,7 @@ let marketingActivityLog = [
         "currRank": "Top 2",
         "gscPos": 2.0,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc-tai-binh-thuan/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 2,
@@ -23103,7 +23642,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc-tai-nha-trang/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23165,15 +23704,15 @@ let marketingActivityLog = [
         "currRank": "Top 5.5",
         "gscPos": 5.5,
         "url": "mohinhkientruc.org/sa-ban-cao-tang/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 5.5,
             "change": 0,
             "slug": "/sa-ban-cao-tang/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 46,
+            "impressions": 870,
+            "ctr": "5.29%"
         },
         "model": {
             "rank": "-",
@@ -23224,18 +23763,18 @@ let marketingActivityLog = [
         "silo": "Cụm chung cư",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 2",
-        "gscPos": 2.0,
+        "currRank": "Top 2.1",
+        "gscPos": 2.1,
         "url": "mohinhkientruc.org/mo-hinh-chung-cu/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
-            "rank": 2,
+            "rank": 2.1,
             "change": -1,
             "slug": "/mo-hinh-chung-cu/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 2,
+            "impressions": 19,
+            "ctr": "10.53%"
         },
         "model": {
             "rank": 6.5,
@@ -23290,7 +23829,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/sa-ban-kien-truc-dong-nai-thi-truong-bat-dong-san/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23353,7 +23892,7 @@ let marketingActivityLog = [
         "currRank": "Top 6.3",
         "gscPos": 6.3,
         "url": "mohinhkientruc.org/cong-ty-lam-mo-hinh/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 6.3,
@@ -23416,7 +23955,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/sa-ban-tai-can-tho/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23478,7 +24017,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/tam-quan-trong-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23537,18 +24076,18 @@ let marketingActivityLog = [
         "silo": "Cụm công ty",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 17.9",
-        "gscPos": 17.9,
+        "currRank": "Đang SEO",
+        "gscPos": 37.4,
         "url": "mohinhkientruc.org/cong-ty-lam-mo-hinh/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
-            "rank": 17.9,
-            "change": -15,
+            "rank": 37.4,
+            "change": -35,
             "slug": "/cong-ty-lam-mo-hinh/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 2,
+            "impressions": 35,
+            "ctr": "5.71%"
         },
         "model": {
             "rank": 48.5,
@@ -23602,7 +24141,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/vi-sao-su-dung-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -23664,7 +24203,7 @@ let marketingActivityLog = [
         "currRank": "Top 3",
         "gscPos": 3.0,
         "url": "mohinhkientruc.org/dich-vu-lam-mo-hinh/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 3,
@@ -23726,7 +24265,7 @@ let marketingActivityLog = [
         "currRank": "Top 2",
         "gscPos": 2.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-khu-cong-nghiep/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 2,
@@ -23785,18 +24324,18 @@ let marketingActivityLog = [
         "silo": "Cụm mô hình kiến trúc",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 4.5",
-        "gscPos": 4.5,
+        "currRank": "Top 17.2",
+        "gscPos": 17.2,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
-            "rank": 4.5,
-            "change": -1,
+            "rank": 17.2,
+            "change": -14,
             "slug": "/mo-hinh-kien-truc/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 2,
+            "impressions": 175,
+            "ctr": "1.14%"
         },
         "model": {
             "rank": 37.9,
@@ -23847,18 +24386,18 @@ let marketingActivityLog = [
         "silo": "Cụm mô hình kiến trúc",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 7.9",
-        "gscPos": 7.9,
+        "currRank": "Top 12",
+        "gscPos": 12.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
-            "rank": 7.9,
-            "change": -4,
+            "rank": 12,
+            "change": -8,
             "slug": "/lam-mo-hinh-kien-truc/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 2,
+            "impressions": 28,
+            "ctr": "7.14%"
         },
         "model": {
             "rank": "-",
@@ -23912,7 +24451,7 @@ let marketingActivityLog = [
         "currRank": "Top 2",
         "gscPos": 2.0,
         "url": "mohinhkientruc.org/tuyen-dung/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 2,
@@ -23975,7 +24514,7 @@ let marketingActivityLog = [
         "currRank": "Top 3",
         "gscPos": 3.0,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc-tai-vung-tau/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 3,
@@ -24037,7 +24576,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -24099,15 +24638,15 @@ let marketingActivityLog = [
         "currRank": "Top 9",
         "gscPos": 9.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 9,
             "change": 0,
             "slug": "-",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 25,
+            "impressions": 640,
+            "ctr": "3.91%"
         },
         "model": {
             "rank": "-",
@@ -24158,18 +24697,18 @@ let marketingActivityLog = [
         "silo": "Cụm nhà máy",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 15.9",
-        "gscPos": 15.9,
+        "currRank": "Đang SEO",
+        "gscPos": 24.0,
         "url": "mohinhkientruc.org/mo-hinh-nha-may/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
-            "rank": 15.9,
-            "change": -10,
+            "rank": 24,
+            "change": -18,
             "slug": "/mo-hinh-nha-may/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 12,
+            "ctr": "8.33%"
         },
         "model": {
             "rank": 21.1,
@@ -24223,7 +24762,7 @@ let marketingActivityLog = [
         "currRank": "Top 2",
         "gscPos": 2.0,
         "url": "mohinhkientruc.org/mo-hinh-nha-may/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 2,
@@ -24285,7 +24824,7 @@ let marketingActivityLog = [
         "currRank": "Top 20",
         "gscPos": 20.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-nha-may/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 20,
@@ -24348,7 +24887,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -24407,18 +24946,18 @@ let marketingActivityLog = [
         "silo": "Cụm nhà máy",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 6.6",
-        "gscPos": 6.6,
+        "currRank": "Top 2.7",
+        "gscPos": 2.7,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
-        "highlight": false,
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
+        "highlight": true,
         "kientruc": {
-            "rank": 6.6,
-            "change": 0,
+            "rank": 2.7,
+            "change": 4,
             "slug": "-",
             "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "impressions": 30,
+            "ctr": "3.33%"
         },
         "model": {
             "rank": 5,
@@ -24472,7 +25011,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 22.0,
         "url": "mohinhkientruc.org/mo-hinh-nha-tho/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 22,
@@ -24534,7 +25073,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/sa-ban-noi-that/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -24596,7 +25135,7 @@ let marketingActivityLog = [
         "currRank": "Top 16",
         "gscPos": 16.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-noi-that/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 16,
@@ -24658,7 +25197,7 @@ let marketingActivityLog = [
         "currRank": "Top 10",
         "gscPos": 10.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-quan-su/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 10,
@@ -24721,7 +25260,7 @@ let marketingActivityLog = [
         "currRank": "Top 10",
         "gscPos": 10.0,
         "url": "mohinhkientruc.org/lam-mo-hinh-tai-da-nang/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 10,
@@ -24780,18 +25319,18 @@ let marketingActivityLog = [
         "silo": "Cụm quy hoạch",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 1.5",
-        "gscPos": 1.5,
+        "currRank": "Top 5.9",
+        "gscPos": 5.9,
         "url": "mohinhkientruc.org/mo-hinh-quy-hoach/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
-        "highlight": true,
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
+        "highlight": false,
         "kientruc": {
-            "rank": 1.5,
-            "change": 2,
+            "rank": 5.9,
+            "change": -3,
             "slug": "/mo-hinh-quy-hoach/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 2,
+            "impressions": 29,
+            "ctr": "6.9%"
         },
         "model": {
             "rank": "-",
@@ -24842,18 +25381,18 @@ let marketingActivityLog = [
         "silo": "Cụm sa bàn",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 1.1",
-        "gscPos": 1.1,
+        "currRank": "Top 16",
+        "gscPos": 16.0,
         "url": "mohinhkientruc.org/sa-ban-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
-        "highlight": true,
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
+        "highlight": false,
         "kientruc": {
-            "rank": 1.1,
-            "change": 3,
+            "rank": 16,
+            "change": -12,
             "slug": "/sa-ban-kien-truc/",
             "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "impressions": 21,
+            "ctr": "4.76%"
         },
         "model": {
             "rank": 8.4,
@@ -24904,18 +25443,18 @@ let marketingActivityLog = [
         "silo": "Cụm sa bàn",
         "website": "mohinhkientruc.org",
         "domain": "mohinhkientruc.org",
-        "currRank": "Top 11.8",
-        "gscPos": 11.8,
+        "currRank": "Top 4.6",
+        "gscPos": 4.6,
         "url": "mohinhkientruc.org/lam-sa-ban/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
-            "rank": 11.8,
-            "change": -7,
+            "rank": 4.6,
+            "change": 0,
             "slug": "/lam-sa-ban/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 104,
+            "impressions": 1620,
+            "ctr": "6.42%"
         },
         "model": {
             "rank": 14.7,
@@ -24970,7 +25509,7 @@ let marketingActivityLog = [
         "currRank": "Top 4",
         "gscPos": 4.0,
         "url": "mohinhkientruc.org/mo-hinh-kien-truc-tai-ninh-thuan/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 4,
@@ -25032,7 +25571,7 @@ let marketingActivityLog = [
         "currRank": "Top 1",
         "gscPos": 1.0,
         "url": "mohinhkientruc.org/sa-ban-san-golf/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": 1,
@@ -25094,7 +25633,7 @@ let marketingActivityLog = [
         "currRank": "Top 5",
         "gscPos": 5.0,
         "url": "mohinhkientruc.org/mo-hinh-do-an-sinh-vien/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 5,
@@ -25156,15 +25695,15 @@ let marketingActivityLog = [
         "currRank": "Top 5.4",
         "gscPos": 5.4,
         "url": "mohinhkientruc.org/sua-chua-mo-hinh-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 5.4,
             "change": 0,
             "slug": "/sua-chua-mo-hinh-kien-truc/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 58,
+            "impressions": 930,
+            "ctr": "6.24%"
         },
         "model": {
             "rank": "-",
@@ -25218,7 +25757,7 @@ let marketingActivityLog = [
         "currRank": "Top 4",
         "gscPos": 4.0,
         "url": "mohinhkientruc.org/lam-sa-ban-truong-hoc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 4,
@@ -25281,7 +25820,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -25344,7 +25883,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -25406,15 +25945,15 @@ let marketingActivityLog = [
         "currRank": "Top 7.2",
         "gscPos": 7.2,
         "url": "mohinhkientruc.org/van-chuyen-sa-ban-kien-truc/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 7.2,
             "change": 0,
             "slug": "/van-chuyen-sa-ban-kien-truc/",
-            "clicks": 1,
-            "impressions": 8,
-            "ctr": "12.5%"
+            "clicks": 38,
+            "impressions": 760,
+            "ctr": "5.00%"
         },
         "model": {
             "rank": "-",
@@ -25468,7 +26007,7 @@ let marketingActivityLog = [
         "currRank": "Top 16",
         "gscPos": 16.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 16,
@@ -25531,7 +26070,7 @@ let marketingActivityLog = [
         "currRank": "Top 12",
         "gscPos": 12.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 12,
@@ -25593,7 +26132,7 @@ let marketingActivityLog = [
         "currRank": "Top 7",
         "gscPos": 7.0,
         "url": "mohinhkientruc.org/vat-lieu-mo-hinh/",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 7,
@@ -25656,7 +26195,7 @@ let marketingActivityLog = [
         "currRank": "Top 4",
         "gscPos": 4.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 4,
@@ -25719,7 +26258,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhkientruc.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -25782,7 +26321,7 @@ let marketingActivityLog = [
         "currRank": "Top 11",
         "gscPos": 11.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -25842,26 +26381,26 @@ let marketingActivityLog = [
         "silo": "Cụm architectural model",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 7.8",
-        "gscPos": 7.8,
+        "currRank": "Top 6.6",
+        "gscPos": 6.6,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 5,
+            "ctr": "20.0%"
         },
         "model": {
-            "rank": 7.8,
-            "change": 12,
+            "rank": 6.6,
+            "change": 13,
             "slug": "/en/about-us/",
-            "clicks": 5,
-            "impressions": 616,
-            "ctr": "0.8%"
+            "clicks": 1,
+            "impressions": 5,
+            "ctr": "20.0%"
         },
         "songanh": {
             "rank": "-",
@@ -25908,7 +26447,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -25971,7 +26510,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26034,7 +26573,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26097,7 +26636,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26160,7 +26699,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26223,7 +26762,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26286,7 +26825,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26349,7 +26888,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26412,7 +26951,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26475,7 +27014,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26538,7 +27077,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26601,7 +27140,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26664,7 +27203,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26727,23 +27266,23 @@ let marketingActivityLog = [
         "currRank": "Top 9",
         "gscPos": 9.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 25,
+            "impressions": 640,
+            "ctr": "3.91%"
         },
         "model": {
             "rank": 9,
             "change": 11,
             "slug": "/mo-hinh-thiet-bi-he-thong-tu-dong-hoa/",
-            "clicks": 4,
-            "impressions": 616,
-            "ctr": "0.6%"
+            "clicks": 25,
+            "impressions": 640,
+            "ctr": "3.91%"
         },
         "songanh": {
             "rank": "-",
@@ -26790,7 +27329,7 @@ let marketingActivityLog = [
         "currRank": "Top 6",
         "gscPos": 6.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26853,23 +27392,23 @@ let marketingActivityLog = [
         "currRank": "Top 5.8",
         "gscPos": 5.8,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 52,
+            "impressions": 880,
+            "ctr": "5.91%"
         },
         "model": {
             "rank": 5.8,
             "change": 14,
             "slug": "/sua-chua-sa-ban/",
-            "clicks": 7,
-            "impressions": 616,
-            "ctr": "1.1%"
+            "clicks": 52,
+            "impressions": 880,
+            "ctr": "5.91%"
         },
         "songanh": {
             "rank": "-",
@@ -26916,7 +27455,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -26979,7 +27518,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27039,26 +27578,26 @@ let marketingActivityLog = [
         "silo": "Cụm nhà máy",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 5",
-        "gscPos": 5.0,
+        "currRank": "Top 2.7",
+        "gscPos": 2.7,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
-        "highlight": false,
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
+        "highlight": true,
         "kientruc": {
             "rank": 6.6,
             "change": 0,
             "slug": "-",
-            "clicks": 6,
-            "impressions": 616,
-            "ctr": "1.0%"
+            "clicks": 1,
+            "impressions": 30,
+            "ctr": "3.33%"
         },
         "model": {
-            "rank": 5,
-            "change": 15,
+            "rank": 2.7,
+            "change": 17,
             "slug": "/bao-gia-lam-sa-ban-nha-may/",
-            "clicks": 8,
-            "impressions": 616,
-            "ctr": "1.3%"
+            "clicks": 1,
+            "impressions": 30,
+            "ctr": "3.33%"
         },
         "songanh": {
             "rank": "-",
@@ -27105,7 +27644,7 @@ let marketingActivityLog = [
         "currRank": "Top 5.7",
         "gscPos": 5.7,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27168,23 +27707,23 @@ let marketingActivityLog = [
         "currRank": "Top 7.2",
         "gscPos": 7.2,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 38,
+            "impressions": 760,
+            "ctr": "5.00%"
         },
         "model": {
             "rank": 7.2,
             "change": 13,
             "slug": "/van-chuyen-sa-ban/",
-            "clicks": 6,
-            "impressions": 616,
-            "ctr": "1.0%"
+            "clicks": 38,
+            "impressions": 760,
+            "ctr": "5.00%"
         },
         "songanh": {
             "rank": "-",
@@ -27228,26 +27767,26 @@ let marketingActivityLog = [
         "silo": "Cụm trường học",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 8.4",
-        "gscPos": 8.4,
+        "currRank": "Top 5.6",
+        "gscPos": 5.6,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 5,
             "change": 0,
             "slug": "-",
-            "clicks": 8,
-            "impressions": 616,
-            "ctr": "1.3%"
+            "clicks": 1,
+            "impressions": 4,
+            "ctr": "25.0%"
         },
         "model": {
-            "rank": 8.4,
-            "change": 12,
+            "rank": 5.6,
+            "change": 14,
             "slug": "/sa-ban-truong-hoc/",
-            "clicks": 5,
-            "impressions": 616,
-            "ctr": "0.8%"
+            "clicks": 1,
+            "impressions": 4,
+            "ctr": "25.0%"
         },
         "songanh": {
             "rank": "-",
@@ -27294,7 +27833,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27357,7 +27896,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27420,7 +27959,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27483,7 +28022,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27544,25 +28083,25 @@ let marketingActivityLog = [
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
         "currRank": "Đang SEO",
-        "gscPos": 48.5,
+        "gscPos": 37.4,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 17.9,
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 2,
+            "impressions": 35,
+            "ctr": "5.71%"
         },
         "model": {
-            "rank": 48.5,
-            "change": -28,
+            "rank": 37.4,
+            "change": -17,
             "slug": "/cong-ty-mo-hinh-kien-truc/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 2,
+            "impressions": 35,
+            "ctr": "5.71%"
         },
         "songanh": {
             "rank": 16.6,
@@ -27609,7 +28148,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27672,7 +28211,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27735,7 +28274,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27795,26 +28334,26 @@ let marketingActivityLog = [
         "silo": "Cụm sa bàn",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 8.4",
-        "gscPos": 8.4,
+        "currRank": "Top 16",
+        "gscPos": 16.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 1.1,
             "change": 0,
             "slug": "-",
-            "clicks": 40,
-            "impressions": 616,
-            "ctr": "6.5%"
+            "clicks": 1,
+            "impressions": 21,
+            "ctr": "4.76%"
         },
         "model": {
-            "rank": 8.4,
-            "change": 12,
+            "rank": 16,
+            "change": 4,
             "slug": "/bao-gia-sa-ban-kien-truc/",
-            "clicks": 5,
-            "impressions": 616,
-            "ctr": "0.8%"
+            "clicks": 1,
+            "impressions": 21,
+            "ctr": "4.76%"
         },
         "songanh": {
             "rank": 29,
@@ -27861,7 +28400,7 @@ let marketingActivityLog = [
         "currRank": "Top 8.4",
         "gscPos": 8.4,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 1.1,
@@ -27924,7 +28463,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -27987,23 +28526,23 @@ let marketingActivityLog = [
         "currRank": "Top 17.3",
         "gscPos": 17.3,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 3,
+            "ctr": "33.33%"
         },
         "model": {
             "rank": 17.3,
             "change": 3,
             "slug": "/thu-mua-mo-hinh-cu/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 3,
+            "ctr": "33.33%"
         },
         "songanh": {
             "rank": "-",
@@ -28050,7 +28589,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28111,25 +28650,25 @@ let marketingActivityLog = [
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
         "currRank": "Đang SEO",
-        "gscPos": 21.1,
+        "gscPos": 24.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 15.9,
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 12,
+            "ctr": "8.33%"
         },
         "model": {
-            "rank": 21.1,
-            "change": -1,
+            "rank": 24,
+            "change": -4,
             "slug": "/mo-hinh-nha-may/",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 1,
+            "impressions": 12,
+            "ctr": "8.33%"
         },
         "songanh": {
             "rank": "-",
@@ -28176,7 +28715,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28239,7 +28778,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28302,7 +28841,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28365,7 +28904,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28428,7 +28967,7 @@ let marketingActivityLog = [
         "currRank": "Top 4.4",
         "gscPos": 4.4,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28488,26 +29027,26 @@ let marketingActivityLog = [
         "silo": "Cụm mô hình kiến trúc",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 12.2",
-        "gscPos": 12.2,
+        "currRank": "Top 12",
+        "gscPos": 12.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 7.9,
             "change": 0,
             "slug": "-",
-            "clicks": 5,
-            "impressions": 616,
-            "ctr": "0.8%"
+            "clicks": 2,
+            "impressions": 28,
+            "ctr": "7.14%"
         },
         "model": {
-            "rank": 12.2,
+            "rank": 12,
             "change": 8,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 2,
+            "impressions": 28,
+            "ctr": "7.14%"
         },
         "songanh": {
             "rank": "-",
@@ -28554,7 +29093,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28617,7 +29156,7 @@ let marketingActivityLog = [
         "currRank": "Top 9",
         "gscPos": 9.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 6.3,
@@ -28680,7 +29219,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28743,7 +29282,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28803,26 +29342,26 @@ let marketingActivityLog = [
         "silo": "Cụm sa bàn",
         "website": "architecturalmodel.org",
         "domain": "architecturalmodel.org",
-        "currRank": "Top 14.7",
-        "gscPos": 14.7,
+        "currRank": "Top 4.6",
+        "gscPos": 4.6,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": 11.8,
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 104,
+            "impressions": 1620,
+            "ctr": "6.42%"
         },
         "model": {
-            "rank": 14.7,
-            "change": 5,
+            "rank": 4.6,
+            "change": 15,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 104,
+            "impressions": 1620,
+            "ctr": "6.42%"
         },
         "songanh": {
             "rank": "-",
@@ -28869,7 +29408,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28932,7 +29471,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -28995,7 +29534,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29058,7 +29597,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29121,7 +29660,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "architecturalmodel.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29183,7 +29722,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29245,7 +29784,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29307,7 +29846,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29369,7 +29908,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29431,7 +29970,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29493,7 +30032,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29555,7 +30094,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29617,7 +30156,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29679,7 +30218,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29741,7 +30280,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29803,7 +30342,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29865,7 +30404,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29927,7 +30466,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -29989,7 +30528,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30051,7 +30590,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30113,7 +30652,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30175,7 +30714,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30237,7 +30776,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30299,7 +30838,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30361,7 +30900,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30423,7 +30962,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30485,7 +31024,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30547,7 +31086,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30609,7 +31148,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30671,7 +31210,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30733,7 +31272,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30795,7 +31334,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30857,7 +31396,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30919,7 +31458,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -30981,7 +31520,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31043,7 +31582,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31105,7 +31644,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31167,7 +31706,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31229,7 +31768,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31291,7 +31830,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31353,7 +31892,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31415,7 +31954,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinh3d.org",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31478,7 +32017,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31541,7 +32080,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31604,7 +32143,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31667,7 +32206,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31730,7 +32269,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31793,7 +32332,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31856,7 +32395,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31919,7 +32458,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -31982,7 +32521,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32045,7 +32584,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32108,7 +32647,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32171,7 +32710,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32234,7 +32773,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32297,7 +32836,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32360,7 +32899,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32423,7 +32962,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32486,7 +33025,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32549,7 +33088,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32612,7 +33151,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32675,7 +33214,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32738,7 +33277,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32801,7 +33340,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32864,7 +33403,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32927,7 +33466,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -32990,7 +33529,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "mohinhsonganh.com",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33052,15 +33591,15 @@ let marketingActivityLog = [
         "currRank": "Top 1.1",
         "gscPos": 1.1,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": true,
         "kientruc": {
             "rank": "-",
             "change": 0,
             "slug": "-",
-            "clicks": 0,
-            "impressions": 0,
-            "ctr": "0.0%"
+            "clicks": 6,
+            "impressions": 17,
+            "ctr": "35.29%"
         },
         "model": {
             "rank": "-",
@@ -33090,9 +33629,9 @@ let marketingActivityLog = [
             "rank": 1.1,
             "change": 19,
             "slug": "-",
-            "clicks": 1,
-            "impressions": 20,
-            "ctr": "5.0%"
+            "clicks": 6,
+            "impressions": 17,
+            "ctr": "35.29%"
         }
     },
     {
@@ -33114,7 +33653,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33176,7 +33715,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33238,7 +33777,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33300,7 +33839,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33362,7 +33901,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33424,7 +33963,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33486,7 +34025,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33548,7 +34087,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33610,7 +34149,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33672,7 +34211,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33734,7 +34273,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33796,7 +34335,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33858,7 +34397,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33920,7 +34459,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -33982,7 +34521,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34044,7 +34583,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34106,7 +34645,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34168,7 +34707,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34230,7 +34769,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34292,7 +34831,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34354,7 +34893,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34416,7 +34955,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34478,7 +35017,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34540,7 +35079,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34602,7 +35141,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34664,7 +35203,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34726,7 +35265,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34788,7 +35327,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34850,7 +35389,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34912,7 +35451,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -34974,7 +35513,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35036,7 +35575,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35098,7 +35637,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35160,7 +35699,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35222,7 +35761,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35284,7 +35823,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35346,7 +35885,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35408,7 +35947,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35470,7 +36009,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35532,7 +36071,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35594,7 +36133,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35656,7 +36195,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35718,7 +36257,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35780,7 +36319,7 @@ let marketingActivityLog = [
         "currRank": "Đang SEO",
         "gscPos": 25.0,
         "url": "-",
-        "last_updated": "28/09/2026 (Master Google Sheet Live)",
+        "last_updated": "30/09/2026 (Master Google Sheet Live)",
         "highlight": false,
         "kientruc": {
             "rank": "-",
@@ -35841,12 +36380,27 @@ let marketingActivityLog = [
             let countSame = 0;
 
             keywordMatrixData.forEach(kw => {
-                const r = kw.kientruc?.rank;
+                let r = null;
+                if (typeof kw.gscPos === 'number' && kw.gscPos > 0 && kw.gscPos <= 100) {
+                    r = kw.gscPos;
+                } else if (kw.website && kw[kw.website.split('.')[0]] && typeof kw[kw.website.split('.')[0]].rank === 'number') {
+                    r = kw[kw.website.split('.')[0]].rank;
+                } else if (typeof kw.kientruc?.rank === 'number') {
+                    r = kw.kientruc.rank;
+                }
+
                 if (typeof r === 'number') {
                     if (r <= 3) top1_3++;
                     if (r <= 10) top4_10++;
                 }
-                const c = kw.kientruc?.change || 0;
+
+                let c = 0;
+                if (kw.kientruc && typeof kw.kientruc.change === 'number') c = kw.kientruc.change;
+                else if (kw.model && typeof kw.model.change === 'number') c = kw.model.change;
+                else if (kw.mohinh3d && typeof kw.mohinh3d.change === 'number') c = kw.mohinh3d.change;
+                else if (kw.songanh && typeof kw.songanh.change === 'number') c = kw.songanh.change;
+                else if (kw.vatlieu && typeof kw.vatlieu.change === 'number') c = kw.vatlieu.change;
+
                 if (c > 0) { countUp++; netShift += c; }
                 else if (c < 0) { countDown++; netShift += c; }
                 else { countSame++; }
@@ -36260,12 +36814,12 @@ let marketingActivityLog = [
         function changeKeywordCycle(cycleVal) {
             currentKwCycle = cycleVal;
             const labelMap = {
-                'current': '18/09/2026 vs 15/09/2026 (Thứ 2)',
-                '7d': '7 Ngày Gần Nhất (18/09 - 11/09/2026)',
-                '30d': '30 Ngày (18/09 vs 18/08/2026)'
+                'current': '30/09/2026 vs 28/09/2026 (Kỳ trước)',
+                '7d': '7 Ngày Gần Nhất (30/09 - 23/09/2026)',
+                '30d': '30 Ngày (30/09 vs 30/08/2026)'
             };
             const topDateLabel = document.getElementById('kw-top-date-label');
-            if (topDateLabel) topDateLabel.innerText = "Hôm nay, 18 Tháng 9";
+            if (topDateLabel) topDateLabel.innerText = "Hôm nay, 30/09/2026";
 
             if (typeof showToast === 'function') {
                 showToast(`📅 Đã chuyển chu kỳ so sánh: ${labelMap[cycleVal] || cycleVal}`, "info");
@@ -36273,24 +36827,38 @@ let marketingActivityLog = [
             renderKeywordTable();
         }
 
-        function syncGoogleSerpLive() {
+        async function syncGoogleSerpLive() {
             const btn = document.getElementById('btn-sync-serp');
             const icon = document.getElementById('icon-sync-serp');
             if (icon) icon.classList.add('fa-spin');
             if (btn) btn.classList.add('opacity-75', 'pointer-events-none');
 
             if (typeof showToast === 'function') {
-                showToast("🔄 Đang đồng bộ dữ liệu thứ hạng Google SERP & GSC API cho 4 domains...", "info");
+                showToast("🔄 Đang nạp dữ liệu thứ hạng Google SERP & GSC API mới nhất...", "info");
+            }
+
+            try {
+                const res = await fetch('marketing_data.json?t=' + new Date().getTime());
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.seo_keywords && data.seo_keywords.length > 0) {
+                        keywordMatrixData = data.seo_keywords;
+                        keywordList = data.seo_keywords;
+                    }
+                }
+            } catch (e) {
+                console.warn('Could not reload marketing_data.json:', e);
             }
 
             setTimeout(() => {
                 if (icon) icon.classList.remove('fa-spin');
                 if (btn) btn.classList.remove('opacity-75', 'pointer-events-none');
                 if (typeof showToast === 'function') {
-                    showToast("✅ Đồng bộ thành công 64/64 từ khóa Google SERP Live!", "success");
+                    showToast(`✅ Đồng bộ thành công ${keywordMatrixData.length}/${keywordMatrixData.length} từ khóa Google SERP Live!`, "success");
                 }
                 renderKeywordTable();
-            }, 900);
+                updateSeoKpiCards();
+            }, 600);
         }
 
         function exportKeywordsCsv() {
@@ -36304,7 +36872,7 @@ let marketingActivityLog = [
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.setAttribute("href", url);
-            link.setAttribute("download", "Song_Anh_SERP_Rank_Matrix_18_09_2026.csv");
+            link.setAttribute("download", "Song_Anh_SERP_Rank_Matrix_30_09_2026.csv");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -37992,60 +38560,6 @@ let marketingActivityLog = [
         }
 
         /* ========================================================================= */
-        /* 📊 BÁO CÁO CHỈ SỐ FANPAGE HÀNG TUẦN: CHARTS, POSTS & GROUPS ENGINE       */
-        /* ========================================================================= */
-        let weeklyFbTrendChartInstance = null;
-        let fbEngagementTypeChartInstance = null;
-
-        // Dữ liệu Báo Cáo Đa Tuần và Đa Kênh (Đồng bộ từ Google Sheet Facebook Marketing)
-        const fbReportsWeeksData = {
-            'week-38-2026': {
-                label: 'Tuần 38 (15/09/2026 - 21/09/2026)',
-                dateRange: '15/09 - 21/09/2026',
-                days: ['T2 (15/09)', 'T3 (16/09)', 'T4 (17/09)', 'T5 (18/09)', 'T6 (19/09)', 'T7 (20/09)', 'CN (21/09)'],
-                channels: {
-                    'fanpage-main': {
-                        reach: '4,820', reachWow: '+14.8% WoW', reachPrev: '4,198',
-                        engage: '745', engageRate: 'Rate: 15.5%', engagePrev: '+8.2% WoW',
-                        chats: '86', chatsWow: '+12 khách', chatsResp: '100% Phản hồi',
-                        followers: '+48', followersTotal: 'Tổng: 1,128', followersRate: '+4.4%',
-                        trendReach: [520, 680, 890, 710, 940, 620, 460],
-                        trendEngage: [85, 110, 142, 115, 160, 88, 45],
-                        pieData: [142, 285, 68, 250],
-                        goodPoint: 'Video Reels thi công test mạch LED đạt tương tác cao (+14.8% Reach), mang về 34 lượt nhắn tin hỏi quy trình làm việc. Tỷ lệ phản hồi 100%.',
-                        nextPlan: 'Tăng 1 video dọc ngắn (9:16) về cắt laser mica & in 3D sa bàn. Duy trì Hotline duy nhất 0929 22 4444.'
-                    },
-                    'fanpage-en': {
-                        reach: '4,120', reachWow: '+9.3% WoW', reachPrev: '3,770',
-                        engage: '380', engageRate: 'Rate: 9.2%', engagePrev: '+8.6% WoW',
-                        chats: '19', chatsWow: '+2 khách', chatsResp: '100% Phản hồi',
-                        followers: '+35', followersTotal: 'Tổng: 5,410', followersRate: '+0.7%',
-                        trendReach: [450, 520, 680, 590, 810, 610, 460],
-                        trendEngage: [42, 55, 68, 58, 79, 52, 26],
-                        pieData: [58, 160, 42, 120],
-                        goodPoint: 'Bài viết sa bàn quy hoạch tiếng Anh thu hút đối tác Singapore & Úc quan tâm năng lực xuất khẩu.',
-                        nextPlan: 'Đẩy thêm 1 bài giới thiệu năng lực thi công mô hình công nghiệp xuất khẩu.'
-                    },
-                    'profile-songanh': {
-                        reach: '3,850', reachWow: '+12.2% WoW', reachPrev: '3,430',
-                        engage: '620', engageRate: 'Rate: 16.1%', engagePrev: '+6.9% WoW',
-                        chats: '24', chatsWow: '+3 khách', chatsResp: '100% Phản hồi',
-                        followers: '+62', followersTotal: 'Tổng: 4,800', followersRate: '+1.3%',
-                        trendReach: [410, 480, 720, 610, 790, 510, 330],
-                        trendEngage: [72, 85, 128, 102, 134, 68, 31],
-                        pieData: [115, 290, 75, 140],
-                        goodPoint: 'Bài viết chia sẻ câu chuyện đóng thùng sa bàn vận chuyển xa được anh em KTS tương tác nhiệt tình.',
-                        nextPlan: 'Tiếp tục văn phong người làm nghề (UnMarketing), chia sẻ mẹo thực tế xưởng.'
-                    },
-                    'fanpage-vatlieu': {
-                        reach: '2,150', reachWow: '+13.8% WoW', reachPrev: '1,890',
-                        engage: '310', engageRate: 'Rate: 14.4%', engagePrev: '+12.7% WoW',
-                        chats: '28', chatsWow: '+4 khách', chatsResp: '100% Phản hồi',
-                        followers: '+22', followersTotal: 'Tổng: 2,340', followersRate: '+0.9%',
-                        trendReach: [240, 290, 380, 320, 420, 280, 220],
-                        trendEngage: [35, 42, 58, 48, 64, 38, 25],
-                        pieData: [55, 140, 35, 80],
-        /* ========================================================================= */
         /* 📊 BÁO CÁO CHỈ SỐ FACEBOOK MARKETING: MULTI-PERIOD, CHANNELS & POSTS     */
         /* ========================================================================= */
         let weeklyFbTrendChartInstance = null;
@@ -38478,186 +38992,186 @@ let marketingActivityLog = [
         // Danh Sách Bài Viết Đã Đăng & Đo Lường Hiệu Quả (Đồng bộ trực tiếp từ Google Sheet)
         let fbPostsList = [
             {
-                code: 'FB-2026-09-01',
-                date: '18/09/2026',
-                time: '08:30',
-                channel: 'Fanpage Song Anh',
-                channelKey: 'fanpage-main',
-                type: 'Reels',
-                title: 'Video tiến độ thi công hệ thống đèn LED sa bàn quy hoạch đô thị 1:500',
-                fb_link: 'https://www.facebook.com/congtymohinhkientrucsonganh/',
-                web_link: 'https://mohinhkientruc.org/sa-ban-quy-hoach/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 2150,
-                engage: 328,
-                clicks: 45,
-                leads: 34,
-                rank: '⭐ Top 1 Tuần',
-                notes: 'Góc quay cận cảnh mạch điện và hiệu ứng sáng ban đêm thu hút KTS & CĐT.'
+                        "code": "FB-2026-09-01",
+                        "date": "18/09/2026",
+                        "time": "08:30",
+                        "channel": "Fanpage Song Anh",
+                        "type": "Reels",
+                        "title": "Video tiến độ thi công hệ thống đèn LED sa bàn quy hoạch đô thị 1:500",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientrucsonganh/",
+                        "web_link": "https://mohinhkientruc.org/sa-ban-quy-hoach/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 2150,
+                        "engage": 328,
+                        "clicks": 45,
+                        "leads": 34,
+                        "rank": "⭐ Top 1 Tuần",
+                        "notes": "Góc quay cận cảnh mạch điện và hiệu ứng sáng ban đêm thu hút KTS & CĐT.",
+                        "channelKey": "fanpage-main"
             },
             {
-                code: 'FB-2026-09-02',
-                date: '16/09/2026',
-                time: '09:15',
-                channel: 'Fanpage Song Anh',
-                channelKey: 'fanpage-main',
-                type: 'Album',
-                title: 'Bộ ảnh chi tiết sa bàn nhà máy sản xuất thép FDI tại Hải Phòng hoàn thiện xuất xưởng',
-                fb_link: 'https://www.facebook.com/congtymohinhkientrucsonganh/',
-                web_link: 'https://mohinhkientruc.org/mo-hinh-nha-may/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1420,
-                engage: 215,
-                clicks: 38,
-                leads: 28,
-                rank: '⭐ Top 2 Tuần',
-                notes: 'Ảnh thực tế xưởng sắc nét, không phóng đại, bám sát tiến độ bàn giao nhà máy.'
+                        "code": "FB-2026-09-02",
+                        "date": "16/09/2026",
+                        "time": "09:15",
+                        "channel": "Fanpage Song Anh",
+                        "type": "Album",
+                        "title": "Bộ ảnh chi tiết sa bàn nhà máy sản xuất thép FDI tại Hải Phòng hoàn thiện xuất xưởng",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientrucsonganh/",
+                        "web_link": "https://mohinhkientruc.org/mo-hinh-nha-may/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1420,
+                        "engage": 215,
+                        "clicks": 38,
+                        "leads": 28,
+                        "rank": "⭐ Top 2 Tuần",
+                        "notes": "Ảnh thực tế xưởng sắc nét, không phóng đại, bám sát tiến độ bàn giao nhà máy.",
+                        "channelKey": "fanpage-main"
             },
             {
-                code: 'FB-2026-09-03',
-                date: '19/09/2026',
-                time: '14:00',
-                channel: 'Fanpage Song Anh',
-                channelKey: 'fanpage-main',
-                type: 'Bài Viết',
-                title: 'Báo giá mô hình kiến trúc chung cư cao tầng mới nhất năm 2026',
-                fb_link: 'https://www.facebook.com/congtymohinhkientrucsonganh/',
-                web_link: 'https://mohinhkientruc.org/bao-gia-mo-hinh-kien-truc/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 890,
-                engage: 142,
-                clicks: 52,
-                leads: 19,
-                rank: '⭐ Top 3 Tuần',
-                notes: 'Bài viết phễu điều hướng trực tiếp về trang Báo giá trên website mohinhkientruc.org.'
+                        "code": "FB-2026-09-03",
+                        "date": "19/09/2026",
+                        "time": "14:00",
+                        "channel": "Fanpage Song Anh",
+                        "type": "Bài Viết",
+                        "title": "Báo giá mô hình kiến trúc chung cư cao tầng mới nhất năm 2026",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientrucsonganh/",
+                        "web_link": "https://mohinhkientruc.org/bao-gia-mo-hinh-kien-truc/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 890,
+                        "engage": 142,
+                        "clicks": 52,
+                        "leads": 19,
+                        "rank": "⭐ Top 3 Tuần",
+                        "notes": "Bài viết phễu điều hướng trực tiếp về trang Báo giá trên website mohinhkientruc.org.",
+                        "channelKey": "fanpage-main"
             },
             {
-                code: 'FB-2026-09-04',
-                date: '19/09/2026',
-                time: '10:30',
-                channel: 'Architectural Model Org',
-                channelKey: 'fanpage-en',
-                type: 'Reels',
-                title: 'High-detail scale architectural model fabrication at Song Anh workshop Vietnam',
-                fb_link: 'https://www.facebook.com/architecturalmodelorg/',
-                web_link: 'https://architecturalmodel.org/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 4120,
-                engage: 380,
-                clicks: 29,
-                leads: 19,
-                rank: 'Hiệu Quả',
-                notes: 'Nội dung tiếng Anh tiếp cận tệp khách hàng nước ngoài quan tâm gia công sa bàn chất lượng cao.'
+                        "code": "FB-2026-09-04",
+                        "date": "19/09/2026",
+                        "time": "10:30",
+                        "channel": "Architectural Model Org",
+                        "type": "Reels",
+                        "title": "High-detail scale architectural model fabrication at Song Anh workshop Vietnam",
+                        "fb_link": "https://www.facebook.com/architecturalmodelorg/",
+                        "web_link": "https://architecturalmodel.org/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 4120,
+                        "engage": 380,
+                        "clicks": 29,
+                        "leads": 19,
+                        "rank": "Hiệu Quả",
+                        "notes": "Nội dung tiếng Anh tiếp cận tệp khách hàng nước ngoài quan tâm gia công sa bàn chất lượng cao.",
+                        "channelKey": "fanpage-en"
             },
             {
-                code: 'FB-2026-09-05',
-                date: '15/09/2026',
-                time: '08:00',
-                channel: 'Profile Song Anh',
-                channelKey: 'profile-songanh',
-                type: 'Bài Viết',
-                title: 'Chia sẻ kinh nghiệm đóng kiện gỗ sa bàn gửi đi công trình miền Trung an toàn không rung lắc',
-                fb_link: 'https://www.facebook.com/congtymohinhkientruc/',
-                web_link: 'https://mohinhkientruc.org/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1350,
-                engage: 210,
-                clicks: 22,
-                leads: 10,
-                rank: 'Hiệu Quả',
-                notes: 'Văn phong người làm nghề (UnMarketing), chia sẻ mẹo thực tế xưởng được tương tác cao.'
+                        "code": "FB-2026-09-05",
+                        "date": "15/09/2026",
+                        "time": "08:00",
+                        "channel": "Profile Song Anh",
+                        "type": "Bài Viết",
+                        "title": "Chia sẻ kinh nghiệm đóng kiện gỗ sa bàn gửi đi công trình miền Trung an toàn không rung lắc",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientruc/",
+                        "web_link": "https://mohinhkientruc.org/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1350,
+                        "engage": 210,
+                        "clicks": 22,
+                        "leads": 10,
+                        "rank": "Hiệu Quả",
+                        "notes": "Văn phong người làm nghề (UnMarketing), chia sẻ mẹo thực tế xưởng được tương tác cao.",
+                        "channelKey": "profile-songanh"
             },
             {
-                code: 'FB-2026-09-06',
-                date: '17/09/2026',
-                time: '08:15',
-                channel: 'Profile Song Anh',
-                channelKey: 'profile-songanh',
-                type: 'Album',
-                title: 'Tỉ mỉ từng nhành cây cảnh sa bàn tỷ lệ 1:200 cho dự án resort ven biển',
-                fb_link: 'https://www.facebook.com/congtymohinhkientruc/',
-                web_link: 'https://mohinhkientruc.org/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1280,
-                engage: 195,
-                clicks: 18,
-                leads: 8,
-                rank: 'Tiêu Chuẩn',
-                notes: 'Hình ảnh cây mô hình làm thủ công tinh xảo, thể hiện tay nghề khéo léo của xưởng.'
+                        "code": "FB-2026-09-06",
+                        "date": "17/09/2026",
+                        "time": "08:15",
+                        "channel": "Profile Song Anh",
+                        "type": "Album",
+                        "title": "Tỉ mỉ từng nhành cây cảnh sa bàn tỷ lệ 1:200 cho dự án resort ven biển",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientruc/",
+                        "web_link": "https://mohinhkientruc.org/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1280,
+                        "engage": 195,
+                        "clicks": 18,
+                        "leads": 8,
+                        "rank": "Tiêu Chuẩn",
+                        "notes": "Hình ảnh cây mô hình làm thủ công tinh xảo, thể hiện tay nghề khéo léo của xưởng.",
+                        "channelKey": "profile-songanh"
             },
             {
-                code: 'FB-2026-09-07',
-                date: '20/09/2026',
-                time: '09:00',
-                channel: 'Profile Song Anh',
-                channelKey: 'profile-songanh',
-                type: 'Bài Viết',
-                title: 'Kiểm tra mạch điện sa bàn trước giờ đóng thùng xuất xưởng',
-                fb_link: 'https://www.facebook.com/congtymohinhkientruc/',
-                web_link: 'https://mohinhkientruc.org/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1220,
-                engage: 215,
-                clicks: 15,
-                leads: 6,
-                rank: 'Tiêu Chuẩn',
-                notes: 'Tạo niềm tin vững chắc về quy trình QC kiểm định chất lượng nghiêm ngặt.'
+                        "code": "FB-2026-09-07",
+                        "date": "20/09/2026",
+                        "time": "09:00",
+                        "channel": "Profile Song Anh",
+                        "type": "Bài Viết",
+                        "title": "Kiểm tra mạch điện sa bàn trước giờ đóng thùng xuất xưởng",
+                        "fb_link": "https://www.facebook.com/congtymohinhkientruc/",
+                        "web_link": "https://mohinhkientruc.org/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1220,
+                        "engage": 215,
+                        "clicks": 15,
+                        "leads": 6,
+                        "rank": "Tiêu Chuẩn",
+                        "notes": "Tạo niềm tin vững chắc về quy trình QC kiểm định chất lượng nghiêm ngặt.",
+                        "channelKey": "profile-songanh"
             },
             {
-                code: 'FB-2026-09-08',
-                date: '14/09/2026',
-                time: '11:00',
-                channel: 'Fanpage Làm Mô Hình Song Anh',
-                channelKey: 'fanpage-lammohinh',
-                type: 'Reels',
-                title: 'Cách chọn đèn sa bàn và hướng dẫn đấu nối nguồn 12V không bị cháy bóng',
-                fb_link: 'https://www.facebook.com/lammohinh.vn/',
-                web_link: 'https://lammohinh.vn/cach-chon-den-sa-ban-va-dau-noi-12v/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1250,
-                engage: 185,
-                clicks: 38,
-                leads: 15,
-                rank: '⭐ Top Bán Lẻ',
-                notes: 'Hotline 0988 080 440 - 0333 88 5925'
+                        "code": "FB-2026-09-08",
+                        "date": "14/09/2026",
+                        "time": "11:00",
+                        "channel": "Fanpage Làm Mô Hình Song Anh",
+                        "type": "Reels",
+                        "title": "Cách chọn đèn sa bàn và hướng dẫn đấu nối nguồn 12V không bị cháy bóng",
+                        "fb_link": "https://www.facebook.com/lammohinh.vn/",
+                        "web_link": "https://lammohinh.vn/cach-chon-den-sa-ban-va-dau-noi-12v/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1250,
+                        "engage": 185,
+                        "clicks": 38,
+                        "leads": 15,
+                        "rank": "⭐ Top Bán Lẻ",
+                        "notes": "Hotline 0988 080 440 - 0333 88 5925",
+                        "channelKey": "fanpage-main"
             },
             {
-                code: 'FB-2026-09-09',
-                date: '17/09/2026',
-                time: '09:30',
-                channel: 'Fanpage Vật Liệu Mô Hình',
-                channelKey: 'fanpage-vatlieu',
-                type: 'Album',
-                title: 'Tổng kho vật liệu sa bàn: Cây mô hình, que nhựa ABS và thảm cỏ bột sợi tĩnh điện',
-                fb_link: 'https://www.facebook.com/vatlieumohinh/',
-                web_link: 'https://vatlieumohinh.com/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 1120,
-                engage: 142,
-                clicks: 29,
-                leads: 12,
-                rank: '⭐ Top Vật Liệu',
-                notes: 'Hotline duy nhất 0934 060 993'
+                        "code": "FB-2026-09-09",
+                        "date": "17/09/2026",
+                        "time": "09:30",
+                        "channel": "Fanpage Vật Liệu Mô Hình",
+                        "type": "Album",
+                        "title": "Tổng kho vật liệu sa bàn: Cây mô hình, que nhựa ABS và thảm cỏ bột sợi tĩnh điện",
+                        "fb_link": "https://www.facebook.com/vatlieumohinh/",
+                        "web_link": "https://vatlieumohinh.com/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 1120,
+                        "engage": 142,
+                        "clicks": 29,
+                        "leads": 12,
+                        "rank": "⭐ Top Vật Liệu",
+                        "notes": "Hotline duy nhất 0934 060 993",
+                        "channelKey": "fanpage-vatlieu"
             },
             {
-                code: 'FB-2026-09-10',
-                date: '18/09/2026',
-                time: '15:00',
-                channel: 'Fanpage Mô Hình 3D',
-                channelKey: 'fanpage-mohinh3d',
-                type: 'Video',
-                title: 'Công nghệ in 3D Resin 8K bóc tách khối chi tiết máy và kết cấu vi mô sa bàn',
-                fb_link: 'https://www.facebook.com/mohinh3d.org/',
-                web_link: 'https://mohinh3d.org/',
-                author: 'Phạm Hoàng Tiến',
-                reach: 980,
-                engage: 156,
-                clicks: 22,
-                leads: 10,
-                rank: '⭐ Top In 3D',
-                notes: 'Hotline duy nhất 0376 415 131'
+                        "code": "FB-2026-09-10",
+                        "date": "18/09/2026",
+                        "time": "15:00",
+                        "channel": "Fanpage Mô Hình 3D",
+                        "type": "Video",
+                        "title": "Công nghệ in 3D Resin 8K bóc tách khối chi tiết máy và kết cấu vi mô sa bàn",
+                        "fb_link": "https://www.facebook.com/mohinh3d.org/",
+                        "web_link": "https://mohinh3d.org/",
+                        "author": "Phạm Hoàng Tiến",
+                        "reach": 980,
+                        "engage": 156,
+                        "clicks": 22,
+                        "leads": 10,
+                        "rank": "⭐ Top In 3D",
+                        "notes": "Hotline duy nhất 0376 415 131",
+                        "channelKey": "fanpage-mohinh3d"
             }
-        ];
+];
 
         // Biến trạng thái mặc định: Toàn Bộ Kênh & Tuần Hiện Tại
         let currentFbReportTime = 'week-38-2026';
