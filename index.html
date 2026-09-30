@@ -4256,78 +4256,75 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
 
                 <!-- 3. COMPACT MULTI-DOMAIN & RANK CONTROLS RIBBON -->
                 <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3">
-                    <!-- Row 1: Search & Dropdowns in Unified Flex Layout (Không bị bể layout) -->
-                    <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-2.5">
-                        <!-- Search Input -->
-                        <div class="relative flex-1 min-w-[240px]">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                            <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm kiếm từ khóa (sa bàn kiến trúc, làm mô hình, bảng giá, in 3d)..." class="w-full pl-9 pr-14 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition font-medium">
-                            <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                                <button type="button" onclick="clearKeywordSearch()" id="btn-clear-kw-search" class="hidden w-4 h-4 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-[9px] items-center justify-center transition cursor-pointer" title="Xóa tìm kiếm">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                                <span class="px-1 py-0.2 bg-slate-200 text-slate-500 rounded text-[9px] font-mono font-bold">⌘K</span>
-                            </div>
+                    <!-- Row 1: ALL FILTERS IN 1 COMPACT ROW (Không bị tràn viền layout) -->
+                    <div class="flex items-center gap-2 flex-wrap w-full">
+                        <!-- 1. Bộ lọc Website dạng Select (Option Box) -->
+                        <div class="relative flex-1 min-w-[155px]">
+                            <select id="kw-domain-filter" onchange="filterKeywords()" class="w-full h-9 pl-3 pr-8 text-xs font-bold text-slate-800 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 cursor-pointer shadow-2xs transition truncate">
+                                <option value="all">🌐 Tất Cả 5 Website (214)</option>
+                                <option value="mohinhkientruc.org">🏢 mohinhkientruc.org (Chính B2B)</option>
+                                <option value="architecturalmodel.org">🌍 architecturalmodel.org (Quốc tế)</option>
+                                <option value="mohinhsonganh.com">⭐ mohinhsonganh.com (Thương hiệu)</option>
+                                <option value="mohinh3d.org">🖨️ mohinh3d.org (Vật liệu & In 3D)</option>
+                                <option value="vatlieumohinh.com">🛍️ vatlieumohinh.com (Bán lẻ)</option>
+                            </select>
                         </div>
 
-                        <!-- Dropdowns Controls: 1. Website Select | 2. Xếp Hạng Select | 3. Silo | 4. Intent | 5. Chu kỳ | 6. Đặt lại -->
-                        <div class="flex items-center gap-2 flex-wrap shrink-0">
-                            <!-- 1. Bộ lọc Website dạng Select (Option Box) -->
-                            <div class="relative shrink-0 w-full sm:w-auto">
-                                <select id="kw-domain-filter" onchange="filterKeywords()" class="w-full sm:w-auto h-9 pl-3 pr-8 text-xs font-bold text-slate-800 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 cursor-pointer shadow-2xs transition">
-                                    <option value="all">🌐 Tất Cả 5 Website (214)</option>
-                                    <option value="mohinhkientruc.org">🏢 mohinhkientruc.org (Chính B2B)</option>
-                                    <option value="architecturalmodel.org">🌍 architecturalmodel.org (Quốc tế)</option>
-                                    <option value="mohinhsonganh.com">⭐ mohinhsonganh.com (Thương hiệu)</option>
-                                    <option value="mohinh3d.org">🖨️ mohinh3d.org (Vật liệu & In 3D)</option>
-                                    <option value="vatlieumohinh.com">🛍️ vatlieumohinh.com (Bán lẻ)</option>
-                                </select>
-                            </div>
+                        <!-- 2. Bộ lọc Thứ Hạng (Top 1-3, Top 4-10, ...) dạng Select (Option Box) -->
+                        <div class="relative flex-1 min-w-[155px]">
+                            <select id="kw-rank-filter" onchange="setKwQuickFilter(this.value)" class="w-full h-9 pl-3 pr-8 text-xs font-bold text-slate-800 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 cursor-pointer shadow-2xs transition truncate">
+                                <option value="all">📊 Tất cả thứ hạng (214)</option>
+                                <option value="top1-3">🥇 Top 1 - 3 (Chiếm lĩnh) (25)</option>
+                                <option value="top4-10">🥈 Top 4 - 10 (Trang 1 SERP) (25)</option>
+                                <option value="shift">⚡ Biến động thứ hạng SERP (29)</option>
+                                <option value="optimize">🎯 Cần tối ưu (Rớt/Ngoài Top 10) (22)</option>
+                            </select>
+                        </div>
 
-                            <!-- 2. Bộ lọc Thứ Hạng (Top 1-3, Top 4-10, ...) dạng Select (Option Box) -->
-                            <div class="relative shrink-0 w-full sm:w-auto">
-                                <select id="kw-rank-filter" onchange="setKwQuickFilter(this.value)" class="w-full sm:w-auto h-9 pl-3 pr-8 text-xs font-bold text-slate-800 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 cursor-pointer shadow-2xs transition">
-                                    <option value="all">📊 Tất cả thứ hạng (214)</option>
-                                    <option value="top1-3">🥇 Top 1 - 3 (Chiếm lĩnh) (25)</option>
-                                    <option value="top4-10">🥈 Top 4 - 10 (Trang 1 SERP) (25)</option>
-                                    <option value="shift">⚡ Biến động thứ hạng SERP (29)</option>
-                                    <option value="optimize">🎯 Cần tối ưu (Rớt/Ngoài Top 10) (22)</option>
-                                </select>
-                            </div>
+                        <!-- 3. Silo Filter -->
+                        <div class="relative flex-1 min-w-[130px]">
+                            <select id="kw-silo-filter" onchange="filterKeywords()" class="w-full h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
+                                <option value="all">📁 Cụm Silo (Tất cả)</option>
+                            </select>
+                        </div>
 
-                            <!-- 3. Silo Filter -->
-                            <div class="relative shrink-0 w-full sm:w-auto max-w-full sm:max-w-[170px]">
-                                <select id="kw-silo-filter" onchange="filterKeywords()" class="w-full sm:w-auto h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
-                                    <option value="all">📁 Cụm Silo (Tất cả)</option>
-                                </select>
-                            </div>
+                        <!-- 4. Intent Filter -->
+                        <div class="relative flex-1 min-w-[135px]">
+                            <select id="kw-intent-filter" onchange="filterKeywords()" class="w-full h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
+                                <option value="all">🎯 Search Intent (Tất cả)</option>
+                                <option value="transactional">🎯 Transactional (Báo giá)</option>
+                                <option value="commercial">🔍 Commercial (Khảo sát)</option>
+                                <option value="informational">📖 Informational (Cẩm nang)</option>
+                                <option value="navigational">🏢 Navigational (Xưởng)</option>
+                                <option value="local">📍 Local SEO</option>
+                            </select>
+                        </div>
 
-                            <!-- 4. Intent Filter -->
-                            <div class="relative shrink-0 w-full sm:w-auto">
-                                <select id="kw-intent-filter" onchange="filterKeywords()" class="w-full sm:w-auto h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
-                                    <option value="all">🎯 Search Intent (Tất cả)</option>
-                                    <option value="transactional">🎯 Transactional (Báo giá)</option>
-                                    <option value="commercial">🔍 Commercial (Khảo sát)</option>
-                                    <option value="informational">📖 Informational (Cẩm nang)</option>
-                                    <option value="navigational">🏢 Navigational (Xưởng)</option>
-                                    <option value="local">📍 Local SEO</option>
-                                </select>
-                            </div>
+                        <!-- 5. Filter Ngày báo cáo (Chu kỳ) -->
+                        <div class="relative flex-1 min-w-[165px]">
+                            <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="w-full h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
+                                <option value="current">📅 30/09 vs 28/09/2026</option>
+                                <option value="7d">📅 7 Ngày (30/09 - 23/09)</option>
+                                <option value="30d">📅 30 Ngày (30/09 vs 30/08)</option>
+                            </select>
+                        </div>
 
-                            <!-- 5. Compare Cycle -->
-                            <div class="relative shrink-0 w-full sm:w-auto">
-                                <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="w-full sm:w-auto h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
-                                    <option value="current">30/09 vs 28/09/2026</option>
-                                    <option value="7d">7 Ngày (30/09 - 23/09)</option>
-                                    <option value="30d">30 Ngày (30/09 vs 30/08)</option>
-                                </select>
-                            </div>
+                        <!-- 6. Reset Button -->
+                        <button onclick="resetKeywordFilters()" type="button" class="h-9 px-3 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1.5 shrink-0 cursor-pointer" title="Đặt lại toàn bộ bộ lọc">
+                            <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                            <span>Đặt lại</span>
+                        </button>
+                    </div>
 
-                            <!-- 6. Reset Button -->
-                            <button onclick="resetKeywordFilters()" type="button" class="h-9 px-3 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1.5 shrink-0 cursor-pointer" title="Đặt lại bộ lọc">
-                                <i class="fa-solid fa-rotate-left text-[10px]"></i>
-                                <span>Đặt lại</span>
+                    <!-- Row 2: Search Input (Nằm riêng 1 hàng dưới, rộng rãi & trực quan) -->
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                        <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm kiếm từ khóa theo tên, cụm silo, URL landing page (ví dụ: sa bàn kiến trúc, bảng giá, quy hoạch, in 3d)..." class="w-full pl-9 pr-14 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition font-medium shadow-2xs">
+                        <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                            <button type="button" onclick="clearKeywordSearch()" id="btn-clear-kw-search" class="hidden w-4 h-4 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-[9px] items-center justify-center transition cursor-pointer" title="Xóa tìm kiếm">
+                                <i class="fa-solid fa-xmark"></i>
                             </button>
+                            <span class="px-1.5 py-0.5 bg-slate-200 text-slate-500 rounded text-[9px] font-mono font-bold">⌘K</span>
                         </div>
                     </div>
 
