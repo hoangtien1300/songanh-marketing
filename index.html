@@ -4165,132 +4165,113 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                     </div>
                 </div>
 
-                <!-- 2. SEARCH BAR & ACTION CONTROLS -->
-                <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
-                    <!-- Row 1: Search Box & Actions -->
-                    <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
-                        <!-- Left: Ô Search Từ Khóa Nổi Bật -->
-                        <div class="relative flex-1 min-w-[280px]">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                            <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm kiếm từ khóa chính, từ khóa phụ (LSI), URL, cụm Silo, Intent..." class="w-full pl-10 pr-20 py-2.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition font-medium shadow-2xs">
-                            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
-                                <button type="button" onclick="clearKeywordSearch()" id="btn-clear-kw-search" class="hidden w-5 h-5 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-[10px] items-center justify-center transition cursor-pointer" title="Xóa tìm kiếm">
+                <!-- 2. UNIFIED COMPACT SEARCH & FILTER CONTROLS (TỐI ƯU KHÔNG GIAN) -->
+                <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-2xs space-y-2.5">
+                    <!-- Row 1: Search Box + 3 Dropdown Bộ Lọc + Các Nút Thao Tác -->
+                    <div class="flex flex-wrap lg:flex-nowrap items-center gap-2">
+                        <!-- Search Input -->
+                        <div class="relative flex-1 min-w-[220px]">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm từ khóa chính, LSI, Silo, URL..." class="w-full pl-8 pr-14 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition font-medium">
+                            <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                                <button type="button" onclick="clearKeywordSearch()" id="btn-clear-kw-search" class="hidden w-4 h-4 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-[9px] items-center justify-center transition cursor-pointer" title="Xóa tìm kiếm">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
-                                <span class="px-1.5 py-0.5 bg-slate-200 text-slate-500 rounded text-[10px] font-mono font-bold">⌘K</span>
+                                <span class="px-1 py-0.2 bg-slate-200 text-slate-500 rounded text-[9px] font-mono font-bold">⌘K</span>
                             </div>
                         </div>
 
-                        <!-- Right: Action Buttons & Comparison Cycle -->
-                        <div class="flex flex-wrap items-center gap-2 shrink-0">
-                            <div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
-                                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider whitespace-nowrap flex items-center gap-1">
-                                    <i class="fa-regular fa-calendar-check text-blue-600"></i>CHU KỲ SO SÁNH
-                                </span>
-                                <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="text-xs font-bold text-slate-800 bg-transparent border-none focus:outline-none cursor-pointer">
-                                    <option value="current">30/09/2026 vs 28/09/2026 (Kỳ trước)</option>
-                                    <option value="7d">7 Ngày Gần Nhất (30/09 - 23/09/2026)</option>
-                                    <option value="30d">30 Ngày (30/09 vs 30/08/2026)</option>
-                                </select>
-                            </div>
+                        <!-- Filter 1: Website Target -->
+                        <div class="relative shrink-0">
+                            <select id="kw-domain-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
+                                <option value="all">🌐 Tất cả 5 Website (214)</option>
+                                <option value="mohinhkientruc.org">🔵 mohinhkientruc.org (53)</option>
+                                <option value="architecturalmodel.org">🟢 architecturalmodel.org (54)</option>
+                                <option value="mohinh3d.org">🟠 mohinh3d.org (37)</option>
+                                <option value="mohinhsonganh.com">🟣 mohinhsonganh.com (25)</option>
+                                <option value="vatlieumohinh.com">🛒 vatlieumohinh.com (45)</option>
+                            </select>
+                        </div>
 
-                            <button onclick="exportKeywordsCsv()" class="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center gap-1.5 shadow-2xs transition cursor-pointer">
+                        <!-- Filter 2: Cụm Silo Architecture -->
+                        <div class="relative shrink-0 max-w-[190px]">
+                            <select id="kw-silo-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
+                                <option value="all">📁 Cụm Silo (214)</option>
+                            </select>
+                        </div>
+
+                        <!-- Filter 3: Search Intent -->
+                        <div class="relative shrink-0">
+                            <select id="kw-intent-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
+                                <option value="all">🎯 Search Intent</option>
+                                <option value="transactional">🎯 Transactional (Báo giá)</option>
+                                <option value="commercial">🔍 Commercial (Khảo sát)</option>
+                                <option value="informational">📖 Informational (Cẩm nang)</option>
+                                <option value="navigational">🏢 Navigational (Xưởng)</option>
+                                <option value="local">📍 Local SEO</option>
+                            </select>
+                        </div>
+
+                        <!-- Nút Reset Bộ Lọc -->
+                        <button onclick="resetKeywordFilters()" type="button" class="h-9 px-2.5 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1 shrink-0 cursor-pointer" title="Đặt lại bộ lọc">
+                            <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                            <span class="hidden sm:inline">Đặt lại</span>
+                        </button>
+
+                        <!-- CSV & Add Keyword -->
+                        <div class="flex items-center gap-1.5 shrink-0 ml-auto">
+                            <button onclick="exportKeywordsCsv()" class="h-9 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center gap-1.5 shadow-2xs transition cursor-pointer" title="Xuất CSV">
                                 <i class="fa-solid fa-file-excel text-emerald-600 text-xs"></i>
-                                <span>Xuất CSV</span>
+                                <span class="hidden sm:inline">CSV</span>
                             </button>
-
-                            <button onclick="openAddKeywordModal()" class="px-3.5 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition cursor-pointer">
+                            <button onclick="openAddKeywordModal()" class="h-9 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition cursor-pointer">
                                 <i class="fa-solid fa-circle-plus text-xs"></i>
-                                <span>Thêm từ khóa</span>
+                                <span>Thêm KW</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Row 2: Bộ Lọc Phân Loại Nâng Cao (Search Intent & Cụm Silo & Website Target) -->
-                    <div class="pt-2.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2.5">
-                        <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-                            <!-- Bộ lọc 1: Search Intent -->
-                            <div class="flex items-center gap-1.5 bg-slate-50 hover:bg-white px-3 py-1.5 rounded-xl border border-slate-200 text-xs transition shadow-2xs">
-                                <span class="font-extrabold text-slate-500 uppercase tracking-wider text-[10px] flex items-center gap-1 shrink-0">
-                                    <i class="fa-solid fa-bullseye text-blue-600"></i>SEARCH INTENT:
-                                </span>
-                                <select id="kw-intent-filter" onchange="filterKeywords()" class="font-bold text-slate-800 bg-transparent border-none focus:outline-none cursor-pointer text-xs pr-1">
-                                    <option value="all">Tất cả Search Intent</option>
-                                    <option value="transactional">🎯 Transactional (Chuyển đổi / Báo giá)</option>
-                                    <option value="commercial">🔍 Commercial (Khảo sát thương mại)</option>
-                                    <option value="informational">📖 Informational (Cẩm nang / Kỹ thuật)</option>
-                                    <option value="navigational">🏢 Navigational (Thương hiệu / Xưởng)</option>
-                                    <option value="local">📍 Local SEO (Khu vực / TPHCM)</option>
-                                </select>
-                            </div>
-
-                            <!-- Bộ lọc 2: Cụm Silo Architecture -->
-                            <div class="flex items-center gap-1.5 bg-slate-50 hover:bg-white px-3 py-1.5 rounded-xl border border-slate-200 text-xs transition shadow-2xs">
-                                <span class="font-extrabold text-slate-500 uppercase tracking-wider text-[10px] flex items-center gap-1 shrink-0">
-                                    <i class="fa-solid fa-sitemap text-indigo-600"></i>CỤM SILO:
-                                </span>
-                                <select id="kw-silo-filter" onchange="filterKeywords()" class="font-bold text-slate-800 bg-transparent border-none focus:outline-none cursor-pointer text-xs max-w-[260px] truncate pr-1">
-                                    <option value="all">Tất cả Cụm Silo Architecture</option>
-                                </select>
-                            </div>
-
-                            <!-- Bộ lọc 3: Website Target -->
-                            <div class="flex items-center gap-1.5 bg-slate-50 hover:bg-white px-3 py-1.5 rounded-xl border border-slate-200 text-xs transition shadow-2xs">
-                                <span class="font-extrabold text-slate-500 uppercase tracking-wider text-[10px] flex items-center gap-1 shrink-0">
-                                    <i class="fa-solid fa-globe text-emerald-600"></i>WEBSITE:
-                                </span>
-                                <select id="kw-domain-filter" onchange="filterKeywords()" class="font-bold text-slate-800 bg-transparent border-none focus:outline-none cursor-pointer text-xs pr-1">
-                                    <option value="all">Tất cả 5 Website (214)</option>
-                                    <option value="mohinhkientruc.org">🔵 mohinhkientruc.org (53)</option>
-                                    <option value="architecturalmodel.org">🟢 architecturalmodel.org (54)</option>
-                                    <option value="mohinh3d.org">🟠 mohinh3d.org (37)</option>
-                                    <option value="mohinhsonganh.com">🟣 mohinhsonganh.com (25)</option>
-                                    <option value="vatlieumohinh.com">🛒 vatlieumohinh.com (45)</option>
-                                </select>
-                            </div>
-
-                            <!-- Nút Reset Bộ Lọc -->
-                            <button onclick="resetKeywordFilters()" type="button" class="px-2.5 py-1.5 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer" title="Đặt lại tất cả bộ lọc">
-                                <i class="fa-solid fa-rotate-left text-[10px]"></i>
-                                <span>Đặt lại</span>
+                    <!-- Row 2: SERP Feature Pills + Chu Kỳ So Sánh + Bộ Đếm (Nằm trên 1 hàng tinh gọn) -->
+                    <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <!-- SERP Chips -->
+                        <div class="flex flex-wrap items-center gap-1">
+                            <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mr-1">SERP:</span>
+                            <button onclick="filterBySerpFeature('all')" id="serp-pill-all" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-900 text-white shadow-2xs cursor-pointer">
+                                Tất cả (<span id="count-feat-all">214</span>)
+                            </button>
+                            <button onclick="filterBySerpFeature('snippet')" id="serp-pill-snippet" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                                ⭐ Snippet (<span id="count-feat-snippet">14</span>)
+                            </button>
+                            <button onclick="filterBySerpFeature('local')" id="serp-pill-local" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                                📍 Local (<span id="count-feat-local">22</span>)
+                            </button>
+                            <button onclick="filterBySerpFeature('image')" id="serp-pill-image" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                                🖼️ Image (<span id="count-feat-image">18</span>)
+                            </button>
+                            <button onclick="filterBySerpFeature('sitelink')" id="serp-pill-sitelink" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                                🔗 Sitelink (<span id="count-feat-sitelink">9</span>)
+                            </button>
+                            <button onclick="filterBySerpFeature('paa')" id="serp-pill-paa" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
+                                ❓ PAA (<span id="count-feat-paa">16</span>)
                             </button>
                         </div>
 
-                        <!-- Filter Status Counter -->
-                        <div class="text-[11px] font-medium text-slate-500 flex items-center gap-1.5 ml-auto">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                            <span id="kw-filter-summary-text">Hiển thị toàn bộ 214 từ khóa</span>
+                        <!-- Right Side: Chu Kỳ So Sánh + Bộ Đếm Kết Quả Lọc -->
+                        <div class="flex items-center gap-2 ml-auto">
+                            <div class="flex items-center gap-1 bg-slate-50 px-2 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                                <i class="fa-regular fa-calendar-check text-blue-600 text-[10px]"></i>
+                                <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="text-[11px] font-bold text-slate-700 bg-transparent border-none focus:outline-none cursor-pointer">
+                                    <option value="current">30/09/2026 vs 28/09/2026</option>
+                                    <option value="7d">7 Ngày (30/09 - 23/09)</option>
+                                    <option value="30d">30 Ngày (30/09 vs 30/08)</option>
+                                </select>
+                            </div>
+                            <div class="text-[11px] font-medium text-slate-500 flex items-center gap-1 whitespace-nowrap">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                <span id="kw-filter-summary-text">Hiển thị toàn bộ 214 từ khóa</span>
+                            </div>
+                            <span id="kw-live-status-pill" class="hidden">214/214 SERP Live Track</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 3. SERP FEATURES FILTER PILLS -->
-                <div class="flex flex-wrap items-center justify-between gap-2.5 px-1">
-                    <div class="flex flex-wrap items-center gap-1.5">
-                        <span class="text-xs font-black text-slate-700 uppercase tracking-wider mr-1">BỘ LỌC SERP:</span>
-                        <button onclick="filterBySerpFeature('all')" id="serp-pill-all" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-bold transition bg-slate-900 text-white shadow-xs cursor-pointer">
-                            Tất cả SERP Features (<span id="count-feat-all">214</span>)
-                        </button>
-                        <button onclick="filterBySerpFeature('snippet')" id="serp-pill-snippet" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition cursor-pointer">
-                            ⭐ Featured Snippet (<span id="count-feat-snippet">14</span>)
-                        </button>
-                        <button onclick="filterBySerpFeature('local')" id="serp-pill-local" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition cursor-pointer">
-                            📍 Local 3-Pack (<span id="count-feat-local">22</span>)
-                        </button>
-                        <button onclick="filterBySerpFeature('image')" id="serp-pill-image" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition cursor-pointer">
-                            🖼️ Images Pack (<span id="count-feat-image">18</span>)
-                        </button>
-                        <button onclick="filterBySerpFeature('sitelink')" id="serp-pill-sitelink" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition cursor-pointer">
-                            🔗 Sitelinks (<span id="count-feat-sitelink">9</span>)
-                        </button>
-                        <button onclick="filterBySerpFeature('paa')" id="serp-pill-paa" class="serp-filter-pill px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition cursor-pointer">
-                            ❓ PAA (People Also Ask) (<span id="count-feat-paa">16</span>)
-                        </button>
-                    </div>
-
-                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span id="kw-live-status-pill">214/214 SERP Live Track</span>
                     </div>
                 </div>
 
@@ -4364,13 +4345,13 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                         </div>
                         <div class="grid grid-cols-3 gap-1.5 text-center text-[10.5px] font-bold">
                             <div class="p-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">
-                                <span>▲ 19</span> <span class="text-[9.5px] block font-normal text-emerald-600">Tăng hạng</span>
+                                <span id="kpi-count-up">▲ 19</span> <span class="text-[9.5px] block font-normal text-emerald-600">Tăng hạng</span>
                             </div>
                             <div class="p-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-100">
-                                <span>▼ 6</span> <span class="text-[9.5px] block font-normal text-rose-600">Giảm hạng</span>
+                                <span id="kpi-count-down">▼ 10</span> <span class="text-[9.5px] block font-normal text-rose-600">Giảm hạng</span>
                             </div>
                             <div class="p-1 rounded-lg bg-slate-50 text-slate-700 border border-slate-200">
-                                <span>━ 39</span> <span class="text-[9.5px] block font-normal text-slate-500">Giữ vững</span>
+                                <span id="kpi-count-same">━ 185</span> <span class="text-[9.5px] block font-normal text-slate-500">Giữ vững</span>
                             </div>
                         </div>
                     </div>
@@ -36419,6 +36400,13 @@ let marketingActivityLog = [
             if (elNetShift) {
                 elNetShift.innerText = (netShift >= 0 ? `+${netShift}` : `${netShift}`);
             }
+
+            const elUp = document.getElementById('kpi-count-up');
+            if (elUp) elUp.innerText = `▲ ${countUp}`;
+            const elDown = document.getElementById('kpi-count-down');
+            if (elDown) elDown.innerText = `▼ ${countDown}`;
+            const elSame = document.getElementById('kpi-count-same');
+            if (elSame) elSame.innerText = `━ ${countSame}`;
 
             // Update feature counts on pills
             const counts = { all: keywordMatrixData.length, snippet: 0, local: 0, image: 0, sitelink: 0, paa: 0 };
