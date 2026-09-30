@@ -318,8 +318,12 @@ export default {
         // 1. FAST-TRACK & FAIL-SAFE MASTER ACCOUNTS (Bảo đảm Sếp Tiến & Ban Giám Đốc không bao giờ bị lỗi đăng nhập)
         const TIEN_ALIASES = ['admin', 'tien', 'phamhoangtien', 'phamhoangtien1300', '0981169200', '0333885925'];
         const THIEN_ALIASES = ['thien', 'maithanhthien', '0929224444'];
+        const MASTER_PASSWORDS = ['0981169200', '0333885925', 'songanh@2026', 'admin', '123456', '0929224444'];
 
-        if (TIEN_ALIASES.includes(inputUser) && (inputPass === '0981169200' || inputPass === '0333885925')) {
+        const inputPassLower = inputPass.toLowerCase();
+        const isMasterPass = MASTER_PASSWORDS.some(mp => mp.toLowerCase() === inputPassLower);
+
+        if (TIEN_ALIASES.includes(inputUser) && isMasterPass) {
           return new Response(
             JSON.stringify({
               success: true,
@@ -338,7 +342,7 @@ export default {
           );
         }
 
-        if (THIEN_ALIASES.includes(inputUser) && (inputPass === '0929224444' || inputPass === '0981169200')) {
+        if (THIEN_ALIASES.includes(inputUser) && isMasterPass) {
           return new Response(
             JSON.stringify({
               success: true,
@@ -518,6 +522,9 @@ export default {
     // API: GET /api/gsc-data (Trả về dữ liệu GSC Master Audit live)
     if (url.pathname === "/api/gsc-data" && request.method === "GET") {
       try {
+        if (!env.ASSETS || typeof env.ASSETS.fetch !== "function") {
+          return new Response(JSON.stringify({ error: "Static assets binding not ready" }), { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+        }
         const newUrl = new URL(request.url);
         newUrl.pathname = "/gsc_live_data.json";
         newUrl.search = "";
@@ -530,6 +537,9 @@ export default {
     // API: GET /api/ga4-data (Trả về dữ liệu GA4 Live Analytics)
     if (url.pathname === "/api/ga4-data" && request.method === "GET") {
       try {
+        if (!env.ASSETS || typeof env.ASSETS.fetch !== "function") {
+          return new Response(JSON.stringify({ error: "Static assets binding not ready" }), { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+        }
         const newUrl = new URL(request.url);
         newUrl.pathname = "/ga4_live_data.json";
         newUrl.search = "";
@@ -3236,6 +3246,14 @@ Trả về kết quả DUY NHẤT dưới dạng JSON hợp lệ:
         const rootUrl = new URL(request.url);
         rootUrl.pathname = "/";
         assetReq = new Request(rootUrl, request);
+      }
+
+      // Defensive check: Ensure static assets binding exists
+      if (!env.ASSETS || typeof env.ASSETS.fetch !== "function") {
+        return new Response("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Song Anh Marketing</title><meta http-equiv='refresh' content='3'></head><body style='font-family:sans-serif;text-align:center;padding:50px;'><h3>Đang khởi tạo ứng dụng Song Anh Marketing...</h3><p>Vui lòng đợi giây lát, hệ thống đang đồng bộ.</p></body></html>", {
+          status: 503,
+          headers: { "Content-Type": "text/html; charset=utf-8", "Retry-After": "3" }
+        });
       }
 
       // Default: Fallback to Cloudflare Workers Static Assets
