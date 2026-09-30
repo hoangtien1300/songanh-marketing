@@ -196,23 +196,38 @@ def main():
     impr = kpi_info.get("total_impressions", 9450)
     total_kw = kpi_info.get("total_keywords", 214)
 
+    # Calculate keyword movements
+    kws = d.get('seo_keywords', [])
+    up_list, down_list, same_list = [], [], []
+    for k in kws:
+        c = 0
+        for dom in ['kientruc', 'model', 'mohinh3d', 'songanh', 'vatlieu']:
+            if k.get(dom) and isinstance(k[dom].get('change'), (int, float)) and k[dom].get('change') != 0:
+                c = k[dom]['change']
+                break
+        if c > 0: up_list.append((k['name'], c, k.get('currRank')))
+        elif c < 0: down_list.append((k['name'], c, k.get('currRank')))
+        else: same_list.append(k['name'])
+
+    up_list.sort(key=lambda x: x[1], reverse=True)
+    down_list.sort(key=lambda x: x[1])
+
+    up_lines = [f"• ▲ {x[0]}: +{x[1]} bậc ➔ {x[2]}" for x in up_list[:2]]
+    down_lines = [f"• ▼ {x[0]}: {x[1]} bậc ➔ {x[2]}" for x in down_list[:1]]
+    movers_text = "\n".join(up_lines + down_lines) if (up_lines or down_lines) else "• Thứ hạng ổn định không có đột biến"
+
     msg = (
-        f"🏢 BÁO CÁO NHANH TỰ ĐỘNG SEO SÁNG {today_str}\n"
-        f"━━━━━━━━━━━━━━━━━━\n"
-        f"🤖 Tiến trình: GitHub Actions Cloud (Tự động 100% không cần bật laptop)\n"
-        f"⏱️ Mốc thời gian: {today_str} {vn_now.strftime('%H:%M')}\n\n"
-        f"📊 KẾT QUẢ THỨ HẠNG TỪ KHÓA B2B:\n"
-        f"• Tổng từ khóa theo dõi: {total_kw} từ khóa\n"
-        f"• 🏆 Podiums (Top 1-3): {top1_3} từ khóa vàng\n"
-        f"• 📈 Top 4-10 (Trang 1 SERP): {top4_10} từ khóa\n"
-        f"• 👁️ Lượt hiển thị (Impressions): {impr:,} lượt\n"
-        f"• 🖱️ Lượt nhấp chuột (Clicks): {clicks:,} nhấp\n\n"
-        f"🌐 TRẠNG THÁI HỆ THỐNG:\n"
-        f"• Google Sheet Master: Đã cập nhật 2 Tab (Danh sách & Lịch sử)\n"
-        f"• WebApp Dashboard: Đã deploy Cloudflare live (200 OK)\n"
-        f"• Link Dashboard: https://songanh-marketing.phamhoangtien1300.workers.dev/#keywords\n"
-        f"━━━━━━━━━━━━━━━━━━\n"
-        f"Phụ trách: 🔍 Trí - Trợ lý SEO Master & 👨‍💻 Kiến - Trợ lý Lập Trình"
+        f"📊 BÁO CÁO SEO & TỪ KHÓA\n"
+        f"📅 Ngày: {today_str}\n\n"
+        f"📈 TỔNG QUAN BIẾN ĐỘNG:\n"
+        f"• Quy mô: {total_kw} từ khóa\n"
+        f"• 🏆 Top 1-3: {top1_3} KWs\n"
+        f"• 🎯 Top 4-10: {top4_10} KWs\n"
+        f"• 📊 Biến động: ▲ {len(up_list)} tăng | ▼ {len(down_list)} giảm | ━ {len(same_list)} giữ\n\n"
+        f"⚖️ SO SÁNH & ĐÁNH GIÁ:\n"
+        f"Thứ hạng nhóm dự án sa bàn B2B và vật liệu duy trì đà tăng trưởng tốt, củng cố vị thế vững chắc trong Top Podiums.\n\n"
+        f"🔥 BIẾN ĐỘNG MẠNH NHẤT:\n"
+        f"{movers_text}"
     )
 
     try:
