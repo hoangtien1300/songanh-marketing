@@ -4123,56 +4123,202 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
             </div>
 
             <div id="panel-keywords" class="module-panel hidden space-y-4">
-                <!-- 1. HEADER TOPBAR: SONG ANH SCALE MODELS & LIVE SERP SYNC -->
-                <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shadow-xs">
-                    <!-- Brand & Live Sync -->
-                    <div class="flex flex-wrap items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-900 to-blue-600 text-white flex items-center justify-center font-black text-lg shadow-md shrink-0">
+                <!-- 1. TOP COMMAND CONTEXT BAR (STITCH LAYOUT) -->
+                <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 flex flex-col xl:flex-row xl:items-center justify-between gap-4 shadow-xs">
+                    <div class="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-900 to-blue-700 text-white flex items-center justify-center font-black text-xl shadow-md shrink-0">
                             A
                         </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h2 class="font-heading font-black text-base sm:text-lg text-slate-900 tracking-tight">SONG ANH</h2>
-                                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 font-bold text-[10px] tracking-wider uppercase">SCALE MODELS</span>
+                        <div class="flex flex-col min-w-0">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h1 class="font-heading font-black text-base sm:text-lg text-slate-900 tracking-tight">
+                                    BẢNG THEO DÕI THỨ HẠNG TỪ KHÓA SEO ĐA TÊN MIỀN
+                                </h1>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 flex items-center gap-1.5 shadow-2xs">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Live SERP API
+                                </span>
                             </div>
-                            <p class="text-[11px] font-medium text-slate-500">SEO Rank Intelligence & Multi-Domain Suite</p>
-                        </div>
-                        <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold shadow-2xs">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span>Live GSC & SERP Sync • Updated 15m ago</span>
+                            <p class="text-xs text-slate-500 font-medium truncate mt-0.5">
+                                Hệ thống giám sát vị trí từ khóa thời gian thực trên 5 website: <span class="font-bold text-blue-600">mohinhkientruc.org</span>, <span class="font-bold text-teal-600">architecturalmodel.org</span>, <span class="font-bold text-amber-600">mohinhsonganh.com</span>, <span class="font-bold text-purple-600">mohinh3d.org</span>, <span class="font-bold text-rose-600">vatlieumohinh.com</span>
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Right Controls: Date, Sync, Sub-Tabs & User -->
-                    <div class="flex flex-wrap items-center justify-between md:justify-end gap-2">
-                        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 text-xs font-bold shadow-2xs">
-                            <i class="fa-regular fa-calendar text-slate-400"></i>
-                            <span id="kw-top-date-label">Hôm nay, 30/09/2026</span>
+                    <div class="flex items-center gap-2 flex-wrap shrink-0 justify-between xl:justify-end">
+                        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold shadow-2xs">
+                            <i class="fa-regular fa-clock text-blue-600"></i>
+                            <span>Cập nhật: <strong id="kw-top-date-label" class="text-slate-900">30/09/2026</strong></span>
                         </div>
-                        <button onclick="syncGoogleSerpLive()" id="btn-sync-serp" class="px-3.5 py-1.5 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white text-xs font-bold flex items-center gap-2 shadow-xs transition cursor-pointer">
+                        <button onclick="syncGoogleSerpLive()" id="btn-sync-serp" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white text-xs font-bold shadow-xs transition cursor-pointer">
                             <i id="icon-sync-serp" class="fa-solid fa-arrows-rotate text-xs"></i>
                             <span>Đồng bộ Google SERP</span>
                         </button>
-                        <div class="flex items-center border-l border-slate-200 pl-2 ml-1 space-x-1">
-                            <button type="button" onclick="selectModule('home')" class="px-2.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-blue-700 transition cursor-pointer">Tổng Quan</button>
-                            <button type="button" class="px-2.5 py-1.5 text-xs font-extrabold text-blue-700 border-b-2 border-blue-600">Từ Khóa SERP</button>
-                            <button type="button" onclick="selectModule('gsc')" class="px-2.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-blue-700 transition cursor-pointer">Hiệu Suất Domain</button>
-                            <button type="button" onclick="selectModule('competitor')" class="px-2.5 py-1.5 text-xs font-semibold text-slate-600 hover:text-blue-700 transition cursor-pointer">Đối Thủ Ngành</button>
+                        <button onclick="exportKeywordsCsv()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 font-bold text-xs shadow-2xs transition cursor-pointer" title="Xuất CSV">
+                            <i class="fa-solid fa-file-excel text-emerald-600 text-xs"></i>
+                            <span class="hidden sm:inline">Xuất CSV</span>
+                        </button>
+                        <button onclick="openAddKeywordModal()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold text-xs shadow-xs transition cursor-pointer">
+                            <i class="fa-solid fa-circle-plus text-xs"></i>
+                            <span>+ Thêm Từ Khóa</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. KPI METRIC SUMMARY GRID (STITCH BENTO 4 CARDS) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                    <!-- Card 1: Tổng từ khóa theo dõi -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col justify-between shadow-2xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">TỔNG SỐ TỪ KHÓA</span>
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-700">
+                                <i class="fa-solid fa-magnifying-glass-chart text-sm"></i>
+                            </span>
                         </div>
-                        <div class="w-8 h-8 rounded-full bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center font-bold text-xs shrink-0" title="Admin Steven">
-                            <i class="fa-solid fa-user text-xs"></i>
+                        <div class="my-3 flex items-baseline gap-2">
+                            <span id="kpi-total-keywords" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">214</span>
+                            <span class="text-xs font-bold text-slate-500">từ khóa mục tiêu</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500 font-medium pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-extrabold text-[10.5px] flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-trend-up text-[9px]"></i> +12 từ mới
+                            </span>
+                            <span class="text-slate-400 text-[11px]">so với 7 ngày trước</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Chiếm lĩnh Top 1 - 3 -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col justify-between shadow-2xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">CHIẾM LĨNH TOP 1 - 3</span>
+                            <span class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+                                <i class="fa-solid fa-medal text-sm"></i>
+                            </span>
+                        </div>
+                        <div class="my-3 flex items-baseline gap-2">
+                            <span id="kpi-top1-3" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">25</span>
+                            <span class="text-xs font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">11.7% tỷ trọng</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500 font-medium pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-extrabold text-[10.5px] flex items-center gap-1">
+                                ▲ +4 từ
+                            </span>
+                            <span class="text-slate-400 text-[11px]">vào cụm Podium Top 3</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Trang 1 SERP (Top 4 - 10) -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col justify-between shadow-2xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">TRANG 1 SERP (TOP 4 - 10)</span>
+                            <span class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa-solid fa-circle-check text-sm"></i>
+                            </span>
+                        </div>
+                        <div class="my-3 flex items-baseline gap-2">
+                            <span id="kpi-top4-10" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">25</span>
+                            <span class="text-xs font-extrabold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-100">Tổng Top 10: 50 từ</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500 font-medium pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-extrabold text-[10.5px]">Ổn định</span>
+                            <span class="text-slate-400 text-[11px]">CTR bình quân 8.4%</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Biến động SERP 7 ngày & Phân bổ Domain -->
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 flex flex-col justify-between shadow-2xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">BIẾN ĐỘNG SERP 7 NGÀY</span>
+                            <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
+                                Net Shift: <strong id="kpi-net-shift">+13</strong>
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-1.5 text-center text-xs font-bold my-2">
+                            <div class="p-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/60 shadow-2xs">
+                                <span id="kpi-count-up" class="block font-black text-sm">▲ 19</span>
+                                <span class="text-[10px] font-semibold text-emerald-700">Tăng hạng</span>
+                            </div>
+                            <div class="p-1.5 rounded-xl bg-rose-50 text-rose-800 border border-rose-200/60 shadow-2xs">
+                                <span id="kpi-count-down" class="block font-black text-sm">▼ 10</span>
+                                <span class="text-[10px] font-semibold text-rose-700">Giảm hạng</span>
+                            </div>
+                            <div class="p-1.5 rounded-xl bg-slate-50 text-slate-700 border border-slate-200 shadow-2xs">
+                                <span id="kpi-count-same" class="block font-black text-sm">━ 185</span>
+                                <span class="text-[10px] font-semibold text-slate-500">Giữ vững</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-500 font-medium pt-2 border-t border-slate-100">
+                            <span class="text-slate-500">Bao phủ thị trường</span>
+                            <span class="font-extrabold text-emerald-700">64.8% CTR Share</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. UNIFIED COMPACT SEARCH & FILTER CONTROLS (TỐI ƯU KHÔNG GIAN) -->
-                <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-2xs space-y-2.5">
-                    <!-- Row 1: Search Box + 3 Dropdown Bộ Lọc + Các Nút Thao Tác -->
-                    <div class="flex flex-wrap lg:flex-nowrap items-center gap-2">
+                <!-- 3. MULTI-DOMAIN TABS & CONTROL RIBBON (STITCH SYSTEM) -->
+                <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs space-y-3.5">
+                    <!-- Row 1: Domain Selection Pills & Legend Ribbon -->
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                        <!-- Domain Pills -->
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <button onclick="filterKeywordsByDomainPill('all')" data-domain="all" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-blue-700 text-white font-bold text-xs shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span>Tất Cả 5 Website</span>
+                                <span class="opacity-80 text-[10.5px]">(214)</span>
+                            </button>
+                            <button onclick="filterKeywordsByDomainPill('mohinhkientruc.org')" data-domain="mohinhkientruc.org" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                                <span>mohinhkientruc.org</span>
+                                <span class="text-slate-400 text-[10.5px]">(Chính B2B)</span>
+                            </button>
+                            <button onclick="filterKeywordsByDomainPill('architecturalmodel.org')" data-domain="architecturalmodel.org" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                                <span>architecturalmodel.org</span>
+                                <span class="text-slate-400 text-[10.5px]">(Quốc tế)</span>
+                            </button>
+                            <button onclick="filterKeywordsByDomainPill('mohinhsonganh.com')" data-domain="mohinhsonganh.com" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                <span>mohinhsonganh.com</span>
+                                <span class="text-slate-400 text-[10.5px]">(Thương hiệu)</span>
+                            </button>
+                            <button onclick="filterKeywordsByDomainPill('mohinh3d.org')" data-domain="mohinh3d.org" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                                <span>mohinh3d.org</span>
+                                <span class="text-slate-400 text-[10.5px]">(Vật liệu &amp; In 3D)</span>
+                            </button>
+                            <button onclick="filterKeywordsByDomainPill('vatlieumohinh.com')" data-domain="vatlieumohinh.com" class="kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer">
+                                <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                                <span>vatlieumohinh.com</span>
+                                <span class="text-slate-400 text-[10.5px]">(Bán lẻ)</span>
+                            </button>
+                        </div>
+
+                        <!-- Legend Ribbon (Chú giải màu sắc chuẩn Stitch) -->
+                        <div class="flex items-center gap-3 text-xs flex-wrap shrink-0">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-5 h-5 rounded bg-emerald-100 border border-emerald-300 flex items-center justify-center font-black text-[10.5px] text-emerald-800">1</span>
+                                <span class="text-slate-700 font-bold text-[11px]">Top 1-3</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-5 h-5 rounded bg-amber-100 border border-amber-300 flex items-center justify-center font-black text-[10.5px] text-amber-800">5</span>
+                                <span class="text-slate-700 font-bold text-[11px]">Top 4-10</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-5 h-5 rounded bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-[10.5px] text-slate-700">14</span>
+                                <span class="text-slate-500 font-medium text-[11px]">&gt;10</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 pl-2 border-l border-slate-200 text-[11px] font-bold">
+                                <span class="text-emerald-600">▲ Tăng</span>
+                                <span class="text-slate-400">― Giữ</span>
+                                <span class="text-rose-600">▼ Giảm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Search, Quick Filters & Controls Toolbar -->
+                    <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
                         <!-- Search Input -->
-                        <div class="relative flex-1 min-w-[220px]">
-                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                            <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm từ khóa chính, LSI, Silo, URL..." class="w-full pl-8 pr-14 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition font-medium">
+                        <div class="relative flex-1 min-w-[240px]">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="kw-search-input" oninput="filterKeywords()" placeholder="🔍 Tìm kiếm từ khóa (sa bàn kiến trúc, làm mô hình, bảng giá, in 3d)..." class="w-full pl-9 pr-14 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl text-slate-800 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 transition font-medium">
                             <div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
                                 <button type="button" onclick="clearKeywordSearch()" id="btn-clear-kw-search" class="hidden w-4 h-4 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-600 text-[9px] items-center justify-center transition cursor-pointer" title="Xóa tìm kiếm">
                                     <i class="fa-solid fa-xmark"></i>
@@ -4181,246 +4327,143 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                             </div>
                         </div>
 
-                        <!-- Filter 1: Website Target -->
-                        <div class="relative shrink-0">
-                            <select id="kw-domain-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
-                                <option value="all">🌐 Tất cả 5 Website (214)</option>
-                                <option value="mohinhkientruc.org">🔵 mohinhkientruc.org (53)</option>
-                                <option value="architecturalmodel.org">🟢 architecturalmodel.org (54)</option>
-                                <option value="mohinh3d.org">🟠 mohinh3d.org (37)</option>
-                                <option value="mohinhsonganh.com">🟣 mohinhsonganh.com (25)</option>
-                                <option value="vatlieumohinh.com">🛒 vatlieumohinh.com (45)</option>
+                        <!-- Quick Filters Group -->
+                        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl flex-wrap shrink-0">
+                            <button onclick="setKwQuickFilter('all')" data-quick="all" class="kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-xs transition cursor-pointer">
+                                Tất cả (214)
+                            </button>
+                            <button onclick="setKwQuickFilter('top1-3')" data-quick="top1-3" class="kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium text-xs border border-slate-200 transition cursor-pointer">
+                                Top 1-3 (25)
+                            </button>
+                            <button onclick="setKwQuickFilter('top4-10')" data-quick="top4-10" class="kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium text-xs border border-slate-200 transition cursor-pointer">
+                                Top 4-10 (25)
+                            </button>
+                            <button onclick="setKwQuickFilter('shift')" data-quick="shift" class="kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium text-xs border border-slate-200 transition cursor-pointer">
+                                Biến động ⚡ (29)
+                            </button>
+                            <button onclick="setKwQuickFilter('optimize')" data-quick="optimize" class="kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 text-rose-600 font-medium text-xs border border-slate-200 transition cursor-pointer">
+                                Cần tối ưu (22)
+                            </button>
+                        </div>
+
+                        <!-- Dropdowns Controls -->
+                        <div class="flex items-center gap-1.5 flex-wrap shrink-0">
+                            <!-- Hidden Domain Filter (Đồng bộ với JS) -->
+                            <select id="kw-domain-filter" onchange="filterKeywords()" class="hidden">
+                                <option value="all">all</option>
+                                <option value="mohinhkientruc.org">mohinhkientruc.org</option>
+                                <option value="architecturalmodel.org">architecturalmodel.org</option>
+                                <option value="mohinhsonganh.com">mohinhsonganh.com</option>
+                                <option value="mohinh3d.org">mohinh3d.org</option>
+                                <option value="vatlieumohinh.com">vatlieumohinh.com</option>
                             </select>
-                        </div>
 
-                        <!-- Filter 2: Cụm Silo Architecture -->
-                        <div class="relative shrink-0 max-w-[190px]">
-                            <select id="kw-silo-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
-                                <option value="all">📁 Cụm Silo (214)</option>
-                            </select>
-                        </div>
+                            <!-- Silo Filter -->
+                            <div class="relative shrink-0 max-w-[170px]">
+                                <select id="kw-silo-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition truncate">
+                                    <option value="all">📁 Cụm Silo (214)</option>
+                                </select>
+                            </div>
 
-                        <!-- Filter 3: Search Intent -->
-                        <div class="relative shrink-0">
-                            <select id="kw-intent-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
-                                <option value="all">🎯 Search Intent</option>
-                                <option value="transactional">🎯 Transactional (Báo giá)</option>
-                                <option value="commercial">🔍 Commercial (Khảo sát)</option>
-                                <option value="informational">📖 Informational (Cẩm nang)</option>
-                                <option value="navigational">🏢 Navigational (Xưởng)</option>
-                                <option value="local">📍 Local SEO</option>
-                            </select>
-                        </div>
+                            <!-- Intent Filter -->
+                            <div class="relative shrink-0">
+                                <select id="kw-intent-filter" onchange="filterKeywords()" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
+                                    <option value="all">🎯 Search Intent</option>
+                                    <option value="transactional">🎯 Transactional (Báo giá)</option>
+                                    <option value="commercial">🔍 Commercial (Khảo sát)</option>
+                                    <option value="informational">📖 Informational (Cẩm nang)</option>
+                                    <option value="navigational">🏢 Navigational (Xưởng)</option>
+                                    <option value="local">📍 Local SEO</option>
+                                </select>
+                            </div>
 
-                        <!-- Nút Reset Bộ Lọc -->
-                        <button onclick="resetKeywordFilters()" type="button" class="h-9 px-2.5 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1 shrink-0 cursor-pointer" title="Đặt lại bộ lọc">
-                            <i class="fa-solid fa-rotate-left text-[10px]"></i>
-                            <span class="hidden sm:inline">Đặt lại</span>
-                        </button>
-
-                        <!-- CSV & Add Keyword -->
-                        <div class="flex items-center gap-1.5 shrink-0 ml-auto">
-                            <button onclick="exportKeywordsCsv()" class="h-9 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs flex items-center gap-1.5 shadow-2xs transition cursor-pointer" title="Xuất CSV">
-                                <i class="fa-solid fa-file-excel text-emerald-600 text-xs"></i>
-                                <span class="hidden sm:inline">CSV</span>
-                            </button>
-                            <button onclick="openAddKeywordModal()" class="h-9 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition cursor-pointer">
-                                <i class="fa-solid fa-circle-plus text-xs"></i>
-                                <span>Thêm KW</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Row 2: SERP Feature Pills + Chu Kỳ So Sánh + Bộ Đếm (Nằm trên 1 hàng tinh gọn) -->
-                    <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
-                        <!-- SERP Chips -->
-                        <div class="flex flex-wrap items-center gap-1">
-                            <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider mr-1">SERP:</span>
-                            <button onclick="filterBySerpFeature('all')" id="serp-pill-all" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-bold transition bg-slate-900 text-white shadow-2xs cursor-pointer">
-                                Tất cả (<span id="count-feat-all">214</span>)
-                            </button>
-                            <button onclick="filterBySerpFeature('snippet')" id="serp-pill-snippet" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-                                ⭐ Snippet (<span id="count-feat-snippet">14</span>)
-                            </button>
-                            <button onclick="filterBySerpFeature('local')" id="serp-pill-local" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-                                📍 Local (<span id="count-feat-local">22</span>)
-                            </button>
-                            <button onclick="filterBySerpFeature('image')" id="serp-pill-image" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-                                🖼️ Image (<span id="count-feat-image">18</span>)
-                            </button>
-                            <button onclick="filterBySerpFeature('sitelink')" id="serp-pill-sitelink" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-                                🔗 Sitelink (<span id="count-feat-sitelink">9</span>)
-                            </button>
-                            <button onclick="filterBySerpFeature('paa')" id="serp-pill-paa" class="serp-filter-pill px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer">
-                                ❓ PAA (<span id="count-feat-paa">16</span>)
-                            </button>
-                        </div>
-
-                        <!-- Right Side: Chu Kỳ So Sánh + Bộ Đếm Kết Quả Lọc -->
-                        <div class="flex items-center gap-2 ml-auto">
-                            <div class="flex items-center gap-1 bg-slate-50 px-2 py-1 rounded-lg border border-slate-200 shadow-2xs">
-                                <i class="fa-regular fa-calendar-check text-blue-600 text-[10px]"></i>
-                                <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="text-[11px] font-bold text-slate-700 bg-transparent border-none focus:outline-none cursor-pointer">
-                                    <option value="current">30/09/2026 vs 28/09/2026</option>
+                            <!-- Compare Cycle -->
+                            <div class="relative shrink-0">
+                                <select id="kw-compare-cycle" onchange="changeKeywordCycle(this.value)" class="h-9 pl-2.5 pr-7 text-xs font-bold text-slate-700 bg-slate-50 hover:bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-blue-600 cursor-pointer shadow-2xs transition">
+                                    <option value="current">30/09 vs 28/09/2026</option>
                                     <option value="7d">7 Ngày (30/09 - 23/09)</option>
                                     <option value="30d">30 Ngày (30/09 vs 30/08)</option>
                                 </select>
                             </div>
-                            <div class="text-[11px] font-medium text-slate-500 flex items-center gap-1 whitespace-nowrap">
-                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                <span id="kw-filter-summary-text">Hiển thị toàn bộ 214 từ khóa</span>
-                            </div>
-                            <span id="kw-live-status-pill" class="hidden">214/214 SERP Live Track</span>
+
+                            <!-- Reset Button -->
+                            <button onclick="resetKeywordFilters()" type="button" class="h-9 px-2.5 rounded-xl border border-dashed border-slate-300 hover:border-rose-400 hover:bg-rose-50 text-slate-500 hover:text-rose-600 text-xs font-bold transition flex items-center gap-1 shrink-0 cursor-pointer" title="Đặt lại bộ lọc">
+                                <i class="fa-solid fa-rotate-left text-[10px]"></i>
+                                <span class="hidden sm:inline">Đặt lại</span>
+                            </button>
                         </div>
                     </div>
+
+                    <!-- Hidden helper badges for JS binding -->
+                    <span id="kw-filter-summary-text" class="hidden">Hiển thị toàn bộ 214 từ khóa</span>
+                    <span id="kw-live-status-pill" class="hidden">214/214 SERP Live Track</span>
                 </div>
 
-                <!-- 4. 4 KPI SUMMARY METRIC CARDS -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                    <!-- Card 1: Tổng từ khóa theo dõi -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between shadow-2xs">
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">TỔNG TỪ KHÓA THEO DÕI</span>
-                                <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 text-[10px] font-extrabold">100% Crawled</span>
-                            </div>
-                            <div class="flex items-baseline gap-2">
-                                <span id="kpi-total-keywords" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">214</span>
-                                <span class="text-xs font-bold text-slate-500">Từ khóa mục tiêu</span>
-                            </div>
+                <!-- 4. SCIENTIFIC HIGH-DENSITY RANK TRACKING TABLE (STITCH LAYOUT) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col">
+                    <!-- Horizontal Scroll Hint Helper -->
+                    <div class="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200 text-xs text-slate-600 font-medium">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-arrows-left-right text-blue-600"></i>
+                            <span class="font-bold">Bảng theo dõi đa tên miền hỗ trợ cuộn ngang chi tiết</span>
                         </div>
-                        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Toàn bộ 5 domain đang hoạt động</span>
-                            <span class="text-emerald-700 font-bold">100% Crawled</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Top 3 Google SERP -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between shadow-2xs">
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">TOP 3 GOOGLE SERP</span>
-                                <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 text-[10px] font-extrabold flex items-center gap-1"><i class="fa-solid fa-arrow-up text-[8px]"></i>+4 tuần này</span>
-                            </div>
-                            <div class="flex items-baseline gap-2">
-                                <span id="kpi-top1-3" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">28</span>
-                                <span class="text-xs font-bold text-slate-500">Vị trí Podiums</span>
-                            </div>
-                        </div>
-                        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                            <span class="text-emerald-600 font-bold flex items-center gap-1"><i class="fa-solid fa-chart-line text-[10px]"></i>Chiếm tỷ lệ cao</span>
-                            <span class="text-slate-500">Top Podiums</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Top 10 (Trang 1 SERP) -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between shadow-2xs">
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">TOP 10 (TRANG 1 SERP)</span>
-                                <span class="px-2 py-0.5 rounded-md bg-blue-100 text-blue-700 text-[10px] font-extrabold">Top 10 SERP</span>
-                            </div>
-                            <div class="flex items-baseline gap-2">
-                                <span id="kpi-top4-10" class="text-3xl sm:text-4xl font-black font-heading text-slate-900">52</span>
-                                <span class="text-xs font-bold text-slate-500">/ 214 Keyword Pool</span>
-                            </div>
-                        </div>
-                        <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                            <span>Tỷ lệ thâm nhập Trang 1</span>
-                            <span class="text-blue-700 font-bold">5 Website Target</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Biến động SERP 7 ngày -->
-                    <div class="light-card p-4 rounded-2xl border border-slate-200 bg-white flex flex-col justify-between shadow-2xs">
-                        <div>
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider">BIẾN ĐỘNG SERP 7 NGÀY</span>
-                                <span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[10px] font-extrabold">Độ nhạy cao</span>
-                            </div>
-                            <div class="flex items-baseline gap-2 mb-2">
-                                <span id="kpi-net-shift" class="text-3xl sm:text-4xl font-black font-heading text-emerald-600">+13</span>
-                                <span class="text-xs font-bold text-slate-500">Chỉ số ròng (Net Shift)</span>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-1.5 text-center text-[10.5px] font-bold">
-                            <div class="p-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-100">
-                                <span id="kpi-count-up">▲ 19</span> <span class="text-[9.5px] block font-normal text-emerald-600">Tăng hạng</span>
-                            </div>
-                            <div class="p-1 rounded-lg bg-rose-50 text-rose-700 border border-rose-100">
-                                <span id="kpi-count-down">▼ 10</span> <span class="text-[9.5px] block font-normal text-rose-600">Giảm hạng</span>
-                            </div>
-                            <div class="p-1 rounded-lg bg-slate-50 text-slate-700 border border-slate-200">
-                                <span id="kpi-count-same">━ 185</span> <span class="text-[9.5px] block font-normal text-slate-500">Giữ vững</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. BẢNG MA TRẬN THỨ HẠNG ĐA DOMAIN (MULTI-DOMAIN RANK MATRIX) -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-xs space-y-3 p-4 sm:p-5">
-                    <!-- Table Title & Description -->
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-sm">
-                                <i class="fa-solid fa-table-cells"></i>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="font-heading font-extrabold text-sm sm:text-base text-slate-900">Bảng Ma Trận Thứ Hạng Đa Domain</h3>
-                                <span id="kw-table-badge" class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-xs border border-blue-100">8 từ khóa chiến lược</span>
-                            </div>
-                        </div>
-                        <div class="text-xs text-slate-400 font-medium italic">
-                            Nhấp vào hàng để mở Pop-up chi tiết SERP, Trend &amp; URL Landing Page
+                        <div class="flex items-center gap-2">
+                            <span id="kw-table-badge" class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[11px] border border-blue-100">214 từ khóa mục tiêu</span>
+                            <span class="text-[11px] text-slate-400 hidden sm:inline">• Kéo sang phải để xem đủ 5 website và tiện ích mở rộng</span>
                         </div>
                     </div>
 
                     <!-- 📱 Mobile Card View (< 640px) -->
-                    <div id="kw-mobile-cards" class="space-y-3">
+                    <div id="kw-mobile-cards" class="sm:hidden p-3 space-y-3">
                         <!-- Dynamic Mobile Multi-Domain Cards -->
                     </div>
 
-                    <!-- 💻 Desktop Table View (>= 640px) -->
-                    <div id="kw-table-container" class="overflow-x-auto rounded-xl border border-slate-200">
-                        <table class="w-full text-left text-xs border-collapse min-w-[860px]">
+                    <!-- 💻 Desktop Table View (>= 640px) with Sticky Columns & Horizontal Scroll -->
+                    <div id="kw-table-container" class="hidden sm:block overflow-x-auto w-full">
+                        <table class="min-w-[1440px] w-full text-left border-collapse text-xs">
                             <thead>
-                                <tr class="bg-slate-50/80 text-slate-700 font-bold border-b border-slate-200 text-[11px] uppercase tracking-wider">
-                                    <th class="p-3.5 text-left w-[22%]">TỪ KHÓA SEO &amp; VOLUME</th>
-                                    <th class="p-3.5 text-center w-[10%]">SERP FEATURES</th>
-                                    <th class="p-3.5 text-left w-[14%]">
-                                        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-600"></span>KIENTRUC.ORG</span>
-                                    </th>
-                                    <th class="p-3.5 text-left w-[14%]">
-                                        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>MODEL.ORG</span>
-                                    </th>
-                                    <th class="p-3.5 text-left w-[13%]">
-                                        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500"></span>SONGANH.COM</span>
-                                    </th>
-                                    <th class="p-3.5 text-left w-[13%]">
-                                        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-500"></span>MOHINH3D.ORG</span>
-                                    </th>
-                                    <th class="p-3.5 text-left w-[14%]">
-                                        <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span>VATLIEU.COM</span>
-                                    </th>
+                                <tr class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200 text-[11px] uppercase tracking-wider">
+                                    <th class="py-3 px-3 text-center w-10 sticky left-0 bg-slate-50 z-10 border-r border-slate-200 shadow-[1px_0_0_0_rgba(226,232,240,1)]">#</th>
+                                    <th class="py-3 px-4 min-w-[280px] sticky left-10 bg-slate-50 z-10 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.06)]">TỪ KHÓA &amp; CỤM SILO</th>
+                                    <th class="py-3 px-3 text-center min-w-[95px]">Volume / KD</th>
+                                    <th class="py-3 px-3 text-center min-w-[160px]">Vị Trí Tốt Nhất</th>
+                                    <th class="py-3 px-3 text-center min-w-[145px] bg-blue-50/25 text-blue-700 font-extrabold border-l border-r border-slate-200">mohinhkientruc.org</th>
+                                    <th class="py-3 px-3 text-center min-w-[155px] bg-teal-50/25 text-teal-700 font-extrabold border-r border-slate-200">architecturalmodel.org</th>
+                                    <th class="py-3 px-3 text-center min-w-[145px] bg-amber-50/25 text-amber-700 font-extrabold border-r border-slate-200">mohinhsonganh.com</th>
+                                    <th class="py-3 px-3 text-center min-w-[145px] bg-purple-50/25 text-purple-700 font-extrabold border-r border-slate-200">mohinh3d.org</th>
+                                    <th class="py-3 px-3 text-center min-w-[145px] bg-rose-50/25 text-rose-700 font-extrabold border-r border-slate-200">vatlieumohinh.com</th>
+                                    <th class="py-3 px-3 text-center min-w-[110px]">SERP Features</th>
+                                    <th class="py-3 px-3 text-center min-w-[85px]">7D Trend</th>
+                                    <th class="py-3 px-3 text-right pr-4 min-w-[70px]">Thao Tác</th>
                                 </tr>
                             </thead>
-                            <tbody id="kw-table-body" class="divide-y divide-slate-100">
+                            <tbody id="kw-table-body" class="divide-y divide-slate-100 font-medium">
                                 <!-- Dynamic Matrix Rows -->
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Table Footer Note -->
-                    <div class="pt-2 flex items-center justify-between text-xs text-slate-500 font-medium">
-                        <div class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span>Toàn bộ 5 domain đang hoạt động <strong class="text-emerald-700">100% Crawled</strong></span>
+                    <!-- Pagination & Table Status Footer -->
+                    <div class="px-4 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between flex-wrap gap-3 text-xs">
+                        <div class="flex items-center gap-3">
+                            <span id="kw-filtered-count-text" class="text-slate-600 font-medium">
+                                Hiển thị <strong class="text-slate-900 font-bold">214 / 214</strong> từ khóa
+                            </span>
+                            <span class="text-slate-300">|</span>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span class="text-emerald-700 font-bold text-[11.5px]">Tất cả Landing Page đã đồng bộ Canonical Google</span>
+                            </div>
                         </div>
-                        <span id="kw-filtered-count-text" class="text-[11px] font-bold text-slate-500 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">Hiển thị 214 / 214 KWs</span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="exportKeywordsCsv()" class="px-3 py-1 rounded-lg bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs shadow-2xs transition">
+                                <i class="fa-solid fa-download text-slate-400 mr-1"></i>Tải toàn bộ dataset
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6. GỢI Ý CHIẾN LƯỢC SYNERGY 4 DOMAIN -->
+                <!-- 5. GỢI Ý CHIẾN LƯỢC SYNERGY 5 DOMAIN -->
                 <div class="light-card p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
                     <div class="flex items-start gap-3.5">
                         <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shrink-0 shadow-xs">
@@ -4428,11 +4471,11 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                         </div>
                         <div class="space-y-1">
                             <div class="flex flex-wrap items-center gap-2">
-                                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10.5px] font-extrabold">Gợi ý chiến lược Synergy 4 Domain</span>
+                                <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10.5px] font-extrabold">Gợi ý chiến lược Synergy 5 Domain</span>
                                 <span class="text-slate-400 text-xs font-semibold">• Thuật toán Semantic Dominance</span>
                             </div>
                             <h4 class="font-heading font-extrabold text-xs sm:text-sm text-slate-900 leading-snug">
-                                mohinhkientruc.org đang chiếm Feature Snippet #1; nên điều hướng internal link sang mohinhsonganh.com để thâu tóm Top 2 &amp; Top 3
+                                mohinhkientruc.org đang chiếm Feature Snippet #1; nên điều hướng internal link sang mohinhsonganh.com và architecturalmodel.org để thâu tóm Top 2 &amp; Top 3
                             </h4>
                             <p class="text-[11.5px] text-slate-500 leading-relaxed">
                                 Tỷ lệ chuyển đổi RFQ (Yêu cầu báo giá sa bàn kiến trúc) tăng 34% khi thương hiệu phủ 3/5 kết quả đầu tiên trên trang 1 Google.
@@ -4449,7 +4492,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                     </div>
                 </div>
 
-                <!-- 7. FOOTER BAR (ENTERPRISE 2.4.0) -->
+                <!-- 6. FOOTER BAR -->
                 <div class="text-[11px] text-slate-400 flex flex-wrap items-center justify-between gap-2 pt-2 px-1 border-t border-slate-200/60">
                     <div>&copy; 2026 Song Anh Architectural Model Studio. All rights reserved.</div>
                     <div class="flex flex-wrap items-center gap-3">
@@ -36434,35 +36477,67 @@ let marketingActivityLog = [
             return icons;
         }
 
+        let currentKwQuickFilter = 'all';
+
+        function setKwQuickFilter(qf) {
+            currentKwQuickFilter = qf;
+            const buttons = document.querySelectorAll('.kw-quick-filter-pill');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-quick') === qf) {
+                    btn.className = "kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-xs transition cursor-pointer";
+                } else {
+                    btn.className = "kw-quick-filter-pill px-2.5 py-1 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium text-xs border border-slate-200 transition cursor-pointer";
+                }
+            });
+            renderKeywordTable();
+        }
+
+        function filterKeywordsByDomainPill(domain) {
+            const sel = document.getElementById('kw-domain-filter');
+            if (sel) sel.value = domain;
+
+            const pills = document.querySelectorAll('.kw-domain-pill');
+            pills.forEach(btn => {
+                if (btn.getAttribute('data-domain') === domain) {
+                    btn.className = "kw-domain-pill px-3 py-1.5 rounded-lg bg-blue-700 text-white font-bold text-xs shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer";
+                } else {
+                    btn.className = "kw-domain-pill px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer";
+                }
+            });
+            renderKeywordTable();
+        }
+
         function formatDomainRankBadge(domainObj, colorTheme) {
-            if (!domainObj) return '<span class="text-slate-300 font-bold">-</span>';
+            if (!domainObj || domainObj.rank === undefined || domainObj.rank === null || domainObj.rank === '-') {
+                return '<span class="text-slate-300 font-mono text-xs font-semibold">-</span>';
+            }
             const rank = domainObj.rank;
             const change = domainObj.change || 0;
-            const slug = domainObj.slug || '-';
 
-            let bgClass = 'bg-slate-600';
-            if (colorTheme === 'blue') bgClass = 'bg-blue-600';
-            else if (colorTheme === 'emerald') bgClass = 'bg-emerald-600';
-            else if (colorTheme === 'amber') bgClass = 'bg-amber-600';
-            else if (colorTheme === 'purple') bgClass = 'bg-purple-600';
-            else if (colorTheme === 'rose') bgClass = 'bg-rose-600';
-
-            let changeHtml = '<span class="text-[11px] font-bold text-slate-400 ml-1">━ 0</span>';
-            if (change > 0) {
-                changeHtml = `<span class="text-[11px] font-bold text-emerald-600 ml-1">▲ +${change}</span>`;
-            } else if (change < 0) {
-                changeHtml = `<span class="text-[11px] font-bold text-rose-600 ml-1">▼ ${change}</span>`;
+            let badgeClass = 'bg-slate-100 text-slate-700 border border-slate-200';
+            if (typeof rank === 'number') {
+                if (rank <= 3) {
+                    badgeClass = 'bg-emerald-100 text-emerald-800 border border-emerald-300';
+                } else if (rank <= 10) {
+                    badgeClass = 'bg-amber-100 text-amber-800 border border-amber-300';
+                } else {
+                    badgeClass = 'bg-slate-100 text-slate-700 border border-slate-200';
+                }
             }
 
-            const rankText = (typeof rank === 'number') ? `#${rank}` : `${rank}`;
+            let changeHtml = '<span class="text-[10px] font-mono text-slate-400 font-medium mt-0.5">— 0</span>';
+            if (change > 0) {
+                changeHtml = `<span class="text-[10px] font-mono text-emerald-600 font-bold mt-0.5">▲ +${change}</span>`;
+            } else if (change < 0) {
+                changeHtml = `<span class="text-[10px] font-mono text-rose-600 font-bold mt-0.5">▼ ${change}</span>`;
+            }
+
+            const rankText = (typeof rank === 'number') ? rank : `${rank}`;
 
             return `
-                <div>
-                    <div class="flex items-center gap-1">
-                        <span class="px-2 py-0.5 rounded-md font-black text-xs text-white ${bgClass} shadow-2xs">${rankText}</span>
-                        ${changeHtml}
-                    </div>
-                    <span class="block text-[11px] font-mono text-slate-400 truncate max-w-[135px] mt-0.5" title="${slug}">${slug}</span>
+                <div class="inline-flex flex-col items-center justify-center">
+                    <span class="w-8 py-0.5 rounded font-black text-xs text-center ${badgeClass} shadow-2xs">${rankText}</span>
+                    ${changeHtml}
                 </div>
             `;
         }
@@ -36542,127 +36617,281 @@ let marketingActivityLog = [
                     }
                 }
 
+                // 6. Stitch Quick Filter Group
+                if (currentKwQuickFilter !== 'all') {
+                    const rKt = (typeof kw.kientruc?.rank === 'number' && kw.kientruc.rank > 0) ? kw.kientruc.rank : 999;
+                    const rMd = (typeof kw.model?.rank === 'number' && kw.model.rank > 0) ? kw.model.rank : 999;
+                    const rSa = (typeof kw.songanh?.rank === 'number' && kw.songanh.rank > 0) ? kw.songanh.rank : 999;
+                    const r3d = (typeof kw.mohinh3d?.rank === 'number' && kw.mohinh3d.rank > 0) ? kw.mohinh3d.rank : 999;
+                    const rVl = (typeof kw.vatlieu?.rank === 'number' && kw.vatlieu.rank > 0) ? kw.vatlieu.rank : 999;
+                    const bestR = Math.min(rKt, rMd, rSa, r3d, rVl);
+
+                    if (currentKwQuickFilter === 'top1-3') {
+                        if (bestR > 3) return false;
+                    } else if (currentKwQuickFilter === 'top4-10') {
+                        if (bestR < 4 || bestR > 10) return false;
+                    } else if (currentKwQuickFilter === 'shift') {
+                        const hasChange = (kw.kientruc?.change !== 0 && kw.kientruc?.change !== undefined) ||
+                                          (kw.model?.change !== 0 && kw.model?.change !== undefined) ||
+                                          (kw.songanh?.change !== 0 && kw.songanh?.change !== undefined) ||
+                                          (kw.mohinh3d?.change !== 0 && kw.mohinh3d?.change !== undefined) ||
+                                          (kw.vatlieu?.change !== 0 && kw.vatlieu?.change !== undefined);
+                        if (!hasChange) return false;
+                    } else if (currentKwQuickFilter === 'optimize') {
+                        if (bestR <= 10 && (kw.kd || 0) < 35) return false;
+                    }
+                }
+
                 return true;
             });
 
             // 1. Render Desktop Table
             let tableRowsHtml = '';
-            filtered.forEach(kw => {
+            filtered.forEach((kw, idx) => {
                 const featIcons = getSerpFeatureIconsHtml(kw.features);
                 const kdColor = kw.kd >= 40 ? 'text-rose-600' : (kw.kd >= 30 ? 'text-amber-600' : 'text-emerald-600');
 
+                // Determine Best Rank & Best Domain
+                let bestRank = 999;
+                let bestDomain = '-';
+                let bestColor = 'text-blue-700';
+                let bestBg = 'bg-blue-50 border-blue-200';
+
+                const domainCheckList = [
+                    { name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
+                    { name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
+                    { name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+                    { name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
+                    { name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
+                ];
+
+                domainCheckList.forEach(d => {
+                    if (d.obj && typeof d.obj.rank === 'number' && d.obj.rank > 0 && d.obj.rank < bestRank) {
+                        bestRank = d.obj.rank;
+                        bestDomain = d.short;
+                        bestColor = d.color;
+                        bestBg = d.bg;
+                    }
+                });
+
+                let bestRankBadge = '<span class="text-slate-300 font-bold">-</span>';
+                if (bestRank <= 100) {
+                    const trophyColor = bestRank <= 3 ? 'text-amber-500' : (bestRank <= 10 ? 'text-blue-500' : 'text-slate-400');
+                    bestRankBadge = `
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md ${bestBg} shadow-2xs border">
+                            <i class="fa-solid fa-medal ${trophyColor} text-xs"></i>
+                            <span class="font-black text-xs text-slate-900">${bestRank}</span>
+                            <span class="text-[10px] font-bold ${bestColor} truncate max-w-[85px]">${bestDomain}</span>
+                        </div>
+                    `;
+                }
+
+                // Sparkline Trend SVG
+                let trendColor = 'text-slate-400';
+                let pathD = 'M2 10 L15 10 L28 10 L42 10 L58 10';
+                const netChange = (kw.kientruc?.change || 0) + (kw.model?.change || 0) + (kw.songanh?.change || 0) + (kw.mohinh3d?.change || 0) + (kw.vatlieu?.change || 0);
+
+                if (netChange > 0) {
+                    trendColor = 'text-emerald-500';
+                    pathD = 'M2 16 L15 12 L28 14 L42 6 L58 2';
+                } else if (netChange < 0) {
+                    trendColor = 'text-rose-500';
+                    pathD = 'M2 4 L15 6 L28 12 L42 15 L58 18';
+                } else if (bestRank <= 3) {
+                    trendColor = 'text-emerald-500';
+                    pathD = 'M2 6 L15 4 L28 5 L42 3 L58 2';
+                }
+
+                const sparklineHtml = `
+                    <svg class="w-14 h-5 inline-block ${trendColor}" fill="none" viewBox="0 0 60 20">
+                        <path d="${pathD}" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                `;
+
                 tableRowsHtml += `
-                    <tr onclick="openKwSerpDetailModal(${kw.id})" class="hover:bg-blue-50/40 transition cursor-pointer border-b border-slate-100/80 group">
-                        <!-- Column 1: Keyword & Volume -->
-                        <td class="p-3.5 text-left">
-                            <div class="flex items-start gap-2.5">
-                                <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-700 flex items-center justify-center text-[10px] shrink-0 mt-0.5 transition">
-                                    <i class="fa-solid fa-bullseye"></i>
+                    <tr onclick="openKwSerpDetailModal(${kw.id})" class="hover:bg-blue-50/40 transition cursor-pointer border-b border-slate-100 group">
+                        <!-- 1. Star / Index Sticky -->
+                        <td class="py-3 px-3 text-center sticky left-0 bg-white group-hover:bg-blue-50/50 z-10 border-r border-slate-200 shadow-[1px_0_0_0_rgba(226,232,240,1)]">
+                            <span class="font-bold text-[11px] text-slate-400">${idx + 1}</span>
+                        </td>
+
+                        <!-- 2. Keyword & Silo Sticky -->
+                        <td class="py-3 px-4 text-left sticky left-10 bg-white group-hover:bg-blue-50/50 z-10 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.06)] min-w-[280px]">
+                            <div class="flex flex-col">
+                                <span class="font-extrabold text-xs sm:text-sm text-slate-900 group-hover:text-blue-700 transition leading-snug">
+                                    ${kw.name}
                                 </span>
-                                <div>
-                                    <div class="font-extrabold text-xs sm:text-sm text-slate-900 group-hover:text-blue-700 transition leading-snug">
-                                        ${kw.name}
-                                    </div>
-                                    <div class="text-[11px] text-slate-500 font-medium mt-0.5">
-                                        <span class="font-bold text-slate-700">${kw.volume ? kw.volume.toLocaleString() : (kw.vol || '1,200')}</span> vol/tháng
-                                        <span class="text-slate-300">•</span>
-                                        <span class="font-bold ${kdColor}">KD ${kw.kd !== undefined ? kw.kd : 25}</span>
-                                    </div>
+                                <div class="flex items-center gap-1.5 mt-1 flex-wrap">
+                                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-semibold border border-slate-200/60">
+                                        📁 ${kw.silo || 'Cụm Silo'}
+                                    </span>
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-100">
+                                        ${kw.intent || 'B2B'}
+                                    </span>
                                 </div>
                             </div>
                         </td>
 
-                        <!-- Column 2: SERP Features -->
-                        <td class="p-3.5 text-center whitespace-nowrap">
-                            <div class="flex items-center justify-center">
-                                ${featIcons}
+                        <!-- 3. Volume / KD -->
+                        <td class="py-3 px-3 text-center whitespace-nowrap">
+                            <div class="flex flex-col items-center">
+                                <span class="font-extrabold text-xs text-slate-900">${kw.volume ? kw.volume.toLocaleString() : (kw.vol || '1,200')}</span>
+                                <span class="text-[10.5px] font-bold ${kdColor} mt-0.5">KD ${kw.kd !== undefined ? kw.kd : 25}</span>
                             </div>
                         </td>
 
-                        <!-- Column 3: KIENTRUC.ORG -->
-                        <td class="p-3.5 text-left">
+                        <!-- 4. Vị Trí Tốt Nhất -->
+                        <td class="py-3 px-3 text-center whitespace-nowrap">
+                            ${bestRankBadge}
+                        </td>
+
+                        <!-- 5. KIENTRUC.ORG -->
+                        <td class="py-3 px-3 text-center border-l border-r border-slate-200 bg-blue-50/15">
                             ${formatDomainRankBadge(kw.kientruc, 'blue')}
                         </td>
 
-                        <!-- Column 4: MODEL.ORG -->
-                        <td class="p-3.5 text-left">
+                        <!-- 6. MODEL.ORG -->
+                        <td class="py-3 px-3 text-center border-r border-slate-200 bg-teal-50/15">
                             ${formatDomainRankBadge(kw.model, 'emerald')}
                         </td>
 
-                        <!-- Column 5: SONGANH.COM -->
-                        <td class="p-3.5 text-left">
+                        <!-- 7. SONGANH.COM -->
+                        <td class="py-3 px-3 text-center border-r border-slate-200 bg-amber-50/15">
                             ${formatDomainRankBadge(kw.songanh, 'amber')}
                         </td>
 
-                        <!-- Column 6: MOHINH3D.ORG -->
-                        <td class="p-3.5 text-left">
+                        <!-- 8. MOHINH3D.ORG -->
+                        <td class="py-3 px-3 text-center border-r border-slate-200 bg-purple-50/15">
                             ${formatDomainRankBadge(kw.mohinh3d, 'purple')}
                         </td>
 
-                        <!-- Column 7: VATLIEUMOHINH.COM -->
-                        <td class="p-3.5 text-left">
+                        <!-- 9. VATLIEU.COM -->
+                        <td class="py-3 px-3 text-center border-r border-slate-200 bg-rose-50/15">
                             ${formatDomainRankBadge(kw.vatlieu, 'rose')}
+                        </td>
+
+                        <!-- 10. SERP Features -->
+                        <td class="py-3 px-3 text-center whitespace-nowrap">
+                            <div class="flex items-center justify-center gap-1">
+                                ${featIcons || '<span class="text-slate-300 text-[10px] font-mono">-</span>'}
+                            </div>
+                        </td>
+
+                        <!-- 11. 7D Trend -->
+                        <td class="py-3 px-3 text-center whitespace-nowrap">
+                            ${sparklineHtml}
+                        </td>
+
+                        <!-- 12. Thao Tác -->
+                        <td class="py-3 px-3 text-right pr-4 whitespace-nowrap">
+                            <button onclick="event.stopPropagation(); openKwSerpDetailModal(${kw.id})" class="p-1.5 rounded-lg hover:bg-blue-100 text-blue-700 transition shadow-2xs" title="Xem chi tiết SERP">
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </button>
                         </td>
                     </tr>
                 `;
             });
 
             if (tbody) {
-                tbody.innerHTML = tableRowsHtml || '<tr><td colspan="7" class="p-8 text-center text-slate-400 text-xs font-bold">Không tìm thấy từ khóa phù hợp</td></tr>';
+                tbody.innerHTML = tableRowsHtml || '<tr><td colspan="12" class="p-8 text-center text-slate-400 text-xs font-bold">Không tìm thấy từ khóa phù hợp</td></tr>';
             }
 
             // 2. Render Mobile Cards View (< 640px)
             let cardsHtml = '';
-            filtered.forEach(kw => {
+            filtered.forEach((kw, idx) => {
                 const featIcons = getSerpFeatureIconsHtml(kw.features);
                 const kdColor = kw.kd >= 40 ? 'text-rose-600' : (kw.kd >= 30 ? 'text-amber-600' : 'text-emerald-600');
 
+                // Determine Best Rank & Best Domain for mobile
+                let bestRank = 999;
+                let bestDomain = '-';
+                let bestColor = 'text-blue-700';
+                let bestBg = 'bg-blue-50 border-blue-200';
+
+                const domainCheckList = [
+                    { name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
+                    { name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
+                    { name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+                    { name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
+                    { name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
+                ];
+
+                domainCheckList.forEach(d => {
+                    if (d.obj && typeof d.obj.rank === 'number' && d.obj.rank > 0 && d.obj.rank < bestRank) {
+                        bestRank = d.obj.rank;
+                        bestDomain = d.short;
+                        bestColor = d.color;
+                        bestBg = d.bg;
+                    }
+                });
+
+                let bestRankBadge = '<span class="text-slate-300 font-bold text-xs">-</span>';
+                if (bestRank <= 100) {
+                    const trophyColor = bestRank <= 3 ? 'text-amber-500' : (bestRank <= 10 ? 'text-blue-500' : 'text-slate-400');
+                    bestRankBadge = `
+                        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded ${bestBg} shadow-2xs border">
+                            <i class="fa-solid fa-medal ${trophyColor} text-[10px]"></i>
+                            <span class="font-black text-xs text-slate-900">${bestRank}</span>
+                            <span class="text-[9.5px] font-bold ${bestColor} truncate max-w-[70px]">${bestDomain}</span>
+                        </div>
+                    `;
+                }
+
                 cardsHtml += `
-                    <div onclick="openKwSerpDetailModal(${kw.id})" class="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-blue-300 transition shadow-2xs space-y-2.5 cursor-pointer">
+                    <div onclick="openKwSerpDetailModal(${kw.id})" class="p-3.5 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 transition shadow-2xs space-y-2.5 cursor-pointer">
                         <div class="flex items-start justify-between gap-2">
-                            <div class="flex items-start gap-2">
-                                <span class="w-5 h-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-[10px] shrink-0 mt-0.5">
-                                    <i class="fa-solid fa-bullseye"></i>
-                                </span>
-                                <div>
-                                    <h4 class="font-extrabold text-xs text-slate-900">${kw.name}</h4>
-                                    <div class="text-[10.5px] text-slate-500 font-medium">
-                                        <span class="font-bold text-slate-700">${kw.volume ? kw.volume.toLocaleString() : (kw.vol || '1,200')}</span> vol/tháng • <span class="font-bold ${kdColor}">KD ${kw.kd !== undefined ? kw.kd : 25}</span>
-                                    </div>
+                            <div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-5 h-5 rounded-full bg-blue-50 text-blue-700 font-black text-[10px] flex items-center justify-center shrink-0">
+                                        ${idx + 1}
+                                    </span>
+                                    <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug">${kw.name}</h4>
+                                </div>
+                                <div class="flex items-center gap-2 text-[10.5px] text-slate-500 font-medium mt-1">
+                                    <span class="font-bold text-slate-700">${kw.volume ? kw.volume.toLocaleString() : (kw.vol || '1,200')} vol/tháng</span>
+                                    <span>•</span>
+                                    <span class="font-bold ${kdColor}">KD ${kw.kd !== undefined ? kw.kd : 25}</span>
+                                    <span>•</span>
+                                    <span class="font-bold text-slate-600">📁 ${kw.silo || 'Silo'}</span>
                                 </div>
                             </div>
-                            <div class="flex items-center gap-1 shrink-0">
-                                ${featIcons}
+                            <div class="shrink-0">
+                                ${bestRankBadge}
                             </div>
                         </div>
 
-                        <!-- 4 Domain Grid on Mobile -->
-                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 text-[11px]">
-                            <div class="p-2 rounded-lg bg-blue-50/50 border border-blue-100">
-                                <span class="text-[9.5px] font-bold text-blue-700 block uppercase">🔵 KIENTRUC.ORG</span>
+                        <!-- 5 Domain Grid on Mobile -->
+                        <div class="grid grid-cols-2 gap-1.5 pt-2 border-t border-slate-100 text-[11px]">
+                            <div class="p-1.5 rounded-lg bg-blue-50/40 border border-blue-100/60 flex items-center justify-between">
+                                <span class="text-[9.5px] font-bold text-blue-700 truncate mr-1">kientruc.org</span>
                                 ${formatDomainRankBadge(kw.kientruc, 'blue')}
                             </div>
-                            <div class="p-2 rounded-lg bg-emerald-50/50 border border-emerald-100">
-                                <span class="text-[9.5px] font-bold text-emerald-700 block uppercase">🟢 MODEL.ORG</span>
+                            <div class="p-1.5 rounded-lg bg-teal-50/40 border border-teal-100/60 flex items-center justify-between">
+                                <span class="text-[9.5px] font-bold text-teal-700 truncate mr-1">model.org</span>
                                 ${formatDomainRankBadge(kw.model, 'emerald')}
                             </div>
-                            <div class="p-2 rounded-lg bg-amber-50/50 border border-amber-100">
-                                <span class="text-[9.5px] font-bold text-amber-700 block uppercase">🟠 SONGANH.COM</span>
+                            <div class="p-1.5 rounded-lg bg-amber-50/40 border border-amber-100/60 flex items-center justify-between">
+                                <span class="text-[9.5px] font-bold text-amber-700 truncate mr-1">songanh.com</span>
                                 ${formatDomainRankBadge(kw.songanh, 'amber')}
                             </div>
-                            <div class="p-2 rounded-lg bg-purple-50/50 border border-purple-100">
-                                <span class="text-[9.5px] font-bold text-purple-700 block uppercase">🟣 MOHINH3D.ORG</span>
+                            <div class="p-1.5 rounded-lg bg-purple-50/40 border border-purple-100/60 flex items-center justify-between">
+                                <span class="text-[9.5px] font-bold text-purple-700 truncate mr-1">mohinh3d.org</span>
                                 ${formatDomainRankBadge(kw.mohinh3d, 'purple')}
                             </div>
-                            <div class="col-span-2 p-2 rounded-lg bg-rose-50/50 border border-rose-100">
-                                <span class="text-[9.5px] font-bold text-rose-700 block uppercase">🛒 VATLIEU.COM</span>
+                            <div class="col-span-2 p-1.5 rounded-lg bg-rose-50/40 border border-rose-100/60 flex items-center justify-between">
+                                <span class="text-[9.5px] font-bold text-rose-700 truncate mr-1">vatlieumohinh.com</span>
                                 ${formatDomainRankBadge(kw.vatlieu, 'rose')}
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-between text-[10.5px] font-bold text-blue-600 pt-1">
-                            <span>Chi tiết Trend &amp; Landing Page</span>
-                            <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                        <div class="flex items-center justify-between text-[10.5px] font-bold text-blue-600 pt-1 border-t border-slate-100">
+                            <div class="flex items-center gap-1">
+                                ${featIcons || '<span class="text-slate-400 font-normal">SERP Tiêu chuẩn</span>'}
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span>Chi tiết SERP</span>
+                                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -36675,8 +36904,8 @@ let marketingActivityLog = [
             // 3. Update Result Badges & Counters
             const badgeEl = document.getElementById('kw-table-badge');
             if (badgeEl) {
-                if (currentSerpFeatureFilter === 'all' && !searchInput) {
-                    badgeEl.innerText = `${filtered.length} từ khóa chiến lược`;
+                if (currentSerpFeatureFilter === 'all' && !searchInput && currentKwQuickFilter === 'all') {
+                    badgeEl.innerText = `${filtered.length} từ khóa mục tiêu`;
                 } else {
                     badgeEl.innerText = `Đang lọc: ${filtered.length} / ${keywordMatrixData.length} từ khóa`;
                 }
@@ -36684,7 +36913,7 @@ let marketingActivityLog = [
 
             const countTextEl = document.getElementById('kw-filtered-count-text');
             if (countTextEl) {
-                countTextEl.innerText = `Hiển thị ${filtered.length} / ${keywordMatrixData.length} KWs`;
+                countTextEl.innerHTML = `Hiển thị <strong class="text-slate-900 font-bold">${filtered.length} / ${keywordMatrixData.length}</strong> từ khóa`;
             }
 
             const summaryEl = document.getElementById('kw-filter-summary-text');
