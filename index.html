@@ -4329,6 +4329,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                     </div>
 
                     <!-- Row 2: Legend Ribbon (Chú giải màu sắc thứ hạng tinh gọn) -->
+                    <!-- Row 2: Legend Ribbon (Chú giải màu sắc thứ hạng & tính năng SERP) -->
                     <div class="flex items-center justify-between text-xs flex-wrap gap-2 pt-2.5 border-t border-slate-100">
                         <div class="flex items-center gap-3 flex-wrap">
                             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Chú giải:</span>
@@ -4348,6 +4349,16 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                                 <span class="text-emerald-600">▲ Tăng</span>
                                 <span class="text-slate-400">― Giữ</span>
                                 <span class="text-rose-600">▼ Giảm</span>
+                            </div>
+                            <div class="flex items-center gap-2 pl-2 border-l border-slate-200 text-[10.5px] font-semibold flex-wrap">
+                                <span class="text-slate-400 uppercase tracking-wider font-bold text-[10px]">SERP Feature:</span>
+                                <span title="Featured Snippet" class="text-amber-700 font-bold">⭐ Snippet</span>
+                                <span title="Local Map Pack" class="text-rose-700 font-bold">📍 Local</span>
+                                <span title="Image Pack" class="text-emerald-700 font-bold">🖼️ Ảnh</span>
+                                <span title="Video Snippet" class="text-red-700 font-bold">🎬 Video</span>
+                                <span title="Organic Sitelinks" class="text-blue-700 font-bold">🔗 Link</span>
+                                <span title="People Also Ask" class="text-purple-700 font-bold">❓ PAA</span>
+                                <span title="Organic Web" class="text-slate-600 font-bold">🌐 Web</span>
                             </div>
                         </div>
                         <div class="text-[11px] text-slate-400 font-medium hidden md:block">
@@ -4381,7 +4392,7 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
 
                     <!-- 💻 Desktop Table View (>= 640px) with Sticky Columns & Horizontal Scroll -->
                     <div id="kw-table-container" class="hidden sm:block overflow-x-auto w-full">
-                        <table class="min-w-[1440px] w-full text-left border-collapse text-xs">
+                        <table class="min-w-[1330px] w-full text-left border-collapse text-xs">
                             <thead>
                                 <tr class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200 text-[11px] uppercase tracking-wider">
                                     <th class="py-3 px-3 text-center w-10 sticky left-0 bg-slate-50 z-10 border-r border-slate-200 shadow-[1px_0_0_0_rgba(226,232,240,1)]">#</th>
@@ -4393,7 +4404,6 @@ Hãy sinh ra nội dung xuất sắc đáp ứng 100% các tiêu chí trên dư�
                                     <th class="py-3 px-3 text-center min-w-[145px] bg-amber-50/25 text-amber-700 font-extrabold border-r border-slate-200">mohinhsonganh.com</th>
                                     <th class="py-3 px-3 text-center min-w-[145px] bg-purple-50/25 text-purple-700 font-extrabold border-r border-slate-200">mohinh3d.org</th>
                                     <th class="py-3 px-3 text-center min-w-[145px] bg-rose-50/25 text-rose-700 font-extrabold border-r border-slate-200">vatlieumohinh.com</th>
-                                    <th class="py-3 px-3 text-center min-w-[110px]">SERP Features</th>
                                     <th class="py-3 px-3 text-center min-w-[85px]">7D Trend</th>
                                     <th class="py-3 px-3 text-right pr-4 min-w-[70px]">Thao Tác</th>
                                 </tr>
@@ -36455,7 +36465,60 @@ let marketingActivityLog = [
             renderKeywordTable();
         }
 
-        function formatDomainRankBadge(domainObj, colorTheme) {
+        const SERP_FEATURE_CONFIG = {
+            snippet: { code: 'snippet', label: 'Snippet', fullLabel: 'Featured Snippet', icon: '⭐', bg: 'bg-amber-50 text-amber-700 border-amber-200' },
+            local: { code: 'local', label: 'Local', fullLabel: 'Local Map Pack', icon: '📍', bg: 'bg-rose-50 text-rose-700 border-rose-200' },
+            image: { code: 'image', label: 'Ảnh', fullLabel: 'Image Pack', icon: '🖼️', bg: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+            video: { code: 'video', label: 'Video', fullLabel: 'Video Snippet', icon: '🎬', bg: 'bg-red-50 text-red-700 border-red-200' },
+            sitelink: { code: 'sitelink', label: 'Link', fullLabel: 'Organic Sitelinks', icon: '🔗', bg: 'bg-blue-50 text-blue-700 border-blue-200' },
+            paa: { code: 'paa', label: 'PAA', fullLabel: 'People Also Ask', icon: '❓', bg: 'bg-purple-50 text-purple-700 border-purple-200' },
+            organic: { code: 'organic', label: 'Web', fullLabel: 'Organic Search', icon: '🌐', bg: 'bg-slate-50 text-slate-600 border-slate-200' }
+        };
+
+        function getDomainSearchFeature(domainObj, kw, domainKey) {
+            if (!domainObj) return 'organic';
+            if (domainObj.feature && SERP_FEATURE_CONFIG[domainObj.feature]) return domainObj.feature;
+            if (domainObj.searchFeature) {
+                const s = String(domainObj.searchFeature).toLowerCase();
+                if (s.includes('snippet')) return 'snippet';
+                if (s.includes('local') || s.includes('map') || s.includes('bản đồ')) return 'local';
+                if (s.includes('image') || s.includes('ảnh')) return 'image';
+                if (s.includes('video')) return 'video';
+                if (s.includes('sitelink')) return 'sitelink';
+                if (s.includes('paa') || s.includes('ask') || s.includes('hỏi')) return 'paa';
+            }
+            if (!kw) return 'organic';
+
+            const feats = Array.isArray(kw.features) ? kw.features : [];
+            const r = (typeof domainObj.rank === 'number') ? domainObj.rank : parseFloat(domainObj.rank);
+
+            // If rank is 1 and query has snippet
+            if (r === 1 && feats.includes('snippet')) return 'snippet';
+            // If local pack
+            if (feats.includes('local') && (feats.length === 1 || !feats.includes('snippet') || r > 1)) return 'local';
+            // If image pack
+            if (feats.includes('image') && (feats.length === 1 || !feats.includes('snippet'))) return 'image';
+            if (feats.includes('video')) return 'video';
+            if (feats.includes('sitelink')) return 'sitelink';
+            if (feats.includes('paa')) return 'paa';
+            if (feats.includes('snippet')) return 'snippet';
+            if (feats[0] && SERP_FEATURE_CONFIG[feats[0]]) return feats[0];
+
+            // Check kw.searchFeature string if available
+            if (kw.searchFeature) {
+                const s = String(kw.searchFeature).toLowerCase();
+                if (s.includes('snippet')) return 'snippet';
+                if (s.includes('local') || s.includes('map') || s.includes('bản đồ')) return 'local';
+                if (s.includes('image') || s.includes('ảnh')) return 'image';
+                if (s.includes('video')) return 'video';
+                if (s.includes('sitelink')) return 'sitelink';
+                if (s.includes('paa') || s.includes('ask') || s.includes('hỏi')) return 'paa';
+            }
+
+            return 'organic';
+        }
+
+        function formatDomainRankBadge(domainObj, colorTheme, kw, domainKey) {
             if (!domainObj || domainObj.rank === undefined || domainObj.rank === null || domainObj.rank === '-') {
                 return '<span class="text-slate-300 font-mono text-xs font-semibold">-</span>';
             }
@@ -36482,9 +36545,22 @@ let marketingActivityLog = [
 
             const rankText = (typeof rank === 'number') ? rank : `${rank}`;
 
+            // Search feature badge kế bên thứ hạng
+            const featKey = getDomainSearchFeature(domainObj, kw, domainKey);
+            const featCfg = SERP_FEATURE_CONFIG[featKey] || SERP_FEATURE_CONFIG['organic'];
+            const featBadgeHtml = `
+                <span title="${featCfg.fullLabel}" class="inline-flex items-center gap-0.5 px-1 py-0.5 rounded text-[9px] font-bold ${featCfg.bg} shadow-2xs border shrink-0 cursor-help leading-none">
+                    <span>${featCfg.icon}</span>
+                    <span class="text-[8.5px]">${featCfg.label}</span>
+                </span>
+            `;
+
             return `
                 <div class="inline-flex flex-col items-center justify-center">
-                    <span class="w-8 py-0.5 rounded font-black text-xs text-center ${badgeClass} shadow-2xs">${rankText}</span>
+                    <div class="inline-flex items-center gap-1">
+                        <span class="min-w-[26px] px-1.5 py-0.5 rounded font-black text-xs text-center ${badgeClass} shadow-2xs">${rankText}</span>
+                        ${featBadgeHtml}
+                    </div>
                     ${changeHtml}
                 </div>
             `;
@@ -36596,7 +36672,6 @@ let marketingActivityLog = [
             // 1. Render Desktop Table
             let tableRowsHtml = '';
             filtered.forEach((kw, idx) => {
-                const featIcons = getSerpFeatureIconsHtml(kw.features);
                 const kdColor = kw.kd >= 40 ? 'text-rose-600' : (kw.kd >= 30 ? 'text-amber-600' : 'text-emerald-600');
 
                 // Determine Best Rank & Best Domain
@@ -36604,13 +36679,15 @@ let marketingActivityLog = [
                 let bestDomain = '-';
                 let bestColor = 'text-blue-700';
                 let bestBg = 'bg-blue-50 border-blue-200';
+                let bestDomainObj = null;
+                let bestDomainKey = '';
 
                 const domainCheckList = [
-                    { name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
-                    { name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
-                    { name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
-                    { name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
-                    { name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
+                    { key: 'kientruc', name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
+                    { key: 'model', name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
+                    { key: 'songanh', name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+                    { key: 'mohinh3d', name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
+                    { key: 'vatlieu', name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
                 ];
 
                 domainCheckList.forEach(d => {
@@ -36619,15 +36696,18 @@ let marketingActivityLog = [
                         bestDomain = d.short;
                         bestColor = d.color;
                         bestBg = d.bg;
+                        bestDomainObj = d.obj;
+                        bestDomainKey = d.key;
                     }
                 });
 
                 let bestRankBadge = '<span class="text-slate-300 font-bold">-</span>';
                 if (bestRank <= 100) {
-                    const trophyColor = bestRank <= 3 ? 'text-amber-500' : (bestRank <= 10 ? 'text-blue-500' : 'text-slate-400');
+                    const bestFeature = getDomainSearchFeature(bestDomainObj, kw, bestDomainKey);
+                    const featCfg = SERP_FEATURE_CONFIG[bestFeature] || SERP_FEATURE_CONFIG['organic'];
                     bestRankBadge = `
-                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md ${bestBg} shadow-2xs border">
-                            <i class="fa-solid fa-medal ${trophyColor} text-xs"></i>
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md ${bestBg} shadow-2xs border cursor-help" title="${featCfg.fullLabel} (${bestDomain})">
+                            <span class="text-xs">${featCfg.icon}</span>
                             <span class="font-black text-xs text-slate-900">${bestRank}</span>
                             <span class="text-[10px] font-bold ${bestColor} truncate max-w-[85px]">${bestDomain}</span>
                         </div>
@@ -36690,42 +36770,35 @@ let marketingActivityLog = [
 
                         <!-- 5. KIENTRUC.ORG -->
                         <td class="py-3 px-3 text-center border-l border-r border-slate-200 bg-blue-50/15">
-                            ${formatDomainRankBadge(kw.kientruc, 'blue')}
+                            ${formatDomainRankBadge(kw.kientruc, 'blue', kw, 'kientruc')}
                         </td>
 
                         <!-- 6. MODEL.ORG -->
                         <td class="py-3 px-3 text-center border-r border-slate-200 bg-teal-50/15">
-                            ${formatDomainRankBadge(kw.model, 'emerald')}
+                            ${formatDomainRankBadge(kw.model, 'emerald', kw, 'model')}
                         </td>
 
                         <!-- 7. SONGANH.COM -->
                         <td class="py-3 px-3 text-center border-r border-slate-200 bg-amber-50/15">
-                            ${formatDomainRankBadge(kw.songanh, 'amber')}
+                            ${formatDomainRankBadge(kw.songanh, 'amber', kw, 'songanh')}
                         </td>
 
                         <!-- 8. MOHINH3D.ORG -->
                         <td class="py-3 px-3 text-center border-r border-slate-200 bg-purple-50/15">
-                            ${formatDomainRankBadge(kw.mohinh3d, 'purple')}
+                            ${formatDomainRankBadge(kw.mohinh3d, 'purple', kw, 'mohinh3d')}
                         </td>
 
                         <!-- 9. VATLIEU.COM -->
                         <td class="py-3 px-3 text-center border-r border-slate-200 bg-rose-50/15">
-                            ${formatDomainRankBadge(kw.vatlieu, 'rose')}
+                            ${formatDomainRankBadge(kw.vatlieu, 'rose', kw, 'vatlieu')}
                         </td>
 
-                        <!-- 10. SERP Features -->
-                        <td class="py-3 px-3 text-center whitespace-nowrap">
-                            <div class="flex items-center justify-center gap-1">
-                                ${featIcons || '<span class="text-slate-300 text-[10px] font-mono">-</span>'}
-                            </div>
-                        </td>
-
-                        <!-- 11. 7D Trend -->
+                        <!-- 10. 7D Trend -->
                         <td class="py-3 px-3 text-center whitespace-nowrap">
                             ${sparklineHtml}
                         </td>
 
-                        <!-- 12. Thao Tác -->
+                        <!-- 11. Thao Tác -->
                         <td class="py-3 px-3 text-right pr-4 whitespace-nowrap">
                             <button onclick="event.stopPropagation(); openKwSerpDetailModal(${kw.id})" class="p-1.5 rounded-lg hover:bg-blue-100 text-blue-700 transition shadow-2xs" title="Xem chi tiết SERP">
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
@@ -36736,7 +36809,7 @@ let marketingActivityLog = [
             });
 
             if (tbody) {
-                tbody.innerHTML = tableRowsHtml || '<tr><td colspan="12" class="p-8 text-center text-slate-400 text-xs font-bold">Không tìm thấy từ khóa phù hợp</td></tr>';
+                tbody.innerHTML = tableRowsHtml || '<tr><td colspan="11" class="p-8 text-center text-slate-400 text-xs font-bold">Không tìm thấy từ khóa phù hợp</td></tr>';
             }
 
             // 2. Render Mobile Cards View (< 640px)
@@ -36750,13 +36823,15 @@ let marketingActivityLog = [
                 let bestDomain = '-';
                 let bestColor = 'text-blue-700';
                 let bestBg = 'bg-blue-50 border-blue-200';
+                let bestDomainObj = null;
+                let bestDomainKey = '';
 
                 const domainCheckList = [
-                    { name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
-                    { name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
-                    { name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
-                    { name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
-                    { name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
+                    { key: 'kientruc', name: 'mohinhkientruc.org', short: 'kientruc.org', obj: kw.kientruc, color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
+                    { key: 'model', name: 'architecturalmodel.org', short: 'model.org', obj: kw.model, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
+                    { key: 'songanh', name: 'mohinhsonganh.com', short: 'songanh.com', obj: kw.songanh, color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+                    { key: 'mohinh3d', name: 'mohinh3d.org', short: 'mohinh3d.org', obj: kw.mohinh3d, color: 'text-purple-700', bg: 'bg-purple-50 border-purple-200' },
+                    { key: 'vatlieu', name: 'vatlieumohinh.com', short: 'vatlieu.com', obj: kw.vatlieu, color: 'text-rose-700', bg: 'bg-rose-50 border-rose-200' }
                 ];
 
                 domainCheckList.forEach(d => {
@@ -36765,15 +36840,18 @@ let marketingActivityLog = [
                         bestDomain = d.short;
                         bestColor = d.color;
                         bestBg = d.bg;
+                        bestDomainObj = d.obj;
+                        bestDomainKey = d.key;
                     }
                 });
 
                 let bestRankBadge = '<span class="text-slate-300 font-bold text-xs">-</span>';
                 if (bestRank <= 100) {
-                    const trophyColor = bestRank <= 3 ? 'text-amber-500' : (bestRank <= 10 ? 'text-blue-500' : 'text-slate-400');
+                    const bestFeature = getDomainSearchFeature(bestDomainObj, kw, bestDomainKey);
+                    const featCfg = SERP_FEATURE_CONFIG[bestFeature] || SERP_FEATURE_CONFIG['organic'];
                     bestRankBadge = `
-                        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded ${bestBg} shadow-2xs border">
-                            <i class="fa-solid fa-medal ${trophyColor} text-[10px]"></i>
+                        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded ${bestBg} shadow-2xs border cursor-help" title="${featCfg.fullLabel} (${bestDomain})">
+                            <span class="text-[11px]">${featCfg.icon}</span>
                             <span class="font-black text-xs text-slate-900">${bestRank}</span>
                             <span class="text-[9.5px] font-bold ${bestColor} truncate max-w-[70px]">${bestDomain}</span>
                         </div>
@@ -36807,23 +36885,23 @@ let marketingActivityLog = [
                         <div class="grid grid-cols-2 gap-1.5 pt-2 border-t border-slate-100 text-[11px]">
                             <div class="p-1.5 rounded-lg bg-blue-50/40 border border-blue-100/60 flex items-center justify-between">
                                 <span class="text-[9.5px] font-bold text-blue-700 truncate mr-1">kientruc.org</span>
-                                ${formatDomainRankBadge(kw.kientruc, 'blue')}
+                                ${formatDomainRankBadge(kw.kientruc, 'blue', kw, 'kientruc')}
                             </div>
                             <div class="p-1.5 rounded-lg bg-teal-50/40 border border-teal-100/60 flex items-center justify-between">
                                 <span class="text-[9.5px] font-bold text-teal-700 truncate mr-1">model.org</span>
-                                ${formatDomainRankBadge(kw.model, 'emerald')}
+                                ${formatDomainRankBadge(kw.model, 'emerald', kw, 'model')}
                             </div>
                             <div class="p-1.5 rounded-lg bg-amber-50/40 border border-amber-100/60 flex items-center justify-between">
                                 <span class="text-[9.5px] font-bold text-amber-700 truncate mr-1">songanh.com</span>
-                                ${formatDomainRankBadge(kw.songanh, 'amber')}
+                                ${formatDomainRankBadge(kw.songanh, 'amber', kw, 'songanh')}
                             </div>
                             <div class="p-1.5 rounded-lg bg-purple-50/40 border border-purple-100/60 flex items-center justify-between">
                                 <span class="text-[9.5px] font-bold text-purple-700 truncate mr-1">mohinh3d.org</span>
-                                ${formatDomainRankBadge(kw.mohinh3d, 'purple')}
+                                ${formatDomainRankBadge(kw.mohinh3d, 'purple', kw, 'mohinh3d')}
                             </div>
                             <div class="col-span-2 p-1.5 rounded-lg bg-rose-50/40 border border-rose-100/60 flex items-center justify-between">
                                 <span class="text-[9.5px] font-bold text-rose-700 truncate mr-1">vatlieumohinh.com</span>
-                                ${formatDomainRankBadge(kw.vatlieu, 'rose')}
+                                ${formatDomainRankBadge(kw.vatlieu, 'rose', kw, 'vatlieu')}
                             </div>
                         </div>
 
